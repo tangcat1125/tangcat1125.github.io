@@ -1,0 +1,49 @@
+{
+  "id": "certificate",
+  "version": 1,
+  "status": "draft",
+  "note": "Stage H 結局任命狀文案（暫用版，待呆呆補評語、米米換美術）。{name}{seasons}{grade}{gradeLabel}{strong}{weak} 由 stage_h.js 代入；缺變數的句子略過。",
+  "title": "貓貓市鎮長任命狀",
+  "subtitle": "CAT TOWN MAYOR CERTIFICATE",
+  "body": "茲任命 {name} 為貓貓市鎮長，任期 {seasons} 季。任內政績經公所貓貓評估，總評「{gradeLabel}」，特頒此狀，以資證明。",
+  "issuer": "貓貓市公所",
+  "issuerSign": "市長 喵安",
+  "sealText": "貓貓市公所印",
+  "dateStyle": "roc",
+  "namePrompt": "請輸入你的名字，才能領取任命狀",
+  "nameLabel": "學生姓名",
+  "endingLabel": { "good": "任期圓滿", "victory": "繁榮勝利", "bankrupt": "財政破產", "forced": "提前卸任" },
+  "comments": {
+    "combos": [
+      { "strong": "reading", "weak": "finance", "text": "你讀報很仔細，看得懂小鎮的問題；下次記得也盯緊金庫，好政策要有錢才能長久。" },
+      { "strong": "evidence", "weak": "teamwork", "text": "你很會分辨真假線索，判斷有憑有據；試著多聽公所貓貓的建議，團隊一起做會更快。" },
+      { "strong": "decision", "weak": "reading", "text": "你的選卡常常打中要害；如果再多讀幾篇報導，會更清楚事件背後的原因。" },
+      { "strong": "finance", "weak": "welfare", "text": "你把金庫管得很好；別忘了居民的感受，民怨和店家也是施政成績。" },
+      { "strong": "welfare", "weak": "evidence", "text": "你很照顧居民，小鎮氣氛不錯；下次先找第二個來源確認線索，避免被傳聞帶著走。" },
+      { "strong": "teamwork", "weak": "decision", "text": "你懂得聽取建議、分工合作；再想想每張卡對應哪個成因，決策會更精準。" }
+    ],
+    "byStrong": {
+      "reading": ["讀報細心，懂得先理解再行動。"],
+      "evidence": ["重視證據，不輕信傳聞。"],
+      "decision": ["決策對症，問題處理得乾淨俐落。"],
+      "finance": ["理財有方，金庫越來越穩。"],
+      "welfare": ["關心民生，居民和店家都感受得到。"],
+      "teamwork": ["善用團隊，知人善任。"]
+    },
+    "byWeak": {
+      "reading": ["下次多展開幾篇報導、讀完再決定。"],
+      "evidence": ["多點居民泡泡蒐集線索，找第二個來源確認。"],
+      "decision": ["選卡前先對照事件成因，避免買到無關卡。"],
+      "finance": ["留意每季帳單，避免入不敷出。"],
+      "welfare": ["民怨升高時先處理最急的領域。"],
+      "teamwork": ["參考公所貓貓建議，派合適的職員去執行。"]
+    },
+    "byGrade": {
+      "S": ["貓貓市以你為榮！"],
+      "A": ["表現優秀，值得嘉許。"],
+      "B": ["穩紮穩打，繼續加油。"],
+      "C": ["有進步空間，下一任會更好。"],
+      "D": ["這一任辛苦了，從經驗中學習吧。"]
+    }
+  }
+}

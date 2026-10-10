@@ -1,0 +1,190 @@
+{
+  "id": "policy_food_safety",
+  "name": "食安檢驗與留樣",
+  "cost": 2,
+  "blurb": "午餐與公共餐飲保存留樣 48 小時、冷藏、有人通報就採樣檢驗；先查再說，結果出來前不下結論。",
+  "solves": [],
+  "rule_patches": {
+    "foodSample": 1,
+    "reportFlow": 1
+  },
+  "deltas": {
+    "money": -45,
+    "profit": 0,
+    "happiness": 4
+  },
+  "logistics": {
+    "boostVehicles": [
+      "water_truck"
+    ],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "檢驗要等數天到兩週，結果出來前不能下結論；留樣冰箱與人力有成本，家長會希望更快知道。",
+  "preview": "預估：金錢 -45、幸福度 +4；出事時查得出原因，傳聞也比較容易退燒。",
+  "costPoints": 2,
+  "tags": [
+    "衛生",
+    "食安",
+    "查證"
+  ],
+  "counters": [
+    "food_safety",
+    "school_lunch"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_food_safety.webp",
+    "icon": "assets/sprites/cards/icons/icon_food_safety.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🍱",
+    "accent": "#e0a84a",
+    "fxHint": "fx_sample_fridge"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "衛生／查證",
+    "rarity": "常見",
+    "titleShort": "食安留樣",
+    "costBadge": "2 點",
+    "shopLine": "留樣、採樣、檢驗，出事時查得出原因。",
+    "effectLine": "午餐留樣保存、通報流程補齊；對午餐疑慮最對症。",
+    "flavor": "沒有留下樣本，就只能猜。",
+    "learnPoint": "這張牌教你：沒有證據前，不要急著找人負責。",
+    "bullets": [
+      "對症：午餐留樣、班級不適",
+      "幸福度 +4",
+      "結果要等，先不下結論"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -45,
+        "text": "金錢 -45"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 4,
+        "text": "幸福度 +4"
+      }
+    ],
+    "tradeoffLine": "檢驗要等數天到兩週，結果出來前不能下結論；留樣冰箱與人力有成本，家長會希望更快知道。"
+  },
+  "shopBlurb": "留樣、採樣、檢驗，出事時查得出原因。",
+  "shopLine": "2 點｜留樣、採樣、檢驗，出事時查得出原因。",
+  "executeId": "exec_food_safety",
+  "fx": {
+    "street": [
+      "fx_sample_fridge",
+      "fx_lab_check"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1800,
+    "effect": {
+      "flows": {
+        "foot": 2,
+        "vehicle": 0,
+        "tourist": 2,
+        "security": 0
+      },
+      "flowKind": "timed",
+      "durationSeasons": 3,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "health": -16,
+        "market": -4,
+        "safety": -4
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "normal",
+      "summary": "人流+2、遊客+2（3 季）；衛生民怨-16、市集民怨-4"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_hu",
+      "staff_xin"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.3,
+      "health": 0.9,
+      "engineering": 0.1,
+      "economy": 0.1,
+      "communication": 0.5
+    }
+  },
+  "actionOptionIds": [
+    "act_food_safety"
+  ],
+  "fromArticleIds": [
+    "art_evp_health_lunch_sample",
+    "art_evp_health_class_upset"
+  ],
+  "verdictByOption": {
+    "act_food_safety": "對症"
+  },
+  "complaintCounters": [
+    "health",
+    "market",
+    "safety"
+  ],
+  "complaintDelta": {
+    "health": -16,
+    "market": -4,
+    "safety": -4
+  },
+  "complaintRebound": {},
+  "complaintNote": "食安留樣與檢驗讓衛生民怨下降；結果等待期間仍需溝通。",
+  "eventEffects": {
+    "cure": [
+      "evp_health_class_upset",
+      "evp_health_foodpoison",
+      "evp_health_lunch_sample"
+    ],
+    "assist": [
+      "evp_market_lunch_supplier"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "reg",
+  "typeLabel": "管制／稽查",
+  "realWorldAnalog": "食品安全管理：留樣、抽驗與供應鏈追溯。",
+  "topicCounters": [
+    "food_safety",
+    "school_lunch"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_health_foodpoison",
+    "evp_health_lunch_sample",
+    "evp_health_class_upset"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_health_class_upset",
+    "evp_health_foodpoison",
+    "evp_health_lunch_sample"
+  ],
+  "solvesPoolConditional": []
+}

@@ -1,0 +1,14 @@
+{
+  "_comment": "建議在 event_*.json 增加 disasterIds: string[]，季中同時套用多災情疊加。",
+  "examples": {
+    "event_flood_risk": [
+      "disaster_storm_flood",
+      "disaster_garbage_backlog"
+    ],
+    "event_supply_delay": [
+      "disaster_crash_gorge"
+    ],
+    "event_market_slump": [],
+    "event_rumor_well": []
+  }
+}

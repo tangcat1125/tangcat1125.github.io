@@ -1,0 +1,523 @@
+{
+  "id": "staff_street_season_01",
+  "seasonId": "season_01",
+  "count": 91,
+  "residentEventCount": 17,
+  "baseCount": 50,
+  "note": "8 位新職員的街景台詞索引。句子本體在 data/dialogue/season_01.json（id 前綴 dlg_staff_）；speakerKind 一律為 staff，只給 id 相同的公職 NPC 說，靜態補滿（event_pool.js schedule）不會取用。",
+  "triggers": {
+    "patrol": "巡街：公所貓貓在街上走動時自然說的話（含巡街時順口說出的線索）。",
+    "accosted": "被居民攔下問：居民上前搭話、或問起傳聞時的回應。",
+    "announce": "公告：提醒居民看公布欄、公告、時間表等官方管道。",
+    "checkHint": "提醒查證：教學向，提醒先問出處、看紀錄，不直接給政策答案。",
+    "comfort": "安撫：依該領域民怨層級（calm/grumble/upset/furious）出現的安撫語。",
+    "chat": "一般閒聊：職員個性與日常。"
+  },
+  "appearWhenSchema": {
+    "staffOnStreet": "true＝該職員 NPC 目前在街上",
+    "domainId": "drain|market|logistics|traffic|health|safety",
+    "complaintTier": "calm|grumble|upset|furious（用 G.Complaint 的層級）",
+    "eventId": "本季抽到此 evp_* 事件時最合適"
+  },
+  "staff": [
+    {
+      "staffId": "staff_min",
+      "name": "喵民安",
+      "artAlias": "civil_affairs",
+      "dialogueIds": [
+        "dlg_staff_min_01",
+        "dlg_staff_min_02",
+        "dlg_staff_min_03",
+        "dlg_staff_min_04",
+        "dlg_staff_min_05",
+        "dlg_staff_min_06",
+        "dlg_staff_min_07",
+        "dlg_staff_min_08",
+        "dlg_staff_min_09",
+        "dlg_staff_min_10",
+        "dlg_staff_min_11",
+        "dlg_staff_min_12"
+      ],
+      "byTrigger": {
+        "patrol": [
+          "dlg_staff_min_01",
+          "dlg_staff_min_05",
+          "dlg_staff_min_09",
+          "dlg_staff_min_10",
+          "dlg_staff_min_11"
+        ],
+        "accosted": [
+          "dlg_staff_min_02",
+          "dlg_staff_min_08",
+          "dlg_staff_min_12"
+        ],
+        "announce": [
+          "dlg_staff_min_03"
+        ],
+        "checkHint": [
+          "dlg_staff_min_04"
+        ],
+        "comfort": [
+          "dlg_staff_min_06",
+          "dlg_staff_min_07"
+        ]
+      },
+      "byCategory": {
+        "chat": [
+          "dlg_staff_min_01",
+          "dlg_staff_min_03",
+          "dlg_staff_min_04",
+          "dlg_staff_min_06",
+          "dlg_staff_min_07"
+        ],
+        "complaint": [
+          "dlg_staff_min_02"
+        ],
+        "clue": [
+          "dlg_staff_min_05",
+          "dlg_staff_min_09",
+          "dlg_staff_min_10",
+          "dlg_staff_min_11"
+        ],
+        "rumor": [
+          "dlg_staff_min_08",
+          "dlg_staff_min_12"
+        ]
+      }
+    },
+    {
+      "staffId": "staff_jing",
+      "name": "喵淨淨",
+      "artAlias": "env_cleaner",
+      "dialogueIds": [
+        "dlg_staff_jing_01",
+        "dlg_staff_jing_02",
+        "dlg_staff_jing_03",
+        "dlg_staff_jing_04",
+        "dlg_staff_jing_05",
+        "dlg_staff_jing_06",
+        "dlg_staff_jing_07",
+        "dlg_staff_jing_08",
+        "dlg_staff_jing_09",
+        "dlg_staff_jing_10",
+        "dlg_staff_jing_11",
+        "dlg_staff_jing_12",
+        "dlg_staff_jing_13",
+        "dlg_staff_jing_14",
+        "dlg_staff_jing_15",
+        "dlg_staff_jing_16"
+      ],
+      "byTrigger": {
+        "patrol": [
+          "dlg_staff_jing_01",
+          "dlg_staff_jing_03",
+          "dlg_staff_jing_04",
+          "dlg_staff_jing_09",
+          "dlg_staff_jing_10",
+          "dlg_staff_jing_11",
+          "dlg_staff_jing_12",
+          "dlg_staff_jing_15"
+        ],
+        "accosted": [
+          "dlg_staff_jing_02",
+          "dlg_staff_jing_08",
+          "dlg_staff_jing_13",
+          "dlg_staff_jing_16"
+        ],
+        "announce": [
+          "dlg_staff_jing_05"
+        ],
+        "checkHint": [
+          "dlg_staff_jing_14"
+        ],
+        "comfort": [
+          "dlg_staff_jing_06",
+          "dlg_staff_jing_07"
+        ]
+      },
+      "byCategory": {
+        "chat": [
+          "dlg_staff_jing_01",
+          "dlg_staff_jing_05",
+          "dlg_staff_jing_06",
+          "dlg_staff_jing_07",
+          "dlg_staff_jing_14"
+        ],
+        "complaint": [
+          "dlg_staff_jing_02"
+        ],
+        "clue": [
+          "dlg_staff_jing_03",
+          "dlg_staff_jing_04",
+          "dlg_staff_jing_09",
+          "dlg_staff_jing_10",
+          "dlg_staff_jing_11",
+          "dlg_staff_jing_12",
+          "dlg_staff_jing_15"
+        ],
+        "rumor": [
+          "dlg_staff_jing_08",
+          "dlg_staff_jing_13",
+          "dlg_staff_jing_16"
+        ]
+      }
+    },
+    {
+      "staffId": "staff_hu",
+      "name": "喵護",
+      "artAlias": "clinic_director",
+      "dialogueIds": [
+        "dlg_staff_hu_01",
+        "dlg_staff_hu_02",
+        "dlg_staff_hu_03",
+        "dlg_staff_hu_04",
+        "dlg_staff_hu_05",
+        "dlg_staff_hu_06",
+        "dlg_staff_hu_07",
+        "dlg_staff_hu_08",
+        "dlg_staff_hu_09",
+        "dlg_staff_hu_10",
+        "dlg_staff_hu_11",
+        "dlg_staff_hu_12",
+        "dlg_staff_hu_13",
+        "dlg_staff_hu_14",
+        "dlg_staff_hu_15",
+        "dlg_staff_hu_16"
+      ],
+      "byTrigger": {
+        "patrol": [
+          "dlg_staff_hu_04",
+          "dlg_staff_hu_05",
+          "dlg_staff_hu_09",
+          "dlg_staff_hu_10",
+          "dlg_staff_hu_11",
+          "dlg_staff_hu_15"
+        ],
+        "accosted": [
+          "dlg_staff_hu_02",
+          "dlg_staff_hu_08",
+          "dlg_staff_hu_12",
+          "dlg_staff_hu_16"
+        ],
+        "announce": [
+          "dlg_staff_hu_03"
+        ],
+        "checkHint": [
+          "dlg_staff_hu_06",
+          "dlg_staff_hu_13"
+        ],
+        "comfort": [
+          "dlg_staff_hu_07",
+          "dlg_staff_hu_14"
+        ],
+        "chat": [
+          "dlg_staff_hu_01"
+        ]
+      },
+      "byCategory": {
+        "chat": [
+          "dlg_staff_hu_01",
+          "dlg_staff_hu_02",
+          "dlg_staff_hu_03",
+          "dlg_staff_hu_06",
+          "dlg_staff_hu_07",
+          "dlg_staff_hu_13",
+          "dlg_staff_hu_14",
+          "dlg_staff_hu_16"
+        ],
+        "clue": [
+          "dlg_staff_hu_04",
+          "dlg_staff_hu_05",
+          "dlg_staff_hu_09",
+          "dlg_staff_hu_10",
+          "dlg_staff_hu_11",
+          "dlg_staff_hu_15"
+        ],
+        "rumor": [
+          "dlg_staff_hu_08",
+          "dlg_staff_hu_12"
+        ]
+      }
+    },
+    {
+      "staffId": "staff_tong",
+      "name": "喵路通",
+      "artAlias": "traffic_officer",
+      "dialogueIds": [
+        "dlg_staff_tong_01",
+        "dlg_staff_tong_02",
+        "dlg_staff_tong_03",
+        "dlg_staff_tong_04",
+        "dlg_staff_tong_05",
+        "dlg_staff_tong_06",
+        "dlg_staff_tong_07",
+        "dlg_staff_tong_08",
+        "dlg_staff_tong_09"
+      ],
+      "byTrigger": {
+        "patrol": [
+          "dlg_staff_tong_01",
+          "dlg_staff_tong_03",
+          "dlg_staff_tong_04",
+          "dlg_staff_tong_09"
+        ],
+        "accosted": [
+          "dlg_staff_tong_02",
+          "dlg_staff_tong_08"
+        ],
+        "announce": [
+          "dlg_staff_tong_05"
+        ],
+        "checkHint": [
+          "dlg_staff_tong_06"
+        ],
+        "comfort": [
+          "dlg_staff_tong_07"
+        ]
+      },
+      "byCategory": {
+        "chat": [
+          "dlg_staff_tong_01",
+          "dlg_staff_tong_02",
+          "dlg_staff_tong_05",
+          "dlg_staff_tong_06",
+          "dlg_staff_tong_07"
+        ],
+        "clue": [
+          "dlg_staff_tong_03",
+          "dlg_staff_tong_04",
+          "dlg_staff_tong_09"
+        ],
+        "rumor": [
+          "dlg_staff_tong_08"
+        ]
+      }
+    },
+    {
+      "staffId": "staff_nuan",
+      "name": "喵暖暖",
+      "artAlias": "social_worker",
+      "dialogueIds": [
+        "dlg_staff_nuan_01",
+        "dlg_staff_nuan_02",
+        "dlg_staff_nuan_03",
+        "dlg_staff_nuan_04",
+        "dlg_staff_nuan_05",
+        "dlg_staff_nuan_06",
+        "dlg_staff_nuan_07",
+        "dlg_staff_nuan_08",
+        "dlg_staff_nuan_09",
+        "dlg_staff_nuan_10",
+        "dlg_staff_nuan_11",
+        "dlg_staff_nuan_12"
+      ],
+      "byTrigger": {
+        "patrol": [
+          "dlg_staff_nuan_01",
+          "dlg_staff_nuan_03",
+          "dlg_staff_nuan_10"
+        ],
+        "accosted": [
+          "dlg_staff_nuan_02",
+          "dlg_staff_nuan_08",
+          "dlg_staff_nuan_11"
+        ],
+        "announce": [
+          "dlg_staff_nuan_04"
+        ],
+        "checkHint": [
+          "dlg_staff_nuan_05"
+        ],
+        "comfort": [
+          "dlg_staff_nuan_06",
+          "dlg_staff_nuan_07",
+          "dlg_staff_nuan_09",
+          "dlg_staff_nuan_12"
+        ]
+      },
+      "byCategory": {
+        "chat": [
+          "dlg_staff_nuan_01",
+          "dlg_staff_nuan_02",
+          "dlg_staff_nuan_04",
+          "dlg_staff_nuan_05",
+          "dlg_staff_nuan_06",
+          "dlg_staff_nuan_07",
+          "dlg_staff_nuan_09",
+          "dlg_staff_nuan_12"
+        ],
+        "clue": [
+          "dlg_staff_nuan_03",
+          "dlg_staff_nuan_10"
+        ],
+        "rumor": [
+          "dlg_staff_nuan_08",
+          "dlg_staff_nuan_11"
+        ]
+      }
+    },
+    {
+      "staffId": "staff_tian",
+      "name": "喵田田",
+      "artAlias": "agri_officer",
+      "dialogueIds": [
+        "dlg_staff_tian_01",
+        "dlg_staff_tian_02",
+        "dlg_staff_tian_03",
+        "dlg_staff_tian_04",
+        "dlg_staff_tian_05",
+        "dlg_staff_tian_06",
+        "dlg_staff_tian_07",
+        "dlg_staff_tian_08"
+      ],
+      "byTrigger": {
+        "patrol": [
+          "dlg_staff_tian_01",
+          "dlg_staff_tian_03",
+          "dlg_staff_tian_04",
+          "dlg_staff_tian_05"
+        ],
+        "accosted": [
+          "dlg_staff_tian_02",
+          "dlg_staff_tian_08"
+        ],
+        "announce": [
+          "dlg_staff_tian_06"
+        ],
+        "comfort": [
+          "dlg_staff_tian_07"
+        ]
+      },
+      "byCategory": {
+        "chat": [
+          "dlg_staff_tian_02",
+          "dlg_staff_tian_06",
+          "dlg_staff_tian_07"
+        ],
+        "complaint": [
+          "dlg_staff_tian_01"
+        ],
+        "clue": [
+          "dlg_staff_tian_03",
+          "dlg_staff_tian_04",
+          "dlg_staff_tian_05"
+        ],
+        "rumor": [
+          "dlg_staff_tian_08"
+        ]
+      }
+    },
+    {
+      "staffId": "staff_wen",
+      "name": "喵文雅",
+      "artAlias": "culture_officer",
+      "dialogueIds": [
+        "dlg_staff_wen_01",
+        "dlg_staff_wen_02",
+        "dlg_staff_wen_03",
+        "dlg_staff_wen_04",
+        "dlg_staff_wen_05",
+        "dlg_staff_wen_06",
+        "dlg_staff_wen_07",
+        "dlg_staff_wen_08"
+      ],
+      "byTrigger": {
+        "patrol": [
+          "dlg_staff_wen_03",
+          "dlg_staff_wen_04"
+        ],
+        "accosted": [
+          "dlg_staff_wen_02",
+          "dlg_staff_wen_08"
+        ],
+        "announce": [
+          "dlg_staff_wen_05"
+        ],
+        "checkHint": [
+          "dlg_staff_wen_06"
+        ],
+        "comfort": [
+          "dlg_staff_wen_07"
+        ],
+        "chat": [
+          "dlg_staff_wen_01"
+        ]
+      },
+      "byCategory": {
+        "chat": [
+          "dlg_staff_wen_01",
+          "dlg_staff_wen_02",
+          "dlg_staff_wen_05",
+          "dlg_staff_wen_06",
+          "dlg_staff_wen_07"
+        ],
+        "clue": [
+          "dlg_staff_wen_03",
+          "dlg_staff_wen_04"
+        ],
+        "rumor": [
+          "dlg_staff_wen_08"
+        ]
+      }
+    },
+    {
+      "staffId": "staff_suan",
+      "name": "喵算",
+      "artAlias": "accountant",
+      "dialogueIds": [
+        "dlg_staff_suan_01",
+        "dlg_staff_suan_02",
+        "dlg_staff_suan_03",
+        "dlg_staff_suan_04",
+        "dlg_staff_suan_05",
+        "dlg_staff_suan_06",
+        "dlg_staff_suan_07",
+        "dlg_staff_suan_08",
+        "dlg_staff_suan_09",
+        "dlg_staff_suan_10"
+      ],
+      "byTrigger": {
+        "patrol": [
+          "dlg_staff_suan_03",
+          "dlg_staff_suan_04",
+          "dlg_staff_suan_09"
+        ],
+        "accosted": [
+          "dlg_staff_suan_02",
+          "dlg_staff_suan_08",
+          "dlg_staff_suan_10"
+        ],
+        "announce": [
+          "dlg_staff_suan_05"
+        ],
+        "checkHint": [
+          "dlg_staff_suan_06"
+        ],
+        "comfort": [
+          "dlg_staff_suan_07"
+        ],
+        "chat": [
+          "dlg_staff_suan_01"
+        ]
+      },
+      "byCategory": {
+        "chat": [
+          "dlg_staff_suan_01",
+          "dlg_staff_suan_02",
+          "dlg_staff_suan_05",
+          "dlg_staff_suan_06",
+          "dlg_staff_suan_07"
+        ],
+        "clue": [
+          "dlg_staff_suan_03",
+          "dlg_staff_suan_04",
+          "dlg_staff_suan_09"
+        ],
+        "rumor": [
+          "dlg_staff_suan_08",
+          "dlg_staff_suan_10"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "id": "policy_pest_control",
+  "name": "鼠害防治與廚餘管理",
+  "cost": 2,
+  "blurb": "廚餘桶加蓋、收市清殘渣、封鼠洞、使用合格鼠餌盒並定期巡查，同時禁止餵食；要持續做才有效。",
+  "solves": [],
+  "rule_patches": {
+    "pestControl": 1,
+    "foodWasteLid": 1
+  },
+  "deltas": {
+    "money": -50,
+    "profit": 5,
+    "happiness": 3
+  },
+  "logistics": {
+    "boostVehicles": [
+      "garbage_truck"
+    ],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "只封一處、不管食物來源，鼠會「趕到隔壁」；鼠餌盒要定期回收，並公開說明，否則寵物與孩童的安全疑慮會升高。",
+  "preview": "預估：金錢 -50、獲利 +5、幸福度 +3；廚餘管好、洞封好、巡查不中斷，鼠跡才會少。",
+  "costPoints": 2,
+  "tags": [
+    "環保",
+    "衛生",
+    "預防"
+  ],
+  "counters": [
+    "rat",
+    "kitchen_waste",
+    "bait_safety"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_pest_control.webp",
+    "icon": "assets/sprites/cards/icons/icon_pest_control.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🐀",
+    "accent": "#8a7a5a",
+    "fxHint": "fx_lid_on_bins"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "環保／衛生",
+    "rarity": "常見",
+    "titleShort": "鼠害防治",
+    "costBadge": "2 點",
+    "shopLine": "廚餘加蓋、封洞、合格餌盒，一起做才有效。",
+    "effectLine": "廚餘不外露、洞口封好、定期巡查；對鼠跡與鼠餌疑慮最有效。",
+    "flavor": "牠們要的是食物，不是要跟你吵架。",
+    "learnPoint": "這張牌教你：防治要處理「食物來源」，不是只封洞。",
+    "bullets": [
+      "對症：鼠跡、公園鼠洞、鼠餌疑慮",
+      "獲利 +5",
+      "要持續巡查與公開說明"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -50,
+        "text": "金錢 -50"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": 5,
+        "text": "獲利 +5"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 3,
+        "text": "幸福度 +3"
+      }
+    ],
+    "tradeoffLine": "只封一處、不管食物來源，鼠會「趕到隔壁」；鼠餌盒要定期回收，並公開說明，否則寵物與孩童的安全疑慮會升高。"
+  },
+  "shopBlurb": "廚餘加蓋、封洞、合格餌盒，一起做才有效。",
+  "shopLine": "2 點｜廚餘加蓋、封洞、合格餌盒，一起做才有效。",
+  "executeId": "exec_pest_control",
+  "fx": {
+    "street": [
+      "fx_lid_on_bins",
+      "fx_patrol_sweep"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1900,
+    "effect": {
+      "flows": {
+        "foot": 2,
+        "vehicle": 0,
+        "tourist": 1,
+        "security": 0
+      },
+      "flowKind": "timed",
+      "durationSeasons": 3,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "market": -12,
+        "health": -10,
+        "drain": -6,
+        "safety": -4
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "normal",
+      "summary": "人流+2、遊客+1（3 季）；市集民怨-12、衛生民怨-10"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_jing",
+      "staff_hu"
+    ],
+    "radarWeights": {
+      "logistics": 0.5,
+      "safety": 0.2,
+      "health": 0.6,
+      "engineering": 0.6,
+      "economy": 0.1,
+      "communication": 0.2
+    }
+  },
+  "actionOptionIds": [
+    "act_pest_control"
+  ],
+  "fromArticleIds": [
+    "art_evp_market_rat_bin",
+    "art_evp_safety_park_burrow",
+    "art_evp_health_bait_worry"
+  ],
+  "verdictByOption": {
+    "act_pest_control": "對症"
+  },
+  "complaintCounters": [
+    "market",
+    "health",
+    "drain",
+    "safety"
+  ],
+  "complaintDelta": {
+    "market": -12,
+    "health": -10,
+    "drain": -6,
+    "safety": -4
+  },
+  "complaintRebound": {},
+  "complaintNote": "防治見效後市集與衛生民怨同步下降；沒有持續巡查時會反彈。",
+  "eventEffects": {
+    "cure": [
+      "evp_health_bait_worry",
+      "evp_health_rat_swarm",
+      "evp_market_rat_bin",
+      "evp_safety_park_burrow"
+    ],
+    "assist": [
+      "evp_drain_grease_trap"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "reg",
+  "typeLabel": "管制／稽查",
+  "realWorldAnalog": "環境衛生管理：廚餘加蓋、封洞、定點設餌並公開位置。",
+  "topicCounters": [
+    "rat",
+    "kitchen_waste",
+    "bait_safety"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_market_rat_bin",
+    "evp_safety_park_burrow",
+    "evp_health_bait_worry",
+    "evp_health_rat_swarm"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_health_bait_worry",
+    "evp_health_rat_swarm",
+    "evp_market_rat_bin",
+    "evp_safety_park_burrow"
+  ],
+  "solvesPoolConditional": []
+}

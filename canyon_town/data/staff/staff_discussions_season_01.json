@@ -1,0 +1,902 @@
+{
+  "id": "staff_discussions_season_01",
+  "seasonId": "season_01",
+  "rule": "玩家選定政策卡後，隨機（或輪流）挑該卡一組討論；依序顯示 rounds（2–3 句）並標出 recommend 推薦人選，玩家可一鍵委任（commissionId）。",
+  "recommendRule": "推薦人選 = 小組內適配度最高者（fitBestInPanel 為 true 代表符合規則）。",
+  "byPolicy": {
+    "policy_clear_drain": [
+      "disc_drain_a",
+      "disc_drain_b"
+    ],
+    "policy_boardwalk": [
+      "disc_board_a",
+      "disc_board_b"
+    ],
+    "policy_coupon": [
+      "disc_coupon_a",
+      "disc_coupon_b"
+    ],
+    "policy_water_test": [
+      "disc_water_a",
+      "disc_water_b"
+    ],
+    "policy_logistics_hub": [
+      "disc_logi_a",
+      "disc_logi_b"
+    ],
+    "policy_rain_garden": [
+      "disc_raing_a"
+    ],
+    "policy_vendor_shift": [
+      "disc_vendor_a"
+    ],
+    "policy_cold_chain": [
+      "disc_cold_a"
+    ],
+    "policy_bus_reroute": [
+      "disc_bus_a"
+    ],
+    "policy_vector_control": [
+      "disc_vector_a"
+    ],
+    "policy_patrol_lights": [
+      "disc_patrol_a"
+    ],
+    "policy_rescue_squad": [
+      "disc_rescue_a"
+    ],
+    "policy_fact_check": [
+      "disc_fact_a"
+    ],
+    "policy_town_broadcast": [
+      "disc_broadcast_a"
+    ],
+    "policy_pest_control": [
+      "disc_pest_a"
+    ],
+    "policy_food_safety": [
+      "disc_foodsafe_a"
+    ],
+    "policy_vendor_audit": [
+      "disc_audit_a"
+    ]
+  },
+  "discussions": [
+    {
+      "id": "disc_drain_a",
+      "policyId": "policy_clear_drain",
+      "policyName": "緊急清淤隊",
+      "title": "雨季前清淤，誰來帶隊？",
+      "panel": [
+        "staff_xiu",
+        "staff_min",
+        "staff_yan"
+      ],
+      "opener": "我只講工法：做得到、做多久、副作用是什麼。",
+      "rounds": [
+        {
+          "speakerId": "staff_xiu",
+          "stance": "support",
+          "line": "雨季前清溝最划算，工務可以帶隊。"
+        },
+        {
+          "speakerId": "staff_min",
+          "stance": "hold",
+          "line": "清溝要封小路，先跟鄰里說一聲。"
+        },
+        {
+          "speakerId": "staff_yan",
+          "stance": "support",
+          "line": "排水通，救援才通，我贊成。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_xiu",
+        "name": "喵修路",
+        "commissionId": "comm_clear_drain",
+        "reason": "專長是工務、成本最低，也是這張卡的對症人選。",
+        "fit": 0.74,
+        "fitBestInPanel": true
+      },
+      "takeaway": "治本的排水卡，短期會有施工壅塞的副作用。"
+    },
+    {
+      "id": "disc_drain_b",
+      "policyId": "policy_clear_drain",
+      "policyName": "緊急清淤隊",
+      "title": "溝剛通又堵怎麼辦？",
+      "panel": [
+        "staff_jing",
+        "staff_suan",
+        "staff_xin"
+      ],
+      "opener": "清運的第一線我最清楚，先聽我說。",
+      "rounds": [
+        {
+          "speakerId": "staff_jing",
+          "stance": "support",
+          "line": "垃圾和落葉先清，不然溝剛通又堵。"
+        },
+        {
+          "speakerId": "staff_suan",
+          "stance": "hold",
+          "line": "清淤要花 3 點，記得算進預算。"
+        },
+        {
+          "speakerId": "staff_xin",
+          "stance": "support",
+          "line": "積水少了，蚊蟲和腸胃炎也少。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_jing",
+        "name": "喵淨淨",
+        "commissionId": "comm_garbage_clear",
+        "reason": "清潔隊從源頭減少堵塞，能降低反彈。",
+        "fit": 0.58,
+        "fitBestInPanel": true
+      },
+      "takeaway": "清淤搭配清運，才不會「通了又堵」。"
+    },
+    {
+      "id": "disc_board_a",
+      "policyId": "policy_boardwalk",
+      "policyName": "步道木棧加固",
+      "title": "步道修好，市集有救嗎？",
+      "panel": [
+        "staff_xiu",
+        "staff_shi",
+        "staff_an"
+      ],
+      "opener": "我只講工法：做得到、做多久、副作用是什麼。",
+      "rounds": [
+        {
+          "speakerId": "staff_xiu",
+          "stance": "support",
+          "line": "木棧加固撐得久，但施工會封路。"
+        },
+        {
+          "speakerId": "staff_shi",
+          "stance": "support",
+          "line": "市集靠遊客，路好才有人來。"
+        },
+        {
+          "speakerId": "staff_an",
+          "stance": "hold",
+          "line": "施工期間要派人指揮，治安別放掉。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_xiu",
+        "name": "喵修路",
+        "commissionId": "comm_boardwalk",
+        "reason": "工程是核心，工務最能控制工期與品質。",
+        "fit": 0.664,
+        "fitBestInPanel": true
+      },
+      "takeaway": "步道是治本之一，但別忘了施工副作用。"
+    },
+    {
+      "id": "disc_board_b",
+      "policyId": "policy_boardwalk",
+      "policyName": "步道木棧加固",
+      "title": "步道要不要變成景點？",
+      "panel": [
+        "staff_wen",
+        "staff_suan",
+        "staff_min"
+      ],
+      "opener": "先說個故事：遊客為什麼願意走這條路？",
+      "rounds": [
+        {
+          "speakerId": "staff_wen",
+          "stance": "support",
+          "line": "步道是風景，修好能拉長停留時間。"
+        },
+        {
+          "speakerId": "staff_suan",
+          "stance": "hold",
+          "line": "3 點不便宜，先確認客流數字。"
+        },
+        {
+          "speakerId": "staff_min",
+          "stance": "hold",
+          "line": "施工前要先公告，鄰里和店家都要知道。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_wen",
+        "name": "喵文雅",
+        "commissionId": "comm_culture_walk",
+        "reason": "文化觀光能把修好的步道變成行程，帶動回流。",
+        "fit": 0.592,
+        "fitBestInPanel": true
+      },
+      "takeaway": "修路之外，也要讓人「想來」。"
+    },
+    {
+      "id": "disc_coupon_a",
+      "policyId": "policy_coupon",
+      "policyName": "市集消費券",
+      "title": "消費券，真的有用嗎？",
+      "panel": [
+        "staff_shi",
+        "staff_suan",
+        "staff_xiu"
+      ],
+      "opener": "我代表攤商說句話：客人不來，一切免談。",
+      "rounds": [
+        {
+          "speakerId": "staff_shi",
+          "stance": "support",
+          "line": "券能馬上拉買氣，我是支持的。"
+        },
+        {
+          "speakerId": "staff_suan",
+          "stance": "hold",
+          "line": "發券只要 2 點很便宜，但下季會反彈。"
+        },
+        {
+          "speakerId": "staff_xiu",
+          "stance": "oppose",
+          "line": "路不修，券花完客人還是不來。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_shi",
+        "name": "喵阿市",
+        "commissionId": "comm_coupon",
+        "reason": "市場會長能組織攤商配合，短期效果最好。",
+        "fit": 0.859,
+        "fitBestInPanel": true
+      },
+      "takeaway": "消費券是治標，要搭配治本卡。"
+    },
+    {
+      "id": "disc_coupon_b",
+      "policyId": "policy_coupon",
+      "policyName": "市集消費券",
+      "title": "券要發給誰才划算？",
+      "panel": [
+        "staff_nuan",
+        "staff_cheng",
+        "staff_jing"
+      ],
+      "opener": "我想先問：這張卡，最需要的人真的拿得到嗎？",
+      "rounds": [
+        {
+          "speakerId": "staff_nuan",
+          "stance": "support",
+          "line": "券可以優先發給長輩與弱勢家庭。"
+        },
+        {
+          "speakerId": "staff_cheng",
+          "stance": "hold",
+          "line": "那要設計發放方式，我來辦說明。"
+        },
+        {
+          "speakerId": "staff_jing",
+          "stance": "oppose",
+          "line": "發券會多出很多包裝垃圾，清運更忙。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_nuan",
+        "name": "喵暖暖",
+        "commissionId": "comm_welfare_support",
+        "reason": "社會課能精準發放，降低浪費與反彈。",
+        "fit": 0.718,
+        "fitBestInPanel": true
+      },
+      "takeaway": "好政策也要想副作用與公平。"
+    },
+    {
+      "id": "disc_water_a",
+      "policyId": "policy_water_test",
+      "policyName": "公開水質檢測",
+      "title": "井水傳聞，先查還是先解釋？",
+      "panel": [
+        "staff_xin",
+        "staff_hu",
+        "staff_cheng"
+      ],
+      "opener": "請大家先看數據，再看傳聞。",
+      "rounds": [
+        {
+          "speakerId": "staff_xin",
+          "stance": "support",
+          "line": "傳聞傳得快，檢測要更快公布。"
+        },
+        {
+          "speakerId": "staff_hu",
+          "stance": "support",
+          "line": "衛生所可以馬上採樣，三天內出結果。"
+        },
+        {
+          "speakerId": "staff_cheng",
+          "stance": "support",
+          "line": "公所負責公告，資訊一次講清楚。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_hu",
+        "name": "喵護",
+        "commissionId": "comm_clinic_water",
+        "reason": "衛生所能立刻採樣，是最直接的對症人選。",
+        "fit": 0.777,
+        "fitBestInPanel": true
+      },
+      "takeaway": "公開資訊比澄清更有效。"
+    },
+    {
+      "id": "disc_water_b",
+      "policyId": "policy_water_test",
+      "policyName": "公開水質檢測",
+      "title": "信任要怎麼補回來？",
+      "panel": [
+        "staff_min",
+        "staff_nuan",
+        "staff_suan"
+      ],
+      "opener": "先別急著決定，我們聽聽鄰里怎麼說。",
+      "rounds": [
+        {
+          "speakerId": "staff_min",
+          "stance": "support",
+          "line": "辦說明會讓大家看檢測過程，最安心。"
+        },
+        {
+          "speakerId": "staff_nuan",
+          "stance": "support",
+          "line": "長輩最擔心水，我可以到府說明結果。"
+        },
+        {
+          "speakerId": "staff_suan",
+          "stance": "support",
+          "line": "2 點換回信任，是最便宜的政策。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_nuan",
+        "name": "喵暖暖",
+        "commissionId": "comm_welfare_visit",
+        "reason": "社會課能到府說明，讓最擔心的長輩也安心。",
+        "fit": 0.723,
+        "fitBestInPanel": true
+      },
+      "takeaway": "信任是最便宜、也最難補的資源。"
+    },
+    {
+      "id": "disc_logi_a",
+      "policyId": "policy_logistics_hub",
+      "policyName": "臨時物流緩衝站",
+      "title": "峽口塞車，緩衝站值得嗎？",
+      "panel": [
+        "staff_an",
+        "staff_tong",
+        "staff_shi"
+      ],
+      "opener": "路口的狀況我最清楚，先聽我報告。",
+      "rounds": [
+        {
+          "speakerId": "staff_an",
+          "stance": "support",
+          "line": "峽口一塞就出事，緩衝站有用。"
+        },
+        {
+          "speakerId": "staff_tong",
+          "stance": "support",
+          "line": "我來排時段，貨車與公車錯開。"
+        },
+        {
+          "speakerId": "staff_shi",
+          "stance": "support",
+          "line": "貨準時，攤位才不會空。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_tong",
+        "name": "喵路通",
+        "commissionId": "comm_traffic_flow",
+        "reason": "交通課能排時段，直接改善準點率與壅塞。",
+        "fit": 0.679,
+        "fitBestInPanel": true
+      },
+      "takeaway": "物流樞紐一次解決多條問題。"
+    },
+    {
+      "id": "disc_logi_b",
+      "policyId": "policy_logistics_hub",
+      "policyName": "臨時物流緩衝站",
+      "title": "3 點會不會太貴？",
+      "panel": [
+        "staff_tian",
+        "staff_nuan",
+        "staff_suan"
+      ],
+      "opener": "菜等不起，我先說農友的難處。",
+      "rounds": [
+        {
+          "speakerId": "staff_tian",
+          "stance": "support",
+          "line": "蔬果等不起，緩衝站能保鮮。"
+        },
+        {
+          "speakerId": "staff_nuan",
+          "stance": "support",
+          "line": "送餐、送藥都靠這條路，長輩等不起。"
+        },
+        {
+          "speakerId": "staff_suan",
+          "stance": "hold",
+          "line": "3 點偏貴，但一次改善多個問題。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_tian",
+        "name": "喵田田",
+        "commissionId": "comm_farm_direct",
+        "reason": "農業課能讓蔬果優先進場，減少空架。",
+        "fit": 0.586,
+        "fitBestInPanel": true
+      },
+      "takeaway": "貴一點的治本卡，常常長期更划算。"
+    },
+    {
+      "id": "disc_raing_a",
+      "policyId": "policy_rain_garden",
+      "policyName": "雨水花園滯洪池",
+      "title": "滯洪池，現在挖還是等下雨？",
+      "panel": [
+        "staff_xiu",
+        "staff_yan",
+        "staff_shi"
+      ],
+      "opener": "我只講工法：做得到、做多久、副作用是什麼。",
+      "rounds": [
+        {
+          "speakerId": "staff_xiu",
+          "stance": "support",
+          "line": "挖滯洪池要趕雨季前，工務可以帶隊。"
+        },
+        {
+          "speakerId": "staff_yan",
+          "stance": "support",
+          "line": "水有地方去，救援路線才保得住。"
+        },
+        {
+          "speakerId": "staff_shi",
+          "stance": "oppose",
+          "line": "市集旁的空地變池子，攤位怎麼擺？"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_xiu",
+        "name": "喵修路",
+        "commissionId": "comm_rain_garden",
+        "reason": "預防型工程要提前做，工務最能掌握工期與位置。",
+        "fit": 0.691,
+        "fitBestInPanel": true
+      },
+      "takeaway": "預防型卡牌「先買」才最有效，但要付出占地與維護的代價。"
+    },
+    {
+      "id": "disc_vendor_a",
+      "policyId": "policy_vendor_shift",
+      "policyName": "攤販輪班夜市整頓",
+      "title": "夜市整頓，人潮與治安怎麼顧？",
+      "panel": [
+        "staff_shi",
+        "staff_wen",
+        "staff_an"
+      ],
+      "opener": "我代表攤商說句話：客人不來，一切免談。",
+      "rounds": [
+        {
+          "speakerId": "staff_shi",
+          "stance": "support",
+          "line": "輪班分流，攤位不空也不擠。"
+        },
+        {
+          "speakerId": "staff_wen",
+          "stance": "support",
+          "line": "夜市有燈有人氣，遊客愛逛。"
+        },
+        {
+          "speakerId": "staff_an",
+          "stance": "hold",
+          "line": "人多要配巡守，不然扒手跟著來。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_shi",
+        "name": "喵阿市",
+        "commissionId": "comm_night_market",
+        "reason": "市場會長能組織攤商輪班，直接回應人潮問題。",
+        "fit": 0.791,
+        "fitBestInPanel": true
+      },
+      "takeaway": "人潮管理有配套才算成功：夜市要搭配巡守。"
+    },
+    {
+      "id": "disc_cold_a",
+      "policyId": "policy_cold_chain",
+      "policyName": "冷鏈冷藏車",
+      "title": "夏天的菜，要怎麼保鮮？",
+      "panel": [
+        "staff_tian",
+        "staff_tong",
+        "staff_suan"
+      ],
+      "opener": "菜等不起，我先說農友的難處。",
+      "rounds": [
+        {
+          "speakerId": "staff_tian",
+          "stance": "support",
+          "line": "冷藏車讓蔬果少壞，農友最需要。"
+        },
+        {
+          "speakerId": "staff_tong",
+          "stance": "hold",
+          "line": "冷藏車也怕卡峽口，時段要排。"
+        },
+        {
+          "speakerId": "staff_suan",
+          "stance": "hold",
+          "line": "3 點加電費，要看貨量夠不夠。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_tian",
+        "name": "喵田田",
+        "commissionId": "comm_cold_chain",
+        "reason": "農業課最懂蔬果保鮮與產地出貨時段。",
+        "fit": 0.659,
+        "fitBestInPanel": true
+      },
+      "takeaway": "專用設備能降低季節風險，但不能取代疏通車流。"
+    },
+    {
+      "id": "disc_bus_a",
+      "policyId": "policy_bus_reroute",
+      "policyName": "公車改道接駁巴士",
+      "title": "公車改道，哪條路最安全？",
+      "panel": [
+        "staff_tong",
+        "staff_an",
+        "staff_yan"
+      ],
+      "opener": "我先把車流圖畫出來，大家看哪裡堵。",
+      "rounds": [
+        {
+          "speakerId": "staff_tong",
+          "stance": "support",
+          "line": "改道加接駁，車流我來排。"
+        },
+        {
+          "speakerId": "staff_an",
+          "stance": "hold",
+          "line": "改道要避開窄路與救援動線。"
+        },
+        {
+          "speakerId": "staff_yan",
+          "stance": "hold",
+          "line": "改道別走峽壁邊坡，救援會出事。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_tong",
+        "name": "喵路通",
+        "commissionId": "comm_bus_shuttle",
+        "reason": "交通課能排出安全又順的改道時段。",
+        "fit": 0.696,
+        "fitBestInPanel": true
+      },
+      "takeaway": "改道要先看新路線安不安全，不能只看塞不塞。"
+    },
+    {
+      "id": "disc_vector_a",
+      "policyId": "policy_vector_control",
+      "policyName": "疫苗滅蚊行動",
+      "title": "疫苗與滅蚊，什麼時候做？",
+      "panel": [
+        "staff_hu",
+        "staff_xin",
+        "staff_nuan"
+      ],
+      "opener": "衛生所可以馬上採樣，先聽我說明流程。",
+      "rounds": [
+        {
+          "speakerId": "staff_hu",
+          "stance": "support",
+          "line": "疫苗和滅蚊一起做，預防勝於治療。"
+        },
+        {
+          "speakerId": "staff_xin",
+          "stance": "support",
+          "line": "疫苗與衛教，是最便宜的防線。"
+        },
+        {
+          "speakerId": "staff_nuan",
+          "stance": "support",
+          "line": "長輩先打疫苗，風險最低。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_hu",
+        "name": "喵護",
+        "commissionId": "comm_vector_team",
+        "reason": "衛生所能馬上設接種站與社區滅蚊，最對症。",
+        "fit": 0.827,
+        "fitBestInPanel": true
+      },
+      "takeaway": "防疫要對準傳染途徑：蚊子傳的用滅蚊，流感用疫苗。"
+    },
+    {
+      "id": "disc_patrol_a",
+      "policyId": "policy_patrol_lights",
+      "policyName": "社區巡守隊與路燈",
+      "title": "巡守隊與路燈，要不要先試辦？",
+      "panel": [
+        "staff_an",
+        "staff_min",
+        "staff_suan"
+      ],
+      "opener": "路口的狀況我最清楚，先聽我報告。",
+      "rounds": [
+        {
+          "speakerId": "staff_an",
+          "stance": "support",
+          "line": "巡守加路燈，是治安最便宜的預防。"
+        },
+        {
+          "speakerId": "staff_min",
+          "stance": "support",
+          "line": "鄰里自己巡，大家比較安心。"
+        },
+        {
+          "speakerId": "staff_suan",
+          "stance": "support",
+          "line": "2 點、成本低，可以先試辦。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_an",
+        "name": "喵治安",
+        "commissionId": "comm_patrol_team",
+        "reason": "警局最懂巡邏點與人流，能把志工排得有效率。",
+        "fit": 0.752,
+        "fitBestInPanel": true
+      },
+      "takeaway": "治安靠預防，也靠鄰里一起看。"
+    },
+    {
+      "id": "disc_rescue_a",
+      "policyId": "policy_rescue_squad",
+      "policyName": "緊急救援小隊",
+      "title": "救援小隊，平時閒置值得嗎？",
+      "panel": [
+        "staff_yan",
+        "staff_an",
+        "staff_suan"
+      ],
+      "opener": "先說結論：能不能救人，是我的標準。",
+      "rounds": [
+        {
+          "speakerId": "staff_yan",
+          "stance": "support",
+          "line": "救援小隊我來帶，窄巷也進得去。"
+        },
+        {
+          "speakerId": "staff_an",
+          "stance": "support",
+          "line": "路不通時，救援動線第一優先。"
+        },
+        {
+          "speakerId": "staff_suan",
+          "stance": "oppose",
+          "line": "3 點大筆開銷，沒事時就是閒置。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_yan",
+        "name": "喵焰",
+        "commissionId": "comm_rescue_ready",
+        "reason": "消防隊長專業對症，也最清楚窄巷與水源。",
+        "fit": 0.723,
+        "fitBestInPanel": true
+      },
+      "takeaway": "應變型政策有閒置成本：要在「備而不用」與「用時沒有」之間取捨。"
+    },
+    {
+      "id": "disc_fact_a",
+      "policyId": "policy_fact_check",
+      "policyName": "資訊查證站",
+      "title": "兩個消息，是兩個來源嗎？",
+      "panel": [
+        "staff_cheng",
+        "staff_wen",
+        "staff_an"
+      ],
+      "opener": "各位，這張卡我先把公文流程講一遍，大家再補充。",
+      "rounds": [
+        {
+          "speakerId": "staff_cheng",
+          "stance": "support",
+          "line": "公所一起查證，公告才有依據。"
+        },
+        {
+          "speakerId": "staff_wen",
+          "stance": "support",
+          "line": "查證結果要說得好懂，大家才會看。"
+        },
+        {
+          "speakerId": "staff_an",
+          "stance": "support",
+          "line": "假消息會引發囤貨，查證很重要。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_cheng",
+        "name": "喵承恩",
+        "commissionId": "comm_fact_desk",
+        "reason": "公所承辦掌握公告與公文流程，能把查證結果公開。",
+        "fit": 0.8,
+        "fitBestInPanel": true
+      },
+      "takeaway": "先查證，再花點數：同源轉傳只算一個來源。"
+    },
+    {
+      "id": "disc_broadcast_a",
+      "policyId": "policy_town_broadcast",
+      "policyName": "公所公告廣播",
+      "title": "先發公告安撫，夠不夠？",
+      "panel": [
+        "staff_min",
+        "staff_xin",
+        "staff_an"
+      ],
+      "opener": "先別急著決定，我們聽聽鄰里怎麼說。",
+      "rounds": [
+        {
+          "speakerId": "staff_min",
+          "stance": "hold",
+          "line": "先公告是起點，不是終點。"
+        },
+        {
+          "speakerId": "staff_xin",
+          "stance": "oppose",
+          "line": "沒有數據的公告，反而更不安。"
+        },
+        {
+          "speakerId": "staff_an",
+          "stance": "hold",
+          "line": "公告可以安撫，但假消息要先查。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_min",
+        "name": "喵民安",
+        "commissionId": "comm_notice_round",
+        "reason": "民政課能把公告送到每個里，也能蒐集鄰里回應。",
+        "fit": 0.812,
+        "fitBestInPanel": true
+      },
+      "takeaway": "安撫不等於解決：公告要搭配證據或對症卡。"
+    },
+    {
+      "id": "disc_pest_a",
+      "policyId": "policy_pest_control",
+      "policyName": "鼠害防治與廚餘管理",
+      "title": "廚餘加蓋、封洞，還是先放餌？",
+      "panel": [
+        "staff_jing",
+        "staff_hu",
+        "staff_shi"
+      ],
+      "opener": "清運的第一線我最清楚，先聽我說。",
+      "rounds": [
+        {
+          "speakerId": "staff_jing",
+          "stance": "support",
+          "line": "廚餘加蓋、收市清殘渣，我來帶清潔隊。"
+        },
+        {
+          "speakerId": "staff_hu",
+          "stance": "support",
+          "line": "防治要公開餌盒位置，鄰里才放心。"
+        },
+        {
+          "speakerId": "staff_shi",
+          "stance": "support",
+          "line": "攤商願意配合收市清理，但要有人定期巡。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_jing",
+        "name": "喵淨淨",
+        "commissionId": "comm_pest_control",
+        "reason": "清潔員最懂廚餘與殘渣的來源，能把防治做在源頭。",
+        "fit": 0.664,
+        "fitBestInPanel": true
+      },
+      "takeaway": "防治要處理食物來源，並持續巡查與公開說明。"
+    },
+    {
+      "id": "disc_foodsafe_a",
+      "policyId": "policy_food_safety",
+      "policyName": "食安檢驗與留樣",
+      "title": "午餐出狀況，先查還是先說？",
+      "panel": [
+        "staff_hu",
+        "staff_xin",
+        "staff_nuan"
+      ],
+      "opener": "衛生所可以馬上採樣，先聽我說明流程。",
+      "rounds": [
+        {
+          "speakerId": "staff_hu",
+          "stance": "support",
+          "line": "留樣、採樣、通報，衛生所馬上能做。"
+        },
+        {
+          "speakerId": "staff_xin",
+          "stance": "support",
+          "line": "沒有檢驗報告前，我不下結論。"
+        },
+        {
+          "speakerId": "staff_nuan",
+          "stance": "support",
+          "line": "孩子和家長最需要的是清楚的說明。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_hu",
+        "name": "喵護",
+        "commissionId": "comm_food_safety",
+        "reason": "衛生所能立刻採樣與留樣，也最清楚通報流程。",
+        "fit": 0.819,
+        "fitBestInPanel": true
+      },
+      "takeaway": "證據先行：先留樣、先檢驗，結果出來前不要轉傳未證實的說法。"
+    },
+    {
+      "id": "disc_audit_a",
+      "policyId": "policy_vendor_audit",
+      "policyName": "業者稽查與輔導",
+      "title": "稽查業者，要一次罰到底嗎？",
+      "panel": [
+        "staff_min",
+        "staff_suan",
+        "staff_jing"
+      ],
+      "opener": "先別急著決定，我們聽聽鄰里怎麼說。",
+      "rounds": [
+        {
+          "speakerId": "staff_min",
+          "stance": "support",
+          "line": "先宣導、再限期改善，業者才有機會調整。"
+        },
+        {
+          "speakerId": "staff_suan",
+          "stance": "hold",
+          "line": "3 點不便宜，要看稽查範圍。"
+        },
+        {
+          "speakerId": "staff_jing",
+          "stance": "support",
+          "line": "截油槽和廚餘是我的日常，我可以陪同稽查。"
+        }
+      ],
+      "recommend": {
+        "staffId": "staff_min",
+        "name": "喵民安",
+        "commissionId": "comm_vendor_audit",
+        "reason": "民政課最會溝通，能把宣導、輔導、複查排成階梯。",
+        "fit": 0.664,
+        "fitBestInPanel": true
+      },
+      "takeaway": "輔導有階梯，處分要有證據；太快處分可能讓事情更亂。"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "season_01",
+  "title": "峽谷小鎮・第一季",
+  "monthLabel": "三月",
+  "points": 8,
+  "money": 1000,
+  "profit": 0,
+  "happiness": 60,
+  "startingRules": {
+    "drainClearance": 1,
+    "boardwalkQuality": 1,
+    "waterTransparency": 0,
+    "marketSubsidy": 0,
+    "logisticsBuffer": 0,
+    "serviceLanePriority": 0,
+    "congestionCap": 3
+  },
+  "trafficMetrics": {
+    "congestion": 1,
+    "onTimeRate": 0.72
+  },
+  "coreProblemIds": ["event_flood_risk", "event_market_slump"],
+  "eventPool": [
+    "event_flood_risk",
+    "event_market_slump",
+    "event_rumor_well",
+    "event_supply_delay"
+  ],
+  "vehicleRoutesId": "routes_season_01",
+  "intro": "你是 2026 年貓貓市的經營者。雨季將來，車流與物資準點會影響市集與幸福度。先觀察街道上的車與貨，再讀貓貓快報、打出政策。"
+}

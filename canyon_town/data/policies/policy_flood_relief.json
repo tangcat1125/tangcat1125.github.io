@@ -1,0 +1,156 @@
+{
+  "id": "policy_flood_relief",
+  "name": "淹水保險與災後救助",
+  "cost": 2,
+  "blurb": "建立小額淹水保險與災後救助金，淹水後可以快速拿到基本補償。",
+  "solves": [],
+  "rule_patches": {
+    "flood_reliefProgram": 1
+  },
+  "deltas": {
+    "money": -50,
+    "happiness": 3
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "它是「事後」的安慰：不會讓水退得更快，也可能讓人覺得淹水是理所當然。",
+  "preview": "預估：金錢 -50、幸福度 +3。",
+  "costPoints": 2,
+  "tags": [
+    "救助",
+    "治標",
+    "風險分擔"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_flood_relief.webp",
+    "icon": "assets/sprites/cards/icons/icon_flood_relief.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🧰",
+    "accent": "#9e9e9e",
+    "fxHint": "fx_flood_relief_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "治標應急",
+    "rarity": "常見",
+    "titleShort": "淹水救助",
+    "costBadge": "2 點",
+    "shopLine": "淹了有人補，先撐過這一關。",
+    "effectLine": "受災戶盡快恢復生活；民怨暫時降低，但淹水原因沒變。",
+    "flavor": "先救人，再想辦法不淹。",
+    "learnPoint": "這張牌教你：風險分擔是治標，要搭配預防才長久。",
+    "bullets": [
+      "治標：暴雨積水",
+      "金錢 -50",
+      "幸福度 +3",
+      "不減少淹水"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -50,
+        "text": "金錢 -50"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 3,
+        "text": "幸福度 +3"
+      }
+    ],
+    "tradeoffLine": "它是「事後」的安慰：不會讓水退得更快，也可能讓人覺得淹水是理所當然。"
+  },
+  "shopBlurb": "淹了有人補，先撐過這一關。",
+  "shopLine": "2 點｜淹了有人補，先撐過這一關。",
+  "executeId": "exec_flood_relief",
+  "fx": {
+    "street": [
+      "fx_flood_relief_a",
+      "fx_flood_relief_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 0
+      },
+      "flowKind": "one-shot",
+      "durationSeasons": 0,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "drain": -8
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 8,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 1,
+        "delaySeasons": 0,
+        "note": "救助金讓受災店家先撐過去（不處理成因）"
+      },
+      "strength": "weak",
+      "summary": "排水民怨-8；店家健康度 +8"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_nuan",
+      "staff_suan"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.2,
+      "health": 0.3,
+      "engineering": 0.2,
+      "economy": 0.6,
+      "communication": 0.5
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "drain"
+  ],
+  "complaintDelta": {
+    "drain": -8
+  },
+  "complaintRebound": {},
+  "complaintNote": "它是「事後」的安慰：不會讓水退得更快，也可能讓人覺得淹水是理所當然。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [],
+    "palliative": [
+      "evp_drain_storm"
+    ],
+    "backfire": []
+  },
+  "policyType": "stopgap",
+  "typeLabel": "治標應急",
+  "realWorldAnalog": "風險分擔與災後救助：事後快速給付，幫忙度過難關，但不減少淹水。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

@@ -1,0 +1,173 @@
+{
+  "id": "policy_fire_lane",
+  "name": "防火巷與消防栓",
+  "cost": 3,
+  "blurb": "在老街窄巷留設防火巷、增設消防栓與取水點，讓消防車與水管進得去、水拿得到。",
+  "solves": [],
+  "rule_patches": {
+    "fire_laneProgram": 1
+  },
+  "deltas": {
+    "money": -100,
+    "happiness": 2
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "要拆除少量違建與雜物，施工期間巷弄不好走；效果在大火當下才看得出來。",
+  "preview": "預估：金錢 -100、幸福度 +2。",
+  "costPoints": 3,
+  "tags": [
+    "安全",
+    "工程",
+    "消防"
+  ],
+  "counters": [
+    "fire",
+    "rescue_access",
+    "narrow_lane"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_fire_lane.webp",
+    "icon": "assets/sprites/cards/icons/icon_fire_lane.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🚒",
+    "accent": "#d9503f",
+    "fxHint": "fx_fire_lane_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "硬建設／公共服務",
+    "rarity": "進階",
+    "titleShort": "防火巷",
+    "costBadge": "3 點",
+    "shopLine": "留好防火巷，裝好消防栓。",
+    "effectLine": "窄巷延燒風險下降；救援與取水更快到位。",
+    "flavor": "路留出來，火才不會一路跑。",
+    "learnPoint": "這張牌教你：硬建設不只是蓋東西，也包含「留出空間」。",
+    "bullets": [
+      "對症：老屋火災、救援受阻",
+      "金錢 -100",
+      "施工期間巷弄較難走",
+      "見效在火災當下"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -100,
+        "text": "金錢 -100"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 2,
+        "text": "幸福度 +2"
+      }
+    ],
+    "tradeoffLine": "要拆除少量違建與雜物，施工期間巷弄不好走；效果在大火當下才看得出來。"
+  },
+  "shopBlurb": "留好防火巷，裝好消防栓。",
+  "shopLine": "3 點｜留好防火巷，裝好消防栓。",
+  "executeId": "exec_fire_lane",
+  "fx": {
+    "street": [
+      "fx_fire_lane_a",
+      "fx_fire_lane_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 1,
+        "tourist": 0,
+        "security": 3
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -24,
+        "market": 4
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": -0.04,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 1,
+        "delaySeasons": 0,
+        "note": "施工／管制初期，攤商短暫不便"
+      },
+      "strength": "strong",
+      "summary": "車流+1、治安感+3（永久）；治安民怨-24；店家營收 -4%（短期）"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_yan",
+      "staff_xiu"
+    ],
+    "radarWeights": {
+      "logistics": 0.3,
+      "safety": 0.8,
+      "health": 0.2,
+      "engineering": 0.9,
+      "economy": 0.2,
+      "communication": 0.4
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety"
+  ],
+  "complaintDelta": {
+    "safety": -24,
+    "market": 4
+  },
+  "complaintRebound": {},
+  "complaintNote": "要拆除少量違建與雜物，施工期間巷弄不好走；效果在大火當下才看得出來。",
+  "eventEffects": {
+    "cure": [
+      "evp_safety_fire",
+      "evp_safety_rescue_blocked"
+    ],
+    "assist": [],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "hard",
+  "typeLabel": "硬建設／公共服務",
+  "realWorldAnalog": "消防基礎建設：留設防火巷、增設消防栓與取水點。",
+  "topicCounters": [
+    "fire",
+    "rescue_access",
+    "narrow_lane"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_safety_rescue_blocked",
+    "evp_safety_fire"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_safety_fire",
+    "evp_safety_rescue_blocked"
+  ],
+  "solvesPoolConditional": []
+}

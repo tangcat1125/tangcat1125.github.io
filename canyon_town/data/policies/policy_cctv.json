@@ -1,0 +1,166 @@
+{
+  "id": "policy_cctv",
+  "name": "社區監視器",
+  "cost": 2,
+  "blurb": "在人潮路口與暗巷設置社區監視器，商家與公所共同出資維護；嚇阻加上事後可追查。",
+  "solves": [],
+  "rule_patches": {
+    "cctvProgram": 1
+  },
+  "deltas": {
+    "money": -60,
+    "happiness": 1
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "要注意隱私與維護；被拍到的人擔心被濫用，需要公開使用規則。",
+  "preview": "預估：金錢 -60、幸福度 +1。",
+  "costPoints": 2,
+  "tags": [
+    "治安",
+    "協力",
+    "設備"
+  ],
+  "counters": [
+    "theft"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_cctv.webp",
+    "icon": "assets/sprites/cards/icons/icon_cctv.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "📹",
+    "accent": "#5b6bd6",
+    "fxHint": "fx_cctv_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "公私協力",
+    "rarity": "常見",
+    "titleShort": "監視器",
+    "costBadge": "2 點",
+    "shopLine": "路口裝監視器，嚇阻也能追查。",
+    "effectLine": "扒手與竊盜機會下降；案件更容易追查。",
+    "flavor": "不是盯著人看，是讓壞事不好做。",
+    "learnPoint": "這張牌教你：設備要有使用規則，安全和隱私要一起想。",
+    "bullets": [
+      "對症：扒手、竊盜",
+      "金錢 -60",
+      "要公開使用規則",
+      "維護要持續"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -60,
+        "text": "金錢 -60"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 1,
+        "text": "幸福度 +1"
+      }
+    ],
+    "tradeoffLine": "要注意隱私與維護；被拍到的人擔心被濫用，需要公開使用規則。"
+  },
+  "shopBlurb": "路口裝監視器，嚇阻也能追查。",
+  "shopLine": "2 點｜路口裝監視器，嚇阻也能追查。",
+  "executeId": "exec_cctv",
+  "fx": {
+    "street": [
+      "fx_cctv_a",
+      "fx_cctv_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 5
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -18,
+        "market": 2
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": -0.02,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 1,
+        "delaySeasons": 0,
+        "note": "施工／管制初期，攤商短暫不便"
+      },
+      "strength": "normal",
+      "summary": "治安感+5（永久）；治安民怨-18；店家營收 -2%（短期）"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_an",
+      "staff_cheng"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.9,
+      "health": 0.2,
+      "engineering": 0.4,
+      "economy": 0.2,
+      "communication": 0.4
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety"
+  ],
+  "complaintDelta": {
+    "safety": -18,
+    "market": 2
+  },
+  "complaintRebound": {},
+  "complaintNote": "要注意隱私與維護；被拍到的人擔心被濫用，需要公開使用規則。",
+  "eventEffects": {
+    "cure": [
+      "evp_safety_theft"
+    ],
+    "assist": [],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "ppp",
+  "typeLabel": "公私協力",
+  "realWorldAnalog": "治安基礎設施：公私合作設置監視器，降低犯罪機會、協助事後追查。",
+  "topicCounters": [
+    "theft"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_safety_theft"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_safety_theft"
+  ],
+  "solvesPoolConditional": []
+}

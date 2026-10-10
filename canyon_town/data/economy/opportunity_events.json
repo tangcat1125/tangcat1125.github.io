@@ -1,0 +1,326 @@
+{
+  "id": "economy_opportunity_events_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "opportunities": [
+    {
+      "id": "opp_award",
+      "kind": "award",
+      "name": "年度優良城市獎",
+      "emoji": "🏆",
+      "trigger": {
+        "reputationMin": 80,
+        "chancePerSeason": 0.35,
+        "seasonMin": 5,
+        "oncePerGame": false
+      },
+      "cost": {},
+      "effect": {
+        "money": 150
+      },
+      "intro": [
+        "評審貓貓來訪，說你的城市很有進步！",
+        "公所收到一封獲獎通知。"
+      ],
+      "successText": [
+        "城市獲得年度優良獎，獎金 +150，聲望也提升了。",
+        "頒獎典禮上，居民為你鼓掌：金錢 +150。"
+      ],
+      "failText": [
+        "評審這次沒選上，下季再努力。",
+        "名額有限，這次落選了。"
+      ]
+    },
+    {
+      "id": "opp_subsidy_apply",
+      "kind": "subsidy_apply",
+      "name": "申請上級補助",
+      "emoji": "📝",
+      "trigger": {
+        "reputationMin": 60,
+        "seasonMin": 9,
+        "chancePerSeason": 0.5,
+        "note": "補助期結束後才會出現"
+      },
+      "cost": {
+        "points": 1
+      },
+      "effect": {
+        "money": 120
+      },
+      "successRate": {
+        "formula": "0.3 + (reputation − 60) × 0.01，上限 0.85"
+      },
+      "intro": [
+        "有一筆上級補助可以申請，要花 1 點準備文件。",
+        "補助申請開跑，你要送出嗎？"
+      ],
+      "successText": [
+        "補助申請通過！金錢 +120。",
+        "文件寫得清楚，補助核下來了：+120。"
+      ],
+      "failText": [
+        "這次沒通過，點數就當作學費。",
+        "審查貓貓說資料還不夠完整，下次再試。"
+      ]
+    },
+    {
+      "id": "opp_tourism_festival",
+      "kind": "tourism_festival",
+      "name": "峽谷觀光節",
+      "emoji": "🎪",
+      "trigger": {
+        "touristMin": 40,
+        "chancePerSeason": 0.25,
+        "seasonMin": 3
+      },
+      "cost": {},
+      "effect": {
+        "flow": {
+          "tourist": 12
+        },
+        "durationSeasons": 1,
+        "note": "下一季觀光約 ×1.5"
+      },
+      "intro": [
+        "觀光節要來了！遊客預計大增。",
+        "旅遊協會想在貓貓市辦觀光節。"
+      ],
+      "successText": [
+        "觀光節很成功，遊客量大增。",
+        "遊客們帶來滿滿人氣，店家都笑了。"
+      ],
+      "failText": [
+        "因為路況與治安沒準備好，觀光節人潮不如預期。",
+        "遊客來了，但有些問題沒處理好。"
+      ],
+      "successIf": "活動季開始前，車流與治安感都 ≥ 45。"
+    },
+    {
+      "id": "opp_sponsor",
+      "kind": "sponsor",
+      "name": "企業贊助",
+      "emoji": "🤝",
+      "trigger": {
+        "reputationMin": 50,
+        "chancePerSeason": 0.3,
+        "seasonMin": 4
+      },
+      "cost": {},
+      "effect": {
+        "money": 80
+      },
+      "intro": [
+        "一家公司想贊助城市的公共工作。",
+        "有企業來訪，想了解城市的計畫。"
+      ],
+      "successText": [
+        "企業贊助 +80，並在公布欄貼上感謝。",
+        "贊助到位：金錢 +80。"
+      ],
+      "failText": [
+        "對方想再觀察一季，這次沒有成交。",
+        "企業覺得城市還在改善中，先不贊助。"
+      ]
+    }
+  ],
+  "crisisPrevention": [
+    {
+      "id": "crisis_storm",
+      "name": "暴雨災損",
+      "eventIds": [
+        "evp_drain_storm",
+        "evp_drain_culvert"
+      ],
+      "preventedByCardIds": [
+        "policy_rain_garden",
+        "policy_pump_monitor",
+        "policy_clear_drain",
+        "policy_runoff_control"
+      ],
+      "trigger": {
+        "whenEventActive": true
+      },
+      "loss": {
+        "full": -200,
+        "preventedMult": 0.5
+      },
+      "successText": [
+        "事前準備有用，災損只剩一半：−100。",
+        "滯洪與抽水幫了大忙，損失減半。"
+      ],
+      "failText": [
+        "沒有事前準備，災損 −200。",
+        "雨一下就淹，災損全額。"
+      ]
+    },
+    {
+      "id": "crisis_fire",
+      "name": "老屋火災損失",
+      "eventIds": [
+        "evp_safety_fire",
+        "evp_safety_rescue_blocked"
+      ],
+      "preventedByCardIds": [
+        "policy_wiring_subsidy",
+        "policy_fire_lane",
+        "policy_fire_inspection",
+        "policy_smoke_alarm"
+      ],
+      "trigger": {
+        "whenEventActive": true
+      },
+      "loss": {
+        "full": -200,
+        "preventedMult": 0.5
+      },
+      "successText": [
+        "電線檢修與防火巷發揮作用，損失減半。",
+        "警報器提早響了，只損失一半。"
+      ],
+      "failText": [
+        "沒有防火準備，損失 −200。",
+        "火勢延燒，損失全額。"
+      ]
+    },
+    {
+      "id": "crisis_food",
+      "name": "食安風波損失",
+      "eventIds": [
+        "evp_health_foodpoison",
+        "evp_health_lunch_sample",
+        "evp_health_class_upset"
+      ],
+      "preventedByCardIds": [
+        "policy_food_safety",
+        "policy_lunch_registry",
+        "policy_vendor_audit"
+      ],
+      "trigger": {
+        "whenEventActive": true
+      },
+      "loss": {
+        "full": -150,
+        "preventedMult": 0.5
+      },
+      "successText": [
+        "留樣與追溯讓調查很快，損失減半。",
+        "資料清楚，信任很快回來。"
+      ],
+      "failText": [
+        "資料不全，風波拖了很久：−150。",
+        "查不到來源，客人流失：−150。"
+      ]
+    },
+    {
+      "id": "crisis_rockfall",
+      "name": "落石封路損失",
+      "eventIds": [
+        "evp_logi_landslide",
+        "evp_safety_cliff"
+      ],
+      "preventedByCardIds": [
+        "policy_slope_guard"
+      ],
+      "trigger": {
+        "whenEventActive": true
+      },
+      "loss": {
+        "full": -180,
+        "preventedMult": 0.5
+      },
+      "successText": [
+        "邊坡護欄攔住大部分落石，損失減半。",
+        "搶通很快，封路時間縮短。"
+      ],
+      "failText": [
+        "沒有護欄，封路好幾天：−180。",
+        "落石來得急，損失全額。"
+      ]
+    },
+    {
+      "id": "crisis_epidemic",
+      "name": "疫情損失",
+      "eventIds": [
+        "evp_health_dengue",
+        "evp_health_flu"
+      ],
+      "preventedByCardIds": [
+        "policy_vector_control",
+        "policy_dengue_mobilize",
+        "policy_health_edu"
+      ],
+      "trigger": {
+        "whenEventActive": true
+      },
+      "loss": {
+        "full": -150,
+        "preventedMult": 0.5
+      },
+      "successText": [
+        "社區動員與疫苗有效，疫情很快降溫。",
+        "大家都做好防護，損失減半。"
+      ],
+      "failText": [
+        "沒有預防，疫情擴大：−150。",
+        "店家被迫停業幾天：−150。"
+      ]
+    },
+    {
+      "id": "crisis_rat_swarm",
+      "name": "鼠群竄出損失",
+      "eventIds": [
+        "evp_health_rat_swarm"
+      ],
+      "preventedByCardIds": [
+        "policy_pest_control",
+        "policy_rat_pro",
+        "policy_kitchen_sorting"
+      ],
+      "trigger": {
+        "whenEventActive": true
+      },
+      "loss": {
+        "full": -100,
+        "preventedMult": 0.5
+      },
+      "successText": [
+        "防鼠做在前面，損失減半。",
+        "廚餘與鼠洞早就顧好，鼠群很快散了。"
+      ],
+      "failText": [
+        "鼠群竄進店裡，清消與停業損失 −100。",
+        "沒有防鼠準備，店家暫停營業：−100。"
+      ],
+      "preventNote": "吹笛人只帶走現在的鼠群，不算預防（10/10 咪咪）；同季打出仍可依 crisisMode 1 免損"
+    },
+    {
+      "id": "crisis_stray_dogs",
+      "name": "野狗驚嚇損失",
+      "eventIds": [
+        "evp_safety_stray_dogs"
+      ],
+      "preventedByCardIds": [
+        "policy_stray_dog_tnr",
+        "policy_animal_patrol",
+        "policy_kitchen_sorting"
+      ],
+      "trigger": {
+        "whenEventActive": true
+      },
+      "loss": {
+        "full": -100,
+        "preventedMult": 0.5
+      },
+      "successText": [
+        "收容與志工巡查早有準備，損失減半。",
+        "狗群穩定，晚上的客人沒有少太多。"
+      ],
+      "failText": [
+        "晚上客人不敢來，夜市損失 −100。",
+        "被狗追的消息傳開，生意掉了：−100。"
+      ]
+    }
+  ],
+  "rule": "預防有獎勵：事件發生時若已擁有 preventedByCardIds 其中一張（先前買過），損失 × preventedMult。機會事件在結報後抽一次；money 為金額，flow 為對流量 target 的加成。"
+}

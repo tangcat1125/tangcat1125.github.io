@@ -1,0 +1,158 @@
+{
+  "id": "policy_fire_inspection",
+  "name": "公共場所消防安檢",
+  "cost": 2,
+  "blurb": "定期檢查市場、老屋店面的消防設備與逃生通道，發現問題限期改善、複查。",
+  "solves": [],
+  "rule_patches": {
+    "fire_inspectionProgram": 1
+  },
+  "deltas": {
+    "money": -30,
+    "happiness": 0
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "稽查會增加業者負擔；先輔導後處分才公平，也要避免形式化。",
+  "preview": "預估：金錢 -30、幸福度 0。",
+  "costPoints": 2,
+  "tags": [
+    "安全",
+    "管制",
+    "稽查"
+  ],
+  "counters": [
+    "fire",
+    "old_house"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_fire_inspection.webp",
+    "icon": "assets/sprites/cards/icons/icon_fire_inspection.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "📋",
+    "accent": "#c62828",
+    "fxHint": "fx_fire_inspection_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "管制／稽查",
+    "rarity": "常見",
+    "titleShort": "消防安檢",
+    "costBadge": "2 點",
+    "shopLine": "定期安檢，限期改善。",
+    "effectLine": "消防設備與逃生通道更完整；火災風險下降。",
+    "flavor": "查的是設備，守的是人命。",
+    "learnPoint": "這張牌教你：管制要先輔導、再複查，才有說服力。",
+    "bullets": [
+      "對症：老屋火災",
+      "金錢 -30",
+      "業者有成本",
+      "先輔導後複查"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -30,
+        "text": "金錢 -30"
+      }
+    ],
+    "tradeoffLine": "稽查會增加業者負擔；先輔導後處分才公平，也要避免形式化。"
+  },
+  "shopBlurb": "定期安檢，限期改善。",
+  "shopLine": "2 點｜定期安檢，限期改善。",
+  "executeId": "exec_fire_inspection",
+  "fx": {
+    "street": [
+      "fx_fire_inspection_a",
+      "fx_fire_inspection_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 1,
+        "security": 2
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -14,
+        "market": 3
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": -0.03,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 1,
+        "delaySeasons": 0,
+        "note": "施工／管制初期，攤商短暫不便"
+      },
+      "strength": "normal",
+      "summary": "遊客+1、治安感+2（永久）；治安民怨-14；店家營收 -3%（短期）"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_yan",
+      "staff_cheng"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.9,
+      "health": 0.2,
+      "engineering": 0.3,
+      "economy": 0.2,
+      "communication": 0.4
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety"
+  ],
+  "complaintDelta": {
+    "safety": -14,
+    "market": 3
+  },
+  "complaintRebound": {},
+  "complaintNote": "稽查會增加業者負擔；先輔導後處分才公平，也要避免形式化。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_safety_fire"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "reg",
+  "typeLabel": "管制／稽查",
+  "realWorldAnalog": "消防管制：定期檢查消防設備與逃生通道，限期改善、複查。",
+  "topicCounters": [
+    "fire",
+    "old_house"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

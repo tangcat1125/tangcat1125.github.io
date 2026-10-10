@@ -1,0 +1,167 @@
+{
+  "id": "policy_town_hall",
+  "name": "里民說明會",
+  "cost": 1,
+  "blurb": "公所與相關課室到里內面對面說明進度、回答提問；把「正在查」講清楚。效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。",
+  "solves": [],
+  "rule_patches": {
+    "townHall": 1
+  },
+  "deltas": {
+    "money": -20,
+    "happiness": 2
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "說明會只能說明與傾聽；沒有後續行動，信任很快又會掉。",
+  "preview": "預估：金錢 -20、幸福度 +2。",
+  "costPoints": 1,
+  "tags": [
+    "資訊",
+    "溝通",
+    "信任"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_town_hall.webp",
+    "icon": "assets/sprites/cards/icons/icon_town_hall.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🏛️",
+    "accent": "#ffa726",
+    "fxHint": "fx_town_hall_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "資訊溝通（宣導教育）",
+    "rarity": "常見",
+    "titleShort": "說明會",
+    "costBadge": "1 點",
+    "shopLine": "面對面說明進度，聽居民怎麼說。",
+    "effectLine": "居民知道進度、少一些猜測；傳聞降溫。",
+    "flavor": "說清楚在做什麼，比說做完了誠實。",
+    "learnPoint": "這張牌教你：溝通要誠實，說明「已知、未知、下一步」。",
+    "bullets": [
+      "輔助：謠言、調查中、停工",
+      "金錢 -20",
+      "下季見效",
+      "效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -20,
+        "text": "金錢 -20"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 2,
+        "text": "幸福度 +2"
+      }
+    ],
+    "tradeoffLine": "說明會只能說明與傾聽；沒有後續行動，信任很快又會掉。"
+  },
+  "shopBlurb": "面對面說明進度，聽居民怎麼說。",
+  "shopLine": "1 點｜面對面說明進度，聽居民怎麼說。",
+  "executeId": "exec_town_hall",
+  "fx": {
+    "street": [
+      "fx_town_hall_a",
+      "fx_town_hall_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 1,
+        "vehicle": 0,
+        "tourist": 1,
+        "security": 0
+      },
+      "flowKind": "timed",
+      "durationSeasons": 2,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "market": -3,
+        "health": -3
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 1,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 1,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "weak",
+      "summary": "人流+1、遊客+1（2 季）；衛生民怨-3、市集民怨-3"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_min",
+      "staff_cheng"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.2,
+      "health": 0.2,
+      "engineering": 0.2,
+      "economy": 0.2,
+      "communication": 0.9
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "market",
+    "health"
+  ],
+  "complaintDelta": {
+    "market": -3,
+    "health": -3
+  },
+  "complaintRebound": {},
+  "complaintNote": "說明會只能說明與傾聽；沒有後續行動，信任很快又會掉。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_health_fake_alert",
+      "evp_logi_cold",
+      "evp_logi_delay",
+      "evp_logi_false_bridge",
+      "evp_logi_landslide",
+      "evp_market_fake_review",
+      "evp_market_price",
+      "evp_market_slump",
+      "evp_safety_cliff"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "info",
+  "typeLabel": "資訊溝通（宣導教育）",
+  "realWorldAnalog": "公共溝通：公所面對面說明進度與疑問，建立信任。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": true,
+  "effectDelayCycles": 1,
+  "slowNote": "效果較慢、較弱但便宜（下季見效；同一事件重複使用遞減）",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

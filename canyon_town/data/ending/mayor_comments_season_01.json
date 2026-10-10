@@ -1,0 +1,1790 @@
+{
+  "id": "mayor_comments_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "status": "proposal",
+  "note": "市長任命狀評語庫（呆呆 10/7）：依「最強兩軸＋最弱一軸」選評語（15×4＝60 組，每組 2 句）；等第稱號依最強軸；每軸「下次可以試試」與老師版討論提問。語氣鼓勵、不羞辱、全部虛構。評語句由手寫片段（強項 30 句＋弱項 24 句）組合，見 fragments。",
+  "axes": [
+    {
+      "id": "reading",
+      "name": "讀報理解",
+      "short": "讀報"
+    },
+    {
+      "id": "evidence",
+      "name": "證據判斷",
+      "short": "證據"
+    },
+    {
+      "id": "decision",
+      "name": "對症決策",
+      "short": "對症"
+    },
+    {
+      "id": "finance",
+      "name": "財政管理",
+      "short": "財政"
+    },
+    {
+      "id": "welfare",
+      "name": "民生照顧",
+      "short": "民生"
+    },
+    {
+      "id": "teamwork",
+      "name": "採納建議／團隊協作",
+      "short": "協作"
+    }
+  ],
+  "lengthRules": {
+    "pair": 30,
+    "weak": 30,
+    "combo": 60,
+    "single": 20,
+    "title": 10,
+    "summary": 30,
+    "tip": 30,
+    "question": 40,
+    "note": "字數上限（全形計 1）：組合評語每句 ≤60（強項片段 ≤30＋弱項片段 ≤30）、單軸強項 ≤20、稱號 ≤10、等第總評 ≤30、下次可以試試 ≤30、老師提問 ≤40。不含變數。"
+  },
+  "pickRule": [
+    "依 mayor_profile_rules.rankRule 取強兩軸（strong，依軸順序排列）與弱一軸（weak），找 combos 裡 strong 與 weak 都相同的一組。",
+    "同一組 2 句以種子選一句：hash(playerName＋seed＋seasons) % 2（與 stage_h.js comment() 同一套 FNV 雜湊即可）。",
+    "接一句等第總評 grades[grade].summary；稱號＝grades[grade].titles[最強軸]；「下次可以試試」＝tryNext[弱軸] 取一句（同一雜湊）。"
+  ],
+  "combos": [
+    {
+      "id": "cmt_reading_evidence__decision",
+      "strong": [
+        "reading",
+        "evidence"
+      ],
+      "weak": "decision",
+      "lines": [
+        {
+          "id": "cmt_reading_evidence__decision_1",
+          "text": "你讀報很細，又會分辨線索真假，是城市的偵探。選卡前先對照事件主題，命中率會更高。"
+        },
+        {
+          "id": "cmt_reading_evidence__decision_2",
+          "text": "先讀懂報導、再查證線索，你的判斷有根有據。看看卡片的對症欄，能少買無關卡。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_evidence__finance",
+      "strong": [
+        "reading",
+        "evidence"
+      ],
+      "weak": "finance",
+      "lines": [
+        {
+          "id": "cmt_reading_evidence__finance_1",
+          "text": "你讀報很細，又會分辨線索真假，是城市的偵探。記得留意帳單，錢要花在最需要的地方。"
+        },
+        {
+          "id": "cmt_reading_evidence__finance_2",
+          "text": "先讀懂報導、再查證線索，你的判斷有根有據。下次少買一張無關卡，荷包會更穩。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_evidence__welfare",
+      "strong": [
+        "reading",
+        "evidence"
+      ],
+      "weak": "welfare",
+      "lines": [
+        {
+          "id": "cmt_reading_evidence__welfare_1",
+          "text": "你讀報很細，又會分辨線索真假，是城市的偵探。多看看民怨榜，居民的心聲也很重要。"
+        },
+        {
+          "id": "cmt_reading_evidence__welfare_2",
+          "text": "先讀懂報導、再查證線索，你的判斷有根有據。別忘了街上的店家和居民，他們需要你。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_evidence__teamwork",
+      "strong": [
+        "reading",
+        "evidence"
+      ],
+      "weak": "teamwork",
+      "lines": [
+        {
+          "id": "cmt_reading_evidence__teamwork_1",
+          "text": "你讀報很細，又會分辨線索真假，是城市的偵探。職員的建議值得聽聽，再自己判斷。"
+        },
+        {
+          "id": "cmt_reading_evidence__teamwork_2",
+          "text": "先讀懂報導、再查證線索，你的判斷有根有據。試著委任職員，一起分擔工作。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_decision__evidence",
+      "strong": [
+        "reading",
+        "decision"
+      ],
+      "weak": "evidence",
+      "lines": [
+        {
+          "id": "cmt_reading_decision__evidence_1",
+          "text": "你把報導讀透，選卡常常一擊就中。多蒐集街上的真線索，判斷會更穩。"
+        },
+        {
+          "id": "cmt_reading_decision__evidence_2",
+          "text": "讀懂新聞再出手，你的政策很少打偏。先分清線索和傳聞，再決定也不遲。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_decision__finance",
+      "strong": [
+        "reading",
+        "decision"
+      ],
+      "weak": "finance",
+      "lines": [
+        {
+          "id": "cmt_reading_decision__finance_1",
+          "text": "你把報導讀透，選卡常常一擊就中。下次少買一張無關卡，荷包會更穩。"
+        },
+        {
+          "id": "cmt_reading_decision__finance_2",
+          "text": "讀懂新聞再出手，你的政策很少打偏。看看每季淨利，試著讓收支打平。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_decision__welfare",
+      "strong": [
+        "reading",
+        "decision"
+      ],
+      "weak": "welfare",
+      "lines": [
+        {
+          "id": "cmt_reading_decision__welfare_1",
+          "text": "你把報導讀透，選卡常常一擊就中。別忘了街上的店家和居民，他們需要你。"
+        },
+        {
+          "id": "cmt_reading_decision__welfare_2",
+          "text": "讀懂新聞再出手，你的政策很少打偏。處理事件時，也想想誰會覺得不方便。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_decision__teamwork",
+      "strong": [
+        "reading",
+        "decision"
+      ],
+      "weak": "teamwork",
+      "lines": [
+        {
+          "id": "cmt_reading_decision__teamwork_1",
+          "text": "你把報導讀透，選卡常常一擊就中。試著委任職員，一起分擔工作。"
+        },
+        {
+          "id": "cmt_reading_decision__teamwork_2",
+          "text": "讀懂新聞再出手，你的政策很少打偏。下次先看看貓貓建議區，再做決定。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_finance__evidence",
+      "strong": [
+        "reading",
+        "finance"
+      ],
+      "weak": "evidence",
+      "lines": [
+        {
+          "id": "cmt_reading_finance__evidence_1",
+          "text": "你讀報仔細，花錢也精打細算。先分清線索和傳聞，再決定也不遲。"
+        },
+        {
+          "id": "cmt_reading_finance__evidence_2",
+          "text": "讀得懂新聞、守得住荷包，城市很安心。下次試著比對兩個來源，再相信消息。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_finance__decision",
+      "strong": [
+        "reading",
+        "finance"
+      ],
+      "weak": "decision",
+      "lines": [
+        {
+          "id": "cmt_reading_finance__decision_1",
+          "text": "你讀報仔細，花錢也精打細算。下次先挑一張最對症的卡，再補其他的。"
+        },
+        {
+          "id": "cmt_reading_finance__decision_2",
+          "text": "讀得懂新聞、守得住荷包，城市很安心。出手前想一想：這張卡解決的是哪件事？"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_finance__welfare",
+      "strong": [
+        "reading",
+        "finance"
+      ],
+      "weak": "welfare",
+      "lines": [
+        {
+          "id": "cmt_reading_finance__welfare_1",
+          "text": "你讀報仔細，花錢也精打細算。處理事件時，也想想誰會覺得不方便。"
+        },
+        {
+          "id": "cmt_reading_finance__welfare_2",
+          "text": "讀得懂新聞、守得住荷包，城市很安心。下次別急著忽略問題，居民會等你回應。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_finance__teamwork",
+      "strong": [
+        "reading",
+        "finance"
+      ],
+      "weak": "teamwork",
+      "lines": [
+        {
+          "id": "cmt_reading_finance__teamwork_1",
+          "text": "你讀報仔細，花錢也精打細算。下次先看看貓貓建議區，再做決定。"
+        },
+        {
+          "id": "cmt_reading_finance__teamwork_2",
+          "text": "讀得懂新聞、守得住荷包，城市很安心。團隊一起想，常常能想到更好的辦法。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_welfare__evidence",
+      "strong": [
+        "reading",
+        "welfare"
+      ],
+      "weak": "evidence",
+      "lines": [
+        {
+          "id": "cmt_reading_welfare__evidence_1",
+          "text": "你從報導裡看見居民的需要，也真的照顧到了。下次試著比對兩個來源，再相信消息。"
+        },
+        {
+          "id": "cmt_reading_welfare__evidence_2",
+          "text": "讀報用心，居民的抱怨你都放在心上。聽到傳聞時，記得再找一個來源確認。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_welfare__decision",
+      "strong": [
+        "reading",
+        "welfare"
+      ],
+      "weak": "decision",
+      "lines": [
+        {
+          "id": "cmt_reading_welfare__decision_1",
+          "text": "你從報導裡看見居民的需要，也真的照顧到了。出手前想一想：這張卡解決的是哪件事？"
+        },
+        {
+          "id": "cmt_reading_welfare__decision_2",
+          "text": "讀報用心，居民的抱怨你都放在心上。選卡前先對照事件主題，命中率會更高。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_welfare__finance",
+      "strong": [
+        "reading",
+        "welfare"
+      ],
+      "weak": "finance",
+      "lines": [
+        {
+          "id": "cmt_reading_welfare__finance_1",
+          "text": "你從報導裡看見居民的需要，也真的照顧到了。花錢前想想值不值得，存款會慢慢變多。"
+        },
+        {
+          "id": "cmt_reading_welfare__finance_2",
+          "text": "讀報用心，居民的抱怨你都放在心上。記得留意帳單，錢要花在最需要的地方。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_welfare__teamwork",
+      "strong": [
+        "reading",
+        "welfare"
+      ],
+      "weak": "teamwork",
+      "lines": [
+        {
+          "id": "cmt_reading_welfare__teamwork_1",
+          "text": "你從報導裡看見居民的需要，也真的照顧到了。團隊一起想，常常能想到更好的辦法。"
+        },
+        {
+          "id": "cmt_reading_welfare__teamwork_2",
+          "text": "讀報用心，居民的抱怨你都放在心上。職員的建議值得聽聽，再自己判斷。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_teamwork__evidence",
+      "strong": [
+        "reading",
+        "teamwork"
+      ],
+      "weak": "evidence",
+      "lines": [
+        {
+          "id": "cmt_reading_teamwork__evidence_1",
+          "text": "你讀報認真，也願意聽職員的意見。聽到傳聞時，記得再找一個來源確認。"
+        },
+        {
+          "id": "cmt_reading_teamwork__evidence_2",
+          "text": "資訊讀得多、團隊合作好，大家都信任你。多蒐集街上的真線索，判斷會更穩。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_teamwork__decision",
+      "strong": [
+        "reading",
+        "teamwork"
+      ],
+      "weak": "decision",
+      "lines": [
+        {
+          "id": "cmt_reading_teamwork__decision_1",
+          "text": "你讀報認真，也願意聽職員的意見。選卡前先對照事件主題，命中率會更高。"
+        },
+        {
+          "id": "cmt_reading_teamwork__decision_2",
+          "text": "資訊讀得多、團隊合作好，大家都信任你。看看卡片的對症欄，能少買無關卡。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_teamwork__finance",
+      "strong": [
+        "reading",
+        "teamwork"
+      ],
+      "weak": "finance",
+      "lines": [
+        {
+          "id": "cmt_reading_teamwork__finance_1",
+          "text": "你讀報認真，也願意聽職員的意見。記得留意帳單，錢要花在最需要的地方。"
+        },
+        {
+          "id": "cmt_reading_teamwork__finance_2",
+          "text": "資訊讀得多、團隊合作好，大家都信任你。下次少買一張無關卡，荷包會更穩。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_reading_teamwork__welfare",
+      "strong": [
+        "reading",
+        "teamwork"
+      ],
+      "weak": "welfare",
+      "lines": [
+        {
+          "id": "cmt_reading_teamwork__welfare_1",
+          "text": "你讀報認真，也願意聽職員的意見。多看看民怨榜，居民的心聲也很重要。"
+        },
+        {
+          "id": "cmt_reading_teamwork__welfare_2",
+          "text": "資訊讀得多、團隊合作好，大家都信任你。別忘了街上的店家和居民，他們需要你。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_decision__reading",
+      "strong": [
+        "evidence",
+        "decision"
+      ],
+      "weak": "reading",
+      "lines": [
+        {
+          "id": "cmt_evidence_decision__reading_1",
+          "text": "你看證據下判斷，選卡精準又有理由。下次多讀一兩篇報導，線索會更完整。"
+        },
+        {
+          "id": "cmt_evidence_decision__reading_2",
+          "text": "線索查得清楚，對症卡也選得準。報紙裡還藏著提示，多翻幾篇會更好。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_decision__finance",
+      "strong": [
+        "evidence",
+        "decision"
+      ],
+      "weak": "finance",
+      "lines": [
+        {
+          "id": "cmt_evidence_decision__finance_1",
+          "text": "你看證據下判斷，選卡精準又有理由。下次少買一張無關卡，荷包會更穩。"
+        },
+        {
+          "id": "cmt_evidence_decision__finance_2",
+          "text": "線索查得清楚，對症卡也選得準。看看每季淨利，試著讓收支打平。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_decision__welfare",
+      "strong": [
+        "evidence",
+        "decision"
+      ],
+      "weak": "welfare",
+      "lines": [
+        {
+          "id": "cmt_evidence_decision__welfare_1",
+          "text": "你看證據下判斷，選卡精準又有理由。別忘了街上的店家和居民，他們需要你。"
+        },
+        {
+          "id": "cmt_evidence_decision__welfare_2",
+          "text": "線索查得清楚，對症卡也選得準。處理事件時，也想想誰會覺得不方便。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_decision__teamwork",
+      "strong": [
+        "evidence",
+        "decision"
+      ],
+      "weak": "teamwork",
+      "lines": [
+        {
+          "id": "cmt_evidence_decision__teamwork_1",
+          "text": "你看證據下判斷，選卡精準又有理由。試著委任職員，一起分擔工作。"
+        },
+        {
+          "id": "cmt_evidence_decision__teamwork_2",
+          "text": "線索查得清楚，對症卡也選得準。下次先看看貓貓建議區，再做決定。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_finance__reading",
+      "strong": [
+        "evidence",
+        "finance"
+      ],
+      "weak": "reading",
+      "lines": [
+        {
+          "id": "cmt_evidence_finance__reading_1",
+          "text": "你不被傳聞帶著走，錢也花在刀口上。報紙裡還藏著提示，多翻幾篇會更好。"
+        },
+        {
+          "id": "cmt_evidence_finance__reading_2",
+          "text": "會查證、會省錢，你是很穩的市長。讀報再仔細一點，你會發現更多細節。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_finance__decision",
+      "strong": [
+        "evidence",
+        "finance"
+      ],
+      "weak": "decision",
+      "lines": [
+        {
+          "id": "cmt_evidence_finance__decision_1",
+          "text": "你不被傳聞帶著走，錢也花在刀口上。下次先挑一張最對症的卡，再補其他的。"
+        },
+        {
+          "id": "cmt_evidence_finance__decision_2",
+          "text": "會查證、會省錢，你是很穩的市長。出手前想一想：這張卡解決的是哪件事？"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_finance__welfare",
+      "strong": [
+        "evidence",
+        "finance"
+      ],
+      "weak": "welfare",
+      "lines": [
+        {
+          "id": "cmt_evidence_finance__welfare_1",
+          "text": "你不被傳聞帶著走，錢也花在刀口上。處理事件時，也想想誰會覺得不方便。"
+        },
+        {
+          "id": "cmt_evidence_finance__welfare_2",
+          "text": "會查證、會省錢，你是很穩的市長。下次別急著忽略問題，居民會等你回應。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_finance__teamwork",
+      "strong": [
+        "evidence",
+        "finance"
+      ],
+      "weak": "teamwork",
+      "lines": [
+        {
+          "id": "cmt_evidence_finance__teamwork_1",
+          "text": "你不被傳聞帶著走，錢也花在刀口上。下次先看看貓貓建議區，再做決定。"
+        },
+        {
+          "id": "cmt_evidence_finance__teamwork_2",
+          "text": "會查證、會省錢，你是很穩的市長。團隊一起想，常常能想到更好的辦法。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_welfare__reading",
+      "strong": [
+        "evidence",
+        "welfare"
+      ],
+      "weak": "reading",
+      "lines": [
+        {
+          "id": "cmt_evidence_welfare__reading_1",
+          "text": "你分得清真假消息，也很在意居民感受。讀報再仔細一點，你會發現更多細節。"
+        },
+        {
+          "id": "cmt_evidence_welfare__reading_2",
+          "text": "查證後再行動，居民因此安心不少。如果再多展開幾篇報導，判斷會更有把握。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_welfare__decision",
+      "strong": [
+        "evidence",
+        "welfare"
+      ],
+      "weak": "decision",
+      "lines": [
+        {
+          "id": "cmt_evidence_welfare__decision_1",
+          "text": "你分得清真假消息，也很在意居民感受。出手前想一想：這張卡解決的是哪件事？"
+        },
+        {
+          "id": "cmt_evidence_welfare__decision_2",
+          "text": "查證後再行動，居民因此安心不少。選卡前先對照事件主題，命中率會更高。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_welfare__finance",
+      "strong": [
+        "evidence",
+        "welfare"
+      ],
+      "weak": "finance",
+      "lines": [
+        {
+          "id": "cmt_evidence_welfare__finance_1",
+          "text": "你分得清真假消息，也很在意居民感受。花錢前想想值不值得，存款會慢慢變多。"
+        },
+        {
+          "id": "cmt_evidence_welfare__finance_2",
+          "text": "查證後再行動，居民因此安心不少。記得留意帳單，錢要花在最需要的地方。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_welfare__teamwork",
+      "strong": [
+        "evidence",
+        "welfare"
+      ],
+      "weak": "teamwork",
+      "lines": [
+        {
+          "id": "cmt_evidence_welfare__teamwork_1",
+          "text": "你分得清真假消息，也很在意居民感受。團隊一起想，常常能想到更好的辦法。"
+        },
+        {
+          "id": "cmt_evidence_welfare__teamwork_2",
+          "text": "查證後再行動，居民因此安心不少。職員的建議值得聽聽，再自己判斷。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_teamwork__reading",
+      "strong": [
+        "evidence",
+        "teamwork"
+      ],
+      "weak": "reading",
+      "lines": [
+        {
+          "id": "cmt_evidence_teamwork__reading_1",
+          "text": "你重視證據，也會把職員的建議拿來比對。如果再多展開幾篇報導，判斷會更有把握。"
+        },
+        {
+          "id": "cmt_evidence_teamwork__reading_2",
+          "text": "查證加上團隊討論，你的決定很有說服力。下次多讀一兩篇報導，線索會更完整。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_teamwork__decision",
+      "strong": [
+        "evidence",
+        "teamwork"
+      ],
+      "weak": "decision",
+      "lines": [
+        {
+          "id": "cmt_evidence_teamwork__decision_1",
+          "text": "你重視證據，也會把職員的建議拿來比對。選卡前先對照事件主題，命中率會更高。"
+        },
+        {
+          "id": "cmt_evidence_teamwork__decision_2",
+          "text": "查證加上團隊討論，你的決定很有說服力。看看卡片的對症欄，能少買無關卡。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_teamwork__finance",
+      "strong": [
+        "evidence",
+        "teamwork"
+      ],
+      "weak": "finance",
+      "lines": [
+        {
+          "id": "cmt_evidence_teamwork__finance_1",
+          "text": "你重視證據，也會把職員的建議拿來比對。記得留意帳單，錢要花在最需要的地方。"
+        },
+        {
+          "id": "cmt_evidence_teamwork__finance_2",
+          "text": "查證加上團隊討論，你的決定很有說服力。下次少買一張無關卡，荷包會更穩。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_evidence_teamwork__welfare",
+      "strong": [
+        "evidence",
+        "teamwork"
+      ],
+      "weak": "welfare",
+      "lines": [
+        {
+          "id": "cmt_evidence_teamwork__welfare_1",
+          "text": "你重視證據，也會把職員的建議拿來比對。多看看民怨榜，居民的心聲也很重要。"
+        },
+        {
+          "id": "cmt_evidence_teamwork__welfare_2",
+          "text": "查證加上團隊討論，你的決定很有說服力。別忘了街上的店家和居民，他們需要你。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_decision_finance__reading",
+      "strong": [
+        "decision",
+        "finance"
+      ],
+      "weak": "reading",
+      "lines": [
+        {
+          "id": "cmt_decision_finance__reading_1",
+          "text": "你選卡又準又省，每一分錢都有用處。下次多讀一兩篇報導，線索會更完整。"
+        },
+        {
+          "id": "cmt_decision_finance__reading_2",
+          "text": "對症出手、帳本漂亮，城市越來越穩。報紙裡還藏著提示，多翻幾篇會更好。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_decision_finance__evidence",
+      "strong": [
+        "decision",
+        "finance"
+      ],
+      "weak": "evidence",
+      "lines": [
+        {
+          "id": "cmt_decision_finance__evidence_1",
+          "text": "你選卡又準又省，每一分錢都有用處。多蒐集街上的真線索，判斷會更穩。"
+        },
+        {
+          "id": "cmt_decision_finance__evidence_2",
+          "text": "對症出手、帳本漂亮，城市越來越穩。先分清線索和傳聞，再決定也不遲。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_decision_finance__welfare",
+      "strong": [
+        "decision",
+        "finance"
+      ],
+      "weak": "welfare",
+      "lines": [
+        {
+          "id": "cmt_decision_finance__welfare_1",
+          "text": "你選卡又準又省，每一分錢都有用處。別忘了街上的店家和居民，他們需要你。"
+        },
+        {
+          "id": "cmt_decision_finance__welfare_2",
+          "text": "對症出手、帳本漂亮，城市越來越穩。處理事件時，也想想誰會覺得不方便。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_decision_finance__teamwork",
+      "strong": [
+        "decision",
+        "finance"
+      ],
+      "weak": "teamwork",
+      "lines": [
+        {
+          "id": "cmt_decision_finance__teamwork_1",
+          "text": "你選卡又準又省，每一分錢都有用處。試著委任職員，一起分擔工作。"
+        },
+        {
+          "id": "cmt_decision_finance__teamwork_2",
+          "text": "對症出手、帳本漂亮，城市越來越穩。下次先看看貓貓建議區，再做決定。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_decision_welfare__reading",
+      "strong": [
+        "decision",
+        "welfare"
+      ],
+      "weak": "reading",
+      "lines": [
+        {
+          "id": "cmt_decision_welfare__reading_1",
+          "text": "你對症下藥，居民的生活明顯變好了。報紙裡還藏著提示，多翻幾篇會更好。"
+        },
+        {
+          "id": "cmt_decision_welfare__reading_2",
+          "text": "事情解決得準，街上的笑容也變多了。讀報再仔細一點，你會發現更多細節。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_decision_welfare__evidence",
+      "strong": [
+        "decision",
+        "welfare"
+      ],
+      "weak": "evidence",
+      "lines": [
+        {
+          "id": "cmt_decision_welfare__evidence_1",
+          "text": "你對症下藥，居民的生活明顯變好了。先分清線索和傳聞，再決定也不遲。"
+        },
+        {
+          "id": "cmt_decision_welfare__evidence_2",
+          "text": "事情解決得準，街上的笑容也變多了。下次試著比對兩個來源，再相信消息。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_decision_welfare__finance",
+      "strong": [
+        "decision",
+        "welfare"
+      ],
+      "weak": "finance",
+      "lines": [
+        {
+          "id": "cmt_decision_welfare__finance_1",
+          "text": "你對症下藥，居民的生活明顯變好了。看看每季淨利，試著讓收支打平。"
+        },
+        {
+          "id": "cmt_decision_welfare__finance_2",
+          "text": "事情解決得準，街上的笑容也變多了。花錢前想想值不值得，存款會慢慢變多。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_decision_welfare__teamwork",
+      "strong": [
+        "decision",
+        "welfare"
+      ],
+      "weak": "teamwork",
+      "lines": [
+        {
+          "id": "cmt_decision_welfare__teamwork_1",
+          "text": "你對症下藥，居民的生活明顯變好了。下次先看看貓貓建議區，再做決定。"
+        },
+        {
+          "id": "cmt_decision_welfare__teamwork_2",
+          "text": "事情解決得準，街上的笑容也變多了。團隊一起想，常常能想到更好的辦法。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_decision_teamwork__reading",
+      "strong": [
+        "decision",
+        "teamwork"
+      ],
+      "weak": "reading",
+      "lines": [
+        {
+          "id": "cmt_decision_teamwork__reading_1",
+          "text": "你會參考職員建議，選出最對症的卡。讀報再仔細一點，你會發現更多細節。"
+        },
+        {
+          "id": "cmt_decision_teamwork__reading_2",
+          "text": "團隊一起想辦法，你的決策又準又快。如果再多展開幾篇報導，判斷會更有把握。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_decision_teamwork__evidence",
+      "strong": [
+        "decision",
+        "teamwork"
+      ],
+      "weak": "evidence",
+      "lines": [
+        {
+          "id": "cmt_decision_teamwork__evidence_1",
+          "text": "你會參考職員建議，選出最對症的卡。下次試著比對兩個來源，再相信消息。"
+        },
+        {
+          "id": "cmt_decision_teamwork__evidence_2",
+          "text": "團隊一起想辦法，你的決策又準又快。聽到傳聞時，記得再找一個來源確認。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_decision_teamwork__finance",
+      "strong": [
+        "decision",
+        "teamwork"
+      ],
+      "weak": "finance",
+      "lines": [
+        {
+          "id": "cmt_decision_teamwork__finance_1",
+          "text": "你會參考職員建議，選出最對症的卡。花錢前想想值不值得，存款會慢慢變多。"
+        },
+        {
+          "id": "cmt_decision_teamwork__finance_2",
+          "text": "團隊一起想辦法，你的決策又準又快。記得留意帳單，錢要花在最需要的地方。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_decision_teamwork__welfare",
+      "strong": [
+        "decision",
+        "teamwork"
+      ],
+      "weak": "welfare",
+      "lines": [
+        {
+          "id": "cmt_decision_teamwork__welfare_1",
+          "text": "你會參考職員建議，選出最對症的卡。下次別急著忽略問題，居民會等你回應。"
+        },
+        {
+          "id": "cmt_decision_teamwork__welfare_2",
+          "text": "團隊一起想辦法，你的決策又準又快。多看看民怨榜，居民的心聲也很重要。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_finance_welfare__reading",
+      "strong": [
+        "finance",
+        "welfare"
+      ],
+      "weak": "reading",
+      "lines": [
+        {
+          "id": "cmt_finance_welfare__reading_1",
+          "text": "你把錢顧好，也把居民照顧好。如果再多展開幾篇報導，判斷會更有把握。"
+        },
+        {
+          "id": "cmt_finance_welfare__reading_2",
+          "text": "荷包穩、民怨低，城市過得踏實。下次多讀一兩篇報導，線索會更完整。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_finance_welfare__evidence",
+      "strong": [
+        "finance",
+        "welfare"
+      ],
+      "weak": "evidence",
+      "lines": [
+        {
+          "id": "cmt_finance_welfare__evidence_1",
+          "text": "你把錢顧好，也把居民照顧好。聽到傳聞時，記得再找一個來源確認。"
+        },
+        {
+          "id": "cmt_finance_welfare__evidence_2",
+          "text": "荷包穩、民怨低，城市過得踏實。多蒐集街上的真線索，判斷會更穩。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_finance_welfare__decision",
+      "strong": [
+        "finance",
+        "welfare"
+      ],
+      "weak": "decision",
+      "lines": [
+        {
+          "id": "cmt_finance_welfare__decision_1",
+          "text": "你把錢顧好，也把居民照顧好。選卡前先對照事件主題，命中率會更高。"
+        },
+        {
+          "id": "cmt_finance_welfare__decision_2",
+          "text": "荷包穩、民怨低，城市過得踏實。看看卡片的對症欄，能少買無關卡。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_finance_welfare__teamwork",
+      "strong": [
+        "finance",
+        "welfare"
+      ],
+      "weak": "teamwork",
+      "lines": [
+        {
+          "id": "cmt_finance_welfare__teamwork_1",
+          "text": "你把錢顧好，也把居民照顧好。職員的建議值得聽聽，再自己判斷。"
+        },
+        {
+          "id": "cmt_finance_welfare__teamwork_2",
+          "text": "荷包穩、民怨低，城市過得踏實。試著委任職員，一起分擔工作。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_finance_teamwork__reading",
+      "strong": [
+        "finance",
+        "teamwork"
+      ],
+      "weak": "reading",
+      "lines": [
+        {
+          "id": "cmt_finance_teamwork__reading_1",
+          "text": "你精打細算，也懂得分工給職員。下次多讀一兩篇報導，線索會更完整。"
+        },
+        {
+          "id": "cmt_finance_teamwork__reading_2",
+          "text": "預算顧得好、團隊配合佳，公所運作順暢。報紙裡還藏著提示，多翻幾篇會更好。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_finance_teamwork__evidence",
+      "strong": [
+        "finance",
+        "teamwork"
+      ],
+      "weak": "evidence",
+      "lines": [
+        {
+          "id": "cmt_finance_teamwork__evidence_1",
+          "text": "你精打細算，也懂得分工給職員。多蒐集街上的真線索，判斷會更穩。"
+        },
+        {
+          "id": "cmt_finance_teamwork__evidence_2",
+          "text": "預算顧得好、團隊配合佳，公所運作順暢。先分清線索和傳聞，再決定也不遲。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_finance_teamwork__decision",
+      "strong": [
+        "finance",
+        "teamwork"
+      ],
+      "weak": "decision",
+      "lines": [
+        {
+          "id": "cmt_finance_teamwork__decision_1",
+          "text": "你精打細算，也懂得分工給職員。看看卡片的對症欄，能少買無關卡。"
+        },
+        {
+          "id": "cmt_finance_teamwork__decision_2",
+          "text": "預算顧得好、團隊配合佳，公所運作順暢。下次先挑一張最對症的卡，再補其他的。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_finance_teamwork__welfare",
+      "strong": [
+        "finance",
+        "teamwork"
+      ],
+      "weak": "welfare",
+      "lines": [
+        {
+          "id": "cmt_finance_teamwork__welfare_1",
+          "text": "你精打細算，也懂得分工給職員。別忘了街上的店家和居民，他們需要你。"
+        },
+        {
+          "id": "cmt_finance_teamwork__welfare_2",
+          "text": "預算顧得好、團隊配合佳，公所運作順暢。處理事件時，也想想誰會覺得不方便。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_welfare_teamwork__reading",
+      "strong": [
+        "welfare",
+        "teamwork"
+      ],
+      "weak": "reading",
+      "lines": [
+        {
+          "id": "cmt_welfare_teamwork__reading_1",
+          "text": "你關心居民，也帶著團隊一起努力。報紙裡還藏著提示，多翻幾篇會更好。"
+        },
+        {
+          "id": "cmt_welfare_teamwork__reading_2",
+          "text": "居民滿意、職員齊心，城市充滿人情味。讀報再仔細一點，你會發現更多細節。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_welfare_teamwork__evidence",
+      "strong": [
+        "welfare",
+        "teamwork"
+      ],
+      "weak": "evidence",
+      "lines": [
+        {
+          "id": "cmt_welfare_teamwork__evidence_1",
+          "text": "你關心居民，也帶著團隊一起努力。先分清線索和傳聞，再決定也不遲。"
+        },
+        {
+          "id": "cmt_welfare_teamwork__evidence_2",
+          "text": "居民滿意、職員齊心，城市充滿人情味。下次試著比對兩個來源，再相信消息。"
+        }
+      ]
+    },
+    {
+      "id": "cmt_welfare_teamwork__decision",
+      "strong": [
+        "welfare",
+        "teamwork"
+      ],
+      "weak": "decision",
+      "lines": [
+        {
+          "id": "cmt_welfare_teamwork__decision_1",
+          "text": "你關心居民，也帶著團隊一起努力。下次先挑一張最對症的卡，再補其他的。"
+        },
+        {
+          "id": "cmt_welfare_teamwork__decision_2",
+          "text": "居民滿意、職員齊心，城市充滿人情味。出手前想一想：這張卡解決的是哪件事？"
+        }
+      ]
+    },
+    {
+      "id": "cmt_welfare_teamwork__finance",
+      "strong": [
+        "welfare",
+        "teamwork"
+      ],
+      "weak": "finance",
+      "lines": [
+        {
+          "id": "cmt_welfare_teamwork__finance_1",
+          "text": "你關心居民，也帶著團隊一起努力。看看每季淨利，試著讓收支打平。"
+        },
+        {
+          "id": "cmt_welfare_teamwork__finance_2",
+          "text": "居民滿意、職員齊心，城市充滿人情味。花錢前想想值不值得，存款會慢慢變多。"
+        }
+      ]
+    }
+  ],
+  "grades": [
+    {
+      "id": "S",
+      "label": "傳奇",
+      "summary": [
+        {
+          "id": "grade_S_1",
+          "text": "你是貓貓市的傳奇市長，大家都記得你！"
+        },
+        {
+          "id": "grade_S_2",
+          "text": "六項能力都很亮眼，城市因你而閃亮。"
+        }
+      ],
+      "titles": {
+        "reading": "博覽群報的傳奇市長",
+        "evidence": "明察秋毫的傳奇市長",
+        "decision": "一擊即中的傳奇市長",
+        "finance": "點石成金的傳奇市長",
+        "welfare": "全市最暖的傳奇市長",
+        "teamwork": "眾望所歸的傳奇市長"
+      }
+    },
+    {
+      "id": "A",
+      "label": "優秀",
+      "summary": [
+        {
+          "id": "grade_A_1",
+          "text": "表現優秀，城市在你手上越來越好。"
+        },
+        {
+          "id": "grade_A_2",
+          "text": "你已經是很可靠的市長了，繼續保持！"
+        }
+      ],
+      "titles": {
+        "reading": "深讀型市長",
+        "evidence": "數據派市長",
+        "decision": "神準型市長",
+        "finance": "理財型市長",
+        "welfare": "暖心型市長",
+        "teamwork": "團隊型市長"
+      }
+    },
+    {
+      "id": "B",
+      "label": "穩健",
+      "summary": [
+        {
+          "id": "grade_B_1",
+          "text": "穩紮穩打，城市一步步變好。"
+        },
+        {
+          "id": "grade_B_2",
+          "text": "你掌握了當市長的訣竅，再加把勁！"
+        }
+      ],
+      "titles": {
+        "reading": "穩健讀報市長",
+        "evidence": "穩健查證市長",
+        "decision": "穩健決策市長",
+        "finance": "穩健理財市長",
+        "welfare": "穩健暖心市長",
+        "teamwork": "穩健合作市長"
+      }
+    },
+    {
+      "id": "C",
+      "label": "成長",
+      "summary": [
+        {
+          "id": "grade_C_1",
+          "text": "你正在成長，每一季都學到新東西。"
+        },
+        {
+          "id": "grade_C_2",
+          "text": "有亮點也有挑戰，下一任會更好。"
+        }
+      ],
+      "titles": {
+        "reading": "成長中的讀報市長",
+        "evidence": "成長中的查證市長",
+        "decision": "成長中的決策市長",
+        "finance": "成長中的理財市長",
+        "welfare": "成長中的暖心市長",
+        "teamwork": "成長中的合作市長"
+      }
+    },
+    {
+      "id": "D",
+      "label": "起步",
+      "summary": [
+        {
+          "id": "grade_D_1",
+          "text": "這一任辛苦了，經驗就是最好的老師。"
+        },
+        {
+          "id": "grade_D_2",
+          "text": "起步總是最難，下次一定更上手！"
+        }
+      ],
+      "titles": {
+        "reading": "起步中的讀報市長",
+        "evidence": "起步中的查證市長",
+        "decision": "起步中的決策市長",
+        "finance": "起步中的理財市長",
+        "welfare": "起步中的暖心市長",
+        "teamwork": "起步中的合作市長"
+      }
+    }
+  ],
+  "tryNext": {
+    "reading": [
+      {
+        "id": "try_reading_1",
+        "text": "下次先展開兩篇報導再決策。"
+      },
+      {
+        "id": "try_reading_2",
+        "text": "每篇報導至少畫一個【線索】重點。"
+      },
+      {
+        "id": "try_reading_3",
+        "text": "滑到報紙最下面，看完居民心聲再開決策欄。"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "try_evidence_1",
+        "text": "聽到傳聞時，找第二位居民或公所紀錄確認。"
+      },
+      {
+        "id": "try_evidence_2",
+        "text": "街景觀察時點三個以上真線索再做決定。"
+      },
+      {
+        "id": "try_evidence_3",
+        "text": "買卡前先說出一條支持這張卡的線索。"
+      }
+    ],
+    "decision": [
+      {
+        "id": "try_decision_1",
+        "text": "選卡前先對照事件主題和卡片的對症欄。"
+      },
+      {
+        "id": "try_decision_2",
+        "text": "看到「無關卡」提示時，先換一張再確認。"
+      },
+      {
+        "id": "try_decision_3",
+        "text": "每季先挑一張最對症的卡，再考慮其他卡。"
+      }
+    ],
+    "finance": [
+      {
+        "id": "try_finance_1",
+        "text": "結報時看一次帳單，找出最大的一筆支出。"
+      },
+      {
+        "id": "try_finance_2",
+        "text": "金錢低於 300 元時，只買對症卡。"
+      },
+      {
+        "id": "try_finance_3",
+        "text": "連續兩季淨利為負，下一季先少買一張卡。"
+      }
+    ],
+    "welfare": [
+      {
+        "id": "try_welfare_1",
+        "text": "每季看一次民怨榜，先處理最高的那一項。"
+      },
+      {
+        "id": "try_welfare_2",
+        "text": "不按「忽略」，每季至少處理一件核心問題。"
+      },
+      {
+        "id": "try_welfare_3",
+        "text": "選卡時看副作用，想想誰會覺得不方便。"
+      }
+    ],
+    "teamwork": [
+      {
+        "id": "try_teamwork_1",
+        "text": "決策前先讀貓貓建議區的三則建議。"
+      },
+      {
+        "id": "try_teamwork_2",
+        "text": "試著用「派他去」委任一位職員執行。"
+      },
+      {
+        "id": "try_teamwork_3",
+        "text": "不採用建議時，說出一個自己的理由。"
+      }
+    ]
+  },
+  "teacherQuestions": {
+    "reading": [
+      {
+        "id": "tq_reading_1",
+        "text": "你這季展開了哪幾篇報導？為什麼選它們？"
+      },
+      {
+        "id": "tq_reading_2",
+        "text": "哪一個重點讓你決定了選卡方向？"
+      },
+      {
+        "id": "tq_reading_3",
+        "text": "如果只能讀一篇報導，你會讀哪一篇？為什麼？"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "tq_evidence_1",
+        "text": "你怎麼分辨線索和傳聞？"
+      },
+      {
+        "id": "tq_evidence_2",
+        "text": "有沒有哪一次差點相信了傳聞？後來怎麼發現的？"
+      },
+      {
+        "id": "tq_evidence_3",
+        "text": "要確認一個消息，可以找哪些來源？"
+      }
+    ],
+    "decision": [
+      {
+        "id": "tq_decision_1",
+        "text": "哪一張卡最對症？你是怎麼判斷的？"
+      },
+      {
+        "id": "tq_decision_2",
+        "text": "有沒有買到無關卡？下次會怎麼避免？"
+      },
+      {
+        "id": "tq_decision_3",
+        "text": "如果點數只剩 2 點，你會先處理哪件事？為什麼？"
+      }
+    ],
+    "finance": [
+      {
+        "id": "tq_finance_1",
+        "text": "哪一季花最多錢？你覺得值得嗎？"
+      },
+      {
+        "id": "tq_finance_2",
+        "text": "存錢和花錢解決問題，要怎麼取捨？"
+      },
+      {
+        "id": "tq_finance_3",
+        "text": "如果城市快沒錢了，你會先停掉哪一種支出？"
+      }
+    ],
+    "welfare": [
+      {
+        "id": "tq_welfare_1",
+        "text": "哪一個領域的民怨最高？你做了什麼？"
+      },
+      {
+        "id": "tq_welfare_2",
+        "text": "你的政策讓誰變方便了？又讓誰不方便？"
+      },
+      {
+        "id": "tq_welfare_3",
+        "text": "忽略一個問題，下一季可能會發生什麼事？"
+      }
+    ],
+    "teamwork": [
+      {
+        "id": "tq_teamwork_1",
+        "text": "哪一位職員的建議最有幫助？為什麼？"
+      },
+      {
+        "id": "tq_teamwork_2",
+        "text": "什麼時候你決定不採用建議？理由是什麼？"
+      },
+      {
+        "id": "tq_teamwork_3",
+        "text": "團隊合作和自己決定，各有什麼好處？"
+      }
+    ]
+  },
+  "fragments": {
+    "strengthPair": {
+      "reading+evidence": [
+        "你讀報很細，又會分辨線索真假，是城市的偵探。",
+        "先讀懂報導、再查證線索，你的判斷有根有據。"
+      ],
+      "reading+decision": [
+        "你把報導讀透，選卡常常一擊就中。",
+        "讀懂新聞再出手，你的政策很少打偏。"
+      ],
+      "reading+finance": [
+        "你讀報仔細，花錢也精打細算。",
+        "讀得懂新聞、守得住荷包，城市很安心。"
+      ],
+      "reading+welfare": [
+        "你從報導裡看見居民的需要，也真的照顧到了。",
+        "讀報用心，居民的抱怨你都放在心上。"
+      ],
+      "reading+teamwork": [
+        "你讀報認真，也願意聽職員的意見。",
+        "資訊讀得多、團隊合作好，大家都信任你。"
+      ],
+      "evidence+decision": [
+        "你看證據下判斷，選卡精準又有理由。",
+        "線索查得清楚，對症卡也選得準。"
+      ],
+      "evidence+finance": [
+        "你不被傳聞帶著走，錢也花在刀口上。",
+        "會查證、會省錢，你是很穩的市長。"
+      ],
+      "evidence+welfare": [
+        "你分得清真假消息，也很在意居民感受。",
+        "查證後再行動，居民因此安心不少。"
+      ],
+      "evidence+teamwork": [
+        "你重視證據，也會把職員的建議拿來比對。",
+        "查證加上團隊討論，你的決定很有說服力。"
+      ],
+      "decision+finance": [
+        "你選卡又準又省，每一分錢都有用處。",
+        "對症出手、帳本漂亮，城市越來越穩。"
+      ],
+      "decision+welfare": [
+        "你對症下藥，居民的生活明顯變好了。",
+        "事情解決得準，街上的笑容也變多了。"
+      ],
+      "decision+teamwork": [
+        "你會參考職員建議，選出最對症的卡。",
+        "團隊一起想辦法，你的決策又準又快。"
+      ],
+      "finance+welfare": [
+        "你把錢顧好，也把居民照顧好。",
+        "荷包穩、民怨低，城市過得踏實。"
+      ],
+      "finance+teamwork": [
+        "你精打細算，也懂得分工給職員。",
+        "預算顧得好、團隊配合佳，公所運作順暢。"
+      ],
+      "welfare+teamwork": [
+        "你關心居民，也帶著團隊一起努力。",
+        "居民滿意、職員齊心，城市充滿人情味。"
+      ]
+    },
+    "weak": {
+      "reading": [
+        "如果再多展開幾篇報導，判斷會更有把握。",
+        "下次多讀一兩篇報導，線索會更完整。",
+        "報紙裡還藏著提示，多翻幾篇會更好。",
+        "讀報再仔細一點，你會發現更多細節。"
+      ],
+      "evidence": [
+        "聽到傳聞時，記得再找一個來源確認。",
+        "多蒐集街上的真線索，判斷會更穩。",
+        "先分清線索和傳聞，再決定也不遲。",
+        "下次試著比對兩個來源，再相信消息。"
+      ],
+      "decision": [
+        "選卡前先對照事件主題，命中率會更高。",
+        "看看卡片的對症欄，能少買無關卡。",
+        "下次先挑一張最對症的卡，再補其他的。",
+        "出手前想一想：這張卡解決的是哪件事？"
+      ],
+      "finance": [
+        "記得留意帳單，錢要花在最需要的地方。",
+        "下次少買一張無關卡，荷包會更穩。",
+        "看看每季淨利，試著讓收支打平。",
+        "花錢前想想值不值得，存款會慢慢變多。"
+      ],
+      "welfare": [
+        "多看看民怨榜，居民的心聲也很重要。",
+        "別忘了街上的店家和居民，他們需要你。",
+        "處理事件時，也想想誰會覺得不方便。",
+        "下次別急著忽略問題，居民會等你回應。"
+      ],
+      "teamwork": [
+        "職員的建議值得聽聽，再自己判斷。",
+        "試著委任職員，一起分擔工作。",
+        "下次先看看貓貓建議區，再做決定。",
+        "團隊一起想，常常能想到更好的辦法。"
+      ]
+    },
+    "strengthSingle": {
+      "reading": [
+        "讀報細心，懂得先理解再行動。",
+        "你把報導讀得很透。"
+      ],
+      "evidence": [
+        "重視證據，不輕信傳聞。",
+        "你很會分辨線索和傳聞。"
+      ],
+      "decision": [
+        "選卡對症，問題處理得俐落。",
+        "你出手常常一擊就中。"
+      ],
+      "finance": [
+        "理財有方，金庫越來越穩。",
+        "每一分錢都花得有道理。"
+      ],
+      "welfare": [
+        "關心居民，大家都感受得到。",
+        "你把民怨和店家放在心上。"
+      ],
+      "teamwork": [
+        "善用團隊，知人善任。",
+        "你懂得聽建議、分工合作。"
+      ]
+    }
+  },
+  "stageHCompat": {
+    "note": "小力 stage_h.js comment() 用「最強一軸＋最弱一軸」：可直接把本區塊放進 certificate.comments（combos 30 組＋byStrong／byWeak／byGrade）。",
+    "combos": [
+      {
+        "strong": "reading",
+        "weak": "evidence",
+        "text": "讀報細心，懂得先理解再行動。聽到傳聞時，記得再找一個來源確認。"
+      },
+      {
+        "strong": "reading",
+        "weak": "decision",
+        "text": "讀報細心，懂得先理解再行動。選卡前先對照事件主題，命中率會更高。"
+      },
+      {
+        "strong": "reading",
+        "weak": "finance",
+        "text": "讀報細心，懂得先理解再行動。記得留意帳單，錢要花在最需要的地方。"
+      },
+      {
+        "strong": "reading",
+        "weak": "welfare",
+        "text": "讀報細心，懂得先理解再行動。多看看民怨榜，居民的心聲也很重要。"
+      },
+      {
+        "strong": "reading",
+        "weak": "teamwork",
+        "text": "讀報細心，懂得先理解再行動。職員的建議值得聽聽，再自己判斷。"
+      },
+      {
+        "strong": "evidence",
+        "weak": "reading",
+        "text": "重視證據，不輕信傳聞。下次多讀一兩篇報導，線索會更完整。"
+      },
+      {
+        "strong": "evidence",
+        "weak": "decision",
+        "text": "重視證據，不輕信傳聞。看看卡片的對症欄，能少買無關卡。"
+      },
+      {
+        "strong": "evidence",
+        "weak": "finance",
+        "text": "重視證據，不輕信傳聞。下次少買一張無關卡，荷包會更穩。"
+      },
+      {
+        "strong": "evidence",
+        "weak": "welfare",
+        "text": "重視證據，不輕信傳聞。別忘了街上的店家和居民，他們需要你。"
+      },
+      {
+        "strong": "evidence",
+        "weak": "teamwork",
+        "text": "重視證據，不輕信傳聞。試著委任職員，一起分擔工作。"
+      },
+      {
+        "strong": "decision",
+        "weak": "reading",
+        "text": "選卡對症，問題處理得俐落。報紙裡還藏著提示，多翻幾篇會更好。"
+      },
+      {
+        "strong": "decision",
+        "weak": "evidence",
+        "text": "選卡對症，問題處理得俐落。先分清線索和傳聞，再決定也不遲。"
+      },
+      {
+        "strong": "decision",
+        "weak": "finance",
+        "text": "選卡對症，問題處理得俐落。看看每季淨利，試著讓收支打平。"
+      },
+      {
+        "strong": "decision",
+        "weak": "welfare",
+        "text": "選卡對症，問題處理得俐落。處理事件時，也想想誰會覺得不方便。"
+      },
+      {
+        "strong": "decision",
+        "weak": "teamwork",
+        "text": "選卡對症，問題處理得俐落。下次先看看貓貓建議區，再做決定。"
+      },
+      {
+        "strong": "finance",
+        "weak": "reading",
+        "text": "理財有方，金庫越來越穩。讀報再仔細一點，你會發現更多細節。"
+      },
+      {
+        "strong": "finance",
+        "weak": "evidence",
+        "text": "理財有方，金庫越來越穩。下次試著比對兩個來源，再相信消息。"
+      },
+      {
+        "strong": "finance",
+        "weak": "decision",
+        "text": "理財有方，金庫越來越穩。出手前想一想：這張卡解決的是哪件事？"
+      },
+      {
+        "strong": "finance",
+        "weak": "welfare",
+        "text": "理財有方，金庫越來越穩。下次別急著忽略問題，居民會等你回應。"
+      },
+      {
+        "strong": "finance",
+        "weak": "teamwork",
+        "text": "理財有方，金庫越來越穩。團隊一起想，常常能想到更好的辦法。"
+      },
+      {
+        "strong": "welfare",
+        "weak": "reading",
+        "text": "關心居民，大家都感受得到。如果再多展開幾篇報導，判斷會更有把握。"
+      },
+      {
+        "strong": "welfare",
+        "weak": "evidence",
+        "text": "關心居民，大家都感受得到。聽到傳聞時，記得再找一個來源確認。"
+      },
+      {
+        "strong": "welfare",
+        "weak": "decision",
+        "text": "關心居民，大家都感受得到。選卡前先對照事件主題，命中率會更高。"
+      },
+      {
+        "strong": "welfare",
+        "weak": "finance",
+        "text": "關心居民，大家都感受得到。記得留意帳單，錢要花在最需要的地方。"
+      },
+      {
+        "strong": "welfare",
+        "weak": "teamwork",
+        "text": "關心居民，大家都感受得到。職員的建議值得聽聽，再自己判斷。"
+      },
+      {
+        "strong": "teamwork",
+        "weak": "reading",
+        "text": "善用團隊，知人善任。下次多讀一兩篇報導，線索會更完整。"
+      },
+      {
+        "strong": "teamwork",
+        "weak": "evidence",
+        "text": "善用團隊，知人善任。多蒐集街上的真線索，判斷會更穩。"
+      },
+      {
+        "strong": "teamwork",
+        "weak": "decision",
+        "text": "善用團隊，知人善任。看看卡片的對症欄，能少買無關卡。"
+      },
+      {
+        "strong": "teamwork",
+        "weak": "finance",
+        "text": "善用團隊，知人善任。下次少買一張無關卡，荷包會更穩。"
+      },
+      {
+        "strong": "teamwork",
+        "weak": "welfare",
+        "text": "善用團隊，知人善任。別忘了街上的店家和居民，他們需要你。"
+      }
+    ],
+    "byStrong": {
+      "reading": [
+        "讀報細心，懂得先理解再行動。",
+        "你把報導讀得很透。"
+      ],
+      "evidence": [
+        "重視證據，不輕信傳聞。",
+        "你很會分辨線索和傳聞。"
+      ],
+      "decision": [
+        "選卡對症，問題處理得俐落。",
+        "你出手常常一擊就中。"
+      ],
+      "finance": [
+        "理財有方，金庫越來越穩。",
+        "每一分錢都花得有道理。"
+      ],
+      "welfare": [
+        "關心居民，大家都感受得到。",
+        "你把民怨和店家放在心上。"
+      ],
+      "teamwork": [
+        "善用團隊，知人善任。",
+        "你懂得聽建議、分工合作。"
+      ]
+    },
+    "byWeak": {
+      "reading": [
+        "如果再多展開幾篇報導，判斷會更有把握。",
+        "下次多讀一兩篇報導，線索會更完整。",
+        "報紙裡還藏著提示，多翻幾篇會更好。",
+        "讀報再仔細一點，你會發現更多細節。"
+      ],
+      "evidence": [
+        "聽到傳聞時，記得再找一個來源確認。",
+        "多蒐集街上的真線索，判斷會更穩。",
+        "先分清線索和傳聞，再決定也不遲。",
+        "下次試著比對兩個來源，再相信消息。"
+      ],
+      "decision": [
+        "選卡前先對照事件主題，命中率會更高。",
+        "看看卡片的對症欄，能少買無關卡。",
+        "下次先挑一張最對症的卡，再補其他的。",
+        "出手前想一想：這張卡解決的是哪件事？"
+      ],
+      "finance": [
+        "記得留意帳單，錢要花在最需要的地方。",
+        "下次少買一張無關卡，荷包會更穩。",
+        "看看每季淨利，試著讓收支打平。",
+        "花錢前想想值不值得，存款會慢慢變多。"
+      ],
+      "welfare": [
+        "多看看民怨榜，居民的心聲也很重要。",
+        "別忘了街上的店家和居民，他們需要你。",
+        "處理事件時，也想想誰會覺得不方便。",
+        "下次別急著忽略問題，居民會等你回應。"
+      ],
+      "teamwork": [
+        "職員的建議值得聽聽，再自己判斷。",
+        "試著委任職員，一起分擔工作。",
+        "下次先看看貓貓建議區，再做決定。",
+        "團隊一起想，常常能想到更好的辦法。"
+      ]
+    },
+    "byGrade": {
+      "S": [
+        "你是貓貓市的傳奇市長，大家都記得你！",
+        "六項能力都很亮眼，城市因你而閃亮。"
+      ],
+      "A": [
+        "表現優秀，城市在你手上越來越好。",
+        "你已經是很可靠的市長了，繼續保持！"
+      ],
+      "B": [
+        "穩紮穩打，城市一步步變好。",
+        "你掌握了當市長的訣竅，再加把勁！"
+      ],
+      "C": [
+        "你正在成長，每一季都學到新東西。",
+        "有亮點也有挑戰，下一任會更好。"
+      ],
+      "D": [
+        "這一任辛苦了，經驗就是最好的老師。",
+        "起步總是最難，下次一定更上手！"
+      ]
+    }
+  }
+}

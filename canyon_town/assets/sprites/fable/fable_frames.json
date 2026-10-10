@@ -1,0 +1,107 @@
+{
+  "scale": 2,
+  "source": "procedural pixel art (canyon_art/fable/*.py)",
+  "facing": "right; *_left.png = per-frame mirror in place",
+  "anchor": "bottom-centre of frame; sheets are horizontal strips, equal frame widths",
+  "sheets": {
+    "fable_piper_walk": {
+      "file": "fable_piper_walk.png",
+      "file_left": "fable_piper_walk_left.png",
+      "frames": 4,
+      "frameW": 122,
+      "frameH": 150,
+      "sheetW": 488,
+      "sheetH": 150,
+      "fps": 8,
+      "desc": "cat pied piper, patchwork tunic, playing flute"
+    },
+    "fable_rat_run_grey": {
+      "file": "fable_rat_run_grey.png",
+      "file_left": "fable_rat_run_grey_left.png",
+      "frames": 3,
+      "frameW": 100,
+      "frameH": 62,
+      "sheetW": 300,
+      "sheetH": 62,
+      "fps": 10,
+      "desc": "running rat, grey"
+    },
+    "fable_rat_run_brown": {
+      "file": "fable_rat_run_brown.png",
+      "file_left": "fable_rat_run_brown_left.png",
+      "frames": 3,
+      "frameW": 100,
+      "frameH": 62,
+      "sheetW": 300,
+      "sheetH": 62,
+      "fps": 10,
+      "desc": "running rat, brown"
+    },
+    "fable_rat_run_white": {
+      "file": "fable_rat_run_white.png",
+      "file_left": "fable_rat_run_white_left.png",
+      "frames": 3,
+      "frameW": 100,
+      "frameH": 62,
+      "sheetW": 300,
+      "sheetH": 62,
+      "fps": 10,
+      "desc": "running rat, white"
+    },
+    "fable_fx_notes": {
+      "file": "fable_fx_notes.png",
+      "file_left": "fable_fx_notes_left.png",
+      "frames": 3,
+      "frameW": 64,
+      "frameH": 66,
+      "sheetW": 192,
+      "sheetH": 66,
+      "fps": 4,
+      "desc": "floating music notes"
+    },
+    "fable_redhood_run": {
+      "file": "fable_redhood_run.png",
+      "file_left": "fable_redhood_run_left.png",
+      "frames": 4,
+      "frameW": 108,
+      "frameH": 152,
+      "sheetW": 432,
+      "sheetH": 152,
+      "fps": 10,
+      "desc": "cat Little Red Riding Hood with basket"
+    },
+    "fable_wolf_run": {
+      "file": "fable_wolf_run.png",
+      "file_left": "fable_wolf_run_left.png",
+      "frames": 4,
+      "frameW": 152,
+      "frameH": 168,
+      "sheetW": 608,
+      "sheetH": 168,
+      "fps": 10,
+      "desc": "cute chubby goofy wolf in grandma nightcap"
+    },
+    "fable_fx_exclaim": {
+      "file": "fable_fx_exclaim.png",
+      "file_left": "fable_fx_exclaim_left.png",
+      "frames": 2,
+      "frameW": 26,
+      "frameH": 50,
+      "sheetW": 52,
+      "sheetH": 50,
+      "fps": 4,
+      "desc": "red ! mark"
+    },
+    "fable_fx_sweat": {
+      "file": "fable_fx_sweat.png",
+      "file_left": "fable_fx_sweat_left.png",
+      "frames": 2,
+      "frameW": 36,
+      "frameH": 32,
+      "sheetW": 72,
+      "sheetH": 32,
+      "fps": 4,
+      "desc": "blue sweat drops"
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "id": "policy_crime_map",
+  "name": "治安點位公開與安全地圖",
+  "cost": 1,
+  "blurb": "公開（模糊化）案件發生地點與時段，居民與警方一起繪製安全地圖，改善死角。",
+  "solves": [],
+  "rule_patches": {
+    "crime_mapProgram": 1
+  },
+  "deltas": {
+    "money": -15,
+    "happiness": 1
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "公開資料要避免標籤化與恐慌；資料不準會誤導。",
+  "preview": "預估：金錢 -15、幸福度 +1。",
+  "costPoints": 1,
+  "tags": [
+    "資訊",
+    "溝通",
+    "治安"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_crime_map.webp",
+    "icon": "assets/sprites/cards/icons/icon_crime_map.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🗺️",
+    "accent": "#78909c",
+    "fxHint": "fx_crime_map_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "資訊溝通（宣導教育）",
+    "rarity": "常見",
+    "titleShort": "安全地圖",
+    "costBadge": "1 點",
+    "shopLine": "公開風險路段，大家一起改善死角。",
+    "effectLine": "居民知道哪裡要小心；死角改善更有針對性。",
+    "flavor": "知道危險在哪，才知道往哪補。",
+    "learnPoint": "這張牌教你：資訊公開可以讓預防更精準。",
+    "bullets": [
+      "輔助：扒手、夜間治安",
+      "金錢 -15",
+      "預防更精準",
+      "避免標籤化"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -15,
+        "text": "金錢 -15"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 1,
+        "text": "幸福度 +1"
+      }
+    ],
+    "tradeoffLine": "公開資料要避免標籤化與恐慌；資料不準會誤導。"
+  },
+  "shopBlurb": "公開風險路段，大家一起改善死角。",
+  "shopLine": "1 點｜公開風險路段，大家一起改善死角。",
+  "executeId": "exec_crime_map",
+  "fx": {
+    "street": [
+      "fx_crime_map_a",
+      "fx_crime_map_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 2
+      },
+      "flowKind": "timed",
+      "durationSeasons": 3,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -6
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "weak",
+      "summary": "治安感+2（3 季）；治安民怨-6"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_an",
+      "staff_xin"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.5,
+      "health": 0.2,
+      "engineering": 0.2,
+      "economy": 0.2,
+      "communication": 0.7
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety"
+  ],
+  "complaintDelta": {
+    "safety": -6
+  },
+  "complaintRebound": {},
+  "complaintNote": "公開資料要避免標籤化與恐慌；資料不準會誤導。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_safety_theft"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "info",
+  "typeLabel": "資訊溝通（宣導教育）",
+  "realWorldAnalog": "資訊公開：公開（模糊化）案件地點，居民與警方一起繪製安全地圖。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

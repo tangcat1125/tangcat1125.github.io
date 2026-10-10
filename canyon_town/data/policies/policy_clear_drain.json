@@ -1,0 +1,233 @@
+{
+  "id": "policy_clear_drain",
+  "name": "緊急清淤隊",
+  "cost": 3,
+  "blurb": "清排水口；並讓工程車／垃圾車優先通行清運落葉垃圾。",
+  "solves": [
+    "event_flood_risk"
+  ],
+  "rule_patches": {
+    "drainClearance": 3,
+    "serviceLanePriority": 1
+  },
+  "deltas": {
+    "money": -80,
+    "profit": -10,
+    "happiness": 10
+  },
+  "logistics": {
+    "boostVehicles": [
+      "garbage_truck",
+      "works_truck"
+    ],
+    "metricBoost": {
+      "onTimeRate": 0.08,
+      "congestion": -1
+    }
+  },
+  "sideEffect": "短期金錢支出高；工程車佔道可能短暫塞車。",
+  "preview": "預估：金錢 -80、幸福度 +10；清運準點提升，淹水風險下降。",
+  "costPoints": 3,
+  "tags": [
+    "環境",
+    "工程",
+    "物流"
+  ],
+  "counters": [
+    "drain_clog",
+    "leaves",
+    "culvert",
+    "standing_water"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_clear_drain.webp",
+    "icon": "assets/sprites/cards/icons/icon_clear_drain.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🧹",
+    "accent": "#4f9bd6",
+    "fxHint": "fx_drain_sweep"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "環境／工程",
+    "rarity": "常見",
+    "titleShort": "清淤隊",
+    "costBadge": "3 點",
+    "shopLine": "清排水口，淹水風險往下掉。",
+    "effectLine": "排水變順、垃圾車優先通行；淹水風險下降。",
+    "flavor": "雨來之前，先把水路讓出來。",
+    "learnPoint": "這張牌教你：先處理成因，再談其他。",
+    "bullets": [
+      "對症：排水不良",
+      "幸福度 +10",
+      "工程車短期可能塞"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -80,
+        "text": "金錢 -80"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": -10,
+        "text": "獲利 -10"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 10,
+        "text": "幸福度 +10"
+      },
+      {
+        "key": "onTimeRate",
+        "label": "準點率",
+        "value": 0.08,
+        "text": "準點率 +8%"
+      },
+      {
+        "key": "congestion",
+        "label": "壅塞度",
+        "value": -1,
+        "text": "壅塞度 -1"
+      }
+    ],
+    "tradeoffLine": "短期金錢支出高；工程車佔道可能短暫塞車。"
+  },
+  "shopBlurb": "清排水口，淹水風險往下掉。",
+  "shopLine": "3 點｜清排水口，淹水風險往下掉。",
+  "executeId": "exec_clear_drain",
+  "fx": {
+    "street": [
+      "fx_drain_sweep",
+      "fx_priority_lane_works"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 2200,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 1,
+        "tourist": 0,
+        "security": 0
+      },
+      "flowKind": "timed",
+      "durationSeasons": 2,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "drain": -25,
+        "safety": -8,
+        "health": -5,
+        "logistics": -5,
+        "traffic": 5
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "strong",
+      "summary": "車流+1（2 季）；排水民怨-25、治安民怨-8"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_xiu",
+      "staff_yan"
+    ],
+    "radarWeights": {
+      "logistics": 0.3,
+      "safety": 0.4,
+      "health": 0.1,
+      "engineering": 0.9,
+      "economy": 0.1,
+      "communication": 0.2
+    }
+  },
+  "actionOptionIds": [
+    "act_clear_drain",
+    "act_clear_lane"
+  ],
+  "fromArticleIds": [
+    "article_drain",
+    "article_supply"
+  ],
+  "verdictByOption": {
+    "act_clear_drain": "對症",
+    "act_clear_lane": "搭配"
+  },
+  "complaintCounters": [
+    "drain",
+    "safety",
+    "health",
+    "logistics"
+  ],
+  "complaintDelta": {
+    "drain": -25,
+    "safety": -8,
+    "health": -5,
+    "logistics": -5,
+    "traffic": 5
+  },
+  "complaintRebound": {},
+  "complaintNote": "對症排水；工程車進場時交通短期更塞。",
+  "policyType": "hard",
+  "typeLabel": "硬建設／公共服務",
+  "realWorldAnalog": "公共工程中的「疏濬／清淤」：政府出工程隊直接清除堵塞物。",
+  "topicCounters": [
+    "drain_clog",
+    "leaves",
+    "culvert",
+    "standing_water"
+  ],
+  "legacyCounters": [
+    "disaster_storm_flood",
+    "disaster_garbage_backlog"
+  ],
+  "cureEventIds": [
+    "evp_drain_blocked",
+    "evp_drain_culvert",
+    "evp_drain_leaf"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "eventEffects": {
+    "cure": [
+      "evp_drain_blocked",
+      "evp_drain_culvert",
+      "evp_drain_leaf"
+    ],
+    "assist": [
+      "evp_drain_culvert",
+      "evp_drain_grease_trap",
+      "evp_drain_storm",
+      "evp_health_dengue",
+      "evp_health_rat_swarm"
+    ],
+    "palliative": [],
+    "backfire": [
+      "evp_traffic_bus"
+    ]
+  },
+  "solvesPool": [
+    "evp_drain_blocked",
+    "evp_drain_leaf"
+  ],
+  "solvesPoolConditional": [
+    "evp_drain_culvert"
+  ]
+}

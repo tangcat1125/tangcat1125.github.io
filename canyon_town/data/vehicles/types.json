@@ -1,0 +1,130 @@
+{
+  "id": "vehicle_types_tw2026",
+  "note": "2026 台灣城市常見車種；速度單位為街景相對 px/幀參考值，實作可再縮放。",
+  "types": [
+    {
+      "id": "scooter",
+      "name": "機車",
+      "class": "light",
+      "speed": 1.4,
+      "capacity": 1,
+      "cargoKinds": [
+        "parcel",
+        "food_delivery"
+      ],
+      "lane": "mixed",
+      "spriteHint": "scooter_8bit",
+      "observeTip": "外送與小包裹；堵塞時幸福度與市集即時性先掉。"
+    },
+    {
+      "id": "light_truck",
+      "name": "小貨車",
+      "class": "freight",
+      "speed": 0.85,
+      "capacity": 4,
+      "cargoKinds": [
+        "produce",
+        "daily_goods",
+        "market_stock"
+      ],
+      "lane": "main",
+      "spriteHint": "truck_light_8bit",
+      "observeTip": "市集進貨主力；停駛會直接砍獲利與金錢。"
+    },
+    {
+      "id": "bus",
+      "name": "市區公車",
+      "class": "passenger",
+      "speed": 0.7,
+      "capacity": 8,
+      "cargoKinds": [
+        "passengers",
+        "tourists"
+      ],
+      "lane": "main",
+      "spriteHint": "bus_8bit",
+      "observeTip": "載客／遊客；班次不穩＝人潮與幸福度雙掉。"
+    },
+    {
+      "id": "garbage_truck",
+      "name": "垃圾車",
+      "class": "service",
+      "speed": 0.55,
+      "capacity": 3,
+      "cargoKinds": [
+        "waste"
+      ],
+      "lane": "service",
+      "spriteHint": "garbage_8bit",
+      "observeTip": "清運延遲會加重排水堵塞與環境壓力。"
+    },
+    {
+      "id": "water_truck",
+      "name": "水肥／供水車",
+      "class": "service",
+      "speed": 0.6,
+      "capacity": 2,
+      "cargoKinds": [
+        "drinking_water",
+        "test_kits"
+      ],
+      "lane": "service",
+      "spriteHint": "water_truck_8bit",
+      "observeTip": "水質事件時的關鍵補給；影響信任與幸福度。"
+    },
+    {
+      "id": "works_truck",
+      "name": "工程車",
+      "class": "works",
+      "speed": 0.5,
+      "capacity": 3,
+      "cargoKinds": [
+        "building_material",
+        "drain_tools"
+      ],
+      "lane": "main",
+      "spriteHint": "works_truck_8bit",
+      "observeTip": "政策工程會佔道：短期塞車、長期改善法則。"
+    },
+    {
+      "id": "bicycle",
+      "name": "腳踏車貓",
+      "class": "light",
+      "speed": 0.9,
+      "capacity": 1,
+      "cargoKinds": [
+        "passengers"
+      ],
+      "lane": "mixed",
+      "spriteHint": "bicycle_8bit",
+      "observeTip": "居民通勤與短程代步；路面積水、淤泥或施工佔道時最先繞路，是觀察「小路好不好走」的小指標。"
+    },
+    {
+      "id": "scooter_delivery",
+      "name": "外送箱機車",
+      "class": "light",
+      "speed": 1.4,
+      "capacity": 1,
+      "cargoKinds": [
+        "food_delivery"
+      ],
+      "lane": "mixed",
+      "spriteHint": "scooter_delivery_8bit",
+      "observeTip": "外送餐點；堵塞或積水時先誤點，客人幸福度先掉。"
+    },
+    {
+      "id": "scooter_cargo",
+      "name": "載貨機車",
+      "class": "light",
+      "speed": 1.3,
+      "capacity": 2,
+      "cargoKinds": [
+        "parcel",
+        "daily_goods"
+      ],
+      "lane": "mixed",
+      "spriteHint": "scooter_cargo_8bit",
+      "observeTip": "小包裹與日用品補貨；比小貨車靈活，但裝不多，攤位缺貨時是第一線補給。"
+    }
+  ]
+}

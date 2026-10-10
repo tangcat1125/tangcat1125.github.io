@@ -1,0 +1,17 @@
+{
+  "id": "cargo_kinds",
+  "kinds": [
+    { "id": "produce", "label": "蔬果", "affects": ["profit", "happiness"], "failDelta": { "money": -25, "profit": -20, "happiness": -2 } },
+    { "id": "daily_goods", "label": "日用品", "affects": ["money", "happiness"], "failDelta": { "money": -20, "profit": -10, "happiness": -3 } },
+    { "id": "market_stock", "label": "市集存貨", "affects": ["profit"], "failDelta": { "money": -30, "profit": -35, "happiness": -2 } },
+    { "id": "parcel", "label": "包裹", "affects": ["happiness"], "failDelta": { "money": -5, "profit": -5, "happiness": -2 } },
+    { "id": "food_delivery", "label": "外送餐點", "affects": ["happiness"], "failDelta": { "money": -5, "profit": 0, "happiness": -3 } },
+    { "id": "passengers", "label": "居民通勤", "affects": ["happiness"], "failDelta": { "money": 0, "profit": -5, "happiness": -4 } },
+    { "id": "tourists", "label": "遊客", "affects": ["profit", "money"], "failDelta": { "money": -40, "profit": -30, "happiness": -1 } },
+    { "id": "waste", "label": "垃圾／落葉", "affects": ["happiness", "drainClearance"], "failDelta": { "money": -15, "profit": -5, "happiness": -5 } },
+    { "id": "drinking_water", "label": "飲用水", "affects": ["happiness", "waterTransparency"], "failDelta": { "money": -10, "profit": 0, "happiness": -6 } },
+    { "id": "test_kits", "label": "檢測器材", "affects": ["waterTransparency"], "failDelta": { "money": -5, "profit": 0, "happiness": -2 } },
+    { "id": "building_material", "label": "建材", "affects": ["boardwalkQuality"], "failDelta": { "money": -20, "profit": -10, "happiness": -1 } },
+    { "id": "drain_tools", "label": "清淤機具", "affects": ["drainClearance"], "failDelta": { "money": -15, "profit": -5, "happiness": -2 } }
+  ]
+}

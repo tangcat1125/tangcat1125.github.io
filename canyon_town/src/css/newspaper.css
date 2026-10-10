@@ -1,0 +1,1720 @@
+/* canyon_town — 《貓貓快報》Apple Daily–inspired tabloid
+ * 紅報頭、奶油紙、黃強調；plate 作 masthead/chrome；正文 DOM 疊在 cream 上。
+ * 觸控友善；禁止只靠 hover 才能讀／關。
+ */
+
+:root {
+  --np-ink: #1a1a1a;
+  --np-paper: #fff8e7;
+  --np-paper-2: #fff3d6;
+  --np-cream: #fff8e7;
+  --np-rule: #c41e1e;
+  --np-rule-ink: #1a1a1a;
+  --np-muted: #5a5348;
+  --np-accent: #c41e1e;
+  --np-yellow: #ffd400;
+  --np-yellow-deep: #e8a800;
+  --np-good: #2f6b3a;
+  --np-bad: #a33;
+  --np-gutter: 14px;
+  --np-col-gap: 16px;
+  --np-touch: 48px;
+  --np-font-display: "Noto Serif TC", "Source Han Serif TC", "PMingLiU", "Microsoft JhengHei", serif;
+  --np-font-ui: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --np-plate: url("../../assets/sprites/ui/ui_newspaper_catflash_plate.webp");
+}
+
+#newspaper-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(20, 12, 10, 0.78);
+  padding: 8px;
+  align-items: stretch;
+  justify-content: center;
+}
+
+#newspaper-overlay.is-open {
+  display: flex;
+  overflow: hidden;
+  touch-action: none;
+  padding: max(6px, env(safe-area-inset-top)) max(6px, env(safe-area-inset-right))
+    max(6px, env(safe-area-inset-bottom)) max(6px, env(safe-area-inset-left));
+}
+
+/* 紙面根：plate cover top + cream fallback；可垂直滑、比視窗長 */
+.newspaper,
+.np-sheet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(1100px, 100%);
+  height: 100%;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  min-height: 0;
+  color: var(--np-ink);
+  border: 3px solid var(--np-ink);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.4);
+  font-family: var(--np-font-ui);
+  padding: 0 0 48px;
+  background-color: var(--np-cream);
+  background-image: var(--np-plate);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+.newspaper > *,
+.np-sheet > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ——— 工具列 ——— */
+.newspaper__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin: 0;
+  padding: 10px 14px;
+  background: rgba(196, 30, 30, 0.96);
+  border-bottom: 3px solid var(--np-yellow);
+  color: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.newspaper__page-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffe8e8;
+}
+
+.newspaper__btn {
+  min-height: var(--np-touch);
+  min-width: var(--np-touch);
+  padding: 10px 14px;
+  border: 2px solid var(--np-ink);
+  background: var(--np-paper-2);
+  color: var(--np-ink);
+  font-size: 15px;
+  font-weight: 800;
+  font-family: var(--np-font-ui);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  touch-action: manipulation;
+  flex: 0 0 auto;
+}
+
+.newspaper__btn:focus-visible {
+  outline: 3px solid var(--np-yellow);
+  outline-offset: 2px;
+}
+
+.newspaper__btn:active {
+  background: #ffe08a;
+}
+
+.newspaper__btn--primary {
+  background: var(--np-yellow);
+  margin-left: 0;
+}
+
+.newspaper__read-meter {
+  position: relative;
+  flex: 1 1 120px;
+  min-width: 96px;
+  padding: 8px 10px;
+  border: 2px solid var(--np-ink);
+  background: #fffdf6;
+  color: var(--np-ink);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.newspaper__read-meter::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: var(--np-read-pct, 0%);
+  max-width: 100%;
+  background: var(--np-yellow);
+  pointer-events: none;
+}
+
+@media (max-width: 560px) {
+  .newspaper__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .newspaper__btn--primary,
+  .newspaper__read-meter {
+    width: 100%;
+  }
+  .newspaper__page-label {
+    order: -1;
+  }
+}
+
+/* ——— 紅報頭（DOM；plate 圖作 chrome 底） ——— */
+.newspaper__masthead {
+  text-align: center;
+  margin: 0;
+  padding: 18px 16px 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(196, 30, 30, 0.92) 0%,
+    rgba(196, 30, 30, 0.88) 70%,
+    rgba(255, 248, 231, 0.15) 100%
+  );
+  border-bottom: 4px dashed var(--np-yellow);
+  color: #fff;
+}
+
+.newspaper__title,
+.np-masthead__name {
+  margin: 0;
+  display: inline-block;
+  font-family: var(--np-font-display);
+  font-size: clamp(36px, 8vw, 56px);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 1.05;
+  padding: 6px 28px 8px;
+  background: #fff;
+  color: var(--np-accent);
+  border: 3px solid var(--np-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+.newspaper__meta {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffe8a0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+}
+
+.newspaper__meta strong {
+  color: #fff;
+}
+
+.newspaper__mission {
+  margin: 12px 14px 10px;
+  padding: 12px 14px;
+  border: 3px solid var(--np-ink);
+  background: var(--np-yellow);
+  color: var(--np-ink);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.45;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.newspaper__mission .np-loop {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #5a3a00;
+}
+
+/* ——— 正文區：solid cream，不依賴 plate 空框 ——— */
+.newspaper__body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--np-col-gap);
+  padding: 8px 14px 0;
+  background: var(--np-cream);
+}
+
+@media (min-width: 780px) {
+  .newspaper__body {
+    grid-template-columns: 1.7fr 1fr;
+    align-items: start;
+  }
+}
+
+.newspaper__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--np-gutter);
+  min-width: 0;
+  background: var(--np-cream);
+  padding: 4px 2px 8px;
+}
+
+.newspaper__headline {
+  border: 3px solid var(--np-ink);
+  background: #fff;
+  padding: 14px 16px;
+  box-shadow: 4px 4px 0 rgba(196, 30, 30, 0.35);
+}
+
+.newspaper__headline .kicker {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 2px 8px;
+  background: var(--np-accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.newspaper__headline h2 {
+  margin: 0 0 10px;
+  font-family: var(--np-font-display);
+  font-size: clamp(26px, 5.5vw, 38px);
+  line-height: 1.22;
+  font-weight: 900;
+  color: var(--np-accent);
+}
+
+.newspaper__headline .lede {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.65;
+  color: #222;
+}
+
+.newspaper__columns {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (min-width: 640px) {
+  .newspaper__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+}
+
+.np-story {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--np-ink);
+  background: #fffdf8;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.12);
+}
+
+.np-story.is-urgent {
+  border-color: var(--np-accent);
+  border-width: 3px;
+}
+
+.np-story.is-urgent .np-story__kicker {
+  color: var(--np-accent);
+  font-weight: 800;
+}
+
+.np-story__toggle {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 14px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  min-height: var(--np-touch);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+  color: inherit;
+}
+
+.np-story__toggle:focus-visible {
+  outline: 3px solid var(--np-yellow);
+  outline-offset: 2px;
+}
+
+.np-story__kicker {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--np-muted);
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.np-story__title {
+  display: block;
+  font-family: var(--np-font-display);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.np-story__blurb {
+  display: block;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.np-story__hint {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--np-accent);
+  font-weight: 800;
+}
+
+.np-story__body {
+  padding: 0 14px 16px;
+  font-size: 16px;
+  line-height: 1.7;
+  border-top: 2px dashed rgba(196, 30, 30, 0.35);
+  background: #fffaf0;
+}
+
+.np-story__body[hidden] {
+  display: none !important;
+}
+
+.np-story.is-expanded {
+  box-shadow: 4px 4px 0 rgba(196, 30, 30, 0.25);
+}
+
+.np-story.is-expanded .np-story__body {
+  display: block;
+}
+
+.np-story.is-expanded .np-story__hint {
+  display: none;
+}
+
+.np-story.is-expanded .np-story__blurb {
+  display: none;
+}
+
+.np-story__body > p {
+  margin: 10px 0;
+}
+
+/* 畫重點：點擊線索 */
+.np-clue {
+  margin: 10px 0;
+  padding: 10px 12px;
+  background: #fff6d0;
+  border: 2px solid transparent;
+  border-left: 6px solid var(--np-accent);
+  font-size: 15px;
+  line-height: 1.55;
+  cursor: pointer;
+  touch-action: manipulation;
+  min-height: 44px;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.np-clue.is-seen {
+  opacity: 0.95;
+}
+
+.np-clue.is-highlighted {
+  background: var(--np-yellow);
+  border-color: var(--np-ink);
+  border-left-width: 6px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+  font-weight: 800;
+}
+
+.np-clue.is-highlighted::before {
+  content: "★ 畫重點　";
+  color: var(--np-accent);
+}
+
+.np-story__takeaway {
+  margin-top: 12px;
+  padding: 10px 12px;
+  font-size: 15px;
+  background: #e8f5e4;
+  border: 2px solid var(--np-good);
+}
+
+.np-report {
+  margin: 16px 0;
+  padding: 14px 16px;
+  border-top: 3px solid var(--np-ink);
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 140px;
+  background: #fffaf0;
+}
+
+.np-report h3 {
+  margin: 0 0 8px;
+  font-family: var(--np-font-display);
+  font-size: 18px;
+  color: var(--np-accent);
+}
+
+.np-report--end {
+  min-height: 180px;
+  margin-bottom: 28px;
+  background: #e8f0e4;
+  border: 3px solid var(--np-good);
+}
+
+.np-gate-pass {
+  margin: 12px 14px;
+  padding: 14px 16px;
+  border: 3px solid var(--np-ink);
+  background: var(--np-yellow);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.55;
+  display: none;
+}
+
+.np-gate-pass.is-visible {
+  display: block;
+}
+
+.newspaper__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.np-box {
+  border: 2px solid var(--np-ink);
+  background: #fff;
+  padding: 12px 14px;
+}
+
+.np-box__head {
+  margin: 0 0 10px;
+  font-family: var(--np-font-display);
+  font-size: 16px;
+  background: var(--np-accent);
+  color: #fff;
+  margin: -12px -14px 12px;
+  padding: 8px 14px;
+}
+
+.np-metrics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.np-metrics li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 15px;
+  min-height: 40px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed #ddd;
+}
+
+.np-metrics .label { color: var(--np-muted); font-weight: 700; }
+.np-metrics .value {
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  font-size: 18px;
+}
+.np-metrics .delta { width: 100%; font-size: 13px; font-weight: 700; }
+.np-metrics .delta.is-up { color: var(--np-good); }
+.np-metrics .delta.is-down { color: var(--np-bad); }
+.np-metrics .delta.is-flat { color: var(--np-muted); }
+
+.np-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.np-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 2px solid var(--np-ink);
+  background: var(--np-paper);
+  font-size: 14px;
+  font-weight: 700;
+  touch-action: manipulation;
+}
+
+.np-box__note {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--np-muted);
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+.newspaper__footer-band {
+  margin-top: 18px;
+  padding: 14px 14px 8px;
+  border-top: 4px double var(--np-rule-ink);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.55;
+  background: var(--np-cream);
+}
+
+@media (min-width: 520px) {
+  .newspaper__footer-band {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.newspaper__footer-band h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--np-accent);
+  font-weight: 900;
+}
+
+#btn-ready-policy:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: grayscale(0.35);
+}
+
+/* 手牌鎖定／政策前隱藏 */
+#hand-rail.is-locked,
+#hand-rail[aria-disabled="true"] {
+  opacity: 0.55;
+  filter: grayscale(0.4);
+  pointer-events: none;
+}
+
+#hand-rail.is-locked::after,
+#hand-rail[aria-disabled="true"]::after {
+  content: "滑讀 → 展開畫重點 → 用點數買政策卡";
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%);
+  z-index: 2;
+  padding: 6px 12px;
+  min-height: 36px;
+  border: 2px solid #1a1a1a;
+  background: #ffd400;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+#hand-rail.is-away,
+#hand-rail[hidden] {
+  display: none !important;
+}
+
+/* ——— 公職委任面板 + 星芒雷達 ——— */
+#staff-commission-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  background: rgba(12, 10, 8, 0.72);
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+#staff-commission-overlay.is-open {
+  display: flex;
+}
+
+.staff-panel {
+  width: min(520px, 100%);
+  max-height: 94vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--np-cream);
+  border: 3px solid var(--np-ink);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.35);
+  padding: 0 0 16px;
+  font-family: var(--np-font-ui);
+  color: var(--np-ink);
+}
+
+.staff-panel__head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  background: var(--np-accent);
+  color: #fff;
+  border-bottom: 3px solid var(--np-yellow);
+}
+
+.staff-panel__avatar {
+  width: 72px;
+  height: 72px;
+  border: 3px solid #fff;
+  background: #fff8e7;
+  object-fit: cover;
+  image-rendering: auto;
+  flex: 0 0 auto;
+}
+
+.staff-panel__who {
+  min-width: 0;
+}
+
+.staff-panel__who h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.staff-panel__who .org {
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+.staff-panel__body {
+  padding: 14px 16px;
+}
+
+.staff-panel__mission-title {
+  margin: 0 0 6px;
+  font-family: var(--np-font-display);
+  font-size: 20px;
+  color: var(--np-accent);
+}
+
+.staff-panel__blurb {
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.staff-panel__speak {
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  background: #fff;
+  border-left: 4px solid var(--np-yellow);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.staff-panel__fit {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--np-muted);
+}
+
+.staff-radar-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 14px;
+  background: #fff;
+  border: 2px solid var(--np-ink);
+  padding: 8px;
+}
+
+.staff-radar {
+  width: min(260px, 80vw);
+  height: min(260px, 80vw);
+  display: block;
+}
+
+.staff-radar .axis-label {
+  font-size: 11px;
+  font-weight: 800;
+  fill: var(--np-ink);
+}
+
+.staff-radar .grid {
+  fill: none;
+  stroke: #d4c8a8;
+  stroke-width: 1;
+}
+
+.staff-radar .poly {
+  fill: rgba(196, 30, 30, 0.35);
+  stroke: var(--np-accent);
+  stroke-width: 2;
+}
+
+.staff-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: stretch;
+  padding: 0 16px;
+}
+
+.staff-panel__actions .newspaper__btn {
+  flex: 1 1 140px;
+}
+
+.staff-panel__hint {
+  margin: 12px 16px 0;
+  font-size: 12px;
+  color: var(--np-muted);
+  line-height: 1.4;
+}
+
+/* ——— staff avatar roles（assets/sprites/npc/staff/）——— */
+.staff-panel__avatar {
+  background-color: #fff8e7;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+.staff-panel__avatar[data-role="police_chief"],
+.staff-panel__avatar--police_chief {
+  background-image: url("../../assets/sprites/npc/staff/npc_staff_police_chief.webp");
+}
+.staff-panel__avatar[data-role="hospital_director"],
+.staff-panel__avatar--hospital_director {
+  background-image: url("../../assets/sprites/npc/staff/npc_staff_hospital_director.webp");
+}
+.staff-panel__avatar[data-role="works_engineer"],
+.staff-panel__avatar--works_engineer {
+  background-image: url("../../assets/sprites/npc/staff/npc_staff_works_engineer.webp");
+}
+.staff-panel__avatar[data-role="fire_chief"],
+.staff-panel__avatar--fire_chief {
+  background-image: url("../../assets/sprites/npc/staff/npc_staff_fire_chief.webp");
+}
+.staff-panel__avatar[data-role="clerk_hall"],
+.staff-panel__avatar--clerk_hall {
+  background-image: url("../../assets/sprites/npc/staff/npc_staff_clerk_hall.webp");
+}
+.staff-panel__avatar[data-role="market_chair"],
+.staff-panel__avatar--market_chair {
+  background-image: url("../../assets/sprites/npc/staff/npc_staff_market_chair.webp");
+}
+
+/* === 決策欄工作區：左快報／右 HUD（門檻後才開）=== */
+.np-workspace {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 0;
+  min-height: 0;
+}
+
+.np-sheet-col {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.np-sheet-col .newspaper,
+.np-sheet-col .np-sheet {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+}
+
+.np-workspace.has-decision-open .np-sheet-col {
+  flex: 1 1 58%;
+}
+
+.np-decision-hud {
+  flex: 0 0 0;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  background: #1a1410;
+  color: #fff8e7;
+  border-left: 0 solid #ffd400;
+  transition: flex-basis 0.22s ease, width 0.22s ease, opacity 0.18s ease;
+  min-height: 0;
+}
+
+.np-decision-hud.is-open {
+  flex: 0 0 min(420px, 42vw);
+  width: min(420px, 42vw);
+  opacity: 1;
+  pointer-events: auto;
+  border-left-width: 4px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.np-decision-hud.is-collapsed {
+  /* 明確收合 */
+}
+
+.np-decision-hud__bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 10px 12px;
+  background: #c41e1e;
+  border-bottom: 3px solid #ffd400;
+}
+
+.np-decision-hud__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.np-decision-hud__bar .newspaper__btn {
+  font-size: 12px;
+  min-height: 40px;
+  padding: 8px 10px;
+}
+
+.np-decision-hud__tip {
+  margin: 0;
+  padding: 10px 12px;
+  background: #ffd400;
+  color: #1a1a1a;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.np-decision-hud__voices,
+.np-decision-hud__shop {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 248, 231, 0.15);
+}
+
+.np-decision-hud__voices h3,
+.np-decision-hud__shop h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #ffd400;
+  letter-spacing: 0.04em;
+}
+
+.np-voice {
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  background: rgba(255, 248, 231, 0.08);
+  border-left: 4px solid #ffd400;
+  border-radius: 0 6px 6px 0;
+}
+
+.np-voice cite {
+  display: block;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 800;
+  color: #ffd400;
+  margin-bottom: 4px;
+}
+
+.np-voice p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #fff8e7;
+}
+
+.np-voice--empty {
+  opacity: 0.7;
+  font-size: 13px;
+}
+
+.np-decision-predict {
+  width: 100% !important;
+  max-width: none;
+  margin-bottom: 10px;
+  background: #fff8e7 !important;
+  color: #1a1a1a;
+  border: 2px solid #ffd400 !important;
+  font-size: 12px;
+}
+
+/* 決策欄政策店：直式 3:4 卡，一列 2 張（手機窄螢幕亦 2 張） */
+.np-decision-hand {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-items: start;
+  justify-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: min(56vh, 560px);
+  padding: 4px 2px 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.np-decision-hand .policy-card {
+  flex: none;
+  width: 100%;
+  max-width: 190px;
+  min-width: 0;
+  aspect-ratio: 3 / 4;
+  height: auto;
+  min-height: 0;
+  padding: 5px;
+  text-align: left;
+  border: 2px solid #1a1a1a;
+  background: #fff8e7;
+  color: #1a1a1a;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.np-decision-hand .policy-card.is-selected {
+  outline: 3px solid #ffd400;
+  outline-offset: 0;
+  background: #fff3b0;
+  box-shadow: 0 0 0 2px #c41e1e, 3px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.np-decision-hand .policy-card.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.np-decision-hand .policy-card__art {
+  flex: 0 0 46%;
+}
+
+.np-decision-hand .policy-card__title,
+.np-decision-hand .name {
+  display: block;
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.np-decision-hand .policy-card__cost,
+.np-decision-hand .cost {
+  display: inline-block;
+  margin-top: 0;
+  padding: 1px 6px;
+  background: #c41e1e;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  width: fit-content;
+}
+
+.np-decision-hand .blurb {
+  display: -webkit-box;
+  margin-top: 0;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #333;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.np-decision-hand .deltas {
+  display: block;
+  font-size: 10px;
+  margin-top: auto;
+  color: #555;
+  white-space: nowrap;
+}
+.np-decision-hand .solves { display: none; }
+
+.np-decision-hud__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.np-decision-hud__actions .newspaper__btn {
+  flex: 1 1 120px;
+}
+
+.newspaper__btn--accent {
+  background: #ffd400;
+  color: #1a1a1a;
+}
+
+@media (max-width: 820px) {
+  .np-workspace {
+    flex-direction: column;
+  }
+  .np-decision-hud.is-open {
+    flex: 0 0 auto;
+    width: 100%;
+    max-height: 48vh;
+    border-left-width: 0;
+    border-top: 4px solid #ffd400;
+  }
+  .np-workspace.has-decision-open .np-sheet-col {
+    flex: 1 1 52%;
+    min-height: 0;
+  }
+}
+
+
+/* ==========================================================================
+ * === NP ZONING v2（米米 2026-10-02）===
+ * 分區：報頭｜頭條｜側欄｜線索框｜故事進度｜決策欄。僅 CSS；DOM 見 newspaper.js。
+ * 色盤：紅 #c41e1e／奶油 #fff8e7／黃 #ffd400／墨 #1a1a1a／綠 #2f6b3a。
+ * 觸控：互動元素 ≥44px；不依賴 hover。不碰 #hand-rail.is-away、.npc。
+ * ========================================================================== */
+
+/* —— 紙面：半調網點紙感（疊在 cream 上，不擋字） —— */
+.np-sheet .newspaper__body,
+.np-sheet .newspaper__footer-band {
+  background-image: radial-gradient(rgba(196, 30, 30, 0.06) 1px, transparent 1.4px);
+  background-size: 6px 6px;
+  background-color: var(--np-cream);
+}
+
+/* —— 工具列進度線：用 #newspaper-sheet 的 --np-read-pct（JS 已設），整份快報閱讀進度 —— */
+.np-sheet .newspaper__toolbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 5px;
+  width: var(--np-read-pct, 0%);
+  max-width: 100%;
+  background: var(--np-ink);
+  border-right: 3px solid #fff;
+  pointer-events: none;
+  transition: width 0.12s linear;
+}
+.np-sheet .newspaper__read-meter {
+  min-height: var(--np-touch);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* —— ① 報頭 masthead —— */
+.np-sheet .newspaper__masthead {
+  position: relative;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.16) 1.2px, transparent 1.6px) 0 0 / 7px 7px,
+    linear-gradient(180deg, #d42323 0%, #c41e1e 72%, #b01818 100%);
+  border-bottom: 0;
+  padding: 20px 16px 14px;
+  box-shadow: inset 0 -6px 0 var(--np-yellow), inset 0 -9px 0 var(--np-ink);
+  padding-bottom: 26px;
+}
+.np-sheet .newspaper__masthead::before,
+.np-sheet .newspaper__masthead::after {
+  content: "🐾";
+  position: absolute;
+  top: 14px;
+  font-size: 26px;
+  line-height: 1;
+  opacity: 0.55;
+  pointer-events: none;
+}
+.np-sheet .newspaper__masthead::before { left: 14px; transform: rotate(-18deg); }
+.np-sheet .newspaper__masthead::after { right: 14px; transform: rotate(18deg); }
+.np-sheet .newspaper__title {
+  border-width: 4px;
+  box-shadow: 4px 4px 0 var(--np-ink);
+  text-shadow: 2px 2px 0 var(--np-yellow);
+}
+.np-sheet .newspaper__meta span {
+  padding: 4px 10px;
+  background: rgba(26, 26, 26, 0.35);
+  border: 1px solid rgba(255, 212, 0, 0.6);
+  border-radius: 999px;
+  color: #fff3c4;
+}
+.np-sheet .newspaper__mission {
+  position: relative;
+  border-left-width: 10px;
+  border-left-color: var(--np-accent);
+}
+
+/* —— ② 頭條 headline —— */
+.np-sheet .newspaper__headline {
+  position: relative;
+  padding-top: 40px;
+  border-width: 4px;
+  box-shadow: 0 0 0 2px var(--np-cream), 0 0 0 4px var(--np-ink), 6px 6px 0 4px rgba(196, 30, 30, 0.35);
+  background: #fff linear-gradient(135deg, transparent 80%, rgba(255, 212, 0, 0.4) 80%);
+}
+.np-sheet .newspaper__headline::before {
+  content: "頭條";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  padding: 6px 16px 6px 12px;
+  min-height: 32px;
+  background: var(--np-accent);
+  color: #fff;
+  border: 4px solid var(--np-ink);
+  border-radius: 0 0 14px 0;
+  font-family: var(--np-font-display);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  line-height: 1.2;
+}
+.np-sheet .newspaper__headline .kicker {
+  background: var(--np-ink);
+  color: var(--np-yellow);
+}
+.np-sheet .newspaper__headline h2 {
+  text-shadow: 2px 2px 0 rgba(255, 212, 0, 0.55);
+}
+.np-sheet .newspaper__headline .lede {
+  padding-top: 8px;
+  border-top: 3px double var(--np-ink);
+}
+
+/* —— ③ 故事進度（每則：待展開 → 已展開 → 已畫重點；急件） —— */
+.np-sheet .newspaper__columns {
+  counter-reset: np-story;
+}
+.np-sheet .np-story {
+  position: relative;
+  counter-increment: np-story;
+  border-left-width: 8px;
+  border-left-color: #b9ad94; /* 未讀：灰 */
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.np-sheet .np-story::before {
+  content: "第 " counter(np-story) " 則 · 待展開";
+  display: block;
+  padding: 3px 10px;
+  background: #ece3cc;
+  color: var(--np-muted);
+  border-bottom: 2px solid var(--np-ink);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+.np-sheet .np-story.is-expanded {
+  border-left-color: var(--np-yellow-deep);
+}
+.np-sheet .np-story.is-expanded::before {
+  content: "第 " counter(np-story) " 則 · 已展開 · 去畫線索重點";
+  background: var(--np-yellow);
+  color: var(--np-ink);
+}
+.np-sheet .np-story.is-urgent {
+  border-left-color: var(--np-accent);
+}
+.np-sheet .np-story.is-urgent::before {
+  content: "第 " counter(np-story) " 則 · 急件｜先看這則";
+  background: var(--np-accent);
+  color: #fff;
+}
+.np-sheet .np-story.is-urgent.is-expanded::before {
+  content: "第 " counter(np-story) " 則 · 急件 · 已展開";
+}
+/* 已畫過至少一條重點（:has；不支援時退回上方展開樣式） */
+.np-sheet .np-story:has(.np-clue.is-highlighted) {
+  border-left-color: var(--np-good);
+}
+.np-sheet .np-story:has(.np-clue.is-highlighted)::before {
+  content: "第 " counter(np-story) " 則 · ★ 已畫重點";
+  background: var(--np-good);
+  color: #fff;
+}
+.np-sheet .np-story__toggle {
+  min-height: 56px;
+  position: relative;
+  padding-right: 48px;
+}
+.np-sheet .np-story__toggle::after {
+  content: "▾";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--np-paper-2);
+  border: 2px solid var(--np-ink);
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+}
+.np-sheet .np-story__toggle[aria-expanded="true"]::after {
+  content: "▴";
+  background: var(--np-yellow);
+}
+.np-sheet .np-story__toggle:active {
+  background: rgba(255, 212, 0, 0.25);
+}
+
+/* —— ④ 線索框 .np-clue —— */
+.np-sheet .np-clue {
+  position: relative;
+  min-height: 48px;
+  padding: 10px 12px 28px;
+  background:
+    repeating-linear-gradient(135deg, rgba(196, 30, 30, 0.05) 0 6px, transparent 6px 12px),
+    #fff6d0;
+  border: 2px dashed var(--np-ink);
+  border-left: 8px solid var(--np-accent);
+  -webkit-tap-highlight-color: rgba(255, 212, 0, 0.5);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.np-sheet .np-clue::after {
+  content: "☐ 點一下畫重點";
+  position: absolute;
+  right: 8px;
+  bottom: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--np-accent);
+  letter-spacing: 0.04em;
+}
+.np-sheet .np-clue:focus-visible {
+  outline: 3px solid var(--np-ink);
+  outline-offset: 2px;
+}
+.np-sheet .np-clue.is-seen {
+  opacity: 1;
+}
+.np-sheet .np-clue.is-highlighted {
+  border-style: solid;
+  border-left-color: var(--np-ink);
+  background: var(--np-yellow);
+}
+.np-sheet .np-clue.is-highlighted::after {
+  content: "☑ 已畫重點";
+  color: var(--np-ink);
+}
+
+/* —— ⑤ 側欄 aside —— */
+@media (min-width: 780px) {
+  .np-sheet .newspaper__aside {
+    position: sticky;
+    top: 88px;
+    align-self: start;
+  }
+}
+.np-sheet .np-box {
+  border-width: 3px;
+  box-shadow: 4px 4px 0 rgba(26, 26, 26, 0.22);
+  background:
+    radial-gradient(rgba(196, 30, 30, 0.07) 1px, transparent 1.4px) 0 0 / 6px 6px,
+    #fff;
+}
+.np-sheet .np-box__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  margin: -12px -14px 12px;
+  padding: 6px 14px;
+  border-bottom: 3px solid var(--np-yellow);
+  letter-spacing: 0.08em;
+  font-weight: 900;
+}
+.np-sheet .np-box__head::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  background: var(--np-yellow);
+  border: 2px solid var(--np-ink);
+}
+.np-sheet .np-metrics li {
+  position: relative;
+  padding-left: 12px;
+  border-left: 4px solid var(--np-yellow);
+}
+.np-sheet .np-metrics .delta.is-up::before,
+.np-sheet .np-metrics .delta.is-down::before { content: ""; }
+.np-sheet .np-chip {
+  min-height: 44px;
+  border-width: 2px;
+  background: #fff3d6;
+  box-shadow: 2px 2px 0 rgba(26, 26, 26, 0.25);
+}
+.np-sheet .np-report {
+  border-top-width: 4px;
+  border-top-style: double;
+}
+.np-sheet .np-gate-pass.is-visible {
+  box-shadow: 4px 4px 0 var(--np-accent);
+  border-left: 10px solid var(--np-accent);
+}
+
+/* —— ⑥ 右側決策 HUD（#np-decision-hud；開關 .is-open／.is-collapsed 由 JS） —— */
+#np-decision-hud {
+  position: relative;
+  background:
+    radial-gradient(rgba(255, 212, 0, 0.08) 1px, transparent 1.4px) 0 0 / 6px 6px,
+    #1a1410;
+  box-shadow: -6px 0 0 rgba(0, 0, 0, 0.35);
+}
+#np-decision-hud.is-collapsed { visibility: hidden; }
+#np-decision-hud.is-open { visibility: visible; }
+#np-decision-hud .np-decision-hud__bar {
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1.4px) 0 0 / 6px 6px,
+    #c41e1e;
+  border-bottom: 4px solid var(--np-yellow);
+  box-shadow: 0 4px 0 var(--np-ink);
+}
+#np-decision-hud .np-decision-hud__title { color: #fff; text-shadow: 2px 2px 0 var(--np-ink); }
+#np-decision-hud .np-decision-hud__bar .newspaper__btn {
+  min-height: 44px;
+  font-size: 13px;
+}
+#np-decision-hud .np-decision-hud__tip {
+  border-bottom: 3px solid var(--np-ink);
+  padding-left: 14px;
+}
+#np-decision-hud .np-decision-hud__voices,
+#np-decision-hud .np-decision-hud__shop {
+  margin: 12px;
+  padding: 0 0 12px;
+  border: 3px solid var(--np-ink);
+  background: #2a211a;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45);
+}
+#np-decision-hud .np-decision-hud__voices h3,
+#np-decision-hud .np-decision-hud__shop h3 {
+  margin: 0 0 10px;
+  padding: 8px 12px;
+  background: var(--np-yellow);
+  color: var(--np-ink);
+  border-bottom: 3px solid var(--np-ink);
+  font-size: 15px;
+}
+#np-decision-hud .np-decision-hud__voices h3::before { content: "💬 "; }
+#np-decision-hud .np-decision-hud__shop h3::before { content: "🛒 "; }
+#np-decision-hud #np-decision-voices,
+#np-decision-hud .np-decision-hud__shop > :not(h3) {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+#np-decision-hud .np-decision-hud__shop > .np-decision-predict { width: auto !important; }
+#np-decision-hud .np-voice {
+  position: relative;
+  border-left: 0;
+  border: 2px solid var(--np-ink);
+  border-radius: 10px 10px 10px 2px;
+  background: var(--np-cream);
+  color: var(--np-ink);
+}
+#np-decision-hud .np-voice cite { color: var(--np-accent); font-size: 13px; }
+#np-decision-hud .np-voice p { color: var(--np-ink); font-size: 14px; }
+#np-decision-hud .np-voice--empty { background: transparent; color: var(--np-cream); border-style: dashed; }
+
+/* 點數／預測條：像收據 */
+#np-decision-hud .np-decision-predict {
+  padding: 8px 10px;
+  border: 3px dashed var(--np-accent) !important;
+  background: var(--np-cream) !important;
+  color: var(--np-ink);
+  font-size: 13px;
+  line-height: 1.5;
+}
+#np-decision-hud .np-decision-predict strong { color: var(--np-accent); }
+#np-decision-hud .np-decision-predict .policy-tip {
+  font-size: 12px;
+  padding: 6px 8px;
+  border-width: 2px;
+  margin-bottom: 6px;
+}
+
+/* 手牌清單（列式，預設）：色條＋已選勾 */
+#np-decision-hud .np-decision-hand { max-height: min(46vh, 420px); gap: 10px; }
+#np-decision-hud .np-decision-hand .policy-card {
+  position: relative;
+  min-height: 56px;
+  padding-right: 36px;
+  border-left: 8px solid var(--np-accent);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.45);
+  touch-action: manipulation;
+  cursor: pointer;
+}
+#np-decision-hud .np-decision-hand .policy-card.is-selected {
+  outline: 0;
+  border-color: var(--np-ink);
+  border-left-color: var(--np-good);
+  background: #fff3b0;
+  box-shadow: 0 0 0 3px var(--np-yellow), 3px 3px 0 3px rgba(0, 0, 0, 0.45);
+}
+/* (ZONING 的 ✓ ::before 已移除：直式卡用 .card-3x4.is-selected::after「✓ 已選」) */
+#np-decision-hud .np-decision-hand .policy-card.is-disabled {
+  opacity: 0.5;
+  filter: grayscale(0.6);
+  border-left-color: #8a8070;
+}
+#np-decision-hud .np-decision-hand .solves { color: #8b1e1e; font-weight: 800; }
+
+/* 確認列：黏在 HUD 底，拇指好按 */
+#np-decision-hud .np-decision-hud__actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  padding: 10px 0 2px;
+  margin-left: 12px;
+  margin-right: 12px;
+  background: linear-gradient(180deg, transparent, #2a211a 28%);
+}
+#np-decision-hud .np-decision-hud__actions .newspaper__btn { min-height: 52px; font-size: 15px; }
+#np-decision-hud .np-decision-hud__actions .newspaper__btn--primary:disabled {
+  opacity: 0.5;
+  background: #b8a85a;
+}
+
+/* 窄螢幕：HUD 在下方，卡牌橫向捲動（不改 JS） */
+@media (max-width: 820px) {
+  #np-decision-hud.is-open { box-shadow: 0 -6px 0 rgba(0, 0, 0, 0.35); }
+  #np-decision-hud .np-decision-hud__voices,
+  #np-decision-hud .np-decision-hud__shop { margin: 8px; }
+}
+/* === /NP ZONING v2 === */
+
+/* ===== 貓貓快報：分區進度／線索箱／天氣廣告（plate 當紙面）===== */
+.newspaper,
+.np-sheet {
+  background-color: var(--np-cream);
+  background-image: var(--np-plate);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+/* 正文區略透明，讓 plate 的奶油紙紋與紅框透出，不再是死白底 */
+.newspaper__body,
+.newspaper__footer-band {
+  background: rgba(255, 248, 231, 0.9);
+}
+.newspaper__headline { border-left: 6px solid var(--np-rule); padding-left: 10px; }
+.newspaper__aside .np-box { background: rgba(255, 255, 255, 0.92); }
+
+.np-zones {
+  flex: 1 0 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+.np-zone {
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #ffe8e8;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.18);
+}
+.np-zone.is-reached { background: #ffd400; color: #1a1a1a; border-color: #1a1a1a; }
+.np-zone.is-done { background: #2f6b3a; color: #fff; border-color: #1a1a1a; }
+.np-zone.is-done::after { content: " ✓"; }
+
+.np-cluebox {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.np-cluebox li {
+  background: #fff3a0;
+  border-left: 5px solid var(--np-rule);
+  padding: 4px 8px;
+  font-weight: 700;
+}
+.np-cluebox .np-cluebox__empty {
+  background: transparent;
+  border-left-color: #bbb;
+  color: var(--np-muted);
+  font-weight: 600;
+}
+
+.newspaper__footer-band .np-ad {
+  border: 2px dashed var(--np-rule);
+  padding: 8px 10px;
+  background: #fff3d6;
+}
+.newspaper__footer-band .np-weather {
+  border: 2px solid var(--np-ink);
+  padding: 8px 10px;
+  background: #e9f3f7;
+}
+@media (min-width: 780px) {
+  .newspaper__footer-band { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+/* ===== 決策欄：思考選項（報導行動 → 選卡）===== */
+.np-decision-hud__options {
+  padding: 10px 12px 4px;
+}
+.np-decision-hud__options h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  color: #ffd400;
+}
+.np-decision-hud__hint {
+  margin: 0 0 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #e8dcc0;
+}
+.np-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.np-option {
+  background: #2c2218;
+  border: 2px solid #5a4630;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.np-option.is-read { border-color: #ffd400; }
+.np-option.is-covered { border-color: #2f9b4a; background: #1f2d1f; }
+.np-option__no {
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffd400;
+}
+.np-option__q b { display: block; font-size: 14px; color: #fff8e7; }
+.np-option__q span { color: #d8ccb0; }
+.np-option__a { margin-top: 4px; color: #ffe9a0; font-weight: 700; }
+.np-option__picks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+.np-pick {
+  min-height: 44px;
+  padding: 6px 10px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  border: 2px solid #1a1a1a;
+  background: #fff8e7;
+  color: #1a1a1a;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.np-pick__cost { font-size: 11px; color: #c41e1e; }
+.np-pick.is-picked { background: #ffd400; box-shadow: 0 0 0 2px #c41e1e; }
+.np-pick.is-picked .np-pick__name::before { content: "✓ "; }
+.np-option__none { font-size: 12px; color: #c9bba0; }
+
+/* ===== 直式卡覆寫（需壓過 NP ZONING v2 的列式 .policy-card）：一列 2 張、3:4 ===== */
+#np-decision-hud .np-decision-hand {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  justify-items: center;
+}
+#np-decision-hud .np-decision-hand .policy-card {
+  width: 100%;
+  max-width: 190px;
+  aspect-ratio: 3 / 4;
+  height: auto;
+  min-height: 0;
+  padding: 5px;
+  border-left-width: 6px;
+}
+
+@media (max-width: 820px) {
+  #np-decision-hud .np-decision-hand { max-height: 36vh; }
+}
+
+/* === NP HUD STICKY FIX (2026-10-02) === 窄直式：確認列不再蓋住卡片
+   作法：卡片列不再自己捲（單一捲動容器＝HUD），商店區底部預留確認列高度，
+   確認列用實色底；最後一張卡永遠能捲到確認列上方。 */
+@media (max-width: 820px), (orientation: portrait) {
+  #np-decision-hud .np-decision-hand {
+    max-height: none;
+    overflow: visible;
+    padding-bottom: 8px;
+  }
+  #np-decision-hud .np-decision-hud__shop {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+  #np-decision-hud .np-decision-hud__actions {
+    background: #2a211a;
+    border-top: 3px solid #ffd400;
+    padding: 10px 0 calc(10px + env(safe-area-inset-bottom, 0px));
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 12px;
+    padding-right: 12px;
+    box-shadow: 0 -6px 0 rgba(0, 0, 0, 0.35);
+  }
+  #np-decision-hud { scroll-padding-bottom: 96px; }
+}
+
+/* 思考選項：對症／治標／搭配 標籤 */
+.np-verdict {
+  font-style: normal;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border: 1px solid #1a1a1a;
+  font-size: 11px;
+  font-weight: 900;
+  color: #1a1a1a;
+}
+.np-verdict.is-good { background: #7ddc8a; }
+.np-verdict.is-warn { background: #ffb3a0; }
+.np-verdict.is-mid { background: #ffd400; }

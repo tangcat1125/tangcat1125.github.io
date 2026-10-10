@@ -1,0 +1,205 @@
+{
+  "id": "economy_achievements_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "count": 12,
+  "achievements": [
+    {
+      "id": "first_cure",
+      "name": "初出茅廬",
+      "emoji": "🌱",
+      "desc": "第一次對症處理一件事件。",
+      "condition": {
+        "type": "cureCount",
+        "gte": 1
+      },
+      "text": "第一次對症！城市看見你的用心。"
+    },
+    {
+      "id": "streak3",
+      "name": "三連勝",
+      "emoji": "🔥",
+      "desc": "連續 3 季都有對症處理。",
+      "condition": {
+        "type": "cureStreak",
+        "gte": 3
+      },
+      "text": "三季連勝，節奏掌握得很好。"
+    },
+    {
+      "id": "flows_all_up",
+      "name": "流量全升",
+      "emoji": "📈",
+      "desc": "同一季內，人流、車流、遊客量、治安感四項都比上季上升。",
+      "condition": {
+        "type": "flowsAllUp",
+        "seasons": 1,
+        "flows": [
+          "foot",
+          "vehicle",
+          "tourist",
+          "security"
+        ]
+      },
+      "text": "四項流量一起上揚，城市熱起來了！"
+    },
+    {
+      "id": "zero_ignore",
+      "name": "零忽略",
+      "emoji": "🧹",
+      "desc": "連續 10 季沒有任何事件被忽略。",
+      "condition": {
+        "type": "noIgnoreStreak",
+        "gte": 10
+      },
+      "text": "十季無遺漏，市民都安心了。"
+    },
+    {
+      "id": "frugal",
+      "name": "精打細算",
+      "emoji": "🧮",
+      "desc": "終局金錢超過 2000。",
+      "condition": {
+        "type": "finalMoney",
+        "gt": 2000
+      },
+      "text": "每一點都花在刀口上！"
+    },
+    {
+      "id": "crisis_stop",
+      "name": "危機化解",
+      "emoji": "🛡️",
+      "desc": "成功阻止一次連鎖事件（治標後沒有再冒出同一件事）。",
+      "condition": {
+        "type": "chainPrevented",
+        "gte": 1
+      },
+      "text": "連鎖在你手上被切斷了。"
+    },
+    {
+      "id": "saver",
+      "name": "撙節達人",
+      "emoji": "💰",
+      "desc": "單季淨利達 150 以上。",
+      "condition": {
+        "type": "seasonNet",
+        "gte": 150
+      },
+      "text": "一季賺這麼多，主計主任都點頭了。"
+    },
+    {
+      "id": "star_mayor",
+      "name": "市長之星",
+      "emoji": "⭐",
+      "desc": "市長聲望達 80 以上。",
+      "condition": {
+        "type": "reputation",
+        "gte": 80
+      },
+      "text": "居民口碑滿分，你是真正的明星市長。"
+    },
+    {
+      "id": "textbook",
+      "name": "教科書示範",
+      "emoji": "📘",
+      "desc": "整局取得 S 評等至少 5 次。",
+      "condition": {
+        "type": "gradeCount",
+        "grade": "S",
+        "gte": 5
+      },
+      "text": "完美示範，可以當教材了！"
+    },
+    {
+      "id": "comeback",
+      "name": "浪子回頭",
+      "emoji": "🔄",
+      "desc": "金錢跌到 100 以下後，之後回升到 500 以上。",
+      "condition": {
+        "type": "comeback",
+        "moneyBelow": 100,
+        "thenAbove": 500
+      },
+      "text": "谷底翻身，真有毅力。"
+    },
+    {
+      "id": "collector",
+      "name": "全卡收藏",
+      "emoji": "🗂️",
+      "desc": "整局用過所有政策卡至少一次。",
+      "condition": {
+        "type": "cardsUsed",
+        "mode": "all"
+      },
+      "text": "每一種政策工具你都試過了，見識廣博！",
+      "cardIds": [
+        "policy_animal_patrol",
+        "policy_boardwalk",
+        "policy_bus_reroute",
+        "policy_cctv",
+        "policy_clear_drain",
+        "policy_cold_chain",
+        "policy_coupon",
+        "policy_crime_edu",
+        "policy_crime_map",
+        "policy_delivery_subsidy",
+        "policy_dengue_mobilize",
+        "policy_dog_roundup",
+        "policy_fact_check",
+        "policy_fire_drill",
+        "policy_fire_inspection",
+        "policy_fire_lane",
+        "policy_flood_edu",
+        "policy_flood_relief",
+        "policy_food_edu",
+        "policy_food_safety",
+        "policy_health_edu",
+        "policy_joint_delivery",
+        "policy_kitchen_sorting",
+        "policy_led_lights",
+        "policy_loading_zone",
+        "policy_logistics_hub",
+        "policy_lunch_registry",
+        "policy_market_committee",
+        "policy_market_star",
+        "policy_patrol_lights",
+        "policy_permeable",
+        "policy_pest_control",
+        "policy_pet_edu",
+        "policy_pied_piper",
+        "policy_private_parking",
+        "policy_pump_monitor",
+        "policy_rain_garden",
+        "policy_rat_edu",
+        "policy_rat_pro",
+        "policy_rescue_squad",
+        "policy_runoff_control",
+        "policy_shared_parking",
+        "policy_slope_guard",
+        "policy_smoke_alarm",
+        "policy_stray_dog_tnr",
+        "policy_street_parking",
+        "policy_town_broadcast",
+        "policy_town_hall",
+        "policy_traffic_safety",
+        "policy_vector_control",
+        "policy_vendor_audit",
+        "policy_vendor_shift",
+        "policy_walking_street",
+        "policy_water_test",
+        "policy_wiring_subsidy"
+      ]
+    },
+    {
+      "id": "finish20",
+      "name": "20 季完賽",
+      "emoji": "🏁",
+      "desc": "完成 20 季。",
+      "condition": {
+        "type": "seasonsCompleted",
+        "gte": 20
+      },
+      "text": "二十季走完，城市的故事有了結局。"
+    }
+  ]
+}

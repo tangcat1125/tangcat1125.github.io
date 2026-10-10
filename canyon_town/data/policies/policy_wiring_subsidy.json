@@ -1,0 +1,170 @@
+{
+  "id": "policy_wiring_subsidy",
+  "name": "老屋電線檢修補助",
+  "cost": 2,
+  "blurb": "補助老屋住戶請合格師傅檢修舊電線與插座；從源頭降低走火機率。",
+  "solves": [],
+  "rule_patches": {
+    "wiring_subsidyProgram": 1
+  },
+  "deltas": {
+    "money": -60,
+    "happiness": 3
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "申請與檢修要排隊，見效要一季；住戶不申請就沒有用，需要宣導配合。",
+  "preview": "預估：金錢 -60、幸福度 +3。",
+  "costPoints": 2,
+  "tags": [
+    "安全",
+    "補助獎勵",
+    "預防"
+  ],
+  "counters": [
+    "fire",
+    "electrical",
+    "old_house"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_wiring_subsidy.webp",
+    "icon": "assets/sprites/cards/icons/icon_wiring_subsidy.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🔌",
+    "accent": "#e8a33d",
+    "fxHint": "fx_wiring_subsidy_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "補助獎勵",
+    "rarity": "常見",
+    "titleShort": "電線補助",
+    "costBadge": "2 點",
+    "shopLine": "補助檢修，老電線先換掉。",
+    "effectLine": "老屋電線被汰換，電線走火風險下降。",
+    "flavor": "燈亮得久，不如線換得早。",
+    "learnPoint": "這張牌教你：補助獎勵要配申請與宣導，才真的有人用。",
+    "bullets": [
+      "對症：老屋電線走火",
+      "金錢 -60",
+      "幸福度 +3",
+      "要靠住戶申請"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -60,
+        "text": "金錢 -60"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 3,
+        "text": "幸福度 +3"
+      }
+    ],
+    "tradeoffLine": "申請與檢修要排隊，見效要一季；住戶不申請就沒有用，需要宣導配合。"
+  },
+  "shopBlurb": "補助檢修，老電線先換掉。",
+  "shopLine": "2 點｜補助檢修，老電線先換掉。",
+  "executeId": "exec_wiring_subsidy",
+  "fx": {
+    "street": [
+      "fx_wiring_subsidy_a",
+      "fx_wiring_subsidy_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 1,
+        "security": 3
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -22,
+        "market": 2
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": -0.02,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 1,
+        "delaySeasons": 0,
+        "note": "施工／管制初期，攤商短暫不便"
+      },
+      "strength": "normal",
+      "summary": "遊客+1、治安感+3（永久）；治安民怨-22；店家營收 -2%（短期）"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_yan",
+      "staff_xiu"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.9,
+      "health": 0.2,
+      "engineering": 0.6,
+      "economy": 0.3,
+      "communication": 0.4
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety"
+  ],
+  "complaintDelta": {
+    "safety": -22,
+    "market": 2
+  },
+  "complaintRebound": {},
+  "complaintNote": "申請與檢修要排隊，見效要一季；住戶不申請就沒有用，需要宣導配合。",
+  "eventEffects": {
+    "cure": [
+      "evp_safety_fire"
+    ],
+    "assist": [],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "subsidy",
+  "typeLabel": "補助獎勵",
+  "realWorldAnalog": "住宅安全補助：政府補貼老舊住宅檢修電線，降低電氣火災風險。",
+  "topicCounters": [
+    "fire",
+    "electrical",
+    "old_house"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_safety_fire"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_safety_fire"
+  ],
+  "solvesPoolConditional": []
+}

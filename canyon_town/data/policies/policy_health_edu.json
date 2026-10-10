@@ -1,0 +1,159 @@
+{
+  "id": "policy_health_edu",
+  "name": "衛生教育與防疫宣導",
+  "cost": 1,
+  "blurb": "宣導洗手、倒積水、咳嗽禮儀與何時該就醫；結合學校與里辦公處。效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。",
+  "solves": [],
+  "rule_patches": {
+    "healthEducation": 1
+  },
+  "deltas": {
+    "money": -20,
+    "happiness": 2
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "宣導不能取代疫苗與滅蚊；防疫的主力仍是行動。",
+  "preview": "預估：金錢 -20、幸福度 +2。",
+  "costPoints": 1,
+  "tags": [
+    "資訊",
+    "溝通",
+    "宣導"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_health_edu.webp",
+    "icon": "assets/sprites/cards/icons/icon_health_edu.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🧼",
+    "accent": "#26c6da",
+    "fxHint": "fx_health_edu_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "資訊溝通（宣導教育）",
+    "rarity": "常見",
+    "titleShort": "衛教宣導",
+    "costBadge": "1 點",
+    "shopLine": "教大家洗手、倒積水、有症狀就看醫生。",
+    "effectLine": "居民更會自我防護；傳播略降。",
+    "flavor": "知道怎麼做，病就少一半。",
+    "learnPoint": "這張牌教你：衛教低成本，但不是萬靈丹。",
+    "bullets": [
+      "輔助：登革熱、流感、水質疑慮",
+      "金錢 -20",
+      "下季見效",
+      "效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -20,
+        "text": "金錢 -20"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 2,
+        "text": "幸福度 +2"
+      }
+    ],
+    "tradeoffLine": "宣導不能取代疫苗與滅蚊；防疫的主力仍是行動。"
+  },
+  "shopBlurb": "教大家洗手、倒積水、有症狀就看醫生。",
+  "shopLine": "1 點｜教大家洗手、倒積水、有症狀就看醫生。",
+  "executeId": "exec_health_edu",
+  "fx": {
+    "street": [
+      "fx_health_edu_a",
+      "fx_health_edu_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 1,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 0
+      },
+      "flowKind": "timed",
+      "durationSeasons": 2,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "health": -6
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 1,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 1,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "weak",
+      "summary": "人流+1（2 季）；衛生民怨-6"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_hu",
+      "staff_xin"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.2,
+      "health": 0.8,
+      "engineering": 0.2,
+      "economy": 0.2,
+      "communication": 0.6
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "health"
+  ],
+  "complaintDelta": {
+    "health": -6
+  },
+  "complaintRebound": {},
+  "complaintNote": "宣導不能取代疫苗與滅蚊；防疫的主力仍是行動。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_health_dengue",
+      "evp_health_fake_alert",
+      "evp_health_flu",
+      "evp_health_well"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "info",
+  "typeLabel": "資訊溝通（宣導教育）",
+  "realWorldAnalog": "公共衛生教育：洗手、清積水、就醫判斷；便宜、見效慢。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": true,
+  "effectDelayCycles": 1,
+  "slowNote": "效果較慢、較弱但便宜（下季見效；同一事件重複使用遞減）",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

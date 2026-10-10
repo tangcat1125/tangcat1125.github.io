@@ -1,0 +1,1065 @@
+﻿/* canyon_town — 街景／NPC／HUD／手牌
+ * 現況：工作室已安裝 PNG（street_bg + npc_*）；CSS 峽壁／偽精靈當 fallback。
+ * 觸控優先：操作不依賴 :hover。
+ */
+
+:root {
+  --c-ink: #1a1420;
+  --c-paper: #f2e6c9;
+  --c-paper-dark: #e0d0a8;
+  --c-sky-top: #2a4a7a;
+  --c-sky: #5a9fd4;
+  --c-sky-low: #8ec8e8;
+  --c-sun: #ffe08a;
+  --c-cliff-deep: #3b2418;
+  --c-cliff: #6b4228;
+  --c-cliff-mid: #8a5a38;
+  --c-cliff-hi: #a87848;
+  --c-rock: #4a3830;
+  --c-building: #c9a06a;
+  --c-building-2: #9a7050;
+  --c-building-roof: #6b3030;
+  --c-building-roof-2: #3d4a6a;
+  --c-window: #ffe9a0;
+  --c-window-dark: #2a3040;
+  --c-street: #5a564e;
+  --c-street-hi: #7a756c;
+  --c-street-line: #9a958c;
+  --c-dirt: #7a5a3a;
+  --c-grass: #4a7a3a;
+  --c-grass-hi: #6a9a4a;
+  --c-accent: #e8a838;
+  --c-danger: #c44;
+  --c-good: #3a8f4a;
+  --c-hud-bg: #1e1a24;
+  --c-hud-panel: #2c2634;
+  --c-hud-fg: #f2e6c9;
+  --c-card: #f7f0dc;
+  --c-card-edge: #1a1420;
+  --c-shadow: rgba(0, 0, 0, 0.4);
+  --c-npc-skin: #e8b896;
+  --c-npc-skin-shadow: #c48868;
+  --pixel: 2px;
+  --px: 3px; /* 偽精靈像素單位 */
+  --hud-h: 40px;
+  --hand-h: auto;
+  --card-w: 150px; /* 政策卡直式 3:4 → 150×200 */
+  --debug-h: 20px;
+  --font-ui: "Cubic 11", "Zpix", "Press Start 2P", "Noto Sans TC", system-ui, sans-serif;
+  --font-body: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--c-ink);
+  color: var(--c-ink);
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+img,
+.pixel,
+.sprite,
+.tile,
+.npc,
+.layer {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+#game-shell {
+  display: grid;
+  /* 底部列用 auto：手牌收起時不再佔 118px 黑帶，街景吃滿 */
+  grid-template-rows: var(--hud-h) minmax(0, 1fr) auto;
+  height: 100%;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* ========== 常駐 HUD ========== */
+#hud-metrics {
+  display: flex;
+  align-items: stretch;
+  height: var(--hud-h);
+  background:
+    linear-gradient(180deg, #3a3444 0 3px, transparent 3px),
+    var(--c-hud-bg);
+  color: var(--c-hud-fg);
+  border-bottom: calc(var(--pixel) * 2) solid var(--c-ink);
+  box-shadow: inset 0 -3px 0 #0c0a10;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  line-height: 1.2;
+  z-index: 40;
+}
+
+.hud-metric {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 6px 10px;
+  min-width: 0;
+  border-right: var(--pixel) solid #4a4454;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 40%),
+    var(--c-hud-panel);
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.06), inset -2px -2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.hud-metric:last-child {
+  border-right: none;
+}
+
+.hud-metric:focus-visible {
+  outline: var(--pixel) solid var(--c-accent);
+  outline-offset: -4px;
+}
+
+.hud-metric:active,
+.hud-metric.is-active {
+  background: #3a3448;
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.hud-metric__label {
+  opacity: 0.8;
+  letter-spacing: 0.06em;
+  font-size: 9px;
+}
+
+.hud-metric__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  width: 100%;
+}
+
+.hud-metric__value {
+  font-size: 13px;
+  font-weight: 700;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.hud-metric__delta {
+  font-size: 9px;
+  opacity: 0.95;
+}
+
+.hud-metric__delta.is-up {
+  color: #7dce8a;
+}
+
+.hud-metric__delta.is-down {
+  color: #f08080;
+}
+
+.hud-metric__delta.is-flat {
+  color: #9a94a4;
+}
+
+.hud-metric.is-pulse {
+  animation: hud-pulse 0.5s ease-out;
+}
+
+@keyframes hud-pulse {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.05);
+    box-shadow: inset 0 0 0 2px var(--c-accent);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#hud-detail {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+#hud-detail.is-open {
+  display: flex;
+}
+
+.hud-detail__panel {
+  width: min(520px, 100%);
+  max-height: min(70vh, 480px);
+  overflow: auto;
+  background: var(--c-paper);
+  border: calc(var(--pixel) * 2) solid var(--c-ink);
+  box-shadow: 4px 4px 0 var(--c-shadow);
+  padding: 14px 16px;
+}
+
+.hud-detail__panel h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-family: var(--font-ui);
+}
+
+.hud-detail__list {
+  margin: 0;
+  padding-left: 1.2em;
+  font-size: 14px;
+}
+
+.hud-detail__close {
+  margin-top: 12px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 10px 16px;
+  border: var(--pixel) solid var(--c-ink);
+  background: var(--c-accent);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+/* ========== 橫式街景 ========== */
+#street-stage {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 0;
+  background: var(--c-sky);
+  border-bottom: var(--pixel) solid var(--c-ink);
+}
+
+#street-scroll {
+  position: absolute;
+  inset: 0 auto 0 0;
+  height: 100%;
+  width: max-content;
+  min-width: 100%;
+  will-change: transform;
+}
+
+.street-layers {
+  position: relative;
+  height: 100%;
+  width: 2400px;
+}
+
+.layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* —— 天空：漸層＋像素太陽＋雲 —— */
+.layer--sky {
+  top: 0;
+  height: 100%;
+  z-index: 1;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  /* PNG on top; CSS sky gradients underneath as fallback if PNG missing */
+  background-color: var(--c-sky);
+  background-image:
+    /* street_bg retired — layers in app.css */
+    radial-gradient(circle at 78% 22%, var(--c-sun) 0 10px, transparent 11px),
+    radial-gradient(circle at 78% 22%, rgba(255, 224, 138, 0.35) 0 22px, transparent 23px),
+    linear-gradient(
+      180deg,
+      var(--c-sky-top) 0%,
+      var(--c-sky) 45%,
+      var(--c-sky-low) 100%
+    );
+  background-repeat: repeat-x, no-repeat, no-repeat, no-repeat;
+  background-size: auto 100%, auto, auto, auto;
+  background-position: left bottom, 0 0, 0 0, 0 0;
+}
+
+.street-layers.is-art .layer--sky::before,
+.street-layers.is-art .layer--sky::after {
+  display: none !important;
+}
+.layer--sky::before,
+.layer--sky::after {
+  content: "";
+  position: absolute;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow:
+    12px 0 0 rgba(255, 255, 255, 0.85),
+    24px 0 0 rgba(255, 255, 255, 0.7),
+    6px 6px 0 rgba(255, 255, 255, 0.75),
+    18px 6px 0 rgba(255, 255, 255, 0.65);
+  image-rendering: pixelated;
+}
+
+.layer--sky::before {
+  top: 18%;
+  left: 8%;
+  width: 18px;
+  opacity: 0.9;
+}
+
+.layer--sky::after {
+  top: 28%;
+  left: 42%;
+  width: 22px;
+  opacity: 0.75;
+  transform: scale(1.2);
+}
+
+/* —— 遠景峽壁 —— */
+.layer--far_cliffs {
+  top: 12%;
+  height: 52%;
+  z-index: 2;
+  background:
+    /* 遠山鋸齒剪影 */
+    linear-gradient(165deg, transparent 42%, var(--c-cliff-deep) 42.5% 100%),
+    linear-gradient(195deg, transparent 38%, var(--c-rock) 38.5% 100%),
+    repeating-linear-gradient(
+      90deg,
+      var(--c-cliff-deep) 0 70px,
+      var(--c-cliff) 70px 140px,
+      var(--c-cliff-mid) 140px 200px,
+      var(--c-cliff) 200px 280px
+    );
+  clip-path: polygon(
+    0% 55%,
+    4% 40%,
+    9% 48%,
+    14% 28%,
+    20% 42%,
+    26% 22%,
+    32% 38%,
+    38% 18%,
+    45% 34%,
+    52% 20%,
+    58% 36%,
+    64% 16%,
+    72% 32%,
+    78% 24%,
+    85% 40%,
+    92% 30%,
+    100% 48%,
+    100% 100%,
+    0% 100%
+  );
+  filter: contrast(1.05);
+}
+
+.layer--far_cliffs::after {
+  content: "";
+  position: absolute;
+  inset: 40% 0 0 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 36px,
+      rgba(0, 0, 0, 0.18) 36px 40px
+    ),
+    linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.35));
+  pointer-events: none;
+}
+
+/* —— 中景建築剪影（8-bit 店面） —— */
+.layer--mid_buildings {
+  bottom: 26%;
+  height: 40%;
+  z-index: 3;
+  background:
+    /* 地面接縫 */
+    linear-gradient(180deg, transparent 72%, var(--c-dirt) 72% 100%),
+    /* 建築牆體節奏 */
+    repeating-linear-gradient(
+      90deg,
+      var(--c-building-2) 0 56px,
+      var(--c-building) 56px 120px,
+      #b88858 120px 168px,
+      var(--c-building-2) 168px 220px,
+      #d2b080 220px 280px
+    );
+  border-top: none;
+  box-shadow: 0 -2px 0 var(--c-ink);
+}
+
+/* 屋頂列 */
+.layer--mid_buildings::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 28%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--c-building-roof) 0 56px,
+      var(--c-building-roof-2) 56px 120px,
+      #5a2828 120px 168px,
+      #2a3858 168px 220px,
+      var(--c-building-roof) 220px 280px
+    );
+  clip-path: polygon(
+    0 100%,
+    0 45%,
+    3% 45%,
+    6% 10%,
+    12% 45%,
+    14% 45%,
+    14% 100%,
+    20% 100%,
+    20% 40%,
+    24% 40%,
+    28% 5%,
+    34% 40%,
+    38% 40%,
+    38% 100%,
+    44% 100%,
+    44% 50%,
+    50% 15%,
+    56% 50%,
+    58% 50%,
+    58% 100%,
+    64% 100%,
+    64% 35%,
+    70% 0%,
+    76% 35%,
+    80% 35%,
+    80% 100%,
+    86% 100%,
+    86% 42%,
+    92% 12%,
+    98% 42%,
+    100% 42%,
+    100% 100%
+  );
+  box-shadow: 0 2px 0 var(--c-ink);
+}
+
+/* 窗戶＋門＋招牌像素 */
+.layer--mid_buildings::after {
+  content: "";
+  position: absolute;
+  inset: 30% 0 8% 0;
+  background:
+    /* 窗戶燈 */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 14px,
+      var(--c-window-dark) 14px 26px,
+      transparent 26px 40px,
+      var(--c-window) 40px 52px,
+      transparent 52px 70px,
+      var(--c-window-dark) 70px 82px,
+      transparent 82px 110px,
+      var(--c-window) 110px 122px,
+      transparent 122px 140px
+    ),
+    /* 門洞 */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 28px,
+      #2a1810 28px 44px,
+      transparent 44px 100px,
+      #1a1010 100px 116px,
+      transparent 116px 180px,
+      #2a1810 180px 196px,
+      transparent 196px 280px
+    );
+  background-size: auto 42%, auto 70%;
+  background-position: 0 10%, 0 100%;
+  background-repeat: repeat-x;
+  box-shadow:
+    inset 0 0 0 2px rgba(0, 0, 0, 0.15);
+  opacity: 0.95;
+}
+
+/* —— 街道行走層 —— */
+.layer--street_walk {
+  bottom: 0;
+  height: 28%;
+  z-index: 4;
+  pointer-events: auto;
+  background:
+    /* 中央淡線 */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 28px,
+      rgba(255, 255, 255, 0.08) 28px 32px
+    ),
+    /* 石磚感 */
+    repeating-linear-gradient(
+      90deg,
+      var(--c-street) 0 18px,
+      var(--c-street-hi) 18px 20px,
+      var(--c-street) 20px 38px,
+      #4a4640 38px 40px
+    ),
+    linear-gradient(180deg, var(--c-street-line) 0 4px, var(--c-street) 4px 100%);
+  box-shadow:
+    inset 0 4px 0 rgba(0, 0, 0, 0.25),
+    0 -2px 0 var(--c-dirt);
+}
+
+#npc-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* —— 前景草／桶／路燈剪影 —— */
+.layer--foreground_props {
+  bottom: 0;
+  height: 20%;
+  z-index: 6;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 90px,
+      var(--c-grass) 90px 102px,
+      var(--c-grass-hi) 102px 110px,
+      transparent 110px 200px
+    );
+  opacity: 0.95;
+}
+
+.layer--foreground_props::before {
+  content: "";
+  position: absolute;
+  bottom: 18%;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 140px,
+      #2a2a2a 140px 146px,
+      transparent 146px 148px,
+      #e8a838 148px 154px,
+      transparent 154px 280px
+    );
+}
+
+.layer--foreground_props::after {
+  content: "";
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 200px,
+      #5a3a28 200px 214px,
+      #3a2818 214px 218px,
+      transparent 218px 360px
+    );
+}
+
+
+/* —— 工作室 PNG 已裝：峽壁／建築 CSS 藏在 art 底下當 fallback —— */
+.street-layers.is-art .layer--far_cliffs,
+.street-layers.is-art .layer--mid_buildings {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none;
+  clip-path: none;
+}
+.street-layers.is-art .layer--far_cliffs::before,
+.street-layers.is-art .layer--far_cliffs::after,
+.street-layers.is-art .layer--mid_buildings::before,
+.street-layers.is-art .layer--mid_buildings::after {
+  display: none !important;
+}
+.street-layers.is-art .layer--street_walk {
+  /* 保留可點擊走層；半透明以免蓋掉 street_bg 石板路 */
+  background: linear-gradient(180deg, transparent 0 18%, rgba(90, 86, 78, 0.25) 18% 100%) !important;
+  box-shadow: none !important;
+}
+.street-layers.is-art .layer--foreground_props {
+  opacity: 0.35;
+}
+/* ========== CSS 偽精靈 NPC ========== */
+
+/* —— 工作室 PNG 精靈（mei/bo/lin）；偽精靈當 fallback —— */
+.npc.has-sprite {
+  width: 48px;
+  height: 80px;
+  background-color: transparent !important;
+  background-repeat: no-repeat !important;
+  background-position: center bottom !important;
+  background-size: contain !important;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.npc.has-sprite::before,
+.npc.has-sprite::after {
+  display: none !important;
+  animation: none !important;
+  box-shadow: none !important;
+}
+.npc[data-id="mei"].has-sprite {
+  background-image: url("../../assets/sprites/npc/npc_mei.webp") !important;
+}
+.npc[data-id="bo"].has-sprite {
+  background-image: url("../../assets/sprites/npc/npc_bo.webp") !important;
+}
+.npc[data-id="lin"].has-sprite {
+  background-image: url("../../assets/sprites/npc/npc_lin.webp") !important;
+}
+.npc.has-sprite .npc-sprite {
+  display: none; /* background lives on .npc; reserved if JS adds child */
+}
+.npc .npc-label {
+  /* keep translateX; JS adds counter-scaleX so text never mirrors */
+  transform: translateX(-50%);
+}
+
+/* 蓋掉 npc.js 舊版 inline background；用 --npc-accent 染色衣服。 */
+.npc {
+  position: absolute;
+  bottom: 3.5%;
+  width: calc(var(--px) * 12);
+  height: calc(var(--px) * 16);
+  z-index: 5;
+  pointer-events: none;
+  /* 只用 background-color，勿寫 background 縮寫，否則會清掉 app.css 的 PNG background-image */
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform-origin: center bottom;
+}
+
+.npc .npc-label {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  white-space: nowrap;
+  background: rgba(20, 16, 24, 0.82);
+  color: #fff;
+  padding: 1px 5px;
+  border: 1px solid #000;
+  pointer-events: none;
+  font-family: var(--font-body);
+  line-height: 1.2;
+}
+
+/* 身體：box-shadow 像素人 */
+.npc::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: var(--px);
+  height: var(--px);
+  margin-left: calc(var(--px) * -0.5);
+  background: transparent;
+  box-shadow: var(--npc-pixel-body);
+  image-rendering: pixelated;
+}
+
+/* 頭／髮 */
+.npc::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--px) * 10);
+  width: var(--px);
+  height: var(--px);
+  margin-left: calc(var(--px) * -0.5);
+  background: transparent;
+  box-shadow: var(--npc-pixel-head);
+  image-rendering: pixelated;
+}
+
+/* —— 男：短髮、較寬肩、藍／青衣 —— */
+.npc.is-male {
+  --npc-accent: #3a6aaa;
+  --npc-accent-2: #2a4a7a;
+  --npc-hair: #2a1a10;
+  --npc-pixel-head:
+    /* 髮 */
+    calc(var(--px) * -2) 0 var(--npc-hair),
+    calc(var(--px) * -1) 0 var(--npc-hair),
+    0 0 var(--npc-hair),
+    calc(var(--px) * 1) 0 var(--npc-hair),
+    calc(var(--px) * 2) 0 var(--npc-hair),
+    calc(var(--px) * -2) var(--px) var(--npc-hair),
+    calc(var(--px) * 2) var(--px) var(--npc-hair),
+    /* 臉 */
+    calc(var(--px) * -2) calc(var(--px) * 1) var(--c-npc-skin),
+    calc(var(--px) * -1) calc(var(--px) * 1) var(--c-npc-skin),
+    0 calc(var(--px) * 1) var(--c-npc-skin),
+    calc(var(--px) * 1) calc(var(--px) * 1) var(--c-npc-skin),
+    calc(var(--px) * 2) calc(var(--px) * 1) var(--c-npc-skin),
+    calc(var(--px) * -2) calc(var(--px) * 2) var(--c-npc-skin),
+    calc(var(--px) * -1) calc(var(--px) * 2) var(--c-npc-skin),
+    0 calc(var(--px) * 2) var(--c-npc-skin),
+    calc(var(--px) * 1) calc(var(--px) * 2) var(--c-npc-skin),
+    calc(var(--px) * 2) calc(var(--px) * 2) var(--c-npc-skin),
+    /* 眼 */
+    calc(var(--px) * -1) calc(var(--px) * 2) #1a1420,
+    calc(var(--px) * 1) calc(var(--px) * 2) #1a1420;
+  --npc-pixel-body:
+    /* 軀幹 */
+    calc(var(--px) * -2) calc(var(--px) * -8) var(--npc-accent),
+    calc(var(--px) * -1) calc(var(--px) * -8) var(--npc-accent),
+    0 calc(var(--px) * -8) var(--npc-accent),
+    calc(var(--px) * 1) calc(var(--px) * -8) var(--npc-accent),
+    calc(var(--px) * 2) calc(var(--px) * -8) var(--npc-accent),
+    calc(var(--px) * -3) calc(var(--px) * -7) var(--npc-accent-2),
+    calc(var(--px) * -2) calc(var(--px) * -7) var(--npc-accent),
+    calc(var(--px) * -1) calc(var(--px) * -7) var(--npc-accent),
+    0 calc(var(--px) * -7) var(--npc-accent),
+    calc(var(--px) * 1) calc(var(--px) * -7) var(--npc-accent),
+    calc(var(--px) * 2) calc(var(--px) * -7) var(--npc-accent),
+    calc(var(--px) * 3) calc(var(--px) * -7) var(--npc-accent-2),
+    calc(var(--px) * -2) calc(var(--px) * -6) var(--npc-accent),
+    calc(var(--px) * -1) calc(var(--px) * -6) var(--npc-accent),
+    0 calc(var(--px) * -6) var(--npc-accent),
+    calc(var(--px) * 1) calc(var(--px) * -6) var(--npc-accent),
+    calc(var(--px) * 2) calc(var(--px) * -6) var(--npc-accent),
+    /* 皮帶 */
+    calc(var(--px) * -2) calc(var(--px) * -5) #3a3028,
+    calc(var(--px) * -1) calc(var(--px) * -5) #c8a040,
+    0 calc(var(--px) * -5) #3a3028,
+    calc(var(--px) * 1) calc(var(--px) * -5) #3a3028,
+    calc(var(--px) * 2) calc(var(--px) * -5) #3a3028,
+    /* 褲 */
+    calc(var(--px) * -2) calc(var(--px) * -4) #2a3850,
+    calc(var(--px) * -1) calc(var(--px) * -4) #2a3850,
+    calc(var(--px) * 1) calc(var(--px) * -4) #2a3850,
+    calc(var(--px) * 2) calc(var(--px) * -4) #2a3850,
+    calc(var(--px) * -2) calc(var(--px) * -3) #2a3850,
+    calc(var(--px) * -1) calc(var(--px) * -3) #2a3850,
+    calc(var(--px) * 1) calc(var(--px) * -3) #2a3850,
+    calc(var(--px) * 2) calc(var(--px) * -3) #2a3850,
+    /* 鞋 */
+    calc(var(--px) * -2) calc(var(--px) * -2) #1a1420,
+    calc(var(--px) * -1) calc(var(--px) * -2) #1a1420,
+    calc(var(--px) * 1) calc(var(--px) * -2) #1a1420,
+    calc(var(--px) * 2) calc(var(--px) * -2) #1a1420,
+    calc(var(--px) * -2) calc(var(--px) * -1) #1a1420,
+    calc(var(--px) * 2) calc(var(--px) * -1) #1a1420;
+}
+
+/* —— 女：長髮、裙擺、玫／紫衣 —— */
+.npc.is-female {
+  --npc-accent: #b05088;
+  --npc-accent-2: #7a3060;
+  --npc-hair: #3a1828;
+  --npc-pixel-head:
+    calc(var(--px) * -3) 0 var(--npc-hair),
+    calc(var(--px) * -2) 0 var(--npc-hair),
+    calc(var(--px) * -1) 0 var(--npc-hair),
+    0 0 var(--npc-hair),
+    calc(var(--px) * 1) 0 var(--npc-hair),
+    calc(var(--px) * 2) 0 var(--npc-hair),
+    calc(var(--px) * 3) 0 var(--npc-hair),
+    calc(var(--px) * -3) var(--px) var(--npc-hair),
+    calc(var(--px) * 3) var(--px) var(--npc-hair),
+    calc(var(--px) * -3) calc(var(--px) * 2) var(--npc-hair),
+    calc(var(--px) * 3) calc(var(--px) * 2) var(--npc-hair),
+    calc(var(--px) * -3) calc(var(--px) * 3) var(--npc-hair),
+    calc(var(--px) * 3) calc(var(--px) * 3) var(--npc-hair),
+    calc(var(--px) * -2) calc(var(--px) * 1) var(--c-npc-skin),
+    calc(var(--px) * -1) calc(var(--px) * 1) var(--c-npc-skin),
+    0 calc(var(--px) * 1) var(--c-npc-skin),
+    calc(var(--px) * 1) calc(var(--px) * 1) var(--c-npc-skin),
+    calc(var(--px) * 2) calc(var(--px) * 1) var(--c-npc-skin),
+    calc(var(--px) * -2) calc(var(--px) * 2) var(--c-npc-skin),
+    calc(var(--px) * -1) calc(var(--px) * 2) var(--c-npc-skin),
+    0 calc(var(--px) * 2) var(--c-npc-skin),
+    calc(var(--px) * 1) calc(var(--px) * 2) var(--c-npc-skin),
+    calc(var(--px) * 2) calc(var(--px) * 2) var(--c-npc-skin),
+    calc(var(--px) * -1) calc(var(--px) * 2) #1a1420,
+    calc(var(--px) * 1) calc(var(--px) * 2) #1a1420;
+  --npc-pixel-body:
+    calc(var(--px) * -2) calc(var(--px) * -8) var(--npc-accent),
+    calc(var(--px) * -1) calc(var(--px) * -8) var(--npc-accent),
+    0 calc(var(--px) * -8) var(--npc-accent),
+    calc(var(--px) * 1) calc(var(--px) * -8) var(--npc-accent),
+    calc(var(--px) * 2) calc(var(--px) * -8) var(--npc-accent),
+    calc(var(--px) * -2) calc(var(--px) * -7) var(--npc-accent),
+    calc(var(--px) * -1) calc(var(--px) * -7) var(--npc-accent),
+    0 calc(var(--px) * -7) var(--npc-accent-2),
+    calc(var(--px) * 1) calc(var(--px) * -7) var(--npc-accent),
+    calc(var(--px) * 2) calc(var(--px) * -7) var(--npc-accent),
+    calc(var(--px) * -3) calc(var(--px) * -6) var(--npc-accent),
+    calc(var(--px) * -2) calc(var(--px) * -6) var(--npc-accent),
+    calc(var(--px) * -1) calc(var(--px) * -6) var(--npc-accent),
+    0 calc(var(--px) * -6) var(--npc-accent),
+    calc(var(--px) * 1) calc(var(--px) * -6) var(--npc-accent),
+    calc(var(--px) * 2) calc(var(--px) * -6) var(--npc-accent),
+    calc(var(--px) * 3) calc(var(--px) * -6) var(--npc-accent),
+    /* 裙 */
+    calc(var(--px) * -3) calc(var(--px) * -5) var(--npc-accent-2),
+    calc(var(--px) * -2) calc(var(--px) * -5) var(--npc-accent),
+    calc(var(--px) * -1) calc(var(--px) * -5) var(--npc-accent),
+    0 calc(var(--px) * -5) var(--npc-accent),
+    calc(var(--px) * 1) calc(var(--px) * -5) var(--npc-accent),
+    calc(var(--px) * 2) calc(var(--px) * -5) var(--npc-accent),
+    calc(var(--px) * 3) calc(var(--px) * -5) var(--npc-accent-2),
+    calc(var(--px) * -3) calc(var(--px) * -4) var(--npc-accent-2),
+    calc(var(--px) * -2) calc(var(--px) * -4) var(--npc-accent-2),
+    calc(var(--px) * 2) calc(var(--px) * -4) var(--npc-accent-2),
+    calc(var(--px) * 3) calc(var(--px) * -4) var(--npc-accent-2),
+    /* 腿 */
+    calc(var(--px) * -1) calc(var(--px) * -3) var(--c-npc-skin-shadow),
+    calc(var(--px) * 1) calc(var(--px) * -3) var(--c-npc-skin-shadow),
+    calc(var(--px) * -1) calc(var(--px) * -2) var(--c-npc-skin-shadow),
+    calc(var(--px) * 1) calc(var(--px) * -2) var(--c-npc-skin-shadow),
+    /* 鞋 */
+    calc(var(--px) * -2) calc(var(--px) * -1) #4a2038,
+    calc(var(--px) * -1) calc(var(--px) * -1) #4a2038,
+    calc(var(--px) * 1) calc(var(--px) * -1) #4a2038,
+    calc(var(--px) * 2) calc(var(--px) * -1) #4a2038;
+}
+
+.hotzone {
+  position: absolute;
+  bottom: 20%;
+  width: 48px;
+  height: 48px;
+  border: var(--pixel) dashed rgba(232, 168, 56, 0.7);
+  background: rgba(232, 168, 56, 0.15);
+  z-index: 5;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.hotzone:focus-visible {
+  outline: var(--pixel) solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+/* ========== 手牌列 ========== */
+#hand-rail {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  height: auto;
+  max-height: 46vh;
+  padding: 8px 10px;
+  background:
+    linear-gradient(180deg, #d8c49a 0 3px, transparent 3px),
+    repeating-linear-gradient(
+      90deg,
+      var(--c-paper-dark) 0 8px,
+      #d8c49a 8px 16px
+    );
+  border-top: calc(var(--pixel) * 2) solid var(--c-ink);
+  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.15);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  z-index: 40;
+}
+
+.policy-card {
+  /* 直式卡 3:4（150×200）：上圖、中標題＋點數徽章、下短說明 */
+  flex: 0 0 auto;
+  width: var(--card-w, 150px);
+  aspect-ratio: 3 / 4;
+  height: auto;
+  min-height: 0;
+  padding: 5px;
+  background:
+    linear-gradient(180deg, #fffaf0, var(--c-card));
+  border: calc(var(--pixel) * 2) solid var(--c-card-edge);
+  box-shadow:
+    3px 3px 0 var(--c-shadow),
+    inset 0 0 0 2px #e8d8b0;
+  font-size: 12px;
+  line-height: 1.25;
+  cursor: pointer;
+  touch-action: manipulation;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  gap: 3px;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  color: var(--c-ink);
+  font-family: var(--font-body);
+}
+
+/* 卡面上緣：圖區（PNG object-fit: cover；失敗時 CSS 像素後備卡面） */
+.policy-card__art {
+  position: relative;
+  flex: 0 0 46%;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  border: 2px solid var(--c-card-edge);
+  background:
+    linear-gradient(180deg, #8ec8e8 0 38%, #4a7a3a 38% 70%, #7a756c 70% 100%);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.policy-card__art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.policy-card__art::after {
+  content: attr(data-icon);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  line-height: 1;
+  pointer-events: none;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+.policy-card__art.has-img::after { display: none; }
+
+.policy-card::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  background: var(--c-accent);
+  box-shadow: 1px 1px 0 #000;
+  opacity: 0.85;
+}
+
+.policy-card:focus-visible {
+  outline: var(--pixel) solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.policy-card:active,
+.policy-card.is-dragging {
+  cursor: grabbing;
+  opacity: 0.92;
+  transform: translateY(-4px);
+}
+
+.policy-card.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.policy-card__title {
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1.2;
+  padding-right: 6px;
+}
+
+.policy-card__cost {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  background: #c41e1e;
+  border: 1px solid var(--c-card-edge);
+  display: inline-block;
+  padding: 1px 6px;
+  width: fit-content;
+}
+
+.policy-card .blurb {
+  font-size: 11px;
+  line-height: 1.3;
+  color: #333;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.policy-card__deltas {
+  margin-top: auto;
+  font-size: 10px;
+  color: #333;
+  white-space: nowrap;
+}
+.policy-card .solves { display: none; }
+
+.drop-slot {
+  min-height: 56px;
+  min-width: 56px;
+  border: var(--pixel) dashed var(--c-ink);
+  background: rgba(242, 230, 201, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.drop-slot.is-ready {
+  border-style: solid;
+  background: rgba(232, 168, 56, 0.35);
+}
+
+@media (max-height: 520px) {
+  :root {
+    --hud-h: 36px;
+    --hand-h: auto;
+    --px: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hud-metric {
+    padding: 4px 6px;
+  }
+
+  .hud-metric__label {
+    font-size: 8px;
+  }
+
+  :root { --card-w: 120px; } /* 120×160 仍是直式 3:4 */
+  .policy-card { font-size: 11px; }
+
+  .npc .npc-label {
+    font-size: 9px;
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "disaster_crash_gorge",
+  "kind": "crash",
+  "label": "峽口車禍",
+  "severity": 3,
+  "streetFx": {
+    "overlayIds": [
+      "overlay_crash_cones",
+      "fx_smoke_small"
+    ],
+    "tint": null,
+    "spawnProps": [
+      {
+        "propId": "prop_traffic_cone",
+        "lane": "main",
+        "x": 360
+      },
+      {
+        "propId": "prop_stalled_car",
+        "lane": "main",
+        "x": 380
+      }
+    ],
+    "ambient": "sfx_siren_distant"
+  },
+  "newspaperHook": {
+    "headline": "峽口車潮卡關　進貨班班遲到",
+    "kicker": "交通現場",
+    "clueSeeds": [
+      "證據：峽口卡關 → 多線物資同時延誤",
+      "觀察指標：壅塞度、準點率會改寫金錢、獲利與幸福度"
+    ],
+    "articleId": "article_supply"
+  },
+  "blocksVehicles": {
+    "vehicleIds": [
+      "bus",
+      "light_truck",
+      "water_truck",
+      "garbage_truck"
+    ],
+    "cargoKinds": [
+      "produce",
+      "market_stock",
+      "test_kits",
+      "waste"
+    ],
+    "slowFactor": 0.2,
+    "untilRule": {
+      "logisticsBuffer": {
+        "gte": 1
+      }
+    }
+  },
+  "metricHits": {
+    "onTimeRate": -0.2,
+    "congestion": 2
+  }
+}

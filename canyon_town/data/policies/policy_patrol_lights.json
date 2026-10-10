@@ -1,0 +1,197 @@
+{
+  "id": "policy_patrol_lights",
+  "name": "社區巡守隊與路燈",
+  "cost": 2,
+  "blurb": "組社區巡守隊、補強暗巷路燈，讓人潮與夜間都有人看著。",
+  "solves": [],
+  "rule_patches": {
+    "patrolCoverage": 2,
+    "streetLights": 1
+  },
+  "deltas": {
+    "money": -50,
+    "profit": 5,
+    "happiness": 6
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "只能預防與嚇阻，擋不住天災；巡守靠志工，要持續經營。",
+  "preview": "預估：金錢 -50、幸福度 +6；扒手與暗巷風險下降。",
+  "costPoints": 2,
+  "tags": [
+    "治安",
+    "社區",
+    "預防"
+  ],
+  "counters": [
+    "theft",
+    "night"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_patrol_lights.webp",
+    "icon": "assets/sprites/cards/icons/icon_patrol_lights.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🔦",
+    "accent": "#f0c850",
+    "fxHint": "fx_street_lights_on"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "治安／社區",
+    "rarity": "常見",
+    "titleShort": "巡守路燈",
+    "costBadge": "2 點",
+    "shopLine": "巡守隊加路燈，夜裡走路比較放心。",
+    "effectLine": "暗巷有燈、街口有人；扒手與起火更早被發現。",
+    "flavor": "有人看著，壞事就少一半。",
+    "learnPoint": "這張牌教你：治安靠預防，也靠鄰里一起看。",
+    "bullets": [
+      "對症：人潮扒手",
+      "幸福度 +6",
+      "擋不住天災"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -50,
+        "text": "金錢 -50"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": 5,
+        "text": "獲利 +5"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 6,
+        "text": "幸福度 +6"
+      }
+    ],
+    "tradeoffLine": "只能預防與嚇阻，擋不住天災；巡守靠志工，要持續經營。"
+  },
+  "shopBlurb": "巡守隊加路燈，夜裡走路比較放心。",
+  "shopLine": "2 點｜巡守隊加路燈，夜裡走路比較放心。",
+  "executeId": "exec_patrol_lights",
+  "fx": {
+    "street": [
+      "fx_street_lights_on",
+      "fx_patrol_walk"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1800,
+    "effect": {
+      "flows": {
+        "foot": 1,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 6
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -20,
+        "market": -3,
+        "traffic": -2
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "normal",
+      "summary": "人流+1、治安感+6（永久）；治安民怨-20、市集民怨-3"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_an",
+      "staff_min"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.9,
+      "health": 0.1,
+      "engineering": 0.2,
+      "economy": 0.1,
+      "communication": 0.6
+    }
+  },
+  "actionOptionIds": [
+    "act_patrol_lights"
+  ],
+  "fromArticleIds": [
+    "art_evp_safety_theft",
+    "art_evp_safety_fire"
+  ],
+  "verdictByOption": {
+    "act_patrol_lights": "對症"
+  },
+  "complaintCounters": [
+    "safety",
+    "market",
+    "traffic"
+  ],
+  "complaintDelta": {
+    "safety": -20,
+    "market": -3,
+    "traffic": -2
+  },
+  "complaintRebound": {},
+  "complaintNote": "對症治安；夜市與街口人潮也比較安心。",
+  "eventEffects": {
+    "cure": [
+      "evp_safety_theft"
+    ],
+    "assist": [
+      "evp_safety_fire",
+      "evp_safety_park_burrow",
+      "evp_traffic_works"
+    ],
+    "palliative": [
+      "evp_drain_blocked",
+      "evp_drain_leaf",
+      "evp_safety_cliff",
+      "evp_safety_rescue_blocked",
+      "evp_safety_stray_dogs",
+      "evp_traffic_paralysis"
+    ],
+    "backfire": []
+  },
+  "policyType": "ppp",
+  "typeLabel": "公私協力",
+  "realWorldAnalog": "社區警政：居民志工與公部門合作巡守，搭配照明改善。",
+  "topicCounters": [
+    "theft",
+    "night"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_safety_theft"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_safety_theft"
+  ],
+  "solvesPoolConditional": []
+}

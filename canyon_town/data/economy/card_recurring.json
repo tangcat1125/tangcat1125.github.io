@@ -1,0 +1,503 @@
+{
+  "id": "economy_card_recurring_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "rule": "持續型政策對流量 target 的加成（取代金額型 recurring）。buy 當季起算；durationSeasons=99 為永久；one-shot 不給加成。同方向加成建議上限 +10（疊加後截斷）。不改卡片 deltas。",
+  "cards": {
+    "policy_clear_drain": {
+      "foot": 0,
+      "vehicle": 1,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 2,
+      "kind": "timed",
+      "note": "清完溝路面乾爽，車行順一點，效果兩季"
+    },
+    "policy_boardwalk": {
+      "foot": 2,
+      "vehicle": 0,
+      "tourist": 5,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "木棧成為景點，遊客持續增加"
+    },
+    "policy_coupon": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 0,
+      "kind": "one-shot",
+      "note": "消費券只有當季買氣，不給持續加成（治標）"
+    },
+    "policy_water_test": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 2,
+      "security": 0,
+      "durationSeasons": 3,
+      "kind": "timed",
+      "note": "公開檢測建立信任，遊客安心"
+    },
+    "policy_logistics_hub": {
+      "foot": 0,
+      "vehicle": 4,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "緩衝站把貨車引開，車流順暢"
+    },
+    "policy_rain_garden": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 3,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "滯洪池兼景觀，遊客喜歡"
+    },
+    "policy_vendor_shift": {
+      "foot": 3,
+      "vehicle": 0,
+      "tourist": 2,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "夜市動線整齊，人潮穩定"
+    },
+    "policy_cold_chain": {
+      "foot": 0,
+      "vehicle": 1,
+      "tourist": 2,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "生鮮不缺貨，特產吸引遊客"
+    },
+    "policy_bus_reroute": {
+      "foot": 0,
+      "vehicle": 5,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "公車接駁讓車流順暢"
+    },
+    "policy_vector_control": {
+      "foot": 2,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 3,
+      "kind": "timed",
+      "note": "防疫讓人敢出門"
+    },
+    "policy_patrol_lights": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 6,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "巡守與路燈讓治安感提升"
+    },
+    "policy_rescue_squad": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 3,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "救援就位，居民更安心"
+    },
+    "policy_fact_check": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 3,
+      "security": 0,
+      "durationSeasons": 2,
+      "kind": "timed",
+      "note": "謠言退燒，遊客回頭"
+    },
+    "policy_town_broadcast": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 0,
+      "kind": "one-shot",
+      "note": "公告只是當下安撫，不給持續加成（治標）"
+    },
+    "policy_pest_control": {
+      "foot": 2,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 3,
+      "kind": "timed",
+      "note": "鼠跡少了，人敢來吃"
+    },
+    "policy_food_safety": {
+      "foot": 2,
+      "vehicle": 0,
+      "tourist": 2,
+      "security": 0,
+      "durationSeasons": 3,
+      "kind": "timed",
+      "note": "留樣檢驗建立信任"
+    },
+    "policy_vendor_audit": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 3,
+      "kind": "timed",
+      "note": "店家衛生提升，客人放心"
+    },
+    "policy_wiring_subsidy": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 3,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "老屋電線換新，安全疑慮下降"
+    },
+    "policy_fire_lane": {
+      "foot": 0,
+      "vehicle": 1,
+      "tourist": 0,
+      "security": 3,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "防火巷留出通道，窄巷也順了"
+    },
+    "policy_smoke_alarm": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 2,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "警報器裝好，居民更安心"
+    },
+    "policy_fire_drill": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 1,
+      "durationSeasons": 2,
+      "kind": "timed",
+      "note": "宣導與演練：效果慢、弱、便宜"
+    },
+    "policy_cctv": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 5,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "監視器嚇阻，治安感提升"
+    },
+    "policy_crime_edu": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 1,
+      "durationSeasons": 2,
+      "kind": "timed",
+      "note": "防竊宣導：效果慢、弱、便宜"
+    },
+    "policy_slope_guard": {
+      "foot": 0,
+      "vehicle": 3,
+      "tourist": 2,
+      "security": 1,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "邊坡穩了，道路少封閉，遊客敢來"
+    },
+    "policy_private_parking": {
+      "foot": 1,
+      "vehicle": 3,
+      "tourist": 2,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "外圍有位停，路邊少塞"
+    },
+    "policy_street_parking": {
+      "foot": 0,
+      "vehicle": 4,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "停車周轉快，路面變寬"
+    },
+    "policy_traffic_safety": {
+      "foot": 0,
+      "vehicle": 1,
+      "tourist": 0,
+      "security": 1,
+      "durationSeasons": 2,
+      "kind": "timed",
+      "note": "交通宣導：效果慢、弱、便宜"
+    },
+    "policy_food_edu": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 2,
+      "kind": "timed",
+      "note": "食安宣導：效果慢、弱、便宜"
+    },
+    "policy_rat_edu": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 2,
+      "kind": "timed",
+      "note": "防鼠衛教：效果慢、弱、便宜"
+    },
+    "policy_town_hall": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 2,
+      "kind": "timed",
+      "note": "說明會降低猜測，效果慢、弱、便宜"
+    },
+    "policy_flood_edu": {
+      "foot": 0,
+      "vehicle": 1,
+      "tourist": 0,
+      "security": 1,
+      "durationSeasons": 2,
+      "kind": "timed",
+      "note": "防汛宣導：效果慢、弱、便宜"
+    },
+    "policy_health_edu": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 2,
+      "kind": "timed",
+      "note": "衛教宣導：效果慢、弱、便宜"
+    },
+    "policy_runoff_control": {
+      "foot": 0,
+      "vehicle": 2,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "長期減少下游淹水，車行更穩"
+    },
+    "policy_permeable": {
+      "foot": 1,
+      "vehicle": 1,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "透水鋪面讓街面更乾爽"
+    },
+    "policy_pump_monitor": {
+      "foot": 0,
+      "vehicle": 2,
+      "tourist": 0,
+      "security": 1,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "預警與抽水快，淹水時封路時間短"
+    },
+    "policy_flood_relief": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 0,
+      "kind": "one-shot",
+      "note": "救助只在事後，不給持續加成（治標）"
+    },
+    "policy_market_star": {
+      "foot": 2,
+      "vehicle": 0,
+      "tourist": 3,
+      "security": 0,
+      "durationSeasons": 3,
+      "kind": "timed",
+      "note": "評星讓好攤位被看見，吸引遊客"
+    },
+    "policy_market_committee": {
+      "foot": 3,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "攤商自治，秩序與衛生穩定"
+    },
+    "policy_loading_zone": {
+      "foot": 0,
+      "vehicle": 4,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "裝卸有專區，車道不被擋"
+    },
+    "policy_joint_delivery": {
+      "foot": 0,
+      "vehicle": 4,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "併車配送，進城車次少"
+    },
+    "policy_delivery_subsidy": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 2,
+      "kind": "timed",
+      "note": "外送補助：短期分散人潮，不給長期加成"
+    },
+    "policy_walking_street": {
+      "foot": 4,
+      "vehicle": -1,
+      "tourist": 3,
+      "security": 1,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "徒步區人潮多，車少一點進入"
+    },
+    "policy_shared_parking": {
+      "foot": 0,
+      "vehicle": 3,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "共享車位增加供給"
+    },
+    "policy_dengue_mobilize": {
+      "foot": 2,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 3,
+      "kind": "timed",
+      "note": "社區動員清積水，疫情降溫"
+    },
+    "policy_lunch_registry": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "食材可追溯，家長與遊客放心"
+    },
+    "policy_kitchen_sorting": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "廚餘分流，市集後巷乾淨"
+    },
+    "policy_rat_pro": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 0,
+      "durationSeasons": 3,
+      "kind": "timed",
+      "note": "偵防找出鼠道，鼠跡減少"
+    },
+    "policy_fire_inspection": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 2,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "消防安檢讓店家與遊客更安心"
+    },
+    "policy_led_lights": {
+      "foot": 2,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 5,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "LED 路燈讓夜間更亮、更安全"
+    },
+    "policy_crime_map": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 2,
+      "durationSeasons": 3,
+      "kind": "timed",
+      "note": "安全地圖讓巡守更有重點"
+    },
+    "policy_pied_piper": {
+      "foot": 4,
+      "vehicle": 0,
+      "tourist": 3,
+      "security": 0,
+      "durationSeasons": 1,
+      "kind": "timed",
+      "note": "帶鼠遊行吸引人潮，當季熱鬧一次（10/10 咪咪：短而強，與鼠害防治的長而穩區隔）"
+    },
+    "policy_stray_dog_tnr": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 1,
+      "security": 4,
+      "durationSeasons": 99,
+      "kind": "permanent",
+      "note": "狗群數量穩定，晚歸更安心"
+    },
+    "policy_animal_patrol": {
+      "foot": 1,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 3,
+      "durationSeasons": 3,
+      "kind": "timed",
+      "note": "志工夜巡，治安感提升"
+    },
+    "policy_dog_roundup": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 0,
+      "durationSeasons": 0,
+      "kind": "one-shot",
+      "note": "只是一時安靜，不給持續加成（反效果風險）"
+    },
+    "policy_pet_edu": {
+      "foot": 0,
+      "vehicle": 0,
+      "tourist": 0,
+      "security": 1,
+      "durationSeasons": 2,
+      "kind": "timed",
+      "note": "飼主宣導：效果慢、弱、便宜"
+    }
+  }
+}

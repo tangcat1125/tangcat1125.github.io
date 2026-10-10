@@ -1,0 +1,167 @@
+{
+  "id": "policy_stray_dog_tnr",
+  "name": "流浪犬 TNR 與收容",
+  "cost": 3,
+  "blurb": "TNR＝捕捉（Trap）、結紮（Neuter）、放回（Return）：設臨時收容與醫療站，健康檢查、結紮、打晶片；親人的送養，其餘放回原地由志工照護，狗群數量慢慢變少。",
+  "solves": [],
+  "rule_patches": {
+    "strayTNR": 1
+  },
+  "deltas": {
+    "money": -80,
+    "happiness": 3
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "見效要一到兩季；收容空間與獸醫人力有限，需要長期編預算；要有人持續追蹤。",
+  "preview": "預估：金錢 -80、幸福度 +3。",
+  "costPoints": 3,
+  "tags": [
+    "治安",
+    "動保",
+    "公共服務"
+  ],
+  "counters": [
+    "stray_dog"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_stray_dog_tnr.webp",
+    "icon": "assets/sprites/cards/icons/icon_stray_dog_tnr.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🐕",
+    "accent": "#c98a3d",
+    "fxHint": "fx_tnr_shelter"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "硬建設／公共服務",
+    "rarity": "進階",
+    "titleShort": "TNR收容",
+    "costBadge": "3 點",
+    "shopLine": "抓、結紮、放回，狗群慢慢變少",
+    "effectLine": "流浪犬不再一直增加，追逐與吠叫衝突變少。",
+    "flavor": "少一窩小狗，就少一群追著跑的狗。",
+    "learnPoint": "這張牌教你：公共服務從「數量的來源」處理問題，見效慢但穩。",
+    "bullets": [
+      "對症：野狗縱橫",
+      "金錢 -80",
+      "見效要一到兩季",
+      "需長期編預算"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -80,
+        "text": "金錢 -80"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 3,
+        "text": "幸福度 +3"
+      }
+    ],
+    "tradeoffLine": "見效要一到兩季；收容空間與獸醫人力有限，需要長期編預算；要有人持續追蹤。"
+  },
+  "shopBlurb": "抓、結紮、放回，狗群慢慢變少",
+  "shopLine": "3 點｜抓、結紮、放回，狗群慢慢變少",
+  "executeId": "exec_stray_dog_tnr",
+  "fx": {
+    "street": [
+      "fx_tnr_shelter",
+      "fx_dog_collar"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 1,
+        "vehicle": 0,
+        "tourist": 1,
+        "security": 4
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -16,
+        "health": -4
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "strong",
+      "summary": "人流+1、遊客+1、治安感+4（永久）；治安民怨-16、衛生民怨-4"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_nuan",
+      "staff_hu"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.5,
+      "health": 0.7,
+      "engineering": 0.2,
+      "economy": 0.2,
+      "communication": 0.5
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety",
+    "health"
+  ],
+  "complaintDelta": {
+    "safety": -16,
+    "health": -4
+  },
+  "complaintRebound": {},
+  "complaintNote": "見效要一到兩季；收容空間與獸醫人力有限，需要長期編預算；要有人持續追蹤。",
+  "eventEffects": {
+    "cure": [
+      "evp_safety_stray_dogs"
+    ],
+    "assist": [],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "hard",
+  "typeLabel": "硬建設／公共服務",
+  "realWorldAnalog": "動物保護公共服務：捕捉、結紮、放回（TNR）並設收容送養，讓流浪犬數量慢慢穩定。",
+  "topicCounters": [
+    "stray_dog"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_safety_stray_dogs"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_safety_stray_dogs"
+  ],
+  "solvesPoolConditional": []
+}

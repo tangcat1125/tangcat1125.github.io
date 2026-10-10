@@ -1,0 +1,160 @@
+{
+  "id": "staff_roster",
+  "seasonId": "season_01",
+  "note": "相容舊檔：6 位原公職，主 id 為 staff_*，artAlias 為美術檔名。完整 14 位請見 data/staff/staff_team_season_01.json。",
+  "radarAxes": [
+    {
+      "key": "logistics",
+      "label": "物流"
+    },
+    {
+      "key": "safety",
+      "label": "治安"
+    },
+    {
+      "key": "health",
+      "label": "衛生"
+    },
+    {
+      "key": "engineering",
+      "label": "工務"
+    },
+    {
+      "key": "economy",
+      "label": "經濟"
+    },
+    {
+      "key": "communication",
+      "label": "溝通"
+    }
+  ],
+  "staff": [
+    {
+      "id": "staff_cheng",
+      "artAlias": "clerk_hall",
+      "name": "喵承恩",
+      "title": "公所承辦",
+      "org": "市公所",
+      "avatar": "assets/sprites/npc/staff/npc_staff_clerk_hall.webp",
+      "radar": {
+        "logistics": 3,
+        "safety": 3,
+        "health": 3,
+        "engineering": 2,
+        "economy": 3,
+        "communication": 5
+      },
+      "preferredPolicyIds": [
+        "policy_water_test",
+        "policy_coupon"
+      ],
+      "speakLine": "先讀貓貓快報找重點，再用點數把對的政策買下去執行。"
+    },
+    {
+      "id": "staff_an",
+      "artAlias": "police_chief",
+      "name": "喵治安",
+      "title": "警察局長",
+      "org": "警察局",
+      "avatar": "assets/sprites/npc/staff/npc_staff_police_chief.webp",
+      "radar": {
+        "logistics": 4,
+        "safety": 5,
+        "health": 2,
+        "engineering": 2,
+        "economy": 2,
+        "communication": 3
+      },
+      "preferredPolicyIds": [
+        "policy_logistics_hub",
+        "policy_boardwalk"
+      ],
+      "speakLine": "峽口一塞，全市物資一起遲到——準點率就是治安的另一張臉。"
+    },
+    {
+      "id": "staff_yan",
+      "artAlias": "fire_chief",
+      "name": "喵焰",
+      "title": "消防隊長",
+      "org": "消防隊",
+      "avatar": "assets/sprites/npc/staff/npc_staff_fire_chief.webp",
+      "radar": {
+        "logistics": 3,
+        "safety": 5,
+        "health": 3,
+        "engineering": 3,
+        "economy": 1,
+        "communication": 3
+      },
+      "preferredPolicyIds": [
+        "policy_clear_drain",
+        "policy_boardwalk"
+      ],
+      "speakLine": "雨季來之前不清排水，救援路線也會被水擋住。"
+    },
+    {
+      "id": "staff_xin",
+      "artAlias": "hospital_director",
+      "name": "喵安心",
+      "title": "醫院院長",
+      "org": "市立醫院",
+      "avatar": "assets/sprites/npc/staff/npc_staff_hospital_director.webp",
+      "radar": {
+        "logistics": 2,
+        "safety": 3,
+        "health": 5,
+        "engineering": 1,
+        "economy": 2,
+        "communication": 4
+      },
+      "preferredPolicyIds": [
+        "policy_water_test"
+      ],
+      "speakLine": "傳聞比病菌跑得快；公布檢測，才能把幸福度拉回來。"
+    },
+    {
+      "id": "staff_xiu",
+      "artAlias": "works_engineer",
+      "name": "喵修路",
+      "title": "工務課長",
+      "org": "工務課",
+      "avatar": "assets/sprites/npc/staff/npc_staff_works_engineer.webp",
+      "radar": {
+        "logistics": 3,
+        "safety": 3,
+        "health": 2,
+        "engineering": 5,
+        "economy": 2,
+        "communication": 2
+      },
+      "preferredPolicyIds": [
+        "policy_clear_drain",
+        "policy_boardwalk",
+        "policy_logistics_hub"
+      ],
+      "speakLine": "工程車短期可能更塞，但法則改對了，下季才不會再發生。"
+    },
+    {
+      "id": "staff_shi",
+      "artAlias": "market_chair",
+      "name": "喵阿市",
+      "title": "市場會長",
+      "org": "市場管理會",
+      "avatar": "assets/sprites/npc/staff/npc_staff_market_chair.webp",
+      "radar": {
+        "logistics": 4,
+        "safety": 2,
+        "health": 2,
+        "engineering": 2,
+        "economy": 5,
+        "communication": 4
+      },
+      "preferredPolicyIds": [
+        "policy_boardwalk",
+        "policy_coupon",
+        "policy_logistics_hub"
+      ],
+      "speakLine": "人潮要回來，貨也要準點——空架賣不成微笑。"
+    }
+  ]
+}

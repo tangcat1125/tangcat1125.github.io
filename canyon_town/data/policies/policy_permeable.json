@@ -1,0 +1,163 @@
+{
+  "id": "policy_permeable",
+  "name": "透水鋪面與保水補助",
+  "cost": 2,
+  "blurb": "補助店家與住戶把鋪面改成透水磚、設雨水貯留桶，讓雨水就地滲入而不是全衝進水溝。",
+  "solves": [],
+  "rule_patches": {
+    "permeableProgram": 1
+  },
+  "deltas": {
+    "money": -50,
+    "happiness": 2
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "補助名額有限、要有人申請；透水磚也會被落葉與泥沙堵住，要定期清。",
+  "preview": "預估：金錢 -50、幸福度 +2。",
+  "costPoints": 2,
+  "tags": [
+    "環境",
+    "補助獎勵",
+    "預防"
+  ],
+  "counters": [
+    "flood",
+    "storm_water"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_permeable.webp",
+    "icon": "assets/sprites/cards/icons/icon_permeable.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🧱",
+    "accent": "#7cb342",
+    "fxHint": "fx_permeable_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "補助獎勵",
+    "rarity": "常見",
+    "titleShort": "透水補助",
+    "costBadge": "2 點",
+    "shopLine": "補助換透水磚，雨水自己滲下去。",
+    "effectLine": "小範圍積水減少；水溝壓力略降。",
+    "flavor": "地會喝水，水溝就不用扛。",
+    "learnPoint": "這張牌教你：補助獎勵靠大家一起做，效果是累積出來的。",
+    "bullets": [
+      "對症：暴雨積水",
+      "金錢 -50",
+      "幸福度 +2",
+      "要有人申請"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -50,
+        "text": "金錢 -50"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 2,
+        "text": "幸福度 +2"
+      }
+    ],
+    "tradeoffLine": "補助名額有限、要有人申請；透水磚也會被落葉與泥沙堵住，要定期清。"
+  },
+  "shopBlurb": "補助換透水磚，雨水自己滲下去。",
+  "shopLine": "2 點｜補助換透水磚，雨水自己滲下去。",
+  "executeId": "exec_permeable",
+  "fx": {
+    "street": [
+      "fx_permeable_a",
+      "fx_permeable_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 1,
+        "vehicle": 1,
+        "tourist": 1,
+        "security": 0
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "drain": -10
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "normal",
+      "summary": "人流+1、車流+1、遊客+1（永久）；排水民怨-10"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_xiu",
+      "staff_jing"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.2,
+      "health": 0.2,
+      "engineering": 0.7,
+      "economy": 0.4,
+      "communication": 0.3
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "drain"
+  ],
+  "complaintDelta": {
+    "drain": -10
+  },
+  "complaintRebound": {},
+  "complaintNote": "補助名額有限、要有人申請；透水磚也會被落葉與泥沙堵住，要定期清。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_drain_blocked",
+      "evp_drain_storm"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "subsidy",
+  "typeLabel": "補助獎勵",
+  "realWorldAnalog": "綠色基盤補助：補助透水鋪面、雨水貯留，讓雨水就地滲入。",
+  "topicCounters": [
+    "flood",
+    "storm_water"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

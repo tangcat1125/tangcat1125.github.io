@@ -1,0 +1,206 @@
+{
+  "id": "policy_cold_chain",
+  "name": "冷鏈冷藏車",
+  "cost": 3,
+  "blurb": "添購冷藏車並規劃專用時段，讓蔬果與肉品在夏天也不變質。",
+  "solves": [],
+  "rule_patches": {
+    "coldChain": 2
+  },
+  "deltas": {
+    "money": -85,
+    "profit": 25,
+    "happiness": 4
+  },
+  "logistics": {
+    "boostVehicles": [
+      "light_truck"
+    ],
+    "priorityCargo": [
+      "produce",
+      "market_stock"
+    ],
+    "metricBoost": {
+      "onTimeRate": 0.06
+    }
+  },
+  "sideEffect": "設備貴又耗電；冷藏車也怕卡在峽口，不解決塞車本身；進施工單線還會更塞。",
+  "preview": "預估：金錢 -85、獲利 +25、幸福度 +4；準點率 +6%，生鮮損耗下降。",
+  "costPoints": 3,
+  "tags": [
+    "物流",
+    "食安",
+    "設備"
+  ],
+  "counters": [
+    "cold_chain",
+    "heat"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_cold_chain.webp",
+    "icon": "assets/sprites/cards/icons/icon_cold_chain.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🧊",
+    "accent": "#5bb4e6",
+    "fxHint": "fx_cold_truck"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "物流／設備",
+    "rarity": "稀有",
+    "titleShort": "冷鏈車",
+    "costBadge": "3 點",
+    "shopLine": "冷藏車上路，夏天的菜也新鮮。",
+    "effectLine": "生鮮專用冷藏與時段；冷鏈不易中斷，損耗下降。",
+    "flavor": "菜要涼涼的，心才安。",
+    "learnPoint": "這張牌教你：夏季風險要用對應的專用設備來降。",
+    "bullets": [
+      "對症：冷鏈中斷",
+      "準點率 +6%",
+      "設備貴、怕塞車"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -85,
+        "text": "金錢 -85"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": 25,
+        "text": "獲利 +25"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 4,
+        "text": "幸福度 +4"
+      },
+      {
+        "key": "onTimeRate",
+        "label": "準點率",
+        "value": 0.06,
+        "text": "準點率 +6%"
+      }
+    ],
+    "tradeoffLine": "設備貴又耗電；冷藏車也怕卡在峽口，不解決塞車本身；進施工單線還會更塞。"
+  },
+  "shopBlurb": "冷藏車上路，夏天的菜也新鮮。",
+  "shopLine": "3 點｜冷藏車上路，夏天的菜也新鮮。",
+  "executeId": "exec_cold_chain",
+  "fx": {
+    "street": [
+      "fx_cold_truck",
+      "fx_frost_puff"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:profit"
+    ],
+    "durationMs": 2000,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 1,
+        "tourist": 2,
+        "security": 0
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "logistics": -16,
+        "market": -6,
+        "health": -8,
+        "traffic": 3
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.03,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 99,
+        "delaySeasons": 0,
+        "note": "生鮮損耗變少"
+      },
+      "strength": "strong",
+      "summary": "車流+1、遊客+2（永久）；物流民怨-16、衛生民怨-8；店家營收 +3%"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_tian",
+      "staff_tong"
+    ],
+    "radarWeights": {
+      "logistics": 0.9,
+      "safety": 0.1,
+      "health": 0.5,
+      "engineering": 0.4,
+      "economy": 0.5,
+      "communication": 0.3
+    }
+  },
+  "actionOptionIds": [
+    "act_cold_chain"
+  ],
+  "fromArticleIds": [
+    "art_evp_logi_cold",
+    "art_evp_health_foodpoison"
+  ],
+  "verdictByOption": {
+    "act_cold_chain": "對症"
+  },
+  "complaintCounters": [
+    "logistics",
+    "market",
+    "health"
+  ],
+  "complaintDelta": {
+    "logistics": -16,
+    "market": -6,
+    "health": -8,
+    "traffic": 3
+  },
+  "complaintRebound": {},
+  "complaintNote": "對症冷鏈；大型冷藏車佔道，交通略受影響。",
+  "eventEffects": {
+    "cure": [
+      "evp_logi_cold"
+    ],
+    "assist": [
+      "evp_health_foodpoison",
+      "evp_logi_delay",
+      "evp_market_lunch_supplier",
+      "evp_market_price"
+    ],
+    "palliative": [],
+    "backfire": [
+      "evp_traffic_works"
+    ]
+  },
+  "policyType": "ppp",
+  "typeLabel": "公私協力",
+  "realWorldAnalog": "農產品冷鏈合作：公部門與產地、車行合作提供冷藏運輸。",
+  "topicCounters": [
+    "cold_chain",
+    "heat"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_logi_cold"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_logi_cold"
+  ],
+  "solvesPoolConditional": []
+}

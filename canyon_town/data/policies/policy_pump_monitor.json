@@ -1,0 +1,174 @@
+{
+  "id": "policy_pump_monitor",
+  "name": "抽水站自動化與水情預警",
+  "cost": 3,
+  "blurb": "把雨量、水位與抽水站串起來，水位一到就自動啟動，並把水情公開給居民查。",
+  "solves": [],
+  "rule_patches": {
+    "pumpProgram": 1
+  },
+  "deltas": {
+    "money": -90,
+    "happiness": 3
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "設備與維護費不低；機器再快，也抽不動被垃圾卡死的涵洞。",
+  "preview": "預估：金錢 -90、幸福度 +3。",
+  "costPoints": 3,
+  "tags": [
+    "環境",
+    "工程",
+    "預警"
+  ],
+  "counters": [
+    "flood",
+    "storm_water",
+    "culvert"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_pump.webp",
+    "icon": "assets/sprites/cards/icons/icon_pump.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "📡",
+    "accent": "#3f7fd9",
+    "fxHint": "fx_pump_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "硬建設／公共服務",
+    "rarity": "進階",
+    "titleShort": "水情預警",
+    "costBadge": "3 點",
+    "shopLine": "水位到了自動抽，居民也看得到。",
+    "effectLine": "抽水更快、預警更早；積水退得快。",
+    "flavor": "提早十分鐘知道，就能少搬十袋沙包。",
+    "learnPoint": "這張牌教你：資訊與設備結合，讓反應速度變快。",
+    "bullets": [
+      "對症：暴雨積水、涵洞",
+      "金錢 -90",
+      "預警更早",
+      "設備要維護"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -90,
+        "text": "金錢 -90"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 3,
+        "text": "幸福度 +3"
+      }
+    ],
+    "tradeoffLine": "設備與維護費不低；機器再快，也抽不動被垃圾卡死的涵洞。"
+  },
+  "shopBlurb": "水位到了自動抽，居民也看得到。",
+  "shopLine": "3 點｜水位到了自動抽，居民也看得到。",
+  "executeId": "exec_pump",
+  "fx": {
+    "street": [
+      "fx_pump_a",
+      "fx_pump_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 2,
+        "tourist": 0,
+        "security": 1
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "drain": -18,
+        "safety": -4
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "strong",
+      "summary": "車流+2、治安感+1（永久）；排水民怨-18、治安民怨-4"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_xiu",
+      "staff_xin"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.4,
+      "health": 0.2,
+      "engineering": 0.9,
+      "economy": 0.2,
+      "communication": 0.4
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "drain",
+    "safety"
+  ],
+  "complaintDelta": {
+    "drain": -18,
+    "safety": -4
+  },
+  "complaintRebound": {},
+  "complaintNote": "設備與維護費不低；機器再快，也抽不動被垃圾卡死的涵洞。",
+  "eventEffects": {
+    "cure": [
+      "evp_drain_culvert",
+      "evp_drain_storm"
+    ],
+    "assist": [],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "hard",
+  "typeLabel": "硬建設／公共服務",
+  "realWorldAnalog": "智慧防災基礎設施：水位監測串接抽水站，提早啟動並公開水情。",
+  "topicCounters": [
+    "flood",
+    "storm_water",
+    "culvert"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_drain_storm",
+    "evp_drain_culvert"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_drain_culvert",
+    "evp_drain_storm"
+  ],
+  "solvesPoolConditional": []
+}

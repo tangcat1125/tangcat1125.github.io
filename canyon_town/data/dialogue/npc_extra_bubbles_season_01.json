@@ -1,0 +1,5675 @@
+{
+ "id": "npc_extra_bubbles_season_01",
+ "version": 1,
+ "note": "新增 NPC 街景泡泡(依街景狀態分組)。appearWhen.street 條件由 economy 狀態判定;speakerNpcId 對應 assets/sprites/npc/npc_<id>.png。每句≤15字。",
+ "states": {
+  "neutral": "日常",
+  "cold": "冷清",
+  "warm": "熱鬧",
+  "jam": "壅塞",
+  "unsafe": "治安差",
+  "safe": "治安好",
+  "dirty": "髒亂",
+  "shopwarn": "店家警示",
+  "shopclosed": "店家歇業",
+  "reopened": "店家重開"
+ },
+ "entries": [
+  {
+   "id": "dlg_np_tourist_m_hat_neutral_01",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "這招牌好可愛,拍一張!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_neutral_02",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "貓咪店員?太神了!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_neutral_03",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "光線正好,再一張!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_cold_01",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "街上好靜,拍起來好乾淨。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_cold_02",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "沒人入鏡,構圖輕鬆。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_cold_03",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "怎麼都沒人?奇怪。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_warm_01",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "人多也好,拍到熱鬧街景!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_warm_02",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "這個氣氛太適合拍了!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_warm_03",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "快,幫我拍排隊人潮!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_jam_01",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "車好多,拍不到整條街。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "tourist",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_jam_02",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "路口塞住了,換個角度。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "tourist",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_unsafe_01",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "相機要抱緊一點……"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "tourist",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_unsafe_02",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "巷子暗暗的,別拍了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "tourist",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_safe_01",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "巡守貓在,放心拍!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "tourist",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_safe_02",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "街上亮亮的,構圖超美。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "tourist",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_dirty_01",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "這角落髒髒的,不拍了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "tourist",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_dirty_02",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "地上有垃圾,入鏡好可惜。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "tourist",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_shopclosed_01",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "那家暗暗的,拍不下去。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "tourist",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_shopclosed_02",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "紅條貼在門上……好可惜。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "tourist",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_reopened_01",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "亮燈了!這張要留念。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "tourist",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_hat_reopened_02",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "重新開張,我來拍開幕照!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "tourist",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_neutral_01",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "請問民宿往哪走?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_neutral_02",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "行李箱輪子卡到了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_neutral_03",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "車站是這個方向嗎?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_cold_01",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "找不到人問路……"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_cold_02",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "街上人好少,有點慌。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_cold_03",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "民宿該不會沒人吧?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_warm_01",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "人多,民宿會不會客滿?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_warm_02",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "好熱鬧,我先找地方放行李。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_warm_03",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "這麼多人,車站一定擠。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_jam_01",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "車這麼多,趕得上車嗎?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "tourist",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_jam_02",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "路被擋住,行李好重。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "tourist",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_unsafe_01",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "晚上拖行李有點怕。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "tourist",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_unsafe_02",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "巷子太暗,我繞大路走。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "tourist",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_safe_01",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "路燈亮,拖行李安心。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "tourist",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_safe_02",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "有巡守在,不用怕。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "tourist",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_dirty_01",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "路上好髒,輪子都黏了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "tourist",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_dirty_02",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "行李箱不想碰到地上。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "tourist",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_shopwarn_01",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "民宿看起來沒什麼客人。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "tourist",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_shopwarn_02",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "老闆好像很擔心。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "tourist",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_shopclosed_01",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "想住的民宿暗了……"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "tourist",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_shopclosed_02",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "少一家,只好換地方。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "tourist",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_reopened_01",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "這家又開了,就住這!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "tourist",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_suitcase_reopened_02",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "燈亮了,有房間嗎?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "tourist",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_neutral_01",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "地圖上這裡是哪?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_neutral_02",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "我好像又繞回來了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_neutral_03",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "請問市集怎麼走?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_cold_01",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "連問路的人都沒有。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_cold_02",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "地圖看不懂,也沒人可問。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_cold_03",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "這裡是不是沒人住?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_warm_01",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "人多,終於有人可問!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_warm_02",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "跟著人群走就對了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_warm_03",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "這麼多人,應該是熱門景點。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_jam_01",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "封路了?地圖沒寫啊。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "tourist",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_jam_02",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "車擋住,我看不到路標。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "tourist",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_unsafe_01",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "小巷太暗,我不敢進。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "tourist",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_unsafe_02",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "背包背前面比較安心。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "tourist",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_safe_01",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "有警察在,我敢問路。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "tourist",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_safe_02",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "治安好,背包客最愛。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "tourist",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_dirty_01",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "這條路好多垃圾……"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "tourist",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_dirty_02",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "聞到怪味,換條路走。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "tourist",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_shopclosed_01",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "地圖上的店怎麼關了?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "tourist",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_shopclosed_02",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "紅條?這店不能去了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "tourist",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_reopened_01",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "地圖上的店又開了!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "tourist",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_backpack_reopened_02",
+   "speakerNpcId": "tourist_m_backpack",
+   "lines": [
+    "終於有地方補給了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "tourist",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_neutral_01",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "這家店打卡必拍!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_neutral_02",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "濾鏡都不用開。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_neutral_03",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "貼文標記貓貓市!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_cold_01",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "空景也有質感啦。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_cold_02",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "沒人搶鏡,正好!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_cold_03",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "安靜也是一種美。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_warm_01",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "人氣爆棚!貼文會爆。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_warm_02",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "直播一下這個熱鬧!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_warm_03",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "讚數蹭蹭漲!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_jam_01",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "塞車入鏡……刪掉。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "tourist",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_jam_02",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "車太多,背景不好看。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "tourist",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_unsafe_01",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "手機收好,晚點再拍。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "tourist",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_unsafe_02",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "暗暗的,打卡不安心。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "tourist",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_safe_01",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "治安好,打卡也輕鬆。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "tourist",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_safe_02",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "巡守貓入鏡,超萌!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "tourist",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_dirty_01",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "這角落先別拍。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "tourist",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_dirty_02",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "垃圾入鏡,不能發。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "tourist",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_shopclosed_01",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "紅條也太可惜。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "tourist",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_shopclosed_02",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "少一家,打卡點變少了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "tourist",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_reopened_01",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "重新開張,限時動態!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "tourist",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_photo_reopened_02",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "燈亮了,最美的一刻!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "tourist",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_neutral_01",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "地圖上這條街有畫!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_f_map_neutral_02",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "先找一下公所在哪。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_f_map_neutral_03",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "照地圖走,不會錯。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_f_map_cold_01",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "地圖說這裡很熱鬧啊?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_cold_02",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "街上好安靜,我走錯了?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_cold_03",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "人好少,問路都難。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_warm_01",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "人好多,地圖收起來。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_warm_02",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "跟著人潮走就對了!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_jam_01",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "路被車塞住,得繞路。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "tourist",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_jam_02",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "地圖沒標這裡會塞。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "tourist",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_unsafe_01",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "天暗了,先回大路吧。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "tourist",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_unsafe_02",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "這條巷子先不走了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "tourist",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_safe_01",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "有人巡邏,放心逛。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "tourist",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_safe_02",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "晚上散步也很安心。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "tourist",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_dirty_01",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "水溝味好重,快走。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "tourist",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_dirty_02",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "地上好髒,繞一下。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "tourist",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_shopwarn_01",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "地圖推薦的店好冷清。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "tourist",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_shopclosed_01",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "地圖上的店關門了!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "tourist",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_shopclosed_02",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "想吃的那家休息了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "tourist",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_f_map_reopened_01",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "那家店又開了,畫圈!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "tourist",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_neutral_01",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "這角度臉比較小!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_neutral_02",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "自拍棒再拉長一點。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_neutral_03",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "招牌跟我一起入鏡。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "tourist",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_cold_01",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "背景沒人,好乾淨。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_cold_02",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "一個人自拍有點冷。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_cold_03",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "街上空空,誰幫我拍?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "tourist",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_warm_01",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "人太多,臉被擠掉了!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_warm_02",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "背後全是人,好熱鬧!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "tourist",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_jam_01",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "喇叭聲把影片蓋掉了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "tourist",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_jam_02",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "車擋住招牌,換位置。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "tourist",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_unsafe_01",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "自拍棒先收起來。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "tourist",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_unsafe_02",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "太暗了,先不拍了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "tourist",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_safe_01",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "跟巡守貓合照一張!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "tourist",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_safe_02",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "治安好,放心拍夜景。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "tourist",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_dirty_01",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "垃圾別入鏡,換邊。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "tourist",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_dirty_02",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "這味道,先不開直播。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "tourist",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_shopwarn_01",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "店裡沒人,幫它拍一張。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "tourist",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_shopclosed_01",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "上次合照的店關了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "tourist",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_shopclosed_02",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "招牌暗了,好可惜。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "tourist",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_tourist_m_selfie_reopened_01",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "新開幕,來張合照!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "tourist",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_neutral_01",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "菜市場的菜今天新鮮。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "passerby",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_walker_elder_neutral_02",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "拐杖點地,慢慢走。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "passerby",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_walker_elder_neutral_03",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "買兩顆蛋就回家。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "passerby",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_walker_elder_cold_01",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "菜攤都沒什麼人買。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "passerby",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_cold_02",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "街上冷冷清清的。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "passerby",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_cold_03",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "以前這時間熱鬧多了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "passerby",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_warm_01",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "今天買菜要排隊啦。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "passerby",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_warm_02",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "人這麼多,阿嬤慢慢走。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "passerby",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_warm_03",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "生意好,大家都開心。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "passerby",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_jam_01",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "車這麼多,過馬路好怕。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "passerby",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_jam_02",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "斑馬線要等好久。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "passerby",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_unsafe_01",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "晚上我都不敢出門。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "passerby",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_unsafe_02",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "最近街上怪怪的。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "passerby",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_safe_01",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "有巡守,阿嬤安心。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "passerby",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_safe_02",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "燈亮亮的,散步剛好。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "passerby",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_dirty_01",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "地上滑滑的,小心跌倒。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "passerby",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_dirty_02",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "垃圾堆這麼高,怎麼走?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "passerby",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_shopwarn_01",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "那家老店快撐不住了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "passerby",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_shopwarn_02",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "少買一點,我多買一點。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "passerby",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_shopclosed_01",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "那家的菜我吃了好多年。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "passerby",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_shopclosed_02",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "關了,以後去哪買?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "passerby",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_reopened_01",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "又開了!阿嬤去捧場。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "passerby",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_elder_reopened_02",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "老店回來了,真好。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "passerby",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_neutral_01",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "今天考試考得好!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "passerby",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_walker_student_neutral_02",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "老師說要走斑馬線。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "passerby",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_walker_student_neutral_03",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "放學先回家寫功課。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "passerby",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_walker_student_cold_01",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "放學路上怎麼都沒人?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "passerby",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_cold_02",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "街上好安靜喔。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "passerby",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_cold_03",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "一個人走有點怕。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "passerby",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_warm_01",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "好熱鬧,像園遊會!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "passerby",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_warm_02",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "好多人,我牽好同學。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "passerby",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_warm_03",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "今天好多人好好玩!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "passerby",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_jam_01",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "車好多,我牽好書包。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "passerby",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_jam_02",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "要等綠燈才能過。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "passerby",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_unsafe_01",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "路燈壞了,有點怕。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "passerby",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_unsafe_02",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "天黑了,我想快點回家。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "passerby",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_safe_01",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "巡守貓叔叔好帥!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "passerby",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_safe_02",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "路燈亮亮,不怕了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "passerby",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_dirty_01",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "垃圾臭臭的,捏鼻子。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "passerby",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_dirty_02",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "水溝好臭,我繞過去。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "passerby",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_shopclosed_01",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "那家文具店關了……"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "passerby",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_shopclosed_02",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "我的零食店怎麼暗了?"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "passerby",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_reopened_01",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "那家文具店又開了!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "passerby",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_student_reopened_02",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "我的零食店亮燈了!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "passerby",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_neutral_01",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "珍奶半糖,午休剛好。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "passerby",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_walker_office_neutral_02",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "下午還有三個會。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "passerby",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_walker_office_neutral_03",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "今天加班嗎?不要。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "passerby",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_walker_office_cold_01",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "午休連排隊都不用。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "passerby",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_cold_02",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "店家好像沒什麼生意。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "passerby",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_cold_03",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "街上安靜到想睡。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "passerby",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_warm_01",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "午餐店滿座,等位中。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "passerby",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_warm_02",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "下班後的街最有活力。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "passerby",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_warm_03",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "人多,珍奶要排十分鐘。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "passerby",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_jam_01",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "通勤塞車,要遲到了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "passerby",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_jam_02",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "路口卡住,打卡來不及。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "passerby",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_unsafe_01",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "晚加班,回家要小心。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "passerby",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_unsafe_02",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "這段路太暗,我繞走。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "passerby",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_safe_01",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "街上亮亮的,好安心。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "passerby",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_safe_02",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "巡守在,下班放心走。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "passerby",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_dirty_01",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "垃圾桶滿出來了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "passerby",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_dirty_02",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "午餐都沒胃口了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "passerby",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_shopwarn_01",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "那家午餐店人好少。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "passerby",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_shopwarn_02",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "常去的店生意不太好。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "passerby",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_shopclosed_01",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "午餐吃哪家?少一間。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "passerby",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_shopclosed_02",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "常去的店關了,可惜。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "passerby",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_reopened_01",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "午餐有著落了!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "passerby",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_walker_office_reopened_02",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "常去的店又開了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "passerby",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_neutral_01",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "巡邏中,喵。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "guard",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_guard_cat_neutral_02",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "手電筒電量滿格。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "guard",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_guard_cat_neutral_03",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "今天也要平安喔。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "guard",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_guard_cat_cold_01",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "街上很靜,我多繞一圈。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "guard",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_cold_02",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "人少的時候更要巡。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "guard",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_cold_03",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "沒人也不能偷懶。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "guard",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_warm_01",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "人多,大家排好隊喔。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "guard",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_warm_02",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "請注意腳邊,小朋友多。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "guard",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_warm_03",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "熱鬧歸熱鬧,別推擠。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "guard",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_jam_01",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "車多,請讓行人先過。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "guard",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_jam_02",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "路口我來顧著。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "guard",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_unsafe_01",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "暗處多,我會加強巡。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "guard",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_unsafe_02",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "請大家結伴走,喵。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "guard",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_safe_01",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "今晚平安,喵。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "guard",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_safe_02",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "街上很安全,可以逛。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "guard",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_dirty_01",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "垃圾請丟進桶子裡喔。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "guard",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_dirty_02",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "髒亂處我記下來了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "guard",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_shopwarn_01",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "黃牌店家我多留意。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "guard",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_shopwarn_02",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "大家多幫忙光顧喔。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "guard",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_shopclosed_01",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "空店面別靠近喔。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "guard",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_shopclosed_02",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "暗處我會多巡幾次。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "guard",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_reopened_01",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "燈亮了,街角安心多了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "guard",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_cat_reopened_02",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "重新開張,我來站崗。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "guard",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_neutral_01",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "請走人行道,謝謝。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "guard",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_guard_police_neutral_02",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "今日巡邏,一切正常。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "guard",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_guard_police_neutral_03",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "請勿違規停車。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·日常",
+   "speakerKind": "guard",
+   "street": "neutral"
+  },
+  {
+   "id": "dlg_np_guard_police_cold_01",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "人少也不能大意。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "guard",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_cold_02",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "街上安靜,我多走走。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "guard",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_cold_03",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "冷清時最容易出事。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "guard",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_warm_01",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "人多小心扒手。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "guard",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_warm_02",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "請依序通行,謝謝。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "guard",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_warm_03",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "活動期間加強警戒。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "guard",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_jam_01",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "我來指揮交通。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "guard",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_jam_02",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "請保持車距,別按喇叭。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "guard",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_jam_03",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "前方壅塞,請耐心。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "guard",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_unsafe_01",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "最近有扒手,請顧好包包。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "guard",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_unsafe_02",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "請勿夜間單獨行動。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "guard",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_safe_01",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "秩序良好,謝謝配合。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "guard",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_safe_02",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "最近平安,感謝大家。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "guard",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_dirty_01",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "亂丟垃圾要開單喔。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "guard",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_dirty_02",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "髒亂處請改善。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "guard",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_shopclosed_01",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "封條請勿撕除。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "guard",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_shopclosed_02",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "歇業店面請勿闖入。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "guard",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_reopened_01",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "開張順利,恭喜!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "guard",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_guard_police_reopened_02",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "重新營業,我來看看。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "guard",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_cold_01",
+   "speakerNpcId": "mei",
+   "lines": [
+    "客人少,我多送一把蔥。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "resident",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_cold_02",
+   "speakerNpcId": "mei",
+   "lines": [
+    "攤位前沒人逛,好冷。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "resident",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_warm_01",
+   "speakerNpcId": "mei",
+   "lines": [
+    "忙不過來,太好了!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "resident",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_warm_02",
+   "speakerNpcId": "mei",
+   "lines": [
+    "客人排隊,我手都軟了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "resident",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_jam_01",
+   "speakerNpcId": "mei",
+   "lines": [
+    "貨車進不來,菜沒到。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "resident",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_jam_02",
+   "speakerNpcId": "mei",
+   "lines": [
+    "路被擋住,貨送不過來。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "resident",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_unsafe_01",
+   "speakerNpcId": "mei",
+   "lines": [
+    "收攤晚了,有點怕。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "resident",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_unsafe_02",
+   "speakerNpcId": "mei",
+   "lines": [
+    "夜裡收攤要有人陪。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "resident",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_safe_01",
+   "speakerNpcId": "mei",
+   "lines": [
+    "巡守在,我敢晚點收。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "resident",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_safe_02",
+   "speakerNpcId": "mei",
+   "lines": [
+    "夜市氣氛真好。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "resident",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_dirty_01",
+   "speakerNpcId": "mei",
+   "lines": [
+    "攤位旁臭臭的。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "resident",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_dirty_02",
+   "speakerNpcId": "mei",
+   "lines": [
+    "水溝味飄過來,客人跑了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "resident",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_shopwarn_01",
+   "speakerNpcId": "mei",
+   "lines": [
+    "隔壁快撐不住了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "resident",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_shopwarn_02",
+   "speakerNpcId": "mei",
+   "lines": [
+    "隔壁生意差,我也擔心。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "resident",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_shopclosed_01",
+   "speakerNpcId": "mei",
+   "lines": [
+    "隔壁關了,好冷清。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "resident",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_shopclosed_02",
+   "speakerNpcId": "mei",
+   "lines": [
+    "少了隔壁,攤位孤單。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "resident",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_reopened_01",
+   "speakerNpcId": "mei",
+   "lines": [
+    "隔壁開了!熱鬧起來。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "resident",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_mei_reopened_02",
+   "speakerNpcId": "mei",
+   "lines": [
+    "有鄰居了,真好。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "resident",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_bo_cold_01",
+   "speakerNpcId": "bo",
+   "lines": [
+    "人少,正好清水溝。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "resident",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_bo_cold_02",
+   "speakerNpcId": "bo",
+   "lines": [
+    "街上沒人,工程進度快。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "resident",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_bo_warm_01",
+   "speakerNpcId": "bo",
+   "lines": [
+    "人多垃圾也多,加班!"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "resident",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_bo_warm_02",
+   "speakerNpcId": "bo",
+   "lines": [
+    "人潮一多,水溝壓力大。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "resident",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_bo_jam_01",
+   "speakerNpcId": "bo",
+   "lines": [
+    "工程車卡在路口。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "resident",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_bo_jam_02",
+   "speakerNpcId": "bo",
+   "lines": [
+    "車堵住,我過不去。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "resident",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_bo_unsafe_01",
+   "speakerNpcId": "bo",
+   "lines": [
+    "路燈不亮,摸黑修。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "resident",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_bo_unsafe_02",
+   "speakerNpcId": "bo",
+   "lines": [
+    "夜裡修水溝有點怕。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "resident",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_bo_safe_01",
+   "speakerNpcId": "bo",
+   "lines": [
+    "路燈修好了,夜修不怕。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "resident",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_bo_safe_02",
+   "speakerNpcId": "bo",
+   "lines": [
+    "街上亮,工作順手。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "resident",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_bo_dirty_01",
+   "speakerNpcId": "bo",
+   "lines": [
+    "排水口又塞了,唉。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "resident",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_bo_dirty_02",
+   "speakerNpcId": "bo",
+   "lines": [
+    "垃圾卡水溝,臭死了。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "resident",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_cold_01",
+   "speakerNpcId": "lin",
+   "lines": [
+    "今天沒什麼可查。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "resident",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_cold_02",
+   "speakerNpcId": "lin",
+   "lines": [
+    "人少,記錄也少。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·冷清",
+   "speakerKind": "resident",
+   "street": "cold",
+   "appearWhen": {
+    "street": {
+     "any": [
+      {
+       "flow": "foot",
+       "lt": 35
+      },
+      {
+       "flow": "tourist",
+       "lt": 35
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_warm_01",
+   "speakerNpcId": "lin",
+   "lines": [
+    "人潮要記一筆。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "resident",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_warm_02",
+   "speakerNpcId": "lin",
+   "lines": [
+    "今天紀錄寫到手痠。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·熱鬧",
+   "speakerKind": "resident",
+   "street": "warm",
+   "appearWhen": {
+    "street": {
+     "flow": "foot",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_jam_01",
+   "speakerNpcId": "lin",
+   "lines": [
+    "車流量,記錄中。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "resident",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_jam_02",
+   "speakerNpcId": "lin",
+   "lines": [
+    "路口壅塞,拍照存證。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·壅塞",
+   "speakerKind": "resident",
+   "street": "jam",
+   "appearWhen": {
+    "street": {
+     "flow": "vehicle",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_unsafe_01",
+   "speakerNpcId": "lin",
+   "lines": [
+    "治安不佳,登記備查。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "resident",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_unsafe_02",
+   "speakerNpcId": "lin",
+   "lines": [
+    "暗處多,我寫進報告。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安差",
+   "speakerKind": "resident",
+   "street": "unsafe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "lt": 35
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_safe_01",
+   "speakerNpcId": "lin",
+   "lines": [
+    "治安良好,登記。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "resident",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_safe_02",
+   "speakerNpcId": "lin",
+   "lines": [
+    "今天沒有異常。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·治安好",
+   "speakerKind": "resident",
+   "street": "safe",
+   "appearWhen": {
+    "street": {
+     "flow": "security",
+     "gte": 65
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_dirty_01",
+   "speakerNpcId": "lin",
+   "lines": [
+    "這裡髒亂,要登記。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "resident",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_dirty_02",
+   "speakerNpcId": "lin",
+   "lines": [
+    "垃圾點,拍照存證。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·髒亂",
+   "speakerKind": "resident",
+   "street": "dirty",
+   "appearWhen": {
+    "street": {
+     "eventDomainActive": [
+      "health",
+      "drain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_shopwarn_01",
+   "speakerNpcId": "lin",
+   "lines": [
+    "黃牌店家,持續追蹤。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "resident",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_shopwarn_02",
+   "speakerNpcId": "lin",
+   "lines": [
+    "預警名單又多一家。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家警示",
+   "speakerKind": "resident",
+   "street": "shopwarn",
+   "appearWhen": {
+    "street": {
+     "shopState": "warning"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_shopclosed_01",
+   "speakerNpcId": "lin",
+   "lines": [
+    "歇業一家,登記。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "resident",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_shopclosed_02",
+   "speakerNpcId": "lin",
+   "lines": [
+    "封條已確認,記錄完成。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家歇業",
+   "speakerKind": "resident",
+   "street": "shopclosed",
+   "appearWhen": {
+    "street": {
+     "shopState": "closed"
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_reopened_01",
+   "speakerNpcId": "lin",
+   "lines": [
+    "重新開張,登記完成。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "resident",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  },
+  {
+   "id": "dlg_np_lin_reopened_02",
+   "speakerNpcId": "lin",
+   "lines": [
+    "復業核可,恭喜。"
+   ],
+   "weight": 2,
+   "category": "chat",
+   "categoryLabel": "閒聊·店家重開",
+   "speakerKind": "resident",
+   "street": "reopened",
+   "appearWhen": {
+    "street": {
+     "shopJustReopened": true
+    }
+   }
+  }
+ ],
+ "eventEntries": [
+  {
+   "id": "dlg_np_si_walker_elder_01",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "那群狗又在垃圾堆。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "passerby",
+   "trigger": "ev",
+   "appearWhen": {
+    "eventActive": [
+     "evp_safety_stray_dogs"
+    ]
+   }
+  },
+  {
+   "id": "dlg_np_si_walker_student_01",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "放學要結伴走了。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "passerby",
+   "trigger": "ev",
+   "appearWhen": {
+    "eventActive": [
+     "evp_safety_stray_dogs"
+    ]
+   }
+  },
+  {
+   "id": "dlg_np_si_tourist_f_map_01",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "地圖沒標有狗群耶。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "tourist",
+   "trigger": "ev",
+   "appearWhen": {
+    "eventActive": [
+     "evp_safety_stray_dogs"
+    ]
+   }
+  },
+  {
+   "id": "dlg_np_si_tourist_m_selfie_01",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "狗狗入鏡…先別靠近。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "tourist",
+   "trigger": "ev",
+   "appearWhen": {
+    "eventActive": [
+     "evp_safety_stray_dogs"
+    ]
+   }
+  },
+  {
+   "id": "dlg_np_si_guard_cat_01",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "狗群我們會通報。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "guard",
+   "trigger": "ev",
+   "appearWhen": {
+    "eventActive": [
+     "evp_safety_stray_dogs"
+    ]
+   }
+  },
+  {
+   "id": "dlg_np_si_mei_01",
+   "speakerNpcId": "mei",
+   "lines": [
+    "垃圾蓋好，狗就不來。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "resident",
+   "trigger": "ev",
+   "appearWhen": {
+    "eventActive": [
+     "evp_safety_stray_dogs"
+    ]
+   }
+  },
+  {
+   "id": "dlg_np_si_lin_01",
+   "speakerNpcId": "lin",
+   "lines": [
+    "大野狼？先查照片。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "resident",
+   "trigger": "ev",
+   "appearWhen": {
+    "eventActive": [
+     "evp_safety_stray_dogs"
+    ]
+   }
+  },
+  {
+   "id": "dlg_np_si_bo_01",
+   "speakerNpcId": "bo",
+   "lines": [
+    "別餵牠們剩菜喔。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "resident",
+   "trigger": "ev",
+   "appearWhen": {
+    "eventActive": [
+     "evp_safety_stray_dogs"
+    ]
+   }
+  },
+  {
+   "id": "dlg_np_si_tourist_f_photo_01",
+   "speakerNpcId": "tourist_f_photo",
+   "lines": [
+    "小紅帽被追？快拍！"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "tourist",
+   "trigger": "egg",
+   "appearWhen": {
+    "easterEgg": "chase_red_riding_hood"
+   }
+  },
+  {
+   "id": "dlg_np_si_walker_student_02",
+   "speakerNpcId": "walker_student",
+   "lines": [
+    "那是大狗不是狼啦！"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "passerby",
+   "trigger": "egg",
+   "appearWhen": {
+    "easterEgg": "chase_red_riding_hood"
+   }
+  },
+  {
+   "id": "dlg_np_si_walker_elder_02",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "大野狼戴睡帽？"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "passerby",
+   "trigger": "egg",
+   "appearWhen": {
+    "easterEgg": "chase_red_riding_hood"
+   }
+  },
+  {
+   "id": "dlg_np_si_guard_police_01",
+   "speakerNpcId": "guard_police",
+   "lines": [
+    "別跑，慢慢走開。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "guard",
+   "trigger": "egg",
+   "appearWhen": {
+    "easterEgg": "chase_red_riding_hood"
+   }
+  },
+  {
+   "id": "dlg_np_si_tourist_m_selfie_02",
+   "speakerNpcId": "tourist_m_selfie",
+   "lines": [
+    "老鼠排隊，快錄影！"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "tourist",
+   "trigger": "pol",
+   "appearWhen": {
+    "policyExecuted": "policy_pied_piper"
+   }
+  },
+  {
+   "id": "dlg_np_si_tourist_f_map_02",
+   "speakerNpcId": "tourist_f_map",
+   "lines": [
+    "笛聲好好聽喔。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "tourist",
+   "trigger": "pol",
+   "appearWhen": {
+    "policyExecuted": "policy_pied_piper"
+   }
+  },
+  {
+   "id": "dlg_np_si_mei_02",
+   "speakerNpcId": "mei",
+   "lines": [
+    "老鼠都跟笛聲走了！"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "resident",
+   "trigger": "pol",
+   "appearWhen": {
+    "policyExecuted": "policy_pied_piper"
+   }
+  },
+  {
+   "id": "dlg_np_si_walker_elder_03",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "吹笛人只帶老鼠走。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "passerby",
+   "trigger": "pol",
+   "appearWhen": {
+    "policyExecuted": "policy_pied_piper"
+   }
+  },
+  {
+   "id": "dlg_np_si_bo_02",
+   "speakerNpcId": "bo",
+   "lines": [
+    "下水道也安靜了。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "resident",
+   "trigger": "pol",
+   "appearWhen": {
+    "policyExecuted": "policy_pied_piper"
+   }
+  },
+  {
+   "id": "dlg_np_si_mei_03",
+   "speakerNpcId": "mei",
+   "lines": [
+    "老鼠怎麼又回來了？"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "resident",
+   "trigger": "egg",
+   "appearWhen": {
+    "easterEgg": "piper_unpaid_loop"
+   }
+  },
+  {
+   "id": "dlg_np_si_walker_office_01",
+   "speakerNpcId": "walker_office",
+   "lines": [
+    "尾款沒付，笛聲走調。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "passerby",
+   "trigger": "egg",
+   "appearWhen": {
+    "easterEgg": "piper_unpaid_loop"
+   }
+  },
+  {
+   "id": "dlg_np_si_tourist_m_hat_01",
+   "speakerNpcId": "tourist_m_hat",
+   "lines": [
+    "老鼠在繞市一圈？"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "tourist",
+   "trigger": "egg",
+   "appearWhen": {
+    "easterEgg": "piper_unpaid_loop"
+   }
+  },
+  {
+   "id": "dlg_np_si_lin_02",
+   "speakerNpcId": "lin",
+   "lines": [
+    "答應的錢要付啊。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "resident",
+   "trigger": "egg",
+   "appearWhen": {
+    "easterEgg": "piper_unpaid_loop"
+   }
+  },
+  {
+   "id": "dlg_np_si_mei_04",
+   "speakerNpcId": "mei",
+   "lines": [
+    "一早老鼠排隊跑！"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "resident",
+   "trigger": "ev",
+   "appearWhen": {
+    "eventActive": [
+     "evp_health_rat_swarm"
+    ]
+   }
+  },
+  {
+   "id": "dlg_np_si_tourist_f_suitcase_01",
+   "speakerNpcId": "tourist_f_suitcase",
+   "lines": [
+    "行李箱旁有老鼠！"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "tourist",
+   "trigger": "ev",
+   "appearWhen": {
+    "eventActive": [
+     "evp_health_rat_swarm"
+    ]
+   }
+  },
+  {
+   "id": "dlg_np_si_walker_elder_04",
+   "speakerNpcId": "walker_elder",
+   "lines": [
+    "雨一大，老鼠就搬家。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "passerby",
+   "trigger": "ev",
+   "appearWhen": {
+    "eventActive": [
+     "evp_health_rat_swarm"
+    ]
+   }
+  },
+  {
+   "id": "dlg_np_si_guard_cat_02",
+   "speakerNpcId": "guard_cat",
+   "lines": [
+    "鼠跡我記下來了。"
+   ],
+   "weight": 3,
+   "category": "chat",
+   "categoryLabel": "閒聊·事件彩蛋",
+   "speakerKind": "guard",
+   "trigger": "ev",
+   "appearWhen": {
+    "eventActive": [
+     "evp_health_rat_swarm"
+    ]
+   }
+  }
+ ],
+ "eventEntriesNote": "Stage I（2026-10-08）事件／彩蛋泡泡：appearWhen 用 eventActive（本季抽到的事件（ctx.pool.dr.events 的 eventId）含任一）、policyExecuted（本季執行過此卡（BehaviorLog decision.played））、easterEgg（此彩蛋本季已觸發（ctx.easterEggs.lastCycle[id]＝本季））。現行 G.Economy.streetLines 只讀 entries，不會誤觸發；需小力在同一函式加讀 eventEntries（條件成立時優先於一般泡泡）。每句 ≤15 字。"
+}

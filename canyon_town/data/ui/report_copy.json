@@ -1,0 +1,85 @@
+{
+  "id": "report_copy_season_01",
+  "seasonId": "season_01",
+  "terms": {
+    "report": "結報",
+    "continueDaily": "繼續日常",
+    "avoid": [
+      "重播",
+      "重演",
+      "重看"
+    ],
+    "note": "玩家看到的文字一律用「結報」「繼續日常」；程式模組名 G.Replay 可保留。"
+  },
+  "flow": {
+    "collecting": "街景自動運轉，注意居民說的話，蒐集線索。",
+    "countdown": "資料蒐集中，剩 {sec} 秒",
+    "countdownEnd": "時間到，進入結報。",
+    "collectToast": "蒐集到線索：{summary}",
+    "collectCount": "已蒐集 {n} 條線索",
+    "tapHint": "點居民的泡泡，把線索收進線索簿。"
+  },
+  "report": {
+    "title": "本週期結報",
+    "subtitle": "街景時間到，來看看這輪蒐集到的資料。",
+    "cluesTitle": "本輪蒐集 {n} 條線索",
+    "noClues": "這輪沒蒐集到線索，下一輪多留意居民的對話泡泡。",
+    "deepestTitle": "民怨最深處",
+    "hintsTitle": "線索指向的政策卡",
+    "hintsEmpty": "線索還不夠，先翻開貓貓快報看看。",
+    "openPaper": "翻開貓貓快報",
+    "continueDaily": "繼續日常",
+    "afterPolicy": "政策已生效，城市繼續日常。",
+    "readyToReport": "確認政策並結報",
+    "confirmReport": "確認並結報",
+    "previewSuffix": "（結報後）",
+    "unsolved": "核心問題尚未解決。政策已施行、沒有回頭路；繼續下一季後，沒解決的問題會累積到下一季。"
+  },
+  "replacements": [
+    {
+      "from": "確認政策並重播",
+      "to": "確認政策並結報"
+    },
+    {
+      "from": "確認重播 · 執行改善",
+      "to": "確認並結報 · 執行改善"
+    },
+    {
+      "from": "確認重播",
+      "to": "確認並結報"
+    },
+    {
+      "from": "以新規則重播本季…城市自動運轉",
+      "to": "政策生效，城市繼續日常…"
+    },
+    {
+      "from": "仍可用點數買政策卡後確認重播",
+      "to": "仍可用點數買政策卡後確認並結報"
+    },
+    {
+      "from": "（重播後）",
+      "to": "（結報後）"
+    },
+    {
+      "from": "重播後",
+      "to": "結報後"
+    },
+    {
+      "from": "重播檢討",
+      "to": "結報檢討"
+    },
+    {
+      "from": "重演後",
+      "to": "結報後"
+    },
+    {
+      "from": "重演",
+      "to": "結報"
+    },
+    {
+      "from": "重播",
+      "to": "結報"
+    }
+  ],
+  "replacementsNote": "依序套用（長詞在前）。只改玩家看得到的字串與註解，程式識別字（G.Replay、replay.js、btn-replay-hint 等 id）不必改。"
+}

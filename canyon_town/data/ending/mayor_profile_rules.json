@@ -1,0 +1,1095 @@
+{
+  "id": "mayor_profile_rules",
+  "seasonId": "season_01",
+  "version": 1,
+  "status": "final",
+  "note": "Stage H 市長任命狀六軸計分（呆呆 10/7 提案，10/10 咪咪審定：權重、門檻照提案定案）。輸入＝G.BehaviorLog.metrics(log) 的指標＋本檔 derived／new 指標；每個數字為 {value,note}。小力暫用版 data/ending/score_rules.json 已廢止（不再進 embed）；stage_h 改讀 G.DATA.ending。",
+  "source": {
+    "log": "G.BehaviorLog（src/js/behavior_log.js；localStorage 鍵 catflash.behaviorLog.h1）",
+    "metrics": "G.BehaviorLog.metrics(log, rules)（existing 指標）",
+    "reference": "tools/ending_profile_ref.js（derived／new 指標與計分參考實作；不放進 src/js）"
+  },
+  "scale": {
+    "min": {
+      "value": 0,
+      "note": "每軸與總分下限"
+    },
+    "max": {
+      "value": 100,
+      "note": "每軸與總分上限"
+    }
+  },
+  "normalize": {
+    "method": "linear",
+    "formula": "clamp((value − lo) ÷ (hi − lo), 0, 1) × 100",
+    "note": "與小力原 score_rules 相同，方便 stage_h.js 直接沿用（見 toStageHRules）"
+  },
+  "missing": {
+    "componentRule": "指標為 null（沒紀錄）→ 不計入分母",
+    "axisNoData": {
+      "value": 50,
+      "note": "整軸沒資料（例如第 1 季就結束任期）→ 50 分並標 noData；小力暫用版是 0"
+    },
+    "zeroActionRule": "有紀錄但玩家沒有行為（例如整局都按忽略、沒畫重點）是 0，不是沒資料"
+  },
+  "resultValue": {
+    "cure": {
+      "value": 1,
+      "note": "對症"
+    },
+    "assist": {
+      "value": 0.7,
+      "note": "輔助"
+    },
+    "palliative": {
+      "value": 0.4,
+      "note": "治標"
+    },
+    "none": {
+      "value": 0,
+      "note": "無關"
+    },
+    "backfire": {
+      "value": 0,
+      "note": "反效果"
+    }
+  },
+  "axes": [
+    {
+      "id": "reading",
+      "name": "讀報理解",
+      "short": "讀報",
+      "desc": "把快報讀完、展開重點、花時間讀，而不是急著做決定。",
+      "order": 1,
+      "weight": {
+        "value": 1,
+        "note": "總分＝六軸加權平均，目前等權"
+      },
+      "clamp": {
+        "min": {
+          "value": 0,
+          "note": "下限"
+        },
+        "max": {
+          "value": 100,
+          "note": "上限"
+        }
+      },
+      "noDataScore": {
+        "value": 50,
+        "note": "整軸沒資料時（不羞辱，顯示「資料不足」）"
+      },
+      "caps": [],
+      "components": [
+        {
+          "metric": "avgScrollPct",
+          "label": "平均捲動%",
+          "status": "existing",
+          "source": "seasons[].paper.maxScrollPct",
+          "formula": "有讀報紀錄的季，maxScrollPct 平均",
+          "weight": {
+            "value": 0.25,
+            "note": "捲動只代表有看過，權重較低"
+          },
+          "lo": {
+            "value": 40,
+            "note": "捲動%（報紙門檻 72% 一定會過）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 100,
+            "note": "捲動%（報紙門檻 72% 一定會過）：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "avgExpandedRatio",
+          "label": "展開篇數比例",
+          "status": "existing",
+          "source": "seasons[].paper.expanded ÷ seasons[].paper.storyCount",
+          "formula": "每季 min(1, expanded÷storyCount) 平均",
+          "weight": {
+            "value": 0.35,
+            "note": "展開報導最能代表「讀懂」"
+          },
+          "lo": {
+            "value": 0,
+            "note": "展開比例（展開六成報導就滿分）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 0.6,
+            "note": "展開比例（展開六成報導就滿分）：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "avgReadSec",
+          "label": "平均讀報秒數",
+          "status": "existing",
+          "source": "seasons[].paper.readMs ÷ 1000",
+          "formula": "每季讀報秒數平均",
+          "weight": {
+            "value": 0.2,
+            "note": "花時間讀；上限 90 秒避免鼓勵拖延"
+          },
+          "lo": {
+            "value": 20,
+            "note": "讀報秒數：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 90,
+            "note": "讀報秒數：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "avgHighlights",
+          "label": "平均畫重點數",
+          "status": "new",
+          "source": "seasons[].paper.highlights（需小力新增）",
+          "formula": "每季畫重點（.np-clue.is-highlighted）數平均",
+          "weight": {
+            "value": 0.2,
+            "note": "畫重點＝主動找證據"
+          },
+          "lo": {
+            "value": 0,
+            "note": "每季畫重點數（3 個就滿分）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 3,
+            "note": "每季畫重點數（3 個就滿分）：達到此值＝100 分"
+          }
+        }
+      ],
+      "example": {
+        "metrics": {
+          "avgScrollPct": 85,
+          "avgExpandedRatio": 0.4,
+          "avgReadSec": 55,
+          "avgHighlights": null
+        },
+        "parts": [
+          {
+            "metric": "avgScrollPct",
+            "value": 85,
+            "score": 75
+          },
+          {
+            "metric": "avgExpandedRatio",
+            "value": 0.4,
+            "score": 67
+          },
+          {
+            "metric": "avgReadSec",
+            "value": 55,
+            "score": 50
+          },
+          {
+            "metric": "avgHighlights",
+            "value": null,
+            "score": null
+          }
+        ],
+        "score": 65,
+        "noData": false
+      }
+    },
+    {
+      "id": "evidence",
+      "name": "證據判斷",
+      "short": "證據",
+      "desc": "蒐集真線索、分辨傳聞，並用線索支持選卡。",
+      "order": 2,
+      "weight": {
+        "value": 1,
+        "note": "總分＝六軸加權平均，目前等權"
+      },
+      "clamp": {
+        "min": {
+          "value": 0,
+          "note": "下限"
+        },
+        "max": {
+          "value": 100,
+          "note": "上限"
+        }
+      },
+      "noDataScore": {
+        "value": 50,
+        "note": "整軸沒資料時（不羞辱，顯示「資料不足」）"
+      },
+      "caps": [],
+      "components": [
+        {
+          "metric": "collectRate",
+          "label": "真線索蒐集率",
+          "status": "existing",
+          "source": "Σ seasons[].clues.collected ÷ Σ seasons[].clues.available",
+          "formula": "整局加總後相除（上限 1）",
+          "weight": {
+            "value": 0.35,
+            "note": "街景真線索蒐集"
+          },
+          "lo": {
+            "value": 0,
+            "note": "蒐集率（八成就滿分）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 0.8,
+            "note": "蒐集率（八成就滿分）：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "trueShare",
+          "label": "點選中真線索比例",
+          "status": "existing",
+          "source": "seasons[].clues.tapped{true,false,partial}",
+          "formula": "Σtrue ÷ Σ(true+false+partial)",
+          "weight": {
+            "value": 0.25,
+            "note": "分辨線索和傳聞"
+          },
+          "lo": {
+            "value": 0.3,
+            "note": "真線索比例（三成以下＝0）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 1,
+            "note": "真線索比例（三成以下＝0）：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "clueBackedRate",
+          "label": "有線索支持的選卡比例",
+          "status": "existing",
+          "source": "seasons[].decision.clueBacked ÷ played.length",
+          "formula": "Σ clueBacked ÷ Σ 出牌數",
+          "weight": {
+            "value": 0.3,
+            "note": "用證據支持決策"
+          },
+          "lo": {
+            "value": 0,
+            "note": "有線索支持的選卡比例：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 0.8,
+            "note": "有線索支持的選卡比例：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "notEarlyRate",
+          "label": "沒有提早結束觀察的比例",
+          "status": "existing",
+          "source": "seasons[].earlyReport",
+          "formula": "1 − 提早結束街景觀察的季數 ÷ 季數",
+          "weight": {
+            "value": 0.1,
+            "note": "街景觀察是蒐證時間，提早結束扣一點"
+          },
+          "lo": {
+            "value": 0.5,
+            "note": "沒提早結束的比例（一半以下＝0）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 1,
+            "note": "沒提早結束的比例（一半以下＝0）：達到此值＝100 分"
+          }
+        }
+      ],
+      "example": {
+        "metrics": {
+          "collectRate": 0.5,
+          "trueShare": 0.65,
+          "clueBackedRate": 0.4,
+          "notEarlyRate": 0.75
+        },
+        "parts": [
+          {
+            "metric": "collectRate",
+            "value": 0.5,
+            "score": 63
+          },
+          {
+            "metric": "trueShare",
+            "value": 0.65,
+            "score": 50
+          },
+          {
+            "metric": "clueBackedRate",
+            "value": 0.4,
+            "score": 50
+          },
+          {
+            "metric": "notEarlyRate",
+            "value": 0.75,
+            "score": 50
+          }
+        ],
+        "score": 54,
+        "noData": false
+      }
+    },
+    {
+      "id": "decision",
+      "name": "對症決策",
+      "short": "對症",
+      "desc": "選卡對症（對症＞輔助＞治標＞無關／反效果），點數花在刀口上，少放著問題不管。",
+      "order": 3,
+      "weight": {
+        "value": 1,
+        "note": "總分＝六軸加權平均，目前等權"
+      },
+      "clamp": {
+        "min": {
+          "value": 0,
+          "note": "下限"
+        },
+        "max": {
+          "value": 100,
+          "note": "上限"
+        }
+      },
+      "noDataScore": {
+        "value": 50,
+        "note": "整軸沒資料時（不羞辱，顯示「資料不足」）"
+      },
+      "caps": [],
+      "components": [
+        {
+          "metric": "cureScore",
+          "label": "選卡判定平均",
+          "status": "existing",
+          "source": "seasons[].decision.verdicts（resultValue 換算）",
+          "formula": "每張卡 cure 1／assist .7／palliative .4／none 0／backfire 0 的平均",
+          "weight": {
+            "value": 0.5,
+            "note": "最核心：卡有沒有對症"
+          },
+          "lo": {
+            "value": 0,
+            "note": "判定平均（0.8＝大多對症）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 0.8,
+            "note": "判定平均（0.8＝大多對症）：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "backfireFreeRate",
+          "label": "沒有反效果的比例",
+          "status": "existing",
+          "source": "seasons[].decision.verdicts",
+          "formula": "1 − backfire 張數 ÷ 出牌張數",
+          "weight": {
+            "value": 0.15,
+            "note": "避免幫倒忙"
+          },
+          "lo": {
+            "value": 0.5,
+            "note": "無反效果比例：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 1,
+            "note": "無反效果比例：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "notIgnoreRate",
+          "label": "沒有忽略的季比例",
+          "status": "existing",
+          "source": "seasons[].decision.ignored",
+          "formula": "1 − 按忽略的季數 ÷ 有決策紀錄的季數",
+          "weight": {
+            "value": 0.15,
+            "note": "少放著問題不管"
+          },
+          "lo": {
+            "value": 0,
+            "note": "沒忽略比例：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 1,
+            "note": "沒忽略比例：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "targetPointsRate",
+          "label": "點數花在對症／輔助卡的比例",
+          "status": "derived",
+          "source": "seasons[].decision.played＋verdicts＋pointsAvail；G.DATA.policies[pid].cost",
+          "formula": "Σ（verdict 為 cure/assist 的卡 cost）÷ Σ pointsAvail",
+          "weight": {
+            "value": 0.2,
+            "note": "點數用得準，而不是用得多"
+          },
+          "lo": {
+            "value": 0,
+            "note": "對症點數比例（六成就滿分）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 0.6,
+            "note": "對症點數比例（六成就滿分）：達到此值＝100 分"
+          }
+        }
+      ],
+      "example": {
+        "metrics": {
+          "cureScore": 0.56,
+          "backfireFreeRate": 0.95,
+          "notIgnoreRate": 0.9,
+          "targetPointsRate": 0.33
+        },
+        "parts": [
+          {
+            "metric": "cureScore",
+            "value": 0.56,
+            "score": 70
+          },
+          {
+            "metric": "backfireFreeRate",
+            "value": 0.95,
+            "score": 90
+          },
+          {
+            "metric": "notIgnoreRate",
+            "value": 0.9,
+            "score": 90
+          },
+          {
+            "metric": "targetPointsRate",
+            "value": 0.33,
+            "score": 55
+          }
+        ],
+        "score": 73,
+        "noData": false
+      }
+    },
+    {
+      "id": "finance",
+      "name": "財政管理",
+      "short": "財政",
+      "desc": "金庫有沒有變多、季季有盈餘、少買無關卡、不靠借款。",
+      "order": 4,
+      "weight": {
+        "value": 1,
+        "note": "總分＝六軸加權平均，目前等權"
+      },
+      "clamp": {
+        "min": {
+          "value": 0,
+          "note": "下限"
+        },
+        "max": {
+          "value": 100,
+          "note": "上限"
+        }
+      },
+      "noDataScore": {
+        "value": 50,
+        "note": "整軸沒資料時（不羞辱，顯示「資料不足」）"
+      },
+      "caps": [
+        {
+          "when": "bankrupt",
+          "source": "log.endingKind === \"bankrupt\"（existing）",
+          "max": {
+            "value": 30,
+            "note": "破產結局時財政管理最多 30 分"
+          }
+        }
+      ],
+      "components": [
+        {
+          "metric": "moneyRatio",
+          "label": "最終金錢÷開局金錢",
+          "status": "existing",
+          "source": "log.final.money ÷ log.start.money",
+          "formula": "最終金錢 ÷ 開局金錢",
+          "weight": {
+            "value": 0.45,
+            "note": "主要看金庫"
+          },
+          "lo": {
+            "value": 0,
+            "note": "金錢倍率（2.5 倍＝勝利門檻 win.moneyMult）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 2.5,
+            "note": "金錢倍率（2.5 倍＝勝利門檻 win.moneyMult）：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "positiveNetRate",
+          "label": "淨利為正的季比例",
+          "status": "existing",
+          "source": "seasons[].after.net",
+          "formula": "淨利 > 0 的季數 ÷ 已結束季數",
+          "weight": {
+            "value": 0.25,
+            "note": "季季有盈餘"
+          },
+          "lo": {
+            "value": 0,
+            "note": "盈餘季比例（八成就滿分）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 0.8,
+            "note": "盈餘季比例（八成就滿分）：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "wasteFreeRate",
+          "label": "沒花在無關卡的比例",
+          "status": "new",
+          "source": "seasons[].after.neutralCost、cardCost（需小力新增）；缺時用 decision.counts 近似",
+          "formula": "1 − Σ neutralCost ÷ Σ cardCost（缺金額時用 1 − none 張數 ÷ 出牌張數）",
+          "weight": {
+            "value": 0.2,
+            "note": "咪咪 10/6：無關卡不退費，帳單另列"
+          },
+          "lo": {
+            "value": 0.5,
+            "note": "無關卡以外的比例（一半是無關卡＝0）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 1,
+            "note": "無關卡以外的比例（一半是無關卡＝0）：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "noLoan",
+          "label": "沒有借款",
+          "status": "new",
+          "source": "log.final.loans（需小力新增：ctx.town.loans）",
+          "formula": "loans 為 0 → 1，否則 0",
+          "weight": {
+            "value": 0.1,
+            "note": "靠借款撐過扣一點"
+          },
+          "lo": {
+            "value": 0,
+            "note": "是否沒借款：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 1,
+            "note": "是否沒借款：達到此值＝100 分"
+          }
+        }
+      ],
+      "example": {
+        "metrics": {
+          "moneyRatio": 1.2,
+          "positiveNetRate": 0.55,
+          "wasteFreeRate": 0.8,
+          "noLoan": 1,
+          "bankrupt": false
+        },
+        "parts": [
+          {
+            "metric": "moneyRatio",
+            "value": 1.2,
+            "score": 48
+          },
+          {
+            "metric": "positiveNetRate",
+            "value": 0.55,
+            "score": 69
+          },
+          {
+            "metric": "wasteFreeRate",
+            "value": 0.8,
+            "score": 60
+          },
+          {
+            "metric": "noLoan",
+            "value": 1,
+            "score": 100
+          }
+        ],
+        "score": 61,
+        "noData": false
+      }
+    },
+    {
+      "id": "welfare",
+      "name": "民生照顧",
+      "short": "民生",
+      "desc": "民怨壓得低、人車流量好、店家開得住、居民開心。",
+      "order": 5,
+      "weight": {
+        "value": 1,
+        "note": "總分＝六軸加權平均，目前等權"
+      },
+      "clamp": {
+        "min": {
+          "value": 0,
+          "note": "下限"
+        },
+        "max": {
+          "value": 100,
+          "note": "上限"
+        }
+      },
+      "noDataScore": {
+        "value": 50,
+        "note": "整軸沒資料時（不羞辱，顯示「資料不足」）"
+      },
+      "caps": [],
+      "components": [
+        {
+          "metric": "complaintCare",
+          "label": "100 − 平均民怨",
+          "status": "existing",
+          "source": "seasons[].after.complaintAvg",
+          "formula": "100 − 已結束季民怨平均",
+          "weight": {
+            "value": 0.35,
+            "note": "民怨是居民最直接的感受"
+          },
+          "lo": {
+            "value": 20,
+            "note": "民怨照顧分（平均民怨 20 以下＝滿分）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 80,
+            "note": "民怨照顧分（平均民怨 20 以下＝滿分）：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "avgFlow",
+          "label": "平均流量",
+          "status": "existing",
+          "source": "seasons[].after.flowAvg",
+          "formula": "已結束季四項流量平均的平均",
+          "weight": {
+            "value": 0.25,
+            "note": "街上熱鬧程度"
+          },
+          "lo": {
+            "value": 28,
+            "note": "平均流量（起始 28 → 勝利 70）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 70,
+            "note": "平均流量（起始 28 → 勝利 70）：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "shopsOpenRatio",
+          "label": "平均營業店家比例",
+          "status": "existing",
+          "source": "seasons[].after.shopsOpen ÷ shopsTotal",
+          "formula": "每季比例平均",
+          "weight": {
+            "value": 0.2,
+            "note": "店家開得住"
+          },
+          "lo": {
+            "value": 0.5,
+            "note": "營業比例（一半以下＝0）：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 1,
+            "note": "營業比例（一半以下＝0）：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "avgHappiness",
+          "label": "平均幸福度",
+          "status": "new",
+          "source": "seasons[].after.happiness（需小力新增：ctx.metrics.happiness）",
+          "formula": "已結束季幸福度平均",
+          "weight": {
+            "value": 0.2,
+            "note": "居民開心"
+          },
+          "lo": {
+            "value": 40,
+            "note": "幸福度：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 85,
+            "note": "幸福度：達到此值＝100 分"
+          }
+        }
+      ],
+      "example": {
+        "metrics": {
+          "complaintCare": 58,
+          "avgFlow": 52,
+          "shopsOpenRatio": 0.95,
+          "avgHappiness": null
+        },
+        "parts": [
+          {
+            "metric": "complaintCare",
+            "value": 58,
+            "score": 63
+          },
+          {
+            "metric": "avgFlow",
+            "value": 52,
+            "score": 57
+          },
+          {
+            "metric": "shopsOpenRatio",
+            "value": 0.95,
+            "score": 90
+          },
+          {
+            "metric": "avgHappiness",
+            "value": null,
+            "score": null
+          }
+        ],
+        "score": 68,
+        "noData": false
+      }
+    },
+    {
+      "id": "teamwork",
+      "name": "採納建議／團隊協作",
+      "short": "協作",
+      "desc": "參考公所貓貓建議（而且是有判斷地採用）、願意委任職員分工。",
+      "order": 6,
+      "weight": {
+        "value": 1,
+        "note": "總分＝六軸加權平均，目前等權"
+      },
+      "clamp": {
+        "min": {
+          "value": 0,
+          "note": "下限"
+        },
+        "max": {
+          "value": 100,
+          "note": "上限"
+        }
+      },
+      "noDataScore": {
+        "value": 50,
+        "note": "整軸沒資料時（不羞辱，顯示「資料不足」）"
+      },
+      "caps": [],
+      "components": [
+        {
+          "metric": "adoptRate",
+          "label": "選卡含推薦卡的季比例",
+          "status": "existing",
+          "source": "seasons[].advice.adopted",
+          "formula": "有出牌的季中，含公所貓貓推薦卡的比例",
+          "weight": {
+            "value": 0.4,
+            "note": "參考建議；七成就滿分，不鼓勵照單全收"
+          },
+          "lo": {
+            "value": 0,
+            "note": "採納比例：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 0.7,
+            "note": "採納比例：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "adoptGoodRate",
+          "label": "採納的卡有效的比例",
+          "status": "derived",
+          "source": "seasons[].advice.adoptedPids＋decision.verdicts",
+          "formula": "採納卡中 verdict 為 cure/assist 的比例",
+          "weight": {
+            "value": 0.3,
+            "note": "有判斷地採納"
+          },
+          "lo": {
+            "value": 0.3,
+            "note": "採納有效比例：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 1,
+            "note": "採納有效比例：達到此值＝100 分"
+          }
+        },
+        {
+          "metric": "delegateRate",
+          "label": "有委任／派員的季比例",
+          "status": "existing",
+          "source": "seasons[].advice.delegated",
+          "formula": "有出牌的季中，有「派他去」或接受委任的比例",
+          "weight": {
+            "value": 0.3,
+            "note": "分工合作"
+          },
+          "lo": {
+            "value": 0,
+            "note": "委任比例：低於此值＝0 分"
+          },
+          "hi": {
+            "value": 0.7,
+            "note": "委任比例：達到此值＝100 分"
+          }
+        }
+      ],
+      "example": {
+        "metrics": {
+          "adoptRate": 0.45,
+          "adoptGoodRate": 0.7,
+          "delegateRate": 0.25
+        },
+        "parts": [
+          {
+            "metric": "adoptRate",
+            "value": 0.45,
+            "score": 64
+          },
+          {
+            "metric": "adoptGoodRate",
+            "value": 0.7,
+            "score": 57
+          },
+          {
+            "metric": "delegateRate",
+            "value": 0.25,
+            "score": 36
+          }
+        ],
+        "score": 54,
+        "noData": false
+      }
+    }
+  ],
+  "overall": {
+    "method": "weightedMean",
+    "note": "總分＝Σ(軸分×weight)÷Σweight，四捨五入；等第依 grades.min 由高到低第一個符合者"
+  },
+  "grades": [
+    {
+      "id": "S",
+      "min": {
+        "value": 88,
+        "note": "六軸平均 ≥ 88：幾乎每軸都接近滿分"
+      },
+      "label": "傳奇"
+    },
+    {
+      "id": "A",
+      "min": {
+        "value": 75,
+        "note": "≥ 75：多數軸表現好"
+      },
+      "label": "優秀"
+    },
+    {
+      "id": "B",
+      "min": {
+        "value": 62,
+        "note": "≥ 62：穩定、有一兩項待加強"
+      },
+      "label": "穩健"
+    },
+    {
+      "id": "C",
+      "min": {
+        "value": 48,
+        "note": "≥ 48：有亮點也有明顯弱項（模擬的普通打法約在 B／C）"
+      },
+      "label": "成長"
+    },
+    {
+      "id": "D",
+      "min": {
+        "value": 0,
+        "note": "< 48：剛起步（例如很早破產或常忽略問題）"
+      },
+      "label": "起步"
+    }
+  ],
+  "rankRule": "強兩軸＝分數最高的兩軸；弱一軸＝其餘四軸中分數最低者。同分依軸順序（reading→teamwork）前者優先當強軸、後者優先當弱軸。",
+  "newFields": [
+    {
+      "field": "seasons[].paper.highlights",
+      "type": "int",
+      "record": "behavior_log.js document capture：點 .np-clue 時依點擊後是否帶 is-highlighted 增減（同 newspaper.js readState.highlights 的規則）",
+      "usedBy": "reading.avgHighlights"
+    },
+    {
+      "field": "seasons[].after.neutralCost",
+      "type": "int（元）",
+      "record": "seasonEnd：G.Economy.bill(ctx).neutralCost（commit 後讀 lastBill）",
+      "usedBy": "finance.wasteFreeRate"
+    },
+    {
+      "field": "seasons[].after.cardCost",
+      "type": "int（元）",
+      "record": "seasonEnd：G.Economy.bill(ctx).parts.cardCost",
+      "usedBy": "finance.wasteFreeRate"
+    },
+    {
+      "field": "seasons[].after.happiness",
+      "type": "int 0–100",
+      "record": "seasonEnd：ctx.metrics.happiness（townState 多帶一欄）",
+      "usedBy": "welfare.avgHappiness"
+    },
+    {
+      "field": "final.loans",
+      "type": "int",
+      "record": "finish：ctx.town.loans（townState 多帶一欄即可）",
+      "usedBy": "finance.noLoan"
+    },
+    {
+      "field": "termNo（任期序號）",
+      "type": "int",
+      "record": "建議 localStorage「catflash.termCount」：每次 finish +1；或由老師在入口指定",
+      "usedBy": "任命狀 {termNo}"
+    }
+  ],
+  "derivedMetrics": [
+    {
+      "metric": "targetPointsRate",
+      "from": "seasons[].decision.played、verdicts、pointsAvail；G.DATA.policies[pid].cost",
+      "formula": "Σ cost（verdict ∈ {cure, assist}）÷ Σ pointsAvail"
+    },
+    {
+      "metric": "adoptGoodRate",
+      "from": "seasons[].advice.adoptedPids、decision.verdicts",
+      "formula": "採納卡中 verdict ∈ {cure, assist} 的張數 ÷ 採納卡張數"
+    },
+    {
+      "metric": "bankrupt",
+      "from": "log.endingKind",
+      "formula": "endingKind === \"bankrupt\""
+    },
+    {
+      "metric": "wasteFreeRate（缺金額時）",
+      "from": "seasons[].decision.counts",
+      "formula": "1 − Σ none ÷ Σ 出牌張數（近似；有 neutralCost／cardCost 後改用金額）"
+    }
+  ],
+  "calibration": [
+    {
+      "id": "engaged",
+      "label": "認真型（讀完報、查證、對症、留錢）",
+      "metrics": {
+        "avgScrollPct": 95,
+        "avgExpandedRatio": 0.7,
+        "avgReadSec": 100,
+        "avgHighlights": 3,
+        "collectRate": 0.8,
+        "trueShare": 0.85,
+        "clueBackedRate": 0.75,
+        "notEarlyRate": 1,
+        "cureScore": 0.85,
+        "backfireFreeRate": 1,
+        "notIgnoreRate": 1,
+        "targetPointsRate": 0.55,
+        "moneyRatio": 3.2,
+        "positiveNetRate": 0.85,
+        "wasteFreeRate": 0.95,
+        "noLoan": 1,
+        "bankrupt": false,
+        "complaintCare": 75,
+        "avgFlow": 62,
+        "shopsOpenRatio": 1,
+        "avgHappiness": 78,
+        "adoptRate": 0.6,
+        "adoptGoodRate": 0.9,
+        "delegateRate": 0.5
+      },
+      "axes": {
+        "reading": 98,
+        "evidence": 93,
+        "decision": 98,
+        "finance": 98,
+        "welfare": 89,
+        "teamwork": 81
+      },
+      "overall": 93,
+      "grade": "S"
+    },
+    {
+      "id": "normal",
+      "label": "普通型（約一半對症，對應經濟模擬「普通＋提示」）",
+      "metrics": {
+        "avgScrollPct": 80,
+        "avgExpandedRatio": 0.35,
+        "avgReadSec": 45,
+        "avgHighlights": 1,
+        "collectRate": 0.45,
+        "trueShare": 0.6,
+        "clueBackedRate": 0.4,
+        "notEarlyRate": 0.8,
+        "cureScore": 0.5,
+        "backfireFreeRate": 0.9,
+        "notIgnoreRate": 0.85,
+        "targetPointsRate": 0.3,
+        "moneyRatio": 0.94,
+        "positiveNetRate": 0.5,
+        "wasteFreeRate": 0.75,
+        "noLoan": 1,
+        "bankrupt": false,
+        "complaintCare": 55,
+        "avgFlow": 50,
+        "shopsOpenRatio": 0.95,
+        "avgHappiness": 62,
+        "adoptRate": 0.4,
+        "adoptGoodRate": 0.6,
+        "delegateRate": 0.3
+      },
+      "axes": {
+        "reading": 51,
+        "evidence": 51,
+        "decision": 66,
+        "finance": 53,
+        "welfare": 61,
+        "teamwork": 49
+      },
+      "overall": 55,
+      "grade": "C"
+    },
+    {
+      "id": "rushed",
+      "label": "匆忙型（讀報只過門檻、少查證、常亂買、破產）",
+      "metrics": {
+        "avgScrollPct": 72,
+        "avgExpandedRatio": 0.17,
+        "avgReadSec": 18,
+        "avgHighlights": 0,
+        "collectRate": 0.1,
+        "trueShare": 0.4,
+        "clueBackedRate": 0.1,
+        "notEarlyRate": 0.3,
+        "cureScore": 0.2,
+        "backfireFreeRate": 0.8,
+        "notIgnoreRate": 0.5,
+        "targetPointsRate": 0.1,
+        "moneyRatio": 0.2,
+        "positiveNetRate": 0.2,
+        "wasteFreeRate": 0.5,
+        "noLoan": 0,
+        "bankrupt": true,
+        "complaintCare": 35,
+        "avgFlow": 33,
+        "shopsOpenRatio": 0.7,
+        "avgHappiness": 45,
+        "adoptRate": 0.1,
+        "adoptGoodRate": 0.3,
+        "delegateRate": 0
+      },
+      "axes": {
+        "reading": 23,
+        "evidence": 12,
+        "decision": 32,
+        "finance": 10,
+        "welfare": 22,
+        "teamwork": 6
+      },
+      "overall": 18,
+      "grade": "D"
+    }
+  ],
+  "review": {
+    "by": "咪咪",
+    "date": "2026-10-10",
+    "result": "照提案定案（六軸等權、S88/A75/B62/C48）",
+    "reason": "三種典型玩家分布 93/S、55/C、18/D，沒有任一軸整體偏滿分或零分；不打牌者破產財政上限 30、決策軸低，無法靠不出手刷分。已知小事：報紙門檻 72% 使 avgScrollPct 的 40–72 區間無作用，只是整體墊高、不影響排序，暫不改以免動到評語校準。"
+  }
+}

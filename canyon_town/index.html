@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>峽谷小鎮 · Canyon Town</title>
+  <!-- 米米美術／UI：優先引用，勿覆蓋 -->
+  <link rel="stylesheet" href="src/css/game.css?v=20261010c" />
+  <link rel="stylesheet" href="src/css/newspaper.css?v=20261010c" />
+  <!-- MVP 流程補丁（除錯列、結果對話、預測列）；不覆寫報紙／HUD 視覺 -->
+  <link rel="stylesheet" href="src/css/app.css?v=20261010c" />
+</head>
+<body>
+  <audio id="bgm" preload="auto" loop aria-label="遊戲背景音樂">
+    <source src="assets/audio/Polite_Applause_for_Nothing.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="game-shell">
+    <!-- 常駐指數 HUD（結構對齊 game.css） -->
+    <div id="hud-metrics" role="group" aria-label="資源指數"></div>
+
+    <div id="street-stage" aria-label="峽谷街道">
+      <div id="street-scroll">
+        <div class="street-layers" id="street-layers">
+          <div class="layer layer--sky"></div>
+          <div class="layer layer--far_cliffs"></div>
+          <div class="layer layer--mid_buildings"></div>
+          <div id="shop-layer" aria-hidden="true"></div><!-- Stage G：街景店面三態（STUDIO SHOPS v2；stage_g.js 產生 8 家 .shop） -->
+          <div class="layer layer--street_walk" id="street-walk">
+            <div id="npc-layer"></div>
+            <div id="vehicle-layer"></div>
+          </div>
+          <div class="layer layer--foreground_props"></div>
+        </div>
+      </div>
+      <div id="phase-banner" class="phase-banner" hidden></div>
+      <div id="round-bar" class="round-bar" hidden aria-label="回合條">
+        <div class="round-bar__top">
+          <ol id="round-chain" class="round-chain" aria-label="流程：觀察街區、結報、決策、日常">
+            <li data-step="0" class="is-current">觀察街區</li><li data-step="1">結報</li><li data-step="2">決策</li><li data-step="3">日常</li>
+          </ol>
+          <div class="round-bar__timer" aria-hidden="true"><b id="round-sec-n">30</b><small>秒</small></div>
+        </div>
+        <div class="round-bar__track"><i id="round-fill"></i></div>
+        <div class="round-bar__row">
+          <span id="round-count" class="round-bar__count" aria-live="off">資料蒐集中，剩 30 秒</span>
+          <button type="button" id="btn-clue-toggle" class="mvp-btn round-btn" aria-expanded="false">🔍 線索 <b id="round-clue-n">0</b></button>
+          <button type="button" id="btn-round-early" class="mvp-btn mvp-btn--primary round-btn">提早結報</button>
+        </div>
+        <p id="round-tip" class="round-bar__tip">點居民的泡泡，把線索收進線索簿。</p>
+        <span id="round-seed" class="round-bar__seed" aria-label="本局亂數種子"></span>
+        <div id="round-clue-panel" class="round-clue-panel" hidden>
+          <h4>線索簿</h4>
+          <ul id="round-clue-list"></ul>
+        </div>
+        <div id="round-toast" class="round-toast" role="status" hidden></div>
+      </div>
+      <div id="daily-strip" class="daily-strip" hidden role="status" aria-live="polite">
+        <div id="daily-strip-chips" class="daily-strip__chips"></div>
+        <div class="daily-strip__row">
+          <span id="daily-strip-count" class="daily-strip__count">日常運行中…</span>
+          <button type="button" id="btn-daily-report" class="mvp-btn mvp-btn--primary daily-strip__btn">結報</button>
+        </div>
+        <div class="daily-strip__bar"><i id="daily-strip-fill"></i></div>
+      </div>
+      <div id="controls" class="mvp-controls">
+        <button type="button" id="btn-start-season" class="mvp-btn mvp-btn--primary is-studio-hidden" hidden aria-hidden="true">開始模擬本季</button>
+        <button type="button" id="btn-open-paper" class="mvp-btn" hidden>打開貓貓快報</button>
+        <button type="button" id="btn-replay-hint" class="mvp-btn" hidden>確認政策並結報</button>
+      </div>
+    </div>
+
+    <!-- 手牌列（結構對齊 game.css #hand-rail） -->
+    <div id="hand-rail" aria-label="政策手牌">
+      <div id="policy-predict" class="policy-predict" aria-live="polite"></div>
+      <div id="policy-hand-scroll" class="policy-hand-scroll"></div>
+      <div class="hand-actions">
+        <button type="button" id="btn-clear-policies" class="mvp-btn">清空</button>
+        <button type="button" id="btn-confirm-policies" class="mvp-btn mvp-btn--primary" disabled>確認並結報</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HUD 說明層 -->
+  <div id="hud-detail" aria-hidden="true">
+    <div class="hud-detail__panel" role="dialog" aria-modal="true" aria-labelledby="hud-detail-title">
+      <h2 id="hud-detail-title">指數說明</h2>
+      <div id="hud-detail-body"></div>
+      <button type="button" class="hud-detail__close" id="hud-detail-close">關閉</button>
+    </div>
+  </div>
+
+  <!-- 貓貓快報（結構對齊 newspaper.css） -->
+  <div id="newspaper-overlay" aria-hidden="true"></div>
+
+  <!-- 公職委任／星芒圖 -->
+  <div id="staff-commission-overlay" aria-hidden="true"></div>
+
+  <!-- 結果對話 -->
+  <div id="result-modal" class="result-modal" hidden></div>
+
+  <!-- 除錯列 -->
+  <footer id="debug" class="debug-strip">
+    <span id="dbg-season">季：—</span>
+    <span id="dbg-phase">階段：—</span>
+    <span id="dbg-events">事件：—</span>
+    <span id="dbg-resolved">核心解決：—</span>
+    <span id="dbg-seed">種子：—</span>
+    <button type="button" id="btn-toggle-debug" class="mvp-btn mvp-btn--tiny">隱藏除錯</button>
+  </footer>
+
+  <!-- 入口畫面：全螢幕貓貓市底圖＋底部 HUD 跑馬燈＋「開始遊戲」。唯一入口；按下後隱藏並自動開跑街景模擬。 -->
+  <div id="landing" class="landing landing-screen" role="dialog" aria-modal="true" aria-labelledby="landing-title">
+    <h1 id="landing-title" class="landing-title">貓貓快報</h1>
+    <p class="landing-subtitle">貓貓市・你是市長的政策顧問</p>
+    <div class="landing-name"><!-- Stage H：學生姓名（選填；結局任命狀用，空白時結算再問） -->
+      <label for="student-name" class="landing-name__label">學生姓名（選填，會印在任命狀上）</label>
+      <input type="text" id="student-name" class="landing-name__input" maxlength="20" autocomplete="off" spellcheck="false" placeholder="例如：王小明">
+    </div>
+    <div class="landing-actions">
+      <button type="button" id="btn-landing-start" class="landing-start">開始遊戲</button>
+    </div>
+    <details id="teacher-seed" class="teacher-seed">
+      <summary id="teacher-seed-sum">教師設定：亂數種子（留空＝隨機）</summary>
+      <div class="teacher-seed__body">
+        <label for="seed-input" class="teacher-seed__label">亂數種子（同一個種子＝同一串事件，方便全班比較）</label>
+        <input type="text" id="seed-input" class="teacher-seed__input" maxlength="40" autocomplete="off" spellcheck="false" placeholder="例如：class3A（留空＝隨機）">
+        <label class="teacher-seed__lock"><input type="checkbox" id="seed-locked"> 固定劇本（事件不受玩家選擇影響）</label>
+        <p class="teacher-seed__hint">也可以用網址 <code>?seed=class3A</code>；進遊戲後種子會顯示在除錯列與倒數條右下角。</p>
+      </div>
+    </details>
+    <div class="landing-hud" aria-label="故事簡介">
+      <div class="landing-hud__track">
+        <span>🐾 山壁翠綠的峽谷深處，有一座貓咪居民的城市——貓貓市，雨季就要來了。</span>
+        <span>🐱 阿美擺市集、阿博疏通排水、小林跑新聞——居民每天都在為貓貓市忙碌。</span>
+        <span>📰 貓貓市的大小事都登在《貓貓快報》：滑讀、展開報導、畫出線索。</span>
+        <span>🏛 你是市長的政策顧問：用點數買政策卡，解決淹水、塞車與傳聞！</span>
+      </div>
+      <div class="landing-hud__track" aria-hidden="true">
+        <span>🐾 山壁翠綠的峽谷深處，有一座貓咪居民的城市——貓貓市，雨季就要來了。</span>
+        <span>🐱 阿美擺市集、阿博疏通排水、小林跑新聞——居民每天都在為貓貓市忙碌。</span>
+        <span>📰 貓貓市的大小事都登在《貓貓快報》：滑讀、展開報導、畫出線索。</span>
+        <span>🏛 你是市長的政策顧問：用點數買政策卡，解決淹水、塞車與傳聞！</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 背景音樂：在玩家首次操作後開始，符合瀏覽器自動播放政策 -->
+  <script src="src/js/audio.js?v=20261010c"></script>
+
+  <!-- Classic scripts for file:// （無 type=module） -->
+  <script src="src/js/boot.js?v=20261010c"></script>
+  <script src="src/js/data_embed.js?v=20261010c"></script>
+  <script src="src/js/event_pool.js?v=20261010c"></script>
+  <script src="src/js/landing.js?v=20261010c"></script>
+  <script src="src/js/complaint.js?v=20261010c"></script>
+  <script src="src/js/world.js?v=20261010c"></script>
+  <script src="src/js/npc.js?v=20261010c"></script>
+  <script src="src/js/dialogue.js?v=20261010c"></script>
+  <script src="src/js/mayor_banter.js?v=20261010c"></script>
+  <script src="src/js/street_clues.js?v=20261010c"></script>
+  <script src="src/js/pool_flow.js?v=20261010c"></script>
+  <script src="src/js/vehicle.js?v=20261010c"></script>
+  <script src="src/js/density.js?v=20261010c"></script>
+  <script src="src/js/economy.js?v=20261010c"></script>
+  <script src="src/js/events.js?v=20261010c"></script>
+  <script src="src/js/season.js?v=20261010c"></script>
+  <script src="src/js/newspaper.js?v=20261010c"></script>
+  <script src="src/js/policy.js?v=20261010c"></script>
+  <script src="src/js/radar_canvas.js?v=20261010c"></script>
+  <script src="src/js/staff.js?v=20261010c"></script>
+  <script src="src/js/staff_drawer.js?v=20261010c"></script>
+  <script src="src/js/monthly_paper.js?v=20261010c"></script>
+  <script src="src/js/replay.js?v=20261010c"></script>
+  <script src="src/js/hud.js?v=20261010c"></script>
+  <script src="src/js/stage_g.js?v=20261010c"></script>
+  <script src="src/js/behavior_log.js?v=20261010c"></script>
+  <script src="src/js/cert_art.js?v=20261010c"></script>
+  <script src="src/js/stage_h.js?v=20261010c"></script>
+  <script src="src/js/installment.js?v=20261010c"></script>
+  <script src="src/js/fable.js?v=20261010c"></script>
+  <script src="src/js/mayor_anan.js?v=20261010c"></script>
+  <script src="src/js/main.js?v=20261010c"></script>
+</body>
+</html>

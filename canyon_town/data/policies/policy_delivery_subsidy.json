@@ -1,0 +1,167 @@
+{
+  "id": "policy_delivery_subsidy",
+  "name": "攤商外送合作補助",
+  "cost": 2,
+  "blurb": "補貼攤商與外送業者合作，讓小吃與生鮮可以送到家，不必所有人都擠到市集。",
+  "solves": [],
+  "rule_patches": {
+    "delivery_subsidyProgram": 1
+  },
+  "deltas": {
+    "money": -50,
+    "profit": 10,
+    "happiness": 3
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "外送抽成會吃掉利潤；只是分散人潮，不會讓塞車的路變寬。",
+  "preview": "預估：金錢 -50、獲利 +10、幸福度 +3。",
+  "costPoints": 2,
+  "tags": [
+    "經濟",
+    "補助獎勵",
+    "數位"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_delivery_subsidy.webp",
+    "icon": "assets/sprites/cards/icons/icon_delivery_subsidy.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🛵",
+    "accent": "#ffb300",
+    "fxHint": "fx_delivery_subsidy_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "補助獎勵",
+    "rarity": "常見",
+    "titleShort": "外送補助",
+    "costBadge": "2 點",
+    "shopLine": "補貼攤商加入外送，人潮與貨量分散。",
+    "effectLine": "市集人潮略為分散；攤商多一條收入來源。",
+    "flavor": "不是人人都要來，菜也可以走到家。",
+    "learnPoint": "這張牌教你：補助獎勵能引導行為，但別讓補助變成唯一依賴。",
+    "bullets": [
+      "輔助：菜價、買氣",
+      "金錢 -50",
+      "獲利 +10",
+      "抽成會吃利潤"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -50,
+        "text": "金錢 -50"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": 10,
+        "text": "獲利 +10"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 3,
+        "text": "幸福度 +3"
+      }
+    ],
+    "tradeoffLine": "外送抽成會吃掉利潤；只是分散人潮，不會讓塞車的路變寬。"
+  },
+  "shopBlurb": "補貼攤商加入外送，人潮與貨量分散。",
+  "shopLine": "2 點｜補貼攤商加入外送，人潮與貨量分散。",
+  "executeId": "exec_delivery_subsidy",
+  "fx": {
+    "street": [
+      "fx_delivery_subsidy_a",
+      "fx_delivery_subsidy_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 1,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 0
+      },
+      "flowKind": "timed",
+      "durationSeasons": 2,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "market": -6,
+        "traffic": 2
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.08,
+        "healthBonus": 5,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 2,
+        "delaySeasons": 0,
+        "note": "外送補貼兩季，撐住生意差的攤商"
+      },
+      "strength": "normal",
+      "summary": "人流+1（2 季）；市集民怨-6；店家營收 +8%；店家健康度 +5"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_shi",
+      "staff_suan"
+    ],
+    "radarWeights": {
+      "logistics": 0.3,
+      "safety": 0.2,
+      "health": 0.2,
+      "engineering": 0.2,
+      "economy": 0.9,
+      "communication": 0.4
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "market"
+  ],
+  "complaintDelta": {
+    "market": -6,
+    "traffic": 2
+  },
+  "complaintRebound": {},
+  "complaintNote": "外送抽成會吃掉利潤；只是分散人潮，不會讓塞車的路變寬。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_market_price"
+    ],
+    "palliative": [
+      "evp_logi_cold"
+    ],
+    "backfire": []
+  },
+  "policyType": "subsidy",
+  "typeLabel": "補助獎勵",
+  "realWorldAnalog": "數位轉型補助：補貼攤商與外送業者合作，分散到市場的人潮與貨量。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

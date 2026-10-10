@@ -1,0 +1,240 @@
+{
+  "id": "easter_eggs_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "note": "Stage I 童話彩蛋（呆呆 2026-10-08）。只有資料與觸發定義；動畫與判定由小力接線（見 docs/EASTER_EGGS.md）。全部虛構、幽默、教室友善：吹笛人只帶走老鼠，絕不涉及帶走孩子；大野狼其實是一隻戴睡帽的大狗，沒有人受傷。",
+  "fieldStatus": {
+    "existing": "✅ 既有欄位",
+    "new": "🆕 需小力新增"
+  },
+  "stateFields": [
+    {
+      "field": "G.BehaviorLog seasons[].decision.played",
+      "status": "existing",
+      "use": "本季打出的卡（含 policy_pied_piper）"
+    },
+    {
+      "field": "ctx.poolState.history[{cycle,eventId,resolution}]",
+      "status": "existing",
+      "use": "計算 evp_safety_stray_dogs 連續未處理（resolution＝ignored）季數"
+    },
+    {
+      "field": "ctx.poolState.log[].results（\"eventId:resolution\"）",
+      "status": "existing",
+      "use": "本季結果（cured／ignored…）"
+    },
+    {
+      "field": "ctx.town.money／ctx.town.bankrupt",
+      "status": "existing",
+      "use": "吹笛人尾款能不能付"
+    },
+    {
+      "field": "ctx.installments",
+      "status": "new",
+      "use": "吹笛人分期付款狀態（見 policy_pied_piper.installment.stateFields）"
+    },
+    {
+      "field": "ctx.poolState.severityNow[eventId]",
+      "status": "new",
+      "use": "事件目前嚴重度（含惡化）；沒有時用「基礎嚴重度＋連續未處理季數」估算"
+    },
+    {
+      "field": "ctx.easterEggs = {fired:{eggId:次數}, lastCycle:{eggId:cycle}}",
+      "status": "new",
+      "use": "cooldown 與一局最多次數；存進存檔"
+    },
+    {
+      "field": "G.BehaviorLog seasons[].easterEggs",
+      "status": "new",
+      "use": "本季觸發的彩蛋 id（老師端可看到）"
+    }
+  ],
+  "eggs": [
+    {
+      "id": "parade_pied_piper",
+      "name": "吹笛人遊行",
+      "kind": "street_parade",
+      "when": {
+        "type": "policyExecuted",
+        "policyId": "policy_pied_piper",
+        "fields": [
+          "G.BehaviorLog seasons[].decision.played",
+          "policy.executeId = exec_pied_piper"
+        ],
+        "text": "policy_pied_piper 執行（executeId 播放時）"
+      },
+      "chance": 1.0,
+      "cooldownSeasons": 0,
+      "maxPerGame": 3,
+      "priority": 2,
+      "animation": {
+        "durationMs": 6000,
+        "skippable": true,
+        "layer": "street",
+        "path": "主街由左到右；3 個地點（水溝口、市集後巷、公園花圃）各冒出一排卡通小老鼠，排隊跟在吹笛人後面，最後走進右側木頭誘捕站，門關上冒出音符。",
+        "sprites": [
+          "sprite_pied_piper_walk",
+          "sprite_rat_line",
+          "sprite_trap_station",
+          "fx_music_notes"
+        ],
+        "sfx": "短笛旋律（選用，3 秒內）"
+      },
+      "textKeys": {
+        "toast": "egg.parade_pied_piper.toast",
+        "bubbles": "egg.parade_pied_piper.bubbles",
+        "newspaper": "egg.parade_pied_piper.newspaper"
+      },
+      "bubbleEntryIds": "npcExtraBubbles.eventEntries（appearWhen.policyExecuted＝policy_pied_piper）"
+    },
+    {
+      "id": "piper_unpaid_loop",
+      "name": "笛聲走調・鼠群繞市一圈",
+      "kind": "street_loop",
+      "when": {
+        "type": "installmentUnpaid",
+        "policyId": "policy_pied_piper",
+        "fields": [
+          "ctx.installments（🆕）",
+          "ctx.town.money",
+          "ctx.town.bankrupt"
+        ],
+        "text": "吹笛人尾款到期時 money < 該期金額或已破產（見 policy_pied_piper.installment.unpaidIf）"
+      },
+      "chance": 1.0,
+      "cooldownSeasons": 0,
+      "maxPerGame": 2,
+      "priority": 1,
+      "consequence": "見 policy_pied_piper.installment.onUnpaid：衛生 +12、市集 +6 民怨，聲望 −3，人流／遊客 −3（1 季），下季強制「雨後鼠群大搬家」；剩餘尾款作廢。",
+      "animation": {
+        "durationMs": 7000,
+        "skippable": true,
+        "layer": "street",
+        "path": "吹笛人坐在誘捕站門口，旁邊立著「空錢包」圖示牌；笛聲走調（音符歪歪扭扭），老鼠排隊沿主街繞一大圈，又走回市集後巷。",
+        "sprites": [
+          "sprite_pied_piper_strike",
+          "sprite_rat_line",
+          "sprite_trap_station",
+          "icon_empty_wallet",
+          "fx_music_notes_offkey"
+        ],
+        "sfx": "走調笛聲（選用）"
+      },
+      "textKeys": {
+        "toast": "egg.piper_unpaid_loop.toast",
+        "bubbles": "egg.piper_unpaid_loop.bubbles",
+        "newspaper": "egg.piper_unpaid_loop.newspaper",
+        "advisor": "egg.piper_unpaid_loop.advisor"
+      }
+    },
+    {
+      "id": "chase_red_riding_hood",
+      "name": "小紅帽被大野狼追",
+      "kind": "street_chase",
+      "when": {
+        "type": "any",
+        "conditions": [
+          {
+            "type": "eventIgnoredStreak",
+            "eventId": "evp_safety_stray_dogs",
+            "gte": 1,
+            "fields": [
+              "ctx.poolState.history（✅）"
+            ],
+            "text": "野狗縱橫連續未處理 ≥1 季，且本季仍抽到"
+          },
+          {
+            "type": "eventSeverity",
+            "eventId": "evp_safety_stray_dogs",
+            "gte": 3,
+            "fields": [
+              "ctx.poolState.severityNow（🆕；暫以基礎嚴重度 2＋連續未處理季數估算）"
+            ],
+            "text": "野狗縱橫嚴重度 ≥3（高門檻）"
+          }
+        ],
+        "requireActive": "evp_safety_stray_dogs 本季在街上（ctx.pool.dr.events）"
+      },
+      "chance": 0.6,
+      "firstTimeChance": 1.0,
+      "cooldownSeasons": 2,
+      "maxPerGame": 2,
+      "priority": 3,
+      "animation": {
+        "durationMs": 5000,
+        "skippable": true,
+        "layer": "street",
+        "path": "穿紅色斗篷、提著小魚乾籃子的小紅帽貓從左邊小跑步經過；後面跟著一隻戴奶奶睡帽、毛蓬蓬的大狗（大家口中的「大野狼」），尾巴搖個不停。最後大狗停下來聞籃子，動保志工貓遞上狗零食，小紅帽揮手說掰掰。",
+        "sprites": [
+          "sprite_red_hood_run",
+          "sprite_big_wolf_dog_run",
+          "sprite_volunteer_cat",
+          "fx_dust_puff"
+        ],
+        "tone": "幽默、不嚇人：沒有咬人、沒有受傷、沒有尖叫"
+      },
+      "newspaper": "evp_safety_stray_dogs.article.escalation（「傳聞有大野狼出沒？」標「傳聞」＋checkHint）",
+      "textKeys": {
+        "toast": "egg.chase_red_riding_hood.toast",
+        "bubbles": "egg.chase_red_riding_hood.bubbles",
+        "newspaper": "egg.chase_red_riding_hood.newspaper"
+      }
+    }
+  ],
+  "texts": {
+    "egg.parade_pied_piper.toast": [
+      "笛聲一響，老鼠排隊走進誘捕站！",
+      "吹笛人出動：鼠群跟著笛聲離開市區。"
+    ],
+    "egg.parade_pied_piper.bubbles": [
+      "跟著笛聲走～",
+      "一、二、一、二，誘捕站到了！"
+    ],
+    "egg.parade_pied_piper.newspaper": [
+      "吹笛人上街　鼠群排隊「出城」",
+      "笛聲引鼠進誘捕站，攤商：記得付尾款喔"
+    ],
+    "egg.piper_unpaid_loop.toast": [
+      "尾款沒付，吹笛人罷工了！",
+      "笛聲走調，老鼠繞市一圈又回來…"
+    ],
+    "egg.piper_unpaid_loop.bubbles": [
+      "尾款呢？笛子先放下。",
+      "走調了走調了，老鼠回家囉。"
+    ],
+    "egg.piper_unpaid_loop.newspaper": [
+      "笛聲走調　鼠群繞市一圈又回來",
+      "吹笛人暫停吹奏，公所說明付款狀況"
+    ],
+    "egg.piper_unpaid_loop.advisor": [
+      "買貴的卡前，先算好之後幾季的錢。",
+      "答應的尾款要付，不然專業團隊會停工。"
+    ],
+    "egg.chase_red_riding_hood.toast": [
+      "小紅帽快跑！咦，大野狼只是想吃小魚乾？",
+      "「大野狼」原來是一隻戴睡帽的大狗。"
+    ],
+    "egg.chase_red_riding_hood.bubbles": [
+      "我只是想聞聞籃子！",
+      "汪！（尾巴搖不停）"
+    ],
+    "egg.chase_red_riding_hood.newspaper": [
+      "傳聞有大野狼出沒？　志工：是大狗啦",
+      "小紅帽貓虛驚一場　志工呼籲垃圾不落地"
+    ]
+  },
+  "textRules": {
+    "maxLen": {
+      "toast": 20,
+      "bubbles": 15,
+      "newspaper": 22,
+      "advisor": 22
+    },
+    "pickRule": "種子化：rngFor(seed, cycle, \"egg:\"+eggId)；同一季同一彩蛋固定同一句。"
+  },
+  "safety": [
+    "吹笛人只帶走老鼠，畫面與文字都不出現孩子跟著走。",
+    "大野狼＝大型流浪犬（戴睡帽的童話扮相），不咬人、不受傷。",
+    "動物處理只寫收容、結紮、送養、驅離，不寫撲殺或處置細節。"
+  ]
+}

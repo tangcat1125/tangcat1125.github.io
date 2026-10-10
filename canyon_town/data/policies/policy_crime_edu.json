@@ -1,0 +1,156 @@
+{
+  "id": "policy_crime_edu",
+  "name": "防竊宣導與鄰里守望",
+  "cost": 1,
+  "blurb": "在夜市與社區宣導「包包在前、貴重物品不外露」，並推動鄰里守望相助。效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。",
+  "solves": [],
+  "rule_patches": {
+    "crimeEducation": 1
+  },
+  "deltas": {
+    "money": -20,
+    "happiness": 1
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "宣導不能阻止慣犯；人潮擁擠時提醒也容易被忽略。",
+  "preview": "預估：金錢 -20、幸福度 +1。",
+  "costPoints": 1,
+  "tags": [
+    "資訊",
+    "溝通",
+    "宣導"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_crime_edu.webp",
+    "icon": "assets/sprites/cards/icons/icon_crime_edu.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🛡️",
+    "accent": "#7aa8e0",
+    "fxHint": "fx_crime_edu_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "資訊溝通（宣導教育）",
+    "rarity": "常見",
+    "titleShort": "防竊宣導",
+    "costBadge": "1 點",
+    "shopLine": "提醒大家顧好包包，鄰里互相看。",
+    "effectLine": "遊客與居民更警覺；扒手下手機會略減。",
+    "flavor": "提醒像小燈，亮著就有用。",
+    "learnPoint": "這張牌教你：預防宣導便宜好做，但不能取代巡守或設備。",
+    "bullets": [
+      "輔助：扒手竊盜",
+      "金錢 -20",
+      "下季見效",
+      "效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -20,
+        "text": "金錢 -20"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 1,
+        "text": "幸福度 +1"
+      }
+    ],
+    "tradeoffLine": "宣導不能阻止慣犯；人潮擁擠時提醒也容易被忽略。"
+  },
+  "shopBlurb": "提醒大家顧好包包，鄰里互相看。",
+  "shopLine": "1 點｜提醒大家顧好包包，鄰里互相看。",
+  "executeId": "exec_crime_edu",
+  "fx": {
+    "street": [
+      "fx_crime_edu_a",
+      "fx_crime_edu_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 1
+      },
+      "flowKind": "timed",
+      "durationSeasons": 2,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -6
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 1,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 1,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "weak",
+      "summary": "治安感+1（2 季）；治安民怨-6"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_an",
+      "staff_min"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.6,
+      "health": 0.2,
+      "engineering": 0.2,
+      "economy": 0.2,
+      "communication": 0.7
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety"
+  ],
+  "complaintDelta": {
+    "safety": -6
+  },
+  "complaintRebound": {},
+  "complaintNote": "宣導不能阻止慣犯；人潮擁擠時提醒也容易被忽略。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_safety_theft"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "info",
+  "typeLabel": "資訊溝通（宣導教育）",
+  "realWorldAnalog": "犯罪預防宣導：提醒隨身財物與鄰里守望相助；便宜、見效慢。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": true,
+  "effectDelayCycles": 1,
+  "slowNote": "效果較慢、較弱但便宜（下季見效；同一事件重複使用遞減）",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

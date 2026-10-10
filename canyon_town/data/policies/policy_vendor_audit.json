@@ -1,0 +1,204 @@
+{
+  "id": "policy_vendor_audit",
+  "name": "業者稽查與輔導",
+  "cost": 3,
+  "blurb": "對供餐廠商與餐飲業者做階梯式稽查輔導：宣導、限期改善、複查，再依規定處分並公告；要有證據才處分。",
+  "solves": [],
+  "rule_patches": {
+    "vendorAudit": 1,
+    "gradedEnforcement": 1
+  },
+  "deltas": {
+    "money": -80,
+    "profit": -5,
+    "happiness": 2
+  },
+  "logistics": {
+    "boostVehicles": [
+      "works_truck"
+    ],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "稽查會增加業者成本與抱怨；沒有證據就先處分，容易不公平，也可能讓事情更亂。",
+  "preview": "預估：金錢 -80、獲利 -5、幸福度 +2；缺失被找出來、限期改善，長期比較穩。",
+  "costPoints": 3,
+  "tags": [
+    "衛生",
+    "稽查",
+    "秩序"
+  ],
+  "counters": [
+    "grease",
+    "audit",
+    "supplier"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_vendor_audit.webp",
+    "icon": "assets/sprites/cards/icons/icon_vendor_audit.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "📋",
+    "accent": "#7a8fc4",
+    "fxHint": "fx_clipboard_check"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "衛生／秩序",
+    "rarity": "稀有",
+    "titleShort": "業者稽查",
+    "costBadge": "3 點",
+    "shopLine": "稽查、輔導、複查，一步一步來。",
+    "effectLine": "宣導→限期改善→複查；對油脂截留器最對症。",
+    "flavor": "先輔導，再處分；先有證據，再說話。",
+    "learnPoint": "這張牌教你：處分要有證據，輔導要有階梯。",
+    "bullets": [
+      "對症：油脂截留器沒清",
+      "獲利 -5",
+      "沒證據不要先處分"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -80,
+        "text": "金錢 -80"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": -5,
+        "text": "獲利 -5"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 2,
+        "text": "幸福度 +2"
+      }
+    ],
+    "tradeoffLine": "稽查會增加業者成本與抱怨；沒有證據就先處分，容易不公平，也可能讓事情更亂。"
+  },
+  "shopBlurb": "稽查、輔導、複查，一步一步來。",
+  "shopLine": "3 點｜稽查、輔導、複查，一步一步來。",
+  "executeId": "exec_vendor_audit",
+  "fx": {
+    "street": [
+      "fx_clipboard_check",
+      "fx_grease_trap"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 2000,
+    "effect": {
+      "flows": {
+        "foot": 1,
+        "vehicle": 0,
+        "tourist": 1,
+        "security": 0
+      },
+      "flowKind": "timed",
+      "durationSeasons": 3,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "health": -8,
+        "drain": -10,
+        "logistics": -4,
+        "market": 3
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": -0.03,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 1,
+        "delaySeasons": 0,
+        "note": "施工／管制初期，攤商短暫不便"
+      },
+      "strength": "strong",
+      "summary": "人流+1、遊客+1（3 季）；排水民怨-10、衛生民怨-8；店家營收 -3%（短期）"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_min",
+      "staff_hu"
+    ],
+    "radarWeights": {
+      "logistics": 0.4,
+      "safety": 0.4,
+      "health": 0.5,
+      "engineering": 0.2,
+      "economy": 0.3,
+      "communication": 0.7
+    }
+  },
+  "actionOptionIds": [
+    "act_vendor_audit"
+  ],
+  "fromArticleIds": [
+    "art_evp_drain_grease_trap",
+    "art_evp_health_class_upset"
+  ],
+  "verdictByOption": {
+    "act_vendor_audit": "對症"
+  },
+  "complaintCounters": [
+    "health",
+    "drain",
+    "logistics"
+  ],
+  "complaintDelta": {
+    "health": -8,
+    "drain": -10,
+    "logistics": -4,
+    "market": 3
+  },
+  "complaintRebound": {},
+  "complaintNote": "稽查輔導讓排水與衛生下降；業者成本讓市集略有微詞。",
+  "eventEffects": {
+    "cure": [
+      "evp_drain_grease_trap",
+      "evp_market_lunch_supplier"
+    ],
+    "assist": [
+      "evp_health_bait_worry",
+      "evp_health_class_upset",
+      "evp_health_foodpoison",
+      "evp_health_lunch_sample",
+      "evp_health_well",
+      "evp_market_rat_bin"
+    ],
+    "palliative": [],
+    "backfire": [
+      "evp_health_class_upset"
+    ]
+  },
+  "policyType": "reg",
+  "typeLabel": "管制／稽查",
+  "realWorldAnalog": "階梯式稽查：先宣導輔導、限期改善、複查，再依規定處理。",
+  "topicCounters": [
+    "grease",
+    "audit",
+    "supplier"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_drain_grease_trap",
+    "evp_market_lunch_supplier"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_drain_grease_trap",
+    "evp_market_lunch_supplier"
+  ],
+  "solvesPoolConditional": []
+}

@@ -1,0 +1,156 @@
+{
+  "id": "policy_smoke_alarm",
+  "name": "住警器補助",
+  "cost": 2,
+  "blurb": "補助老屋住戶裝設住宅用火災警報器，鄰里自治會協助安裝；早一步聽到警報，就多一分逃生時間。",
+  "solves": [],
+  "rule_patches": {
+    "smoke_alarmProgram": 1
+  },
+  "deltas": {
+    "money": -50,
+    "happiness": 4
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "警報器只能「提早發現」，不能防止走火；電池要定期換，沒人換就失效。",
+  "preview": "預估：金錢 -50、幸福度 +4。",
+  "costPoints": 2,
+  "tags": [
+    "安全",
+    "協力",
+    "預防"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_smoke_alarm.webp",
+    "icon": "assets/sprites/cards/icons/icon_smoke_alarm.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🔔",
+    "accent": "#f0b429",
+    "fxHint": "fx_smoke_alarm_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "公私協力",
+    "rarity": "常見",
+    "titleShort": "住警器",
+    "costBadge": "2 點",
+    "shopLine": "補助裝警報器，鄰里幫忙裝。",
+    "effectLine": "住戶更早發現起火；傷亡風險下降。",
+    "flavor": "聽見的那三十秒，比什麼都貴。",
+    "learnPoint": "這張牌教你：預警設備是輔助，不能取代根本的檢修。",
+    "bullets": [
+      "輔助：老屋火災",
+      "金錢 -50",
+      "提早發現、逃生變快",
+      "電池要定期換"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -50,
+        "text": "金錢 -50"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 4,
+        "text": "幸福度 +4"
+      }
+    ],
+    "tradeoffLine": "警報器只能「提早發現」，不能防止走火；電池要定期換，沒人換就失效。"
+  },
+  "shopBlurb": "補助裝警報器，鄰里幫忙裝。",
+  "shopLine": "2 點｜補助裝警報器，鄰里幫忙裝。",
+  "executeId": "exec_smoke_alarm",
+  "fx": {
+    "street": [
+      "fx_smoke_alarm_a",
+      "fx_smoke_alarm_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 2
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -10
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "normal",
+      "summary": "治安感+2（永久）；治安民怨-10"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_yan",
+      "staff_min"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.8,
+      "health": 0.3,
+      "engineering": 0.2,
+      "economy": 0.2,
+      "communication": 0.5
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety"
+  ],
+  "complaintDelta": {
+    "safety": -10
+  },
+  "complaintRebound": {},
+  "complaintNote": "警報器只能「提早發現」，不能防止走火；電池要定期換，沒人換就失效。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_safety_fire"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "ppp",
+  "typeLabel": "公私協力",
+  "realWorldAnalog": "住宅防火設備：公部門補助、鄰里自治會協助安裝煙霧警報器。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

@@ -1,0 +1,611 @@
+{
+  "id": "complaints_season_01",
+  "seasonId": "season_01",
+  "title": "民怨值",
+  "description": "每個問題領域的居民怨氣，0 = 很平靜，100 = 快暴動。每季結算後累加或下降，決定「民怨最深處」。",
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "tiers": [
+    {
+      "id": "calm",
+      "min": 0,
+      "max": 24,
+      "label": "平靜",
+      "color": "#5bbf7a"
+    },
+    {
+      "id": "grumble",
+      "min": 25,
+      "max": 49,
+      "label": "抱怨",
+      "color": "#e0c24a"
+    },
+    {
+      "id": "upset",
+      "min": 50,
+      "max": 74,
+      "label": "不滿",
+      "color": "#e8893a"
+    },
+    {
+      "id": "furious",
+      "min": 75,
+      "max": 100,
+      "label": "爆怒",
+      "color": "#d9453b"
+    }
+  ],
+  "domainOrder": [
+    "drain",
+    "market",
+    "logistics",
+    "traffic",
+    "health",
+    "safety"
+  ],
+  "domains": [
+    {
+      "id": "drain",
+      "name": "排水",
+      "icon": "🌧️",
+      "kind": "event",
+      "eventIds": [
+        "event_flood_risk"
+      ],
+      "articleIds": [
+        "article_drain"
+      ],
+      "disasterIds": [
+        "disaster_storm_flood",
+        "disaster_garbage_backlog"
+      ],
+      "policyIds": [
+        "policy_clear_drain"
+      ],
+      "speaker": {
+        "npcId": "bo",
+        "npcName": "阿博"
+      },
+      "staffIds": [
+        "staff_xiu",
+        "staff_yan"
+      ],
+      "startValue": 74,
+      "quote": "排水口又堵了，雨一下我家門口就變小河，我晚上都睡不著！",
+      "quotesByTier": {
+        "calm": "排水暫時沒問題，我們放心多了。",
+        "grumble": "排水口偶爾還是會積水，拜託多看一下。",
+        "upset": "每次下雨都提心吊膽，到底什麼時候清？",
+        "furious": "再不清排水，我們就自己搬到高處去！"
+      }
+    },
+    {
+      "id": "market",
+      "name": "市集",
+      "icon": "🛒",
+      "kind": "event",
+      "eventIds": [
+        "event_market_slump"
+      ],
+      "articleIds": [
+        "article_market"
+      ],
+      "disasterIds": [],
+      "policyIds": [
+        "policy_boardwalk",
+        "policy_coupon",
+        "policy_water_test",
+        "policy_logistics_hub"
+      ],
+      "speaker": {
+        "npcId": "mei",
+        "npcName": "阿美"
+      },
+      "staffIds": [
+        "staff_shi",
+        "staff_cheng"
+      ],
+      "startValue": 62,
+      "quote": "週末攤位空了一半，客人嫌路泥濘都不來，我們要喝西北風嗎？",
+      "quotesByTier": {
+        "calm": "市集又熱鬧起來了，謝謝大家。",
+        "grumble": "人潮慢慢回來，但還不夠穩。",
+        "upset": "攤位空架越來越多，生意真的撐不住。",
+        "furious": "再沒客人，我們只好收攤搬家！"
+      }
+    },
+    {
+      "id": "logistics",
+      "name": "物流",
+      "icon": "🚚",
+      "kind": "event",
+      "eventIds": [
+        "event_supply_delay"
+      ],
+      "articleIds": [
+        "article_supply"
+      ],
+      "disasterIds": [
+        "disaster_crash_gorge"
+      ],
+      "policyIds": [
+        "policy_clear_drain",
+        "policy_boardwalk",
+        "policy_water_test",
+        "policy_logistics_hub"
+      ],
+      "speaker": {
+        "npcId": "lin",
+        "npcName": "小林"
+      },
+      "staffIds": [
+        "staff_an",
+        "staff_shi"
+      ],
+      "startValue": 66,
+      "quote": "貨車班班卡在峽口，蔬果都蔫了還送不到，這樣怎麼做生意？",
+      "quotesByTier": {
+        "calm": "貨都準時到，今天終於不用解釋了。",
+        "grumble": "偶爾會晚點，大致還能接受。",
+        "upset": "進貨老是遲到，客人罵我、我罵誰？",
+        "furious": "再這樣下去，供貨商都不想來了！"
+      }
+    },
+    {
+      "id": "traffic",
+      "name": "交通",
+      "icon": "🚌",
+      "kind": "derived",
+      "eventIds": [],
+      "articleIds": [
+        "article_supply",
+        "article_market"
+      ],
+      "disasterIds": [
+        "disaster_crash_gorge"
+      ],
+      "derivedRule": "季末壅塞度 ≥ 2 或 準點率 < 0.72 時，視為「交通問題未解決」",
+      "policyIds": [
+        "policy_boardwalk",
+        "policy_logistics_hub"
+      ],
+      "speaker": {
+        "npcId": "kai",
+        "npcName": "阿凱"
+      },
+      "staffIds": [
+        "staff_an"
+      ],
+      "startValue": 70,
+      "quote": "公車不準點、路又塞，我坐了一小時還沒走出峽口，下次還敢來嗎？",
+      "quotesByTier": {
+        "calm": "路順了，公車也準時，來玩很開心。",
+        "grumble": "偶爾會塞，但還可以。",
+        "upset": "公車老是誤點，我打算改去別的城市了。",
+        "furious": "塞成這樣，誰還想來峽谷啊！"
+      }
+    },
+    {
+      "id": "health",
+      "name": "衛生",
+      "icon": "💧",
+      "kind": "event",
+      "eventIds": [
+        "event_rumor_well"
+      ],
+      "articleIds": [
+        "article_well"
+      ],
+      "disasterIds": [
+        "disaster_garbage_backlog"
+      ],
+      "policyIds": [
+        "policy_clear_drain",
+        "policy_water_test",
+        "policy_logistics_hub"
+      ],
+      "speaker": {
+        "npcId": "zhen",
+        "npcName": "阿珍"
+      },
+      "staffIds": [
+        "staff_xin",
+        "staff_cheng"
+      ],
+      "startValue": 48,
+      "quote": "井水傳說有怪味，也沒人公布檢測，我敢讓孩子喝嗎？",
+      "quotesByTier": {
+        "calm": "檢測報告貼出來了，我們安心多了。",
+        "grumble": "還是有點擔心，希望再多一點資訊。",
+        "upset": "傳聞越來越多，沒有人出來說清楚。",
+        "furious": "再不公布，我們全家只喝瓶裝水！"
+      }
+    },
+    {
+      "id": "safety",
+      "name": "治安",
+      "icon": "🛡️",
+      "kind": "derived",
+      "eventIds": [],
+      "articleIds": [
+        "article_drain",
+        "article_supply"
+      ],
+      "disasterIds": [
+        "disaster_storm_flood",
+        "disaster_crash_gorge"
+      ],
+      "derivedRule": "季末「排水問題」或「交通問題」任一未解決時，視為「安全問題未解決」",
+      "policyIds": [
+        "policy_clear_drain",
+        "policy_boardwalk",
+        "policy_logistics_hub"
+      ],
+      "speaker": {
+        "npcId": "wang",
+        "npcName": "里長王"
+      },
+      "staffIds": [
+        "staff_an",
+        "staff_yan"
+      ],
+      "startValue": 40,
+      "quote": "水一來、車一塞，救護車和消防車也過不去，這種日子叫人怎麼安心？",
+      "quotesByTier": {
+        "calm": "救援路線通暢，大家比較放心。",
+        "grumble": "偶爾擔心緊急時過不去。",
+        "upset": "水患加塞車，萬一出事怎麼辦？",
+        "furious": "沒有一條路是安全的，我們要求馬上處理！"
+      }
+    }
+  ],
+  "season": {
+    "startValues": {
+      "drain": 74,
+      "market": 62,
+      "logistics": 66,
+      "traffic": 70,
+      "health": 48,
+      "safety": 40
+    },
+    "deepestAtStart": "drain",
+    "deepestLine": "本季民怨最深處：排水（74）。居民說：「排水口又堵了，雨一下我家門口就變小河，我晚上都睡不著！」"
+  },
+  "cardRelief": {
+    "policy_clear_drain": {
+      "complaintCounters": [
+        "drain",
+        "safety",
+        "health",
+        "logistics"
+      ],
+      "complaintDelta": {
+        "drain": -25,
+        "safety": -8,
+        "health": -5,
+        "logistics": -5,
+        "traffic": 5
+      },
+      "reboundNextSeason": {},
+      "note": "對症排水；工程車進場時交通短期更塞。"
+    },
+    "policy_boardwalk": {
+      "complaintCounters": [
+        "market",
+        "traffic",
+        "safety",
+        "logistics"
+      ],
+      "complaintDelta": {
+        "market": -20,
+        "traffic": -5,
+        "safety": -3,
+        "logistics": -3
+      },
+      "reboundNextSeason": {},
+      "note": "對症市集；施工封路時交通短期變差。"
+    },
+    "policy_coupon": {
+      "complaintCounters": [
+        "market"
+      ],
+      "complaintDelta": {
+        "market": -8
+      },
+      "reboundNextSeason": {
+        "market": 4
+      },
+      "note": "治標：市集暫時消氣，下一季會反彈一些；對其他領域沒幫助。"
+    },
+    "policy_water_test": {
+      "complaintCounters": [
+        "health",
+        "market",
+        "logistics"
+      ],
+      "complaintDelta": {
+        "health": -28,
+        "market": -3,
+        "logistics": -2
+      },
+      "reboundNextSeason": {},
+      "note": "對症衛生；公開資訊也讓市集多一點信心。"
+    },
+    "policy_logistics_hub": {
+      "complaintCounters": [
+        "logistics",
+        "traffic",
+        "market",
+        "safety",
+        "health"
+      ],
+      "complaintDelta": {
+        "logistics": -24,
+        "traffic": -22,
+        "market": -8,
+        "safety": -6,
+        "health": -3
+      },
+      "reboundNextSeason": {},
+      "note": "對症物流與交通；一個樞紐同時幫到多個領域。"
+    }
+  },
+  "rules": {
+    "solvedBonus": -10,
+    "carryUnresolvedBySeverity": {
+      "1": 3,
+      "2": 5,
+      "3": 8
+    },
+    "derivedUnresolvedSeverity": 1,
+    "ignore": {
+      "base": 5,
+      "streakStep": 3,
+      "maxStreakBonus": 6,
+      "reliefThreshold": -10,
+      "note": "未解決且本季沒有任何卡讓該領域降 10 以上，就算被忽略；連續被忽略加碼 +3、+6（封頂），選過有效卡就歸零。"
+    },
+    "calmDecay": -3,
+    "clamp": [
+      0,
+      100
+    ],
+    "order": [
+      "relief",
+      "solvedBonus",
+      "carryUnresolved",
+      "ignorePenalty",
+      "calmDecay",
+      "rebound",
+      "clamp"
+    ]
+  },
+  "thresholds": {
+    "protest": 85,
+    "protestNote": "任一領域 ≥ 85 時建議觸發「居民抗議」演出或事件（程式端自訂，尚未實作）。"
+  },
+  "optionalEffects": {
+    "enabled": false,
+    "happinessPenaltyPer10AboveAvg50": -1,
+    "note": "預設關閉。開啟後：全市平均民怨超過 50，每多 10 點，下季開局幸福度 -1。"
+  },
+  "display": {
+    "boxTitle": "民怨榜",
+    "deepestTemplate": "民怨最深處：{icon}{name}（{value}）——{speaker}說：「{quote}」",
+    "carryTemplate": "上一季沒處理的{name}，民怨再加 {delta}。",
+    "ignoredTemplate": "{name}已連續 {streak} 季被忽略，民怨加碼。",
+    "sort": "desc",
+    "barLabel": "{name} {value}",
+    "placeIn": [
+      "newspaper.sidebar",
+      "decision-hud"
+    ],
+    "legend": "0–24 平靜｜25–49 抱怨｜50–74 不滿｜75–100 爆怒"
+  },
+  "runtimeShape": {
+    "ctxComplaints": {
+      "values": {
+        "drain": 0
+      },
+      "ignoreStreak": {
+        "drain": 0
+      },
+      "reboundPending": {
+        "market": 0
+      },
+      "history": [
+        {
+          "season": "season_01",
+          "values": {
+            "drain": 0
+          },
+          "deepest": "drain"
+        }
+      ]
+    },
+    "note": "ctx.complaints 建議結構；values 為各領域目前民怨，history 每季結算後 push 一筆。"
+  },
+  "example": {
+    "label": "範例（僅示意，非實際遊戲結果）：第 1 季只買「緊急清淤隊」並忽略其餘問題",
+    "cardsPlayed": [
+      "policy_clear_drain"
+    ],
+    "afterSeason1": {
+      "values": {
+        "drain": 39,
+        "market": 75,
+        "logistics": 74,
+        "traffic": 83,
+        "health": 53,
+        "safety": 40
+      },
+      "deepest": "traffic",
+      "ignoreStreak": {
+        "drain": 0,
+        "market": 1,
+        "logistics": 1,
+        "traffic": 1,
+        "health": 1,
+        "safety": 1
+      },
+      "reboundPending": {},
+      "steps": {
+        "drain": [
+          [
+            "relief",
+            -25
+          ],
+          [
+            "solved",
+            -10
+          ]
+        ],
+        "market": [
+          [
+            "carry",
+            8
+          ],
+          [
+            "ignore",
+            5
+          ]
+        ],
+        "logistics": [
+          [
+            "relief",
+            -5
+          ],
+          [
+            "carry",
+            8
+          ],
+          [
+            "ignore",
+            5
+          ]
+        ],
+        "traffic": [
+          [
+            "relief",
+            5
+          ],
+          [
+            "carry",
+            3
+          ],
+          [
+            "ignore",
+            5
+          ]
+        ],
+        "health": [
+          [
+            "relief",
+            -5
+          ],
+          [
+            "carry",
+            5
+          ],
+          [
+            "ignore",
+            5
+          ]
+        ],
+        "safety": [
+          [
+            "relief",
+            -8
+          ],
+          [
+            "carry",
+            3
+          ],
+          [
+            "ignore",
+            5
+          ]
+        ]
+      }
+    },
+    "afterSeason2NoCards": {
+      "values": {
+        "drain": 36,
+        "market": 91,
+        "logistics": 90,
+        "traffic": 94,
+        "health": 66,
+        "safety": 51
+      },
+      "deepest": "traffic",
+      "ignoreStreak": {
+        "drain": 0,
+        "market": 2,
+        "logistics": 2,
+        "traffic": 2,
+        "health": 2,
+        "safety": 2
+      },
+      "steps": {
+        "drain": [
+          [
+            "calm",
+            -3
+          ]
+        ],
+        "market": [
+          [
+            "carry",
+            8
+          ],
+          [
+            "ignore",
+            8
+          ]
+        ],
+        "logistics": [
+          [
+            "carry",
+            8
+          ],
+          [
+            "ignore",
+            8
+          ]
+        ],
+        "traffic": [
+          [
+            "carry",
+            3
+          ],
+          [
+            "ignore",
+            8
+          ]
+        ],
+        "health": [
+          [
+            "carry",
+            5
+          ],
+          [
+            "ignore",
+            8
+          ]
+        ],
+        "safety": [
+          [
+            "carry",
+            3
+          ],
+          [
+            "ignore",
+            8
+          ]
+        ]
+      }
+    }
+  }
+}

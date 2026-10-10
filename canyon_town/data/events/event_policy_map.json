@@ -1,0 +1,3935 @@
+{
+  "id": "event_policy_map_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "note": "逐事件「事件 → 對症 → 輔助 → 治標 → 反效果」對照表，同時是斷言表（eventPolicyAssertions 已合併於此）。eventPool.responses 由此表產生；領域層 policyMatrix 只當 fallback（只給 assist/palliative/neutral，不得 cure）。",
+  "policyTypes": {
+    "hard": "硬建設／公共服務",
+    "reg": "管制／稽查",
+    "subsidy": "補助獎勵",
+    "ppp": "公私協力",
+    "info": "資訊溝通（宣導教育）",
+    "stopgap": "治標應急"
+  },
+  "topicLabels": {
+    "drain_clog": "排水口堵塞",
+    "trash": "垃圾",
+    "flood": "淹水",
+    "storm_water": "暴雨積水",
+    "leaves": "落葉",
+    "culvert": "涵洞淤積",
+    "standing_water": "積水",
+    "footfall": "人潮買氣",
+    "muddy_path": "泥濘步道",
+    "tourism": "觀光客",
+    "price": "菜價",
+    "supply_delay": "進貨延遲",
+    "freight_jam": "貨車壅塞",
+    "rumor": "謠言／傳聞",
+    "reviews": "網路評價",
+    "crowd": "人潮聚集",
+    "festival": "廟會檔期",
+    "restock": "補貨",
+    "cold_chain": "冷鏈",
+    "heat": "高溫",
+    "rockfall": "落石",
+    "road_closed": "封路",
+    "bridge": "橋梁",
+    "bus_delay": "公車誤點",
+    "congestion": "壅塞",
+    "parking": "停車",
+    "rescue_access": "救援動線",
+    "works": "工程施工",
+    "water_quality": "水質",
+    "mosquito": "蚊媒",
+    "epidemic": "流行病",
+    "flu": "流感",
+    "food_safety": "食安",
+    "market_hygiene": "市集衛生",
+    "narrow_lane": "窄巷",
+    "theft": "扒手竊盜",
+    "night": "夜間",
+    "fire": "火災",
+    "electrical": "電線",
+    "old_house": "老屋",
+    "slope": "邊坡",
+    "rat": "鼠患",
+    "kitchen_waste": "廚餘",
+    "park": "公園",
+    "bait_safety": "鼠餌安全",
+    "grease": "油脂",
+    "audit": "稽查",
+    "school_lunch": "學校午餐",
+    "investigation": "調查中",
+    "supplier": "供餐廠商",
+    "stray_dog": "流浪犬",
+    "rat_swarm": "鼠群竄出"
+  },
+  "cards": {
+    "policy_clear_drain": {
+      "name": "緊急清淤隊",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 3,
+      "counters": [
+        "drain_clog",
+        "leaves",
+        "culvert",
+        "standing_water"
+      ],
+      "slow": false,
+      "realWorldAnalog": "公共工程中的「疏濬／清淤」：政府出工程隊直接清除堵塞物。"
+    },
+    "policy_boardwalk": {
+      "name": "步道木棧加固",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 3,
+      "counters": [
+        "muddy_path",
+        "footfall"
+      ],
+      "slow": false,
+      "realWorldAnalog": "地方觀光基礎建設：修繕步道與木棧，改善動線與體驗。"
+    },
+    "policy_coupon": {
+      "name": "市集消費券",
+      "policyType": "subsidy",
+      "typeLabel": "補助獎勵",
+      "costPoints": 2,
+      "counters": [],
+      "slow": false,
+      "realWorldAnalog": "需求面刺激：發放消費券／折價券，短期拉動買氣，不處理成因。"
+    },
+    "policy_water_test": {
+      "name": "公開水質檢測",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 2,
+      "counters": [
+        "water_quality"
+      ],
+      "slow": false,
+      "realWorldAnalog": "資訊公開：由衛生單位定期檢驗並公布結果，讓民眾用證據判斷。"
+    },
+    "policy_logistics_hub": {
+      "name": "臨時物流緩衝站",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 3,
+      "counters": [
+        "supply_delay",
+        "freight_jam",
+        "restock"
+      ],
+      "slow": false,
+      "realWorldAnalog": "物流基礎建設：設置轉運／暫置場，把貨車從壅塞路段引開。"
+    },
+    "policy_rain_garden": {
+      "name": "雨水花園滯洪池",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 3,
+      "counters": [
+        "flood",
+        "storm_water"
+      ],
+      "slow": false,
+      "realWorldAnalog": "海綿城市／滯洪設施：在低窪處增加雨水暫存與入滲空間。"
+    },
+    "policy_vendor_shift": {
+      "name": "攤販輪班夜市整頓",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "costPoints": 2,
+      "counters": [
+        "crowd",
+        "festival"
+      ],
+      "slow": false,
+      "realWorldAnalog": "市集管理：用分時段、動線與擺攤規則管理人潮。"
+    },
+    "policy_cold_chain": {
+      "name": "冷鏈冷藏車",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "costPoints": 3,
+      "counters": [
+        "cold_chain",
+        "heat"
+      ],
+      "slow": false,
+      "realWorldAnalog": "農產品冷鏈合作：公部門與產地、車行合作提供冷藏運輸。"
+    },
+    "policy_bus_reroute": {
+      "name": "公車改道接駁巴士",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 2,
+      "counters": [
+        "bus_delay",
+        "tourism"
+      ],
+      "slow": false,
+      "realWorldAnalog": "公共運輸服務：調整路線並增開接駁，是服務型的硬建設。"
+    },
+    "policy_vector_control": {
+      "name": "疫苗滅蚊行動",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 2,
+      "counters": [
+        "mosquito",
+        "epidemic",
+        "flu"
+      ],
+      "slow": false,
+      "realWorldAnalog": "公共衛生服務：接種站、孳生源清除與社區防治。"
+    },
+    "policy_patrol_lights": {
+      "name": "社區巡守隊與路燈",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "costPoints": 2,
+      "counters": [
+        "theft",
+        "night"
+      ],
+      "slow": false,
+      "realWorldAnalog": "社區警政：居民志工與公部門合作巡守，搭配照明改善。"
+    },
+    "policy_rescue_squad": {
+      "name": "緊急救援小隊",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 3,
+      "counters": [
+        "rescue_access",
+        "narrow_lane"
+      ],
+      "slow": false,
+      "realWorldAnalog": "緊急應變服務：預置救援人力與小型裝備，縮短到場時間。"
+    },
+    "policy_fact_check": {
+      "name": "資訊查證站",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 2,
+      "counters": [
+        "rumor"
+      ],
+      "slow": false,
+      "realWorldAnalog": "事實查核：公開來源與紀錄，澄清未證實消息。"
+    },
+    "policy_town_broadcast": {
+      "name": "公所公告廣播",
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "costPoints": 2,
+      "counters": [],
+      "slow": true,
+      "realWorldAnalog": "政府公告／新聞稿：快速安撫，但沒有證據或行動時效果很短。"
+    },
+    "policy_pest_control": {
+      "name": "鼠害防治與廚餘管理",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "costPoints": 2,
+      "counters": [
+        "rat",
+        "kitchen_waste",
+        "bait_safety"
+      ],
+      "slow": false,
+      "realWorldAnalog": "環境衛生管理：廚餘加蓋、封洞、定點設餌並公開位置。"
+    },
+    "policy_food_safety": {
+      "name": "食安檢驗與留樣",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "costPoints": 2,
+      "counters": [
+        "food_safety",
+        "school_lunch"
+      ],
+      "slow": false,
+      "realWorldAnalog": "食品安全管理：留樣、抽驗與供應鏈追溯。"
+    },
+    "policy_vendor_audit": {
+      "name": "業者稽查與輔導",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "costPoints": 3,
+      "counters": [
+        "grease",
+        "audit",
+        "supplier"
+      ],
+      "slow": false,
+      "realWorldAnalog": "階梯式稽查：先宣導輔導、限期改善、複查，再依規定處理。"
+    },
+    "policy_wiring_subsidy": {
+      "name": "老屋電線檢修補助",
+      "policyType": "subsidy",
+      "typeLabel": "補助獎勵",
+      "costPoints": 2,
+      "counters": [
+        "fire",
+        "electrical",
+        "old_house"
+      ],
+      "slow": false,
+      "realWorldAnalog": "住宅安全補助：政府補貼老舊住宅檢修電線，降低電氣火災風險。"
+    },
+    "policy_fire_lane": {
+      "name": "防火巷與消防栓",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 3,
+      "counters": [
+        "fire",
+        "rescue_access",
+        "narrow_lane"
+      ],
+      "slow": false,
+      "realWorldAnalog": "消防基礎建設：留設防火巷、增設消防栓與取水點。"
+    },
+    "policy_smoke_alarm": {
+      "name": "住警器補助",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "costPoints": 2,
+      "counters": [],
+      "slow": false,
+      "realWorldAnalog": "住宅防火設備：公部門補助、鄰里自治會協助安裝煙霧警報器。"
+    },
+    "policy_fire_drill": {
+      "name": "消防宣導與防火演練",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 1,
+      "counters": [],
+      "slow": true,
+      "realWorldAnalog": "社區防災教育：消防演練與用電安全宣導；便宜、見效慢、效果有限。"
+    },
+    "policy_cctv": {
+      "name": "社區監視器",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "costPoints": 2,
+      "counters": [
+        "theft"
+      ],
+      "slow": false,
+      "realWorldAnalog": "治安基礎設施：公私合作設置監視器，降低犯罪機會、協助事後追查。"
+    },
+    "policy_crime_edu": {
+      "name": "防竊宣導與鄰里守望",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 1,
+      "counters": [],
+      "slow": true,
+      "realWorldAnalog": "犯罪預防宣導：提醒隨身財物與鄰里守望相助；便宜、見效慢。"
+    },
+    "policy_slope_guard": {
+      "name": "邊坡檢查與護欄",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 3,
+      "counters": [
+        "rockfall",
+        "slope"
+      ],
+      "slow": false,
+      "realWorldAnalog": "坡地防災工程：定期檢查邊坡、設置護欄與攔石設施。"
+    },
+    "policy_private_parking": {
+      "name": "鼓勵民間設停車場",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "costPoints": 2,
+      "counters": [
+        "parking"
+      ],
+      "slow": false,
+      "realWorldAnalog": "公私協力：以獎勵或容積誘因，鼓勵民間提供停車空間，減少路邊停車。"
+    },
+    "policy_street_parking": {
+      "name": "路邊停車收費",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "costPoints": 2,
+      "counters": [
+        "parking",
+        "congestion"
+      ],
+      "slow": false,
+      "realWorldAnalog": "停車管理：路邊停車收費、限時，提高周轉率、清出路面。"
+    },
+    "policy_traffic_safety": {
+      "name": "交通安全宣導",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 1,
+      "counters": [],
+      "slow": true,
+      "realWorldAnalog": "交通安全教育：用路規則與錯峰宣導；便宜、見效慢。"
+    },
+    "policy_food_edu": {
+      "name": "食安宣導與家長說明會",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 1,
+      "counters": [],
+      "slow": true,
+      "realWorldAnalog": "食品安全教育：向家長與攤商說明檢驗流程與保存方法；便宜、見效慢。"
+    },
+    "policy_rat_edu": {
+      "name": "防鼠衛教與環境教育",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 1,
+      "counters": [],
+      "slow": true,
+      "realWorldAnalog": "環境衛生教育：教居民與攤商廚餘加蓋、不亂餵食；便宜、見效慢。"
+    },
+    "policy_town_hall": {
+      "name": "里民說明會",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 1,
+      "counters": [],
+      "slow": true,
+      "realWorldAnalog": "公共溝通：公所面對面說明進度與疑問，建立信任。"
+    },
+    "policy_flood_edu": {
+      "name": "防汛自主防災宣導",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 1,
+      "counters": [],
+      "slow": true,
+      "realWorldAnalog": "自主防災教育：認識低窪地點、備沙包與避難路線；便宜、見效慢。"
+    },
+    "policy_health_edu": {
+      "name": "衛生教育與防疫宣導",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 1,
+      "counters": [],
+      "slow": true,
+      "realWorldAnalog": "公共衛生教育：洗手、清積水、就醫判斷；便宜、見效慢。"
+    },
+    "policy_runoff_control": {
+      "name": "出流管制審查",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "costPoints": 2,
+      "counters": [
+        "flood",
+        "storm_water"
+      ],
+      "slow": false,
+      "realWorldAnalog": "開發許可管制：新開發案要先提出減洪設施，開發後洪峰不得增加。"
+    },
+    "policy_permeable": {
+      "name": "透水鋪面與保水補助",
+      "policyType": "subsidy",
+      "typeLabel": "補助獎勵",
+      "costPoints": 2,
+      "counters": [
+        "flood",
+        "storm_water"
+      ],
+      "slow": false,
+      "realWorldAnalog": "綠色基盤補助：補助透水鋪面、雨水貯留，讓雨水就地滲入。"
+    },
+    "policy_pump_monitor": {
+      "name": "抽水站自動化與水情預警",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 3,
+      "counters": [
+        "flood",
+        "storm_water",
+        "culvert"
+      ],
+      "slow": false,
+      "realWorldAnalog": "智慧防災基礎設施：水位監測串接抽水站，提早啟動並公開水情。"
+    },
+    "policy_flood_relief": {
+      "name": "淹水保險與災後救助",
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "costPoints": 2,
+      "counters": [],
+      "slow": false,
+      "realWorldAnalog": "風險分擔與災後救助：事後快速給付，幫忙度過難關，但不減少淹水。"
+    },
+    "policy_market_star": {
+      "name": "市集星級評核與公開排名",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 1,
+      "counters": [],
+      "slow": true,
+      "realWorldAnalog": "評鑑與資訊公開：用星級與排名讓好攤位被看見，並形成改善壓力；見效慢。"
+    },
+    "policy_market_committee": {
+      "name": "攤販自治管理委員會",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "costPoints": 2,
+      "counters": [
+        "crowd",
+        "festival",
+        "market_hygiene"
+      ],
+      "slow": false,
+      "realWorldAnalog": "社區自治：攤商組管委會訂公約，自己管動線、衛生與秩序，公所從旁輔導。"
+    },
+    "policy_loading_zone": {
+      "name": "貨車裝卸專用區",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "costPoints": 2,
+      "counters": [
+        "freight_jam",
+        "restock"
+      ],
+      "slow": false,
+      "realWorldAnalog": "路權管理：路邊劃設限時裝卸車格，配送車不必二排停車。"
+    },
+    "policy_joint_delivery": {
+      "name": "共同配送",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "costPoints": 3,
+      "counters": [
+        "freight_jam",
+        "supply_delay",
+        "restock"
+      ],
+      "slow": false,
+      "realWorldAnalog": "物流整合：多家貨物併車、集中卸貨，減少進城車次。"
+    },
+    "policy_delivery_subsidy": {
+      "name": "攤商外送合作補助",
+      "policyType": "subsidy",
+      "typeLabel": "補助獎勵",
+      "costPoints": 2,
+      "counters": [],
+      "slow": false,
+      "realWorldAnalog": "數位轉型補助：補貼攤商與外送業者合作，分散到市場的人潮與貨量。"
+    },
+    "policy_walking_street": {
+      "name": "行人徒步區",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "costPoints": 2,
+      "counters": [
+        "crowd"
+      ],
+      "slow": false,
+      "realWorldAnalog": "交通管制：商圈特定時段禁止車輛進入、取消路邊停車。"
+    },
+    "policy_shared_parking": {
+      "name": "共享車位媒合",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "costPoints": 2,
+      "counters": [
+        "parking"
+      ],
+      "slow": false,
+      "realWorldAnalog": "閒置空間共享：機關與民間的空檔車位開放給外人，用平台媒合。"
+    },
+    "policy_dengue_mobilize": {
+      "name": "孳生源清除社區動員",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "costPoints": 2,
+      "counters": [
+        "mosquito",
+        "standing_water",
+        "epidemic"
+      ],
+      "slow": false,
+      "realWorldAnalog": "社區動員：里長、志工與衛生單位合作定期清積水，查核熱區。"
+    },
+    "policy_lunch_registry": {
+      "name": "午餐食材登錄追溯",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 2,
+      "counters": [
+        "food_safety",
+        "school_lunch",
+        "supplier"
+      ],
+      "slow": false,
+      "realWorldAnalog": "資訊公開與可追溯：供餐業者每天登錄食材來源，出事能快速查流向。"
+    },
+    "policy_kitchen_sorting": {
+      "name": "廚餘分流收運",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 3,
+      "counters": [
+        "kitchen_waste"
+      ],
+      "slow": false,
+      "realWorldAnalog": "資源回收服務：廚餘獨立收運，轉做堆肥，減少桶內殘渣與鼠跡。"
+    },
+    "policy_rat_pro": {
+      "name": "社區鼠類偵防",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 2,
+      "counters": [
+        "rat"
+      ],
+      "slow": false,
+      "realWorldAnalog": "專業衛生服務：專人勘查鼠跡與孔洞，提供環境改善與物理防治建議。"
+    },
+    "policy_fire_inspection": {
+      "name": "公共場所消防安檢",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "costPoints": 2,
+      "counters": [
+        "fire",
+        "old_house"
+      ],
+      "slow": false,
+      "realWorldAnalog": "消防管制：定期檢查消防設備與逃生通道，限期改善、複查。"
+    },
+    "policy_led_lights": {
+      "name": "路燈LED汰換與暗巷補強",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 3,
+      "counters": [
+        "night"
+      ],
+      "slow": false,
+      "realWorldAnalog": "公共照明工程：老舊路燈換LED並補強黑暗路段，也降低電費。"
+    },
+    "policy_crime_map": {
+      "name": "治安點位公開與安全地圖",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 1,
+      "counters": [],
+      "slow": false,
+      "realWorldAnalog": "資訊公開：公開（模糊化）案件地點，居民與警方一起繪製安全地圖。"
+    },
+    "policy_pied_piper": {
+      "name": "吹笛人引鼠出城",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "costPoints": 3,
+      "counters": [
+        "rat",
+        "rat_swarm"
+      ],
+      "slow": false,
+      "realWorldAnalog": "專業病媒防治業者：委託專業團隊用聲音與誘捕站集中捕捉鼠群（不用毒餌）；見效快但費用高、要分期付款。"
+    },
+    "policy_stray_dog_tnr": {
+      "name": "流浪犬 TNR 與收容",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "costPoints": 3,
+      "counters": [
+        "stray_dog"
+      ],
+      "slow": false,
+      "realWorldAnalog": "動物保護公共服務：捕捉、結紮、放回（TNR）並設收容送養，讓流浪犬數量慢慢穩定。"
+    },
+    "policy_animal_patrol": {
+      "name": "動保志工巡查",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "costPoints": 2,
+      "counters": [
+        "stray_dog",
+        "night"
+      ],
+      "slow": false,
+      "realWorldAnalog": "公私協力：動保志工與公所合作巡查餵食點、通報與安撫流浪犬，減少衝突。"
+    },
+    "policy_dog_roundup": {
+      "name": "強力捕捉驅離專案",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "costPoints": 2,
+      "counters": [],
+      "slow": false,
+      "realWorldAnalog": "強制管制：一次性大規模捕捉與驅離流浪犬；看似快，但空出的地盤很快有新狗進來，也引發居民與動保志工反彈。"
+    },
+    "policy_pet_edu": {
+      "name": "飼主責任與不亂餵宣導",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "costPoints": 1,
+      "counters": [],
+      "slow": true,
+      "realWorldAnalog": "動物保護教育：宣導寵物晶片、絕育與不亂餵食、垃圾不落地；便宜、見效慢。"
+    }
+  },
+  "domainOf": {
+    "policy_clear_drain": "drain",
+    "policy_boardwalk": "market",
+    "policy_coupon": "market",
+    "policy_water_test": "health",
+    "policy_logistics_hub": "logistics",
+    "policy_rain_garden": "drain",
+    "policy_vendor_shift": "market",
+    "policy_cold_chain": "logistics",
+    "policy_bus_reroute": "traffic",
+    "policy_vector_control": "health",
+    "policy_patrol_lights": "safety",
+    "policy_rescue_squad": "safety",
+    "policy_fact_check": "health",
+    "policy_town_broadcast": "health",
+    "policy_pest_control": "health",
+    "policy_food_safety": "health",
+    "policy_vendor_audit": "health",
+    "policy_wiring_subsidy": "safety",
+    "policy_fire_lane": "safety",
+    "policy_smoke_alarm": "safety",
+    "policy_fire_drill": "safety",
+    "policy_cctv": "safety",
+    "policy_crime_edu": "safety",
+    "policy_slope_guard": "safety",
+    "policy_private_parking": "traffic",
+    "policy_street_parking": "traffic",
+    "policy_traffic_safety": "traffic",
+    "policy_food_edu": "health",
+    "policy_rat_edu": "health",
+    "policy_town_hall": "market",
+    "policy_flood_edu": "drain",
+    "policy_health_edu": "health",
+    "policy_runoff_control": "drain",
+    "policy_permeable": "drain",
+    "policy_pump_monitor": "drain",
+    "policy_flood_relief": "drain",
+    "policy_market_star": "market",
+    "policy_market_committee": "market",
+    "policy_loading_zone": "logistics",
+    "policy_joint_delivery": "logistics",
+    "policy_delivery_subsidy": "logistics",
+    "policy_walking_street": "traffic",
+    "policy_shared_parking": "traffic",
+    "policy_dengue_mobilize": "health",
+    "policy_lunch_registry": "health",
+    "policy_kitchen_sorting": "health",
+    "policy_rat_pro": "health",
+    "policy_fire_inspection": "safety",
+    "policy_led_lights": "safety",
+    "policy_crime_map": "safety",
+    "policy_pied_piper": "health",
+    "policy_stray_dog_tnr": "safety",
+    "policy_animal_patrol": "safety",
+    "policy_dog_roundup": "safety",
+    "policy_pet_edu": "safety"
+  },
+  "assertions": [
+    "每個事件 cure 1–2 張；每張 cure 必須 card.counters ∩ event.topicTags ≠ ∅。",
+    "領域預設 policyMatrix 不得出現 cure 或 backfire（只允許 assist／palliative／neutral）。",
+    "決策欄顯示「對症」標籤的卡，必須在該事件 cure 清單內（pool_flow 的 verdict 只能來自 responses，不得沿用靜態 verdict）。",
+    "決策欄選項（article.actionOptionIds）：cure 在前，其餘為 assist／palliative 的不同 policyType；每事件至少 1 張宣導教育（slow, info）；補助獎勵類最多 1 張；選項卡一律出自本表清單。",
+    "宣導教育卡（slow=true）不得為 cure（假警報／謠言事件的查證卡 fact_check 為 info 但非 slow，可 cure）；同事件上季已用過再用 → neutral（效果遞減）。",
+    "火災事件（evp_safety_fire）的 cure 必須是防火類卡（counters 含 fire）；不得出現步道、物流緩衝站。"
+  ],
+  "semanticReviewRule": "tools/qa_cure_match.js 的「語意待人工確認」：該事件 semanticReview.cards 內 decision=keep 且 cure 條目 reviewed=true 者視為已確認（仍列在 semanticReviewed 供查）；未列者繼續列為待確認。關鍵字檢查本身不刪。",
+  "optionRule": {
+    "cap": 4,
+    "order": "cure → assist → palliative",
+    "diversity": "盡量不同 policyType",
+    "subsidyMax": 1,
+    "eduMin": 1
+  },
+  "events": [
+    {
+      "eventId": "evp_drain_blocked",
+      "title": "排水口堵塞",
+      "domainId": "drain",
+      "topicTags": [
+        "drain_clog",
+        "trash"
+      ],
+      "topicLabels": [
+        "排水口堵塞",
+        "垃圾"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_clear_drain",
+          "name": "緊急清淤隊",
+          "policyType": "hard",
+          "note": "清掉堵塞物，水才流得出去。",
+          "topicMatch": [
+            "drain_clog"
+          ],
+          "reason": "counters∩topicTags＝排水口堵塞"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_rain_garden",
+          "name": "雨水花園滯洪池",
+          "policyType": "hard",
+          "note": "滯洪池分擔了一部分水量，但口還是塞的。"
+        },
+        {
+          "policyId": "policy_flood_edu",
+          "name": "防汛自主防災宣導",
+          "policyType": "info",
+          "note": "防汛自主防災宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（排水口堵塞、垃圾）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_permeable",
+          "name": "透水鋪面與保水補助",
+          "policyType": "subsidy",
+          "note": "透水鋪面與保水補助能幫上一點（排水口堵塞、垃圾），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_patrol_lights",
+          "name": "社區巡守隊與路燈",
+          "policyType": "ppp",
+          "note": "巡守隊天天巡溝撿垃圾，一時乾淨，堵塞物還在。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_vendor_shift",
+          "name": "攤販輪班夜市整頓",
+          "policyType": "reg",
+          "note": "夜市人潮多、垃圾也多，排水口更快塞。",
+          "when": "未購買緊急清淤隊"
+        }
+      ],
+      "optionIds": [
+        "act_evp_drain_blocked__clear_drain",
+        "act_evp_drain_blocked__flood_edu",
+        "act_evp_drain_blocked__permeable",
+        "act_evp_drain_blocked__patrol_lights"
+      ],
+      "optionPolicyIds": [
+        "policy_clear_drain",
+        "policy_flood_edu",
+        "policy_permeable",
+        "policy_patrol_lights"
+      ],
+      "eduPolicyIds": [
+        "policy_flood_edu"
+      ]
+    },
+    {
+      "eventId": "evp_drain_storm",
+      "title": "暴雨積水",
+      "domainId": "drain",
+      "topicTags": [
+        "flood",
+        "storm_water",
+        "drain_clog"
+      ],
+      "topicLabels": [
+        "淹水",
+        "暴雨積水",
+        "排水口堵塞"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_rain_garden",
+          "name": "雨水花園滯洪池",
+          "policyType": "hard",
+          "note": "滯洪池早就挖好，雨水有地方去。",
+          "when": "已先前購買雨水花園滯洪池",
+          "topicMatch": [
+            "flood",
+            "storm_water"
+          ],
+          "reason": "counters∩topicTags＝淹水、暴雨積水"
+        },
+        {
+          "policyId": "policy_pump_monitor",
+          "name": "抽水站自動化與水情預警",
+          "policyType": "hard",
+          "note": "抽水站自動化與水情預警正對上本事件的「淹水、暴雨積水」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "flood",
+            "storm_water"
+          ],
+          "reason": "counters∩topicTags＝淹水、暴雨積水"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_clear_drain",
+          "name": "緊急清淤隊",
+          "policyType": "hard",
+          "note": "雨已經下了，才買清淤只能加速退水，救一半。"
+        },
+        {
+          "policyId": "policy_rain_garden",
+          "name": "雨水花園滯洪池",
+          "policyType": "hard",
+          "note": "雨已經下了，臨時滯洪只能分擔一些。"
+        },
+        {
+          "policyId": "policy_rescue_squad",
+          "name": "緊急救援小隊",
+          "policyType": "hard",
+          "note": "救援小隊先疏散低窪居民，降低傷害。"
+        },
+        {
+          "policyId": "policy_flood_edu",
+          "name": "防汛自主防災宣導",
+          "policyType": "info",
+          "note": "防汛自主防災宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（淹水、暴雨積水）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_runoff_control",
+          "name": "出流管制審查",
+          "policyType": "reg",
+          "note": "出流管制審查能幫上一點（淹水、暴雨積水），但不是主因；要搭配對症卡效果才完整。"
+        },
+        {
+          "policyId": "policy_permeable",
+          "name": "透水鋪面與保水補助",
+          "policyType": "subsidy",
+          "note": "透水鋪面與保水補助能幫上一點（淹水、暴雨積水），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_flood_relief",
+          "name": "淹水保險與災後救助",
+          "policyType": "stopgap",
+          "note": "淹水保險與災後救助金讓受災戶先撐過去；但水怎麼淹的、下次還會不會淹，它都不處理。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "積水已深，接駁巴士誤入低窪路段拋錨，更塞。",
+          "when": "drain民怨≥60"
+        }
+      ],
+      "optionIds": [
+        "act_evp_drain_storm__pump_monitor",
+        "act_evp_drain_storm__rain_garden",
+        "act_evp_drain_storm__flood_edu",
+        "act_evp_drain_storm__runoff_control"
+      ],
+      "optionPolicyIds": [
+        "policy_pump_monitor",
+        "policy_rain_garden",
+        "policy_flood_edu",
+        "policy_runoff_control"
+      ],
+      "eduPolicyIds": [
+        "policy_flood_edu"
+      ]
+    },
+    {
+      "eventId": "evp_drain_leaf",
+      "title": "落葉堵溝",
+      "domainId": "drain",
+      "topicTags": [
+        "drain_clog",
+        "leaves"
+      ],
+      "topicLabels": [
+        "排水口堵塞",
+        "落葉"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_clear_drain",
+          "name": "緊急清淤隊",
+          "policyType": "hard",
+          "note": "清溝時一併清運，落葉不再回堵。",
+          "topicMatch": [
+            "drain_clog",
+            "leaves"
+          ],
+          "reason": "counters∩topicTags＝排水口堵塞、落葉"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_flood_edu",
+          "name": "防汛自主防災宣導",
+          "policyType": "info",
+          "note": "防汛自主防災宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（排水口堵塞、落葉）；下季才明顯，重複使用遞減。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_patrol_lights",
+          "name": "社區巡守隊與路燈",
+          "policyType": "ppp",
+          "note": "巡守隊順手撿落葉，暫時乾淨，下週又滿。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_rain_garden",
+          "name": "雨水花園滯洪池",
+          "policyType": "hard",
+          "note": "落葉灌進滯洪池入口，反而堵出新問題。",
+          "when": "未購買緊急清淤隊"
+        }
+      ],
+      "optionIds": [
+        "act_evp_drain_leaf__clear_drain",
+        "act_evp_drain_leaf__flood_edu",
+        "act_evp_drain_leaf__patrol_lights"
+      ],
+      "optionPolicyIds": [
+        "policy_clear_drain",
+        "policy_flood_edu",
+        "policy_patrol_lights"
+      ],
+      "eduPolicyIds": [
+        "policy_flood_edu"
+      ]
+    },
+    {
+      "eventId": "evp_drain_culvert",
+      "title": "涵洞淤積",
+      "domainId": "drain",
+      "topicTags": [
+        "flood",
+        "drain_clog",
+        "culvert"
+      ],
+      "topicLabels": [
+        "淹水",
+        "排水口堵塞",
+        "涵洞淤積"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_clear_drain",
+          "name": "緊急清淤隊",
+          "policyType": "hard",
+          "note": "有大型機具與經驗，才能清到底。",
+          "when": "已先前購買緊急清淤隊",
+          "topicMatch": [
+            "drain_clog",
+            "culvert"
+          ],
+          "reason": "counters∩topicTags＝排水口堵塞、涵洞淤積"
+        },
+        {
+          "policyId": "policy_pump_monitor",
+          "name": "抽水站自動化與水情預警",
+          "policyType": "hard",
+          "note": "抽水站自動化與水情預警正對上本事件的「淹水、涵洞淤積」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "flood",
+            "culvert"
+          ],
+          "reason": "counters∩topicTags＝淹水、涵洞淤積"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_clear_drain",
+          "name": "緊急清淤隊",
+          "policyType": "hard",
+          "note": "第一次清淤只能清出一半，需要再追加。"
+        },
+        {
+          "policyId": "policy_flood_edu",
+          "name": "防汛自主防災宣導",
+          "policyType": "info",
+          "note": "防汛自主防災宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（淹水、排水口堵塞）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_runoff_control",
+          "name": "出流管制審查",
+          "policyType": "reg",
+          "note": "出流管制審查能幫上一點（淹水），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_rain_garden",
+          "name": "雨水花園滯洪池",
+          "policyType": "hard",
+          "note": "滯洪池先分流，涵洞淤泥還在，下次大雨又滿。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_boardwalk",
+          "name": "步道木棧加固",
+          "policyType": "hard",
+          "note": "步道施工的泥沙沖進涵洞，淤得更厚。",
+          "when": "已本季購買步道木棧加固"
+        }
+      ],
+      "optionIds": [
+        "act_evp_drain_culvert__pump_monitor",
+        "act_evp_drain_culvert__clear_drain",
+        "act_evp_drain_culvert__flood_edu",
+        "act_evp_drain_culvert__runoff_control"
+      ],
+      "optionPolicyIds": [
+        "policy_pump_monitor",
+        "policy_clear_drain",
+        "policy_flood_edu",
+        "policy_runoff_control"
+      ],
+      "eduPolicyIds": [
+        "policy_flood_edu"
+      ]
+    },
+    {
+      "eventId": "evp_market_slump",
+      "title": "市集人潮變少",
+      "domainId": "market",
+      "topicTags": [
+        "footfall",
+        "muddy_path",
+        "tourism"
+      ],
+      "topicLabels": [
+        "人潮買氣",
+        "泥濘步道",
+        "觀光客"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_boardwalk",
+          "name": "步道木棧加固",
+          "policyType": "hard",
+          "note": "步道修好，遊客才願意走進來。",
+          "topicMatch": [
+            "footfall",
+            "muddy_path"
+          ],
+          "reason": "counters∩topicTags＝人潮買氣、泥濘步道"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_vendor_shift",
+          "name": "攤販輪班夜市整頓",
+          "policyType": "reg",
+          "note": "輪班整頓延長營業，分散人潮。"
+        },
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "接駁巴士把遊客載進市集。"
+        },
+        {
+          "policyId": "policy_town_hall",
+          "name": "里民說明會",
+          "policyType": "info",
+          "note": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（人潮買氣、泥濘步道）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_market_star",
+          "name": "市集星級評核與公開排名",
+          "policyType": "info",
+          "note": "市集星級評核與公開排名見效較慢、較弱但便宜：先讓大家知道怎麼做（人潮買氣、泥濘步道）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_walking_street",
+          "name": "行人徒步區",
+          "policyType": "reg",
+          "note": "行人徒步區能幫上一點（人潮買氣、泥濘步道），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_coupon",
+          "name": "市集消費券",
+          "policyType": "subsidy",
+          "note": "只拉買氣，步道沒修，下季會反彈。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_rain_garden",
+          "name": "雨水花園滯洪池",
+          "policyType": "hard",
+          "note": "滯洪池占掉市集旁空地，擺攤位置更少。",
+          "when": "market民怨≥50"
+        }
+      ],
+      "optionIds": [
+        "act_evp_market_slump__boardwalk",
+        "act_evp_market_slump__town_hall",
+        "act_evp_market_slump__vendor_shift",
+        "act_evp_market_slump__coupon"
+      ],
+      "optionPolicyIds": [
+        "policy_boardwalk",
+        "policy_town_hall",
+        "policy_vendor_shift",
+        "policy_coupon"
+      ],
+      "eduPolicyIds": [
+        "policy_town_hall",
+        "policy_market_star"
+      ]
+    },
+    {
+      "eventId": "evp_market_price",
+      "title": "菜價飆漲",
+      "domainId": "market",
+      "topicTags": [
+        "price",
+        "supply_delay",
+        "freight_jam"
+      ],
+      "topicLabels": [
+        "菜價",
+        "進貨延遲",
+        "貨車壅塞"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_logistics_hub",
+          "name": "臨時物流緩衝站",
+          "policyType": "hard",
+          "note": "準點降損耗，價格才會回穩。",
+          "topicMatch": [
+            "supply_delay",
+            "freight_jam"
+          ],
+          "reason": "counters∩topicTags＝進貨延遲、貨車壅塞"
+        },
+        {
+          "policyId": "policy_joint_delivery",
+          "name": "共同配送",
+          "policyType": "ppp",
+          "note": "共同配送正對上本事件的「進貨延遲、貨車壅塞」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "supply_delay",
+            "freight_jam"
+          ],
+          "reason": "counters∩topicTags＝進貨延遲、貨車壅塞"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_cold_chain",
+          "name": "冷鏈冷藏車",
+          "policyType": "ppp",
+          "note": "冷藏保鮮減少損耗，進價降一些。"
+        },
+        {
+          "policyId": "policy_town_hall",
+          "name": "里民說明會",
+          "policyType": "info",
+          "note": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（菜價、進貨延遲）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_delivery_subsidy",
+          "name": "攤商外送合作補助",
+          "policyType": "subsidy",
+          "note": "攤商外送合作補助能幫上一點（菜價、進貨延遲），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "公告呼籲穩定物價，價格暫時壓住。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_coupon",
+          "name": "市集消費券",
+          "policyType": "subsidy",
+          "note": "需求上升、供給沒變，價格反而更漲。",
+          "when": "未購買臨時物流緩衝站"
+        }
+      ],
+      "optionIds": [
+        "act_evp_market_price__logistics_hub",
+        "act_evp_market_price__joint_delivery",
+        "act_evp_market_price__town_hall",
+        "act_evp_market_price__delivery_subsidy"
+      ],
+      "optionPolicyIds": [
+        "policy_logistics_hub",
+        "policy_joint_delivery",
+        "policy_town_hall",
+        "policy_delivery_subsidy"
+      ],
+      "eduPolicyIds": [
+        "policy_town_hall"
+      ]
+    },
+    {
+      "eventId": "evp_market_fake_review",
+      "title": "網路負評風波",
+      "domainId": "market",
+      "topicTags": [
+        "rumor",
+        "reviews"
+      ],
+      "topicLabels": [
+        "謠言／傳聞",
+        "網路評價"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_fact_check",
+          "name": "資訊查證站",
+          "policyType": "info",
+          "note": "公開查證圖片來源，風波自己退燒。",
+          "topicMatch": [
+            "rumor"
+          ],
+          "reason": "counters∩topicTags＝謠言／傳聞",
+          "reviewed": true,
+          "reviewNote": "事件本質是「網路負評、圖片來源不明」的謠言（rumor、reviews），不是真的食安事故；標題的「食物」觸發食安關鍵字屬誤判。公開查證圖片來源與時間，正是對症。"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_water_test",
+          "name": "公開水質檢測",
+          "policyType": "info",
+          "note": "公開水質與環境檢測資料可以補強證據，但這是評價風波，主要還是靠查證圖片來源。"
+        },
+        {
+          "policyId": "policy_town_hall",
+          "name": "里民說明會",
+          "policyType": "info",
+          "note": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（謠言／傳聞、網路評價）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_market_star",
+          "name": "市集星級評核與公開排名",
+          "policyType": "info",
+          "note": "市集星級評核與公開排名見效較慢、較弱但便宜：先讓大家知道怎麼做（謠言／傳聞、網路評價）；下季才明顯，重複使用遞減。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "先發公告安撫，沒拿出證據，換個說法又傳。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_coupon",
+          "name": "市集消費券",
+          "policyType": "subsidy",
+          "note": "發券像心虛，反而讓人更懷疑。"
+        }
+      ],
+      "semanticReview": {
+        "reviewed": true,
+        "reviewedBy": "呆呆",
+        "date": "2026-10-06",
+        "cards": [
+          {
+            "policyId": "policy_fact_check",
+            "name": "資訊查證站",
+            "decision": "keep",
+            "decisionLabel": "保留（已確認合理）",
+            "note": "事件本質是「網路負評、圖片來源不明」的謠言（rumor、reviews），不是真的食安事故；標題的「食物」觸發食安關鍵字屬誤判。公開查證圖片來源與時間，正是對症。"
+          }
+        ]
+      },
+      "optionIds": [
+        "act_evp_market_fake_review__fact_check",
+        "act_evp_market_fake_review__town_hall",
+        "act_evp_market_fake_review__market_star",
+        "act_evp_market_fake_review__town_broadcast"
+      ],
+      "optionPolicyIds": [
+        "policy_fact_check",
+        "policy_town_hall",
+        "policy_market_star",
+        "policy_town_broadcast"
+      ],
+      "eduPolicyIds": [
+        "policy_town_hall",
+        "policy_market_star"
+      ]
+    },
+    {
+      "eventId": "evp_market_festival",
+      "title": "廟會檔期",
+      "domainId": "market",
+      "topicTags": [
+        "crowd",
+        "festival",
+        "restock"
+      ],
+      "topicLabels": [
+        "人潮聚集",
+        "廟會檔期",
+        "補貨"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_logistics_hub",
+          "name": "臨時物流緩衝站",
+          "policyType": "hard",
+          "note": "貨準時、車錯峰，抓住商機。",
+          "topicMatch": [
+            "restock"
+          ],
+          "reason": "counters∩topicTags＝補貨"
+        },
+        {
+          "policyId": "policy_vendor_shift",
+          "name": "攤販輪班夜市整頓",
+          "policyType": "reg",
+          "note": "輪班與動線整頓，接得住廟會人潮。",
+          "topicMatch": [
+            "crowd",
+            "festival"
+          ],
+          "reason": "counters∩topicTags＝人潮聚集、廟會檔期"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "有輪班疏導，接駁車讓人潮進得來。"
+        },
+        {
+          "policyId": "policy_traffic_safety",
+          "name": "交通安全宣導",
+          "policyType": "info",
+          "note": "交通安全宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（人潮聚集、廟會檔期）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_market_committee",
+          "name": "攤販自治管理委員會",
+          "policyType": "ppp",
+          "note": "攤販自治管理委員會能幫上一點（人潮聚集、廟會檔期），但不是主因；要搭配對症卡效果才完整。"
+        },
+        {
+          "policyId": "policy_walking_street",
+          "name": "行人徒步區",
+          "policyType": "reg",
+          "note": "行人徒步區能幫上一點（人潮聚集），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "發布廟會須知，秩序暫穩，貨與路還沒備。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "沒有輪班疏導，接駁車一次倒出大批人，老街擠爆。",
+          "when": "未購買攤販輪班夜市整頓"
+        }
+      ],
+      "optionIds": [
+        "act_evp_market_festival__vendor_shift",
+        "act_evp_market_festival__logistics_hub",
+        "act_evp_market_festival__traffic_safety",
+        "act_evp_market_festival__market_committee"
+      ],
+      "optionPolicyIds": [
+        "policy_vendor_shift",
+        "policy_logistics_hub",
+        "policy_traffic_safety",
+        "policy_market_committee"
+      ],
+      "eduPolicyIds": [
+        "policy_traffic_safety"
+      ]
+    },
+    {
+      "eventId": "evp_logi_delay",
+      "title": "進貨車卡峽口",
+      "domainId": "logistics",
+      "topicTags": [
+        "supply_delay",
+        "freight_jam"
+      ],
+      "topicLabels": [
+        "進貨延遲",
+        "貨車壅塞"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_logistics_hub",
+          "name": "臨時物流緩衝站",
+          "policyType": "hard",
+          "note": "在峽口設緩衝，多線物資不再一起卡。",
+          "topicMatch": [
+            "supply_delay",
+            "freight_jam"
+          ],
+          "reason": "counters∩topicTags＝進貨延遲、貨車壅塞"
+        },
+        {
+          "policyId": "policy_loading_zone",
+          "name": "貨車裝卸專用區",
+          "policyType": "reg",
+          "note": "貨車裝卸專用區正對上本事件的「貨車壅塞」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "freight_jam"
+          ],
+          "reason": "counters∩topicTags＝貨車壅塞"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_cold_chain",
+          "name": "冷鏈冷藏車",
+          "policyType": "ppp",
+          "note": "生鮮與冷藏優先進場，損失減少。"
+        },
+        {
+          "policyId": "policy_town_hall",
+          "name": "里民說明會",
+          "policyType": "info",
+          "note": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（進貨延遲、貨車壅塞）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_joint_delivery",
+          "name": "共同配送",
+          "policyType": "ppp",
+          "note": "共同配送能幫上一點（進貨延遲、貨車壅塞），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "接駁巴士分流載人，貨車還是卡在峽口。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_vendor_shift",
+          "name": "攤販輪班夜市整頓",
+          "policyType": "reg",
+          "note": "夜市補貨車變多，峽口更塞。",
+          "when": "traffic民怨≥55"
+        }
+      ],
+      "optionIds": [
+        "act_evp_logi_delay__loading_zone",
+        "act_evp_logi_delay__logistics_hub",
+        "act_evp_logi_delay__town_hall",
+        "act_evp_logi_delay__cold_chain"
+      ],
+      "optionPolicyIds": [
+        "policy_loading_zone",
+        "policy_logistics_hub",
+        "policy_town_hall",
+        "policy_cold_chain"
+      ],
+      "eduPolicyIds": [
+        "policy_town_hall"
+      ]
+    },
+    {
+      "eventId": "evp_logi_cold",
+      "title": "冷鏈中斷",
+      "domainId": "logistics",
+      "topicTags": [
+        "cold_chain",
+        "heat",
+        "supply_delay"
+      ],
+      "topicLabels": [
+        "冷鏈",
+        "高溫",
+        "進貨延遲"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_logistics_hub",
+          "name": "臨時物流緩衝站",
+          "policyType": "hard",
+          "note": "冷藏車優先、錯開垃圾車，冷鏈不再斷。",
+          "topicMatch": [
+            "supply_delay"
+          ],
+          "reason": "counters∩topicTags＝進貨延遲"
+        },
+        {
+          "policyId": "policy_cold_chain",
+          "name": "冷鏈冷藏車",
+          "policyType": "ppp",
+          "note": "冷藏車專用時段與保溫，冷鏈不再斷。",
+          "topicMatch": [
+            "cold_chain",
+            "heat"
+          ],
+          "reason": "counters∩topicTags＝冷鏈、高溫"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_town_hall",
+          "name": "里民說明會",
+          "policyType": "info",
+          "note": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（冷鏈、高溫）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_joint_delivery",
+          "name": "共同配送",
+          "policyType": "ppp",
+          "note": "共同配送能幫上一點（進貨延遲），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_delivery_subsidy",
+          "name": "攤商外送合作補助",
+          "policyType": "subsidy",
+          "note": "補貼生鮮攤商改走外送，讓部分貨量不必經過受阻路段，先緩一口氣；冷鏈問題還在。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_vendor_shift",
+          "name": "攤販輪班夜市整頓",
+          "policyType": "reg",
+          "note": "夏夜延長營業，冷藏需求暴增，更吃緊。",
+          "when": "季節為summer"
+        }
+      ],
+      "optionIds": [
+        "act_evp_logi_cold__logistics_hub",
+        "act_evp_logi_cold__cold_chain",
+        "act_evp_logi_cold__town_hall",
+        "act_evp_logi_cold__delivery_subsidy"
+      ],
+      "optionPolicyIds": [
+        "policy_logistics_hub",
+        "policy_cold_chain",
+        "policy_town_hall",
+        "policy_delivery_subsidy"
+      ],
+      "eduPolicyIds": [
+        "policy_town_hall"
+      ]
+    },
+    {
+      "eventId": "evp_logi_landslide",
+      "title": "落石封路",
+      "domainId": "logistics",
+      "topicTags": [
+        "rockfall",
+        "road_closed",
+        "supply_delay"
+      ],
+      "topicLabels": [
+        "落石",
+        "封路",
+        "進貨延遲"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_slope_guard",
+          "name": "邊坡檢查與護欄",
+          "policyType": "hard",
+          "note": "邊坡檢查與護欄正對上本事件的「落石」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "rockfall"
+          ],
+          "reason": "counters∩topicTags＝落石",
+          "reviewed": true,
+          "reviewNote": "落石是封路的上游成因；邊坡檢查與護欄（rockfall、slope）處理成因。事件雖在物流領域，但物流卡只能繞路、不能解除封路。"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_logistics_hub",
+          "name": "臨時物流緩衝站",
+          "policyType": "hard",
+          "note": "錯峰調度、分時段運送，封半邊路貨還進得來；但落石和邊坡沒處理，進貨延遲只是先緩一口氣。"
+        },
+        {
+          "policyId": "policy_rescue_squad",
+          "name": "緊急救援小隊",
+          "policyType": "hard",
+          "note": "救援小隊協助清路，先搶通半邊。"
+        },
+        {
+          "policyId": "policy_town_hall",
+          "name": "里民說明會",
+          "policyType": "info",
+          "note": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（落石、封路）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_joint_delivery",
+          "name": "共同配送",
+          "policyType": "ppp",
+          "note": "共同配送能幫上一點（進貨延遲），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "接駁巴士改走替代小路，落石還在。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_boardwalk",
+          "name": "步道木棧加固",
+          "policyType": "hard",
+          "note": "這時再開工會多封一段路，更堵。",
+          "when": "已本季購買步道木棧加固"
+        }
+      ],
+      "semanticReview": {
+        "reviewed": true,
+        "reviewedBy": "呆呆",
+        "date": "2026-10-06",
+        "cards": [
+          {
+            "policyId": "policy_slope_guard",
+            "name": "邊坡檢查與護欄",
+            "decision": "keep",
+            "decisionLabel": "保留（已確認合理）",
+            "note": "落石是封路的上游成因；邊坡檢查與護欄（rockfall、slope）處理成因。事件雖在物流領域，但物流卡只能繞路、不能解除封路。"
+          },
+          {
+            "policyId": "policy_logistics_hub",
+            "name": "臨時物流緩衝站",
+            "decision": "downgrade",
+            "decisionLabel": "已降級為輔助",
+            "note": "錯峰調度只處理症狀（進貨延遲），落石與邊坡沒處理 → 由對症降為輔助；也避免物流緩衝站變成萬用對症卡（原本 9 個事件對症）。落石危機（crisis_rockfall）的預防卡清單也一併移除它，只留邊坡檢查與護欄（10/6 咪咪決定）。"
+          }
+        ]
+      },
+      "optionIds": [
+        "act_evp_logi_landslide__slope_guard",
+        "act_evp_logi_landslide__town_hall",
+        "act_evp_logi_landslide__joint_delivery",
+        "act_evp_logi_landslide__logistics_hub"
+      ],
+      "optionPolicyIds": [
+        "policy_slope_guard",
+        "policy_town_hall",
+        "policy_joint_delivery",
+        "policy_logistics_hub"
+      ],
+      "eduPolicyIds": [
+        "policy_town_hall"
+      ]
+    },
+    {
+      "eventId": "evp_logi_false_bridge",
+      "title": "橋梁封閉謠言",
+      "domainId": "logistics",
+      "topicTags": [
+        "rumor",
+        "bridge"
+      ],
+      "topicLabels": [
+        "謠言／傳聞",
+        "橋梁"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_fact_check",
+          "name": "資訊查證站",
+          "policyType": "info",
+          "note": "公開橋檢紀錄與貼文來源，囤貨風潮退去。",
+          "topicMatch": [
+            "rumor"
+          ],
+          "reason": "counters∩topicTags＝謠言／傳聞"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_town_hall",
+          "name": "里民說明會",
+          "policyType": "info",
+          "note": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（謠言／傳聞、橋梁）；下季才明顯，重複使用遞減。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "先發公告說橋沒事，沒附檢測紀錄，仍有人囤貨。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_logistics_hub",
+          "name": "臨時物流緩衝站",
+          "policyType": "hard",
+          "note": "為謠言調度會打亂正常班次，反而造成塞車。"
+        },
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "為謠言增開改道，打亂班次，反而更亂。"
+        }
+      ],
+      "optionIds": [
+        "act_evp_logi_false_bridge__fact_check",
+        "act_evp_logi_false_bridge__town_hall",
+        "act_evp_logi_false_bridge__town_broadcast"
+      ],
+      "optionPolicyIds": [
+        "policy_fact_check",
+        "policy_town_hall",
+        "policy_town_broadcast"
+      ],
+      "eduPolicyIds": [
+        "policy_town_hall"
+      ]
+    },
+    {
+      "eventId": "evp_traffic_bus",
+      "title": "公車誤點連環",
+      "domainId": "traffic",
+      "topicTags": [
+        "bus_delay",
+        "freight_jam",
+        "congestion"
+      ],
+      "topicLabels": [
+        "公車誤點",
+        "貨車壅塞",
+        "壅塞"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_logistics_hub",
+          "name": "臨時物流緩衝站",
+          "policyType": "hard",
+          "note": "貨車與公車錯峰，連環誤點就斷了。",
+          "topicMatch": [
+            "freight_jam"
+          ],
+          "reason": "counters∩topicTags＝貨車壅塞",
+          "reviewed": true,
+          "reviewNote": "報導與真線索明寫「公車被貨車卡在{place}」：誤點的最上游成因是貨車壅塞（freight_jam）。緩衝站把貨車從壅塞路段引開，正對上本事件的教學重點「找最上游那個」。"
+        },
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "改道加接駁，公車避開被卡住的路口。",
+          "topicMatch": [
+            "bus_delay"
+          ],
+          "reason": "counters∩topicTags＝公車誤點"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_street_parking",
+          "name": "路邊停車收費",
+          "policyType": "reg",
+          "note": "路邊停車收費能幫上一點（壅塞），但不是主因；要搭配對症卡效果才完整。"
+        },
+        {
+          "policyId": "policy_traffic_safety",
+          "name": "交通安全宣導",
+          "policyType": "info",
+          "note": "交通安全宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（公車誤點、貨車壅塞）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_loading_zone",
+          "name": "貨車裝卸專用區",
+          "policyType": "reg",
+          "note": "貨車裝卸專用區能幫上一點（貨車壅塞），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "先公告班次調整、安撫乘客，沒處理成因，公車還是卡。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_clear_drain",
+          "name": "緊急清淤隊",
+          "policyType": "hard",
+          "note": "工程車進場會讓路更塞。",
+          "when": "已本季購買緊急清淤隊"
+        }
+      ],
+      "semanticReview": {
+        "reviewed": true,
+        "reviewedBy": "呆呆",
+        "date": "2026-10-06",
+        "cards": [
+          {
+            "policyId": "policy_logistics_hub",
+            "name": "臨時物流緩衝站",
+            "decision": "keep",
+            "decisionLabel": "保留（已確認合理）",
+            "note": "報導與真線索明寫「公車被貨車卡在{place}」：誤點的最上游成因是貨車壅塞（freight_jam）。緩衝站把貨車從壅塞路段引開，正對上本事件的教學重點「找最上游那個」。"
+          }
+        ]
+      },
+      "optionIds": [
+        "act_evp_traffic_bus__bus_reroute",
+        "act_evp_traffic_bus__logistics_hub",
+        "act_evp_traffic_bus__traffic_safety",
+        "act_evp_traffic_bus__street_parking"
+      ],
+      "optionPolicyIds": [
+        "policy_bus_reroute",
+        "policy_logistics_hub",
+        "policy_traffic_safety",
+        "policy_street_parking"
+      ],
+      "eduPolicyIds": [
+        "policy_traffic_safety"
+      ]
+    },
+    {
+      "eventId": "evp_traffic_paralysis",
+      "title": "交通癱瘓",
+      "domainId": "traffic",
+      "topicTags": [
+        "congestion",
+        "freight_jam",
+        "parking",
+        "rescue_access"
+      ],
+      "topicLabels": [
+        "壅塞",
+        "貨車壅塞",
+        "停車",
+        "救援動線"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_logistics_hub",
+          "name": "臨時物流緩衝站",
+          "policyType": "hard",
+          "note": "事前有物流緩衝與分流，癱瘓縮短。",
+          "when": "已先前購買臨時物流緩衝站",
+          "topicMatch": [
+            "freight_jam"
+          ],
+          "reason": "counters∩topicTags＝貨車壅塞",
+          "reviewed": true,
+          "reviewNote": "只在「事前已買」時對症（預防型）：物資先在緩衝站備妥、貨車分流，三條路被切斷時癱瘓時間縮短；現場才買只算輔助（另一條預設回應）。"
+        },
+        {
+          "policyId": "policy_loading_zone",
+          "name": "貨車裝卸專用區",
+          "policyType": "reg",
+          "note": "貨車裝卸專用區正對上本事件的「貨車壅塞」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "freight_jam"
+          ],
+          "reason": "counters∩topicTags＝貨車壅塞"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_logistics_hub",
+          "name": "臨時物流緩衝站",
+          "policyType": "hard",
+          "note": "現在才建緩衝站，只能逐步疏通。"
+        },
+        {
+          "policyId": "policy_rescue_squad",
+          "name": "緊急救援小隊",
+          "policyType": "hard",
+          "note": "先保住救援動線，路網還是沒通。"
+        },
+        {
+          "policyId": "policy_street_parking",
+          "name": "路邊停車收費",
+          "policyType": "reg",
+          "note": "路邊停車收費能幫上一點（壅塞、停車），但不是主因；要搭配對症卡效果才完整。"
+        },
+        {
+          "policyId": "policy_traffic_safety",
+          "name": "交通安全宣導",
+          "policyType": "info",
+          "note": "交通安全宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（壅塞、貨車壅塞）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_shared_parking",
+          "name": "共享車位媒合",
+          "policyType": "ppp",
+          "note": "共享車位媒合能幫上一點（停車），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_patrol_lights",
+          "name": "社區巡守隊與路燈",
+          "policyType": "ppp",
+          "note": "巡守隊步行送物資給受困居民，路網仍斷。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_vendor_shift",
+          "name": "攤販輪班夜市整頓",
+          "policyType": "reg",
+          "note": "夜市照常營業，人潮湧入，停擺更嚴重。",
+          "when": "traffic民怨≥60"
+        }
+      ],
+      "semanticReview": {
+        "reviewed": true,
+        "reviewedBy": "呆呆",
+        "date": "2026-10-06",
+        "cards": [
+          {
+            "policyId": "policy_logistics_hub",
+            "name": "臨時物流緩衝站",
+            "decision": "keep",
+            "decisionLabel": "保留（已確認合理）",
+            "note": "只在「事前已買」時對症（預防型）：物資先在緩衝站備妥、貨車分流，三條路被切斷時癱瘓時間縮短；現場才買只算輔助（另一條預設回應）。"
+          }
+        ]
+      },
+      "optionIds": [
+        "act_evp_traffic_paralysis__loading_zone",
+        "act_evp_traffic_paralysis__logistics_hub",
+        "act_evp_traffic_paralysis__traffic_safety",
+        "act_evp_traffic_paralysis__shared_parking"
+      ],
+      "optionPolicyIds": [
+        "policy_loading_zone",
+        "policy_logistics_hub",
+        "policy_traffic_safety",
+        "policy_shared_parking"
+      ],
+      "eduPolicyIds": [
+        "policy_traffic_safety"
+      ]
+    },
+    {
+      "eventId": "evp_traffic_works",
+      "title": "工程車進場壅塞",
+      "domainId": "traffic",
+      "topicTags": [
+        "works",
+        "freight_jam",
+        "congestion"
+      ],
+      "topicLabels": [
+        "工程施工",
+        "貨車壅塞",
+        "壅塞"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_logistics_hub",
+          "name": "臨時物流緩衝站",
+          "policyType": "hard",
+          "note": "錯峰調度，吸收施工的短期壅塞。",
+          "topicMatch": [
+            "freight_jam"
+          ],
+          "reason": "counters∩topicTags＝貨車壅塞",
+          "reviewed": true,
+          "reviewNote": "壅塞來源是工程車與建材進場（works、freight_jam）；緩衝站當施工物料暫置場，讓工程車離峰分批進場，是處理成因。施工本身是好政策的副作用。"
+        },
+        {
+          "policyId": "policy_loading_zone",
+          "name": "貨車裝卸專用區",
+          "policyType": "reg",
+          "note": "貨車裝卸專用區正對上本事件的「貨車壅塞」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "freight_jam"
+          ],
+          "reason": "counters∩topicTags＝貨車壅塞"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "接駁巴士避開施工單線路段。"
+        },
+        {
+          "policyId": "policy_patrol_lights",
+          "name": "社區巡守隊與路燈",
+          "policyType": "ppp",
+          "note": "巡守隊協助指揮單線通行。"
+        },
+        {
+          "policyId": "policy_traffic_safety",
+          "name": "交通安全宣導",
+          "policyType": "info",
+          "note": "交通安全宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（工程施工、貨車壅塞）；下季才明顯，重複使用遞減。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "先公告施工時段，駕駛有心理準備，路還是一樣塞。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_cold_chain",
+          "name": "冷鏈冷藏車",
+          "policyType": "ppp",
+          "note": "冷藏車擠進施工單線，更塞。",
+          "when": "未購買臨時物流緩衝站"
+        }
+      ],
+      "semanticReview": {
+        "reviewed": true,
+        "reviewedBy": "呆呆",
+        "date": "2026-10-06",
+        "cards": [
+          {
+            "policyId": "policy_logistics_hub",
+            "name": "臨時物流緩衝站",
+            "decision": "keep",
+            "decisionLabel": "保留（已確認合理）",
+            "note": "壅塞來源是工程車與建材進場（works、freight_jam）；緩衝站當施工物料暫置場，讓工程車離峰分批進場，是處理成因。施工本身是好政策的副作用。"
+          }
+        ]
+      },
+      "optionIds": [
+        "act_evp_traffic_works__loading_zone",
+        "act_evp_traffic_works__logistics_hub",
+        "act_evp_traffic_works__traffic_safety",
+        "act_evp_traffic_works__patrol_lights"
+      ],
+      "optionPolicyIds": [
+        "policy_loading_zone",
+        "policy_logistics_hub",
+        "policy_traffic_safety",
+        "policy_patrol_lights"
+      ],
+      "eduPolicyIds": [
+        "policy_traffic_safety"
+      ]
+    },
+    {
+      "eventId": "evp_traffic_tourbus",
+      "title": "連假遊覽車湧入",
+      "domainId": "traffic",
+      "topicTags": [
+        "tourism",
+        "parking",
+        "congestion"
+      ],
+      "topicLabels": [
+        "觀光客",
+        "停車",
+        "壅塞"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "遊覽車停外圍，接駁巴士載客進市集。",
+          "topicMatch": [
+            "tourism"
+          ],
+          "reason": "counters∩topicTags＝觀光客"
+        },
+        {
+          "policyId": "policy_private_parking",
+          "name": "鼓勵民間設停車場",
+          "policyType": "ppp",
+          "note": "鼓勵民間設停車場正對上本事件的「停車」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "parking"
+          ],
+          "reason": "counters∩topicTags＝停車"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_vendor_shift",
+          "name": "攤販輪班夜市整頓",
+          "policyType": "reg",
+          "note": "輪班夜市延長營業，分散人潮。"
+        },
+        {
+          "policyId": "policy_street_parking",
+          "name": "路邊停車收費",
+          "policyType": "reg",
+          "note": "路邊停車收費能幫上一點（停車、壅塞），但不是主因；要搭配對症卡效果才完整。"
+        },
+        {
+          "policyId": "policy_traffic_safety",
+          "name": "交通安全宣導",
+          "policyType": "info",
+          "note": "交通安全宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（觀光客、停車）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_walking_street",
+          "name": "行人徒步區",
+          "policyType": "reg",
+          "note": "行人徒步區能幫上一點（觀光客、停車），但不是主因；要搭配對症卡效果才完整。"
+        },
+        {
+          "policyId": "policy_shared_parking",
+          "name": "共享車位媒合",
+          "policyType": "ppp",
+          "note": "共享車位媒合能幫上一點（停車），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "公告停車規定，勸導一時，車還是來。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_coupon",
+          "name": "市集消費券",
+          "policyType": "subsidy",
+          "note": "發券吸引更多車湧入，更塞。"
+        }
+      ],
+      "optionIds": [
+        "act_evp_traffic_tourbus__bus_reroute",
+        "act_evp_traffic_tourbus__private_parking",
+        "act_evp_traffic_tourbus__traffic_safety",
+        "act_evp_traffic_tourbus__vendor_shift"
+      ],
+      "optionPolicyIds": [
+        "policy_bus_reroute",
+        "policy_private_parking",
+        "policy_traffic_safety",
+        "policy_vendor_shift"
+      ],
+      "eduPolicyIds": [
+        "policy_traffic_safety"
+      ]
+    },
+    {
+      "eventId": "evp_health_well",
+      "title": "井水傳聞",
+      "domainId": "health",
+      "topicTags": [
+        "water_quality",
+        "rumor"
+      ],
+      "topicLabels": [
+        "水質",
+        "謠言／傳聞"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_water_test",
+          "name": "公開水質檢測",
+          "policyType": "info",
+          "note": "公開檢測，傳聞才會停。",
+          "topicMatch": [
+            "water_quality"
+          ],
+          "reason": "counters∩topicTags＝水質"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_fact_check",
+          "name": "資訊查證站",
+          "policyType": "info",
+          "note": "公開資料來源與查證，補強公開檢測。"
+        },
+        {
+          "policyId": "policy_vendor_audit",
+          "name": "業者稽查與輔導",
+          "policyType": "reg",
+          "note": "稽查周邊店家的用水與儲水設施、輔導改善，補強整體用水衛生；不能取代檢測結果公開。"
+        },
+        {
+          "policyId": "policy_health_edu",
+          "name": "衛生教育與防疫宣導",
+          "policyType": "info",
+          "note": "衛生教育與防疫宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（水質、謠言／傳聞）；下季才明顯，重複使用遞減。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "先發公告說水沒問題，卻沒有檢測報告。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_rain_garden",
+          "name": "雨水花園滯洪池",
+          "policyType": "hard",
+          "note": "滯洪池積水被誤傳成污水來源，傳聞更多。",
+          "when": "未購買公開水質檢測"
+        }
+      ],
+      "optionIds": [
+        "act_evp_health_well__water_test",
+        "act_evp_health_well__health_edu",
+        "act_evp_health_well__vendor_audit",
+        "act_evp_health_well__town_broadcast"
+      ],
+      "optionPolicyIds": [
+        "policy_water_test",
+        "policy_health_edu",
+        "policy_vendor_audit",
+        "policy_town_broadcast"
+      ],
+      "eduPolicyIds": [
+        "policy_health_edu"
+      ]
+    },
+    {
+      "eventId": "evp_health_dengue",
+      "title": "登革熱警戒",
+      "domainId": "health",
+      "topicTags": [
+        "mosquito",
+        "standing_water",
+        "epidemic"
+      ],
+      "topicLabels": [
+        "蚊媒",
+        "積水",
+        "流行病"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_vector_control",
+          "name": "疫苗滅蚊行動",
+          "policyType": "hard",
+          "note": "滅蚊與孑孓清除，疫情降溫。",
+          "topicMatch": [
+            "mosquito",
+            "epidemic"
+          ],
+          "reason": "counters∩topicTags＝蚊媒、流行病",
+          "reviewed": true,
+          "reviewNote": "登革熱靠病媒蚊傳播；滅蚊與孑孓清除直接處理蚊媒（mosquito）。「積水」只是孳生源，關鍵字規則對不到卡名屬誤判。"
+        },
+        {
+          "policyId": "policy_dengue_mobilize",
+          "name": "孳生源清除社區動員",
+          "policyType": "ppp",
+          "note": "孳生源清除社區動員正對上本事件的「蚊媒、積水、流行病」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "mosquito",
+            "standing_water",
+            "epidemic"
+          ],
+          "reason": "counters∩topicTags＝蚊媒、積水、流行病",
+          "reviewed": true,
+          "reviewNote": "孳生源清除就是社區一起倒掉積水容器（standing_water、mosquito）；卡名寫「孳生源」不是「積水」，關鍵字規則對不到屬誤判。"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_clear_drain",
+          "name": "緊急清淤隊",
+          "policyType": "hard",
+          "note": "現在才清，要等幾天才見效。"
+        },
+        {
+          "policyId": "policy_health_edu",
+          "name": "衛生教育與防疫宣導",
+          "policyType": "info",
+          "note": "衛生教育與防疫宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（蚊媒、積水）；下季才明顯，重複使用遞減。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "發防蚊宣導單，請居民自清積水。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_rain_garden",
+          "name": "雨水花園滯洪池",
+          "policyType": "hard",
+          "note": "滯洪池積水孳生蚊蟲，疫情更難控制。",
+          "when": "未購買疫苗滅蚊行動"
+        }
+      ],
+      "semanticReview": {
+        "reviewed": true,
+        "reviewedBy": "呆呆",
+        "date": "2026-10-06",
+        "cards": [
+          {
+            "policyId": "policy_vector_control",
+            "name": "疫苗滅蚊行動",
+            "decision": "keep",
+            "decisionLabel": "保留（已確認合理）",
+            "note": "登革熱靠病媒蚊傳播；滅蚊與孑孓清除直接處理蚊媒（mosquito）。「積水」只是孳生源，關鍵字規則對不到卡名屬誤判。"
+          },
+          {
+            "policyId": "policy_dengue_mobilize",
+            "name": "孳生源清除社區動員",
+            "decision": "keep",
+            "decisionLabel": "保留（已確認合理）",
+            "note": "孳生源清除就是社區一起倒掉積水容器（standing_water、mosquito）；卡名寫「孳生源」不是「積水」，關鍵字規則對不到屬誤判。"
+          }
+        ]
+      },
+      "optionIds": [
+        "act_evp_health_dengue__vector_control",
+        "act_evp_health_dengue__dengue_mobilize",
+        "act_evp_health_dengue__health_edu",
+        "act_evp_health_dengue__town_broadcast"
+      ],
+      "optionPolicyIds": [
+        "policy_vector_control",
+        "policy_dengue_mobilize",
+        "policy_health_edu",
+        "policy_town_broadcast"
+      ],
+      "eduPolicyIds": [
+        "policy_health_edu"
+      ]
+    },
+    {
+      "eventId": "evp_health_foodpoison",
+      "title": "市集食安疑慮",
+      "domainId": "health",
+      "topicTags": [
+        "food_safety",
+        "market_hygiene"
+      ],
+      "topicLabels": [
+        "食安",
+        "市集衛生"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_food_safety",
+          "name": "食安檢驗與留樣",
+          "policyType": "reg",
+          "note": "食安檢驗與留樣正對上本事件的「食安」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "food_safety"
+          ],
+          "reason": "counters∩topicTags＝食安"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_cold_chain",
+          "name": "冷鏈冷藏車",
+          "policyType": "ppp",
+          "note": "修復冷鏈，從源頭補強。"
+        },
+        {
+          "policyId": "policy_vendor_audit",
+          "name": "業者稽查與輔導",
+          "policyType": "reg",
+          "note": "稽查供應商與保存條件。"
+        },
+        {
+          "policyId": "policy_food_edu",
+          "name": "食安宣導與家長說明會",
+          "policyType": "info",
+          "note": "食安宣導與家長說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（食安、市集衛生）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_lunch_registry",
+          "name": "午餐食材登錄追溯",
+          "policyType": "info",
+          "note": "午餐食材登錄追溯能幫上一點（食安），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_vector_control",
+          "name": "疫苗滅蚊行動",
+          "policyType": "hard",
+          "note": "環境消毒與衛教，冷鏈源頭沒查。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_coupon",
+          "name": "市集消費券",
+          "policyType": "subsidy",
+          "note": "此時鼓勵消費會擴大影響。"
+        }
+      ],
+      "optionIds": [
+        "act_evp_health_foodpoison__food_safety",
+        "act_evp_health_foodpoison__food_edu",
+        "act_evp_health_foodpoison__cold_chain",
+        "act_evp_health_foodpoison__vector_control"
+      ],
+      "optionPolicyIds": [
+        "policy_food_safety",
+        "policy_food_edu",
+        "policy_cold_chain",
+        "policy_vector_control"
+      ],
+      "eduPolicyIds": [
+        "policy_food_edu"
+      ]
+    },
+    {
+      "eventId": "evp_health_flu",
+      "title": "冬季流感",
+      "domainId": "health",
+      "topicTags": [
+        "epidemic",
+        "flu"
+      ],
+      "topicLabels": [
+        "流行病",
+        "流感"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_vector_control",
+          "name": "疫苗滅蚊行動",
+          "policyType": "hard",
+          "note": "疫苗接種站與衛教，流感傳染降溫。",
+          "topicMatch": [
+            "epidemic",
+            "flu"
+          ],
+          "reason": "counters∩topicTags＝流行病、流感"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_health_edu",
+          "name": "衛生教育與防疫宣導",
+          "policyType": "info",
+          "note": "衛生教育與防疫宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（流行病、流感）；下季才明顯，重複使用遞減。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "發衛教公告，提醒戴口罩洗手。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_vendor_shift",
+          "name": "攤販輪班夜市整頓",
+          "policyType": "reg",
+          "note": "夜市聚集人潮，流感擴散更快。",
+          "when": "未購買疫苗滅蚊行動"
+        }
+      ],
+      "optionIds": [
+        "act_evp_health_flu__vector_control",
+        "act_evp_health_flu__health_edu",
+        "act_evp_health_flu__town_broadcast"
+      ],
+      "optionPolicyIds": [
+        "policy_vector_control",
+        "policy_health_edu",
+        "policy_town_broadcast"
+      ],
+      "eduPolicyIds": [
+        "policy_health_edu"
+      ]
+    },
+    {
+      "eventId": "evp_health_fake_alert",
+      "title": "「水廠污染」快訊",
+      "domainId": "health",
+      "topicTags": [
+        "rumor",
+        "water_quality"
+      ],
+      "topicLabels": [
+        "謠言／傳聞",
+        "水質"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_water_test",
+          "name": "公開水質檢測",
+          "policyType": "info",
+          "note": "公開當日檢測結果，假快訊立刻失去力量。",
+          "topicMatch": [
+            "water_quality"
+          ],
+          "reason": "counters∩topicTags＝水質"
+        },
+        {
+          "policyId": "policy_fact_check",
+          "name": "資訊查證站",
+          "policyType": "info",
+          "note": "公開當日檢測與來源，快訊立刻失效。",
+          "topicMatch": [
+            "rumor"
+          ],
+          "reason": "counters∩topicTags＝謠言／傳聞",
+          "reviewed": true,
+          "reviewNote": "事件是不實快訊（rumor）；標題句裡的「衛生所」觸發食安關鍵字屬誤判。公開當日檢測與消息來源，正是對症。"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_town_hall",
+          "name": "里民說明會",
+          "policyType": "info",
+          "note": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（謠言／傳聞、水質）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_health_edu",
+          "name": "衛生教育與防疫宣導",
+          "policyType": "info",
+          "note": "衛生教育與防疫宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（謠言／傳聞、水質）；下季才明顯，重複使用遞減。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "先發公告說水沒事，沒附檢測，仍有人不敢喝。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_logistics_hub",
+          "name": "臨時物流緩衝站",
+          "policyType": "hard",
+          "note": "急著調度供水車反而製造恐慌。"
+        },
+        {
+          "policyId": "policy_rescue_squad",
+          "name": "緊急救援小隊",
+          "policyType": "hard",
+          "note": "出動救援小隊反而製造恐慌。"
+        }
+      ],
+      "semanticReview": {
+        "reviewed": true,
+        "reviewedBy": "呆呆",
+        "date": "2026-10-06",
+        "cards": [
+          {
+            "policyId": "policy_fact_check",
+            "name": "資訊查證站",
+            "decision": "keep",
+            "decisionLabel": "保留（已確認合理）",
+            "note": "事件是不實快訊（rumor）；標題句裡的「衛生所」觸發食安關鍵字屬誤判。公開當日檢測與消息來源，正是對症。"
+          }
+        ]
+      },
+      "optionIds": [
+        "act_evp_health_fake_alert__water_test",
+        "act_evp_health_fake_alert__fact_check",
+        "act_evp_health_fake_alert__town_hall",
+        "act_evp_health_fake_alert__town_broadcast"
+      ],
+      "optionPolicyIds": [
+        "policy_water_test",
+        "policy_fact_check",
+        "policy_town_hall",
+        "policy_town_broadcast"
+      ],
+      "eduPolicyIds": [
+        "policy_town_hall",
+        "policy_health_edu"
+      ]
+    },
+    {
+      "eventId": "evp_safety_rescue_blocked",
+      "title": "救護車受阻",
+      "domainId": "safety",
+      "topicTags": [
+        "rescue_access",
+        "narrow_lane"
+      ],
+      "topicLabels": [
+        "救援動線",
+        "窄巷"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_rescue_squad",
+          "name": "緊急救援小隊",
+          "policyType": "hard",
+          "note": "救援小隊守住替代救援動線。",
+          "topicMatch": [
+            "rescue_access",
+            "narrow_lane"
+          ],
+          "reason": "counters∩topicTags＝救援動線、窄巷"
+        },
+        {
+          "policyId": "policy_fire_lane",
+          "name": "防火巷與消防栓",
+          "policyType": "hard",
+          "note": "把防火巷與消防栓留出來，救護車與消防車有路可走、取水點也更近。",
+          "topicMatch": [
+            "rescue_access",
+            "narrow_lane"
+          ],
+          "reason": "counters∩topicTags＝救援動線、窄巷"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_fire_drill",
+          "name": "消防宣導與防火演練",
+          "policyType": "info",
+          "note": "消防宣導與防火演練見效較慢、較弱但便宜：先讓大家知道怎麼做（救援動線、窄巷）；下季才明顯，重複使用遞減。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_patrol_lights",
+          "name": "社區巡守隊與路燈",
+          "policyType": "ppp",
+          "note": "巡守隊引導讓道，救援仍要繞遠路。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "接駁巴士佔住救援動線，更難通行。",
+          "when": "未購買緊急救援小隊"
+        }
+      ],
+      "optionIds": [
+        "act_evp_safety_rescue_blocked__rescue_squad",
+        "act_evp_safety_rescue_blocked__fire_lane",
+        "act_evp_safety_rescue_blocked__fire_drill",
+        "act_evp_safety_rescue_blocked__patrol_lights"
+      ],
+      "optionPolicyIds": [
+        "policy_rescue_squad",
+        "policy_fire_lane",
+        "policy_fire_drill",
+        "policy_patrol_lights"
+      ],
+      "eduPolicyIds": [
+        "policy_fire_drill"
+      ]
+    },
+    {
+      "eventId": "evp_safety_theft",
+      "title": "人潮扒手",
+      "domainId": "safety",
+      "topicTags": [
+        "theft",
+        "crowd",
+        "night"
+      ],
+      "topicLabels": [
+        "扒手竊盜",
+        "人潮聚集",
+        "夜間"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_patrol_lights",
+          "name": "社區巡守隊與路燈",
+          "policyType": "ppp",
+          "note": "巡守隊加路燈，扒手無處躲。",
+          "topicMatch": [
+            "theft",
+            "night"
+          ],
+          "reason": "counters∩topicTags＝扒手竊盜、夜間"
+        },
+        {
+          "policyId": "policy_cctv",
+          "name": "社區監視器",
+          "policyType": "ppp",
+          "note": "熱點裝上監視器，扒手不敢下手，事後也追得到人。",
+          "topicMatch": [
+            "theft"
+          ],
+          "reason": "counters∩topicTags＝扒手竊盜"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_crime_edu",
+          "name": "防竊宣導與鄰里守望",
+          "policyType": "info",
+          "note": "防竊宣導與鄰里守望見效較慢、較弱但便宜：先讓大家知道怎麼做（扒手竊盜、人潮聚集）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_led_lights",
+          "name": "路燈LED汰換與暗巷補強",
+          "policyType": "hard",
+          "note": "路燈LED汰換與暗巷補強能幫上一點（夜間），但不是主因；要搭配對症卡效果才完整。"
+        },
+        {
+          "policyId": "policy_crime_map",
+          "name": "治安點位公開與安全地圖",
+          "policyType": "info",
+          "note": "治安點位公開與安全地圖能幫上一點（扒手竊盜、人潮聚集），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "防扒宣導廣播，只能提醒，抓不到人。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_coupon",
+          "name": "市集消費券",
+          "policyType": "subsidy",
+          "note": "發券讓人更擠，扒手更多。"
+        },
+        {
+          "policyId": "policy_vendor_shift",
+          "name": "攤販輪班夜市整頓",
+          "policyType": "reg",
+          "note": "夜市拉長營業，人多沒人巡，扒手更多。",
+          "when": "未購買社區巡守隊與路燈"
+        }
+      ],
+      "optionIds": [
+        "act_evp_safety_theft__patrol_lights",
+        "act_evp_safety_theft__cctv",
+        "act_evp_safety_theft__crime_edu",
+        "act_evp_safety_theft__led_lights"
+      ],
+      "optionPolicyIds": [
+        "policy_patrol_lights",
+        "policy_cctv",
+        "policy_crime_edu",
+        "policy_led_lights"
+      ],
+      "eduPolicyIds": [
+        "policy_crime_edu"
+      ]
+    },
+    {
+      "eventId": "evp_safety_fire",
+      "title": "老屋電線走火",
+      "domainId": "safety",
+      "topicTags": [
+        "fire",
+        "electrical",
+        "old_house"
+      ],
+      "topicLabels": [
+        "火災",
+        "電線",
+        "老屋"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_wiring_subsidy",
+          "name": "老屋電線檢修補助",
+          "policyType": "subsidy",
+          "note": "補助檢修老屋舊電線與插座，從源頭降低走火機率；這才是老屋電線走火的對症藥。",
+          "topicMatch": [
+            "fire",
+            "electrical",
+            "old_house"
+          ],
+          "reason": "counters∩topicTags＝火災、電線、老屋"
+        },
+        {
+          "policyId": "policy_fire_lane",
+          "name": "防火巷與消防栓",
+          "policyType": "hard",
+          "note": "留出防火巷、增設消防栓與取水點，火起來時消防車進得去、水拿得到，延燒就停在巷內。",
+          "topicMatch": [
+            "fire"
+          ],
+          "reason": "counters∩topicTags＝火災"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_patrol_lights",
+          "name": "社區巡守隊與路燈",
+          "policyType": "ppp",
+          "note": "巡守與路燈，及早發現起火點。"
+        },
+        {
+          "policyId": "policy_rescue_squad",
+          "name": "緊急救援小隊",
+          "policyType": "hard",
+          "note": "救援小隊能帶小型水車進窄巷，縮短到場時間；但只在起火「之後」才有用，不處理老舊電線。"
+        },
+        {
+          "policyId": "policy_smoke_alarm",
+          "name": "住警器補助",
+          "policyType": "ppp",
+          "note": "住警器讓住戶早一步發現起火、逃得出來；但它只能提早發現，不能防止電線走火。"
+        },
+        {
+          "policyId": "policy_fire_drill",
+          "name": "消防宣導與防火演練",
+          "policyType": "info",
+          "note": "防火宣導與演練教居民檢查電線、知道怎麼逃；便宜、見效慢，不能取代檢修。"
+        },
+        {
+          "policyId": "policy_fire_inspection",
+          "name": "公共場所消防安檢",
+          "policyType": "reg",
+          "note": "定期檢查老屋與市場的消防設備與逃生通道、限期改善；降低延燒風險，但不處理電線本身。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "防火宣導廣播，提醒檢查電線。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_vendor_shift",
+          "name": "攤販輪班夜市整頓",
+          "policyType": "reg",
+          "note": "夜市延長營業亂拉電線，風險更高。",
+          "when": "未購買社區巡守隊與路燈"
+        }
+      ],
+      "optionIds": [
+        "act_evp_safety_fire__wiring_subsidy",
+        "act_evp_safety_fire__fire_lane",
+        "act_evp_safety_fire__fire_drill",
+        "act_evp_safety_fire__patrol_lights"
+      ],
+      "optionPolicyIds": [
+        "policy_wiring_subsidy",
+        "policy_fire_lane",
+        "policy_fire_drill",
+        "policy_patrol_lights"
+      ],
+      "eduPolicyIds": [
+        "policy_fire_drill"
+      ]
+    },
+    {
+      "eventId": "evp_safety_cliff",
+      "title": "峽壁落石警戒",
+      "domainId": "safety",
+      "topicTags": [
+        "rockfall",
+        "slope",
+        "road_closed"
+      ],
+      "topicLabels": [
+        "落石",
+        "邊坡",
+        "封路"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_slope_guard",
+          "name": "邊坡檢查與護欄",
+          "policyType": "hard",
+          "note": "邊坡檢查與護欄正對上本事件的「落石、邊坡」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "rockfall",
+            "slope"
+          ],
+          "reason": "counters∩topicTags＝落石、邊坡"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_rescue_squad",
+          "name": "緊急救援小隊",
+          "policyType": "hard",
+          "note": "救援小隊預先待命，降低暴露風險。"
+        },
+        {
+          "policyId": "policy_town_hall",
+          "name": "里民說明會",
+          "policyType": "info",
+          "note": "說明會講清楚封路時段與邊坡檢查進度，居民比較不會亂猜。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_patrol_lights",
+          "name": "社區巡守隊與路燈",
+          "policyType": "ppp",
+          "note": "巡守隊守在邊坡下，只能預警，擋不住落石。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_boardwalk",
+          "name": "步道木棧加固",
+          "policyType": "hard",
+          "note": "此時施工的震動會增加落石風險。",
+          "when": "已本季購買步道木棧加固"
+        },
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "雨季改道經過峽壁邊坡，增加風險暴露。",
+          "when": "季節為spring/autumn"
+        }
+      ],
+      "optionIds": [
+        "act_evp_safety_cliff__slope_guard",
+        "act_evp_safety_cliff__town_hall",
+        "act_evp_safety_cliff__rescue_squad",
+        "act_evp_safety_cliff__patrol_lights"
+      ],
+      "optionPolicyIds": [
+        "policy_slope_guard",
+        "policy_town_hall",
+        "policy_rescue_squad",
+        "policy_patrol_lights"
+      ],
+      "eduPolicyIds": [
+        "policy_town_hall"
+      ]
+    },
+    {
+      "eventId": "evp_market_rat_bin",
+      "title": "廚餘桶沒蓋，市集有鼠跡",
+      "domainId": "market",
+      "topicTags": [
+        "rat",
+        "kitchen_waste",
+        "market_hygiene"
+      ],
+      "topicLabels": [
+        "鼠患",
+        "廚餘",
+        "市集衛生"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_pest_control",
+          "name": "鼠害防治與廚餘管理",
+          "policyType": "reg",
+          "note": "廚餘桶加蓋、收市清殘渣、封洞並定期巡查，鼠跡就少了。",
+          "topicMatch": [
+            "rat",
+            "kitchen_waste"
+          ],
+          "reason": "counters∩topicTags＝鼠患、廚餘"
+        },
+        {
+          "policyId": "policy_kitchen_sorting",
+          "name": "廚餘分流收運",
+          "policyType": "hard",
+          "note": "廚餘分流收運正對上本事件的「廚餘」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "kitchen_waste"
+          ],
+          "reason": "counters∩topicTags＝廚餘",
+          "reviewed": true,
+          "reviewNote": "鼠跡的成因是沒蓋的廚餘桶（kitchen_waste）；廚餘獨立收運、桶內殘渣變少，老鼠沒東西吃，是從食物來源切斷，和鼠害防治並列對症。"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_vendor_audit",
+          "name": "業者稽查與輔導",
+          "policyType": "reg",
+          "note": "稽查廚餘桶與環境，限期改善。"
+        },
+        {
+          "policyId": "policy_rat_edu",
+          "name": "防鼠衛教與環境教育",
+          "policyType": "info",
+          "note": "防鼠衛教與環境教育見效較慢、較弱但便宜：先讓大家知道怎麼做（鼠患、廚餘）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_market_committee",
+          "name": "攤販自治管理委員會",
+          "policyType": "ppp",
+          "note": "攤販自治管理委員會能幫上一點（市集衛生），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "公告呼籲廚餘桶加蓋，暫時改善，沒人巡查就鬆掉。"
+        },
+        {
+          "policyId": "policy_pied_piper",
+          "name": "吹笛人引鼠出城",
+          "policyType": "ppp",
+          "note": "吹笛人當季把鼠群引走，市集馬上安靜；但廚餘桶沒蓋、食物還在，下季老鼠又會回來（快但貴，還要付尾款）。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_coupon",
+          "name": "市集消費券",
+          "policyType": "subsidy",
+          "note": "發券買氣上來、廚餘也變多，沒有配套，鼠跡更明顯。",
+          "when": "未購買鼠害防治與廚餘管理"
+        }
+      ],
+      "semanticReview": {
+        "reviewed": true,
+        "reviewedBy": "呆呆",
+        "date": "2026-10-06",
+        "cards": [
+          {
+            "policyId": "policy_kitchen_sorting",
+            "name": "廚餘分流收運",
+            "decision": "keep",
+            "decisionLabel": "保留（已確認合理）",
+            "note": "鼠跡的成因是沒蓋的廚餘桶（kitchen_waste）；廚餘獨立收運、桶內殘渣變少，老鼠沒東西吃，是從食物來源切斷，和鼠害防治並列對症。"
+          }
+        ]
+      },
+      "optionIds": [
+        "act_evp_market_rat_bin__pest_control",
+        "act_evp_market_rat_bin__kitchen_sorting",
+        "act_evp_market_rat_bin__rat_edu",
+        "act_evp_market_rat_bin__market_committee"
+      ],
+      "optionPolicyIds": [
+        "policy_pest_control",
+        "policy_kitchen_sorting",
+        "policy_rat_edu",
+        "policy_market_committee"
+      ],
+      "eduPolicyIds": [
+        "policy_rat_edu"
+      ]
+    },
+    {
+      "eventId": "evp_safety_park_burrow",
+      "title": "公園鼠洞，封得住嗎？",
+      "domainId": "safety",
+      "topicTags": [
+        "rat",
+        "park"
+      ],
+      "topicLabels": [
+        "鼠患",
+        "公園"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_pest_control",
+          "name": "鼠害防治與廚餘管理",
+          "policyType": "reg",
+          "note": "封洞後持續巡查、禁餵食與增加清潔頻率，才不會只是換地方。",
+          "topicMatch": [
+            "rat"
+          ],
+          "reason": "counters∩topicTags＝鼠患"
+        },
+        {
+          "policyId": "policy_rat_pro",
+          "name": "社區鼠類偵防",
+          "policyType": "hard",
+          "note": "社區鼠類偵防正對上本事件的「鼠患」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "rat"
+          ],
+          "reason": "counters∩topicTags＝鼠患"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_patrol_lights",
+          "name": "社區巡守隊與路燈",
+          "policyType": "ppp",
+          "note": "巡守隊協助勸導餵食與夜間巡查。"
+        },
+        {
+          "policyId": "policy_rat_edu",
+          "name": "防鼠衛教與環境教育",
+          "policyType": "info",
+          "note": "防鼠衛教與環境教育見效較慢、較弱但便宜：先讓大家知道怎麼做（鼠患、公園）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_kitchen_sorting",
+          "name": "廚餘分流收運",
+          "policyType": "hard",
+          "note": "廚餘分流收運能幫上一點（鼠患、公園），但不是主因；要搭配對症卡效果才完整。"
+        },
+        {
+          "policyId": "policy_pied_piper",
+          "name": "吹笛人引鼠出城",
+          "policyType": "ppp",
+          "note": "笛聲把洞裡的鼠群引出來集中帶走，速度快；但洞口要封、要巡查，不然又有新的鼠住進來。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "公告禁餵食，勸導一時，洞口還在。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_boardwalk",
+          "name": "步道木棧加固",
+          "policyType": "hard",
+          "note": "步道施工翻動土壤，鼠洞被挖開、往外竄。",
+          "when": "已本季購買步道木棧加固"
+        }
+      ],
+      "optionIds": [
+        "act_evp_safety_park_burrow__pest_control",
+        "act_evp_safety_park_burrow__rat_pro",
+        "act_evp_safety_park_burrow__rat_edu",
+        "act_evp_safety_park_burrow__patrol_lights"
+      ],
+      "optionPolicyIds": [
+        "policy_pest_control",
+        "policy_rat_pro",
+        "policy_rat_edu",
+        "policy_patrol_lights"
+      ],
+      "eduPolicyIds": [
+        "policy_rat_edu"
+      ]
+    },
+    {
+      "eventId": "evp_health_bait_worry",
+      "title": "鼠餌安全疑慮",
+      "domainId": "health",
+      "topicTags": [
+        "rat",
+        "bait_safety",
+        "rumor"
+      ],
+      "topicLabels": [
+        "鼠患",
+        "鼠餌安全",
+        "謠言／傳聞"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_pest_control",
+          "name": "鼠害防治與廚餘管理",
+          "policyType": "reg",
+          "note": "合格餌盒、位置圖、定期回收與公開說明，擔心才會降下來。",
+          "topicMatch": [
+            "rat",
+            "bait_safety"
+          ],
+          "reason": "counters∩topicTags＝鼠患、鼠餌安全"
+        },
+        {
+          "policyId": "policy_rat_pro",
+          "name": "社區鼠類偵防",
+          "policyType": "hard",
+          "note": "社區鼠類偵防正對上本事件的「鼠患」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "rat"
+          ],
+          "reason": "counters∩topicTags＝鼠患"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_fact_check",
+          "name": "資訊查證站",
+          "policyType": "info",
+          "note": "公開藥劑資訊與位置圖、查證社群說法，降低恐慌（但不處理實際風險）。"
+        },
+        {
+          "policyId": "policy_vendor_audit",
+          "name": "業者稽查與輔導",
+          "policyType": "reg",
+          "note": "稽查餌盒擺放與紀錄，補強管理。"
+        },
+        {
+          "policyId": "policy_rat_edu",
+          "name": "防鼠衛教與環境教育",
+          "policyType": "info",
+          "note": "防鼠衛教與環境教育見效較慢、較弱但便宜：先讓大家知道怎麼做（鼠患、鼠餌安全）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_pied_piper",
+          "name": "吹笛人引鼠出城",
+          "policyType": "ppp",
+          "note": "吹笛人用笛聲與誘捕站帶走鼠群，不必在路邊放餌盒，居民的擔心少一些；但費用最高，也還是要公開說明。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "公告提醒遛狗牽繩、孩子勿靠近，暫時安撫。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_rain_garden",
+          "name": "雨水花園滯洪池",
+          "policyType": "hard",
+          "note": "滯洪池積水可能把餌盒沖進水中，擔心更大。",
+          "when": "已購買雨水花園滯洪池且未購買鼠害防治與廚餘管理"
+        }
+      ],
+      "optionIds": [
+        "act_evp_health_bait_worry__pest_control",
+        "act_evp_health_bait_worry__rat_pro",
+        "act_evp_health_bait_worry__rat_edu",
+        "act_evp_health_bait_worry__pied_piper"
+      ],
+      "optionPolicyIds": [
+        "policy_pest_control",
+        "policy_rat_pro",
+        "policy_rat_edu",
+        "policy_pied_piper"
+      ],
+      "eduPolicyIds": [
+        "policy_rat_edu"
+      ]
+    },
+    {
+      "eventId": "evp_drain_grease_trap",
+      "title": "餐飲油脂截留器沒清",
+      "domainId": "drain",
+      "topicTags": [
+        "grease",
+        "kitchen_waste",
+        "audit"
+      ],
+      "topicLabels": [
+        "油脂",
+        "廚餘",
+        "稽查"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_vendor_audit",
+          "name": "業者稽查與輔導",
+          "policyType": "reg",
+          "note": "階梯式輔導：宣導、限期改善、複查，截油槽清了溝才不會堵。",
+          "topicMatch": [
+            "grease",
+            "audit"
+          ],
+          "reason": "counters∩topicTags＝油脂、稽查",
+          "reviewed": true,
+          "reviewNote": "事件是小吃店截油槽沒清（grease、audit）；業者稽查與輔導的「宣導→限期改善→複查」正是對症。標題的「餐飲」觸發食安關鍵字屬誤判。"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_clear_drain",
+          "name": "緊急清淤隊",
+          "policyType": "hard",
+          "note": "清溝只清現有的油塊，來源沒變。"
+        },
+        {
+          "policyId": "policy_pest_control",
+          "name": "鼠害防治與廚餘管理",
+          "policyType": "reg",
+          "note": "廚餘管理減少油脂與殘渣進溝。"
+        },
+        {
+          "policyId": "policy_rat_edu",
+          "name": "防鼠衛教與環境教育",
+          "policyType": "info",
+          "note": "防鼠衛教與環境教育見效較慢、較弱但便宜：先讓大家知道怎麼做（油脂、廚餘）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_kitchen_sorting",
+          "name": "廚餘分流收運",
+          "policyType": "hard",
+          "note": "廚餘分流收運能幫上一點（廚餘），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "公告呼籲別倒油，暫時有效，沒人查就鬆。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_vendor_shift",
+          "name": "攤販輪班夜市整頓",
+          "policyType": "reg",
+          "note": "夜市延長營業，油脂與廚餘暴增，截油槽爆滿。",
+          "when": "未購買業者稽查與輔導"
+        }
+      ],
+      "semanticReview": {
+        "reviewed": true,
+        "reviewedBy": "呆呆",
+        "date": "2026-10-06",
+        "cards": [
+          {
+            "policyId": "policy_vendor_audit",
+            "name": "業者稽查與輔導",
+            "decision": "keep",
+            "decisionLabel": "保留（已確認合理）",
+            "note": "事件是小吃店截油槽沒清（grease、audit）；業者稽查與輔導的「宣導→限期改善→複查」正是對症。標題的「餐飲」觸發食安關鍵字屬誤判。"
+          }
+        ]
+      },
+      "optionIds": [
+        "act_evp_drain_grease_trap__vendor_audit",
+        "act_evp_drain_grease_trap__rat_edu",
+        "act_evp_drain_grease_trap__clear_drain",
+        "act_evp_drain_grease_trap__town_broadcast"
+      ],
+      "optionPolicyIds": [
+        "policy_vendor_audit",
+        "policy_rat_edu",
+        "policy_clear_drain",
+        "policy_town_broadcast"
+      ],
+      "eduPolicyIds": [
+        "policy_rat_edu"
+      ]
+    },
+    {
+      "eventId": "evp_health_lunch_sample",
+      "title": "午餐留樣沒保存好",
+      "domainId": "health",
+      "topicTags": [
+        "food_safety",
+        "school_lunch"
+      ],
+      "topicLabels": [
+        "食安",
+        "學校午餐"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_food_safety",
+          "name": "食安檢驗與留樣",
+          "policyType": "reg",
+          "note": "留樣冰箱、48 小時保存與通報流程補齊，出事時查得出原因。",
+          "topicMatch": [
+            "food_safety",
+            "school_lunch"
+          ],
+          "reason": "counters∩topicTags＝食安、學校午餐"
+        },
+        {
+          "policyId": "policy_lunch_registry",
+          "name": "午餐食材登錄追溯",
+          "policyType": "info",
+          "note": "午餐食材登錄追溯正對上本事件的「食安、學校午餐」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "food_safety",
+            "school_lunch"
+          ],
+          "reason": "counters∩topicTags＝食安、學校午餐"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_fact_check",
+          "name": "資訊查證站",
+          "policyType": "info",
+          "note": "公開查核經過與紀錄，避免謠言。"
+        },
+        {
+          "policyId": "policy_vendor_audit",
+          "name": "業者稽查與輔導",
+          "policyType": "reg",
+          "note": "業者稽查與輔導能幫上一點（食安、學校午餐），但不是主因；要搭配對症卡效果才完整。"
+        },
+        {
+          "policyId": "policy_food_edu",
+          "name": "食安宣導與家長說明會",
+          "policyType": "info",
+          "note": "食安宣導與家長說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（食安、學校午餐）；下季才明顯，重複使用遞減。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "公所公告廣播見效較慢、較弱但便宜：先讓大家知道怎麼做（食安、學校午餐）；下季才明顯，重複使用遞減。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "沒補齊留樣就先公告「一切安全」，被追問後信任更低。",
+          "when": "未購買食安檢驗與留樣"
+        }
+      ],
+      "optionIds": [
+        "act_evp_health_lunch_sample__food_safety",
+        "act_evp_health_lunch_sample__lunch_registry",
+        "act_evp_health_lunch_sample__food_edu",
+        "act_evp_health_lunch_sample__town_broadcast"
+      ],
+      "optionPolicyIds": [
+        "policy_food_safety",
+        "policy_lunch_registry",
+        "policy_food_edu",
+        "policy_town_broadcast"
+      ],
+      "eduPolicyIds": [
+        "policy_food_edu"
+      ]
+    },
+    {
+      "eventId": "evp_health_class_upset",
+      "title": "一個班級午餐後不舒服（調查中）",
+      "domainId": "health",
+      "topicTags": [
+        "food_safety",
+        "school_lunch",
+        "investigation"
+      ],
+      "topicLabels": [
+        "食安",
+        "學校午餐",
+        "調查中"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_food_safety",
+          "name": "食安檢驗與留樣",
+          "policyType": "reg",
+          "note": "依流程採樣、留樣檢驗並公開進度，調查不斷線，傳聞也退燒。",
+          "topicMatch": [
+            "food_safety",
+            "school_lunch"
+          ],
+          "reason": "counters∩topicTags＝食安、學校午餐"
+        },
+        {
+          "policyId": "policy_lunch_registry",
+          "name": "午餐食材登錄追溯",
+          "policyType": "info",
+          "note": "午餐食材登錄追溯正對上本事件的「食安、學校午餐」，從成因處理，是對症藥。",
+          "topicMatch": [
+            "food_safety",
+            "school_lunch"
+          ],
+          "reason": "counters∩topicTags＝食安、學校午餐"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_fact_check",
+          "name": "資訊查證站",
+          "policyType": "info",
+          "note": "公開「調查中」與已知事實，避免傳聞擴散。"
+        },
+        {
+          "policyId": "policy_vendor_audit",
+          "name": "業者稽查與輔導",
+          "policyType": "reg",
+          "note": "有留樣證據時，稽查能對準問題環節。",
+          "when": "已購買食安檢驗與留樣"
+        },
+        {
+          "policyId": "policy_food_edu",
+          "name": "食安宣導與家長說明會",
+          "policyType": "info",
+          "note": "食安宣導與家長說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（食安、學校午餐）；下季才明顯，重複使用遞減。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "公告「調查中，請勿轉傳」，先穩住情緒，真相還沒出來。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_vendor_audit",
+          "name": "業者稽查與輔導",
+          "policyType": "reg",
+          "note": "還沒有檢驗結果就先處分廠商，證據不足，各方不服，更亂。",
+          "when": "未購買食安檢驗與留樣"
+        }
+      ],
+      "optionIds": [
+        "act_evp_health_class_upset__food_safety",
+        "act_evp_health_class_upset__lunch_registry",
+        "act_evp_health_class_upset__food_edu",
+        "act_evp_health_class_upset__town_broadcast"
+      ],
+      "optionPolicyIds": [
+        "policy_food_safety",
+        "policy_lunch_registry",
+        "policy_food_edu",
+        "policy_town_broadcast"
+      ],
+      "eduPolicyIds": [
+        "policy_food_edu"
+      ]
+    },
+    {
+      "eventId": "evp_market_lunch_supplier",
+      "title": "供餐廠商換約，備援供餐上路",
+      "domainId": "market",
+      "topicTags": [
+        "food_safety",
+        "school_lunch",
+        "supplier",
+        "restock"
+      ],
+      "topicLabels": [
+        "食安",
+        "學校午餐",
+        "供餐廠商",
+        "補貨"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_vendor_audit",
+          "name": "業者稽查與輔導",
+          "policyType": "reg",
+          "note": "原廠商因稽查缺失被終止合約；先到新廠商廚房稽查輔導、確認改善再上線，從源頭顧好交接期的午餐。",
+          "topicMatch": [
+            "supplier"
+          ],
+          "reason": "counters∩topicTags＝供餐廠商",
+          "reviewed": true,
+          "reviewNote": "原廠商因稽查缺失被終止合約；稽查輔導新廠商、確認改善才上線，是交接期的對症（supplier）。"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_logistics_hub",
+          "name": "臨時物流緩衝站",
+          "policyType": "hard",
+          "note": "備援車的路線與錯峰時段排好，孩子能準時吃到；但換約交接期的供餐品質，還是要靠稽查新廠商。"
+        },
+        {
+          "policyId": "policy_cold_chain",
+          "name": "冷鏈冷藏車",
+          "policyType": "ppp",
+          "note": "冷藏車確保餐點保溫保冷。"
+        },
+        {
+          "policyId": "policy_food_safety",
+          "name": "食安檢驗與留樣",
+          "policyType": "reg",
+          "note": "留樣與檢驗確保交接期安全。"
+        },
+        {
+          "policyId": "policy_food_edu",
+          "name": "食安宣導與家長說明會",
+          "policyType": "info",
+          "note": "食安宣導與家長說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（食安、學校午餐）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_lunch_registry",
+          "name": "午餐食材登錄追溯",
+          "policyType": "info",
+          "note": "午餐食材登錄追溯能幫上一點（食安、學校午餐、供餐廠商），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "公告供餐調整，家長暫時安心，路線問題還在。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_bus_reroute",
+          "name": "公車改道接駁巴士",
+          "policyType": "hard",
+          "note": "公車改道和備援供餐車搶同一條路，時段打架，餐送不到。",
+          "when": "未購買臨時物流緩衝站"
+        }
+      ],
+      "semanticReview": {
+        "reviewed": true,
+        "reviewedBy": "呆呆",
+        "date": "2026-10-06",
+        "cards": [
+          {
+            "policyId": "policy_vendor_audit",
+            "name": "業者稽查與輔導",
+            "decision": "keep",
+            "decisionLabel": "保留（已確認合理）",
+            "note": "原廠商因稽查缺失被終止合約；稽查輔導新廠商、確認改善才上線，是交接期的對症（supplier）。"
+          },
+          {
+            "policyId": "policy_logistics_hub",
+            "name": "臨時物流緩衝站",
+            "decision": "downgrade",
+            "decisionLabel": "已降級為輔助",
+            "note": "備援車路線與時段只確保準時送達（restock），不處理換約交接期的供餐品質 → 由對症降為輔助。"
+          }
+        ]
+      },
+      "optionIds": [
+        "act_evp_market_lunch_supplier__vendor_audit",
+        "act_evp_market_lunch_supplier__food_edu",
+        "act_evp_market_lunch_supplier__logistics_hub",
+        "act_evp_market_lunch_supplier__cold_chain"
+      ],
+      "optionPolicyIds": [
+        "policy_vendor_audit",
+        "policy_food_edu",
+        "policy_logistics_hub",
+        "policy_cold_chain"
+      ],
+      "eduPolicyIds": [
+        "policy_food_edu"
+      ]
+    },
+    {
+      "eventId": "evp_health_rat_swarm",
+      "title": "雨後鼠群大搬家",
+      "domainId": "health",
+      "topicTags": [
+        "rat",
+        "rat_swarm",
+        "market_hygiene"
+      ],
+      "topicLabels": [
+        "鼠患",
+        "鼠群竄出",
+        "市集衛生"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_pest_control",
+          "name": "鼠害防治與廚餘管理",
+          "policyType": "reg",
+          "note": "廚餘加蓋、封洞、定點設餌並公開位置，從食物與躲藏處下手；比吹笛人慢一點，但便宜，也能防止再回來。",
+          "topicMatch": [
+            "rat"
+          ],
+          "reason": "counters∩topicTags＝鼠患"
+        },
+        {
+          "policyId": "policy_pied_piper",
+          "name": "吹笛人引鼠出城",
+          "policyType": "ppp",
+          "note": "笛聲把被大雨趕出來的鼠群集中引進誘捕站，當季最快見效；記得付尾款，也要處理廚餘與鼠洞。",
+          "topicMatch": [
+            "rat",
+            "rat_swarm"
+          ],
+          "reason": "counters∩topicTags＝鼠患、鼠群竄出"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_clear_drain",
+          "name": "緊急清淤隊",
+          "policyType": "hard",
+          "note": "清掉下水道與水溝的淤積，水退得快，鼠群就不會一直被水趕出來。"
+        },
+        {
+          "policyId": "policy_rat_edu",
+          "name": "防鼠衛教與環境教育",
+          "policyType": "info",
+          "note": "防鼠衛教與環境教育見效較慢、較弱但便宜：先讓大家知道怎麼做（鼠患、鼠群竄出）；下季才明顯，重複使用遞減。"
+        },
+        {
+          "policyId": "policy_kitchen_sorting",
+          "name": "廚餘分流收運",
+          "policyType": "hard",
+          "note": "廚餘分流收運能幫上一點（鼠患、鼠群竄出），但不是主因；要搭配對症卡效果才完整。"
+        },
+        {
+          "policyId": "policy_rat_pro",
+          "name": "社區鼠類偵防",
+          "policyType": "hard",
+          "note": "社區鼠類偵防能幫上一點（鼠患），但不是主因；要搭配對症卡效果才完整。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "公告「請蓋好廚餘、別靠近鼠群」，先安撫大家；鼠群還在街上。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_coupon",
+          "name": "市集消費券",
+          "policyType": "subsidy",
+          "note": "發券讓夜市人潮和廚餘一起變多，鼠群吃得更好，鼠跡更明顯。"
+        }
+      ],
+      "optionIds": [
+        "act_evp_health_rat_swarm__pest_control",
+        "act_evp_health_rat_swarm__pied_piper",
+        "act_evp_health_rat_swarm__rat_edu",
+        "act_evp_health_rat_swarm__rat_pro"
+      ],
+      "optionPolicyIds": [
+        "policy_pest_control",
+        "policy_pied_piper",
+        "policy_rat_edu",
+        "policy_rat_pro"
+      ],
+      "eduPolicyIds": [
+        "policy_rat_edu"
+      ]
+    },
+    {
+      "eventId": "evp_safety_stray_dogs",
+      "title": "野狗縱橫",
+      "domainId": "safety",
+      "topicTags": [
+        "stray_dog",
+        "kitchen_waste",
+        "night"
+      ],
+      "topicLabels": [
+        "流浪犬",
+        "廚餘",
+        "夜間"
+      ],
+      "cure": [
+        {
+          "policyId": "policy_stray_dog_tnr",
+          "name": "流浪犬 TNR 與收容",
+          "policyType": "hard",
+          "note": "捕捉、結紮、放回並送養，狗群不再一直變多；見效要一兩季，但最長久。",
+          "topicMatch": [
+            "stray_dog"
+          ],
+          "reason": "counters∩topicTags＝流浪犬"
+        },
+        {
+          "policyId": "policy_animal_patrol",
+          "name": "動保志工巡查",
+          "policyType": "ppp",
+          "note": "動保志工夜巡餵食點、安撫與通報，追車和驚嚇馬上變少；需要排班，也要搭配收容結紮。",
+          "topicMatch": [
+            "stray_dog",
+            "night"
+          ],
+          "reason": "counters∩topicTags＝流浪犬、夜間"
+        }
+      ],
+      "assist": [
+        {
+          "policyId": "policy_kitchen_sorting",
+          "name": "廚餘分流收運",
+          "policyType": "hard",
+          "note": "垃圾不落地：廚餘獨立收運、桶子有蓋，狗找不到食物就不會一直聚在這裡；處理食物來源，但街上已經有的狗還在。"
+        },
+        {
+          "policyId": "policy_led_lights",
+          "name": "路燈LED汰換與暗巷補強",
+          "policyType": "hard",
+          "note": "巷口照明補強，晚歸的人看得清楚、比較不會被嚇到；狗群還在。"
+        },
+        {
+          "policyId": "policy_pet_edu",
+          "name": "飼主責任與不亂餵宣導",
+          "policyType": "info",
+          "note": "宣導不棄養、不亂餵、垃圾不落地；便宜、見效慢，下季才看得出來。"
+        }
+      ],
+      "palliative": [
+        {
+          "policyId": "policy_patrol_lights",
+          "name": "社區巡守隊與路燈",
+          "policyType": "ppp",
+          "note": "巡守隊把狗群趕離巷口，今晚安靜了；過幾天牠們又回到有食物的地方。"
+        },
+        {
+          "policyId": "policy_town_broadcast",
+          "name": "公所公告廣播",
+          "policyType": "stopgap",
+          "note": "公告「晚上請結伴、別靠近狗群」，先安撫居民；狗群還在。"
+        }
+      ],
+      "backfire": [
+        {
+          "policyId": "policy_dog_roundup",
+          "name": "強力捕捉驅離專案",
+          "policyType": "reg",
+          "note": "強力捕捉驅離後，空出的地盤很快有新狗進來，被趕走的狗跑到別區；動保志工與居民反彈，民怨更高。"
+        }
+      ],
+      "optionIds": [
+        "act_evp_safety_stray_dogs__animal_patrol",
+        "act_evp_safety_stray_dogs__stray_dog_tnr",
+        "act_evp_safety_stray_dogs__pet_edu",
+        "act_evp_safety_stray_dogs__town_broadcast"
+      ],
+      "optionPolicyIds": [
+        "policy_animal_patrol",
+        "policy_stray_dog_tnr",
+        "policy_pet_edu",
+        "policy_town_broadcast"
+      ],
+      "eduPolicyIds": [
+        "policy_pet_edu"
+      ]
+    }
+  ]
+}

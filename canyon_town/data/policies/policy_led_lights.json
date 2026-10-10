@@ -1,0 +1,161 @@
+{
+  "id": "policy_led_lights",
+  "name": "路燈LED汰換與暗巷補強",
+  "cost": 3,
+  "blurb": "把老舊路燈換成LED，補強黑暗巷弄與校園周邊的照明；亮度更足，電費也更省。",
+  "solves": [],
+  "rule_patches": {
+    "led_lightsProgram": 1
+  },
+  "deltas": {
+    "money": -80,
+    "happiness": 3
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "汰換要排工期；過亮也會影響住戶睡眠，要調整角度。",
+  "preview": "預估：金錢 -80、幸福度 +3。",
+  "costPoints": 3,
+  "tags": [
+    "治安",
+    "工程",
+    "照明"
+  ],
+  "counters": [
+    "night"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_led_lights.webp",
+    "icon": "assets/sprites/cards/icons/icon_led_lights.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "💡",
+    "accent": "#fbc02d",
+    "fxHint": "fx_led_lights_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "硬建設／公共服務",
+    "rarity": "進階",
+    "titleShort": "LED路燈",
+    "costBadge": "3 點",
+    "shopLine": "換亮燈、補暗巷，晚上更安心。",
+    "effectLine": "夜間更亮；扒手與意外減少，電費下降。",
+    "flavor": "燈亮起來，壞事就少一半。",
+    "learnPoint": "這張牌教你：環境設計也是治安，亮度就是安全。",
+    "bullets": [
+      "輔助：夜間治安",
+      "金錢 -80",
+      "電費下降",
+      "注意光害"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -80,
+        "text": "金錢 -80"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 3,
+        "text": "幸福度 +3"
+      }
+    ],
+    "tradeoffLine": "汰換要排工期；過亮也會影響住戶睡眠，要調整角度。"
+  },
+  "shopBlurb": "換亮燈、補暗巷，晚上更安心。",
+  "shopLine": "3 點｜換亮燈、補暗巷，晚上更安心。",
+  "executeId": "exec_led_lights",
+  "fx": {
+    "street": [
+      "fx_led_lights_a",
+      "fx_led_lights_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 2,
+        "vehicle": 0,
+        "tourist": 1,
+        "security": 5
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -14
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "strong",
+      "summary": "人流+2、遊客+1、治安感+5（永久）；治安民怨-14"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_xiu",
+      "staff_an"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.7,
+      "health": 0.2,
+      "engineering": 0.8,
+      "economy": 0.2,
+      "communication": 0.4
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety"
+  ],
+  "complaintDelta": {
+    "safety": -14
+  },
+  "complaintRebound": {},
+  "complaintNote": "汰換要排工期；過亮也會影響住戶睡眠，要調整角度。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_safety_stray_dogs",
+      "evp_safety_theft"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "hard",
+  "typeLabel": "硬建設／公共服務",
+  "realWorldAnalog": "公共照明工程：老舊路燈換LED並補強黑暗路段，也降低電費。",
+  "topicCounters": [
+    "night"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

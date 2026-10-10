@@ -1,0 +1,3160 @@
+[
+  {
+    "id": "dlg_mei_01",
+    "speakerNpcId": "mei",
+    "lines": [
+      "週末攤位空了一半，客人嫌路泥濘都不來。"
+    ],
+    "weight": 2,
+    "seasonHint": "market",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_mei_02",
+    "speakerNpcId": "mei",
+    "lines": [
+      "貨到得晚，攤位空架，客人問了就走。"
+    ],
+    "weight": 3,
+    "seasonHint": "supply",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "resident",
+    "clueId": "c_market_empty"
+  },
+  {
+    "id": "dlg_mei_03",
+    "speakerNpcId": "mei",
+    "lines": [
+      "步道泥巴太厚，遊客的鞋都陷進去，才不想進來。"
+    ],
+    "weight": 3,
+    "seasonHint": "market",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "resident",
+    "clueId": "c_market_mud"
+  },
+  {
+    "id": "dlg_mei_04",
+    "speakerNpcId": "mei",
+    "lines": [
+      "今天的青菜特別脆，剛進的貨，快來看看！"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_mei_05",
+    "speakerNpcId": "mei",
+    "lines": [
+      "阿凱說他喜歡峽谷風景，只是路不好走。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "traffic",
+    "articleId": "article_market",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_bo_01",
+    "speakerNpcId": "bo",
+    "lines": [
+      "排水口堆滿落石和垃圾，水根本流不出去。"
+    ],
+    "weight": 3,
+    "seasonHint": "drain",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "resident",
+    "clueId": "c_drain_blocked"
+  },
+  {
+    "id": "dlg_bo_02",
+    "speakerNpcId": "bo",
+    "lines": [
+      "垃圾車再遲到，落葉就會把溝堵死。"
+    ],
+    "weight": 3,
+    "seasonHint": "waste",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "resident",
+    "clueId": "c_drain_garbage"
+  },
+  {
+    "id": "dlg_bo_03",
+    "speakerNpcId": "bo",
+    "lines": [
+      "排水口天天有人丟東西，我一個人清不完！"
+    ],
+    "weight": 2,
+    "seasonHint": "drain",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_bo_04",
+    "speakerNpcId": "bo",
+    "lines": [
+      "我的雨鞋都穿到發白了，雨季真不是玩的。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_lin_01",
+    "speakerNpcId": "lin",
+    "lines": [
+      "峽口一卡，蔬果、垃圾車、供水車全部一起遲到。"
+    ],
+    "weight": 3,
+    "seasonHint": "observe",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "logistics",
+    "articleId": "article_supply",
+    "speakerKind": "resident",
+    "clueId": "c_logi_gorge"
+  },
+  {
+    "id": "dlg_lin_02",
+    "speakerNpcId": "lin",
+    "lines": [
+      "先滑讀快報找線索，再選政策卡比較準。"
+    ],
+    "weight": 1,
+    "seasonHint": "newspaper",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "logistics",
+    "articleId": "article_supply",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_lin_03",
+    "speakerNpcId": "lin",
+    "lines": [
+      "每次採訪都被卡在峽口，我的稿子都遲交了。"
+    ],
+    "weight": 2,
+    "seasonHint": "logistics",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "logistics",
+    "articleId": "article_supply",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_lin_04",
+    "speakerNpcId": "lin",
+    "lines": [
+      "我在幫貓貓快報跑新聞，每天走三趟峽口。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "logistics",
+    "articleId": "article_supply",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_zhen_01",
+    "speakerNpcId": "zhen",
+    "lines": [
+      "店裡缺貨，客人問三遍「什麼時候到」。"
+    ],
+    "weight": 2,
+    "seasonHint": "market",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "logistics",
+    "articleId": "article_supply",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_zhen_02",
+    "speakerNpcId": "zhen",
+    "lines": [
+      "消費券能抬買氣，但貨沒來也沒用。"
+    ],
+    "weight": 1,
+    "seasonHint": "coupon",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_zhen_03",
+    "speakerNpcId": "zhen",
+    "lines": [
+      "家長群組都在傳井水有怪味，卻沒人公布檢測。"
+    ],
+    "weight": 3,
+    "seasonHint": "well",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "resident",
+    "clueId": "c_health_rumor"
+  },
+  {
+    "id": "dlg_zhen_04",
+    "speakerNpcId": "zhen",
+    "lines": [
+      "今天進了新的茶葉，喝一杯再走吧。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_kai_01",
+    "speakerNpcId": "kai",
+    "lines": [
+      "公車班班不準，我寧願改去鄰市走走。"
+    ],
+    "weight": 2,
+    "seasonHint": "bus",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "traffic",
+    "articleId": "article_market",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_kai_02",
+    "speakerNpcId": "kai",
+    "lines": [
+      "峽谷風景很美，路修好我還會再來。"
+    ],
+    "weight": 1,
+    "seasonHint": "boardwalk",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "traffic",
+    "articleId": "article_market",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_kai_03",
+    "speakerNpcId": "kai",
+    "lines": [
+      "我在站牌等了快一小時，公車才晃過來。"
+    ],
+    "weight": 3,
+    "seasonHint": "bus",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "traffic",
+    "articleId": "article_supply",
+    "speakerKind": "resident",
+    "clueId": "c_traffic_bus"
+  },
+  {
+    "id": "dlg_kai_04",
+    "speakerNpcId": "kai",
+    "lines": [
+      "路又塞又泥濘，鞋子都髒了，下次還來嗎？"
+    ],
+    "weight": 2,
+    "seasonHint": "traffic",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "traffic",
+    "articleId": "article_market",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_wang_01",
+    "speakerNpcId": "wang",
+    "lines": [
+      "井水傳聞要公開檢測，別只貼標語。"
+    ],
+    "weight": 2,
+    "seasonHint": "well",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_wang_02",
+    "speakerNpcId": "wang",
+    "lines": [
+      "工程車短期會塞，長期才能改法則。"
+    ],
+    "weight": 1,
+    "seasonHint": "works",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "traffic",
+    "articleId": "article_supply",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_wang_03",
+    "speakerNpcId": "wang",
+    "lines": [
+      "昨天救護車卡在峽口，繞了好久才進城。"
+    ],
+    "weight": 3,
+    "seasonHint": "safety",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "safety",
+    "articleId": "article_supply",
+    "speakerKind": "resident",
+    "clueId": "c_safety_crossing"
+  },
+  {
+    "id": "dlg_wang_04",
+    "speakerNpcId": "wang",
+    "lines": [
+      "水一來、車一塞，我最擔心家裡的長輩。"
+    ],
+    "weight": 2,
+    "seasonHint": "safety",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_wang_05",
+    "speakerNpcId": "wang",
+    "lines": [
+      "里長就是天天巡街，順便跟大家聊聊天。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "resident"
+  },
+  {
+    "id": "dlg_cheng_01",
+    "speakerNpcId": "staff_cheng",
+    "lines": [
+      "沒有公開水質資料，傳聞就會自己長大。"
+    ],
+    "weight": 3,
+    "seasonHint": "well",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "speakerAlias": "clerk_hall",
+    "clueId": "c_health_open"
+  },
+  {
+    "id": "dlg_cheng_02",
+    "speakerNpcId": "staff_cheng",
+    "lines": [
+      "預算就這麼多，每一點都要用在刀口上。"
+    ],
+    "weight": 2,
+    "seasonHint": "budget",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "speakerAlias": "clerk_hall"
+  },
+  {
+    "id": "dlg_cheng_03",
+    "speakerNpcId": "staff_cheng",
+    "lines": [
+      "先看原因，再看價格，便宜的牌不一定對症。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "speakerAlias": "clerk_hall"
+  },
+  {
+    "id": "dlg_cheng_04",
+    "speakerNpcId": "staff_cheng",
+    "lines": [
+      "公文我來跑，你先把快報讀完再決定。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "speakerAlias": "clerk_hall"
+  },
+  {
+    "id": "dlg_an_01",
+    "speakerNpcId": "staff_an",
+    "lines": [
+      "壅塞度和準點率不是裝飾，準點大約只有七成。"
+    ],
+    "weight": 3,
+    "seasonHint": "observe",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "logistics",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "speakerAlias": "police_chief",
+    "clueId": "c_logi_ontime"
+  },
+  {
+    "id": "dlg_an_02",
+    "speakerNpcId": "staff_an",
+    "lines": [
+      "車一卡，我們就要輪流站路口，人手真的不夠。"
+    ],
+    "weight": 2,
+    "seasonHint": "traffic",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "traffic",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "speakerAlias": "police_chief"
+  },
+  {
+    "id": "dlg_an_03",
+    "speakerNpcId": "staff_an",
+    "lines": [
+      "今天巡邏繞了三圈，峽口一直在排隊。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "traffic",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "speakerAlias": "police_chief"
+  },
+  {
+    "id": "dlg_an_04",
+    "speakerNpcId": "staff_an",
+    "lines": [
+      "路口站久了，我連每台車的車牌都背起來了。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "safety",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "speakerAlias": "police_chief"
+  },
+  {
+    "id": "dlg_yan_01",
+    "speakerNpcId": "staff_yan",
+    "lines": [
+      "排水不通，救援路線就會被水淹斷。"
+    ],
+    "weight": 3,
+    "seasonHint": "safety",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "speakerAlias": "fire_chief",
+    "clueId": "c_safety_rescue"
+  },
+  {
+    "id": "dlg_yan_02",
+    "speakerNpcId": "staff_yan",
+    "lines": [
+      "排水口堵著，水一來我們連車庫都出不去。"
+    ],
+    "weight": 2,
+    "seasonHint": "drain",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "speakerAlias": "fire_chief"
+  },
+  {
+    "id": "dlg_yan_03",
+    "speakerNpcId": "staff_yan",
+    "lines": [
+      "垃圾車擋道，消防車也過不去。"
+    ],
+    "weight": 2,
+    "seasonHint": "safety",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "safety",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "speakerAlias": "fire_chief"
+  },
+  {
+    "id": "dlg_yan_04",
+    "speakerNpcId": "staff_yan",
+    "lines": [
+      "雨季前我們固定演練，希望永遠用不上。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "speakerAlias": "fire_chief"
+  },
+  {
+    "id": "dlg_xin_01",
+    "speakerNpcId": "staff_xin",
+    "lines": [
+      "供水車和檢測器材卡在路上，澄清就慢了一步。"
+    ],
+    "weight": 3,
+    "seasonHint": "well",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "speakerAlias": "hospital_director",
+    "clueId": "c_health_truck"
+  },
+  {
+    "id": "dlg_xin_02",
+    "speakerNpcId": "staff_xin",
+    "lines": [
+      "最近門診很多人問井水，我們也很為難。"
+    ],
+    "weight": 2,
+    "seasonHint": "health",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "speakerAlias": "hospital_director"
+  },
+  {
+    "id": "dlg_xin_03",
+    "speakerNpcId": "staff_xin",
+    "lines": [
+      "傳聞比病菌跑得快，公開資訊最有效。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "speakerAlias": "hospital_director"
+  },
+  {
+    "id": "dlg_xin_04",
+    "speakerNpcId": "staff_xin",
+    "lines": [
+      "多喝水沒錯，但要喝得安心才行。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "speakerAlias": "hospital_director"
+  },
+  {
+    "id": "dlg_xiu_01",
+    "speakerNpcId": "staff_xiu",
+    "lines": [
+      "工程車進場短期會更塞，但長期法則才會改。"
+    ],
+    "weight": 3,
+    "seasonHint": "works",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "traffic",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "speakerAlias": "works_engineer",
+    "clueId": "c_traffic_work"
+  },
+  {
+    "id": "dlg_xiu_02",
+    "speakerNpcId": "staff_xiu",
+    "lines": [
+      "預算被切成好幾塊，清溝總是排在最後。"
+    ],
+    "weight": 2,
+    "seasonHint": "drain",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "speakerAlias": "works_engineer"
+  },
+  {
+    "id": "dlg_xiu_03",
+    "speakerNpcId": "staff_xiu",
+    "lines": [
+      "步道木板磨得快，一年換不完。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "speakerAlias": "works_engineer"
+  },
+  {
+    "id": "dlg_xiu_04",
+    "speakerNpcId": "staff_xiu",
+    "lines": [
+      "我的安全帽比帽子還常戴。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "speakerAlias": "works_engineer"
+  },
+  {
+    "id": "dlg_shi_01",
+    "speakerNpcId": "staff_shi",
+    "lines": [
+      "消費券只能暫時拉買氣，貨不準時還是會空架。"
+    ],
+    "weight": 3,
+    "seasonHint": "coupon",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "speakerAlias": "market_chair",
+    "clueId": "c_market_coupon"
+  },
+  {
+    "id": "dlg_shi_02",
+    "speakerNpcId": "staff_shi",
+    "lines": [
+      "攤位空架越來越多，租金也收不齊。"
+    ],
+    "weight": 2,
+    "seasonHint": "market",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "speakerAlias": "market_chair"
+  },
+  {
+    "id": "dlg_shi_03",
+    "speakerNpcId": "staff_shi",
+    "lines": [
+      "新鮮蔬果最怕等，等久了就蔫了。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "logistics",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "speakerAlias": "market_chair"
+  },
+  {
+    "id": "dlg_shi_04",
+    "speakerNpcId": "staff_shi",
+    "lines": [
+      "市集的老客人還在，我們都記得他們的名字。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "speakerAlias": "market_chair"
+  },
+  {
+    "id": "dlg_staff_min_01",
+    "speakerNpcId": "staff_min",
+    "speakerAlias": "civil_affairs",
+    "lines": [
+      "我來巡巷口，順便問問鄰居們最近好不好。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "safety"
+    }
+  },
+  {
+    "id": "dlg_staff_min_02",
+    "speakerNpcId": "staff_min",
+    "speakerAlias": "civil_affairs",
+    "lines": [
+      "大家的意見我都記著，可是協調會排不完呀。"
+    ],
+    "weight": 2,
+    "seasonHint": "chat",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "safety"
+    }
+  },
+  {
+    "id": "dlg_staff_min_03",
+    "speakerNpcId": "staff_min",
+    "speakerAlias": "civil_affairs",
+    "lines": [
+      "公所公告貼在布告欄，記得看日期和單位喔。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "announce",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health"
+    }
+  },
+  {
+    "id": "dlg_staff_min_04",
+    "speakerNpcId": "staff_min",
+    "speakerAlias": "civil_affairs",
+    "lines": [
+      "聽到消息先別轉，問問是誰說的、哪裡看到的。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "checkHint",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health"
+    }
+  },
+  {
+    "id": "dlg_staff_min_05",
+    "speakerNpcId": "staff_min",
+    "speakerAlias": "civil_affairs",
+    "lines": [
+      "週末人擠人，鄰里說錢包被摸走的通報變多了。"
+    ],
+    "weight": 3,
+    "seasonHint": "safety",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "safety",
+    "articleId": "art_evp_safety_theft",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "safety",
+      "eventId": "evp_safety_theft"
+    },
+    "eventId": "evp_safety_theft",
+    "corroborates": [
+      "evp_safety_theft:i1",
+      "evp_safety_theft:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_min_06",
+    "speakerNpcId": "staff_min",
+    "speakerAlias": "civil_affairs",
+    "lines": [
+      "我懂大家不安，這件事我一件一件排進會議。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "safety",
+      "complaintTier": "upset"
+    }
+  },
+  {
+    "id": "dlg_staff_min_07",
+    "speakerNpcId": "staff_min",
+    "speakerAlias": "civil_affairs",
+    "lines": [
+      "我聽到了！最急的先處理，進度我跟里長報告。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "safety",
+      "complaintTier": "furious"
+    }
+  },
+  {
+    "id": "dlg_staff_min_08",
+    "speakerNpcId": "staff_min",
+    "speakerAlias": "civil_affairs",
+    "lines": [
+      "群組在傳橋要封三天？我先去問工務再回覆。"
+    ],
+    "weight": 2,
+    "seasonHint": "logistics",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "logistics",
+    "articleId": "art_evp_logi_false_bridge",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "logistics",
+      "eventId": "evp_logi_false_bridge"
+    },
+    "eventId": "evp_logi_false_bridge",
+    "contradictedBy": [
+      "evp_logi_false_bridge:i3",
+      "evp_logi_false_bridge:i4"
+    ],
+    "checkHint": "查貼文來源，並問工務有沒有橋檢紀錄。"
+  },
+  {
+    "id": "dlg_staff_min_09",
+    "speakerNpcId": "staff_min",
+    "speakerAlias": "civil_affairs",
+    "lines": [
+      "輔導是先宣導、再限期改善，不是一下子就罰。"
+    ],
+    "weight": 3,
+    "seasonHint": "drain",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "drain",
+    "articleId": "art_evp_drain_grease_trap",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "drain",
+      "eventId": "evp_drain_grease_trap"
+    },
+    "eventId": "evp_drain_grease_trap",
+    "corroborates": [
+      "evp_drain_grease_trap:i1",
+      "evp_drain_grease_trap:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_min_10",
+    "speakerNpcId": "staff_min",
+    "speakerAlias": "civil_affairs",
+    "lines": [
+      "查核紀錄顯示，有幾天的留樣紀錄缺漏。"
+    ],
+    "weight": 3,
+    "seasonHint": "health",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "art_evp_health_lunch_sample",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_lunch_sample"
+    },
+    "eventId": "evp_health_lunch_sample",
+    "corroborates": [
+      "evp_health_lunch_sample:i1",
+      "evp_health_lunch_sample:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_min_11",
+    "speakerNpcId": "staff_min",
+    "speakerAlias": "civil_affairs",
+    "lines": [
+      "不舒服的小朋友多數已返校，家長都收到通知。"
+    ],
+    "weight": 3,
+    "seasonHint": "health",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "art_evp_health_class_upset",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_class_upset"
+    },
+    "eventId": "evp_health_class_upset",
+    "corroborates": [
+      "evp_health_class_upset:i1",
+      "evp_health_class_upset:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_min_12",
+    "speakerNpcId": "staff_min",
+    "speakerAlias": "civil_affairs",
+    "lines": [
+      "聽說所有小吃店都要罰到關門？公告不是這樣寫。"
+    ],
+    "weight": 2,
+    "seasonHint": "drain",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "drain",
+    "articleId": "art_evp_drain_grease_trap",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "drain",
+      "eventId": "evp_drain_grease_trap"
+    },
+    "eventId": "evp_drain_grease_trap",
+    "contradictedBy": [
+      "evp_drain_grease_trap:i1",
+      "evp_drain_grease_trap:i2"
+    ],
+    "checkHint": "看公所公告的輔導時程與罰則說明。"
+  },
+  {
+    "id": "dlg_staff_jing_01",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "垃圾不落地，水溝才不會哭。我去巡溝囉。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "drain"
+    }
+  },
+  {
+    "id": "dlg_staff_jing_02",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "垃圾車晚到我也急，清運順序正在重排。"
+    ],
+    "weight": 2,
+    "seasonHint": "chat",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "drain"
+    }
+  },
+  {
+    "id": "dlg_staff_jing_03",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "落葉混著垃圾，一進溝就黏成一團，很難清。"
+    ],
+    "weight": 3,
+    "seasonHint": "drain",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "drain",
+    "articleId": "art_evp_drain_leaf",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "drain",
+      "eventId": "evp_drain_leaf"
+    },
+    "eventId": "evp_drain_leaf",
+    "corroborates": [
+      "evp_drain_leaf:i1",
+      "evp_drain_leaf:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_jing_04",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "水溝淤積的地方蚊子最多，清乾淨才不會孳生。"
+    ],
+    "weight": 3,
+    "seasonHint": "health",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "art_evp_health_dengue",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_dengue"
+    },
+    "eventId": "evp_health_dengue",
+    "corroborates": [
+      "evp_health_dengue:i1",
+      "evp_health_dengue:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_jing_05",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "清運時間表貼好了，垃圾請在時段內拿出來喔。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "trigger": "announce",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "drain"
+    }
+  },
+  {
+    "id": "dlg_staff_jing_06",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "排水口我天天巡，哪裡塞了我都記著。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "drain",
+      "complaintTier": "upset"
+    }
+  },
+  {
+    "id": "dlg_staff_jing_07",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "今天溝邊乾乾淨淨，謝謝大家幫忙掃。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "drain",
+      "complaintTier": "calm"
+    }
+  },
+  {
+    "id": "dlg_staff_jing_08",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "聽說排水管全壞了要整條重挖？我還沒看到報告。"
+    ],
+    "weight": 2,
+    "seasonHint": "drain",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "drain",
+    "articleId": "art_evp_drain_blocked",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "drain",
+      "eventId": "evp_drain_blocked"
+    },
+    "eventId": "evp_drain_blocked",
+    "contradictedBy": [
+      "evp_drain_blocked:i1",
+      "evp_drain_blocked:i2"
+    ],
+    "checkHint": "問工務：管線壞了，還是只是被堵住？"
+  },
+  {
+    "id": "dlg_staff_jing_09",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "收市後廚餘桶沒蓋，旁邊有齧咬痕跡，要補蓋。"
+    ],
+    "weight": 3,
+    "seasonHint": "market",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "market",
+    "articleId": "art_evp_market_rat_bin",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_rat_bin"
+    },
+    "eventId": "evp_market_rat_bin",
+    "corroborates": [
+      "evp_market_rat_bin:i1",
+      "evp_market_rat_bin:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_jing_10",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "花圃的洞口封好了，還要靠巡查看會不會換地方。"
+    ],
+    "weight": 3,
+    "seasonHint": "safety",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "safety",
+    "articleId": "art_evp_safety_park_burrow",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "safety",
+      "eventId": "evp_safety_park_burrow"
+    },
+    "eventId": "evp_safety_park_burrow",
+    "corroborates": [
+      "evp_safety_park_burrow:i1",
+      "evp_safety_park_burrow:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_jing_11",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "餌盒都有編號和位置圖，每週回收檢查。"
+    ],
+    "weight": 3,
+    "seasonHint": "health",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "art_evp_health_bait_worry",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_bait_worry"
+    },
+    "eventId": "evp_health_bait_worry",
+    "corroborates": [
+      "evp_health_bait_worry:i1",
+      "evp_health_bait_worry:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_jing_12",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "小吃街溝裡的油結成塊，截油槽要定期清。"
+    ],
+    "weight": 3,
+    "seasonHint": "drain",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "drain",
+    "articleId": "art_evp_drain_grease_trap",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "drain",
+      "eventId": "evp_drain_grease_trap"
+    },
+    "eventId": "evp_drain_grease_trap",
+    "corroborates": [
+      "evp_drain_grease_trap:i1",
+      "evp_drain_grease_trap:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_jing_13",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "聽說整個市場都鬧鼠？我手上只有巡查紀錄。"
+    ],
+    "weight": 2,
+    "seasonHint": "market",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "market",
+    "articleId": "art_evp_market_rat_bin",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_rat_bin"
+    },
+    "eventId": "evp_market_rat_bin",
+    "contradictedBy": [
+      "evp_market_rat_bin:i1",
+      "evp_market_rat_bin:i2"
+    ],
+    "checkHint": "看巡查紀錄的處數與位置，不要只看轉傳貼文。"
+  },
+  {
+    "id": "dlg_staff_jing_14",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "老鼠影片先問：哪裡拍的、哪一天拍的？"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "trigger": "checkHint",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market"
+    }
+  },
+  {
+    "id": "dlg_staff_jing_15",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "大雨後鼠群從下水道竄出來，牆邊都是新鼠跡。"
+    ],
+    "weight": 3,
+    "seasonHint": "health",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "art_evp_health_rat_swarm",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_rat_swarm"
+    },
+    "eventId": "evp_health_rat_swarm",
+    "corroborates": [
+      "evp_health_rat_swarm:i1",
+      "evp_health_rat_swarm:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_jing_16",
+    "speakerNpcId": "staff_jing",
+    "speakerAlias": "env_cleaner",
+    "lines": [
+      "跟貓一樣大的巨鼠？我手上的照片沒有那麼大。"
+    ],
+    "weight": 2,
+    "seasonHint": "health",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "health",
+    "articleId": "art_evp_health_rat_swarm",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_rat_swarm"
+    },
+    "eventId": "evp_health_rat_swarm",
+    "contradictedBy": [
+      "evp_health_rat_swarm:i1",
+      "evp_health_rat_swarm:i2"
+    ],
+    "checkHint": "看照片拍攝日期與背景，對照巡查紀錄。"
+  },
+  {
+    "id": "dlg_staff_hu_01",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "衛生所巡診中，不舒服的鄰居記得來找我。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "chat",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health"
+    }
+  },
+  {
+    "id": "dlg_staff_hu_02",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "怎麼了嗎？需要的話，我可以現場採樣。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health"
+    }
+  },
+  {
+    "id": "dlg_staff_hu_03",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "檢測結果會貼在公布欄，附日期和採樣點。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "announce",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health"
+    }
+  },
+  {
+    "id": "dlg_staff_hu_04",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "積水容器裡的孑孓變多，社區有疑似病例通報了。"
+    ],
+    "weight": 3,
+    "seasonHint": "health",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "art_evp_health_dengue",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_dengue"
+    },
+    "eventId": "evp_health_dengue",
+    "corroborates": [
+      "evp_health_dengue:i1",
+      "evp_health_dengue:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_hu_05",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "衛生所例行抽驗，市集的攤位都合格喔。"
+    ],
+    "weight": 3,
+    "seasonHint": "market",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "market",
+    "articleId": "art_evp_market_fake_review",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_fake_review"
+    },
+    "eventId": "evp_market_fake_review",
+    "corroborates": [
+      "evp_market_fake_review:i2",
+      "evp_market_fake_review:i3"
+    ]
+  },
+  {
+    "id": "dlg_staff_hu_06",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "看到快訊先找出處，沒有出處、沒有報告的先別信。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "checkHint",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health"
+    }
+  },
+  {
+    "id": "dlg_staff_hu_07",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "我知道大家擔心，資料一出來，我第一時間公布。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "complaintTier": "upset"
+    }
+  },
+  {
+    "id": "dlg_staff_hu_08",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "聽說吃芒果會得登革熱？我先去查通報的傳染途徑。"
+    ],
+    "weight": 2,
+    "seasonHint": "health",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "health",
+    "articleId": "art_evp_health_dengue",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_dengue"
+    },
+    "eventId": "evp_health_dengue",
+    "contradictedBy": [
+      "evp_health_dengue:i1",
+      "evp_health_dengue:i2"
+    ],
+    "checkHint": "看衛生所通報的傳染途徑。"
+  },
+  {
+    "id": "dlg_staff_hu_09",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "午餐留樣要冷藏滿四十八小時，出事才查得出來。"
+    ],
+    "weight": 3,
+    "seasonHint": "health",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "art_evp_health_lunch_sample",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_lunch_sample"
+    },
+    "eventId": "evp_health_lunch_sample",
+    "corroborates": [
+      "evp_health_lunch_sample:i1",
+      "evp_health_lunch_sample:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_hu_10",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "已經採樣送驗，結果要等，現在還不能下結論。"
+    ],
+    "weight": 3,
+    "seasonHint": "health",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "art_evp_health_class_upset",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_class_upset"
+    },
+    "eventId": "evp_health_class_upset",
+    "corroborates": [
+      "evp_health_class_upset:i1",
+      "evp_health_class_upset:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_hu_11",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "餌盒用的是登記合格的藥，放在上鎖的盒子裡。"
+    ],
+    "weight": 3,
+    "seasonHint": "health",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "art_evp_health_bait_worry",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_bait_worry"
+    },
+    "eventId": "evp_health_bait_worry",
+    "corroborates": [
+      "evp_health_bait_worry:i1",
+      "evp_health_bait_worry:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_hu_12",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "聽說已確定是便當有毒？沒報告前我不下結論。"
+    ],
+    "weight": 2,
+    "seasonHint": "health",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "health",
+    "articleId": "art_evp_health_class_upset",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_class_upset"
+    },
+    "eventId": "evp_health_class_upset",
+    "contradictedBy": [
+      "evp_health_class_upset:i1",
+      "evp_health_class_upset:i2"
+    ],
+    "checkHint": "看衛生所公告的採樣日期與檢驗結果。"
+  },
+  {
+    "id": "dlg_staff_hu_13",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "調查中就是還沒有答案，先別替它編一個。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "checkHint",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health"
+    }
+  },
+  {
+    "id": "dlg_staff_hu_14",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "家長的擔心我懂，每一步進度都會公開。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "complaintTier": "furious"
+    }
+  },
+  {
+    "id": "dlg_staff_hu_15",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "鼠群被水趕出來，先壓數量，再管廚餘和鼠洞。"
+    ],
+    "weight": 3,
+    "seasonHint": "health",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "art_evp_health_rat_swarm",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_rat_swarm"
+    },
+    "eventId": "evp_health_rat_swarm",
+    "corroborates": [
+      "evp_health_rat_swarm:i1",
+      "evp_health_rat_swarm:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_hu_16",
+    "speakerNpcId": "staff_hu",
+    "speakerAlias": "clinic_director",
+    "lines": [
+      "吹笛人很快，但尾款和源頭管理都別忘了。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health"
+    }
+  },
+  {
+    "id": "dlg_staff_tong_01",
+    "speakerNpcId": "staff_tong",
+    "speakerAlias": "traffic_officer",
+    "lines": [
+      "我在畫車流圖：哪裡一停，後面就一路連動。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "traffic",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "traffic"
+    }
+  },
+  {
+    "id": "dlg_staff_tong_02",
+    "speakerNpcId": "staff_tong",
+    "speakerAlias": "traffic_officer",
+    "lines": [
+      "公車還沒來？我看看定位……前面又被貨車卡住了。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "traffic",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "traffic"
+    }
+  },
+  {
+    "id": "dlg_staff_tong_03",
+    "speakerNpcId": "staff_tong",
+    "speakerAlias": "traffic_officer",
+    "lines": [
+      "公車被貨車卡在路口，後面班次一路連動。"
+    ],
+    "weight": 3,
+    "seasonHint": "traffic",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "traffic",
+    "articleId": "art_evp_traffic_bus",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "traffic",
+      "eventId": "evp_traffic_bus"
+    },
+    "eventId": "evp_traffic_bus",
+    "corroborates": [
+      "evp_traffic_bus:i1",
+      "evp_traffic_bus:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_tong_04",
+    "speakerNpcId": "staff_tong",
+    "speakerAlias": "traffic_officer",
+    "lines": [
+      "施工路段改成單線，通勤要多留一點時間。"
+    ],
+    "weight": 3,
+    "seasonHint": "traffic",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "traffic",
+    "articleId": "art_evp_traffic_works",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "traffic",
+      "eventId": "evp_traffic_works"
+    },
+    "eventId": "evp_traffic_works",
+    "corroborates": [
+      "evp_traffic_works:i1",
+      "evp_traffic_works:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_tong_05",
+    "speakerNpcId": "staff_tong",
+    "speakerAlias": "traffic_officer",
+    "lines": [
+      "臨時改道公告貼好了，出門前先看看路線。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "traffic",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "trigger": "announce",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "traffic"
+    }
+  },
+  {
+    "id": "dlg_staff_tong_06",
+    "speakerNpcId": "staff_tong",
+    "speakerAlias": "traffic_officer",
+    "lines": [
+      "路堵的原因不只一個，先找最上游的那個。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "traffic",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "trigger": "checkHint",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "traffic"
+    }
+  },
+  {
+    "id": "dlg_staff_tong_07",
+    "speakerNpcId": "staff_tong",
+    "speakerAlias": "traffic_officer",
+    "lines": [
+      "我知道等車很煩，班次我正在重新排。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "traffic",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "traffic",
+      "complaintTier": "upset"
+    }
+  },
+  {
+    "id": "dlg_staff_tong_08",
+    "speakerNpcId": "staff_tong",
+    "speakerAlias": "traffic_officer",
+    "lines": [
+      "聽說施工是故意拖工期？我還沒看到許可內容。"
+    ],
+    "weight": 2,
+    "seasonHint": "traffic",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "traffic",
+    "articleId": "art_evp_traffic_works",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "traffic",
+      "eventId": "evp_traffic_works"
+    },
+    "eventId": "evp_traffic_works",
+    "contradictedBy": [
+      "evp_traffic_works:i1",
+      "evp_traffic_works:i2"
+    ],
+    "checkHint": "看施工許可與安全規範。"
+  },
+  {
+    "id": "dlg_staff_tong_09",
+    "speakerNpcId": "staff_tong",
+    "speakerAlias": "traffic_officer",
+    "lines": [
+      "備援供餐車的路線與時段，要先排好。"
+    ],
+    "weight": 3,
+    "seasonHint": "market",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "market",
+    "articleId": "art_evp_market_lunch_supplier",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_lunch_supplier"
+    },
+    "eventId": "evp_market_lunch_supplier",
+    "corroborates": [
+      "evp_market_lunch_supplier:i1",
+      "evp_market_lunch_supplier:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_nuan_01",
+    "speakerNpcId": "staff_nuan",
+    "speakerAlias": "social_worker",
+    "lines": [
+      "我來探望獨居的長輩，順便看看大家有沒有需要。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health"
+    }
+  },
+  {
+    "id": "dlg_staff_nuan_02",
+    "speakerNpcId": "staff_nuan",
+    "speakerAlias": "social_worker",
+    "lines": [
+      "阿嬤別擔心，慢慢說，我陪你。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health"
+    }
+  },
+  {
+    "id": "dlg_staff_nuan_03",
+    "speakerNpcId": "staff_nuan",
+    "speakerAlias": "social_worker",
+    "lines": [
+      "獨居長輩很多，發燒咳嗽的人沒人幫忙送藥。"
+    ],
+    "weight": 3,
+    "seasonHint": "health",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "health",
+    "articleId": "art_evp_health_flu",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_flu"
+    },
+    "eventId": "evp_health_flu",
+    "corroborates": [
+      "evp_health_flu:i1",
+      "evp_health_flu:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_nuan_04",
+    "speakerNpcId": "staff_nuan",
+    "speakerAlias": "social_worker",
+    "lines": [
+      "長輩服務專線貼在公布欄，大字版也有喔。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "trigger": "announce",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "safety"
+    }
+  },
+  {
+    "id": "dlg_staff_nuan_05",
+    "speakerNpcId": "staff_nuan",
+    "speakerAlias": "social_worker",
+    "lines": [
+      "長輩常收到轉傳訊息，請幫忙問問它從哪來的。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "checkHint",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health"
+    }
+  },
+  {
+    "id": "dlg_staff_nuan_06",
+    "speakerNpcId": "staff_nuan",
+    "speakerAlias": "social_worker",
+    "lines": [
+      "別一個人扛，需要幫忙就告訴我。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "safety",
+      "complaintTier": "upset"
+    }
+  },
+  {
+    "id": "dlg_staff_nuan_07",
+    "speakerNpcId": "staff_nuan",
+    "speakerAlias": "social_worker",
+    "lines": [
+      "大家都辛苦了，最需要幫忙的人，我們先顧到。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "complaintTier": "furious"
+    }
+  },
+  {
+    "id": "dlg_staff_nuan_08",
+    "speakerNpcId": "staff_nuan",
+    "speakerAlias": "social_worker",
+    "lines": [
+      "聽說要禁用自來水了？先別慌，我去問衛生所。"
+    ],
+    "weight": 2,
+    "seasonHint": "health",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "health",
+    "articleId": "art_evp_health_fake_alert",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "eventId": "evp_health_fake_alert"
+    },
+    "eventId": "evp_health_fake_alert",
+    "contradictedBy": [
+      "evp_health_fake_alert:i3",
+      "evp_health_fake_alert:i4"
+    ],
+    "checkHint": "問衛生所，並追問訊息的原始出處。"
+  },
+  {
+    "id": "dlg_staff_nuan_09",
+    "speakerNpcId": "staff_nuan",
+    "speakerAlias": "social_worker",
+    "lines": [
+      "家長別慌，我陪你問清楚，也幫忙看公告。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "health",
+      "complaintTier": "furious"
+    }
+  },
+  {
+    "id": "dlg_staff_nuan_10",
+    "speakerNpcId": "staff_nuan",
+    "speakerAlias": "social_worker",
+    "lines": [
+      "志工統計那邊大約有一群狗，聚在垃圾堆旁。"
+    ],
+    "weight": 3,
+    "seasonHint": "safety",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "safety",
+    "articleId": "art_evp_safety_stray_dogs",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "safety",
+      "eventId": "evp_safety_stray_dogs"
+    },
+    "eventId": "evp_safety_stray_dogs",
+    "corroborates": [
+      "evp_safety_stray_dogs:i1",
+      "evp_safety_stray_dogs:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_nuan_11",
+    "speakerNpcId": "staff_nuan",
+    "speakerAlias": "social_worker",
+    "lines": [
+      "大野狼？是體型比較大的流浪犬啦，別怕。"
+    ],
+    "weight": 2,
+    "seasonHint": "safety",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "safety",
+    "articleId": "art_evp_safety_stray_dogs",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "safety",
+      "eventId": "evp_safety_stray_dogs"
+    },
+    "eventId": "evp_safety_stray_dogs",
+    "contradictedBy": [
+      "evp_safety_stray_dogs:i1",
+      "evp_safety_stray_dogs:i2"
+    ],
+    "checkHint": "看志工巡查照片；貓貓市附近沒有狼。"
+  },
+  {
+    "id": "dlg_staff_nuan_12",
+    "speakerNpcId": "staff_nuan",
+    "speakerAlias": "social_worker",
+    "lines": [
+      "晚上結伴走，狗群的事我們和志工一起處理。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "safety",
+    "articleId": "art_evp_safety_stray_dogs",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "safety",
+      "eventId": "evp_safety_stray_dogs",
+      "complaintTier": "upset"
+    },
+    "eventId": "evp_safety_stray_dogs"
+  },
+  {
+    "id": "dlg_staff_tian_01",
+    "speakerNpcId": "staff_tian",
+    "speakerAlias": "agri_officer",
+    "lines": [
+      "菜車又晚了，菜等不起呀！我去催一催。"
+    ],
+    "weight": 2,
+    "seasonHint": "chat",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "logistics",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "logistics"
+    }
+  },
+  {
+    "id": "dlg_staff_tian_02",
+    "speakerNpcId": "staff_tian",
+    "speakerAlias": "agri_officer",
+    "lines": [
+      "菜價？先別急，我去問產地是不是真的缺菜。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market"
+    }
+  },
+  {
+    "id": "dlg_staff_tian_03",
+    "speakerNpcId": "staff_tian",
+    "speakerAlias": "agri_officer",
+    "lines": [
+      "產地沒缺菜，是運到峽口太慢，損耗才變多。"
+    ],
+    "weight": 3,
+    "seasonHint": "market",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "market",
+    "articleId": "art_evp_market_price",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_price"
+    },
+    "eventId": "evp_market_price",
+    "corroborates": [
+      "evp_market_price:i1",
+      "evp_market_price:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_tian_04",
+    "speakerNpcId": "staff_tian",
+    "speakerAlias": "agri_officer",
+    "lines": [
+      "冷藏車困在路上，車內溫度一直升，菜要壞了。"
+    ],
+    "weight": 3,
+    "seasonHint": "logistics",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "logistics",
+    "articleId": "art_evp_logi_cold",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "logistics",
+      "eventId": "evp_logi_cold"
+    },
+    "eventId": "evp_logi_cold",
+    "corroborates": [
+      "evp_logi_cold:i1",
+      "evp_logi_cold:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_tian_05",
+    "speakerNpcId": "staff_tian",
+    "speakerAlias": "agri_officer",
+    "lines": [
+      "廟會要來了，農友想多出貨，進貨時段要排好。"
+    ],
+    "weight": 3,
+    "seasonHint": "market",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "market",
+    "articleId": "art_evp_market_festival",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_festival"
+    },
+    "eventId": "evp_market_festival",
+    "corroborates": [
+      "evp_market_festival:i1",
+      "evp_market_festival:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_tian_06",
+    "speakerNpcId": "staff_tian",
+    "speakerAlias": "agri_officer",
+    "lines": [
+      "產地直送的時段公告了，攤商記得來排班。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "logistics",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "trigger": "announce",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "logistics"
+    }
+  },
+  {
+    "id": "dlg_staff_tian_07",
+    "speakerNpcId": "staff_tian",
+    "speakerAlias": "agri_officer",
+    "lines": [
+      "菜會到的，我已經跟農友說好了。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "complaintTier": "grumble"
+    }
+  },
+  {
+    "id": "dlg_staff_tian_08",
+    "speakerNpcId": "staff_tian",
+    "speakerAlias": "agri_officer",
+    "lines": [
+      "有人說是攤商聯手哄抬菜價？我想先看進貨單。"
+    ],
+    "weight": 2,
+    "seasonHint": "market",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "market",
+    "articleId": "art_evp_market_price",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_price"
+    },
+    "eventId": "evp_market_price",
+    "contradictedBy": [
+      "evp_market_price:i1",
+      "evp_market_price:i2"
+    ],
+    "checkHint": "對照進貨準點率與進貨單。"
+  },
+  {
+    "id": "dlg_staff_wen_01",
+    "speakerNpcId": "staff_wen",
+    "speakerAlias": "culture_officer",
+    "lines": [
+      "先說個故事：這條老街，每塊石板都有名字。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "trigger": "chat",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market"
+    }
+  },
+  {
+    "id": "dlg_staff_wen_02",
+    "speakerNpcId": "staff_wen",
+    "speakerAlias": "culture_officer",
+    "lines": [
+      "遊客問路？我幫你畫張小地圖，順便說說典故。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "traffic",
+    "articleId": "article_supply",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "traffic"
+    }
+  },
+  {
+    "id": "dlg_staff_wen_03",
+    "speakerNpcId": "staff_wen",
+    "speakerAlias": "culture_officer",
+    "lines": [
+      "遊覽車停在路邊，遊客拍完照就走，沒進市集。"
+    ],
+    "weight": 3,
+    "seasonHint": "traffic",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "traffic",
+    "articleId": "art_evp_traffic_tourbus",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "traffic",
+      "eventId": "evp_traffic_tourbus"
+    },
+    "eventId": "evp_traffic_tourbus",
+    "corroborates": [
+      "evp_traffic_tourbus:i1",
+      "evp_traffic_tourbus:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_wen_04",
+    "speakerNpcId": "staff_wen",
+    "speakerAlias": "culture_officer",
+    "lines": [
+      "廟會公告貼出來了，日期與地點都照常。"
+    ],
+    "weight": 3,
+    "seasonHint": "market",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "market",
+    "articleId": "art_evp_market_festival",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_festival"
+    },
+    "eventId": "evp_market_festival",
+    "corroborates": [
+      "evp_market_festival:i1",
+      "evp_market_festival:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_wen_05",
+    "speakerNpcId": "staff_wen",
+    "speakerAlias": "culture_officer",
+    "lines": [
+      "導覽路線公告了，想逛市集的人跟我走。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "trigger": "announce",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market"
+    }
+  },
+  {
+    "id": "dlg_staff_wen_06",
+    "speakerNpcId": "staff_wen",
+    "speakerAlias": "culture_officer",
+    "lines": [
+      "人多不等於買氣，要看攤位到底賣了多少。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "trigger": "checkHint",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market"
+    }
+  },
+  {
+    "id": "dlg_staff_wen_07",
+    "speakerNpcId": "staff_wen",
+    "speakerAlias": "culture_officer",
+    "lines": [
+      "別灰心，老街的人情味還在，客人會回來的。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "complaintTier": "grumble"
+    }
+  },
+  {
+    "id": "dlg_staff_wen_08",
+    "speakerNpcId": "staff_wen",
+    "speakerAlias": "culture_officer",
+    "lines": [
+      "聽說今年廟會取消了？我先去看公所的公告。"
+    ],
+    "weight": 2,
+    "seasonHint": "market",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "market",
+    "articleId": "art_evp_market_festival",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_festival"
+    },
+    "eventId": "evp_market_festival",
+    "contradictedBy": [
+      "evp_market_festival:i1",
+      "evp_market_festival:i2"
+    ],
+    "checkHint": "看公所公告。"
+  },
+  {
+    "id": "dlg_staff_suan_01",
+    "speakerNpcId": "staff_suan",
+    "speakerAlias": "accountant",
+    "lines": [
+      "我來巡攤位，順便數數今天賣了多少。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "trigger": "chat",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market"
+    }
+  },
+  {
+    "id": "dlg_staff_suan_02",
+    "speakerNpcId": "staff_suan",
+    "speakerAlias": "accountant",
+    "lines": [
+      "預算啊？每一點都要花在刀口上，我幫你算算。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market"
+    }
+  },
+  {
+    "id": "dlg_staff_suan_03",
+    "speakerNpcId": "staff_suan",
+    "speakerAlias": "accountant",
+    "lines": [
+      "進貨單看過了，進價真的漲了，不是只有攤商在漲。"
+    ],
+    "weight": 3,
+    "seasonHint": "market",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "market",
+    "articleId": "art_evp_market_price",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_price"
+    },
+    "eventId": "evp_market_price",
+    "corroborates": [
+      "evp_market_price:i1",
+      "evp_market_price:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_suan_04",
+    "speakerNpcId": "staff_suan",
+    "speakerAlias": "accountant",
+    "lines": [
+      "攤位銷售紀錄掉了不少，公車也沒載滿。"
+    ],
+    "weight": 3,
+    "seasonHint": "market",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "market",
+    "articleId": "art_evp_market_slump",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_slump"
+    },
+    "eventId": "evp_market_slump",
+    "corroborates": [
+      "evp_market_slump:i1",
+      "evp_market_slump:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_suan_05",
+    "speakerNpcId": "staff_suan",
+    "speakerAlias": "accountant",
+    "lines": [
+      "點數收支表貼在公布欄，花了什麼都查得到。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "trigger": "announce",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market"
+    }
+  },
+  {
+    "id": "dlg_staff_suan_06",
+    "speakerNpcId": "staff_suan",
+    "speakerAlias": "accountant",
+    "lines": [
+      "便宜的不一定對症，先問這筆錢解決了什麼。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "trigger": "checkHint",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market"
+    }
+  },
+  {
+    "id": "dlg_staff_suan_07",
+    "speakerNpcId": "staff_suan",
+    "speakerAlias": "accountant",
+    "lines": [
+      "錢我會算清楚，不浪費在沒用的地方。"
+    ],
+    "weight": 1,
+    "seasonHint": "chat",
+    "category": "chat",
+    "categoryLabel": "閒聊",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "staff",
+    "trigger": "comfort",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "complaintTier": "upset"
+    }
+  },
+  {
+    "id": "dlg_staff_suan_08",
+    "speakerNpcId": "staff_suan",
+    "speakerAlias": "accountant",
+    "lines": [
+      "有人說預算被偷偷花光了？收支表是公開的。"
+    ],
+    "weight": 2,
+    "seasonHint": "market",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "market",
+    "articleId": "art_evp_market_price",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_price"
+    },
+    "eventId": "evp_market_price",
+    "contradictedBy": [
+      "evp_market_price:i1",
+      "evp_market_price:i2"
+    ],
+    "checkHint": "看公所公布的收支表。"
+  },
+  {
+    "id": "dlg_staff_suan_09",
+    "speakerNpcId": "staff_suan",
+    "speakerAlias": "accountant",
+    "lines": [
+      "換約有公開程序和紀錄，交接期要看合約。"
+    ],
+    "weight": 3,
+    "seasonHint": "market",
+    "category": "clue",
+    "categoryLabel": "關鍵線索",
+    "domainId": "market",
+    "articleId": "art_evp_market_lunch_supplier",
+    "speakerKind": "staff",
+    "trigger": "patrol",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_lunch_supplier"
+    },
+    "eventId": "evp_market_lunch_supplier",
+    "corroborates": [
+      "evp_market_lunch_supplier:i1",
+      "evp_market_lunch_supplier:i2"
+    ]
+  },
+  {
+    "id": "dlg_staff_suan_10",
+    "speakerNpcId": "staff_suan",
+    "speakerAlias": "accountant",
+    "lines": [
+      "新廠商便宜所以品質差？我想先看稽查紀錄。"
+    ],
+    "weight": 2,
+    "seasonHint": "market",
+    "category": "rumor",
+    "categoryLabel": "傳聞",
+    "domainId": "market",
+    "articleId": "art_evp_market_lunch_supplier",
+    "speakerKind": "staff",
+    "trigger": "accosted",
+    "appearWhen": {
+      "staffOnStreet": true,
+      "domainId": "market",
+      "eventId": "evp_market_lunch_supplier"
+    },
+    "eventId": "evp_market_lunch_supplier",
+    "contradictedBy": [
+      "evp_market_lunch_supplier:i1",
+      "evp_market_lunch_supplier:i2"
+    ],
+    "checkHint": "看招標文件與稽查紀錄，不要只比價錢。"
+  },
+  {
+    "id": "dlg_evr_mei_01",
+    "speakerNpcId": "mei",
+    "lines": [
+      "清早收攤，廚餘桶沒蓋，地上還有咬過的痕跡。"
+    ],
+    "weight": 2,
+    "seasonHint": "market",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "resident",
+    "eventId": "evp_market_rat_bin",
+    "appearWhen": {
+      "eventId": "evp_market_rat_bin"
+    }
+  },
+  {
+    "id": "dlg_evr_zhen_01",
+    "speakerNpcId": "zhen",
+    "lines": [
+      "半夜聽到桶子哐噹響，是不是又有小動物？"
+    ],
+    "weight": 2,
+    "seasonHint": "market",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "resident",
+    "eventId": "evp_market_rat_bin",
+    "appearWhen": {
+      "eventId": "evp_market_rat_bin"
+    }
+  },
+  {
+    "id": "dlg_evr_wang_01",
+    "speakerNpcId": "wang",
+    "lines": [
+      "公園花圃多了幾個洞，我先請公所來看看。"
+    ],
+    "weight": 2,
+    "seasonHint": "safety",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "resident",
+    "eventId": "evp_safety_park_burrow",
+    "appearWhen": {
+      "eventId": "evp_safety_park_burrow"
+    }
+  },
+  {
+    "id": "dlg_evr_kai_01",
+    "speakerNpcId": "kai",
+    "lines": [
+      "晚上帶狗散步，看到洞口有點毛毛的。"
+    ],
+    "weight": 2,
+    "seasonHint": "safety",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "resident",
+    "eventId": "evp_safety_park_burrow",
+    "appearWhen": {
+      "eventId": "evp_safety_park_burrow"
+    }
+  },
+  {
+    "id": "dlg_evr_lin_01",
+    "speakerNpcId": "lin",
+    "lines": [
+      "餌盒放路邊，小孩跑過去怎麼辦？"
+    ],
+    "weight": 2,
+    "seasonHint": "health",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "resident",
+    "eventId": "evp_health_bait_worry",
+    "appearWhen": {
+      "eventId": "evp_health_bait_worry"
+    }
+  },
+  {
+    "id": "dlg_evr_zhen_02",
+    "speakerNpcId": "zhen",
+    "lines": [
+      "下雨會不會把藥沖進水溝？我想問清楚。"
+    ],
+    "weight": 2,
+    "seasonHint": "health",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "resident",
+    "eventId": "evp_health_bait_worry",
+    "appearWhen": {
+      "eventId": "evp_health_bait_worry"
+    }
+  },
+  {
+    "id": "dlg_evr_mei_02",
+    "speakerNpcId": "mei",
+    "lines": [
+      "小吃街的溝一股油味，雨一下就退得慢。"
+    ],
+    "weight": 2,
+    "seasonHint": "drain",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "resident",
+    "eventId": "evp_drain_grease_trap",
+    "appearWhen": {
+      "eventId": "evp_drain_grease_trap"
+    }
+  },
+  {
+    "id": "dlg_evr_bo_01",
+    "speakerNpcId": "bo",
+    "lines": [
+      "溝裡的油結成塊，我清了兩次又堵了。"
+    ],
+    "weight": 2,
+    "seasonHint": "drain",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "drain",
+    "articleId": "article_drain",
+    "speakerKind": "resident",
+    "eventId": "evp_drain_grease_trap",
+    "appearWhen": {
+      "eventId": "evp_drain_grease_trap"
+    }
+  },
+  {
+    "id": "dlg_evr_lin_02",
+    "speakerNpcId": "lin",
+    "lines": [
+      "孩子的午餐有沒有問題？我想看到紀錄。"
+    ],
+    "weight": 2,
+    "seasonHint": "health",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "resident",
+    "eventId": "evp_health_lunch_sample",
+    "appearWhen": {
+      "eventId": "evp_health_lunch_sample"
+    }
+  },
+  {
+    "id": "dlg_evr_lin_03",
+    "speakerNpcId": "lin",
+    "lines": [
+      "孩子不舒服，我們只想知道原因。"
+    ],
+    "weight": 2,
+    "seasonHint": "health",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "resident",
+    "eventId": "evp_health_class_upset",
+    "appearWhen": {
+      "eventId": "evp_health_class_upset"
+    }
+  },
+  {
+    "id": "dlg_evr_kai_02",
+    "speakerNpcId": "kai",
+    "lines": [
+      "群組一直轉，我不敢信，也不敢不信，等公告吧。"
+    ],
+    "weight": 2,
+    "seasonHint": "health",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "resident",
+    "eventId": "evp_health_class_upset",
+    "appearWhen": {
+      "eventId": "evp_health_class_upset"
+    }
+  },
+  {
+    "id": "dlg_evr_mei_03",
+    "speakerNpcId": "mei",
+    "lines": [
+      "換了供餐廠商，不知道中午會不會準時到？"
+    ],
+    "weight": 2,
+    "seasonHint": "market",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "resident",
+    "eventId": "evp_market_lunch_supplier",
+    "appearWhen": {
+      "eventId": "evp_market_lunch_supplier"
+    }
+  },
+  {
+    "id": "dlg_evr_mei_04",
+    "speakerNpcId": "mei",
+    "lines": [
+      "一早開門，老鼠沿著牆邊排隊跑過去！"
+    ],
+    "weight": 2,
+    "seasonHint": "health",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "resident",
+    "eventId": "evp_health_rat_swarm",
+    "appearWhen": {
+      "eventId": "evp_health_rat_swarm"
+    }
+  },
+  {
+    "id": "dlg_evr_bo_02",
+    "speakerNpcId": "bo",
+    "lines": [
+      "下水道淹水，老鼠都被趕上街了。"
+    ],
+    "weight": 2,
+    "seasonHint": "health",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "health",
+    "articleId": "article_well",
+    "speakerKind": "resident",
+    "eventId": "evp_health_rat_swarm",
+    "appearWhen": {
+      "eventId": "evp_health_rat_swarm"
+    }
+  },
+  {
+    "id": "dlg_evr_kai_03",
+    "speakerNpcId": "kai",
+    "lines": [
+      "騎車回家被一群狗追，嚇得我繞路。"
+    ],
+    "weight": 2,
+    "seasonHint": "safety",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "resident",
+    "eventId": "evp_safety_stray_dogs",
+    "appearWhen": {
+      "eventId": "evp_safety_stray_dogs"
+    }
+  },
+  {
+    "id": "dlg_evr_wang_02",
+    "speakerNpcId": "wang",
+    "lines": [
+      "垃圾堆那邊一到晚上就聚了好多狗。"
+    ],
+    "weight": 2,
+    "seasonHint": "safety",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "safety",
+    "articleId": "article_drain",
+    "speakerKind": "resident",
+    "eventId": "evp_safety_stray_dogs",
+    "appearWhen": {
+      "eventId": "evp_safety_stray_dogs"
+    }
+  },
+  {
+    "id": "dlg_evr_wang_03",
+    "speakerNpcId": "wang",
+    "lines": [
+      "備援供餐上路了，路線排得開不開呢？"
+    ],
+    "weight": 2,
+    "seasonHint": "market",
+    "category": "complaint",
+    "categoryLabel": "怨言",
+    "domainId": "market",
+    "articleId": "article_market",
+    "speakerKind": "resident",
+    "eventId": "evp_market_lunch_supplier",
+    "appearWhen": {
+      "eventId": "evp_market_lunch_supplier"
+    }
+  }
+]

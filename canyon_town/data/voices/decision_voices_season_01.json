@@ -1,0 +1,344 @@
+{
+  "id": "decision_voices_season_01",
+  "seasonId": "season_01",
+  "hudNote": "你是市長顧問：讀完貓貓快報才會打開決策欄；每位居民都說出一個難處，請對照下面的「行動選項」再選卡。",
+  "unlockWithNewspaperGate": true,
+  "voices": [
+    {
+      "id": "voice_mei_market",
+      "npcId": "mei",
+      "npcName": "阿美",
+      "role": "攤商",
+      "text": "步道好走、貨又準時，市集才會笑出來。",
+      "tags": [
+        "經濟",
+        "物流"
+      ],
+      "hintPolicyIds": [
+        "policy_boardwalk",
+        "policy_logistics_hub"
+      ],
+      "articleId": "article_market",
+      "storyStage": "decide",
+      "actionHint": "你可以：修好步道，再讓貨準時進城，客人和貨一起來。",
+      "actionOptionIds": [
+        "act_boardwalk",
+        "act_logistics_hub"
+      ]
+    },
+    {
+      "id": "voice_bo_drain",
+      "npcId": "bo",
+      "npcName": "阿博",
+      "role": "水道工",
+      "text": "先清排水口，雨季才不會連貨車一起卡住。",
+      "tags": [
+        "環境",
+        "工程"
+      ],
+      "hintPolicyIds": [
+        "policy_clear_drain"
+      ],
+      "articleId": "article_drain",
+      "storyStage": "decide",
+      "actionHint": "你可以：先請清淤隊把排水口清乾淨。",
+      "actionOptionIds": [
+        "act_clear_drain"
+      ]
+    },
+    {
+      "id": "voice_lin_observe",
+      "npcId": "lin",
+      "npcName": "小林",
+      "role": "觀察員",
+      "text": "看壅塞度跟準點率，比只看標題可靠。",
+      "tags": [
+        "觀察",
+        "物流"
+      ],
+      "hintPolicyIds": [
+        "policy_logistics_hub"
+      ],
+      "articleId": "article_supply",
+      "storyStage": "decide",
+      "actionHint": "你可以：到峽口設緩衝站，把準點率拉上來。",
+      "actionOptionIds": [
+        "act_water_lane",
+        "act_logistics_hub"
+      ]
+    },
+    {
+      "id": "voice_zhen_parent",
+      "npcId": "zhen",
+      "npcName": "阿珍",
+      "role": "家長代表",
+      "text": "井水傳說明講清楚，孩子才敢喝學校的水。",
+      "tags": [
+        "信任",
+        "健康"
+      ],
+      "hintPolicyIds": [
+        "policy_water_test"
+      ],
+      "articleId": "article_well",
+      "storyStage": "decide",
+      "actionHint": "你可以：公開水質檢測，讓家長安心。",
+      "actionOptionIds": [
+        "act_water_test"
+      ]
+    },
+    {
+      "id": "voice_kai_bus",
+      "npcId": "kai",
+      "npcName": "阿凱",
+      "role": "遊客",
+      "text": "路不泥、車不塞，我才願意再來峽谷玩。",
+      "tags": [
+        "經濟",
+        "車流"
+      ],
+      "hintPolicyIds": [
+        "policy_boardwalk",
+        "policy_logistics_hub"
+      ],
+      "articleId": "article_market",
+      "storyStage": "decide",
+      "actionHint": "你可以：修步道，並讓公車與小貨車走得順。",
+      "actionOptionIds": [
+        "act_boardwalk",
+        "act_logistics_hub"
+      ]
+    },
+    {
+      "id": "voice_wang_elder",
+      "npcId": "wang",
+      "npcName": "王奶奶",
+      "role": "長者",
+      "text": "短期施工我們忍得住，別只發券不治本。",
+      "tags": [
+        "取捨",
+        "信任"
+      ],
+      "hintPolicyIds": [
+        "policy_clear_drain",
+        "policy_boardwalk"
+      ],
+      "articleId": "article_drain",
+      "storyStage": "decide",
+      "actionHint": "你可以：忍短期施工，優先清排水或修步道。",
+      "actionOptionIds": [
+        "act_clear_drain",
+        "act_boardwalk"
+      ]
+    },
+    {
+      "id": "voice_mei_coupon",
+      "npcId": "mei",
+      "npcName": "阿美",
+      "role": "攤商",
+      "text": "消費券能暖場，但空架還是賣不成笑容。",
+      "tags": [
+        "經濟"
+      ],
+      "hintPolicyIds": [
+        "policy_coupon",
+        "policy_logistics_hub"
+      ],
+      "articleId": "article_market",
+      "storyStage": "decide",
+      "actionHint": "你可以：消費券只當配角，主角還是疏通車流。",
+      "actionOptionIds": [
+        "act_drain_coupon",
+        "act_market_coupon",
+        "act_logistics_hub"
+      ]
+    },
+    {
+      "id": "voice_bo_waste",
+      "npcId": "bo",
+      "npcName": "阿博",
+      "role": "水道工",
+      "text": "垃圾車準點了，清淤才不會白做工。",
+      "tags": [
+        "環境",
+        "物流"
+      ],
+      "hintPolicyIds": [
+        "policy_clear_drain",
+        "policy_logistics_hub"
+      ],
+      "articleId": "article_supply",
+      "storyStage": "decide",
+      "actionHint": "你可以：讓垃圾車優先通行，再設緩衝站分流。",
+      "actionOptionIds": [
+        "act_logistics_hub",
+        "act_clear_lane"
+      ]
+    }
+  ],
+  "decisionPrompt": {
+    "title": "選卡前先問三件事",
+    "questions": [
+      "這張卡改哪條法則？",
+      "它的副作用我接受嗎？",
+      "點數用完後，最要緊的問題解決了嗎？"
+    ]
+  },
+  "actionOptions": [
+    {
+      "id": "act_clear_drain",
+      "articleId": "article_drain",
+      "relatedEventId": "event_flood_risk",
+      "policyId": "policy_clear_drain",
+      "verdict": "對症",
+      "verb": "先清排水口",
+      "label": "請清淤隊先把排水口清乾淨",
+      "why": "報導說落石與垃圾堵住排水口，雨一大就會淹到低窪巷弄。",
+      "tradeoff": "要花錢，工程車進場時短期可能更塞。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_yan"
+      ],
+      "voiceIds": [
+        "voice_bo_drain",
+        "voice_wang_elder"
+      ]
+    },
+    {
+      "id": "act_drain_coupon",
+      "articleId": "article_drain",
+      "relatedEventId": "event_flood_risk",
+      "policyId": "policy_coupon",
+      "verdict": "治標",
+      "verb": "先發消費券安撫",
+      "label": "先發市集消費券，讓居民心情好一點",
+      "why": "買氣會暫時回來，居民比較有精神。",
+      "tradeoff": "排水沒有變好，下雨還是會淹。",
+      "staffIds": [
+        "staff_shi"
+      ],
+      "voiceIds": [
+        "voice_mei_coupon"
+      ]
+    },
+    {
+      "id": "act_boardwalk",
+      "articleId": "article_market",
+      "relatedEventId": "event_market_slump",
+      "policyId": "policy_boardwalk",
+      "verdict": "對症",
+      "verb": "加固步道木棧",
+      "label": "把泥濘步道修好，讓遊客和公車願意進城",
+      "why": "報導說遊客被泥濘勸退，公車載客也往下掉。",
+      "tradeoff": "施工期間部分路段封閉，短期壅塞可能先升。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_an"
+      ],
+      "voiceIds": [
+        "voice_mei_market",
+        "voice_kai_bus",
+        "voice_wang_elder"
+      ]
+    },
+    {
+      "id": "act_market_coupon",
+      "articleId": "article_market",
+      "relatedEventId": "event_market_slump",
+      "policyId": "policy_coupon",
+      "verdict": "治標",
+      "verb": "發市集消費券",
+      "label": "發消費券刺激買氣，讓攤位先熱鬧起來",
+      "why": "花費少，居民馬上有感。",
+      "tradeoff": "貨若還是遲到，攤位照樣空架；最好搭配疏運或修路。",
+      "staffIds": [
+        "staff_shi",
+        "staff_cheng"
+      ],
+      "voiceIds": [
+        "voice_mei_coupon"
+      ]
+    },
+    {
+      "id": "act_water_test",
+      "articleId": "article_well",
+      "relatedEventId": "event_rumor_well",
+      "policyId": "policy_water_test",
+      "verdict": "對症",
+      "verb": "公開水質檢測",
+      "label": "請醫院和公所檢測井水，並把結果貼出來",
+      "why": "報導說沒有公開資料時，傳聞會自己長大。",
+      "tradeoff": "若結果不好，下一季可能還要追加預算。",
+      "staffIds": [
+        "staff_xin",
+        "staff_cheng"
+      ],
+      "voiceIds": [
+        "voice_zhen_parent"
+      ]
+    },
+    {
+      "id": "act_water_lane",
+      "articleId": "article_well",
+      "relatedEventId": "event_rumor_well",
+      "policyId": "policy_logistics_hub",
+      "verdict": "搭配",
+      "verb": "讓供水車準時到",
+      "label": "在峽口設緩衝站，讓供水車和檢測器材不再遲到",
+      "why": "報導說供水車塞車遲到，澄清就變慢。",
+      "tradeoff": "要佔用一塊空地，設置成本高；但它不能取代公開檢測。",
+      "staffIds": [
+        "staff_an"
+      ],
+      "voiceIds": [
+        "voice_lin_observe"
+      ]
+    },
+    {
+      "id": "act_logistics_hub",
+      "articleId": "article_supply",
+      "relatedEventId": "event_supply_delay",
+      "policyId": "policy_logistics_hub",
+      "verdict": "對症",
+      "verb": "設物流緩衝站",
+      "label": "在峽口設臨時緩衝站，小貨車改走短程配送",
+      "why": "峽口一卡，蔬果、垃圾車、供水車一起遲到。",
+      "tradeoff": "短期花錢，還得佔一塊空地。",
+      "staffIds": [
+        "staff_an",
+        "staff_shi"
+      ],
+      "voiceIds": [
+        "voice_mei_market",
+        "voice_lin_observe",
+        "voice_kai_bus",
+        "voice_bo_waste",
+        "voice_mei_coupon"
+      ]
+    },
+    {
+      "id": "act_clear_lane",
+      "articleId": "article_supply",
+      "relatedEventId": "event_supply_delay",
+      "policyId": "policy_clear_drain",
+      "verdict": "搭配",
+      "verb": "讓清運車優先通行",
+      "label": "清淤隊進場，順便讓垃圾車和工程車走優先車道",
+      "why": "垃圾車準時，排水口才不會又被落葉堵回去。",
+      "tradeoff": "工程車佔道，可能短暫塞車。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_yan"
+      ],
+      "voiceIds": [
+        "voice_bo_waste"
+      ]
+    }
+  ],
+  "verdictLegend": {
+    "對症": "直接處理報導裡的核心問題",
+    "搭配": "單獨效果有限，和對症卡一起用更好",
+    "治標": "讓人暫時舒服，但問題還在"
+  },
+  "storyStage": "decide"
+}

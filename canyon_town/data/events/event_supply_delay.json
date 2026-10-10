@@ -1,0 +1,24 @@
+{
+  "id": "event_supply_delay",
+  "title": "進貨車卡在峽口",
+  "who": "小貨車司機／阿美",
+  "when": "season_mid",
+  "conditions": {
+    "seasonPhase": "mid",
+    "traffic": { "congestion": { "gte": 2 } },
+    "cargoBlocked": ["produce", "market_stock"]
+  },
+  "summary": "雨後落石加上車流，載蔬果與市集存貨的小貨車晚點，攤位缺貨。",
+  "problem": "物資延誤直接打擊獲利，也讓居民覺得「城市變不方便」。",
+  "evidence": ["準點率下降", "市集空架增多", "外送機車改繞遠路"],
+  "consequences": "若不疏導車流或開物流緩衝，市集蕭條與幸福度會一起惡化。",
+  "deltas": { "money": -35, "profit": -40, "happiness": -4, "points": 0 },
+  "logistics": {
+    "blockedVehicles": ["light_truck", "scooter"],
+    "blockedCargo": ["produce", "market_stock", "food_delivery"],
+    "metricHits": { "onTimeRate": -0.18, "congestion": 1 }
+  },
+  "tags": ["物流", "經濟"],
+  "baselineSeverity": 3,
+  "newspaperHeadline": "峽口車潮卡關　市集進貨遲到"
+}

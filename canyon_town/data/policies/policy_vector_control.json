@@ -1,0 +1,187 @@
+{
+  "id": "policy_vector_control",
+  "name": "疫苗滅蚊行動",
+  "cost": 2,
+  "blurb": "設疫苗接種站、衛教與社區滅蚊，清除孳生源；預防型的公共衛生行動。",
+  "solves": [],
+  "rule_patches": {
+    "vectorControl": 2,
+    "vaccineCoverage": 1
+  },
+  "deltas": {
+    "money": -55,
+    "profit": 0,
+    "happiness": 8
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "要持續投入；對井水或食安疑慮不是答案；疫苗要在流行前就接種才最有效。",
+  "preview": "預估：金錢 -55、幸福度 +8；登革熱與流感傳染降溫。",
+  "costPoints": 2,
+  "tags": [
+    "衛生",
+    "防疫",
+    "預防"
+  ],
+  "counters": [
+    "mosquito",
+    "epidemic",
+    "flu"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_vector_control.webp",
+    "icon": "assets/sprites/cards/icons/icon_vector_control.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "💉",
+    "accent": "#7cc46b",
+    "fxHint": "fx_vaccine_booth"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "衛生／防疫",
+    "rarity": "常見",
+    "titleShort": "疫苗滅蚊",
+    "costBadge": "2 點",
+    "shopLine": "疫苗加滅蚊，把疫情擋在門外。",
+    "effectLine": "接種站與社區滅蚊；登革熱、流感都降溫。",
+    "flavor": "小小一針，是最便宜的保險。",
+    "learnPoint": "這張牌教你：防疫要提前，而且要對準傳染途徑。",
+    "bullets": [
+      "對症：登革熱、流感",
+      "幸福度 +8",
+      "不處理水質與食安"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -55,
+        "text": "金錢 -55"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 8,
+        "text": "幸福度 +8"
+      }
+    ],
+    "tradeoffLine": "要持續投入；對井水或食安疑慮不是答案；疫苗要在流行前就接種才最有效。"
+  },
+  "shopBlurb": "疫苗加滅蚊，把疫情擋在門外。",
+  "shopLine": "2 點｜疫苗加滅蚊，把疫情擋在門外。",
+  "executeId": "exec_vector_control",
+  "fx": {
+    "street": [
+      "fx_vaccine_booth",
+      "fx_mosquito_spray"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1800,
+    "effect": {
+      "flows": {
+        "foot": 2,
+        "vehicle": 0,
+        "tourist": 1,
+        "security": 0
+      },
+      "flowKind": "timed",
+      "durationSeasons": 3,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "health": -22,
+        "safety": -3,
+        "market": -2
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "normal",
+      "summary": "人流+2、遊客+1（3 季）；衛生民怨-22、治安民怨-3"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_hu",
+      "staff_xin"
+    ],
+    "radarWeights": {
+      "logistics": 0.1,
+      "safety": 0.3,
+      "health": 0.9,
+      "engineering": 0.1,
+      "economy": 0.2,
+      "communication": 0.6
+    }
+  },
+  "actionOptionIds": [
+    "act_vector_control"
+  ],
+  "fromArticleIds": [
+    "art_evp_health_dengue",
+    "art_evp_health_flu"
+  ],
+  "verdictByOption": {
+    "act_vector_control": "對症"
+  },
+  "complaintCounters": [
+    "health",
+    "safety",
+    "market"
+  ],
+  "complaintDelta": {
+    "health": -22,
+    "safety": -3,
+    "market": -2
+  },
+  "complaintRebound": {},
+  "complaintNote": "對症防疫；對其他領域幫助很小。",
+  "eventEffects": {
+    "cure": [
+      "evp_health_dengue",
+      "evp_health_flu"
+    ],
+    "assist": [],
+    "palliative": [
+      "evp_health_foodpoison"
+    ],
+    "backfire": []
+  },
+  "policyType": "hard",
+  "typeLabel": "硬建設／公共服務",
+  "realWorldAnalog": "公共衛生服務：接種站、孳生源清除與社區防治。",
+  "topicCounters": [
+    "mosquito",
+    "epidemic",
+    "flu"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_health_dengue",
+    "evp_health_flu"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_health_dengue",
+    "evp_health_flu"
+  ],
+  "solvesPoolConditional": []
+}

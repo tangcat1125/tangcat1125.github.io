@@ -1,0 +1,2656 @@
+{
+  "id": "advisor_panel_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "note": "Stage G「公所貓貓建議區」文案：建議／執行中／執行評估三段。長句版本仍用 G.DATA.staffReactive（staffReact）；本檔補標題與簡短版、每張卡的執行步驟、執行後自評。全部虛構。",
+  "panel": {
+    "title": "公所貓貓建議區",
+    "sections": {
+      "advise": "貓貓建議",
+      "execute": "執行中",
+      "evaluate": "執行評估"
+    },
+    "empty": {
+      "advise": "本季還沒有建議，先讀讀報紙吧。",
+      "execute": "還沒有要執行的卡。",
+      "evaluate": "結報後會出現自評。"
+    },
+    "buttons": {
+      "skip": "跳過動畫",
+      "next": "下一步",
+      "close": "知道了"
+    }
+  },
+  "placeholders": {
+    "staff": "執行職員名（staffFit.bestStaffIds 第一位，或玩家委任的職員）",
+    "place": "地點（eventPool.vars.place）",
+    "card": "政策卡名",
+    "event": "事件標題",
+    "domain": "領域名（排水／市集…）",
+    "n": "數字（民怨變化或拖延季數）",
+    "sevFrom": "處理前嚴重度",
+    "sevTo": "處理後嚴重度"
+  },
+  "lengthRules": {
+    "title": 10,
+    "short": 18,
+    "step": 18,
+    "eval": 30,
+    "countNote": "字數以替換後長度估算：{staff}/{place}=3、{card}/{event}=8、{domain}/{n}=2、{sevFrom}/{sevTo}=1。eval ≤30 對齊職員街景台詞規範（≤30 字）；title／short／step 為建議區小框。"
+  },
+  "staffReact": {
+    "note": "既有 staff_reactive 的 8 情境（長句 lines 仍在 G.DATA.staffReactive）＋建議區新增 4 情境（executing／palliative_only／assist_partial／no_action）。每情境 3 個標題＋6 個簡短版。",
+    "situations": [
+      {
+        "id": "backfire",
+        "label": "反效果",
+        "tone": "warn",
+        "source": "staff_reactive",
+        "titles": [
+          {
+            "id": "adv_backfire_t1",
+            "text": "出現副作用"
+          },
+          {
+            "id": "adv_backfire_t2",
+            "text": "這張卡用錯時機"
+          },
+          {
+            "id": "adv_backfire_t3",
+            "text": "情況變糟了"
+          }
+        ],
+        "shorts": [
+          {
+            "id": "adv_backfire_s1",
+            "text": "「{card}」帶來副作用了"
+          },
+          {
+            "id": "adv_backfire_s2",
+            "text": "{domain}民怨多了 {n} 點"
+          },
+          {
+            "id": "adv_backfire_s3",
+            "text": "時機不對，先看成因"
+          },
+          {
+            "id": "adv_backfire_s4",
+            "text": "卡片副作用欄要讀喔"
+          },
+          {
+            "id": "adv_backfire_s5",
+            "text": "失敗也是線索，別灰心"
+          },
+          {
+            "id": "adv_backfire_s6",
+            "text": "這張卡會讓誰不方便？"
+          }
+        ]
+      },
+      {
+        "id": "furious_warning",
+        "label": "爆怒警告",
+        "tone": "warn",
+        "source": "staff_reactive",
+        "titles": [
+          {
+            "id": "adv_furious_warning_t1",
+            "text": "民怨快爆了"
+          },
+          {
+            "id": "adv_furious_warning_t2",
+            "text": "{domain}亮紅燈"
+          },
+          {
+            "id": "adv_furious_warning_t3",
+            "text": "居民很生氣"
+          }
+        ],
+        "shorts": [
+          {
+            "id": "adv_furious_warning_s1",
+            "text": "{domain}民怨快到頂了"
+          },
+          {
+            "id": "adv_furious_warning_s2",
+            "text": "這季一定要處理{domain}"
+          },
+          {
+            "id": "adv_furious_warning_s3",
+            "text": "居民在公所外排隊抱怨"
+          },
+          {
+            "id": "adv_furious_warning_s4",
+            "text": "先救最急的那一件"
+          },
+          {
+            "id": "adv_furious_warning_s5",
+            "text": "再拖下去會更難收拾"
+          },
+          {
+            "id": "adv_furious_warning_s6",
+            "text": "點數先花在{domain}吧"
+          }
+        ]
+      },
+      {
+        "id": "unresolved_streak",
+        "label": "連續未解決",
+        "tone": "warn",
+        "source": "staff_reactive",
+        "titles": [
+          {
+            "id": "adv_unresolved_streak_t1",
+            "text": "拖太久了"
+          },
+          {
+            "id": "adv_unresolved_streak_t2",
+            "text": "事件還沒解決"
+          },
+          {
+            "id": "adv_unresolved_streak_t3",
+            "text": "又多拖一季"
+          }
+        ],
+        "shorts": [
+          {
+            "id": "adv_unresolved_streak_s1",
+            "text": "{event}已經拖 {n} 季"
+          },
+          {
+            "id": "adv_unresolved_streak_s2",
+            "text": "拖越久，影響越大"
+          },
+          {
+            "id": "adv_unresolved_streak_s3",
+            "text": "這件事需要對症卡"
+          },
+          {
+            "id": "adv_unresolved_streak_s4",
+            "text": "別讓它再拖一季"
+          },
+          {
+            "id": "adv_unresolved_streak_s5",
+            "text": "回頭讀讀它的線索"
+          },
+          {
+            "id": "adv_unresolved_streak_s6",
+            "text": "先處理拖最久的那件"
+          }
+        ]
+      },
+      {
+        "id": "advised_ignored",
+        "label": "建議被忽略",
+        "tone": "teach",
+        "source": "staff_reactive",
+        "titles": [
+          {
+            "id": "adv_advised_ignored_t1",
+            "text": "沒照建議走"
+          },
+          {
+            "id": "adv_advised_ignored_t2",
+            "text": "換個角度想想"
+          },
+          {
+            "id": "adv_advised_ignored_t3",
+            "text": "建議沒被採用"
+          }
+        ],
+        "shorts": [
+          {
+            "id": "adv_advised_ignored_s1",
+            "text": "上次的建議沒派上用場"
+          },
+          {
+            "id": "adv_advised_ignored_s2",
+            "text": "沒關係，一起看結果"
+          },
+          {
+            "id": "adv_advised_ignored_s3",
+            "text": "比比看建議與選擇"
+          },
+          {
+            "id": "adv_advised_ignored_s4",
+            "text": "下次可以先問我們"
+          },
+          {
+            "id": "adv_advised_ignored_s5",
+            "text": "結果會告訴我們答案"
+          },
+          {
+            "id": "adv_advised_ignored_s6",
+            "text": "選擇不同，也能學到"
+          }
+        ]
+      },
+      {
+        "id": "advised_success",
+        "label": "聽建議且成功",
+        "tone": "praise",
+        "source": "staff_reactive",
+        "titles": [
+          {
+            "id": "adv_advised_success_t1",
+            "text": "合作成功"
+          },
+          {
+            "id": "adv_advised_success_t2",
+            "text": "建議奏效了"
+          },
+          {
+            "id": "adv_advised_success_t3",
+            "text": "一起做到了"
+          }
+        ],
+        "shorts": [
+          {
+            "id": "adv_advised_success_s1",
+            "text": "照計畫走，成功了！"
+          },
+          {
+            "id": "adv_advised_success_s2",
+            "text": "「{card}」用得剛剛好"
+          },
+          {
+            "id": "adv_advised_success_s3",
+            "text": "{event}解決了，讚！"
+          },
+          {
+            "id": "adv_advised_success_s4",
+            "text": "團隊合作最有力"
+          },
+          {
+            "id": "adv_advised_success_s5",
+            "text": "居民都說公所很棒"
+          },
+          {
+            "id": "adv_advised_success_s6",
+            "text": "這次的判斷很準確"
+          }
+        ]
+      },
+      {
+        "id": "alt_success",
+        "label": "選了別條路也成功",
+        "tone": "praise",
+        "source": "staff_reactive",
+        "titles": [
+          {
+            "id": "adv_alt_success_t1",
+            "text": "另闢蹊徑"
+          },
+          {
+            "id": "adv_alt_success_t2",
+            "text": "你的方法也行"
+          },
+          {
+            "id": "adv_alt_success_t3",
+            "text": "換條路也成功"
+          }
+        ],
+        "shorts": [
+          {
+            "id": "adv_alt_success_s1",
+            "text": "沒照建議也成功了"
+          },
+          {
+            "id": "adv_alt_success_s2",
+            "text": "你的方法也對症"
+          },
+          {
+            "id": "adv_alt_success_s3",
+            "text": "原來還有這條路"
+          },
+          {
+            "id": "adv_alt_success_s4",
+            "text": "{event}解決了，好樣的"
+          },
+          {
+            "id": "adv_alt_success_s5",
+            "text": "多一種解法，真好"
+          },
+          {
+            "id": "adv_alt_success_s6",
+            "text": "下次換我學你的方法"
+          }
+        ]
+      },
+      {
+        "id": "praise_decrease",
+        "label": "民怨下降",
+        "tone": "praise",
+        "source": "staff_reactive",
+        "titles": [
+          {
+            "id": "adv_praise_decrease_t1",
+            "text": "民怨下降了"
+          },
+          {
+            "id": "adv_praise_decrease_t2",
+            "text": "居民笑了"
+          },
+          {
+            "id": "adv_praise_decrease_t3",
+            "text": "{domain}好轉"
+          }
+        ],
+        "shorts": [
+          {
+            "id": "adv_praise_decrease_s1",
+            "text": "{domain}民怨降了 {n} 點"
+          },
+          {
+            "id": "adv_praise_decrease_s2",
+            "text": "居民的抱怨變少了"
+          },
+          {
+            "id": "adv_praise_decrease_s3",
+            "text": "繼續保持這個節奏"
+          },
+          {
+            "id": "adv_praise_decrease_s4",
+            "text": "街上的笑聲變多了"
+          },
+          {
+            "id": "adv_praise_decrease_s5",
+            "text": "這季的努力有看到"
+          },
+          {
+            "id": "adv_praise_decrease_s6",
+            "text": "民怨降，流量會回來"
+          }
+        ]
+      },
+      {
+        "id": "stable",
+        "label": "平穩",
+        "tone": "neutral",
+        "source": "staff_reactive",
+        "titles": [
+          {
+            "id": "adv_stable_t1",
+            "text": "一切平穩"
+          },
+          {
+            "id": "adv_stable_t2",
+            "text": "這季很安靜"
+          },
+          {
+            "id": "adv_stable_t3",
+            "text": "城市很平靜"
+          }
+        ],
+        "shorts": [
+          {
+            "id": "adv_stable_s1",
+            "text": "這季沒什麼大事"
+          },
+          {
+            "id": "adv_stable_s2",
+            "text": "可以留點數應變"
+          },
+          {
+            "id": "adv_stable_s3",
+            "text": "趁平穩做預防吧"
+          },
+          {
+            "id": "adv_stable_s4",
+            "text": "看看哪裡還能更好"
+          },
+          {
+            "id": "adv_stable_s5",
+            "text": "平穩也是一種成果"
+          },
+          {
+            "id": "adv_stable_s6",
+            "text": "街上大家都很自在"
+          }
+        ]
+      },
+      {
+        "id": "executing",
+        "label": "執行中",
+        "tone": "neutral",
+        "source": "advisor_panel",
+        "titles": [
+          {
+            "id": "adv_executing_t1",
+            "text": "正在執行"
+          },
+          {
+            "id": "adv_executing_t2",
+            "text": "出發囉"
+          },
+          {
+            "id": "adv_executing_t3",
+            "text": "大家動起來"
+          }
+        ],
+        "shorts": [
+          {
+            "id": "adv_executing_s1",
+            "text": "{staff}帶隊出發了"
+          },
+          {
+            "id": "adv_executing_s2",
+            "text": "「{card}」執行中…"
+          },
+          {
+            "id": "adv_executing_s3",
+            "text": "{place}正在施作"
+          },
+          {
+            "id": "adv_executing_s4",
+            "text": "請稍等，馬上回報"
+          },
+          {
+            "id": "adv_executing_s5",
+            "text": "大家分工合作中"
+          },
+          {
+            "id": "adv_executing_s6",
+            "text": "做完就回來報告"
+          }
+        ]
+      },
+      {
+        "id": "palliative_only",
+        "label": "只治標",
+        "tone": "teach",
+        "source": "advisor_panel",
+        "titles": [
+          {
+            "id": "adv_palliative_only_t1",
+            "text": "先止血"
+          },
+          {
+            "id": "adv_palliative_only_t2",
+            "text": "症狀壓下來了"
+          },
+          {
+            "id": "adv_palliative_only_t3",
+            "text": "暫時安靜了"
+          }
+        ],
+        "shorts": [
+          {
+            "id": "adv_palliative_only_s1",
+            "text": "症狀先壓下來了"
+          },
+          {
+            "id": "adv_palliative_only_s2",
+            "text": "{event}原因還在"
+          },
+          {
+            "id": "adv_palliative_only_s3",
+            "text": "下季可能會反彈"
+          },
+          {
+            "id": "adv_palliative_only_s4",
+            "text": "先喘口氣，再治本"
+          },
+          {
+            "id": "adv_palliative_only_s5",
+            "text": "治標便宜，但別常用"
+          },
+          {
+            "id": "adv_palliative_only_s6",
+            "text": "記得準備對症卡"
+          }
+        ]
+      },
+      {
+        "id": "assist_partial",
+        "label": "輔助見效",
+        "tone": "teach",
+        "source": "advisor_panel",
+        "titles": [
+          {
+            "id": "adv_assist_partial_t1",
+            "text": "幫上一點"
+          },
+          {
+            "id": "adv_assist_partial_t2",
+            "text": "問題變小了"
+          },
+          {
+            "id": "adv_assist_partial_t3",
+            "text": "還差一步"
+          }
+        ],
+        "shorts": [
+          {
+            "id": "adv_assist_partial_s1",
+            "text": "{event}變小了一點"
+          },
+          {
+            "id": "adv_assist_partial_s2",
+            "text": "嚴重度 {sevFrom}→{sevTo}"
+          },
+          {
+            "id": "adv_assist_partial_s3",
+            "text": "方向對，力道不夠"
+          },
+          {
+            "id": "adv_assist_partial_s4",
+            "text": "還要一張對症卡"
+          },
+          {
+            "id": "adv_assist_partial_s5",
+            "text": "輔助卡要搭配主角"
+          },
+          {
+            "id": "adv_assist_partial_s6",
+            "text": "成因還沒處理完"
+          }
+        ]
+      },
+      {
+        "id": "no_action",
+        "label": "本季沒出手",
+        "tone": "warn",
+        "source": "advisor_panel",
+        "titles": [
+          {
+            "id": "adv_no_action_t1",
+            "text": "這季沒出手"
+          },
+          {
+            "id": "adv_no_action_t2",
+            "text": "點數還留著"
+          },
+          {
+            "id": "adv_no_action_t3",
+            "text": "事件在等你"
+          }
+        ],
+        "shorts": [
+          {
+            "id": "adv_no_action_s1",
+            "text": "這季沒有打任何卡"
+          },
+          {
+            "id": "adv_no_action_s2",
+            "text": "沒處理的事會變大"
+          },
+          {
+            "id": "adv_no_action_s3",
+            "text": "{event}還在原地"
+          },
+          {
+            "id": "adv_no_action_s4",
+            "text": "點數留著也要用"
+          },
+          {
+            "id": "adv_no_action_s5",
+            "text": "績效補助會拿不到"
+          },
+          {
+            "id": "adv_no_action_s6",
+            "text": "下季記得先處理"
+          }
+        ]
+      }
+    ]
+  },
+  "execution": {
+    "note": "每張卡 3–4 步；durationHint 為毫秒（第一步 1200、中間 1800、回報 1400），可依 fx.durationMs 等比縮放。最後一步一律「回報：…」。resultHint＝fx.effect.summary。",
+    "cards": [
+      {
+        "cardId": "policy_clear_drain",
+        "executeId": "exec_clear_drain",
+        "cardName": "緊急清淤隊",
+        "staffIds": [
+          "staff_xiu",
+          "staff_yan"
+        ],
+        "steps": [
+          {
+            "id": "step_clear_drain_1",
+            "text": "{staff}帶清淤隊到{place}",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_clear_drain_2",
+            "text": "掀開水溝蓋，清出落葉垃圾",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_clear_drain_3",
+            "text": "抽出淤泥裝袋運走",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_clear_drain_4",
+            "text": "回報：排水口暢通",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+1（2 季）；排水民怨-25、治安民怨-8"
+      },
+      {
+        "cardId": "policy_boardwalk",
+        "executeId": "exec_boardwalk",
+        "cardName": "步道木棧加固",
+        "staffIds": [
+          "staff_xiu",
+          "staff_an"
+        ],
+        "steps": [
+          {
+            "id": "step_boardwalk_1",
+            "text": "工務貓貓量測破損木板",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_boardwalk_2",
+            "text": "換上新木板、鎖緊螺絲",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_boardwalk_3",
+            "text": "回報：步道好走了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+2、遊客+5（永久）；市集民怨-20、交通民怨-5；店家營收 +3%"
+      },
+      {
+        "cardId": "policy_coupon",
+        "executeId": "exec_coupon",
+        "cardName": "市集消費券",
+        "staffIds": [
+          "staff_shi",
+          "staff_cheng"
+        ],
+        "steps": [
+          {
+            "id": "step_coupon_1",
+            "text": "{staff}到市集發消費券",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_coupon_2",
+            "text": "攤商貼出「可用券」小牌",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_coupon_3",
+            "text": "回報：攤位暫時熱鬧",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "市集民怨-8；店家營收 +15%"
+      },
+      {
+        "cardId": "policy_water_test",
+        "executeId": "exec_water_test",
+        "cardName": "公開水質檢測",
+        "staffIds": [
+          "staff_xin",
+          "staff_cheng"
+        ],
+        "steps": [
+          {
+            "id": "step_water_test_1",
+            "text": "採水員到{place}取水樣",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_water_test_2",
+            "text": "送檢驗室化驗水質",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_water_test_3",
+            "text": "結果貼上公布欄",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_water_test_4",
+            "text": "回報：檢測結果已公開",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、遊客+2（3 季）；衛生民怨-28、市集民怨-3"
+      },
+      {
+        "cardId": "policy_logistics_hub",
+        "executeId": "exec_logistics_hub",
+        "cardName": "臨時物流緩衝站",
+        "staffIds": [
+          "staff_an",
+          "staff_shi"
+        ],
+        "steps": [
+          {
+            "id": "step_logistics_hub_1",
+            "text": "在{place}外圍畫出暫置場",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_logistics_hub_2",
+            "text": "貨車先進站排好時段",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_logistics_hub_3",
+            "text": "分批錯峰送進街區",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_logistics_hub_4",
+            "text": "回報：主街不再卡貨車",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+4（永久）；物流民怨-24、交通民怨-22；店家營收 +3%"
+      },
+      {
+        "cardId": "policy_rain_garden",
+        "executeId": "exec_rain_garden",
+        "cardName": "雨水花園滯洪池",
+        "staffIds": [
+          "staff_xiu",
+          "staff_jing"
+        ],
+        "steps": [
+          {
+            "id": "step_rain_garden_1",
+            "text": "{staff}選定低窪空地",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_rain_garden_2",
+            "text": "挖出淺池、鋪上石頭",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_rain_garden_3",
+            "text": "種下蘆葦與小花",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_rain_garden_4",
+            "text": "回報：滯洪池完工",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、遊客+3（永久）；排水民怨-20、治安民怨-6；店家營收 -3%（短期）"
+      },
+      {
+        "cardId": "policy_vendor_shift",
+        "executeId": "exec_vendor_shift",
+        "cardName": "攤販輪班夜市整頓",
+        "staffIds": [
+          "staff_shi",
+          "staff_wen"
+        ],
+        "steps": [
+          {
+            "id": "step_vendor_shift_1",
+            "text": "{staff}和攤商排輪班表",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_vendor_shift_2",
+            "text": "地上畫出擺攤格線",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_vendor_shift_3",
+            "text": "回報：夜市動線順了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+3、遊客+2（永久）；市集民怨-14、交通民怨-3；店家營收 +5%"
+      },
+      {
+        "cardId": "policy_cold_chain",
+        "executeId": "exec_cold_chain",
+        "cardName": "冷鏈冷藏車",
+        "staffIds": [
+          "staff_tian",
+          "staff_tong"
+        ],
+        "steps": [
+          {
+            "id": "step_cold_chain_1",
+            "text": "冷藏車到產地接貨",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_cold_chain_2",
+            "text": "生鮮裝箱、保持低溫",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_cold_chain_3",
+            "text": "依專用時段送進市集",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_cold_chain_4",
+            "text": "回報：生鮮新鮮到貨",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+1、遊客+2（永久）；物流民怨-16、衛生民怨-8；店家營收 +3%"
+      },
+      {
+        "cardId": "policy_bus_reroute",
+        "executeId": "exec_bus_reroute",
+        "cardName": "公車改道接駁巴士",
+        "staffIds": [
+          "staff_tong",
+          "staff_an"
+        ],
+        "steps": [
+          {
+            "id": "step_bus_reroute_1",
+            "text": "{staff}規劃新公車路線",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_bus_reroute_2",
+            "text": "站牌貼上改道公告",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_bus_reroute_3",
+            "text": "接駁巴士開始繞行",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_bus_reroute_4",
+            "text": "回報：公車準點多了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+5、遊客+1（永久）；交通民怨-20、市集民怨-4"
+      },
+      {
+        "cardId": "policy_vector_control",
+        "executeId": "exec_vector_control",
+        "cardName": "疫苗滅蚊行動",
+        "staffIds": [
+          "staff_hu",
+          "staff_xin"
+        ],
+        "steps": [
+          {
+            "id": "step_vector_control_1",
+            "text": "衛生所搭起接種帳篷",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_vector_control_2",
+            "text": "居民排隊接種疫苗",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_vector_control_3",
+            "text": "隊員噴藥、清孑孓",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_vector_control_4",
+            "text": "回報：蚊子變少了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+2、遊客+1（3 季）；衛生民怨-22、治安民怨-3"
+      },
+      {
+        "cardId": "policy_patrol_lights",
+        "executeId": "exec_patrol_lights",
+        "cardName": "社區巡守隊與路燈",
+        "staffIds": [
+          "staff_an",
+          "staff_min"
+        ],
+        "steps": [
+          {
+            "id": "step_patrol_lights_1",
+            "text": "暗巷裝上新路燈",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_patrol_lights_2",
+            "text": "巡守隊排好夜巡班表",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_patrol_lights_3",
+            "text": "拿手電筒巡過街角",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_patrol_lights_4",
+            "text": "回報：夜裡更安心",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、治安感+6（永久）；治安民怨-20、市集民怨-3"
+      },
+      {
+        "cardId": "policy_rescue_squad",
+        "executeId": "exec_rescue_squad",
+        "cardName": "緊急救援小隊",
+        "staffIds": [
+          "staff_yan",
+          "staff_an"
+        ],
+        "steps": [
+          {
+            "id": "step_rescue_squad_1",
+            "text": "{staff}集合救援小隊",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_rescue_squad_2",
+            "text": "小型水車推進窄巷演練",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_rescue_squad_3",
+            "text": "回報：救援隨時待命",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "治安感+3（永久）；治安民怨-24、排水民怨-4"
+      },
+      {
+        "cardId": "policy_fact_check",
+        "executeId": "exec_fact_check",
+        "cardName": "資訊查證站",
+        "staffIds": [
+          "staff_cheng",
+          "staff_hu"
+        ],
+        "steps": [
+          {
+            "id": "step_fact_check_1",
+            "text": "{staff}收集網路傳聞",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_fact_check_2",
+            "text": "比對原始圖片與紀錄",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_fact_check_3",
+            "text": "公開查證結果",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_fact_check_4",
+            "text": "回報：來源已說清楚",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "遊客+3（2 季）；衛生民怨-10、物流民怨-8"
+      },
+      {
+        "cardId": "policy_town_broadcast",
+        "executeId": "exec_town_broadcast",
+        "cardName": "公所公告廣播",
+        "staffIds": [
+          "staff_min",
+          "staff_cheng"
+        ],
+        "steps": [
+          {
+            "id": "step_town_broadcast_1",
+            "text": "{staff}寫好公告稿",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_town_broadcast_2",
+            "text": "廣播車繞街播報",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_town_broadcast_3",
+            "text": "回報：大家暫時放心",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "衛生民怨-6、市集民怨-4"
+      },
+      {
+        "cardId": "policy_pest_control",
+        "executeId": "exec_pest_control",
+        "cardName": "鼠害防治與廚餘管理",
+        "staffIds": [
+          "staff_jing",
+          "staff_hu"
+        ],
+        "steps": [
+          {
+            "id": "step_pest_control_1",
+            "text": "清潔隊幫廚餘桶加蓋",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_pest_control_2",
+            "text": "找出鼠洞、用碎石封好",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_pest_control_3",
+            "text": "定點放餌並公開位置",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_pest_control_4",
+            "text": "回報：鼠跡變少了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+2、遊客+1（3 季）；市集民怨-12、衛生民怨-10"
+      },
+      {
+        "cardId": "policy_food_safety",
+        "executeId": "exec_food_safety",
+        "cardName": "食安檢驗與留樣",
+        "staffIds": [
+          "staff_hu",
+          "staff_xin"
+        ],
+        "steps": [
+          {
+            "id": "step_food_safety_1",
+            "text": "衛生所到廚房抽檢",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_food_safety_2",
+            "text": "午餐留樣放進冰箱",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_food_safety_3",
+            "text": "補齊通報流程",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_food_safety_4",
+            "text": "回報：留樣與檢驗完成",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+2、遊客+2（3 季）；衛生民怨-16、市集民怨-4"
+      },
+      {
+        "cardId": "policy_vendor_audit",
+        "executeId": "exec_vendor_audit",
+        "cardName": "業者稽查與輔導",
+        "staffIds": [
+          "staff_min",
+          "staff_hu"
+        ],
+        "steps": [
+          {
+            "id": "step_vendor_audit_1",
+            "text": "稽查員到店家說明規定",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_vendor_audit_2",
+            "text": "一起檢查截油槽",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_vendor_audit_3",
+            "text": "約好改善期限並複查",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_vendor_audit_4",
+            "text": "回報：店家都改善了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、遊客+1（3 季）；排水民怨-10、衛生民怨-8；店家營收 -3%（短期）"
+      },
+      {
+        "cardId": "policy_wiring_subsidy",
+        "executeId": "exec_wiring_subsidy",
+        "cardName": "老屋電線檢修補助",
+        "staffIds": [
+          "staff_yan",
+          "staff_xiu"
+        ],
+        "steps": [
+          {
+            "id": "step_wiring_subsidy_1",
+            "text": "{staff}到老屋登記檢修",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_wiring_subsidy_2",
+            "text": "電工換掉老舊電線",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_wiring_subsidy_3",
+            "text": "檢查插座與開關",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_wiring_subsidy_4",
+            "text": "回報：老屋用電安全",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "遊客+1、治安感+3（永久）；治安民怨-22；店家營收 -2%（短期）"
+      },
+      {
+        "cardId": "policy_fire_lane",
+        "executeId": "exec_fire_lane",
+        "cardName": "防火巷與消防栓",
+        "staffIds": [
+          "staff_yan",
+          "staff_xiu"
+        ],
+        "steps": [
+          {
+            "id": "step_fire_lane_1",
+            "text": "清空防火巷堆放物",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_fire_lane_2",
+            "text": "畫上禁停紅線",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_fire_lane_3",
+            "text": "新增消防栓位置",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_fire_lane_4",
+            "text": "回報：消防車進得去",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+1、治安感+3（永久）；治安民怨-24；店家營收 -4%（短期）"
+      },
+      {
+        "cardId": "policy_smoke_alarm",
+        "executeId": "exec_smoke_alarm",
+        "cardName": "住警器補助",
+        "staffIds": [
+          "staff_yan",
+          "staff_min"
+        ],
+        "steps": [
+          {
+            "id": "step_smoke_alarm_1",
+            "text": "{staff}發放住警器",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_smoke_alarm_2",
+            "text": "幫長輩裝在天花板",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_smoke_alarm_3",
+            "text": "按測試鈕確認會響",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_smoke_alarm_4",
+            "text": "回報：住警器裝好了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "治安感+2（永久）；治安民怨-10"
+      },
+      {
+        "cardId": "policy_fire_drill",
+        "executeId": "exec_fire_drill",
+        "cardName": "消防宣導與防火演練",
+        "staffIds": [
+          "staff_yan",
+          "staff_min"
+        ],
+        "steps": [
+          {
+            "id": "step_fire_drill_1",
+            "text": "消防隊到社區宣導",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_fire_drill_2",
+            "text": "教大家檢查電線插座",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_fire_drill_3",
+            "text": "鈴響後全員演練逃生",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_fire_drill_4",
+            "text": "回報：演練順利完成",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "治安感+1（2 季）；治安民怨-6"
+      },
+      {
+        "cardId": "policy_cctv",
+        "executeId": "exec_cctv",
+        "cardName": "社區監視器",
+        "staffIds": [
+          "staff_an",
+          "staff_cheng"
+        ],
+        "steps": [
+          {
+            "id": "step_cctv_1",
+            "text": "{staff}勘查治安熱點",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_cctv_2",
+            "text": "在街角裝上監視器",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_cctv_3",
+            "text": "連線測試畫面",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_cctv_4",
+            "text": "回報：熱點有守護",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "治安感+5（永久）；治安民怨-18；店家營收 -2%（短期）"
+      },
+      {
+        "cardId": "policy_crime_edu",
+        "executeId": "exec_crime_edu",
+        "cardName": "防竊宣導與鄰里守望",
+        "staffIds": [
+          "staff_an",
+          "staff_min"
+        ],
+        "steps": [
+          {
+            "id": "step_crime_edu_1",
+            "text": "警局到市集發防竊單",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_crime_edu_2",
+            "text": "提醒遊客包包背前面",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_crime_edu_3",
+            "text": "鄰里互留聯絡方式",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_crime_edu_4",
+            "text": "回報：大家更警覺",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "治安感+1（2 季）；治安民怨-6"
+      },
+      {
+        "cardId": "policy_slope_guard",
+        "executeId": "exec_slope_guard",
+        "cardName": "邊坡檢查與護欄",
+        "staffIds": [
+          "staff_xiu",
+          "staff_yan"
+        ],
+        "steps": [
+          {
+            "id": "step_slope_guard_1",
+            "text": "工務貓貓巡查{place}邊坡",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_slope_guard_2",
+            "text": "標記鬆動的岩塊",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_slope_guard_3",
+            "text": "架起護欄與攔石網",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_slope_guard_4",
+            "text": "回報：邊坡加固完成",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+3、遊客+2、治安感+1（永久）；治安民怨-20"
+      },
+      {
+        "cardId": "policy_private_parking",
+        "executeId": "exec_private_parking",
+        "cardName": "鼓勵民間設停車場",
+        "staffIds": [
+          "staff_tong",
+          "staff_cheng"
+        ],
+        "steps": [
+          {
+            "id": "step_private_parking_1",
+            "text": "{staff}找空地業者洽談",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_private_parking_2",
+            "text": "外圍空地畫好車格",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_private_parking_3",
+            "text": "指標引導車輛停過去",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_private_parking_4",
+            "text": "回報：路邊違停變少",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、車流+3、遊客+2（永久）；交通民怨-16；店家營收 -2%（短期）"
+      },
+      {
+        "cardId": "policy_street_parking",
+        "executeId": "exec_street_parking",
+        "cardName": "路邊停車收費",
+        "staffIds": [
+          "staff_tong",
+          "staff_cheng"
+        ],
+        "steps": [
+          {
+            "id": "step_street_parking_1",
+            "text": "路邊畫上收費車格",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_street_parking_2",
+            "text": "裝好繳費機與告示",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_street_parking_3",
+            "text": "回報：路邊車位會流動",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+4（永久）；交通民怨-14；店家營收 -4%（短期）"
+      },
+      {
+        "cardId": "policy_traffic_safety",
+        "executeId": "exec_traffic_safety",
+        "cardName": "交通安全宣導",
+        "staffIds": [
+          "staff_tong",
+          "staff_min"
+        ],
+        "steps": [
+          {
+            "id": "step_traffic_safety_1",
+            "text": "交通課到路口宣導",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_traffic_safety_2",
+            "text": "發放錯峰出遊小卡",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_traffic_safety_3",
+            "text": "提醒駕駛禮讓行人",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_traffic_safety_4",
+            "text": "回報：宣導已完成",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+1、治安感+1（2 季）；交通民怨-5"
+      },
+      {
+        "cardId": "policy_food_edu",
+        "executeId": "exec_food_edu",
+        "cardName": "食安宣導與家長說明會",
+        "staffIds": [
+          "staff_hu",
+          "staff_min"
+        ],
+        "steps": [
+          {
+            "id": "step_food_edu_1",
+            "text": "{staff}辦家長說明會",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_food_edu_2",
+            "text": "說明午餐食材怎麼把關",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_food_edu_3",
+            "text": "回答家長提問",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_food_edu_4",
+            "text": "回報：疑問變少了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、遊客+1（2 季）；衛生民怨-6"
+      },
+      {
+        "cardId": "policy_rat_edu",
+        "executeId": "exec_rat_edu",
+        "cardName": "防鼠衛教與環境教育",
+        "staffIds": [
+          "staff_jing",
+          "staff_hu"
+        ],
+        "steps": [
+          {
+            "id": "step_rat_edu_1",
+            "text": "清潔隊到攤位衛教",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_rat_edu_2",
+            "text": "示範廚餘怎麼收好",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_rat_edu_3",
+            "text": "發防鼠小手冊",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_rat_edu_4",
+            "text": "回報：攤商更會防鼠",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1（2 季）；衛生民怨-5、市集民怨-3"
+      },
+      {
+        "cardId": "policy_town_hall",
+        "executeId": "exec_town_hall",
+        "cardName": "里民說明會",
+        "staffIds": [
+          "staff_min",
+          "staff_cheng"
+        ],
+        "steps": [
+          {
+            "id": "step_town_hall_1",
+            "text": "{staff}借好活動中心",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_town_hall_2",
+            "text": "說明目前處理進度",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_town_hall_3",
+            "text": "記下居民的問題",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_town_hall_4",
+            "text": "回報：說明會結束了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、遊客+1（2 季）；衛生民怨-3、市集民怨-3"
+      },
+      {
+        "cardId": "policy_flood_edu",
+        "executeId": "exec_flood_edu",
+        "cardName": "防汛自主防災宣導",
+        "staffIds": [
+          "staff_xiu",
+          "staff_jing"
+        ],
+        "steps": [
+          {
+            "id": "step_flood_edu_1",
+            "text": "工務課到社區講防汛",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_flood_edu_2",
+            "text": "示範沙包怎麼堆",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_flood_edu_3",
+            "text": "提醒別往水溝丟垃圾",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_flood_edu_4",
+            "text": "回報：防汛觀念有了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+1、治安感+1（2 季）；排水民怨-5"
+      },
+      {
+        "cardId": "policy_health_edu",
+        "executeId": "exec_health_edu",
+        "cardName": "衛生教育與防疫宣導",
+        "staffIds": [
+          "staff_hu",
+          "staff_xin"
+        ],
+        "steps": [
+          {
+            "id": "step_health_edu_1",
+            "text": "衛生所到學校衛教",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_health_edu_2",
+            "text": "示範正確洗手",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_health_edu_3",
+            "text": "提醒生病戴口罩",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_health_edu_4",
+            "text": "回報：大家更會防護",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1（2 季）；衛生民怨-6"
+      },
+      {
+        "cardId": "policy_runoff_control",
+        "executeId": "exec_runoff",
+        "cardName": "出流管制審查",
+        "staffIds": [
+          "staff_xiu",
+          "staff_cheng"
+        ],
+        "steps": [
+          {
+            "id": "step_runoff_control_1",
+            "text": "{staff}審查開發案圖說",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_runoff_control_2",
+            "text": "要求設置滯洪設施",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_runoff_control_3",
+            "text": "回報：新案自帶滯洪",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+2（永久）；排水民怨-12；店家營收 -2%（短期）"
+      },
+      {
+        "cardId": "policy_permeable",
+        "executeId": "exec_permeable",
+        "cardName": "透水鋪面與保水補助",
+        "staffIds": [
+          "staff_xiu",
+          "staff_jing"
+        ],
+        "steps": [
+          {
+            "id": "step_permeable_1",
+            "text": "{staff}公告保水補助",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_permeable_2",
+            "text": "店家換上透水鋪面",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_permeable_3",
+            "text": "下雨時檢查滲水",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_permeable_4",
+            "text": "回報：小積水變少了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、車流+1、遊客+1（永久）；排水民怨-10"
+      },
+      {
+        "cardId": "policy_pump_monitor",
+        "executeId": "exec_pump",
+        "cardName": "抽水站自動化與水情預警",
+        "staffIds": [
+          "staff_xiu",
+          "staff_xin"
+        ],
+        "steps": [
+          {
+            "id": "step_pump_monitor_1",
+            "text": "工務課檢修抽水機",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_pump_monitor_2",
+            "text": "裝上水位感測器",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_pump_monitor_3",
+            "text": "連線水情預警系統",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_pump_monitor_4",
+            "text": "回報：抽水站升級了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+2、治安感+1（永久）；排水民怨-18、治安民怨-4"
+      },
+      {
+        "cardId": "policy_flood_relief",
+        "executeId": "exec_flood_relief",
+        "cardName": "淹水保險與災後救助",
+        "staffIds": [
+          "staff_nuan",
+          "staff_suan"
+        ],
+        "steps": [
+          {
+            "id": "step_flood_relief_1",
+            "text": "{staff}受理災損申請",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_flood_relief_2",
+            "text": "到受災戶家中勘查",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_flood_relief_3",
+            "text": "撥付救助金",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_flood_relief_4",
+            "text": "回報：受災戶先撐住了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "排水民怨-8；店家健康度 +8"
+      },
+      {
+        "cardId": "policy_market_star",
+        "executeId": "exec_market_star",
+        "cardName": "市集星級評核與公開排名",
+        "staffIds": [
+          "staff_shi",
+          "staff_wen"
+        ],
+        "steps": [
+          {
+            "id": "step_market_star_1",
+            "text": "{staff}到各攤位評核",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_market_star_2",
+            "text": "依衛生與特色打星等",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_market_star_3",
+            "text": "公布星級排名",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_market_star_4",
+            "text": "回報：評核結果已公開",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+2、遊客+3（3 季）；市集民怨-5；店家營收 +5%"
+      },
+      {
+        "cardId": "policy_market_committee",
+        "executeId": "exec_market_committee",
+        "cardName": "攤販自治管理委員會",
+        "staffIds": [
+          "staff_shi",
+          "staff_min"
+        ],
+        "steps": [
+          {
+            "id": "step_market_committee_1",
+            "text": "攤商推選自治委員",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_market_committee_2",
+            "text": "訂好衛生與秩序公約",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_market_committee_3",
+            "text": "委員輪流巡市集",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_market_committee_4",
+            "text": "回報：自治會上路了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+3、遊客+1（永久）；市集民怨-12、治安民怨-2；店家營收 +3%；店家健康度 +5"
+      },
+      {
+        "cardId": "policy_loading_zone",
+        "executeId": "exec_loading_zone",
+        "cardName": "貨車裝卸專用區",
+        "staffIds": [
+          "staff_tong",
+          "staff_shi"
+        ],
+        "steps": [
+          {
+            "id": "step_loading_zone_1",
+            "text": "{staff}選定卸貨路段",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_loading_zone_2",
+            "text": "畫上限時裝卸車格",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_loading_zone_3",
+            "text": "回報：不再二排停車",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+4（永久）；物流民怨-10、交通民怨-8；店家營收 +2%"
+      },
+      {
+        "cardId": "policy_joint_delivery",
+        "executeId": "exec_joint_delivery",
+        "cardName": "共同配送",
+        "staffIds": [
+          "staff_tian",
+          "staff_tong"
+        ],
+        "steps": [
+          {
+            "id": "step_joint_delivery_1",
+            "text": "{staff}召集物流業者",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_joint_delivery_2",
+            "text": "貨物先在集貨點併車",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_joint_delivery_3",
+            "text": "一台車集中送進城",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_joint_delivery_4",
+            "text": "回報：進城車次變少",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+4（永久）；物流民怨-14、交通民怨-6；店家營收 +3%"
+      },
+      {
+        "cardId": "policy_delivery_subsidy",
+        "executeId": "exec_delivery_subsidy",
+        "cardName": "攤商外送合作補助",
+        "staffIds": [
+          "staff_shi",
+          "staff_suan"
+        ],
+        "steps": [
+          {
+            "id": "step_delivery_subsidy_1",
+            "text": "{staff}說明外送補助",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_delivery_subsidy_2",
+            "text": "攤商加入外送合作",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_delivery_subsidy_3",
+            "text": "外送機車開始接單",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_delivery_subsidy_4",
+            "text": "回報：攤商多了收入",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1（2 季）；市集民怨-6；店家營收 +8%；店家健康度 +5"
+      },
+      {
+        "cardId": "policy_walking_street",
+        "executeId": "exec_walking_street",
+        "cardName": "行人徒步區",
+        "staffIds": [
+          "staff_tong",
+          "staff_wen"
+        ],
+        "steps": [
+          {
+            "id": "step_walking_street_1",
+            "text": "{place}路口放上管制牌",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_walking_street_2",
+            "text": "車輛改走外圍道路",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_walking_street_3",
+            "text": "回報：徒步區開放了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+4、車流-1、遊客+3、治安感+1（永久）；交通民怨-8、市集民怨-6；店家營收 +5%"
+      },
+      {
+        "cardId": "policy_shared_parking",
+        "executeId": "exec_shared_parking",
+        "cardName": "共享車位媒合",
+        "staffIds": [
+          "staff_tong",
+          "staff_cheng"
+        ],
+        "steps": [
+          {
+            "id": "step_shared_parking_1",
+            "text": "{staff}盤點空檔車位",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_shared_parking_2",
+            "text": "媒合學校與店家車位",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_shared_parking_3",
+            "text": "貼上共享停車指標",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_shared_parking_4",
+            "text": "回報：空位用起來了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "車流+3、遊客+1（永久）；交通民怨-12"
+      },
+      {
+        "cardId": "policy_dengue_mobilize",
+        "executeId": "exec_dengue_mobilize",
+        "cardName": "孳生源清除社區動員",
+        "staffIds": [
+          "staff_hu",
+          "staff_min"
+        ],
+        "steps": [
+          {
+            "id": "step_dengue_mobilize_1",
+            "text": "里長廣播集合志工",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_dengue_mobilize_2",
+            "text": "挨家巡查積水容器",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_dengue_mobilize_3",
+            "text": "倒掉積水、刷洗容器",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_dengue_mobilize_4",
+            "text": "回報：孳生源清除了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+2、遊客+1（3 季）；衛生民怨-14"
+      },
+      {
+        "cardId": "policy_lunch_registry",
+        "executeId": "exec_lunch_registry",
+        "cardName": "午餐食材登錄追溯",
+        "staffIds": [
+          "staff_hu",
+          "staff_cheng"
+        ],
+        "steps": [
+          {
+            "id": "step_lunch_registry_1",
+            "text": "{staff}建好登錄系統",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_lunch_registry_2",
+            "text": "廠商每天登錄食材",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_lunch_registry_3",
+            "text": "家長可以查食材來源",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_lunch_registry_4",
+            "text": "回報：食材查得到",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、遊客+1（永久）；衛生民怨-10、市集民怨-2"
+      },
+      {
+        "cardId": "policy_kitchen_sorting",
+        "executeId": "exec_kitchen_sorting",
+        "cardName": "廚餘分流收運",
+        "staffIds": [
+          "staff_jing",
+          "staff_hu"
+        ],
+        "steps": [
+          {
+            "id": "step_kitchen_sorting_1",
+            "text": "市集後巷放分類桶",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_kitchen_sorting_2",
+            "text": "廚餘車定時來收運",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_kitchen_sorting_3",
+            "text": "廚餘送去做堆肥",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_kitchen_sorting_4",
+            "text": "回報：後巷乾淨了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、遊客+1（永久）；衛生民怨-10、市集民怨-4"
+      },
+      {
+        "cardId": "policy_rat_pro",
+        "executeId": "exec_rat_pro",
+        "cardName": "社區鼠類偵防",
+        "staffIds": [
+          "staff_hu",
+          "staff_jing"
+        ],
+        "steps": [
+          {
+            "id": "step_rat_pro_1",
+            "text": "專員到{place}勘查鼠跡",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_rat_pro_2",
+            "text": "找出鼠道與孔洞",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_rat_pro_3",
+            "text": "提供改善與防治建議",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_rat_pro_4",
+            "text": "回報：鼠道找到了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、遊客+1（3 季）；衛生民怨-10、治安民怨-4"
+      },
+      {
+        "cardId": "policy_fire_inspection",
+        "executeId": "exec_fire_inspection",
+        "cardName": "公共場所消防安檢",
+        "staffIds": [
+          "staff_yan",
+          "staff_cheng"
+        ],
+        "steps": [
+          {
+            "id": "step_fire_inspection_1",
+            "text": "{staff}到市場消防安檢",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_fire_inspection_2",
+            "text": "檢查滅火器與逃生門",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_fire_inspection_3",
+            "text": "開立限期改善單",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_fire_inspection_4",
+            "text": "回報：安檢完成",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "遊客+1、治安感+2（永久）；治安民怨-14；店家營收 -3%（短期）"
+      },
+      {
+        "cardId": "policy_led_lights",
+        "executeId": "exec_led_lights",
+        "cardName": "路燈LED汰換與暗巷補強",
+        "staffIds": [
+          "staff_xiu",
+          "staff_an"
+        ],
+        "steps": [
+          {
+            "id": "step_led_lights_1",
+            "text": "工務課盤點暗巷",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_led_lights_2",
+            "text": "舊路燈換成LED",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_led_lights_3",
+            "text": "補裝暗巷新燈",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_led_lights_4",
+            "text": "回報：夜裡亮起來了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+2、遊客+1、治安感+5（永久）；治安民怨-14"
+      },
+      {
+        "cardId": "policy_crime_map",
+        "executeId": "exec_crime_map",
+        "cardName": "治安點位公開與安全地圖",
+        "staffIds": [
+          "staff_an",
+          "staff_xin"
+        ],
+        "steps": [
+          {
+            "id": "step_crime_map_1",
+            "text": "{staff}整理治安點位",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_crime_map_2",
+            "text": "畫出社區安全地圖",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_crime_map_3",
+            "text": "回報：安全地圖上線",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "治安感+2（3 季）；治安民怨-6"
+      },
+      {
+        "cardId": "policy_pied_piper",
+        "executeId": "exec_pied_piper",
+        "cardName": "吹笛人引鼠出城",
+        "staffIds": [
+          "staff_hu",
+          "staff_jing"
+        ],
+        "steps": [
+          {
+            "id": "step_pied_piper_1",
+            "text": "簽約並付訂金給吹笛人",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_pied_piper_2",
+            "text": "笛聲引鼠群走進誘捕站",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_pied_piper_3",
+            "text": "誘捕站運出城外處理",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_pied_piper_4",
+            "text": "回報：鼠群帶走了，記得付尾款",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+4、遊客+3（當季遊行人潮）；衛生民怨-18、市集民怨-6",
+        "selfEval": {
+          "cure": [
+            {
+              "id": "eval_pied_piper_cure_1",
+              "text": "我自評：鼠群當季就帶走了，見效真的快。",
+              "nextStep": false
+            },
+            {
+              "id": "eval_pied_piper_cure_2",
+              "text": "下一步：尾款要留好，廚餘和鼠洞也要顧。",
+              "nextStep": true
+            }
+          ],
+          "palliative": [
+            {
+              "id": "eval_pied_piper_palliative_1",
+              "text": "我自評：老鼠帶走了，可是廚餘桶還沒蓋。",
+              "nextStep": false
+            },
+            {
+              "id": "eval_pied_piper_palliative_2",
+              "text": "下一步：補上廚餘管理，不然下季又回來。",
+              "nextStep": true
+            }
+          ],
+          "unpaid": [
+            {
+              "id": "eval_pied_piper_unpaid_1",
+              "text": "我自評：尾款付不出來，吹笛人罷工了。",
+              "nextStep": false
+            },
+            {
+              "id": "eval_pied_piper_unpaid_2",
+              "text": "下一步：買貴的卡前，先算好兩季後的錢。",
+              "nextStep": true
+            }
+          ]
+        }
+      },
+      {
+        "cardId": "policy_stray_dog_tnr",
+        "executeId": "exec_stray_dog_tnr",
+        "cardName": "流浪犬 TNR 與收容",
+        "staffIds": [
+          "staff_nuan",
+          "staff_hu"
+        ],
+        "steps": [
+          {
+            "id": "step_stray_dog_tnr_1",
+            "text": "{staff}和志工設收容站",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_stray_dog_tnr_2",
+            "text": "捕捉流浪犬做健康檢查",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_stray_dog_tnr_3",
+            "text": "結紮、打晶片後送養或放回",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_stray_dog_tnr_4",
+            "text": "回報：狗群數量穩定中",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、遊客+1、治安感+4（永久）；治安民怨-16、衛生民怨-4",
+        "selfEval": {
+          "cure": [
+            {
+              "id": "eval_stray_dog_tnr_cure_1",
+              "text": "我自評：狗群不再變多，長期最穩。",
+              "nextStep": false
+            },
+            {
+              "id": "eval_stray_dog_tnr_cure_2",
+              "text": "下一步：持續追蹤，送養與照護都要接上。",
+              "nextStep": true
+            }
+          ],
+          "assist": [
+            {
+              "id": "eval_stray_dog_tnr_assist_1",
+              "text": "我自評：方向對了，數量要一兩季才會降。",
+              "nextStep": false
+            },
+            {
+              "id": "eval_stray_dog_tnr_assist_2",
+              "text": "下一步：搭配志工巡查，過渡期更安心。",
+              "nextStep": true
+            }
+          ]
+        }
+      },
+      {
+        "cardId": "policy_animal_patrol",
+        "executeId": "exec_animal_patrol",
+        "cardName": "動保志工巡查",
+        "staffIds": [
+          "staff_nuan",
+          "staff_an"
+        ],
+        "steps": [
+          {
+            "id": "step_animal_patrol_1",
+            "text": "{staff}排好志工夜巡班",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_animal_patrol_2",
+            "text": "巡查餵食點與垃圾堆",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_animal_patrol_3",
+            "text": "安撫狗群、通報收容站",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_animal_patrol_4",
+            "text": "回報：夜裡追車變少了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "人流+1、治安感+3（3 季）；治安民怨-12",
+        "selfEval": {
+          "cure": [
+            {
+              "id": "eval_animal_patrol_cure_1",
+              "text": "我自評：夜裡追車少了，人和狗都冷靜了。",
+              "nextStep": false
+            },
+            {
+              "id": "eval_animal_patrol_cure_2",
+              "text": "下一步：志工會累，記得排班也要搭配收容。",
+              "nextStep": true
+            }
+          ]
+        }
+      },
+      {
+        "cardId": "policy_dog_roundup",
+        "executeId": "exec_dog_roundup",
+        "cardName": "強力捕捉驅離專案",
+        "staffIds": [
+          "staff_an",
+          "staff_cheng"
+        ],
+        "steps": [
+          {
+            "id": "step_dog_roundup_1",
+            "text": "調來大批人力與網子",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_dog_roundup_2",
+            "text": "在{place}捕捉驅離狗群",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_dog_roundup_3",
+            "text": "回報：街上暫時安靜了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "治安民怨-6；店家營收 -2%（短期）",
+        "selfEval": {
+          "backfire": [
+            {
+              "id": "eval_dog_roundup_backfire_1",
+              "text": "我自評：街上安靜一下，新狗卻又進來了。",
+              "nextStep": false
+            },
+            {
+              "id": "eval_dog_roundup_backfire_2",
+              "text": "下一步：處理食物來源和數量，不要只趕走。",
+              "nextStep": true
+            }
+          ]
+        }
+      },
+      {
+        "cardId": "policy_pet_edu",
+        "executeId": "exec_pet_edu",
+        "cardName": "飼主責任與不亂餵宣導",
+        "staffIds": [
+          "staff_nuan",
+          "staff_min"
+        ],
+        "steps": [
+          {
+            "id": "step_pet_edu_1",
+            "text": "{staff}到社區辦飼主宣導",
+            "durationHint": 1200
+          },
+          {
+            "id": "step_pet_edu_2",
+            "text": "說明晶片、絕育與不亂餵",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_pet_edu_3",
+            "text": "發放垃圾不落地小卡",
+            "durationHint": 1800
+          },
+          {
+            "id": "step_pet_edu_4",
+            "text": "回報：宣導完成了",
+            "durationHint": 1400
+          }
+        ],
+        "resultHint": "治安感+1（2 季）；治安民怨-5、衛生民怨-2",
+        "selfEval": {
+          "assist": [
+            {
+              "id": "eval_pet_edu_assist_1",
+              "text": "我自評：宣導便宜，但下季才看得到效果。",
+              "nextStep": false
+            },
+            {
+              "id": "eval_pet_edu_assist_2",
+              "text": "下一步：宣導要搭配收容和垃圾不落地。",
+              "nextStep": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "evaluation": {
+    "note": "依結算結果（cure／assist／palliative／backfire／none）選句；severity＝down／same／up／any（對嚴重度變化），nextStep=true 為建議下一步的句子（每類至少 1 句）。建議：先挑一句符合 severity 的評語，再接一句 nextStep。",
+    "byResult": {
+      "cure": {
+        "label": "對症",
+        "lines": [
+          {
+            "id": "eval_cure_1",
+            "text": "「{card}」對上成因，{event}解決了！",
+            "severity": "down",
+            "nextStep": false
+          },
+          {
+            "id": "eval_cure_2",
+            "text": "嚴重度從 {sevFrom} 降到 0，這次打得很準。",
+            "severity": "down",
+            "nextStep": false
+          },
+          {
+            "id": "eval_cure_3",
+            "text": "成因處理掉了，街上流量下季會慢慢回來。",
+            "severity": "down",
+            "nextStep": false
+          },
+          {
+            "id": "eval_cure_4",
+            "text": "我自評：對症成功，點數花得很值得。",
+            "severity": "any",
+            "nextStep": false
+          },
+          {
+            "id": "eval_cure_5",
+            "text": "居民說{domain}的抱怨少很多，辛苦大家了。",
+            "severity": "down",
+            "nextStep": false
+          },
+          {
+            "id": "eval_cure_6",
+            "text": "下一步：留意同類事件，可考慮預防型的卡。",
+            "severity": "any",
+            "nextStep": true
+          },
+          {
+            "id": "eval_cure_7",
+            "text": "下一步：把省下的點數留給還沒解決的事件。",
+            "severity": "any",
+            "nextStep": true
+          }
+        ]
+      },
+      "assist": {
+        "label": "輔助",
+        "lines": [
+          {
+            "id": "eval_assist_1",
+            "text": "「{card}」幫上一點，嚴重度 {sevFrom}→{sevTo}。",
+            "severity": "down",
+            "nextStep": false
+          },
+          {
+            "id": "eval_assist_2",
+            "text": "問題變小了，但成因還在，下季可能再冒出來。",
+            "severity": "down",
+            "nextStep": false
+          },
+          {
+            "id": "eval_assist_3",
+            "text": "我自評：方向對了，可是力道不夠。",
+            "severity": "any",
+            "nextStep": false
+          },
+          {
+            "id": "eval_assist_4",
+            "text": "{event}還沒結束，需要真正對症的卡。",
+            "severity": "same",
+            "nextStep": false
+          },
+          {
+            "id": "eval_assist_5",
+            "text": "輔助卡像隊友，主角還沒上場喔。",
+            "severity": "any",
+            "nextStep": false
+          },
+          {
+            "id": "eval_assist_6",
+            "text": "下一步：回頭讀線索，找能處理成因的卡。",
+            "severity": "any",
+            "nextStep": true
+          }
+        ]
+      },
+      "palliative": {
+        "label": "治標",
+        "lines": [
+          {
+            "id": "eval_palliative_1",
+            "text": "症狀先壓下來了，但{event}的原因沒處理。",
+            "severity": "down",
+            "nextStep": false
+          },
+          {
+            "id": "eval_palliative_2",
+            "text": "居民暫時安心，下季可能會反彈喔。",
+            "severity": "any",
+            "nextStep": false
+          },
+          {
+            "id": "eval_palliative_3",
+            "text": "我自評：先止血，還沒有治本。",
+            "severity": "any",
+            "nextStep": false
+          },
+          {
+            "id": "eval_palliative_4",
+            "text": "這招便宜又快，可是不能一直用。",
+            "severity": "any",
+            "nextStep": false
+          },
+          {
+            "id": "eval_palliative_5",
+            "text": "同一件事再用一次，效果會變差。",
+            "severity": "same",
+            "nextStep": false
+          },
+          {
+            "id": "eval_palliative_6",
+            "text": "下一步：趁這季喘口氣，準備對症的卡。",
+            "severity": "any",
+            "nextStep": true
+          }
+        ]
+      },
+      "backfire": {
+        "label": "反效果",
+        "lines": [
+          {
+            "id": "eval_backfire_1",
+            "text": "糟糕，「{card}」讓{event}更嚴重了。",
+            "severity": "up",
+            "nextStep": false
+          },
+          {
+            "id": "eval_backfire_2",
+            "text": "嚴重度從 {sevFrom} 升到 {sevTo}，我們要檢討。",
+            "severity": "up",
+            "nextStep": false
+          },
+          {
+            "id": "eval_backfire_3",
+            "text": "我自評：時機不對，副作用比效果大。",
+            "severity": "any",
+            "nextStep": false
+          },
+          {
+            "id": "eval_backfire_4",
+            "text": "{domain}的民怨變多了，先別灰心。",
+            "severity": "up",
+            "nextStep": false
+          },
+          {
+            "id": "eval_backfire_5",
+            "text": "失敗也是線索：這張卡會讓誰不方便？",
+            "severity": "any",
+            "nextStep": false
+          },
+          {
+            "id": "eval_backfire_6",
+            "text": "下一步：先讀卡片的副作用欄，再決定。",
+            "severity": "any",
+            "nextStep": true
+          }
+        ]
+      },
+      "none": {
+        "label": "無關／沒處理",
+        "lines": [
+          {
+            "id": "eval_none_1",
+            "text": "這張卡和{event}沒關係，點數白花了。",
+            "severity": "same",
+            "nextStep": false
+          },
+          {
+            "id": "eval_none_2",
+            "text": "嚴重度維持 {sevFrom}，事情還在原地。",
+            "severity": "same",
+            "nextStep": false
+          },
+          {
+            "id": "eval_none_3",
+            "text": "我自評：沒找對方向，下次先看線索。",
+            "severity": "any",
+            "nextStep": false
+          },
+          {
+            "id": "eval_none_4",
+            "text": "沒處理的事件，下季會更嚴重喔。",
+            "severity": "up",
+            "nextStep": false
+          },
+          {
+            "id": "eval_none_5",
+            "text": "居民還在等，{domain}的抱怨沒有變少。",
+            "severity": "same",
+            "nextStep": false
+          },
+          {
+            "id": "eval_none_6",
+            "text": "下一步：比對事件主題和卡片的對症欄。",
+            "severity": "any",
+            "nextStep": true
+          }
+        ]
+      }
+    }
+  },
+  "irrelevantCardHint": {
+    "note": "決策欄「無關卡」提示（咪咪 10/6 決定：提示版、不退費）。只提示、不擋購買、不退點數或金錢；帳單另列 G.DATA.economy.billReasons.categories.irrelevantCard。",
+    "trigger": "玩家在決策欄選（或滑過）一張卡，而這張卡對本季所有進行中的非機會事件都「沒有回應」（G.DATA.eventPolicyMap 該事件 cure／assist／palliative／backfire 都沒有這張卡；等同 eventPool responses 無此卡或只有 none）時顯示。條件式回應（when）未達成也算無關。",
+    "maxLen": 18,
+    "tone": "teach",
+    "pickRule": "種子化：rng = rngFor(report.seed, report.cycle, \"irrelevantHint:\"+cardId)；同一季同一張卡固定同一句。",
+    "lines": [
+      {
+        "id": "hint_irrelevant_1",
+        "text": "這張卡跟本季事件無關"
+      },
+      {
+        "id": "hint_irrelevant_2",
+        "text": "本季事件用不到這張卡"
+      },
+      {
+        "id": "hint_irrelevant_3",
+        "text": "這張卡幫不上本季的事"
+      }
+    ]
+  },
+  "pickRule": [
+    "種子化：rng = rngFor(report.seed, report.cycle, \"advisor:\"+cardId)，同 seed 同輸出。",
+    "缺變數的句子略過（不會出現殘留 {var}）。",
+    "連兩季不重複同一句 id。"
+  ]
+}

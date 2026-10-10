@@ -1,0 +1,182 @@
+{
+  "id": "policy_coupon",
+  "name": "市集消費券",
+  "cost": 2,
+  "blurb": "刺激買氣（治標）；不疏通車流則進貨仍可能遲到。",
+  "solves": [],
+  "rule_patches": {
+    "marketSubsidy": 1
+  },
+  "deltas": {
+    "money": -70,
+    "profit": 25,
+    "happiness": 3
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "不解決塞車與清運；點數用掉後核心物流問題可能仍在。",
+  "preview": "預估：金錢 -70、獲利 +25；建議搭配疏運／清淤牌。",
+  "costPoints": 2,
+  "tags": [
+    "經濟",
+    "治標"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_coupon.webp",
+    "icon": "assets/sprites/cards/icons/icon_coupon.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🎟️",
+    "accent": "#e0a43a",
+    "fxHint": "fx_coupon_confetti"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "經濟",
+    "rarity": "常見",
+    "titleShort": "消費券",
+    "costBadge": "2 點",
+    "shopLine": "便宜好上手，買氣先回來。",
+    "effectLine": "攤位暫時熱鬧；塞車與排水問題不變。",
+    "flavor": "糖衣很甜，但藥還沒吃。",
+    "learnPoint": "這張牌教你：治標和治本不一樣。",
+    "bullets": [
+      "治標：不解決成因",
+      "獲利 +25",
+      "建議搭配疏運"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -70,
+        "text": "金錢 -70"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": 25,
+        "text": "獲利 +25"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 3,
+        "text": "幸福度 +3"
+      }
+    ],
+    "tradeoffLine": "不解決塞車與清運；點數用掉後核心物流問題可能仍在。"
+  },
+  "shopBlurb": "便宜好上手，買氣先回來。",
+  "shopLine": "2 點｜便宜好上手，買氣先回來。",
+  "executeId": "exec_coupon",
+  "fx": {
+    "street": [
+      "fx_coupon_confetti",
+      "fx_market_crowd"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:profit"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 0
+      },
+      "flowKind": "one-shot",
+      "durationSeasons": 0,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "market": -8
+      },
+      "complaintRebound": {
+        "market": 4
+      },
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.15,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 1,
+        "delaySeasons": 0,
+        "note": "消費券只撐當季買氣（治標）"
+      },
+      "strength": "normal",
+      "summary": "市集民怨-8；店家營收 +15%"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_shi",
+      "staff_cheng"
+    ],
+    "radarWeights": {
+      "logistics": 0.1,
+      "safety": 0.1,
+      "health": 0.1,
+      "engineering": 0,
+      "economy": 0.9,
+      "communication": 0.5
+    }
+  },
+  "actionOptionIds": [
+    "act_drain_coupon",
+    "act_market_coupon"
+  ],
+  "fromArticleIds": [
+    "article_drain",
+    "article_market"
+  ],
+  "verdictByOption": {
+    "act_drain_coupon": "治標",
+    "act_market_coupon": "治標"
+  },
+  "complaintCounters": [
+    "market"
+  ],
+  "complaintDelta": {
+    "market": -8
+  },
+  "complaintRebound": {
+    "market": 4
+  },
+  "complaintNote": "治標：市集暫時消氣，下一季會反彈一些；對其他領域沒幫助。",
+  "policyType": "subsidy",
+  "typeLabel": "補助獎勵",
+  "realWorldAnalog": "需求面刺激：發放消費券／折價券，短期拉動買氣，不處理成因。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "eventEffects": {
+    "cure": [],
+    "assist": [],
+    "palliative": [
+      "evp_market_slump"
+    ],
+    "backfire": [
+      "evp_health_foodpoison",
+      "evp_health_rat_swarm",
+      "evp_market_fake_review",
+      "evp_market_price",
+      "evp_market_rat_bin",
+      "evp_safety_theft",
+      "evp_traffic_tourbus"
+    ]
+  },
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

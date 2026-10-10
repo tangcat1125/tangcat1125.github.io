@@ -1,0 +1,109 @@
+{
+  "id": "mayor_certificate",
+  "seasonId": "season_01",
+  "version": 1,
+  "status": "proposal",
+  "note": "市長任命狀正式文字範本（呆呆 10/7）：正式／溫暖／簡短三版。施政特色帶入最強兩軸與稱號，期許帶入最弱軸與一句「下次可以試試」。發令單位與印章皆虛構。名稱依 2026-10-07 使用者決定統一為「貓貓市」、職稱「市長」。",
+  "townName": "貓貓市",
+  "defaultVersion": "formal",
+  "placeholders": {
+    "playerName": "學生姓名（入口 #student-name 或結算時輸入；空白用 defaults.playerName）",
+    "termNo": "第幾任（建議 localStorage catflash.termCount＋1，或老師指定；預設 1）",
+    "seasons": "任期季數（BehaviorLog totals.seasonsEnded）",
+    "grade": "總評等第 S／A／B／C／D",
+    "gradeLabel": "等第名稱（傳奇／優秀／穩健／成長／起步）",
+    "totalScore": "六軸總分 0–100",
+    "mayorTitle": "稱號＝comments.grades[等第].titles[最強軸]",
+    "strongName1": "最強軸名稱（axes[].name）",
+    "strongName2": "第二強軸名稱",
+    "weakName": "最弱軸名稱",
+    "weakTip": "最弱軸的「下次可以試試」一句（tryNext[弱軸]，含句號）",
+    "date": "發令日期（建議民國紀年：中華民國 115 年 10 月 7 日）"
+  },
+  "nominalLengths": {
+    "playerName": 6,
+    "termNo": 2,
+    "seasons": 2,
+    "grade": 1,
+    "gradeLabel": 2,
+    "totalScore": 3,
+    "mayorTitle": 10,
+    "strongName1": 9,
+    "strongName2": 9,
+    "weakName": 9,
+    "weakTip": 24,
+    "date": 16
+  },
+  "lengthRules": {
+    "title": 12,
+    "body": 90,
+    "feature": 60,
+    "expect": 60,
+    "closing": 30,
+    "issuer": 12,
+    "signer": 12,
+    "seal": 8,
+    "label": 6,
+    "note": "以佔位估計長度代入後計（playerName 6、termNo 2、seasons 2、grade 1、gradeLabel 2、totalScore 3、mayorTitle 10、各軸名 9、weakTip 24、date 16）"
+  },
+  "requiredPlaceholders": {
+    "body": [
+      "playerName",
+      "termNo"
+    ],
+    "dateLine": [
+      "date"
+    ]
+  },
+  "defaults": {
+    "playerName": "見習市長",
+    "termNo": 1
+  },
+  "versions": [
+    {
+      "id": "formal",
+      "label": "正式版",
+      "title": "市長任命狀",
+      "body": "茲任命 {playerName} 為貓貓市第 {termNo} 任市長。任內歷經 {seasons} 季考驗，綜合評等 {grade}（{gradeLabel}），特頒此狀，以資證明。",
+      "featureLabel": "施政特色",
+      "feature": "以「{strongName1}」與「{strongName2}」見長，獲頒「{mayorTitle}」稱號。",
+      "expectLabel": "期許",
+      "expect": "盼於「{weakName}」持續精進：{weakTip}",
+      "closing": "",
+      "issuer": "貓貓市公所",
+      "signer": "公所貓貓評審團",
+      "dateLine": "{date}",
+      "seal": "貓貓市公所印"
+    },
+    {
+      "id": "warm",
+      "label": "溫暖版",
+      "title": "市長任命狀",
+      "body": "親愛的 {playerName}：謝謝你陪貓貓市走過 {seasons} 季！從今天起，你就是貓貓市第 {termNo} 任市長。",
+      "featureLabel": "大家最佩服你",
+      "feature": "你的「{strongName1}」和「{strongName2}」最棒了，你是我們的「{mayorTitle}」！",
+      "expectLabel": "一起加油",
+      "expect": "下一步，一起把「{weakName}」練得更好吧：{weakTip}",
+      "closing": "貓貓們會一直在公所等你回來。",
+      "issuer": "貓貓市公所全體職員",
+      "signer": "",
+      "dateLine": "{date}",
+      "seal": "公所喵印"
+    },
+    {
+      "id": "short",
+      "label": "簡短版",
+      "title": "任命狀",
+      "body": "茲任命 {playerName} 為貓貓市第 {termNo} 任市長。",
+      "featureLabel": "稱號",
+      "feature": "{mayorTitle}（{strongName1}・{strongName2}）",
+      "expectLabel": "下次試試",
+      "expect": "{weakTip}",
+      "closing": "",
+      "issuer": "貓貓市公所",
+      "signer": "",
+      "dateLine": "{date}",
+      "seal": "公所之印"
+    }
+  ]
+}

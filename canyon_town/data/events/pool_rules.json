@@ -1,0 +1,675 @@
+{
+  "id": "event_pool_rules_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "calendar": {
+    "startMonth": 3,
+    "monthsPerCycle": 3,
+    "seasonByMonth": {
+      "3": "spring",
+      "4": "spring",
+      "5": "spring",
+      "6": "summer",
+      "7": "summer",
+      "8": "summer",
+      "9": "autumn",
+      "10": "autumn",
+      "11": "autumn",
+      "12": "winter",
+      "1": "winter",
+      "2": "winter"
+    },
+    "labels": {
+      "spring": "春",
+      "summer": "夏",
+      "autumn": "秋",
+      "winter": "冬"
+    },
+    "note": "第 1 個週期 = 三月（春）；每個週期前進 monthsPerCycle 個月。"
+  },
+  "draw": {
+    "countRule": {
+      "min": 2,
+      "max": 4,
+      "base": 2,
+      "plusIf": [
+        {
+          "when": "平均民怨 ≥ 55",
+          "plus": 1
+        },
+        {
+          "when": "任一領域 ≥ 75（爆怒）",
+          "plus": 1
+        }
+      ],
+      "jitter": {
+        "chance": 0.25,
+        "plus": 1,
+        "onlyIfNoPlus": true
+      },
+      "teacherOverride": "opts.count"
+    },
+    "weightFormula": "weight = baseWeight × seasonMult[季節] × Π(weightMods 命中者的 mult) × domainPressure × ignoredBoost",
+    "domainPressure": {
+      "base": 0.5,
+      "perPoint": 0.02,
+      "note": "民怨 0→×0.5，50→×1.5，100→×2.5；民怨越高越容易出事。"
+    },
+    "ignoredBoost": {
+      "perStreak": 0.25,
+      "note": "該領域連續被忽略的季數 × 0.25 加權。"
+    },
+    "noRepeat": {
+      "sameEventCooldownCycles": 1,
+      "maxPerDomainPerCycle": 2,
+      "note": "同一事件不連兩季抽到（除非是反彈／連鎖強制出現）；同一領域本季最多 2 個。"
+    },
+    "forcedPending": {
+      "rule": "chain 排入的 pending 事件到期（dueCycle ≤ 本季）一定出現，最多 2 個；超過的順延一季。"
+    },
+    "maxTotal": 4,
+    "requiresFilter": "沒有通過 requires 的事件不進候選；chainOnly 事件只能由連鎖或 requires 命中時以低權重進候選。",
+    "opportunityRule": "polarity=opportunity 的事件每季最多 1 個。",
+    "falseAlarmRule": "falseAlarm=true 的事件每季最多 1 個。"
+  },
+  "seed": {
+    "type": "string|int",
+    "derivation": "rng = mulberry32(xmur3(seed + \"|\" + cycle + \"|\" + purpose))",
+    "purposes": [
+      "draw",
+      "count",
+      "vars:<eventId>",
+      "chain:<eventId>",
+      "schedule"
+    ],
+    "modes": {
+      "adaptive": "預設：權重會看玩家狀態（民怨、已買政策、上季結果）；同 seed 但不同選擇 → 之後的事件會不同。",
+      "locked": "教師固定劇本：權重只看季節與基礎權重，忽略玩家狀態與 requires；同 seed 所有學生遇到同一串事件，方便比較政策選擇。locked 模式下連鎖照 seed 擲骰、不看 on 條件。"
+    }
+  },
+  "effects": {
+    "cure": {
+      "label": "對症",
+      "resolves": true,
+      "severityStep": -3,
+      "complaintUnit": -25,
+      "note": "事件解除，民怨大幅下降。"
+    },
+    "assist": {
+      "label": "輔助",
+      "resolves": false,
+      "severityStep": -1,
+      "complaintUnit": -12,
+      "note": "嚴重度 −1；若降到 0 視同解除。"
+    },
+    "palliative": {
+      "label": "治標",
+      "resolves": true,
+      "severityStep": -3,
+      "complaintUnit": -10,
+      "rebound": {
+        "delayCycles": 1,
+        "chainOn": "palliative"
+      },
+      "note": "本季暫時解除，但留下反彈風險（下季同事件權重上升）。"
+    },
+    "neutral": {
+      "label": "無關",
+      "resolves": false,
+      "severityStep": 0,
+      "complaintUnit": 0,
+      "note": "點數白花，事件照舊。"
+    },
+    "backfire": {
+      "label": "反效果",
+      "resolves": false,
+      "severityStep": 0,
+      "complaintUnit": 8,
+      "note": "讓情況更糟：該領域民怨額外 +8×嚴重度係數。"
+    }
+  },
+  "effectRank": [
+    "cure",
+    "assist",
+    "palliative",
+    "neutral",
+    "backfire"
+  ],
+  "severityScale": {
+    "1": 0.8,
+    "2": 1.0,
+    "3": 1.2
+  },
+  "resolutionRule": {
+    "cured": "任一政策 cure",
+    "assisted": "無 cure，有 assist（嚴重度下降，降到 0 視同解除）",
+    "palliative": "無 cure/assist，有 palliative",
+    "backfired": "無以上，且有 backfire",
+    "ignored": "其他"
+  },
+  "complaintBridge": "事件層只提供：resolved（餵給 complaint.js 的「已解決」）、severityAfter、extraDelta（僅 backfire +8×係數）與連鎖；民怨主要仍由 complaint.js 結算，避免重複計算。",
+  "policyMatrix": {
+    "policy_clear_drain": {
+      "drain": "assist",
+      "safety": "assist",
+      "health": "assist",
+      "logistics": "assist",
+      "traffic": "neutral",
+      "market": "neutral"
+    },
+    "policy_boardwalk": {
+      "market": "assist",
+      "traffic": "assist",
+      "logistics": "assist",
+      "safety": "neutral",
+      "drain": "neutral",
+      "health": "neutral"
+    },
+    "policy_coupon": {
+      "market": "palliative",
+      "traffic": "neutral",
+      "logistics": "neutral",
+      "safety": "neutral",
+      "drain": "neutral",
+      "health": "neutral"
+    },
+    "policy_water_test": {
+      "health": "assist",
+      "safety": "assist",
+      "market": "assist",
+      "traffic": "neutral",
+      "logistics": "neutral",
+      "drain": "neutral"
+    },
+    "policy_logistics_hub": {
+      "logistics": "assist",
+      "traffic": "assist",
+      "market": "assist",
+      "safety": "assist",
+      "health": "assist",
+      "drain": "neutral"
+    },
+    "policy_rain_garden": {
+      "drain": "assist",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_vendor_shift": {
+      "market": "assist",
+      "drain": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_cold_chain": {
+      "logistics": "assist",
+      "market": "neutral",
+      "drain": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_bus_reroute": {
+      "traffic": "assist",
+      "market": "neutral",
+      "drain": "neutral",
+      "logistics": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_vector_control": {
+      "health": "assist",
+      "market": "neutral",
+      "drain": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "safety": "neutral"
+    },
+    "policy_patrol_lights": {
+      "safety": "assist",
+      "market": "neutral",
+      "drain": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral"
+    },
+    "policy_rescue_squad": {
+      "safety": "assist",
+      "market": "neutral",
+      "drain": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral"
+    },
+    "policy_fact_check": {
+      "health": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "drain": "neutral",
+      "traffic": "neutral",
+      "safety": "neutral"
+    },
+    "policy_pest_control": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_food_safety": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_vendor_audit": {
+      "drain": "assist",
+      "market": "assist",
+      "health": "assist",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "safety": "neutral"
+    },
+    "policy_kitchen_sorting": {
+      "market": "assist",
+      "drain": "assist",
+      "safety": "assist",
+      "health": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral"
+    },
+    "policy_slope_guard": {
+      "logistics": "assist",
+      "safety": "assist",
+      "traffic": "neutral",
+      "drain": "neutral",
+      "market": "neutral",
+      "health": "neutral"
+    },
+    "policy_dengue_mobilize": {
+      "health": "assist",
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "safety": "neutral"
+    },
+    "policy_town_broadcast": {
+      "health": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "drain": "neutral",
+      "traffic": "neutral",
+      "safety": "neutral"
+    },
+    "policy_wiring_subsidy": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_fire_lane": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_smoke_alarm": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_fire_drill": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_cctv": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_crime_edu": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_private_parking": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_street_parking": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_traffic_safety": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_food_edu": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_rat_edu": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_town_hall": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_flood_edu": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_health_edu": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_runoff_control": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_permeable": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_pump_monitor": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_flood_relief": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_market_star": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_market_committee": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_loading_zone": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_joint_delivery": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_delivery_subsidy": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_walking_street": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_shared_parking": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_lunch_registry": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_rat_pro": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_fire_inspection": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_led_lights": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_crime_map": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_pied_piper": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_stray_dog_tnr": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_animal_patrol": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_dog_roundup": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    },
+    "policy_pet_edu": {
+      "drain": "neutral",
+      "market": "neutral",
+      "logistics": "neutral",
+      "traffic": "neutral",
+      "health": "neutral",
+      "safety": "neutral"
+    }
+  },
+  "policyMatrixNote": "領域層 fallback：只給 assist/palliative/neutral，不得 cure／backfire；實際回應以 data/events/event_policy_map.json（逐事件對照表）為準。",
+  "vars": {
+    "place": {
+      "pool": [
+        "峽口",
+        "橋頭",
+        "老街口",
+        "北坡路",
+        "南岸巷"
+      ]
+    },
+    "day": {
+      "pool": [
+        "週五",
+        "週末",
+        "連假第一天"
+      ]
+    },
+    "n": {
+      "range": [
+        3,
+        7
+      ]
+    },
+    "pct": {
+      "range": [
+        20,
+        60
+      ]
+    },
+    "mm": {
+      "range": [
+        80,
+        140
+      ]
+    },
+    "note": "事件 vars 可覆寫：[min,max] 為整數範圍。同一事件內的 {n} 在文章與對話中一致。"
+  },
+  "conditionTypes": {
+    "complaint": "{type,domain,gte|lt}",
+    "ignored": "{type,domain,gte} 連續被忽略季數",
+    "policy": "{type,id,owned:true|false,since?:\"before\"|\"this\"}（before=先前已買；this=本季剛買）",
+    "season": "{type,in:[...]}",
+    "event": "{type,id,active:true} 本季有此事件；或 {type,id,lastResolution:[...]} 上季此事件的結果",
+    "combinators": "{all:[]} {any:[]} {not:{}}"
+  },
+  "chainRule": {
+    "when": "結報時，事件結果（cured/assisted/palliative/ignored/backfired 對應 on 的 ignored/palliative/backfire…）命中 chain.on → 以 chance 擲骰；成功則排入 pending。",
+    "on": [
+      "ignored",
+      "palliative",
+      "backfired"
+    ],
+    "delay": {
+      "0": "後續（aftermath）：同季結報立刻出現，當作未處理的額外事件",
+      "1": "下季強制出現"
+    }
+  },
+  "streetRound": {
+    "durationSec": 30,
+    "bubbleSec": 2.6,
+    "gapSec": 0.4,
+    "slots": 10,
+    "trueClueTarget": {
+      "min": 5,
+      "max": 8
+    },
+    "rules": [
+      "先放入所有事件的真線索（最多 8）",
+      "每個事件最多 1 則假線索／半真線索（傳聞），其餘位置補怨言",
+      "同一 NPC 不連續說話",
+      "不足 5 則真線索時，從 G.DATA.clues 靜態線索補同領域線索",
+      "順序用 seed 洗牌，但同一事件的真線索盡量錯開"
+    ]
+  },
+  "dialogueCategories": {
+    "chat": "閒聊",
+    "complaint": "怨言",
+    "clue": "關鍵線索",
+    "rumor": "傳聞"
+  },
+  "legacyBridge": "抽到有 legacyEventId 的事件時，把該 id 放進 ctx 的 fired 清單，events.js / policy.solves 邏輯照舊；其他事件由 G.EventPool.settle 負責。"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "disaster_garbage_backlog",
+  "kind": "garbage",
+  "label": "垃圾回堵",
+  "severity": 2,
+  "streetFx": {
+    "overlayIds": [
+      "overlay_trash_piles",
+      "fx_flies"
+    ],
+    "tint": null,
+    "spawnProps": [
+      {
+        "propId": "prop_trash_bag",
+        "lane": "curb",
+        "x": 180
+      },
+      {
+        "propId": "prop_trash_bag",
+        "lane": "curb",
+        "x": 420
+      }
+    ],
+    "ambient": "sfx_flies_loop"
+  },
+  "newspaperHook": {
+    "headline": "清運遲到　落葉垃圾回堵排水口",
+    "kicker": "環境現場",
+    "clueSeeds": [
+      "證據：垃圾車延誤加重堵塞（物流連動環境）",
+      "法則：不清運，清淤效果會被吃掉"
+    ],
+    "articleId": "article_drain"
+  },
+  "blocksVehicles": {
+    "vehicleIds": [
+      "garbage_truck",
+      "works_truck"
+    ],
+    "cargoKinds": [
+      "waste"
+    ],
+    "slowFactor": 0.45,
+    "untilRule": {
+      "drainClearance": {
+        "gte": 2
+      },
+      "serviceLanePriority": {
+        "gte": 1
+      }
+    }
+  },
+  "metricHits": {
+    "onTimeRate": -0.08,
+    "congestion": 1
+  }
+}

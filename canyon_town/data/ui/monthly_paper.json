@@ -1,0 +1,864 @@
+{
+  "id": "monthly_paper_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "note": "本月快報（第二份報紙）文案。語氣是「報導結果」，不是預告。由 G.EventPool.composeMonthly 組裝；欄位命名沿用 monthly_paper.js（resolution／mood／carry.kind／引言 domainId、who、text、mood）。見 docs/MONTHLY_PAPER.md。",
+  "vars": {
+    "fromEventPool": [
+      "place",
+      "day",
+      "n",
+      "pct",
+      "mm（與 eventPool.vars 同名同義，取自 assembled.vars[eventId]）"
+    ],
+    "event": [
+      "eventTitle",
+      "severityAfter",
+      "chainLabel",
+      "nextEventTitle"
+    ],
+    "complaint": [
+      "domainName",
+      "domainIcon",
+      "from",
+      "to",
+      "delta（絕對值）",
+      "tierLabel"
+    ],
+    "issue": [
+      "monthLabel",
+      "seasonLabel",
+      "cycle（季數；n 是事件變數，不是季數）",
+      "policyNames",
+      "policyCount",
+      "count"
+    ],
+    "defaults": {
+      "place": "峽口",
+      "day": "週末",
+      "n": "3",
+      "pct": "30",
+      "mm": "100",
+      "policyNames": "沒有買政策卡",
+      "nextEventTitle": "後續事件",
+      "chainLabel": "問題沒有被完整處理，可能有後續",
+      "severityAfter": "1"
+    }
+  },
+  "seedPurposes": [
+    "monthly:mast",
+    "monthly:front",
+    "monthly:side",
+    "monthly:board",
+    "monthly:carry",
+    "monthly:quote"
+  ],
+  "thresholds": {
+    "risingMin": 5,
+    "fallingMin": 5,
+    "maxSideBriefs": 4,
+    "maxCarry": 5
+  },
+  "speakerByDomain": {
+    "drain": "bo",
+    "market": "mei",
+    "logistics": "lin",
+    "traffic": "kai",
+    "health": "zhen",
+    "safety": "wang"
+  },
+  "masthead": {
+    "names": [
+      "貓貓快報・本月快報",
+      "貓貓快報 本月號",
+      "本月快報（貓貓快報系列）",
+      "貓貓快報・月結特刊"
+    ],
+    "series": [
+      "貓貓快報系列",
+      "貓貓市峽谷",
+      "貓貓快報・結果篇"
+    ],
+    "issue": [
+      "本月快報・第{cycle}季結果",
+      "第{cycle}季月結報導",
+      "{seasonLabel}季結果特刊（第{cycle}季）"
+    ],
+    "dateLine": [
+      "{monthLabel}・結果整理",
+      "{monthLabel}出刊",
+      "{monthLabel}・本月總整理"
+    ]
+  },
+  "outcomes": {
+    "cured": {
+      "label": "對症解決",
+      "icon": "✅",
+      "headline": [
+        "「{eventTitle}」本月對症解決，{place}恢復平靜",
+        "{place}「{eventTitle}」落幕：本月已解決",
+        "「{eventTitle}」不再是話題，{domainName}組本月交出成績",
+        "{day}那件事有了結果：「{eventTitle}」已經解決"
+      ],
+      "deck": [
+        "對症的做法讓問題在本月內收尾。",
+        "成因被處理掉，不是只把問題壓下去。",
+        "公所說明：這次處理對準了原因。",
+        "{domainName}方面，本月沒有留下後續事件。"
+      ],
+      "body": [
+        "「{eventTitle}」本月發生在{place}，公所採取的做法直接處理了原因。{domainName}相關通報在月底前減少約 {pct}%。",
+        "這件事原本讓{place}一帶的居民很困擾。本月政策上路後，問題在{day}前後完全解除，現場也恢復原本的運作。",
+        "處理「{eventTitle}」時，公所先找出成因再下手。結果是本月不但事件解除，連帶的後續風險也一併下降。",
+        "「{eventTitle}」本月順利收尾。現場人員表示，這次對症下藥，後續需要追蹤的項目比預期少。"
+      ],
+      "quote": [
+        {
+          "speakerNpcId": "wang",
+          "text": "這次是真的處理到點上，里民比較放心了。"
+        },
+        {
+          "speakerNpcId": "bo",
+          "text": "原因解決了，我們巡的時候輕鬆很多。"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "問題不見了，客人也比較願意來。"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "日子回到正常，這樣就好。"
+        },
+        {
+          "speakerNpcId": "lin",
+          "text": "我查了紀錄，確實是對症的處理。"
+        }
+      ],
+      "editorNote": [
+        "短評：處理的順序是先看原因、再看成本，這次示範得不錯。",
+        "短評：對症不一定最貴，但一定要對準原因。",
+        "短評：事件解除是好消息，仍請持續觀察民怨是否同步下降。",
+        "短評：把線索核對清楚再出手，是這個月最有效率的做法。"
+      ],
+      "brief": [
+        "「{eventTitle}」已對症解決。",
+        "{place}的「{eventTitle}」本月落幕。",
+        "{domainName}：「{eventTitle}」完全解除。",
+        "「{eventTitle}」處理到位，沒有後續。"
+      ]
+    },
+    "assisted": {
+      "label": "有幫助",
+      "icon": "🟢",
+      "headline": [
+        "「{eventTitle}」本月有改善，但還沒結束",
+        "{place}「{eventTitle}」減輕了一半",
+        "政策見效：「{eventTitle}」降了一級",
+        "「{eventTitle}」好轉中，仍有剩餘的問題"
+      ],
+      "deck": [
+        "政策有幫上忙，但沒有處理到全部原因。",
+        "情況比月初好，不過還沒完全解除。",
+        "公所表示：下一步要補上剩下的缺口。",
+        "改善是真的，只是還不到收尾的程度。"
+      ],
+      "body": [
+        "「{eventTitle}」在{place}本月有明顯改善，嚴重度降低。不過仍有一部分問題沒被處理到，{domainName}方面還需要追蹤。",
+        "公所本月的做法幫上了忙，{day}之後通報量下降。但現場人員認為，原因沒有完全處理，還需要後續配套。",
+        "這次的政策不是對症藥，卻讓「{eventTitle}」的衝擊縮小。居民感受到的不便少了，但沒有到完全滿意。",
+        "「{eventTitle}」本月改善了一部分。報導整理出兩個重點：哪些做法有效，以及還缺哪一塊。"
+      ],
+      "quote": [
+        {
+          "speakerNpcId": "wang",
+          "text": "有比較好，不過還沒好透，我們繼續看。"
+        },
+        {
+          "speakerNpcId": "bo",
+          "text": "水位是降了，但根本的地方還沒處理。"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "客人回來一點點，還沒到以前的樣子。"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "進步是有，我先不說滿意。"
+        },
+        {
+          "speakerNpcId": "kai",
+          "text": "比上次順多了，可是還是會卡一下。"
+        }
+      ],
+      "editorNote": [
+        "短評：輔助型的政策值得肯定，但別把「變好」當成「解決」。",
+        "短評：改善一半時，最值得問的是剩下一半是什麼原因。",
+        "短評：有效不等於對症，兩者要分開看。",
+        "短評：預算有限時，輔助型做法能先止血，後續仍要補強。"
+      ],
+      "brief": [
+        "「{eventTitle}」改善但未解除。",
+        "{place}：「{eventTitle}」嚴重度下降。",
+        "{domainName}：「{eventTitle}」好轉中。",
+        "「{eventTitle}」有進展，仍須追蹤。"
+      ]
+    },
+    "palliative": {
+      "label": "只治標",
+      "icon": "🩹",
+      "headline": [
+        "「{eventTitle}」暫時壓下，成因還在",
+        "{place}暫時平靜：「{eventTitle}」只治了表面",
+        "治標有效、治本未到：「{eventTitle}」",
+        "「{eventTitle}」本月消退，專家提醒可能回頭"
+      ],
+      "deck": [
+        "症狀被緩解，但原因沒有被處理。",
+        "當月風平浪靜，下季是否回來還不確定。",
+        "公所承認：這次是先把火勢壓下來。",
+        "治標的好處是快，代價是可能再發生。"
+      ],
+      "body": [
+        "「{eventTitle}」在{place}本月被暫時壓下，居民的不便感降低。不過這次做法沒有碰到成因，{domainName}方面的隱憂仍然存在。",
+        "公所選擇先安撫現場。{day}之後的通報量下降，但承辦人員也提醒，如果成因沒被處理，同樣的事件有機會再出現。",
+        "「{eventTitle}」本月看起來解決了，實際上只是被延後。現場觀察到，原本的問題點還在，只是影響暫時變小。",
+        "這次處理讓「{eventTitle}」在月底前退場，但報導查證後發現，成因尚未改善。下季是否再出現，會是觀察重點。"
+      ],
+      "quote": [
+        {
+          "speakerNpcId": "wang",
+          "text": "先不吵了，但我不確定它會不會又回來。"
+        },
+        {
+          "speakerNpcId": "bo",
+          "text": "表面是乾淨了，下面那一塊我還是擔心。"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "這陣子好賣一點，只是不知道能撐多久。"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "先頂住了，後面的事要再想辦法。"
+        },
+        {
+          "speakerNpcId": "lin",
+          "text": "我整理資料：問題的原因並沒有被改變。"
+        }
+      ],
+      "editorNote": [
+        "短評：治標不是壞事，快速止痛有它的價值，只是不能當成終點。",
+        "短評：花了點數卻沒處理成因，下季的帳要自己看。",
+        "短評：請記得區分「這個月沒事」和「問題已解決」。",
+        "短評：治標加上後續追蹤，才不會讓事件反覆出現。"
+      ],
+      "brief": [
+        "「{eventTitle}」暫時壓下，成因仍在。",
+        "{place}：「{eventTitle}」治標後平靜，可能反彈。",
+        "{domainName}：「{eventTitle}」只處理了表面。",
+        "「{eventTitle}」本月消退，下季留意。"
+      ]
+    },
+    "ignored": {
+      "label": "未處理",
+      "icon": "❌",
+      "headline": [
+        "「{eventTitle}」無人處理，{place}居民等不到回應",
+        "{place}的「{eventTitle}」整月沒有進展",
+        "「{eventTitle}」未獲處理，{domainName}壓力增加",
+        "事件擱置：「{eventTitle}」本月原地踏步"
+      ],
+      "deck": [
+        "本月沒有對這件事做出對應處理。",
+        "沒出手的結果是：問題還在，居民也看得到。",
+        "公所說明：本月資源用在其他地方。",
+        "忽略的代價會在民怨與後續事件上出現。"
+      ],
+      "body": [
+        "「{eventTitle}」本月在{place}沒有獲得處理。{day}之後居民持續反映，相關通報累積約 {n} 件，也沒有減少。",
+        "這件事本月被擱置，現場情況與月初大致相同。承辦人員表示，沒有處理的事件有機會引發後續問題。",
+        "報導追蹤發現，「{eventTitle}」整個月都沒有對應的政策。居民看在眼裡，民怨並沒有因為時間過去而消退。",
+        "「{eventTitle}」原本可以更早處理，但本月選擇了其他優先事項。結果是問題仍在，等著下季的決定。"
+      ],
+      "quote": [
+        {
+          "speakerNpcId": "wang",
+          "text": "我們反映好幾次了，希望有人回個話。"
+        },
+        {
+          "speakerNpcId": "bo",
+          "text": "沒人處理，我們只能自己撐著。"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "生意被拖著走，真的很無奈。"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "等了一個月都沒動靜，大家有點洩氣。"
+        },
+        {
+          "speakerNpcId": "kai",
+          "text": "路過看到還是老樣子，希望下次不一樣。"
+        }
+      ],
+      "editorNote": [
+        "短評：資源有限就要排序，但請把「為什麼先不處理」說清楚。",
+        "短評：不處理是一種決定，它也會有後果。",
+        "短評：被擱置的問題常常不會自己消失，要看它會不會連到別的領域。",
+        "短評：下次不妨先看線索、再排優先順序。"
+      ],
+      "brief": [
+        "「{eventTitle}」本月未處理。",
+        "{place}：「{eventTitle}」擱置中。",
+        "{domainName}：「{eventTitle}」沒有進展。",
+        "「{eventTitle}」仍在原地。"
+      ]
+    },
+    "backfired": {
+      "label": "反效果",
+      "icon": "⚠️",
+      "headline": [
+        "「{eventTitle}」處理方式失靈，反而添麻煩",
+        "{place}：「{eventTitle}」越處理越亂",
+        "政策與情境不合：「{eventTitle}」出現副作用",
+        "「{eventTitle}」本月更棘手，檢討聲浪升高"
+      ],
+      "deck": [
+        "做法本身沒有惡意，但這次和情境不搭。",
+        "政策在這個時間點用，效果反而相反。",
+        "公所表示：會檢討為什麼這次不適用。",
+        "副作用提醒我們：同一張卡，時機不同結果不同。"
+      ],
+      "body": [
+        "「{eventTitle}」本月在{place}出現反效果：公所採取的做法，與當時的情境不相容，{domainName}方面的民怨反而增加。",
+        "原本想幫上忙的措施，在{day}前後被證實與現場狀況衝突，造成新的不便。承辦人員表示會重新檢討條件。",
+        "這次處理「{eventTitle}」沒有達到預期，反而讓問題複雜化。報導整理出：哪個條件沒有先確認，才讓副作用冒出來。",
+        "「{eventTitle}」本月沒有改善，反倒因為政策的副作用多了新麻煩。現場人員提醒，配套與時機和政策本身一樣重要。"
+      ],
+      "quote": [
+        {
+          "speakerNpcId": "wang",
+          "text": "我知道你們想幫忙，但這次真的幫倒忙了。"
+        },
+        {
+          "speakerNpcId": "bo",
+          "text": "做法不對路，現場反而更亂。"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "本來只是冷清，現在連動線都亂了。"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "好心沒好報，大家都在抱怨。"
+        },
+        {
+          "speakerNpcId": "lin",
+          "text": "我看資料，是條件沒先確認就出手了。"
+        }
+      ],
+      "editorNote": [
+        "短評：反效果通常不是「卡不好」，是「條件沒確認」。",
+        "短評：下一次先問：這張卡在現在的情境，會不會與別的事互相衝突？",
+        "短評：檢討是好事，把原因寫下來比責怪誰更有用。",
+        "短評：政策的副作用，往往藏在配套沒做好的地方。"
+      ],
+      "brief": [
+        "「{eventTitle}」處理出現副作用。",
+        "{place}：「{eventTitle}」反效果，須檢討。",
+        "{domainName}：「{eventTitle}」因配套不合而更糟。",
+        "「{eventTitle}」本月越處理越複雜。"
+      ]
+    }
+  },
+  "falseAlarm": {
+    "cured": {
+      "headline": [
+        "查證完成：「{eventTitle}」是誤會一場",
+        "{place}傳言澄清：「{eventTitle}」查無實據",
+        "先查證再行動：「{eventTitle}」本月落幕"
+      ],
+      "body": [
+        "「{eventTitle}」本月在{place}傳得很快，公所與居民一起查證後確認消息並不屬實。查證的依據包括官方紀錄與獨立來源。",
+        "這則傳言在{day}前後最熱，查證小組比對了紀錄、檢驗報告與不同來源後，確認說法不成立，沒有造成實際損失。",
+        "「{eventTitle}」的消息來源經過追查，只有一個源頭被反覆轉傳。確認後公所公告澄清，事件平息。"
+      ],
+      "editorNote": [
+        "短評：多一步查證，就少一次不必要的恐慌。",
+        "短評：獨立來源才算多個來源，同一則貼文轉傳十次仍只是一個。",
+        "短評：把查證步驟公開，比單純說「沒事」更有說服力。"
+      ]
+    },
+    "assisted": {
+      "headline": [
+        "「{eventTitle}」傳言降溫，查證仍在進行",
+        "{place}：「{eventTitle}」說法有一部分被澄清",
+        "「{eventTitle}」疑點縮小，公所持續查證"
+      ],
+      "body": [
+        "「{eventTitle}」本月部分說法已被澄清，但仍有幾項細節等待確認。公所提醒居民不要轉傳未證實的訊息。",
+        "查證工作在{day}後有進展，主要的疑點已釐清，剩下的細節仍在核對。",
+        "這則消息的真實性逐步明朗，大部分說法經不起查證。仍有少數部分需要更多資料。"
+      ],
+      "editorNote": [
+        "短評：消息的真假常常不是二選一，有些是一半對一半錯。",
+        "短評：看到「部分屬實」時，請把哪一部分屬實寫清楚。",
+        "短評：查證還沒完成前，最安全的做法是暫停轉傳。"
+      ]
+    },
+    "palliative": {
+      "headline": [
+        "「{eventTitle}」公告後暫時降溫，疑點未解",
+        "{place}：「{eventTitle}」先安撫，查證留到下季",
+        "先穩住情緒：「{eventTitle}」只是暫時平靜"
+      ],
+      "body": [
+        "公所在{place}發布安撫公告，讓「{eventTitle}」的討論暫時減少。然而消息真假尚未完整查證，仍可能再度流傳。",
+        "「{eventTitle}」在{day}後安靜下來，主因是公告的安撫效果，而不是查證結果出爐。",
+        "這次處理讓大家先冷靜，但沒有交代消息來源與檢驗結果，下季有機會再被提起。"
+      ],
+      "editorNote": [
+        "短評：安撫情緒有用，但證據才是長久的答案。",
+        "短評：只說「請大家放心」而沒有說明依據，信任容易被下一則傳言打破。",
+        "短評：先公告、後查證，順序可以，但別漏掉後者。"
+      ]
+    },
+    "ignored": {
+      "headline": [
+        "「{eventTitle}」無人查證，傳言越傳越遠",
+        "{place}：「{eventTitle}」沒有澄清，居民各說各話",
+        "傳言未被處理，「{eventTitle}」持續擴散"
+      ],
+      "body": [
+        "「{eventTitle}」本月沒有人出面查證，消息在{place}一再被轉傳，{domainName}方面的不安持續累積。",
+        "沒有澄清、沒有說明，這則消息在{day}前後被越傳越誇張。居民不知道該信誰。",
+        "「{eventTitle}」整個月都停留在「傳聞」的狀態，沒有檢驗報告、沒有官方說明，民怨因此增加。"
+      ],
+      "editorNote": [
+        "短評：沒有查證的傳言，會自己長出更多細節。",
+        "短評：公所不說話，傳言就替公所說話。",
+        "短評：下次先確認來源，再決定要不要花點數。"
+      ]
+    },
+    "backfired": {
+      "headline": [
+        "誤判消息：「{eventTitle}」的處理反而添亂",
+        "{place}：為了一則未證實的消息行動，結果更糟",
+        "「{eventTitle}」被當成真的處理，產生副作用"
+      ],
+      "body": [
+        "「{eventTitle}」本月被當成真實事件處理，結果資源用錯地方，{domainName}方面反而出現新的不便。",
+        "這次的做法是根據一則未證實的消息，在{day}前後付出了不必要的成本，也讓居民更混亂。",
+        "因為沒有先查證，「{eventTitle}」讓政策跟著傳言跑，造成反效果。"
+      ],
+      "editorNote": [
+        "短評：花點數之前，先確認這則消息是真的。",
+        "短評：假警報最大的代價，是把真正需要的資源引走。",
+        "短評：這次的教訓是「來源、日期、獨立證據」三件事，缺一不可。"
+      ]
+    }
+  },
+  "empty": {
+    "headline": [
+      "本月平靜收場",
+      "這個月沒有大新聞",
+      "{monthLabel}：風平浪靜"
+    ],
+    "deck": [
+      "本月沒有抽到需要處理的事件。",
+      "城市日常如常運作。",
+      "沒有新聞，也是一種好消息。"
+    ],
+    "body": [
+      "本月沒有事件需要結算，各領域民怨維持原狀。公所利用這段時間整理資料，也請居民多留意身邊的變化。",
+      "城市這個月相當平靜，居民的日常照舊。報導提醒：平靜的月份，正好檢視資源與線索。"
+    ],
+    "quote": [
+      {
+        "speakerNpcId": "wang",
+        "text": "難得安靜，大家好好過日子。"
+      },
+      {
+        "speakerNpcId": "zhen",
+        "text": "這個月沒什麼事，挺好的。"
+      }
+    ],
+    "editorNote": [
+      "短評：沒有事件的月份，是最好的準備時間。",
+      "短評：平靜時多存一點點數，不吃虧。"
+    ]
+  },
+  "complaint": {
+    "rising": {
+      "label": "上升",
+      "icon": "📈",
+      "headline": [
+        "{domainName}民怨上升，從 {from} 到 {to}",
+        "{domainName}不滿增加 {delta} 點",
+        "本月{domainName}聲量升高",
+        "{domainName}溫度計爬升：{tierLabel}"
+      ],
+      "body": [
+        "{domainName}民怨本月由 {from} 升到 {to}，目前屬於「{tierLabel}」。居民反映的情況集中在{place}一帶。",
+        "相較上月，{domainName}增加了 {delta} 點，主要原因是相關問題沒有被完整處理。",
+        "{domainName}的民怨數字比上月高，居民在{day}前後留言明顯增多。"
+      ],
+      "quote": [
+        {
+          "speakerNpcId": "wang",
+          "text": "這個月真的比較煩，希望下季能改。"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "最近大家聊的都是這件事，氣氛有點緊。"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "我們商家也感受到了，客人一直在問。"
+        },
+        {
+          "speakerNpcId": "bo",
+          "text": "我巡了一圈，狀況是變差了。"
+        }
+      ],
+      "note": [
+        "短評：民怨上升不是單一事件的結果，常常是幾件事累加。",
+        "短評：看到數字上升時，先問「是哪一件事」造成的。",
+        "短評：上升的趨勢若連續兩季，就要特別小心連鎖。"
+      ]
+    },
+    "falling": {
+      "label": "下降",
+      "icon": "📉",
+      "headline": [
+        "{domainName}民怨下降，從 {from} 降到 {to}",
+        "{domainName}好轉：少了 {delta} 點",
+        "本月{domainName}溫度計降溫",
+        "{domainName}回到「{tierLabel}」"
+      ],
+      "body": [
+        "{domainName}民怨本月由 {from} 降至 {to}，目前屬於「{tierLabel}」。居民表示{place}一帶的狀況有改善。",
+        "相較上月，{domainName}下降了 {delta} 點，與本月的政策與事件處理有關。",
+        "{domainName}的數字比上月低，{day}之後居民的抱怨明顯減少。"
+      ],
+      "quote": [
+        {
+          "speakerNpcId": "wang",
+          "text": "這個月比較安心，謝謝大家的努力。"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "最近少聽到抱怨了，感覺不錯。"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "客人臉上的笑容多了。"
+        },
+        {
+          "speakerNpcId": "bo",
+          "text": "巡一圈下來，狀況好轉很多。"
+        }
+      ],
+      "note": [
+        "短評：民怨下降是好消息，也請看是不是因為真正解決了問題。",
+        "短評：降溫後別放鬆，維持住比降下來更難。",
+        "短評：把有效的做法記下來，下季遇到類似事件就能用。"
+      ]
+    },
+    "furious": {
+      "label": "爆怒",
+      "icon": "🔥",
+      "headline": [
+        "{domainName}民怨爆表：{to}，進入「{tierLabel}」",
+        "{domainName}失守，居民直言忍無可忍",
+        "警訊：{domainName}民怨達 {to}",
+        "{domainName}紅色警戒，連鎖風險升高"
+      ],
+      "body": [
+        "{domainName}民怨目前為 {to}，已進入「{tierLabel}」層級。居民在{place}一帶表達強烈不滿，公所收到大量陳情。",
+        "爆表的{domainName}民怨，代表問題已經累積好幾季。報導提醒：這個階段若再放著，容易牽動其他領域。",
+        "{domainName}民怨站在高點，{day}前後的陳情量是平常的數倍。公所須在下季優先處理。"
+      ],
+      "quote": [
+        {
+          "speakerNpcId": "wang",
+          "text": "這次大家真的很不滿，請給個交代。"
+        },
+        {
+          "speakerNpcId": "bo",
+          "text": "再不處理，我們就沒辦法再替你們擋了。"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "生意都受影響，大家快撐不下去。"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "每天聽到的都是抱怨，我也很焦慮。"
+        }
+      ],
+      "note": [
+        "短評：爆怒的民怨需要的是「說明」與「行動」，兩者缺一不可。",
+        "短評：先安撫情緒、再處理成因，順序不能顛倒，也不能只做前者。",
+        "短評：高民怨會放大小事件的影響，請優先回頭處理這個領域。"
+      ]
+    },
+    "stable": {
+      "label": "回穩",
+      "icon": "➖",
+      "headline": [
+        "{domainName}民怨持平，維持在 {to}",
+        "{domainName}沒有太大變動",
+        "本月{domainName}溫度計穩定",
+        "{domainName}：「{tierLabel}」持續中"
+      ],
+      "body": [
+        "{domainName}民怨本月維持在 {to} 左右，屬於「{tierLabel}」。居民的反映與上月相近。",
+        "相較上月，{domainName}只變動了 {delta} 點，整體沒有明顯起伏。",
+        "{domainName}本月維持原本的狀態。報導觀察到，居民既沒有更滿意，也沒有更不滿。"
+      ],
+      "quote": [
+        {
+          "speakerNpcId": "wang",
+          "text": "還行，沒有特別好也沒有更糟。"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "日子照過，繼續看看吧。"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "大家都在觀望，沒有特別動靜。"
+        },
+        {
+          "speakerNpcId": "bo",
+          "text": "維持住了，下季再看。"
+        }
+      ],
+      "note": [
+        "短評：持平不代表沒事，要看高低水位。",
+        "短評：平穩的月份，正好用來預防下一個問題。",
+        "短評：沒有新聞的領域，常常是做得剛剛好的領域。"
+      ]
+    }
+  },
+  "domainNotes": {
+    "drain": {
+      "rising": [
+        "排水口與低窪處是本月居民最常提到的地方。",
+        "雨前的準備程度，是居民評價的關鍵。"
+      ],
+      "falling": [
+        "排水口通暢了，下雨天的擔心少了一些。",
+        "雨後積水退得快，居民看得見。"
+      ],
+      "furious": [
+        "排水問題拖越久，後續的衛生與交通影響越大。",
+        "居民擔心的是下一場雨。"
+      ],
+      "stable": [
+        "排水暫時沒有新的狀況。",
+        "溝渠與滯洪設施的維護仍要持續。"
+      ]
+    },
+    "market": {
+      "rising": [
+        "攤商反映人潮與客單價都不穩。",
+        "市集的動線與客源是居民和攤商共同的關心。"
+      ],
+      "falling": [
+        "市集人潮回流，攤商臉色變好。",
+        "買氣回升，攤商表示補貨也比較順。"
+      ],
+      "furious": [
+        "市集長期冷清會影響整個城市的氣氛。",
+        "攤商與居民都希望公所說明接下來的做法。"
+      ],
+      "stable": [
+        "市集維持原本的熱度。",
+        "攤商持續觀察客人的反應。"
+      ]
+    },
+    "logistics": {
+      "rising": [
+        "進貨與配送時間不穩，小店最先感受到。",
+        "貨車擠在峽口，補貨時間被拉長。"
+      ],
+      "falling": [
+        "貨車通行順暢，店家補貨變準時。",
+        "物流穩定，菜價也比較穩。"
+      ],
+      "furious": [
+        "物流不穩已經影響到物價與食品安全。",
+        "冷鏈與進貨時間是居民最在意的環節。"
+      ],
+      "stable": [
+        "物流維持正常運作。",
+        "貨車通行狀況與上月差不多。"
+      ]
+    },
+    "traffic": {
+      "rising": [
+        "路口與山路的塞車比上月多。",
+        "公車誤點讓通勤的人很有感。"
+      ],
+      "falling": [
+        "公車較準點，路口的壅塞緩解。",
+        "遊客與居民的動線分開得更好。"
+      ],
+      "furious": [
+        "交通停擺會連到救護與物流，影響範圍很大。",
+        "通勤與遊客動線都需要重新檢視。"
+      ],
+      "stable": [
+        "交通維持在可接受的程度。",
+        "公車與道路狀況和上月相近。"
+      ]
+    },
+    "health": {
+      "rising": [
+        "居民對水質、食安與傳染病的疑慮上升。",
+        "衛生相關消息傳得快，真假都有。"
+      ],
+      "falling": [
+        "衛生所與居民的互動讓疑慮降低。",
+        "檢驗與公告提供了足夠的證據，居民安心許多。"
+      ],
+      "furious": [
+        "衛生議題最怕的是資訊不透明。",
+        "居民要的是檢驗結果與公開說明。"
+      ],
+      "stable": [
+        "衛生方面沒有新的警訊。",
+        "日常的防疫與檢驗持續進行。"
+      ]
+    },
+    "safety": {
+      "rising": [
+        "夜間與人潮聚集處是居民最擔心的地方。",
+        "鄰里提到巡守與照明不夠。"
+      ],
+      "falling": [
+        "巡守與照明到位，夜間走動的人變多。",
+        "居民表示晚上敢出門了。"
+      ],
+      "furious": [
+        "治安與救援的反應速度是居民評價的核心。",
+        "居民期待更清楚的巡守與救援說明。"
+      ],
+      "stable": [
+        "治安沒有特別的事件。",
+        "鄰里守望與緊急聯絡持續維持。"
+      ]
+    }
+  },
+  "board": {
+    "rising": [
+      "{domainIcon} {domainName}：{from} → {to}（上升 {delta}），{tierLabel}",
+      "{domainIcon} {domainName}升溫：{to}（{tierLabel}）"
+    ],
+    "falling": [
+      "{domainIcon} {domainName}：{from} → {to}（下降 {delta}），{tierLabel}",
+      "{domainIcon} {domainName}降溫：{to}（{tierLabel}）"
+    ],
+    "furious": [
+      "{domainIcon} {domainName}：{to}，爆怒",
+      "{domainIcon} {domainName}紅色警戒：{to}"
+    ],
+    "stable": [
+      "{domainIcon} {domainName}：{to}（{tierLabel}），持平",
+      "{domainIcon} {domainName}維持 {to}"
+    ]
+  },
+  "carryOver": {
+    "pending": {
+      "title": [
+        "連鎖提醒：「{nextEventTitle}」可能接著出現",
+        "後續事件：「{nextEventTitle}」排入下季",
+        "接下來要留意：「{nextEventTitle}」"
+      ],
+      "body": [
+        "{chainLabel}。本月的結果讓「{nextEventTitle}」排進了下季，屆時需要重新判斷。",
+        "「{eventTitle}」留下的後續是「{nextEventTitle}」：{chainLabel}。公所會在下季快報再報導。",
+        "根據連鎖紀錄，「{nextEventTitle}」將在下季出現。接下來要留意的是它與{domainName}的關聯。"
+      ]
+    },
+    "rebound": {
+      "title": [
+        "治標反彈：「{eventTitle}」下季可能回來",
+        "留意：「{eventTitle}」只被壓下、尚未解決",
+        "「{eventTitle}」的成因仍在"
+      ],
+      "body": [
+        "本月對「{eventTitle}」採取的是治標做法，成因沒變。接下來要留意它是否再出現，以及下季是否有更根本的做法。",
+        "治標讓「{eventTitle}」暫時退場。依過去的紀錄，同類事件有機會在下季再冒出來。",
+        "「{eventTitle}」在{place}被壓下，但問題點還在。下季觀察重點是：成因有沒有人處理。"
+      ]
+    },
+    "unresolved": {
+      "title": [
+        "未解決：「{eventTitle}」延續到下季",
+        "「{eventTitle}」仍待處理",
+        "留意：「{eventTitle}」嚴重度還剩 {severityAfter}"
+      ],
+      "body": [
+        "「{eventTitle}」本月沒有處理完，嚴重度仍有 {severityAfter}。接下來要留意它是否牽動{domainName}以外的領域。",
+        "這件事會一起進入下季。{place}的居民持續關心後續。",
+        "「{eventTitle}」在本月沒有結束，下季是否優先處理，會影響民怨的走向。"
+      ]
+    },
+    "high": {
+      "title": [
+        "{domainName}民怨仍高：{to}（{tierLabel}）",
+        "高水位警示：{domainName}",
+        "留意：{domainName}仍處「{tierLabel}」"
+      ],
+      "body": [
+        "{domainName}民怨目前為 {to}，下季若再出現同領域事件，影響會被放大。",
+        "高民怨會讓小事件變成大新聞。接下來要留意{domainName}的下一步。",
+        "{domainName}還沒降到安全範圍，下季的事件抽選也會更偏向這個領域。"
+      ]
+    },
+    "none": {
+      "title": [
+        "沒有要延續的問題",
+        "本月的事件都已收尾",
+        "下季從乾淨的桌面開始"
+      ],
+      "body": [
+        "本月沒有後續事件、沒有治標反彈，民怨也都在安全範圍。下季可以專心處理新的狀況。",
+        "所有事件都收尾了，這是難得的平靜月份。",
+        "沒有延續的問題。報導提醒：下季仍會有新事件，平時多留意線索。"
+      ]
+    }
+  },
+  "closing": [
+    "本期快報整理完畢。決定是你們做的，結果由大家一起看。",
+    "新聞只寫已經發生的事；下季的事，請下季再說。",
+    "謝謝閱讀。如果覺得結果出乎意料，請回頭看看當初的線索。",
+    "以上是本月結果。每一個數字背後，都有人在生活。",
+    "報導到此。想知道為什麼，請翻開線索簿比對一次。"
+  ],
+  "layout": {
+    "masthead": "{name,series,issue,dateLine}",
+    "frontPage": "{headline,deck,body[],residentQuote{domainId,who,speakerNpcId,text,mood},editorNote,eventId,resolution,domainId}",
+    "sideBriefs": "[{id,kind:\"event|complaint\",title,body,tone}]",
+    "complaintBoard": "[{domainId,name,icon,from,to,delta,tier,tierLabel,trend,text}]",
+    "carryOver": "[{kind:\"pending|rebound|unresolved|high|none\",id,title,body}]",
+    "closing": "string"
+  },
+  "rules": [
+    "輸入：settleResult（G.EventPool.settle 結果）、prevState／nextState（含 complaints 六領域 0–100，可含 monthLabel、cycle、season）、dr（draw 結果）、assembled（assemble 結果，用來取同一組 vars）。",
+    "主事件（lead）：results 中嚴重度最高者；同級時未解決者優先；再同級取 dr.events 順序。frontPage 的 headline／deck／body／residentQuote／editorNote 先取 outcomes[lead.resolution]；lead 是假警報（falseAlarm）時，headline／body／editorNote 改取 falseAlarm[resolution]。",
+    "resolution 對應：cured 對症解決、assisted 有幫助、palliative 只治標、ignored 未處理、backfired 反效果（與 monthly_paper.js 的 RES_LABEL 同名）。",
+    "民怨焦點（focus）：先取下季為 furious 層級的領域（最高者）；否則取上升（delta ≥ risingMin）最多者；否則取下降（delta ≤ -fallingMin）最多者；否則取最深民怨領域。frontPage.body 第二段與 editorNote 附加焦點領域的 complaint[state] 文案與 domainNotes。",
+    "領域狀態：furious（下季值落在 furious 層級）優先；其次 rising、falling；其餘 stable。門檻在 thresholds。",
+    "sideBriefs：其餘事件各 1 則 outcomes[resolution].brief（最多 3 則），再補民怨變化最大的非焦點領域 1 則；總數最多 maxSideBriefs。",
+    "complaintBoard：六領域各一列，文字依 board[狀態] 取樣，含 from／to／delta／tier／trend。",
+    "carryOver：pending（settleResult.pending 與 aftermath）→ rebound（palliative 的事件）→ unresolved（severityAfter>0）→ high（下季為 upset／furious 的領域，最多 2 則）；全部沒有時給 none。",
+    "居民發言（frontPage.residentQuote）：預設取主事件結果（outcomes[resolution].quote）；若焦點領域為 furious 且主事件不是 cured／assisted，改取 complaint.furious.quote。兩者都優先選 speakerNpcId 等於焦點領域慣用居民（speakerByDomain）的句子。quotes[] 另補最多 3 個民怨有變動領域的引言。",
+    "種子：G.EventPool.rngFor(seed, cycle, \"monthly:mast\"｜\"monthly:front\"｜\"monthly:side\"｜\"monthly:board\"｜\"monthly:carry\"｜\"monthly:quote\"）。同種子同輸入 → 同輸出。",
+    "變數代入後不得殘留 {…}；缺值時用 vars.defaults 的安全預設。"
+  ]
+}

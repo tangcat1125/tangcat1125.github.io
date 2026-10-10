@@ -1,0 +1,1299 @@
+{
+  "id": "mayor_anan_qa_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "note": "Stage I 街景 NPC「安安市長」（虛構：貓造型、西裝、笑容；影射官腔但不是任何真人）。玩家點他 → 「問A答B」；他也會隨機訪問路人 → 路人提問、市長答非所問、路人反應。民怨低且事件已解決時，偶爾答對一次製造反差。全部虛構、教室友善，不涉政黨與選舉。",
+  "names": {
+    "mayorName": "安安市長",
+    "mayorNick": "安安"
+  },
+  "nameDecision": {
+    "pending": false,
+    "decided": "安安市長",
+    "date": "2026-10-10",
+    "by": "使用者（小力轉達）",
+    "howTo": "本檔所有句子只用 {mayorName}／{mayorNick} 佔位，名稱只寫在 names；names 與 G.DATA.mayorNews.names 一致（安安市長／安安），之後若再改名，兩處一起改（test_mayor_anan_qa 會比對）。",
+    "note": "2026-10-10 定案「安安市長」；報導庫 mayorNews 的舊稱同步改為安安。"
+  },
+  "npc": {
+    "id": "mayor_anan",
+    "displayName": "{mayorName}",
+    "speakerKind": "mayor",
+    "sprite": "assets/sprites/npc/npc_mayor_anan.png（待米米繪製；之前用 fallbackEmoji）",
+    "fallbackEmoji": "🐱",
+    "look": "貓造型、深藍西裝、紅色領帶、招牌笑容、胸前小徽章（無文字）",
+    "spawn": {
+      "chancePerSeason": 0.6,
+      "maxOnStreet": 1,
+      "walkSpeed": 0.5,
+      "idleEverySec": 12
+    },
+    "tap": {
+      "action": "qa",
+      "cooldownSec": 15
+    },
+    "interview": {
+      "chancePerWalk": 0.3,
+      "cooldownSec": 40,
+      "note": "走到路人旁邊時擲骰；路人 askerNpcId 需在街上，否則換一組。"
+    }
+  },
+  "selection": {
+    "order": [
+      "1. 本季進行中事件：依 topics[].match.eventIds／topicTags 命中（多個時取民怨最高的領域；同分依 stray_dog → rat → food_safety → 其他 順序）",
+      "2. 沒有命中：用當季民怨最高的領域（ctx.complaints）對到 match.domains；health 領域沒有事件時用 food_safety",
+      "3. 再沒有：隨機一個主題"
+    ],
+    "avoidRepeat": "同一季同一主題不重複同一組 qa id；用 rngFor(seed, cycle, \"anan:\"+npcTapCount)"
+  },
+  "correctRule": {
+    "when": [
+      "該主題對應領域的民怨 < 35（calm）",
+      "且該主題的事件本季已處理（resolution＝cured）或本季沒有該主題事件"
+    ],
+    "chance": 0.2,
+    "maxPerSeason": 1,
+    "cooldownSeasons": 1,
+    "fields": {
+      "ctx.complaints.values[domain]": "✅ 既有",
+      "ctx.poolState.log[].results": "✅ 既有",
+      "ctx.anan = {lastCorrectCycle, tapCount}": "🆕 需小力新增"
+    },
+    "note": "不符合條件時只抽 kind=miss；符合條件時以 20% 抽 kind=correct（一季最多一次、隔季才可再答對）。訪問路人時，kind=correct 才可接「難得滿意」反應。"
+  },
+  "reactionTypes": {
+    "stunned": "傻眼",
+    "resigned": "無奈",
+    "satisfied": "難得滿意"
+  },
+  "reactionRule": "miss → stunned（傻眼）或 resigned（無奈）；correct → satisfied（難得滿意），且只在 correctRule 成立時出現。",
+  "lengthRules": {
+    "q": 20,
+    "a": 24,
+    "reaction": 14,
+    "idle": 18,
+    "note": "字數以 {mayorName}=4、{mayorNick}=2 估算；本檔句子目前不含佔位。"
+  },
+  "safety": [
+    "不用真名、不影射特定真人；只用虛構官腔梗（持續關注、滾動檢討、高度關切）與教室梗（三不、回應機、帶蓋廚餘桶、小魚乾、毛線球、準時下班）。",
+    "不涉政黨、選舉；禁區詞見 tools/test_mayor_anan_qa.js。"
+  ],
+  "idle": [
+    {
+      "id": "anan_idle_01",
+      "text": "今天的領帶很有精神！"
+    },
+    {
+      "id": "anan_idle_02",
+      "text": "持續關注…關注什麼來著？"
+    },
+    {
+      "id": "anan_idle_03",
+      "text": "準時下班，是我的原則。"
+    },
+    {
+      "id": "anan_idle_04",
+      "text": "回應機，今天也請多指教。"
+    },
+    {
+      "id": "anan_idle_05",
+      "text": "小魚乾在口袋，安心。"
+    },
+    {
+      "id": "anan_idle_06",
+      "text": "三不口號，我背得滾瓜爛熟。"
+    },
+    {
+      "id": "anan_idle_07",
+      "text": "這條街的風景真好，拍照！"
+    },
+    {
+      "id": "anan_idle_08",
+      "text": "毛線球放哪了？開會前要找到。"
+    },
+    {
+      "id": "anan_idle_09",
+      "text": "高度關切，高度關切，練習一下。"
+    },
+    {
+      "id": "anan_idle_10",
+      "text": "微笑是市長的基本功。"
+    }
+  ],
+  "topics": [
+    {
+      "id": "drain",
+      "label": "排水／淹水",
+      "match": {
+        "gameDomain": "drain",
+        "domains": [
+          "drain"
+        ],
+        "eventIds": [],
+        "topicTags": [
+          "flood",
+          "storm_water",
+          "drain_clog",
+          "culvert"
+        ]
+      },
+      "qa": [
+        {
+          "id": "anan_drain_q01",
+          "q": "市長，巷口又淹水了怎麼辦？",
+          "a": "今天天氣很好，大家要多運動！",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_drain_q02",
+          "q": "排水口塞住好幾天了！",
+          "a": "我們會持續關注，滾動檢討。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_drain_q03",
+          "q": "雨一下就積水，能清溝嗎？",
+          "a": "雨水是天空的禮物，我很感恩。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_drain_q04",
+          "q": "水溝裡都是落葉耶！",
+          "a": "秋天很美，建議大家拍照留念。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_drain_q05",
+          "q": "涵洞淤泥要不要清？",
+          "a": "我已經請回應機認真想想了。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_drain_q06",
+          "q": "低窪的家具都泡水了…",
+          "a": "小魚乾要放高處，這點我很有經驗。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_drain_q07",
+          "q": "這次排水口有清嗎？",
+          "a": "清淤隊昨天清完，班表貼在公告欄。",
+          "kind": "correct"
+        },
+        {
+          "id": "anan_drain_q08",
+          "q": "下雨前會先巡溝嗎？",
+          "a": "會，雨前巡溝、雨後回報，我親自看。",
+          "kind": "correct"
+        }
+      ],
+      "interviews": [
+        {
+          "id": "anan_drain_iv01",
+          "askerNpcId": "walker_elder",
+          "qaId": "anan_drain_q01",
+          "q": "市長，巷口又淹水了怎麼辦？",
+          "a": "今天天氣很好，大家要多運動！",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "蛤？我問的是淹水耶！"
+          }
+        },
+        {
+          "id": "anan_drain_iv02",
+          "askerNpcId": "bo",
+          "qaId": "anan_drain_q02",
+          "q": "排水口塞住好幾天了！",
+          "a": "我們會持續關注，滾動檢討。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "滾動檢討…水也在滾。"
+          }
+        },
+        {
+          "id": "anan_drain_iv03",
+          "askerNpcId": "walker_student",
+          "qaId": "anan_drain_q03",
+          "q": "雨一下就積水，能清溝嗎？",
+          "a": "雨水是天空的禮物，我很感恩。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "禮物也太多了吧！"
+          }
+        },
+        {
+          "id": "anan_drain_iv04",
+          "askerNpcId": "tourist_f_map",
+          "qaId": "anan_drain_q05",
+          "q": "涵洞淤泥要不要清？",
+          "a": "我已經請回應機認真想想了。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "回應機也想不出來吧。"
+          }
+        },
+        {
+          "id": "anan_drain_iv05",
+          "askerNpcId": "bo",
+          "qaId": "anan_drain_q07",
+          "q": "這次排水口有清嗎？",
+          "a": "清淤隊昨天清完，班表貼在公告欄。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "咦？這次答對了！"
+          }
+        },
+        {
+          "id": "anan_drain_iv06",
+          "askerNpcId": "walker_office",
+          "qaId": "anan_drain_q08",
+          "q": "下雨前會先巡溝嗎？",
+          "a": "會，雨前巡溝、雨後回報，我親自看。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "難得聽懂，給你按讚！"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rat",
+      "label": "鼠患",
+      "match": {
+        "gameDomain": "health",
+        "domains": [],
+        "eventIds": [
+          "evp_market_rat_bin",
+          "evp_safety_park_burrow",
+          "evp_health_bait_worry",
+          "evp_health_rat_swarm"
+        ],
+        "topicTags": [
+          "rat",
+          "rat_swarm"
+        ]
+      },
+      "qa": [
+        {
+          "id": "anan_rat_q01",
+          "q": "市集晚上有老鼠！",
+          "a": "我們會持續關注，滾動檢討。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_rat_q02",
+          "q": "廚餘桶都沒蓋！",
+          "a": "蓋蓋貼紙很可愛，大家要多收集。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_rat_q03",
+          "q": "老鼠跑進店裡了！",
+          "a": "我已經把三不口號貼滿全市了！",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_rat_q04",
+          "q": "鼠洞封了又出現…",
+          "a": "今天的毛線球特別好玩，你要不要試試？",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_rat_q05",
+          "q": "吹笛人尾款付了嗎？",
+          "a": "笛聲很好聽，我們要多支持藝文活動。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_rat_q06",
+          "q": "雨後鼠群竄出來了！",
+          "a": "雨後的空氣很清新，適合散步。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_rat_q07",
+          "q": "廚餘桶什麼時候加蓋？",
+          "a": "這週全市換帶蓋桶，封洞也排好了。",
+          "kind": "correct"
+        },
+        {
+          "id": "anan_rat_q08",
+          "q": "吹笛人的錢付了嗎？",
+          "a": "尾款準時付清，收據貼在公告欄。",
+          "kind": "correct"
+        }
+      ],
+      "interviews": [
+        {
+          "id": "anan_rat_iv01",
+          "askerNpcId": "mei",
+          "qaId": "anan_rat_q01",
+          "q": "市集晚上有老鼠！",
+          "a": "我們會持續關注，滾動檢討。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "又是滾動檢討…"
+          }
+        },
+        {
+          "id": "anan_rat_iv02",
+          "askerNpcId": "walker_elder",
+          "qaId": "anan_rat_q02",
+          "q": "廚餘桶都沒蓋！",
+          "a": "蓋蓋貼紙很可愛，大家要多收集。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "貼紙不能擋老鼠啦！"
+          }
+        },
+        {
+          "id": "anan_rat_iv03",
+          "askerNpcId": "lin",
+          "qaId": "anan_rat_q04",
+          "q": "鼠洞封了又出現…",
+          "a": "今天的毛線球特別好玩，你要不要試試？",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "誰在問毛線球啦！"
+          }
+        },
+        {
+          "id": "anan_rat_iv04",
+          "askerNpcId": "tourist_m_selfie",
+          "qaId": "anan_rat_q06",
+          "q": "雨後鼠群竄出來了！",
+          "a": "雨後的空氣很清新，適合散步。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "老鼠也覺得很清新？"
+          }
+        },
+        {
+          "id": "anan_rat_iv05",
+          "askerNpcId": "mei",
+          "qaId": "anan_rat_q07",
+          "q": "廚餘桶什麼時候加蓋？",
+          "a": "這週全市換帶蓋桶，封洞也排好了。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "終於有帶蓋桶了！"
+          }
+        },
+        {
+          "id": "anan_rat_iv06",
+          "askerNpcId": "walker_office",
+          "qaId": "anan_rat_q08",
+          "q": "吹笛人的錢付了嗎？",
+          "a": "尾款準時付清，收據貼在公告欄。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "收據有貼，讚！"
+          }
+        }
+      ]
+    },
+    {
+      "id": "stray_dog",
+      "label": "野狗",
+      "match": {
+        "gameDomain": "safety",
+        "domains": [],
+        "eventIds": [
+          "evp_safety_stray_dogs"
+        ],
+        "topicTags": [
+          "stray_dog"
+        ]
+      },
+      "qa": [
+        {
+          "id": "anan_stray_dog_q01",
+          "q": "晚上有狗群追機車！",
+          "a": "騎車要戴安全帽，這點非常重要。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_stray_dog_q02",
+          "q": "聽說有大野狼？",
+          "a": "我小時候最喜歡小紅帽的故事了。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_stray_dog_q03",
+          "q": "垃圾堆旁好多狗！",
+          "a": "狗狗很可愛，大家要多拍照上傳。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_stray_dog_q04",
+          "q": "可以幫狗結紮嗎？",
+          "a": "我們已經成立專案小組，高度關切。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_stray_dog_q05",
+          "q": "志工說人手不夠…",
+          "a": "準時下班是我的原則，大家也要照顧自己。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_stray_dog_q06",
+          "q": "狗被趕走又回來了！",
+          "a": "這證明我們的城市很有吸引力！",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_stray_dog_q07",
+          "q": "狗群的事怎麼處理？",
+          "a": "收容站開了，結紮送養，垃圾不落地。",
+          "kind": "correct"
+        },
+        {
+          "id": "anan_stray_dog_q08",
+          "q": "晚上走路安全嗎？",
+          "a": "志工夜巡排好了，晚上結伴走更安心。",
+          "kind": "correct"
+        }
+      ],
+      "interviews": [
+        {
+          "id": "anan_stray_dog_iv01",
+          "askerNpcId": "walker_student",
+          "qaId": "anan_stray_dog_q01",
+          "q": "晚上有狗群追機車！",
+          "a": "騎車要戴安全帽，這點非常重要。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "我問的是狗不是帽子！"
+          }
+        },
+        {
+          "id": "anan_stray_dog_iv02",
+          "askerNpcId": "tourist_f_photo",
+          "qaId": "anan_stray_dog_q02",
+          "q": "聽說有大野狼？",
+          "a": "我小時候最喜歡小紅帽的故事了。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "所以有沒有狼啦？"
+          }
+        },
+        {
+          "id": "anan_stray_dog_iv03",
+          "askerNpcId": "walker_elder",
+          "qaId": "anan_stray_dog_q05",
+          "q": "志工說人手不夠…",
+          "a": "準時下班是我的原則，大家也要照顧自己。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "志工也想準時下班…"
+          }
+        },
+        {
+          "id": "anan_stray_dog_iv04",
+          "askerNpcId": "walker_office",
+          "qaId": "anan_stray_dog_q06",
+          "q": "狗被趕走又回來了！",
+          "a": "這證明我們的城市很有吸引力！",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "吸引力是狗群的吧…"
+          }
+        },
+        {
+          "id": "anan_stray_dog_iv05",
+          "askerNpcId": "walker_elder",
+          "qaId": "anan_stray_dog_q07",
+          "q": "狗群的事怎麼處理？",
+          "a": "收容站開了，結紮送養，垃圾不落地。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "這樣安心多了！"
+          }
+        },
+        {
+          "id": "anan_stray_dog_iv06",
+          "askerNpcId": "walker_student",
+          "qaId": "anan_stray_dog_q08",
+          "q": "晚上走路安全嗎？",
+          "a": "志工夜巡排好了，晚上結伴走更安心。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "難得這麼清楚！"
+          }
+        }
+      ]
+    },
+    {
+      "id": "food_safety",
+      "label": "午餐／食安",
+      "match": {
+        "gameDomain": "health",
+        "domains": [],
+        "eventIds": [
+          "evp_health_foodpoison",
+          "evp_health_lunch_sample",
+          "evp_health_class_upset",
+          "evp_market_lunch_supplier"
+        ],
+        "topicTags": [
+          "food_safety",
+          "school_lunch"
+        ]
+      },
+      "qa": [
+        {
+          "id": "anan_food_safety_q01",
+          "q": "午餐留樣有沒有做？",
+          "a": "午餐要吃飽，下午才有精神上課。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_food_safety_q02",
+          "q": "孩子吃完不舒服…",
+          "a": "我今天的便當是小魚乾飯，很好吃喔。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_food_safety_q03",
+          "q": "檢驗報告出來了嗎？",
+          "a": "報告的字體我們會改大一點。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_food_safety_q04",
+          "q": "供餐廠商換了嗎？",
+          "a": "換季了，大家要注意保暖。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_food_safety_q05",
+          "q": "留樣冰箱壞了耶！",
+          "a": "冰箱很重要，我家冰箱都放小魚乾。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_food_safety_q06",
+          "q": "食材來源查得到嗎？",
+          "a": "我們會持續關注，滾動檢討。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_food_safety_q07",
+          "q": "現在調查到哪裡？",
+          "a": "已採樣送驗，結果出來前不下結論。",
+          "kind": "correct"
+        },
+        {
+          "id": "anan_food_safety_q08",
+          "q": "留樣有補齊嗎？",
+          "a": "補齊了，冷藏四十八小時，紀錄公開。",
+          "kind": "correct"
+        }
+      ],
+      "interviews": [
+        {
+          "id": "anan_food_safety_iv01",
+          "askerNpcId": "lin",
+          "qaId": "anan_food_safety_q01",
+          "q": "午餐留樣有沒有做？",
+          "a": "午餐要吃飽，下午才有精神上課。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "我問的是留樣啊！"
+          }
+        },
+        {
+          "id": "anan_food_safety_iv02",
+          "askerNpcId": "lin",
+          "qaId": "anan_food_safety_q02",
+          "q": "孩子吃完不舒服…",
+          "a": "我今天的便當是小魚乾飯，很好吃喔。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "誰在問你的便當…"
+          }
+        },
+        {
+          "id": "anan_food_safety_iv03",
+          "askerNpcId": "walker_office",
+          "qaId": "anan_food_safety_q03",
+          "q": "檢驗報告出來了嗎？",
+          "a": "報告的字體我們會改大一點。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "字體大小不是重點！"
+          }
+        },
+        {
+          "id": "anan_food_safety_iv04",
+          "askerNpcId": "walker_elder",
+          "qaId": "anan_food_safety_q06",
+          "q": "食材來源查得到嗎？",
+          "a": "我們會持續關注，滾動檢討。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "又在滾動了…"
+          }
+        },
+        {
+          "id": "anan_food_safety_iv05",
+          "askerNpcId": "lin",
+          "qaId": "anan_food_safety_q07",
+          "q": "現在調查到哪裡？",
+          "a": "已採樣送驗，結果出來前不下結論。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "不亂下結論，很好。"
+          }
+        },
+        {
+          "id": "anan_food_safety_iv06",
+          "askerNpcId": "walker_elder",
+          "qaId": "anan_food_safety_q08",
+          "q": "留樣有補齊嗎？",
+          "a": "補齊了，冷藏四十八小時，紀錄公開。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "紀錄公開，安心！"
+          }
+        }
+      ]
+    },
+    {
+      "id": "traffic",
+      "label": "交通",
+      "match": {
+        "gameDomain": "traffic",
+        "domains": [
+          "traffic"
+        ],
+        "eventIds": [],
+        "topicTags": [
+          "congestion",
+          "bus_delay",
+          "parking"
+        ]
+      },
+      "qa": [
+        {
+          "id": "anan_traffic_q01",
+          "q": "峽口又塞車了！",
+          "a": "塞車時可以聽聽音樂，放鬆心情。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_traffic_q02",
+          "q": "公車一直誤點！",
+          "a": "準時下班是我的原則，公車也要學。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_traffic_q03",
+          "q": "遊覽車停滿路邊！",
+          "a": "遊客這麼多，證明我們很受歡迎。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_traffic_q04",
+          "q": "施工只剩單線道…",
+          "a": "施工代表進步，大家要多多包容。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_traffic_q05",
+          "q": "路邊違停好多！",
+          "a": "我已經請回應機寫一張提醒卡了。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_traffic_q06",
+          "q": "救護車也被卡住…",
+          "a": "這個問題非常重要，我們高度關切。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_traffic_q07",
+          "q": "公車改道了嗎？",
+          "a": "改好了，接駁車避開塞住的路口。",
+          "kind": "correct"
+        },
+        {
+          "id": "anan_traffic_q08",
+          "q": "遊覽車要停哪裡？",
+          "a": "外圍停車場，接駁車載大家進來。",
+          "kind": "correct"
+        }
+      ],
+      "interviews": [
+        {
+          "id": "anan_traffic_iv01",
+          "askerNpcId": "walker_office",
+          "qaId": "anan_traffic_q01",
+          "q": "峽口又塞車了！",
+          "a": "塞車時可以聽聽音樂，放鬆心情。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "音樂救不了遲到！"
+          }
+        },
+        {
+          "id": "anan_traffic_iv02",
+          "askerNpcId": "walker_student",
+          "qaId": "anan_traffic_q02",
+          "q": "公車一直誤點！",
+          "a": "準時下班是我的原則，公車也要學。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "公車也想準時啊…"
+          }
+        },
+        {
+          "id": "anan_traffic_iv03",
+          "askerNpcId": "tourist_m_hat",
+          "qaId": "anan_traffic_q03",
+          "q": "遊覽車停滿路邊！",
+          "a": "遊客這麼多，證明我們很受歡迎。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "受歡迎也要有車位！"
+          }
+        },
+        {
+          "id": "anan_traffic_iv04",
+          "askerNpcId": "walker_elder",
+          "qaId": "anan_traffic_q06",
+          "q": "救護車也被卡住…",
+          "a": "這個問題非常重要，我們高度關切。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "高度關切，路還是塞。"
+          }
+        },
+        {
+          "id": "anan_traffic_iv05",
+          "askerNpcId": "tourist_f_suitcase",
+          "qaId": "anan_traffic_q07",
+          "q": "公車改道了嗎？",
+          "a": "改好了，接駁車避開塞住的路口。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "接駁車真的來了！"
+          }
+        },
+        {
+          "id": "anan_traffic_iv06",
+          "askerNpcId": "tourist_m_backpack",
+          "qaId": "anan_traffic_q08",
+          "q": "遊覽車要停哪裡？",
+          "a": "外圍停車場，接駁車載大家進來。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "終於有地方停了！"
+          }
+        }
+      ]
+    },
+    {
+      "id": "safety",
+      "label": "治安／防災",
+      "match": {
+        "gameDomain": "safety",
+        "domains": [
+          "safety"
+        ],
+        "eventIds": [],
+        "topicTags": [
+          "theft",
+          "night",
+          "fire",
+          "slope"
+        ]
+      },
+      "qa": [
+        {
+          "id": "anan_safety_q01",
+          "q": "夜市有扒手！",
+          "a": "夜市的燈籠真漂亮，值得來逛。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_safety_q02",
+          "q": "老屋電線會走火嗎？",
+          "a": "我最喜歡老屋的復古感了。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_safety_q03",
+          "q": "暗巷路燈壞了！",
+          "a": "晚上早點睡，對身體比較好。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_safety_q04",
+          "q": "邊坡好像有落石…",
+          "a": "山很美，我們要愛護大自然。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_safety_q05",
+          "q": "消防車進不了巷子！",
+          "a": "巷子窄窄的，很有人情味。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_safety_q06",
+          "q": "監視器裝了嗎？",
+          "a": "我們會持續關注，滾動檢討。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_safety_q07",
+          "q": "暗巷什麼時候變亮？",
+          "a": "這週換LED路燈，巡守隊也排班了。",
+          "kind": "correct"
+        },
+        {
+          "id": "anan_safety_q08",
+          "q": "老屋電線會檢修嗎？",
+          "a": "補助開辦了，師傅會一戶戶檢修。",
+          "kind": "correct"
+        }
+      ],
+      "interviews": [
+        {
+          "id": "anan_safety_iv01",
+          "askerNpcId": "tourist_f_suitcase",
+          "qaId": "anan_safety_q01",
+          "q": "夜市有扒手！",
+          "a": "夜市的燈籠真漂亮，值得來逛。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "燈籠不會抓扒手啦！"
+          }
+        },
+        {
+          "id": "anan_safety_iv02",
+          "askerNpcId": "walker_elder",
+          "qaId": "anan_safety_q02",
+          "q": "老屋電線會走火嗎？",
+          "a": "我最喜歡老屋的復古感了。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "復古不能防走火！"
+          }
+        },
+        {
+          "id": "anan_safety_iv03",
+          "askerNpcId": "walker_office",
+          "qaId": "anan_safety_q03",
+          "q": "暗巷路燈壞了！",
+          "a": "晚上早點睡，對身體比較好。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "我加班到很晚耶…"
+          }
+        },
+        {
+          "id": "anan_safety_iv04",
+          "askerNpcId": "walker_student",
+          "qaId": "anan_safety_q05",
+          "q": "消防車進不了巷子！",
+          "a": "巷子窄窄的，很有人情味。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "人情味擋住消防車…"
+          }
+        },
+        {
+          "id": "anan_safety_iv05",
+          "askerNpcId": "walker_office",
+          "qaId": "anan_safety_q07",
+          "q": "暗巷什麼時候變亮？",
+          "a": "這週換LED路燈，巡守隊也排班了。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "暗巷要亮了，太好了！"
+          }
+        },
+        {
+          "id": "anan_safety_iv06",
+          "askerNpcId": "walker_elder",
+          "qaId": "anan_safety_q08",
+          "q": "老屋電線會檢修嗎？",
+          "a": "補助開辦了，師傅會一戶戶檢修。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "這個答案我喜歡。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "market",
+      "label": "市集",
+      "match": {
+        "gameDomain": "market",
+        "domains": [
+          "market"
+        ],
+        "eventIds": [],
+        "topicTags": [
+          "footfall",
+          "price",
+          "reviews",
+          "crowd"
+        ]
+      },
+      "qa": [
+        {
+          "id": "anan_market_q01",
+          "q": "市集客人變好少…",
+          "a": "人少比較好逛，這是優點。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_market_q02",
+          "q": "菜價漲好多！",
+          "a": "多吃青菜身體好，大家要均衡飲食。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_market_q03",
+          "q": "步道泥濘很難走！",
+          "a": "走泥巴路可以鍛鍊腳力。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_market_q04",
+          "q": "網路負評說不乾淨！",
+          "a": "我們已經在網路上按讚了。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_market_q05",
+          "q": "廟會人潮擠爆了！",
+          "a": "熱鬧是好事，我也要去吃攤販。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_market_q06",
+          "q": "攤商說快撐不住了…",
+          "a": "我請大家吃小魚乾，打打氣。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_market_q07",
+          "q": "步道什麼時候修好？",
+          "a": "木棧加固完成了，週末就能走。",
+          "kind": "correct"
+        },
+        {
+          "id": "anan_market_q08",
+          "q": "負評是真的嗎？",
+          "a": "查過了，照片是別的地方拍的。",
+          "kind": "correct"
+        }
+      ],
+      "interviews": [
+        {
+          "id": "anan_market_iv01",
+          "askerNpcId": "mei",
+          "qaId": "anan_market_q01",
+          "q": "市集客人變好少…",
+          "a": "人少比較好逛，這是優點。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "這哪裡是優點啦！"
+          }
+        },
+        {
+          "id": "anan_market_iv02",
+          "askerNpcId": "mei",
+          "qaId": "anan_market_q02",
+          "q": "菜價漲好多！",
+          "a": "多吃青菜身體好，大家要均衡飲食。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "青菜很貴耶…"
+          }
+        },
+        {
+          "id": "anan_market_iv03",
+          "askerNpcId": "tourist_f_photo",
+          "qaId": "anan_market_q03",
+          "q": "步道泥濘很難走！",
+          "a": "走泥巴路可以鍛鍊腳力。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "鞋子都陷進去了！"
+          }
+        },
+        {
+          "id": "anan_market_iv04",
+          "askerNpcId": "mei",
+          "qaId": "anan_market_q06",
+          "q": "攤商說快撐不住了…",
+          "a": "我請大家吃小魚乾，打打氣。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "小魚乾不能付房租。"
+          }
+        },
+        {
+          "id": "anan_market_iv05",
+          "askerNpcId": "tourist_m_hat",
+          "qaId": "anan_market_q07",
+          "q": "步道什麼時候修好？",
+          "a": "木棧加固完成了，週末就能走。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "週末來走走！"
+          }
+        },
+        {
+          "id": "anan_market_iv06",
+          "askerNpcId": "mei",
+          "qaId": "anan_market_q08",
+          "q": "負評是真的嗎？",
+          "a": "查過了，照片是別的地方拍的。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "終於還我清白！"
+          }
+        }
+      ]
+    },
+    {
+      "id": "logistics",
+      "label": "物流",
+      "match": {
+        "gameDomain": "logistics",
+        "domains": [
+          "logistics"
+        ],
+        "eventIds": [],
+        "topicTags": [
+          "supply_delay",
+          "freight_jam",
+          "cold_chain",
+          "road_closed"
+        ]
+      },
+      "qa": [
+        {
+          "id": "anan_logistics_q01",
+          "q": "進貨車又遲到了！",
+          "a": "等待也是一種修行。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_logistics_q02",
+          "q": "冷藏車壞了，菜都爛了！",
+          "a": "夏天熱，大家要多喝水。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_logistics_q03",
+          "q": "落石把路封了！",
+          "a": "我們會持續關注，滾動檢討。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_logistics_q04",
+          "q": "聽說橋要封三天？",
+          "a": "橋上的風景很好，推薦大家去。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_logistics_q05",
+          "q": "貨車二排停車擋路！",
+          "a": "貨車很大台，看起來很有安全感。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_logistics_q06",
+          "q": "小魚乾也缺貨了！",
+          "a": "那我先玩毛線球，冷靜一下。",
+          "kind": "miss"
+        },
+        {
+          "id": "anan_logistics_q07",
+          "q": "進貨車準時了嗎？",
+          "a": "緩衝站排好時段，準點率回升了。",
+          "kind": "correct"
+        },
+        {
+          "id": "anan_logistics_q08",
+          "q": "橋真的要封嗎？",
+          "a": "沒有，橋檢紀錄正常，請看公告。",
+          "kind": "correct"
+        }
+      ],
+      "interviews": [
+        {
+          "id": "anan_logistics_iv01",
+          "askerNpcId": "mei",
+          "qaId": "anan_logistics_q01",
+          "q": "進貨車又遲到了！",
+          "a": "等待也是一種修行。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "修行不能賣菜啦！"
+          }
+        },
+        {
+          "id": "anan_logistics_iv02",
+          "askerNpcId": "bo",
+          "qaId": "anan_logistics_q02",
+          "q": "冷藏車壞了，菜都爛了！",
+          "a": "夏天熱，大家要多喝水。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "菜比我還熱…"
+          }
+        },
+        {
+          "id": "anan_logistics_iv03",
+          "askerNpcId": "walker_office",
+          "qaId": "anan_logistics_q04",
+          "q": "聽說橋要封三天？",
+          "a": "橋上的風景很好，推薦大家去。",
+          "kind": "miss",
+          "reaction": {
+            "type": "stunned",
+            "typeLabel": "傻眼",
+            "text": "所以到底封不封？"
+          }
+        },
+        {
+          "id": "anan_logistics_iv04",
+          "askerNpcId": "walker_elder",
+          "qaId": "anan_logistics_q03",
+          "q": "落石把路封了！",
+          "a": "我們會持續關注，滾動檢討。",
+          "kind": "miss",
+          "reaction": {
+            "type": "resigned",
+            "typeLabel": "無奈",
+            "text": "又在滾動檢討…"
+          }
+        },
+        {
+          "id": "anan_logistics_iv05",
+          "askerNpcId": "mei",
+          "qaId": "anan_logistics_q07",
+          "q": "進貨車準時了嗎？",
+          "a": "緩衝站排好時段，準點率回升了。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "菜終於準時到了！"
+          }
+        },
+        {
+          "id": "anan_logistics_iv06",
+          "askerNpcId": "walker_office",
+          "qaId": "anan_logistics_q08",
+          "q": "橋真的要封嗎？",
+          "a": "沒有，橋檢紀錄正常，請看公告。",
+          "kind": "correct",
+          "reaction": {
+            "type": "satisfied",
+            "typeLabel": "難得滿意",
+            "text": "不用囤貨了，好險。"
+          }
+        }
+      ]
+    }
+  ]
+}

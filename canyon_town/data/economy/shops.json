@@ -1,0 +1,172 @@
+{
+  "id": "economy_shops_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "count": 8,
+  "flows": [
+    "foot",
+    "vehicle",
+    "tourist",
+    "security"
+  ],
+  "flowLabels": {
+    "foot": "人流",
+    "vehicle": "車流",
+    "tourist": "遊客量",
+    "security": "治安感"
+  },
+  "states": {
+    "open": "營業正常",
+    "quiet": "客流少（客流指數 < 損益兩平）",
+    "warning": "警示（黃牌）",
+    "closed": "歇業",
+    "reopened": "重新開張"
+  },
+  "note": "8 家全虛構店家。maxRevenue 70、fixedCost 10（v2.1）；損益兩平客流指數 = 10÷70 ≈ 0.14，開局 0.28 時每店約賺 9.6。",
+  "shops": [
+    {
+      "id": "shop_snack",
+      "name": "阿花小吃攤",
+      "type": "dining",
+      "typeLabel": "餐飲",
+      "emoji": "🍜",
+      "weights": {
+        "foot": 0.4,
+        "tourist": 0.3,
+        "security": 0.2,
+        "vehicle": 0.1
+      },
+      "maxRevenue": 70,
+      "fixedCost": 10,
+      "startHealth": 70,
+      "catchphrase": "客人多，鍋才熱！",
+      "note": "虛構店家；weights 為四種流量的依賴權重（合計 1）。"
+    },
+    {
+      "id": "shop_grocery",
+      "name": "阿珍雜貨店",
+      "type": "grocery",
+      "typeLabel": "雜貨",
+      "emoji": "🛒",
+      "weights": {
+        "foot": 0.6,
+        "vehicle": 0.2,
+        "security": 0.2,
+        "tourist": 0
+      },
+      "maxRevenue": 70,
+      "fixedCost": 10,
+      "startHealth": 70,
+      "catchphrase": "缺什麼？來我這找就對了。",
+      "note": "虛構店家；weights 為四種流量的依賴權重（合計 1）。"
+    },
+    {
+      "id": "shop_inn",
+      "name": "峽谷民宿",
+      "type": "lodging",
+      "typeLabel": "住宿",
+      "emoji": "🛏️",
+      "weights": {
+        "tourist": 0.5,
+        "security": 0.3,
+        "vehicle": 0.2,
+        "foot": 0
+      },
+      "maxRevenue": 70,
+      "fixedCost": 10,
+      "startHealth": 70,
+      "catchphrase": "空房有，就怕沒人來。",
+      "note": "虛構店家；weights 為四種流量的依賴權重（合計 1）。"
+    },
+    {
+      "id": "shop_gift",
+      "name": "小魚乾伴手禮店",
+      "type": "souvenir",
+      "typeLabel": "紀念品",
+      "emoji": "🎁",
+      "weights": {
+        "tourist": 0.6,
+        "foot": 0.3,
+        "security": 0.1,
+        "vehicle": 0
+      },
+      "maxRevenue": 70,
+      "fixedCost": 10,
+      "startHealth": 70,
+      "catchphrase": "買一包，帶走一點峽谷味。",
+      "note": "虛構店家；weights 為四種流量的依賴權重（合計 1）。"
+    },
+    {
+      "id": "shop_fruit",
+      "name": "阿福水果攤",
+      "type": "fruit",
+      "typeLabel": "生鮮",
+      "emoji": "🍎",
+      "weights": {
+        "foot": 0.5,
+        "vehicle": 0.2,
+        "tourist": 0.2,
+        "security": 0.1
+      },
+      "maxRevenue": 70,
+      "fixedCost": 10,
+      "startHealth": 70,
+      "catchphrase": "甜不甜？吃一口就知道！",
+      "note": "虛構店家；weights 為四種流量的依賴權重（合計 1）。"
+    },
+    {
+      "id": "shop_repair",
+      "name": "老周修車行",
+      "type": "repair",
+      "typeLabel": "修車",
+      "emoji": "🔧",
+      "weights": {
+        "vehicle": 0.6,
+        "foot": 0.2,
+        "security": 0.2,
+        "tourist": 0
+      },
+      "maxRevenue": 70,
+      "fixedCost": 10,
+      "startHealth": 70,
+      "catchphrase": "路順了，車才不會壞得這麼勤。",
+      "note": "虛構店家；weights 為四種流量的依賴權重（合計 1）。"
+    },
+    {
+      "id": "shop_cafe",
+      "name": "毛線球咖啡館",
+      "type": "cafe",
+      "typeLabel": "咖啡館",
+      "emoji": "☕",
+      "weights": {
+        "foot": 0.4,
+        "tourist": 0.4,
+        "security": 0.2,
+        "vehicle": 0
+      },
+      "maxRevenue": 70,
+      "fixedCost": 10,
+      "startHealth": 70,
+      "catchphrase": "慢慢喝，外面的事等一下再煩惱。",
+      "note": "虛構店家；weights 為四種流量的依賴權重（合計 1）。"
+    },
+    {
+      "id": "shop_logistics",
+      "name": "順風物流行",
+      "type": "logistics",
+      "typeLabel": "物流",
+      "emoji": "📦",
+      "weights": {
+        "vehicle": 0.7,
+        "foot": 0.3,
+        "tourist": 0,
+        "security": 0
+      },
+      "maxRevenue": 70,
+      "fixedCost": 10,
+      "startHealth": 70,
+      "catchphrase": "貨準時，大家才有笑臉。",
+      "note": "虛構店家；weights 為四種流量的依賴權重（合計 1）。"
+    }
+  ]
+}

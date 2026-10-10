@@ -1,0 +1,130 @@
+{
+  "id": "routes_season_01",
+  "seasonId": "season_01",
+  "metrics": {
+    "congestion": 1,
+    "onTimeRate": 0.72,
+    "observeLabels": {
+      "congestion": "車流壅塞度（0 順暢～3 大塞）",
+      "onTimeRate": "物資準點率（0～1）"
+    }
+  },
+  "spawns": [
+    {
+      "vehicleType": "scooter",
+      "cargo": "food_delivery",
+      "from": "east_gate",
+      "to": "market",
+      "interval": 90,
+      "lane": "near"
+    },
+    {
+      "vehicleType": "light_truck",
+      "cargo": "produce",
+      "from": "farm_road",
+      "to": "market",
+      "interval": 180,
+      "lane": "near"
+    },
+    {
+      "vehicleType": "scooter",
+      "cargo": "parcel",
+      "from": "warehouse",
+      "to": "residential",
+      "interval": 110,
+      "lane": "near"
+    },
+    {
+      "vehicleType": "bus",
+      "cargo": "tourists",
+      "from": "bus_stop_a",
+      "to": "bus_stop_b",
+      "interval": 200,
+      "lane": "near"
+    },
+    {
+      "vehicleType": "light_truck",
+      "cargo": "market_stock",
+      "from": "warehouse",
+      "to": "market",
+      "interval": 240,
+      "lane": "far"
+    },
+    {
+      "vehicleType": "garbage_truck",
+      "cargo": "waste",
+      "from": "dump_gate",
+      "to": "residential",
+      "interval": 300,
+      "lane": "far"
+    },
+    {
+      "vehicleType": "water_truck",
+      "cargo": "drinking_water",
+      "from": "school_well",
+      "to": "depot",
+      "interval": 360,
+      "lane": "far"
+    },
+    {
+      "vehicleType": "works_truck",
+      "cargo": "drain_tools",
+      "from": "east_gate",
+      "to": "depot",
+      "interval": 280,
+      "lane": "far"
+    },
+    {
+      "vehicleType": "bus",
+      "cargo": "passengers",
+      "from": "bus_stop_b",
+      "to": "bus_stop_a",
+      "interval": 220,
+      "lane": "far"
+    },
+    {
+      "vehicleType": "light_truck",
+      "cargo": "daily_goods",
+      "from": "farm_road",
+      "to": "east_gate",
+      "interval": 200,
+      "lane": "near"
+    },
+    {
+      "vehicleType": "bicycle",
+      "cargo": "passengers",
+      "from": "residential",
+      "to": "bus_stop_a",
+      "interval": 170,
+      "lane": "far"
+    },
+    {
+      "vehicleType": "scooter_delivery",
+      "cargo": "food_delivery",
+      "from": "market",
+      "to": "residential",
+      "interval": 150,
+      "lane": "near"
+    },
+    {
+      "vehicleType": "scooter_cargo",
+      "cargo": "daily_goods",
+      "from": "warehouse",
+      "to": "market",
+      "interval": 260,
+      "lane": "far"
+    }
+  ],
+  "linksToEvents": {
+    "high_congestion": [
+      "event_supply_delay",
+      "event_market_slump"
+    ],
+    "waste_backlog": [
+      "event_flood_risk"
+    ],
+    "water_delay": [
+      "event_rumor_well"
+    ]
+  }
+}

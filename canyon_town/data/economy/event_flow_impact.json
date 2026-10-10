@@ -1,0 +1,1165 @@
+{
+  "id": "economy_event_flow_impact_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "flows": [
+    "foot",
+    "vehicle",
+    "tourist",
+    "security"
+  ],
+  "flowLabels": {
+    "foot": "人流",
+    "vehicle": "車流",
+    "tourist": "遊客量",
+    "security": "治安感"
+  },
+  "rule": "數值是「該事件未解決時，每季對四項流量 target 的影響」（負＝壓低）。levels 是嚴重度 1/2/3 的對應值（custom＝以事件自身嚴重度為準等比換算；domainDefault＝領域預設 × 級數）。處理結果的乘數見 economy_rules.flow（ignoreStack／palliativeMult／backfireMult…）。polarity=opportunity 的正值只有在對症或輔助處理後才發放。",
+  "domainDefaults": {
+    "drain": {
+      "foot": -3,
+      "vehicle": -4,
+      "tourist": -3,
+      "security": 0,
+      "perSeverityLevel": true,
+      "note": "排水／積水（每 1 級嚴重度）"
+    },
+    "market": {
+      "foot": -4,
+      "vehicle": 0,
+      "tourist": -3,
+      "security": 0,
+      "perSeverityLevel": true,
+      "note": "市集（每 1 級）"
+    },
+    "logistics": {
+      "foot": 0,
+      "vehicle": -4,
+      "tourist": -1,
+      "security": 0,
+      "perSeverityLevel": true,
+      "note": "物流（每 1 級）"
+    },
+    "traffic": {
+      "foot": -2,
+      "vehicle": -6,
+      "tourist": -4,
+      "security": 0,
+      "perSeverityLevel": true,
+      "note": "交通（每 1 級）"
+    },
+    "health": {
+      "foot": -5,
+      "vehicle": 0,
+      "tourist": -4,
+      "security": 0,
+      "perSeverityLevel": true,
+      "note": "衛生／食安（每 1 級）"
+    },
+    "safety": {
+      "foot": -3,
+      "vehicle": 0,
+      "tourist": -4,
+      "security": -8,
+      "perSeverityLevel": true,
+      "note": "治安（每 1 級）"
+    }
+  },
+  "defaultEvents": [
+    "evp_drain_blocked",
+    "evp_drain_leaf",
+    "evp_market_slump",
+    "evp_logi_delay"
+  ],
+  "count": 34,
+  "events": {
+    "evp_drain_blocked": {
+      "title": "排水口堵塞",
+      "domainId": "drain",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "domainDefault",
+      "foot": -6,
+      "vehicle": -8,
+      "tourist": -6,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -3,
+          "vehicle": -4,
+          "tourist": -3,
+          "security": 0
+        },
+        "2": {
+          "foot": -6,
+          "vehicle": -8,
+          "tourist": -6,
+          "security": 0
+        },
+        "3": {
+          "foot": -9,
+          "vehicle": -12,
+          "tourist": -9,
+          "security": 0
+        }
+      },
+      "note": "未特別指定，使用領域預設 × 嚴重度（排水／積水（每 1 級嚴重度））"
+    },
+    "evp_drain_storm": {
+      "title": "暴雨積水",
+      "domainId": "drain",
+      "severity": 3,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -8,
+      "vehicle": -12,
+      "tourist": -9,
+      "security": -2,
+      "levels": {
+        "1": {
+          "foot": -3,
+          "vehicle": -4,
+          "tourist": -3,
+          "security": -1
+        },
+        "2": {
+          "foot": -5,
+          "vehicle": -8,
+          "tourist": -6,
+          "security": -1
+        },
+        "3": {
+          "foot": -8,
+          "vehicle": -12,
+          "tourist": -9,
+          "security": -2
+        }
+      },
+      "note": "暴雨積水：路淹了、人車與遊客都少"
+    },
+    "evp_drain_leaf": {
+      "title": "落葉堵溝",
+      "domainId": "drain",
+      "severity": 1,
+      "polarity": "risk",
+      "source": "domainDefault",
+      "foot": -3,
+      "vehicle": -4,
+      "tourist": -3,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -3,
+          "vehicle": -4,
+          "tourist": -3,
+          "security": 0
+        },
+        "2": {
+          "foot": -6,
+          "vehicle": -8,
+          "tourist": -6,
+          "security": 0
+        },
+        "3": {
+          "foot": -9,
+          "vehicle": -12,
+          "tourist": -9,
+          "security": 0
+        }
+      },
+      "note": "未特別指定，使用領域預設 × 嚴重度（排水／積水（每 1 級嚴重度））"
+    },
+    "evp_drain_culvert": {
+      "title": "涵洞淤積",
+      "domainId": "drain",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -4,
+      "vehicle": -8,
+      "tourist": -5,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": -4,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": -4,
+          "vehicle": -8,
+          "tourist": -5,
+          "security": 0
+        },
+        "3": {
+          "foot": -6,
+          "vehicle": -12,
+          "tourist": -8,
+          "security": 0
+        }
+      },
+      "note": "涵洞淤積：道路時斷時續，車流與遊客受影響"
+    },
+    "evp_market_slump": {
+      "title": "市集人潮變少",
+      "domainId": "market",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "domainDefault",
+      "foot": -8,
+      "vehicle": 0,
+      "tourist": -6,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -4,
+          "vehicle": 0,
+          "tourist": -3,
+          "security": 0
+        },
+        "2": {
+          "foot": -8,
+          "vehicle": 0,
+          "tourist": -6,
+          "security": 0
+        },
+        "3": {
+          "foot": -12,
+          "vehicle": 0,
+          "tourist": -9,
+          "security": 0
+        }
+      },
+      "note": "未特別指定，使用領域預設 × 嚴重度（市集（每 1 級））"
+    },
+    "evp_market_price": {
+      "title": "菜價飆漲",
+      "domainId": "market",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -4,
+      "vehicle": -2,
+      "tourist": -2,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": -1,
+          "tourist": -1,
+          "security": 0
+        },
+        "2": {
+          "foot": -4,
+          "vehicle": -2,
+          "tourist": -2,
+          "security": 0
+        },
+        "3": {
+          "foot": -6,
+          "vehicle": -3,
+          "tourist": -3,
+          "security": 0
+        }
+      },
+      "note": "菜價飆漲：逛市集的人變少"
+    },
+    "evp_market_fake_review": {
+      "title": "網路負評風波",
+      "domainId": "market",
+      "severity": 1,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -2,
+      "vehicle": 0,
+      "tourist": -4,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": 0,
+          "tourist": -4,
+          "security": 0
+        },
+        "2": {
+          "foot": -4,
+          "vehicle": 0,
+          "tourist": -8,
+          "security": 0
+        },
+        "3": {
+          "foot": -6,
+          "vehicle": 0,
+          "tourist": -12,
+          "security": 0
+        }
+      },
+      "note": "網路負評：遊客先觀望（多為傳聞）"
+    },
+    "evp_market_festival": {
+      "title": "廟會檔期",
+      "domainId": "market",
+      "severity": 1,
+      "polarity": "opportunity",
+      "source": "custom",
+      "foot": 8,
+      "vehicle": -3,
+      "tourist": 10,
+      "security": -2,
+      "levels": {
+        "1": {
+          "foot": 8,
+          "vehicle": -3,
+          "tourist": 10,
+          "security": -2
+        },
+        "2": {
+          "foot": 16,
+          "vehicle": -6,
+          "tourist": 20,
+          "security": -4
+        },
+        "3": {
+          "foot": 24,
+          "vehicle": -9,
+          "tourist": 30,
+          "security": -6
+        }
+      },
+      "note": "廟會檔期（機會）：承接得好人潮與遊客上升，但車與治安有壓力；正值只在對症或輔助處理後才給"
+    },
+    "evp_logi_delay": {
+      "title": "進貨車卡峽口",
+      "domainId": "logistics",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "domainDefault",
+      "foot": 0,
+      "vehicle": -8,
+      "tourist": -2,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": 0,
+          "vehicle": -4,
+          "tourist": -1,
+          "security": 0
+        },
+        "2": {
+          "foot": 0,
+          "vehicle": -8,
+          "tourist": -2,
+          "security": 0
+        },
+        "3": {
+          "foot": 0,
+          "vehicle": -12,
+          "tourist": -3,
+          "security": 0
+        }
+      },
+      "note": "未特別指定，使用領域預設 × 嚴重度（物流（每 1 級））"
+    },
+    "evp_logi_cold": {
+      "title": "冷鏈中斷",
+      "domainId": "logistics",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": 0,
+      "vehicle": -3,
+      "tourist": -3,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": 0,
+          "vehicle": -2,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": 0,
+          "vehicle": -3,
+          "tourist": -3,
+          "security": 0
+        },
+        "3": {
+          "foot": 0,
+          "vehicle": -4,
+          "tourist": -4,
+          "security": 0
+        }
+      },
+      "note": "冷鏈中斷：生鮮缺貨，遊客買不到特產"
+    },
+    "evp_logi_landslide": {
+      "title": "落石封路",
+      "domainId": "logistics",
+      "severity": 3,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -4,
+      "vehicle": -14,
+      "tourist": -10,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -1,
+          "vehicle": -5,
+          "tourist": -3,
+          "security": 0
+        },
+        "2": {
+          "foot": -3,
+          "vehicle": -9,
+          "tourist": -7,
+          "security": 0
+        },
+        "3": {
+          "foot": -4,
+          "vehicle": -14,
+          "tourist": -10,
+          "security": 0
+        }
+      },
+      "note": "落石封路：車流、遊客大降"
+    },
+    "evp_logi_false_bridge": {
+      "title": "橋梁封閉謠言",
+      "domainId": "logistics",
+      "severity": 1,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -1,
+      "vehicle": -3,
+      "tourist": -4,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -1,
+          "vehicle": -3,
+          "tourist": -4,
+          "security": 0
+        },
+        "2": {
+          "foot": -2,
+          "vehicle": -6,
+          "tourist": -8,
+          "security": 0
+        },
+        "3": {
+          "foot": -3,
+          "vehicle": -9,
+          "tourist": -12,
+          "security": 0
+        }
+      },
+      "note": "橋梁封閉傳聞：謠言讓人不敢來（傳聞）"
+    },
+    "evp_traffic_bus": {
+      "title": "公車誤點連環",
+      "domainId": "traffic",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -2,
+      "vehicle": -8,
+      "tourist": -3,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -1,
+          "vehicle": -4,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": -2,
+          "vehicle": -8,
+          "tourist": -3,
+          "security": 0
+        },
+        "3": {
+          "foot": -3,
+          "vehicle": -12,
+          "tourist": -4,
+          "security": 0
+        }
+      },
+      "note": "公車誤點連環：通勤受阻"
+    },
+    "evp_traffic_paralysis": {
+      "title": "交通癱瘓",
+      "domainId": "traffic",
+      "severity": 3,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -4,
+      "vehicle": -18,
+      "tourist": -9,
+      "security": -2,
+      "levels": {
+        "1": {
+          "foot": -1,
+          "vehicle": -6,
+          "tourist": -3,
+          "security": -1
+        },
+        "2": {
+          "foot": -3,
+          "vehicle": -12,
+          "tourist": -6,
+          "security": -1
+        },
+        "3": {
+          "foot": -4,
+          "vehicle": -18,
+          "tourist": -9,
+          "security": -2
+        }
+      },
+      "note": "交通癱瘓：車流幾乎停擺"
+    },
+    "evp_traffic_works": {
+      "title": "工程車進場壅塞",
+      "domainId": "traffic",
+      "severity": 1,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -1,
+      "vehicle": -6,
+      "tourist": -2,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -1,
+          "vehicle": -6,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": -2,
+          "vehicle": -12,
+          "tourist": -4,
+          "security": 0
+        },
+        "3": {
+          "foot": -3,
+          "vehicle": -18,
+          "tourist": -6,
+          "security": 0
+        }
+      },
+      "note": "工程車進場：單線壅塞"
+    },
+    "evp_traffic_tourbus": {
+      "title": "連假遊覽車湧入",
+      "domainId": "traffic",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": 3,
+      "vehicle": -9,
+      "tourist": -3,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": 2,
+          "vehicle": -4,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": 3,
+          "vehicle": -9,
+          "tourist": -3,
+          "security": 0
+        },
+        "3": {
+          "foot": 4,
+          "vehicle": -14,
+          "tourist": -4,
+          "security": 0
+        }
+      },
+      "note": "連假遊覽車湧入：人多但停不下、路塞，遊客反而打退堂鼓"
+    },
+    "evp_health_well": {
+      "title": "井水傳聞",
+      "domainId": "health",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -4,
+      "vehicle": 0,
+      "tourist": -6,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": 0,
+          "tourist": -3,
+          "security": 0
+        },
+        "2": {
+          "foot": -4,
+          "vehicle": 0,
+          "tourist": -6,
+          "security": 0
+        },
+        "3": {
+          "foot": -6,
+          "vehicle": 0,
+          "tourist": -9,
+          "security": 0
+        }
+      },
+      "note": "井水傳聞：遊客不敢喝、不敢吃"
+    },
+    "evp_health_dengue": {
+      "title": "登革熱警戒",
+      "domainId": "health",
+      "severity": 3,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -9,
+      "vehicle": 0,
+      "tourist": -9,
+      "security": -1,
+      "levels": {
+        "1": {
+          "foot": -3,
+          "vehicle": 0,
+          "tourist": -3,
+          "security": 0
+        },
+        "2": {
+          "foot": -6,
+          "vehicle": 0,
+          "tourist": -6,
+          "security": -1
+        },
+        "3": {
+          "foot": -9,
+          "vehicle": 0,
+          "tourist": -9,
+          "security": -1
+        }
+      },
+      "note": "登革熱警戒：人不敢出門、遊客取消行程"
+    },
+    "evp_health_foodpoison": {
+      "title": "市集食安疑慮",
+      "domainId": "health",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -5,
+      "vehicle": 0,
+      "tourist": -4,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": 0,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": -5,
+          "vehicle": 0,
+          "tourist": -4,
+          "security": 0
+        },
+        "3": {
+          "foot": -8,
+          "vehicle": 0,
+          "tourist": -6,
+          "security": 0
+        }
+      },
+      "note": "市集食安疑慮：人流與遊客下降"
+    },
+    "evp_health_flu": {
+      "title": "冬季流感",
+      "domainId": "health",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -6,
+      "vehicle": 0,
+      "tourist": -3,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -3,
+          "vehicle": 0,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": -6,
+          "vehicle": 0,
+          "tourist": -3,
+          "security": 0
+        },
+        "3": {
+          "foot": -9,
+          "vehicle": 0,
+          "tourist": -4,
+          "security": 0
+        }
+      },
+      "note": "冬季流感：人少出門"
+    },
+    "evp_health_fake_alert": {
+      "title": "「水廠污染」快訊",
+      "domainId": "health",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -3,
+      "vehicle": 0,
+      "tourist": -5,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": 0,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": -3,
+          "vehicle": 0,
+          "tourist": -5,
+          "security": 0
+        },
+        "3": {
+          "foot": -4,
+          "vehicle": 0,
+          "tourist": -8,
+          "security": 0
+        }
+      },
+      "note": "「水廠污染」快訊：傳聞讓遊客觀望"
+    },
+    "evp_safety_rescue_blocked": {
+      "title": "救護車受阻",
+      "domainId": "safety",
+      "severity": 3,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -3,
+      "vehicle": -8,
+      "tourist": -4,
+      "security": -8,
+      "levels": {
+        "1": {
+          "foot": -1,
+          "vehicle": -3,
+          "tourist": -1,
+          "security": -3
+        },
+        "2": {
+          "foot": -2,
+          "vehicle": -5,
+          "tourist": -3,
+          "security": -5
+        },
+        "3": {
+          "foot": -3,
+          "vehicle": -8,
+          "tourist": -4,
+          "security": -8
+        }
+      },
+      "note": "救護車受阻：窄巷與救援動線被擋，治安感大降"
+    },
+    "evp_safety_theft": {
+      "title": "人潮扒手",
+      "domainId": "safety",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -3,
+      "vehicle": 0,
+      "tourist": -4,
+      "security": -10,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": 0,
+          "tourist": -2,
+          "security": -5
+        },
+        "2": {
+          "foot": -3,
+          "vehicle": 0,
+          "tourist": -4,
+          "security": -10
+        },
+        "3": {
+          "foot": -4,
+          "vehicle": 0,
+          "tourist": -6,
+          "security": -15
+        }
+      },
+      "note": "人潮扒手：治安感明顯下降"
+    },
+    "evp_safety_fire": {
+      "title": "老屋電線走火",
+      "domainId": "safety",
+      "severity": 3,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -5,
+      "vehicle": -4,
+      "tourist": -8,
+      "security": -12,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": -1,
+          "tourist": -3,
+          "security": -4
+        },
+        "2": {
+          "foot": -3,
+          "vehicle": -3,
+          "tourist": -5,
+          "security": -8
+        },
+        "3": {
+          "foot": -5,
+          "vehicle": -4,
+          "tourist": -8,
+          "security": -12
+        }
+      },
+      "note": "老屋電線走火：安全疑慮重，遊客與治安感大降"
+    },
+    "evp_safety_cliff": {
+      "title": "峽壁落石警戒",
+      "domainId": "safety",
+      "severity": 3,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -3,
+      "vehicle": -8,
+      "tourist": -8,
+      "security": -4,
+      "levels": {
+        "1": {
+          "foot": -1,
+          "vehicle": -3,
+          "tourist": -3,
+          "security": -1
+        },
+        "2": {
+          "foot": -2,
+          "vehicle": -5,
+          "tourist": -5,
+          "security": -3
+        },
+        "3": {
+          "foot": -3,
+          "vehicle": -8,
+          "tourist": -8,
+          "security": -4
+        }
+      },
+      "note": "峽壁落石警戒：路段限行，遊客卻步"
+    },
+    "evp_market_rat_bin": {
+      "title": "廚餘桶沒蓋，市集有鼠跡",
+      "domainId": "market",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -6,
+      "vehicle": 0,
+      "tourist": -5,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -3,
+          "vehicle": 0,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": -6,
+          "vehicle": 0,
+          "tourist": -5,
+          "security": 0
+        },
+        "3": {
+          "foot": -9,
+          "vehicle": 0,
+          "tourist": -8,
+          "security": 0
+        }
+      },
+      "note": "市集有鼠跡：人不敢來吃"
+    },
+    "evp_safety_park_burrow": {
+      "title": "公園鼠洞，封得住嗎？",
+      "domainId": "safety",
+      "severity": 1,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -2,
+      "vehicle": 0,
+      "tourist": -2,
+      "security": -2,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": 0,
+          "tourist": -2,
+          "security": -2
+        },
+        "2": {
+          "foot": -4,
+          "vehicle": 0,
+          "tourist": -4,
+          "security": -4
+        },
+        "3": {
+          "foot": -6,
+          "vehicle": 0,
+          "tourist": -6,
+          "security": -6
+        }
+      },
+      "note": "公園鼠洞：公園的人少了"
+    },
+    "evp_health_bait_worry": {
+      "title": "鼠餌安全疑慮",
+      "domainId": "health",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -3,
+      "vehicle": 0,
+      "tourist": -4,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": 0,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": -3,
+          "vehicle": 0,
+          "tourist": -4,
+          "security": 0
+        },
+        "3": {
+          "foot": -4,
+          "vehicle": 0,
+          "tourist": -6,
+          "security": 0
+        }
+      },
+      "note": "鼠餌安全疑慮：居民與遊客擔心（多為疑慮）"
+    },
+    "evp_drain_grease_trap": {
+      "title": "餐飲油脂截留器沒清",
+      "domainId": "drain",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -2,
+      "vehicle": -1,
+      "tourist": -3,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -1,
+          "vehicle": 0,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": -2,
+          "vehicle": -1,
+          "tourist": -3,
+          "security": 0
+        },
+        "3": {
+          "foot": -3,
+          "vehicle": -2,
+          "tourist": -4,
+          "security": 0
+        }
+      },
+      "note": "油臭與髒污：遊客印象差"
+    },
+    "evp_health_lunch_sample": {
+      "title": "午餐留樣沒保存好",
+      "domainId": "health",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -4,
+      "vehicle": 0,
+      "tourist": -4,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": 0,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": -4,
+          "vehicle": 0,
+          "tourist": -4,
+          "security": 0
+        },
+        "3": {
+          "foot": -6,
+          "vehicle": 0,
+          "tourist": -6,
+          "security": 0
+        }
+      },
+      "note": "午餐留樣沒保存：家長與遊客疑慮"
+    },
+    "evp_health_class_upset": {
+      "title": "一個班級午餐後不舒服（調查中）",
+      "domainId": "health",
+      "severity": 3,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -6,
+      "vehicle": 0,
+      "tourist": -6,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": 0,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": -4,
+          "vehicle": 0,
+          "tourist": -4,
+          "security": 0
+        },
+        "3": {
+          "foot": -6,
+          "vehicle": 0,
+          "tourist": -6,
+          "security": 0
+        }
+      },
+      "note": "班級午餐後不舒服（調查中）：傳聞滿天飛，客流下降"
+    },
+    "evp_market_lunch_supplier": {
+      "title": "供餐廠商換約，備援供餐上路",
+      "domainId": "market",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -2,
+      "vehicle": -3,
+      "tourist": -1,
+      "security": 0,
+      "levels": {
+        "1": {
+          "foot": -1,
+          "vehicle": -2,
+          "tourist": 0,
+          "security": 0
+        },
+        "2": {
+          "foot": -2,
+          "vehicle": -3,
+          "tourist": -1,
+          "security": 0
+        },
+        "3": {
+          "foot": -3,
+          "vehicle": -4,
+          "tourist": -2,
+          "security": 0
+        }
+      },
+      "note": "供餐廠商換約：備援供餐，補貨車增加"
+    },
+    "evp_health_rat_swarm": {
+      "title": "雨後鼠群大搬家",
+      "domainId": "health",
+      "severity": 3,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -6,
+      "vehicle": 0,
+      "tourist": -6,
+      "security": -1,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": 0,
+          "tourist": -2,
+          "security": 0
+        },
+        "2": {
+          "foot": -4,
+          "vehicle": 0,
+          "tourist": -4,
+          "security": -1
+        },
+        "3": {
+          "foot": -6,
+          "vehicle": 0,
+          "tourist": -6,
+          "security": -1
+        }
+      },
+      "note": "雨後鼠群竄上街：居民與遊客嚇到、不敢久留"
+    },
+    "evp_safety_stray_dogs": {
+      "title": "野狗縱橫",
+      "domainId": "safety",
+      "severity": 2,
+      "polarity": "risk",
+      "source": "custom",
+      "foot": -4,
+      "vehicle": -1,
+      "tourist": -3,
+      "security": -6,
+      "levels": {
+        "1": {
+          "foot": -2,
+          "vehicle": 0,
+          "tourist": -2,
+          "security": -3
+        },
+        "2": {
+          "foot": -4,
+          "vehicle": -1,
+          "tourist": -3,
+          "security": -6
+        },
+        "3": {
+          "foot": -6,
+          "vehicle": -2,
+          "tourist": -4,
+          "security": -9
+        }
+      },
+      "note": "野狗縱橫：晚歸的人繞路、機車被追，治安感下降"
+    }
+  }
+}

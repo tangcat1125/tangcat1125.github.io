@@ -1,0 +1,171 @@
+{
+  "id": "policy_slope_guard",
+  "name": "邊坡檢查與護欄",
+  "cost": 3,
+  "blurb": "定期檢查峽壁邊坡、清除鬆動石塊，並加設護欄與攔石網；落石來之前先擋住。",
+  "solves": [],
+  "rule_patches": {
+    "slope_guardProgram": 1
+  },
+  "deltas": {
+    "money": -100,
+    "happiness": 2
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "施工要封路半天；攔石網需要定期清理，沒維護就失效。",
+  "preview": "預估：金錢 -100、幸福度 +2。",
+  "costPoints": 3,
+  "tags": [
+    "安全",
+    "工程",
+    "坡地"
+  ],
+  "counters": [
+    "rockfall",
+    "slope"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_slope_guard.webp",
+    "icon": "assets/sprites/cards/icons/icon_slope_guard.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🪨",
+    "accent": "#8d6e63",
+    "fxHint": "fx_slope_guard_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "硬建設／公共服務",
+    "rarity": "進階",
+    "titleShort": "邊坡護欄",
+    "costBadge": "3 點",
+    "shopLine": "先檢查邊坡，裝上護欄。",
+    "effectLine": "落石風險下降；道路封閉次數變少。",
+    "flavor": "山不會預告，但可以先檢查。",
+    "learnPoint": "這張牌教你：預防型工程要在災害前投資。",
+    "bullets": [
+      "對症：落石、邊坡",
+      "金錢 -100",
+      "施工要封路",
+      "要定期維護"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -100,
+        "text": "金錢 -100"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 2,
+        "text": "幸福度 +2"
+      }
+    ],
+    "tradeoffLine": "施工要封路半天；攔石網需要定期清理，沒維護就失效。"
+  },
+  "shopBlurb": "先檢查邊坡，裝上護欄。",
+  "shopLine": "3 點｜先檢查邊坡，裝上護欄。",
+  "executeId": "exec_slope_guard",
+  "fx": {
+    "street": [
+      "fx_slope_guard_a",
+      "fx_slope_guard_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 3,
+        "tourist": 2,
+        "security": 1
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -20,
+        "traffic": 3
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "strong",
+      "summary": "車流+3、遊客+2、治安感+1（永久）；治安民怨-20"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_xiu",
+      "staff_yan"
+    ],
+    "radarWeights": {
+      "logistics": 0.4,
+      "safety": 0.7,
+      "health": 0.2,
+      "engineering": 0.9,
+      "economy": 0.2,
+      "communication": 0.4
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety"
+  ],
+  "complaintDelta": {
+    "safety": -20,
+    "traffic": 3
+  },
+  "complaintRebound": {},
+  "complaintNote": "施工要封路半天；攔石網需要定期清理，沒維護就失效。",
+  "eventEffects": {
+    "cure": [
+      "evp_logi_landslide",
+      "evp_safety_cliff"
+    ],
+    "assist": [],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "hard",
+  "typeLabel": "硬建設／公共服務",
+  "realWorldAnalog": "坡地防災工程：定期檢查邊坡、設置護欄與攔石設施。",
+  "topicCounters": [
+    "rockfall",
+    "slope"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_logi_landslide",
+    "evp_safety_cliff"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_logi_landslide",
+    "evp_safety_cliff"
+  ],
+  "solvesPoolConditional": []
+}

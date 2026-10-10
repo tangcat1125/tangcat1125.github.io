@@ -1,0 +1,477 @@
+{
+  "id": "clues_season_01",
+  "seasonId": "season_01",
+  "cycle": {
+    "durationSec": 30,
+    "bubbleSec": 2.6,
+    "gapSec": 0.5,
+    "collectTarget": {
+      "min": 5,
+      "max": 8
+    },
+    "note": "一個週期前 30 秒街景自動跑；約 9–10 個泡泡，其中關鍵線索 5–8 句。倒數結束進入結報。"
+  },
+  "scheduler": {
+    "perRoundMix": {
+      "clue": 6,
+      "complaint": 2,
+      "chat": 2
+    },
+    "rules": [
+      "同一輪不重複同一條 clueId",
+      "線索至少涵蓋 4 個領域（domainId）",
+      "同一位 NPC 不連續說話",
+      "線索泡泡可點擊或自動收進線索簿（collectMode：auto 或 tap 由程式決定）"
+    ],
+    "weights": {
+      "clue": 3,
+      "complaint": 2,
+      "chat": 1
+    },
+    "poolSize": {
+      "clues": 14,
+      "dialogues": 50
+    }
+  },
+  "domainOrder": [
+    "drain",
+    "market",
+    "logistics",
+    "traffic",
+    "health",
+    "safety"
+  ],
+  "kinds": {
+    "cause": "成因",
+    "evidence": "證據",
+    "tradeoff": "取捨"
+  },
+  "reportRating": [
+    {
+      "min": 0,
+      "max": 2,
+      "id": "thin",
+      "label": "資料太少",
+      "line": "這輪聽到的不多，下次多留意居民的泡泡。"
+    },
+    {
+      "min": 3,
+      "max": 4,
+      "id": "ok",
+      "label": "還差一點",
+      "line": "有幾條線索了，再多聽幾位居民會更準。"
+    },
+    {
+      "min": 5,
+      "max": 8,
+      "id": "good",
+      "label": "資料充足",
+      "line": "線索夠多，可以對照快報選卡了。"
+    }
+  ],
+  "reportHintRule": "結報時：依蒐集到的線索依 importance 加總每個 domainId，取最高者為「這輪最關鍵的問題」；把這些線索的 policyHints 依 role（對症 > 搭配 > 治標；提醒另列）彙整成建議卡，並可與民怨最深處對照。",
+  "clues": [
+    {
+      "id": "c_drain_blocked",
+      "npcId": "bo",
+      "npcName": "阿博",
+      "speakerKind": "resident",
+      "domainId": "drain",
+      "articleId": "article_drain",
+      "eventId": "event_flood_risk",
+      "dialogueId": "dlg_bo_01",
+      "kind": "cause",
+      "kindLabel": "成因",
+      "importance": 3,
+      "summary": "排水口被落石和垃圾堵住，水流不出去。",
+      "policyHints": [
+        {
+          "policyId": "policy_clear_drain",
+          "role": "對症",
+          "hint": "先清排水口"
+        }
+      ],
+      "actionOptionIds": [
+        "act_clear_drain"
+      ],
+      "reportLine": "【阿博】排水口被落石和垃圾堵住，水流不出去。 → 可考慮：緊急清淤隊"
+    },
+    {
+      "id": "c_drain_garbage",
+      "npcId": "bo",
+      "npcName": "阿博",
+      "speakerKind": "resident",
+      "domainId": "drain",
+      "articleId": "article_drain",
+      "eventId": "event_flood_risk",
+      "dialogueId": "dlg_bo_02",
+      "kind": "evidence",
+      "kindLabel": "證據",
+      "importance": 2,
+      "summary": "垃圾車遲到，落葉又把溝堵回去。",
+      "policyHints": [
+        {
+          "policyId": "policy_clear_drain",
+          "role": "搭配",
+          "hint": "讓清運車走優先車道"
+        },
+        {
+          "policyId": "policy_logistics_hub",
+          "role": "搭配",
+          "hint": "分流減少遲到"
+        }
+      ],
+      "actionOptionIds": [
+        "act_clear_lane"
+      ],
+      "reportLine": "【阿博】垃圾車遲到，落葉又把溝堵回去。 → 可考慮：緊急清淤隊、臨時物流緩衝站"
+    },
+    {
+      "id": "c_market_mud",
+      "npcId": "mei",
+      "npcName": "阿美",
+      "speakerKind": "resident",
+      "domainId": "market",
+      "articleId": "article_market",
+      "eventId": "event_market_slump",
+      "dialogueId": "dlg_mei_03",
+      "kind": "cause",
+      "kindLabel": "成因",
+      "importance": 3,
+      "summary": "步道太泥濘，遊客不想進來。",
+      "policyHints": [
+        {
+          "policyId": "policy_boardwalk",
+          "role": "對症",
+          "hint": "把步道修好"
+        }
+      ],
+      "actionOptionIds": [
+        "act_boardwalk"
+      ],
+      "reportLine": "【阿美】步道太泥濘，遊客不想進來。 → 可考慮：步道木棧加固"
+    },
+    {
+      "id": "c_market_empty",
+      "npcId": "mei",
+      "npcName": "阿美",
+      "speakerKind": "resident",
+      "domainId": "market",
+      "articleId": "article_market",
+      "eventId": "event_market_slump",
+      "dialogueId": "dlg_mei_02",
+      "kind": "evidence",
+      "kindLabel": "證據",
+      "importance": 2,
+      "summary": "進貨太晚，攤位空架，客人問了就走。",
+      "policyHints": [
+        {
+          "policyId": "policy_logistics_hub",
+          "role": "對症",
+          "hint": "讓進貨準時"
+        },
+        {
+          "policyId": "policy_coupon",
+          "role": "治標",
+          "hint": "只能暫時拉買氣"
+        }
+      ],
+      "actionOptionIds": [
+        "act_logistics_hub",
+        "act_market_coupon"
+      ],
+      "reportLine": "【阿美】進貨太晚，攤位空架，客人問了就走。 → 可考慮：臨時物流緩衝站、市集消費券"
+    },
+    {
+      "id": "c_market_coupon",
+      "npcId": "staff_shi",
+      "npcName": "喵阿市",
+      "speakerKind": "staff",
+      "domainId": "market",
+      "articleId": "article_market",
+      "eventId": "event_market_slump",
+      "dialogueId": "dlg_shi_01",
+      "kind": "tradeoff",
+      "kindLabel": "取捨",
+      "importance": 2,
+      "summary": "消費券只能暫時拉買氣，貨不準時還是會空架。",
+      "policyHints": [
+        {
+          "policyId": "policy_coupon",
+          "role": "治標",
+          "hint": "效果短，下季會反彈"
+        },
+        {
+          "policyId": "policy_boardwalk",
+          "role": "搭配",
+          "hint": "配合修步道更穩"
+        }
+      ],
+      "actionOptionIds": [
+        "act_market_coupon",
+        "act_boardwalk"
+      ],
+      "reportLine": "【喵阿市】消費券只能暫時拉買氣，貨不準時還是會空架。 → 可考慮：市集消費券、步道木棧加固"
+    },
+    {
+      "id": "c_logi_gorge",
+      "npcId": "lin",
+      "npcName": "小林",
+      "speakerKind": "resident",
+      "domainId": "logistics",
+      "articleId": "article_supply",
+      "eventId": "event_supply_delay",
+      "dialogueId": "dlg_lin_01",
+      "kind": "cause",
+      "kindLabel": "成因",
+      "importance": 3,
+      "summary": "峽口一卡，蔬果、垃圾車、供水車一起遲到。",
+      "policyHints": [
+        {
+          "policyId": "policy_logistics_hub",
+          "role": "對症",
+          "hint": "在峽口設緩衝站"
+        }
+      ],
+      "actionOptionIds": [
+        "act_logistics_hub"
+      ],
+      "reportLine": "【小林】峽口一卡，蔬果、垃圾車、供水車一起遲到。 → 可考慮：臨時物流緩衝站"
+    },
+    {
+      "id": "c_logi_ontime",
+      "npcId": "staff_an",
+      "npcName": "喵治安",
+      "speakerKind": "staff",
+      "domainId": "logistics",
+      "articleId": "article_supply",
+      "eventId": "event_supply_delay",
+      "dialogueId": "dlg_an_01",
+      "kind": "evidence",
+      "kindLabel": "證據",
+      "importance": 2,
+      "summary": "準點率只有約七成，壅塞度偏高。",
+      "policyHints": [
+        {
+          "policyId": "policy_logistics_hub",
+          "role": "對症",
+          "hint": "先改善準點與壅塞"
+        },
+        {
+          "policyId": "policy_clear_drain",
+          "role": "搭配",
+          "hint": "清運車優先通行"
+        }
+      ],
+      "actionOptionIds": [
+        "act_logistics_hub",
+        "act_clear_lane"
+      ],
+      "reportLine": "【喵治安】準點率只有約七成，壅塞度偏高。 → 可考慮：臨時物流緩衝站、緊急清淤隊"
+    },
+    {
+      "id": "c_traffic_bus",
+      "npcId": "kai",
+      "npcName": "阿凱",
+      "speakerKind": "resident",
+      "domainId": "traffic",
+      "articleId": "article_supply",
+      "eventId": "event_supply_delay",
+      "dialogueId": "dlg_kai_03",
+      "kind": "evidence",
+      "kindLabel": "證據",
+      "importance": 2,
+      "summary": "公車誤點嚴重，遊客等了快一小時。",
+      "policyHints": [
+        {
+          "policyId": "policy_logistics_hub",
+          "role": "對症",
+          "hint": "降低壅塞"
+        },
+        {
+          "policyId": "policy_boardwalk",
+          "role": "搭配",
+          "hint": "路好走公車才穩"
+        }
+      ],
+      "actionOptionIds": [
+        "act_logistics_hub",
+        "act_boardwalk"
+      ],
+      "reportLine": "【阿凱】公車誤點嚴重，遊客等了快一小時。 → 可考慮：臨時物流緩衝站、步道木棧加固"
+    },
+    {
+      "id": "c_traffic_work",
+      "npcId": "staff_xiu",
+      "npcName": "喵修路",
+      "speakerKind": "staff",
+      "domainId": "traffic",
+      "articleId": "article_drain",
+      "eventId": "event_flood_risk",
+      "dialogueId": "dlg_xiu_01",
+      "kind": "tradeoff",
+      "kindLabel": "取捨",
+      "importance": 2,
+      "summary": "工程車進場短期更塞，長期才會改善。",
+      "policyHints": [
+        {
+          "policyId": "policy_clear_drain",
+          "role": "提醒",
+          "hint": "副作用：短期壅塞"
+        },
+        {
+          "policyId": "policy_boardwalk",
+          "role": "提醒",
+          "hint": "副作用：施工封路"
+        }
+      ],
+      "actionOptionIds": [
+        "act_clear_drain",
+        "act_boardwalk"
+      ],
+      "reportLine": "【喵修路】工程車進場短期更塞，長期才會改善。 → 可考慮：（見提醒）"
+    },
+    {
+      "id": "c_health_rumor",
+      "npcId": "zhen",
+      "npcName": "阿珍",
+      "speakerKind": "resident",
+      "domainId": "health",
+      "articleId": "article_well",
+      "eventId": "event_rumor_well",
+      "dialogueId": "dlg_zhen_03",
+      "kind": "cause",
+      "kindLabel": "成因",
+      "importance": 3,
+      "summary": "家長群組在傳井水有怪味，沒人公布檢測。",
+      "policyHints": [
+        {
+          "policyId": "policy_water_test",
+          "role": "對症",
+          "hint": "公開水質檢測"
+        }
+      ],
+      "actionOptionIds": [
+        "act_water_test"
+      ],
+      "reportLine": "【阿珍】家長群組在傳井水有怪味，沒人公布檢測。 → 可考慮：公開水質檢測"
+    },
+    {
+      "id": "c_health_open",
+      "npcId": "staff_cheng",
+      "npcName": "喵承恩",
+      "speakerKind": "staff",
+      "domainId": "health",
+      "articleId": "article_well",
+      "eventId": "event_rumor_well",
+      "dialogueId": "dlg_cheng_01",
+      "kind": "cause",
+      "kindLabel": "成因",
+      "importance": 3,
+      "summary": "沒有公開水質資料，傳聞會自己長大。",
+      "policyHints": [
+        {
+          "policyId": "policy_water_test",
+          "role": "對症",
+          "hint": "把結果貼出來"
+        }
+      ],
+      "actionOptionIds": [
+        "act_water_test"
+      ],
+      "reportLine": "【喵承恩】沒有公開水質資料，傳聞會自己長大。 → 可考慮：公開水質檢測"
+    },
+    {
+      "id": "c_health_truck",
+      "npcId": "staff_xin",
+      "npcName": "喵安心",
+      "speakerKind": "staff",
+      "domainId": "health",
+      "articleId": "article_well",
+      "eventId": "event_rumor_well",
+      "dialogueId": "dlg_xin_01",
+      "kind": "evidence",
+      "kindLabel": "證據",
+      "importance": 2,
+      "summary": "供水車與檢測器材塞在路上，澄清變慢。",
+      "policyHints": [
+        {
+          "policyId": "policy_water_test",
+          "role": "對症",
+          "hint": "先公開檢測"
+        },
+        {
+          "policyId": "policy_logistics_hub",
+          "role": "搭配",
+          "hint": "讓供水車準時"
+        }
+      ],
+      "actionOptionIds": [
+        "act_water_test",
+        "act_water_lane"
+      ],
+      "reportLine": "【喵安心】供水車與檢測器材塞在路上，澄清變慢。 → 可考慮：公開水質檢測、臨時物流緩衝站"
+    },
+    {
+      "id": "c_safety_rescue",
+      "npcId": "staff_yan",
+      "npcName": "喵焰",
+      "speakerKind": "staff",
+      "domainId": "safety",
+      "articleId": "article_drain",
+      "eventId": "event_flood_risk",
+      "dialogueId": "dlg_yan_01",
+      "kind": "cause",
+      "kindLabel": "成因",
+      "importance": 3,
+      "summary": "排水不通，救援路線會被水淹斷。",
+      "policyHints": [
+        {
+          "policyId": "policy_clear_drain",
+          "role": "對症",
+          "hint": "先清排水"
+        },
+        {
+          "policyId": "policy_logistics_hub",
+          "role": "搭配",
+          "hint": "讓救援路線暢通"
+        }
+      ],
+      "actionOptionIds": [
+        "act_clear_drain"
+      ],
+      "reportLine": "【喵焰】排水不通，救援路線會被水淹斷。 → 可考慮：緊急清淤隊、臨時物流緩衝站"
+    },
+    {
+      "id": "c_safety_crossing",
+      "npcId": "wang",
+      "npcName": "里長王",
+      "speakerKind": "resident",
+      "domainId": "safety",
+      "articleId": "article_supply",
+      "eventId": "event_supply_delay",
+      "dialogueId": "dlg_wang_03",
+      "kind": "evidence",
+      "kindLabel": "證據",
+      "importance": 3,
+      "summary": "峽口塞車，救護車過不去。",
+      "policyHints": [
+        {
+          "policyId": "policy_logistics_hub",
+          "role": "對症",
+          "hint": "疏通峽口"
+        },
+        {
+          "policyId": "policy_clear_drain",
+          "role": "搭配",
+          "hint": "清運與工程車分流"
+        }
+      ],
+      "actionOptionIds": [
+        "act_logistics_hub",
+        "act_clear_lane"
+      ],
+      "reportLine": "【里長王】峽口塞車，救護車過不去。 → 可考慮：臨時物流緩衝站、緊急清淤隊"
+    }
+  ]
+}

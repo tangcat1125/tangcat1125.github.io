@@ -1,0 +1,168 @@
+{
+  "id": "policy_dengue_mobilize",
+  "name": "孳生源清除社區動員",
+  "cost": 2,
+  "blurb": "培訓里長與志工當清除導師，定期到熱區挨家挨戶倒積水，並由衛生所查核。",
+  "solves": [],
+  "rule_patches": {
+    "dengue_mobilizeProgram": 1
+  },
+  "deltas": {
+    "money": -40,
+    "happiness": 2
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "要持續動員，志工會疲乏；沒有查核就會流於形式。",
+  "preview": "預估：金錢 -40、幸福度 +2。",
+  "costPoints": 2,
+  "tags": [
+    "衛生",
+    "協力",
+    "社區"
+  ],
+  "counters": [
+    "mosquito",
+    "standing_water",
+    "epidemic"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_dengue_mobilize.webp",
+    "icon": "assets/sprites/cards/icons/icon_dengue_mobilize.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🪣",
+    "accent": "#43a047",
+    "fxHint": "fx_dengue_mobilize_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "公私協力",
+    "rarity": "常見",
+    "titleShort": "孳生源動員",
+    "costBadge": "2 點",
+    "shopLine": "志工挨家倒積水，熱區定期查核。",
+    "effectLine": "蚊子的家少了，疫情降溫；居民也學會自己查。",
+    "flavor": "一個水桶倒乾，少一窩蚊。",
+    "learnPoint": "這張牌教你：社區動員靠人，要有導師、查核與持續力。",
+    "bullets": [
+      "對症：登革熱、積水",
+      "金錢 -40",
+      "幸福度 +2",
+      "要持續動員"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -40,
+        "text": "金錢 -40"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 2,
+        "text": "幸福度 +2"
+      }
+    ],
+    "tradeoffLine": "要持續動員，志工會疲乏；沒有查核就會流於形式。"
+  },
+  "shopBlurb": "志工挨家倒積水，熱區定期查核。",
+  "shopLine": "2 點｜志工挨家倒積水，熱區定期查核。",
+  "executeId": "exec_dengue_mobilize",
+  "fx": {
+    "street": [
+      "fx_dengue_mobilize_a",
+      "fx_dengue_mobilize_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 2,
+        "vehicle": 0,
+        "tourist": 1,
+        "security": 0
+      },
+      "flowKind": "timed",
+      "durationSeasons": 3,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "health": -14
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "normal",
+      "summary": "人流+2、遊客+1（3 季）；衛生民怨-14"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_hu",
+      "staff_min"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.2,
+      "health": 0.8,
+      "engineering": 0.2,
+      "economy": 0.2,
+      "communication": 0.7
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "health"
+  ],
+  "complaintDelta": {
+    "health": -14
+  },
+  "complaintRebound": {},
+  "complaintNote": "要持續動員，志工會疲乏；沒有查核就會流於形式。",
+  "eventEffects": {
+    "cure": [
+      "evp_health_dengue"
+    ],
+    "assist": [],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "ppp",
+  "typeLabel": "公私協力",
+  "realWorldAnalog": "社區動員：里長、志工與衛生單位合作定期清積水，查核熱區。",
+  "topicCounters": [
+    "mosquito",
+    "standing_water",
+    "epidemic"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_health_dengue"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_health_dengue"
+  ],
+  "solvesPoolConditional": []
+}

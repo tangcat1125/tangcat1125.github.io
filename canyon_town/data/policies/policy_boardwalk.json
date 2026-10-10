@@ -1,0 +1,210 @@
+{
+  "id": "policy_boardwalk",
+  "name": "步道木棧加固",
+  "cost": 3,
+  "blurb": "修泥濘路段，讓公車與遊客比較願意進城。",
+  "solves": [
+    "event_market_slump"
+  ],
+  "rule_patches": {
+    "boardwalkQuality": 3
+  },
+  "deltas": {
+    "money": -100,
+    "profit": 40,
+    "happiness": 4
+  },
+  "logistics": {
+    "boostVehicles": [
+      "bus",
+      "scooter"
+    ],
+    "metricBoost": {
+      "onTimeRate": 0.1,
+      "congestion": -1
+    }
+  },
+  "sideEffect": "工程期間部分路段封閉，短期壅塞可能先升。",
+  "preview": "預估：金錢 -100、獲利 +40；遊客公車較穩。",
+  "costPoints": 3,
+  "tags": [
+    "經濟",
+    "工程",
+    "觀光"
+  ],
+  "counters": [
+    "muddy_path",
+    "footfall"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_boardwalk.webp",
+    "icon": "assets/sprites/cards/icons/icon_boardwalk.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🪵",
+    "accent": "#b9814a",
+    "fxHint": "fx_plank_repair"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "經濟／工程",
+    "rarity": "常見",
+    "titleShort": "步道加固",
+    "costBadge": "3 點",
+    "shopLine": "修好泥濘步道，遊客和公車更願意來。",
+    "effectLine": "步道好走、公車較穩；獲利回升。",
+    "flavor": "路好走，客人才肯慢慢逛。",
+    "learnPoint": "這張牌教你：基礎建設會慢慢帶來人潮。",
+    "bullets": [
+      "對症：市集冷清",
+      "獲利 +40",
+      "施工期間先塞"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -100,
+        "text": "金錢 -100"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": 40,
+        "text": "獲利 +40"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 4,
+        "text": "幸福度 +4"
+      },
+      {
+        "key": "onTimeRate",
+        "label": "準點率",
+        "value": 0.1,
+        "text": "準點率 +10%"
+      },
+      {
+        "key": "congestion",
+        "label": "壅塞度",
+        "value": -1,
+        "text": "壅塞度 -1"
+      }
+    ],
+    "tradeoffLine": "工程期間部分路段封閉，短期壅塞可能先升。"
+  },
+  "shopBlurb": "修好泥濘步道，遊客和公車更願意來。",
+  "shopLine": "3 點｜修好泥濘步道，遊客和公車更願意來。",
+  "executeId": "exec_boardwalk",
+  "fx": {
+    "street": [
+      "fx_plank_repair",
+      "fx_bus_flow"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:profit"
+    ],
+    "durationMs": 2000,
+    "effect": {
+      "flows": {
+        "foot": 2,
+        "vehicle": 0,
+        "tourist": 5,
+        "security": 0
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "market": -20,
+        "traffic": -5,
+        "safety": -3,
+        "logistics": -3
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.03,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 99,
+        "delaySeasons": 0,
+        "note": "步道好走，逛街的人停留更久"
+      },
+      "strength": "strong",
+      "summary": "人流+2、遊客+5（永久）；市集民怨-20、交通民怨-5；店家營收 +3%"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_xiu",
+      "staff_an"
+    ],
+    "radarWeights": {
+      "logistics": 0.5,
+      "safety": 0.4,
+      "health": 0.1,
+      "engineering": 0.8,
+      "economy": 0.5,
+      "communication": 0.2
+    }
+  },
+  "actionOptionIds": [
+    "act_boardwalk"
+  ],
+  "fromArticleIds": [
+    "article_market"
+  ],
+  "verdictByOption": {
+    "act_boardwalk": "對症"
+  },
+  "complaintCounters": [
+    "market",
+    "traffic",
+    "safety",
+    "logistics"
+  ],
+  "complaintDelta": {
+    "market": -20,
+    "traffic": -5,
+    "safety": -3,
+    "logistics": -3
+  },
+  "complaintRebound": {},
+  "complaintNote": "對症市集；施工封路時交通短期變差。",
+  "policyType": "hard",
+  "typeLabel": "硬建設／公共服務",
+  "realWorldAnalog": "地方觀光基礎建設：修繕步道與木棧，改善動線與體驗。",
+  "topicCounters": [
+    "muddy_path",
+    "footfall"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_market_slump"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "eventEffects": {
+    "cure": [
+      "evp_market_slump"
+    ],
+    "assist": [],
+    "palliative": [],
+    "backfire": [
+      "evp_drain_culvert",
+      "evp_logi_landslide",
+      "evp_safety_cliff",
+      "evp_safety_park_burrow"
+    ]
+  },
+  "solvesPool": [
+    "evp_market_slump"
+  ],
+  "solvesPoolConditional": []
+}

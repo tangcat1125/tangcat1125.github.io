@@ -1,0 +1,1517 @@
+{
+  "id": "mayor_news_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "note": "虛構「安安市長」時事梗報導庫：頭版（frontPage）、本月快報（monthly）、泡泡／小框（banter）三種版位，依民怨層級與本季結果切換。只取教室改編與幽默方向，不指涉真實人事。見 docs/MAYOR_NEWS.md。",
+  "names": {
+    "mayorName": "安安市長",
+    "mayorNick": "安安"
+  },
+  "vars": {
+    "defaults": {
+      "place": "峽口",
+      "day": "週末",
+      "n": "3",
+      "pct": "40",
+      "mm": "60",
+      "domainName": "全市",
+      "eventTitle": "本季大事",
+      "cycle": "1"
+    },
+    "places": [
+      "峽口",
+      "橋頭",
+      "老街口",
+      "市集口",
+      "公園邊"
+    ],
+    "days": [
+      "週五",
+      "週末",
+      "連假第一天",
+      "週一"
+    ],
+    "ranges": {
+      "n": [
+        3,
+        9
+      ],
+      "pct": [
+        30,
+        80
+      ],
+      "mm": [
+        40,
+        90
+      ]
+    },
+    "doc": "沿用 eventPool 同名變數（place／day／n／pct／mm／domainName／eventTitle／cycle）；另有 mayorName、mayorNick 為全局稱呼，可在 names 一處替換。"
+  },
+  "placements": {
+    "frontPage": "頭版小專欄（compose 輸出 mayorNews）",
+    "monthly": "本月快報（composeMonthly 輸出 mayorNews）",
+    "both": "頭版與本月快報皆可",
+    "banter": "泡泡／側欄小框（短版）"
+  },
+  "moods": {
+    "praise": "做得好（正面梗）",
+    "neutral": "普通（碎念、說明）",
+    "roast": "被酸（官腔式酸梗）"
+  },
+  "tiers": {
+    "calm": "平靜：偏正面梗",
+    "grumble": "抱怨：偏碎念與說明",
+    "upset": "不滿：偏酸梗與回應機官腔",
+    "furious": "爆怒：偏酸梗，市長自嘲並承諾補救"
+  },
+  "rules": [
+    "稱呼：news 中的市長一律用 {mayorName}（安安市長）或 {mayorNick}（安安），全局替換只改 names。街景泡泡 mayorBanter 以「市長」稱呼玩家，不內嵌名稱。",
+    "版位：placement 為 frontPage／monthly 時只在該版位出現，both 兩者皆可，banter 只給 pickMayorNews(ctx,{placement:\"banter\"})。",
+    "民怨層級：以 focus 領域的民怨（ctx.tiers[domain] 或由 ctx.complaints 推算）決定 tier；tier 不符的梗權重 ×0.15，領域不符且非 any 則排除。",
+    "心情：ctx.mood（praise／neutral／roast，或 better／same／worse）；缺時由 ctx.resolution（cured／assisted → praise；palliative → neutral；其餘 → roast）推算，再缺則由 tier 推算（calm → praise；grumble → neutral；upset／furious → roast）。mood 不符的梗權重 ×0.3。",
+    "不重複：同一次呼叫不重複同梗；ctx.recentMemeIds（近期用過的 memeId）會被排除，只要有替代梗；呼叫端應把上一季的 memeId 傳進來，確保連續兩季不重複。",
+    "種子：用 G.EventPool.rngFor(seed, cycle, \"mayor-news:\"+placement)，同種子同結果；變數代入後保證沒有殘留 {var}。",
+    "rumorFlag：含未證實內容的梗必標「傳聞」並附 checkHint；UI 應顯示「傳聞」標籤與查證提示。",
+    "安全：全部虛構、不指涉真實人事、真實機關與真實當事人，也不涉任何政治立場或競爭活動；test_mayor_news.js 會掃描禁區詞。"
+  ],
+  "memeTags": {
+    "cleanup": "三不大掃除：不讓魚乾亂丟、垃圾亂放、老鼠亂跑",
+    "responder": "市長回應機：禮貌但籠統的答案卡",
+    "nap_fish": "小魚乾、毛線球、準時下班（三樣小東西）",
+    "lidded_bin": "帶蓋廚餘桶與蓋蓋貼紙",
+    "drain_upgrade": "排水容受力升級與小水閘",
+    "pre_deploy": "雨前提前部署清溝",
+    "blueberry": "莓果日「比較大顆」：形容詞要配數字",
+    "whack_mole": "打地鼠小遊戲：找洞，不要只打頭",
+    "handrail": "貓貓公車扶手與嬰兒車位",
+    "night_walk": "手電筒巡守隊與暖黃路燈",
+    "delivery": "小魚乾補貨車準時到",
+    "flex_stall": "攤位半天或全天彈性營業",
+    "follow_up": "「持續追蹤」貓：追蹤進度要有結果",
+    "hearing": "里長信箱開箱日"
+  },
+  "memes": [
+    {
+      "id": "mn_cleanup_1",
+      "memeId": "cleanup",
+      "tag": "cleanup",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "{place}大掃除日：{mayorName}喊出「三不」口號",
+      "deck": "不讓魚乾亂丟、不讓垃圾亂放、不讓老鼠亂跑",
+      "body": "{place}今天舉辦全市大掃除，{mayorName}帶著各班小隊長在路邊撿垃圾，一共撿了 {n} 袋。答對環保問答的小朋友可領小魚乾貼紙，現場排了長長的隊伍。（虛構報導）",
+      "mayorQuote": "三不很簡單：魚乾不亂丟、垃圾不亂放、老鼠不亂跑。我先從自己的辦公桌開始。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "今天攤位前的地板亮晶晶，客人也多停了一會。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "wang",
+          "text": "里長我也撿了一袋，腰有點痠，心情很好。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "口號好記，關鍵還是下個月垃圾有沒有再回來。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「全市大掃除與口號式宣導」這一類型，只取三句口號的句型與掃除概念，不指涉任何真實事件、地點或人物。"
+    },
+    {
+      "id": "mn_cleanup_2",
+      "memeId": "cleanup",
+      "tag": "cleanup",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "grumble",
+        "upset"
+      ],
+      "mood": "neutral",
+      "headline": "三不口號貼滿{place}，垃圾桶旁還是滿的",
+      "deck": "口號上牆了，清運班表還沒對上",
+      "body": "{mayorName}日前喊出「三不」口號，海報貼滿了{place}。但居民發現{domainName}的問題仍有 {n} 處待處理，清運班表也沒有更新。公所表示，海報只是第一步，接下來會公布清運時間表。",
+      "mayorQuote": "口號會幫忙提醒大家，但垃圾要靠手來撿。我們這週把班表補上。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "bo",
+          "text": "口號我背得很熟，可是水溝的葉子也記得我。",
+          "mood": "roast"
+        },
+        {
+          "speakerNpcId": "wang",
+          "text": "海報貼得很漂亮，班表也請貼一下。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "口號是起點，不是成績單。",
+      "rumorFlag": {
+        "label": "傳聞",
+        "text": "傳聞下週會再多貼三百張海報，公所尚未證實。",
+        "checkHint": "查公所公告欄上的採購與張貼計畫。"
+      },
+      "vars": {},
+      "placement": "monthly",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「全市大掃除與口號式宣導」這一類型，只取三句口號的句型與掃除概念，不指涉任何真實事件、地點或人物。"
+    },
+    {
+      "id": "mn_cleanup_3",
+      "memeId": "cleanup",
+      "tag": "cleanup",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "upset",
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "{domainName}亂成一團，{mayorNick}還在貼「三不」海報？",
+      "deck": "海報比垃圾桶多，居民等班表",
+      "body": "{place}的{domainName}民怨升到 {pct}%，居民說海報雖然可愛，但他們更想看到清運班表。{mayorName}承認「海報貼得比垃圾桶多」，答應本週先補班表，再補海報。",
+      "mayorQuote": "我收到了，海報先暫停，垃圾桶先補。大家的意見我貼在辦公室牆上。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "zhen",
+          "text": "海報我看了三遍，垃圾桶還是同一個。",
+          "mood": "roast"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "客人問我這是什麼口號，我說是看板。",
+          "mood": "roast"
+        }
+      ],
+      "editorNote": "民怨高的時候，口號要讓位給班表。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "frontPage",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「全市大掃除與口號式宣導」這一類型，只取三句口號的句型與掃除概念，不指涉任何真實事件、地點或人物。"
+    },
+    {
+      "id": "mn_responder_1",
+      "memeId": "responder",
+      "tag": "responder",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "upset",
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "「{mayorNick}回應機」上線：每個問題都回「我們會認真想想」",
+      "deck": "機器人很有禮貌，答案卻很像",
+      "body": "公所在{place}擺出趣味機器人「回應機」，居民投進紙條就會吐出答案卡。試用第一天收到 {n} 張紙條，吐出的答案卡幾乎都寫著「喵～我們會認真想想」。{mayorName}笑說：「看來我要教機器人說得更具體。」",
+      "mayorQuote": "機器人說「認真想想」，我說「認真做做」。下週起紙條請寫具體建議，我來盯。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "kai",
+          "text": "我問路線，它回我會認真想想，然後我就走錯了。",
+          "mood": "roast"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "至少它很有禮貌，不像我家的貓。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "回應要有內容；沒有內容的禮貌，聽起來像迴音。",
+      "rumorFlag": {
+        "label": "傳聞",
+        "text": "傳聞回應機的答案卡其實只有三種，公所尚未證實。",
+        "checkHint": "要求公所公開答案卡的清單。"
+      },
+      "vars": {},
+      "placement": "both",
+      "weight": 3,
+      "safetyNote": "虛構報導。改編自「罐頭式回應與機器人問答」這一類型，只取機器人與籠統答案的趣味，不指涉任何真實人物或用語。"
+    },
+    {
+      "id": "mn_responder_2",
+      "memeId": "responder",
+      "tag": "responder",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "grumble",
+        "upset"
+      ],
+      "mood": "neutral",
+      "headline": "回應機升級：新增「具體建議」投遞口",
+      "deck": "紙條要寫清楚，機器人才答得出",
+      "body": "回應機被嫌答案太籠統後，公所加裝了「具體建議」投遞口：紙條要寫地點、日期、想要什麼。{mayorName}說，這樣機器人答得出來，里長也找得到人。第一天就收到 {n} 張寫得很清楚的紙條。",
+      "mayorQuote": "好問題值得好答案。地點、日期、需求，三樣寫清楚，我就能派人去看。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "wang",
+          "text": "有地點有日期，我轉給課室就快多了。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "bo",
+          "text": "我寫了溝在哪裡、哪天塞的，看看回什麼。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "學會把意見寫清楚，也是公民課的一部分。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 3,
+      "safetyNote": "虛構報導。改編自「罐頭式回應與機器人問答」這一類型，只取機器人與籠統答案的趣味，不指涉任何真實人物或用語。"
+    },
+    {
+      "id": "mn_responder_3",
+      "memeId": "responder",
+      "tag": "responder",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "回應機當機？{mayorNick}：先修機器，再修答案",
+      "deck": "居民投了 {n} 張紙條，答案卡只剩一種",
+      "body": "{domainName}民怨升到 {pct}%，回應機前面大排長龍，答案卡卻只剩「高度關切」一種。{mayorName}承認「機器人比我更快用完詞」，並請居民改用里長信箱，三天內回覆。",
+      "mayorQuote": "高度關切是真的，但高度關切不能當午餐。我們三天內給你具體時間。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "zhen",
+          "text": "關切我收到了，水呢？",
+          "mood": "roast"
+        },
+        {
+          "speakerNpcId": "lin",
+          "text": "三天內回覆我記下了，三天後我會再來。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "官腔可愛是優點，三天後沒回覆就是缺點。",
+      "rumorFlag": {
+        "label": "傳聞",
+        "text": "傳聞回應機的答案卡已被換成「請稍候」，公所尚未證實。",
+        "checkHint": "查公所公告欄與回應機現場的說明。"
+      },
+      "vars": {},
+      "placement": "monthly",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「罐頭式回應與機器人問答」這一類型，只取機器人與籠統答案的趣味，不指涉任何真實人物或用語。"
+    },
+    {
+      "id": "mn_responder_4",
+      "memeId": "responder",
+      "tag": "responder",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "回應機學會新句子：「已派人處理，{day}回報」",
+      "deck": "有時間、有負責人，答案變實在了",
+      "body": "回應機更新後，答案卡上多了處理時間與負責課室。{place}的居民投下紙條，{day}就收到回報。{mayorName}說，這是全體職員一起把答案寫清楚的成果。",
+      "mayorQuote": "答案不只會說話，還要會做事。謝謝大家陪機器人一起長大。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "紙條真的有回音，這次不是迴音。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "wang",
+          "text": "里長信箱也輕鬆了一點。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "有時間、有負責人，是好回應的最小單位。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "frontPage",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「罐頭式回應與機器人問答」這一類型，只取機器人與籠統答案的趣味，不指涉任何真實人物或用語。"
+    },
+    {
+      "id": "mn_nap_1",
+      "memeId": "nap_fish",
+      "tag": "nap_fish",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "{mayorName}桌上的三樣東西：小魚乾、毛線球、準時下班牌",
+      "deck": "休息好，才能把城市想得更好",
+      "body": "記者拜訪{mayorName}的辦公室，發現桌上永遠擺著小魚乾罐、毛線球和一張「準時下班」小牌子。市長說午休玩十分鐘毛線球，下午開會會更有精神。下期專欄將邀請同學票選「你心中的城市三樣好東西」。（虛構報導）",
+      "mayorQuote": "毛線球繞完一圈，點子也繞完一圈。準時下班，是為了明天準時上班。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "lin",
+          "text": "準時下班的市長，我們也比較不好意思晚下班。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "kai",
+          "text": "我想要一顆毛線球放在我家櫃檯。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "把休息寫進行程，也是一種管理。",
+      "rumorFlag": {
+        "label": "傳聞",
+        "text": "傳聞毛線球其實是會議道具，公所尚未證實。",
+        "checkHint": "看辦公室公開日的照片，並問公所總務課。"
+      },
+      "vars": {},
+      "placement": "both",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「把三樣東西排成一組」的句型，內容完全正向、完全虛構（小魚乾、毛線球、準時下班）。"
+    },
+    {
+      "id": "mn_nap_2",
+      "memeId": "nap_fish",
+      "tag": "nap_fish",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "upset",
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "民怨升到 {pct}%，{mayorNick}還準時下班？",
+      "deck": "小魚乾罐空了，待辦清單還沒空",
+      "body": "有居民發現{mayorName}仍堅持準時下班，質疑{domainName}的問題還沒處理完。市長回應：「準時下班是我的原則，但清單我帶回家看。」並同意把待辦進度貼在公告欄，每週更新。",
+      "mayorQuote": "毛線球放下了，待辦清單我帶著。明天一早，第一件就是{domainName}。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "zhen",
+          "text": "清單帶回家也要有人看啊，我們看得到進度嗎？",
+          "mood": "roast"
+        },
+        {
+          "speakerNpcId": "wang",
+          "text": "公告欄每週更新，我來幫忙貼。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "休息不是問題，問題是進度要讓人看得見。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "monthly",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「把三樣東西排成一組」的句型，內容完全正向、完全虛構（小魚乾、毛線球、準時下班）。"
+    },
+    {
+      "id": "mn_nap_3",
+      "memeId": "nap_fish",
+      "tag": "nap_fish",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "grumble",
+        "upset"
+      ],
+      "mood": "neutral",
+      "headline": "公所晚上七點就熄燈？{mayorNick}：燈關了，進度還亮著",
+      "deck": "職員準時下班，進度條照常前進",
+      "body": "{place}居民好奇為什麼公所晚上七點就熄燈。{mayorName}解釋：加班不等於效率，進度條公布在網頁上，大家隨時能看。本週完成的 {n} 件待辦，也同步貼在公告欄。",
+      "mayorQuote": "燈關了，進度還亮著。想看的人隨時來查。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "lin",
+          "text": "進度亮著我就放心。",
+          "mood": "neutral"
+        },
+        {
+          "speakerNpcId": "kai",
+          "text": "我上網看了，確實有更新。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "公開進度，比加班更有說服力。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "frontPage",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「把三樣東西排成一組」的句型，內容完全正向、完全虛構（小魚乾、毛線球、準時下班）。"
+    },
+    {
+      "id": "mn_bin_1",
+      "memeId": "lidded_bin",
+      "tag": "lidded_bin",
+      "domainIds": [
+        "market",
+        "health"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "帶蓋廚餘桶上市：{place}攤位拿到「蓋蓋貼紙」",
+      "deck": "蓋子蓋好，老鼠就找不到宵夜",
+      "body": "{place}市集今天公布新規：每個攤位都要有帶蓋的廚餘桶，通過檢查就貼上「蓋蓋貼紙」。{mayorName}親自貼了 {n} 張，還說自己辦公桌的垃圾桶也加了蓋。（虛構報導）",
+      "mayorQuote": "蓋蓋貼紙很可愛，蓋子要真的蓋才可愛。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "蓋子蓋好，收攤後的味道真的淡了。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "貼紙我女兒要收藏，可以多給一張嗎？",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "小動作，大效果：根源在食物來源。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 3,
+      "safetyNote": "虛構報導。改編自「廚餘桶加蓋與階梯式輔導」這一類型，地點與攤位皆為貓貓市虛構設定。"
+    },
+    {
+      "id": "mn_bin_2",
+      "memeId": "lidded_bin",
+      "tag": "lidded_bin",
+      "domainIds": [
+        "market",
+        "health"
+      ],
+      "tier": [
+        "upset",
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "貼紙貼了，蓋子沒蓋？{place}廚餘桶抽查 {n} 處不合格",
+      "deck": "貼紙可以貼，蓋子要蓋",
+      "body": "公所抽查{place}攤位，發現有 {n} 處廚餘桶貼了「蓋蓋貼紙」卻沒有蓋上蓋子。{mayorName}笑說：「貼紙是提醒，不是魔法。」公所將改為先輔導、再複查。",
+      "mayorQuote": "貼紙不會自己蓋蓋子。我們先教，再查，再貼。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "貼紙貼了，結果是我自己忘了蓋，丟臉。",
+          "mood": "roast"
+        },
+        {
+          "speakerNpcId": "bo",
+          "text": "輔導比罰款溫柔，我贊成。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "階梯式管理：宣導、輔導、複查。",
+      "rumorFlag": {
+        "label": "傳聞",
+        "text": "傳聞下週將突擊檢查夜市，公所尚未證實。",
+        "checkHint": "看公所公告欄上的檢查時程。"
+      },
+      "vars": {},
+      "placement": "monthly",
+      "weight": 3,
+      "safetyNote": "虛構報導。改編自「廚餘桶加蓋與階梯式輔導」這一類型，地點與攤位皆為貓貓市虛構設定。"
+    },
+    {
+      "id": "mn_bin_3",
+      "memeId": "lidded_bin",
+      "tag": "lidded_bin",
+      "domainIds": [
+        "health",
+        "market"
+      ],
+      "tier": [
+        "grumble",
+        "upset"
+      ],
+      "mood": "neutral",
+      "headline": "鼠跡傳聞滿天飛，{mayorName}：先看巡查紀錄",
+      "deck": "影片先問地點與日期",
+      "body": "{place}一段老鼠影片在群組流傳，有人說就是市集。公所表示地點與日期都不明，將公開本週巡查紀錄供大家核對。{mayorName}提醒，看到影片先問兩件事：在哪、哪天。",
+      "mayorQuote": "影片我也看了，可愛程度滿分，證據程度零分。請大家先問地點與日期。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "zhen",
+          "text": "我先問了群組，沒人知道是哪裡拍的。",
+          "mood": "neutral"
+        },
+        {
+          "speakerNpcId": "lin",
+          "text": "好，我等巡查紀錄再轉。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "查證不是不信，是讓看到變成確定。",
+      "rumorFlag": {
+        "label": "傳聞",
+        "text": "傳聞影片拍的是本市市集，目前未證實。",
+        "checkHint": "查影片的拍攝地點、日期，並對照公所巡查紀錄。"
+      },
+      "vars": {},
+      "placement": "frontPage",
+      "weight": 3,
+      "safetyNote": "虛構報導。改編自「廚餘桶加蓋與階梯式輔導」這一類型，地點與攤位皆為貓貓市虛構設定。"
+    },
+    {
+      "id": "mn_drain_1",
+      "memeId": "drain_upgrade",
+      "tag": "drain_upgrade",
+      "domainIds": [
+        "drain"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "排水溝大升級：{place}多裝 {n} 個小水閘",
+      "deck": "{mayorNick}請同學當「水溝觀察員」",
+      "body": "雷雨前，工程隊提前清了{place}的水溝，路口的小水窪很快退去。{mayorName}宣布明年再新增 {n} 個小水閘，並邀請同學下雨前檢查樹葉有沒有塞住水孔。（虛構報導，無災情）",
+      "mayorQuote": "水溝升級了，容受力也升級了；請大家把落葉也升級成堆肥。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "bo",
+          "text": "這次雨一停，水就退了，溝裡很乾淨。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "wang",
+          "text": "觀察員名額我先幫社區報了。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "排水升級要搭配日常清理，才撐得久。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 3,
+      "safetyNote": "虛構報導。改編自「排水升級與進度公開」這一類型，沒有真實地名、數字或災情。"
+    },
+    {
+      "id": "mn_drain_2",
+      "memeId": "drain_upgrade",
+      "tag": "drain_upgrade",
+      "domainIds": [
+        "drain"
+      ],
+      "tier": [
+        "upset",
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "升級了還積水？{place}路口一小時下了 {mm} 毫米",
+      "deck": "容受力升級，雨也跟著升級",
+      "body": "一陣大雨在一小時內下了 {mm} 毫米，{place}路口仍短暫積水。{mayorName}說：「容受力升級了，但雨說牠也要升級。」公所已派人檢查水閘與抽水機，並公布檢查紀錄。",
+      "mayorQuote": "雨比預報更努力，我們也要更努力。檢查紀錄明天貼出來，欠大家一個交代。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "bo",
+          "text": "升級的牌子很新，積水的位置也很新。",
+          "mood": "roast"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "至少這次沒有淹進店裡，但我還是怕。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "數字升級不等於體感升級，居民要看到實際退水時間。",
+      "rumorFlag": {
+        "label": "傳聞",
+        "text": "傳聞抽水機當天沒有開，公所尚未證實。",
+        "checkHint": "查抽水機的運轉紀錄與公所公告。"
+      },
+      "vars": {},
+      "placement": "both",
+      "weight": 3,
+      "safetyNote": "虛構報導。改編自「排水升級與進度公開」這一類型，沒有真實地名、數字或災情。"
+    },
+    {
+      "id": "mn_drain_3",
+      "memeId": "drain_upgrade",
+      "tag": "drain_upgrade",
+      "domainIds": [
+        "drain"
+      ],
+      "tier": [
+        "grumble",
+        "upset"
+      ],
+      "mood": "neutral",
+      "headline": "水溝升級進度表：第 {cycle} 季完成 {pct}%",
+      "deck": "完成度公開，居民可以檢查",
+      "body": "公所公布水溝升級進度：本季完成 {pct}%，其餘預計下季施工。{mayorName}說，進度表會貼在公告欄，也請居民幫忙回報淤積位置。若逾期，公所也會在公告欄說明原因。",
+      "mayorQuote": "進度公開，是為了讓大家監督。逾期我也會說明，不躲。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "bo",
+          "text": "我去對照了，進度和我看到的差不多。",
+          "mood": "neutral"
+        },
+        {
+          "speakerNpcId": "wang",
+          "text": "里長信箱我來收淤積回報。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "公開進度，是信任的第一步。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "monthly",
+      "weight": 3,
+      "safetyNote": "虛構報導。改編自「排水升級與進度公開」這一類型，沒有真實地名、數字或災情。"
+    },
+    {
+      "id": "mn_pre_1",
+      "memeId": "pre_deploy",
+      "tag": "pre_deploy",
+      "domainIds": [
+        "drain"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "下雨前先清溝：{mayorName}宣布「提前部署」",
+      "deck": "預防比搶修便宜，也比較睡得著",
+      "body": "氣象說{day}可能有雨，公所提早在{place}清溝，累計清了 {n} 公尺。{mayorName}說，提前部署的好處是雨來了大家比較不緊張。（虛構報導）",
+      "mayorQuote": "雨來之前先把路讓出來，這是對雨的禮貌。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "bo",
+          "text": "溝清乾淨了，今晚可以睡得安穩一點。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "攤位下面不會積水，真好。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "預防型工作的成果是「沒事」，很難看見，值得被看見。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「雨前提早清溝」這一類型的防災做法，沒有真實地名與災情。"
+    },
+    {
+      "id": "mn_pre_2",
+      "memeId": "pre_deploy",
+      "tag": "pre_deploy",
+      "domainIds": [
+        "drain"
+      ],
+      "tier": [
+        "upset",
+        "grumble"
+      ],
+      "mood": "neutral",
+      "headline": "提前部署之後，仍有 {n} 處排水口塞住",
+      "deck": "清了溝，樹葉又落下來",
+      "body": "雖然提前清了溝，大風又吹來一批落葉，{place}仍有 {n} 處排水口被塞住。公所說明，落葉季要增加巡溝頻率，並歡迎居民幫忙回報。",
+      "mayorQuote": "葉子的行程比我的班表更滿。我們把巡溝班表加密。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "bo",
+          "text": "葉子才剛清完又來，我懂，我也很累。",
+          "mood": "neutral"
+        },
+        {
+          "speakerNpcId": "kai",
+          "text": "我只是來玩，鞋子都濕了。",
+          "mood": "roast"
+        }
+      ],
+      "editorNote": "清一次不夠，要依落葉季節調整頻率。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "monthly",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「雨前提早清溝」這一類型的防災做法，沒有真實地名與災情。"
+    },
+    {
+      "id": "mn_berry_1",
+      "memeId": "blueberry",
+      "tag": "blueberry",
+      "domainIds": [
+        "market"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "市集莓果日：{n} 顆一份，{mayorName}說「這次的比較大顆」",
+      "deck": "試吃攤前大排長龍，重量大公開",
+      "body": "{place}市集舉辦莓果日，每份試吃 {n} 顆。{mayorName}現場宣布這次選了「比較大顆」的品種，並請攤商公開秤重。小朋友說，每一顆都吃得到甜味。（虛構報導，與任何學校供餐無關）",
+      "mayorQuote": "大不大顆不是我說了算，秤重寫在黑板上。請大家吃甜的，也吃明白的。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "秤重寫在黑板上，客人看了很放心。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "lin",
+          "text": "果然比較大顆，也比較酸，我還是喜歡。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "把量化資料公開，比一句「比較大」更有說服力。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 3,
+      "safetyNote": "虛構報導。只取「形容詞不能代替數字」這個教學點，場景是貓貓市集試吃，與任何學校供餐、廠商或學童無關。"
+    },
+    {
+      "id": "mn_berry_2",
+      "memeId": "blueberry",
+      "tag": "blueberry",
+      "domainIds": [
+        "market"
+      ],
+      "tier": [
+        "upset",
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "莓果日每份只有 {n} 顆？攤商說這次「比較大顆」",
+      "deck": "「比較大」是多大？黑板上沒寫",
+      "body": "市集莓果日被居民發現每份只有 {n} 顆，{mayorName}強調「比較大顆」。居民追問大到多少，公所承認黑板上忘了寫數字，答應補上秤重與價格。",
+      "mayorQuote": "「比較大顆」確實不夠精準。我下次直接說幾公克。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "我賣水果三十年，大顆不是用說的。",
+          "mood": "roast"
+        },
+        {
+          "speakerNpcId": "kai",
+          "text": "我拍了照，真的有點小。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "形容詞不能代替數字。",
+      "rumorFlag": {
+        "label": "傳聞",
+        "text": "傳聞每份其實少放了一顆，公所尚未證實。",
+        "checkHint": "請攤商公開進貨量與秤重紀錄。"
+      },
+      "vars": {},
+      "placement": "both",
+      "weight": 3,
+      "safetyNote": "虛構報導。只取「形容詞不能代替數字」這個教學點，場景是貓貓市集試吃，與任何學校供餐、廠商或學童無關。"
+    },
+    {
+      "id": "mn_berry_3",
+      "memeId": "blueberry",
+      "tag": "blueberry",
+      "domainIds": [
+        "market"
+      ],
+      "tier": [
+        "grumble"
+      ],
+      "mood": "neutral",
+      "headline": "莓果日黑板補了克數：每份 {n} 顆約五十公克",
+      "deck": "數字一寫，爭論少了一半",
+      "body": "莓果日被質疑「大顆」沒有數字後，{place}市集的黑板補上了每份重量與價格。{mayorName}親自去秤了一份，現場居民也跟著秤，確認與黑板相同。攤商說，客人比較少問「大不大」了。",
+      "mayorQuote": "數字寫在黑板上，客人自己會判斷。我們只負責不寫錯。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "黑板一寫，客人問題少一半，我也輕鬆。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "lin",
+          "text": "我也秤了，一樣。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "先回應質疑，再補上數據，是好的修正流程。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "monthly",
+      "weight": 3,
+      "safetyNote": "虛構報導。只取「形容詞不能代替數字」這個教學點，場景是貓貓市集試吃，與任何學校供餐、廠商或學童無關。"
+    },
+    {
+      "id": "mn_mole_1",
+      "memeId": "whack_mole",
+      "tag": "whack_mole",
+      "domainIds": [
+        "health",
+        "market",
+        "any"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "{place}打地鼠小遊戲：答對環保問答才能打",
+      "deck": "鼠鼠是玩具，問題是真的",
+      "body": "公所在{place}擺出打地鼠小遊戲，答對廚餘桶、清運與查證問答才能打一下，答對 {n} 題可以換小魚乾貼紙。{mayorName}強調：遊戲裡的鼠鼠是玩具，生活裡我們用蓋子與清潔對付它。（虛構報導）",
+      "mayorQuote": "打地鼠很好玩，但真正的辦法是不給牠吃的。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "zhen",
+          "text": "我女兒答對七題，驕傲了一整天。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "kai",
+          "text": "我打了二十下，被地鼠打敗。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "遊戲化的宣導，記得連結到生活行動。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「打地鼠式小遊戲宣導」這一類型，遊戲裡的老鼠只是玩具，沒有任何真實事件。"
+    },
+    {
+      "id": "mn_mole_2",
+      "memeId": "whack_mole",
+      "tag": "whack_mole",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "upset",
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "問題像地鼠，打下一個冒出一個？{mayorNick}：換個打法",
+      "deck": "不能只打頭，要找洞",
+      "body": "居民說{domainName}的問題像打地鼠，剛處理一個，隔壁又冒出一個。{mayorName}回應，要「找洞」而不是「打頭」，意思是查出根源，而不是處理每次冒出來的症狀。公所本週開會盤點 {n} 個重複出現的問題。",
+      "mayorQuote": "打地鼠累了，我們換個策略：找洞，把洞補起來。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "lin",
+          "text": "我手都酸了，洞還在。",
+          "mood": "roast"
+        },
+        {
+          "speakerNpcId": "wang",
+          "text": "找洞我贊成，要不要先貼地圖？",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "治標與治本的差別，這個比喻很貼切。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "monthly",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「打地鼠式小遊戲宣導」這一類型，遊戲裡的老鼠只是玩具，沒有任何真實事件。"
+    },
+    {
+      "id": "mn_hand_1",
+      "memeId": "handrail",
+      "tag": "handrail",
+      "domainIds": [
+        "traffic"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "貓貓公車新增扶手與嬰兒車位",
+      "deck": "站得穩、停得下、搭得安心",
+      "body": "{place}的公車今天改裝完成：座位旁多了扶手，車廂後面還有一格嬰兒車位。{mayorName}也搭了一趟，說「站在中間也有東西可以抓」。第一天搭乘 {n} 人，反應大多正面。（虛構報導）",
+      "mayorQuote": "我搭過了，站著也穩。其他細節，請大家搭完告訴我。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "kai",
+          "text": "扶手剛剛好，我拿著行李也站得穩。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "lin",
+          "text": "嬰兒車位終於不用折疊，感謝。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "設施好不好，要搭過才知道，市長自己搭也算誠意。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「公車座位與扶手改善」這一類型，貓貓公車為虛構設定，沒有任何傷者或真實路線。"
+    },
+    {
+      "id": "mn_hand_2",
+      "memeId": "handrail",
+      "tag": "handrail",
+      "domainIds": [
+        "traffic"
+      ],
+      "tier": [
+        "grumble",
+        "upset"
+      ],
+      "mood": "neutral",
+      "headline": "公車扶手已裝，嬰兒車位還在排隊",
+      "deck": "改善是一站一站來的",
+      "body": "貓貓公車的扶手已經裝好，但嬰兒車位的改裝因零件延誤，預計下季完成。{mayorName}說，先裝好的先上路，剩下的也會公布時程。目前 {place}路線的乘客大多先試乘扶手。",
+      "mayorQuote": "能先做的先做，不能先做的說清楚。零件到貨日我會貼出來。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "kai",
+          "text": "扶手有了，嬰兒車位等你喔。",
+          "mood": "neutral"
+        },
+        {
+          "speakerNpcId": "lin",
+          "text": "時程公布我才能幫朋友規劃。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "分階段改善沒有問題，重點是時程公開。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "monthly",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「公車座位與扶手改善」這一類型，貓貓公車為虛構設定，沒有任何傷者或真實路線。"
+    },
+    {
+      "id": "mn_night_1",
+      "memeId": "night_walk",
+      "tag": "night_walk",
+      "domainIds": [
+        "safety"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "手電筒巡守隊出動：小巷亮起暖黃燈",
+      "deck": "巡守不是嚇人，是讓人安心",
+      "body": "{place}的巡守隊今晚第一次出巡，志工貓貓提著手電筒，沿著石板巷走了 {n} 圈。轉角的新路燈亮起暖黃光，居民說走起路來安心多了。{mayorName}也跟著走了一圈。（虛構報導）",
+      "mayorQuote": "巡守隊的燈很暖，但最暖的是大家願意一起走。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "zhen",
+          "text": "轉角亮了，我今晚可以晚點關店。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "wang",
+          "text": "志工名單我來幫忙擴大。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "預防型政策的好處，是讓人「敢出門」。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「社區夜間巡守與路燈」這一類型，沒有任何真實案件。"
+    },
+    {
+      "id": "mn_night_2",
+      "memeId": "night_walk",
+      "tag": "night_walk",
+      "domainIds": [
+        "safety"
+      ],
+      "tier": [
+        "upset",
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "路燈亮了，{mayorNick}夜巡卻被自己的影子嚇到",
+      "deck": "巷子還有兩盞燈沒亮",
+      "body": "{place}巷子的 {n} 盞路燈仍不亮，居民擔心夜裡不安全。{mayorName}夜巡時自嘲「被自己的影子嚇到」，並答應下週完成維修，過程也會公布。",
+      "mayorQuote": "影子很高大，路燈更要亮。維修進度我貼在巷口。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "zhen",
+          "text": "影子嚇到市長，那我們更需要路燈。",
+          "mood": "roast"
+        },
+        {
+          "speakerNpcId": "wang",
+          "text": "巷口我來幫忙貼進度。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "自嘲可愛，但維修日期要準時。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "monthly",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「社區夜間巡守與路燈」這一類型，沒有任何真實案件。"
+    },
+    {
+      "id": "mn_deliv_1",
+      "memeId": "delivery",
+      "tag": "delivery",
+      "domainIds": [
+        "logistics"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "小魚乾補貨車準時到，攤位貨架滿滿",
+      "deck": "補貨時段錯開，路口不再卡",
+      "body": "{place}的補貨車今天都在時段內抵達，貨架補得滿滿的。{mayorName}說，補貨時段錯開後，路口少了擁擠，攤商也不用提早在門口排隊。（虛構報導）",
+      "mayorQuote": "貨準時，客人才準時。這是小魚乾和時鐘一起努力的結果。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "貨一到我就能開攤，今天賣得特別順。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "lin",
+          "text": "準點率我記下來了，真的有進步。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "到貨穩定，是市集信任感的基礎。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「物流準點與補貨」這一類型，貓貓市的補貨車與貨架都是虛構設定。"
+    },
+    {
+      "id": "mn_deliv_2",
+      "memeId": "delivery",
+      "tag": "delivery",
+      "domainIds": [
+        "logistics"
+      ],
+      "tier": [
+        "upset",
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "補貨車遲到，{mayorNick}：我也在等小魚乾",
+      "deck": "貨架空了一半，居民好奇",
+      "body": "{place}的補貨車今天晚了 {n} 小時，攤位貨架空了一半。{mayorName}說：「我也在等小魚乾。」公所已調整時段，下週起錯開高峰，並公布準點率。",
+      "mayorQuote": "遲到的車我們調班表，等貨的人我們補償笑容。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "貨遲到我也很抱歉，客人問我我只能笑。",
+          "mood": "neutral"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "我的貨也是，市長別只笑，要派車啊。",
+          "mood": "roast"
+        }
+      ],
+      "editorNote": "自嘲不能代替補救。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "frontPage",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「物流準點與補貨」這一類型，貓貓市的補貨車與貨架都是虛構設定。"
+    },
+    {
+      "id": "mn_flex_1",
+      "memeId": "flex_stall",
+      "tag": "flex_stall",
+      "domainIds": [
+        "market"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "攤位半天或全天營業，自己選",
+      "deck": "彈性營業讓小攤也有舞台",
+      "body": "{place}市集今天公布新規：攤商可以選擇半天或全天營業，並公布在黑板上。{mayorName}說，這樣小攤也能把時間排得剛剛好。第一週已有 {n} 家攤位選擇半天營業。（虛構報導）",
+      "mayorQuote": "時間彈性，是為了讓攤商不被時間綁住。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "我下午可以補貨，上午專心賣，剛剛好。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "黑板上有寫營業時間，我就不用白跑了。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "彈性要配上公告，客人才不會撲空。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「攤位彈性營業」這一類型，貓貓市場為虛構場景。"
+    },
+    {
+      "id": "mn_flex_2",
+      "memeId": "flex_stall",
+      "tag": "flex_stall",
+      "domainIds": [
+        "market"
+      ],
+      "tier": [
+        "upset",
+        "grumble"
+      ],
+      "mood": "neutral",
+      "headline": "彈性營業上路，客人搞不清楚哪家開",
+      "deck": "黑板字太小，居民看不清",
+      "body": "攤位彈性營業上路後，{place}有居民抱怨不知道哪些攤位今天營業。公所說明，黑板字太小已重新放大，並考慮在入口增設總表。{mayorName}說，彈性是優點，但資訊要讓人一眼看懂。",
+      "mayorQuote": "彈性是好事，資訊要一眼看懂。黑板明天換大字。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "kai",
+          "text": "我走了三家都關著，原來黑板在角落。",
+          "mood": "roast"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "黑板換大字，我贊成。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "新制度上路，配套資訊要同步。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "monthly",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「攤位彈性營業」這一類型，貓貓市場為虛構場景。"
+    },
+    {
+      "id": "mn_follow_1",
+      "memeId": "follow_up",
+      "tag": "follow_up",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "upset",
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "「持續追蹤」貓出動，追了三天追到一顆毛線球",
+      "deck": "追蹤要有結果，不只是追",
+      "body": "居民問{domainName}處理進度，{mayorName}回答「持續追蹤中」。三天後居民追問結果，公所拿出的卻是追蹤紀錄表，上面只寫著「追蹤中」。{mayorName}自嘲：「看來我追到的是毛線球。」並答應下次附上結果。",
+      "mayorQuote": "追蹤不能只追，還要抓到。下次我附結果，不附毛線球。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "lin",
+          "text": "追蹤的日期和結果，我想看到兩欄都有字。",
+          "mood": "neutral"
+        },
+        {
+          "speakerNpcId": "zhen",
+          "text": "追蹤中我收到了，結果呢？",
+          "mood": "roast"
+        }
+      ],
+      "editorNote": "「持續追蹤」後面要接「結果」與「日期」。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「持續追蹤」這類官腔用語的趣味化，只取語氣，不指涉任何真實人物。"
+    },
+    {
+      "id": "mn_hear_1",
+      "memeId": "hearing",
+      "tag": "hearing",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "calm",
+        "grumble"
+      ],
+      "mood": "praise",
+      "headline": "里長信箱開箱日：{n} 封意見，當場回覆",
+      "deck": "意見公開讀、答案公開寫",
+      "body": "{place}里長信箱今天開箱，{mayorName}與里長一起當場讀了 {n} 封意見，並把可以立刻處理的事項貼上公告欄。有居民說，頭一次看到意見被這麼認真對待。（虛構報導）",
+      "mayorQuote": "信箱不是黑洞，是跑道。每封意見都要降落。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "wang",
+          "text": "當場回覆的速度，連我都嚇一跳。",
+          "mood": "praise"
+        },
+        {
+          "speakerNpcId": "mei",
+          "text": "我的意見被讀出來，還有掌聲，好害羞。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "公開處理意見，是信任的來源。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "both",
+      "weight": 2,
+      "safetyNote": "虛構報導。改編自「里長信箱與意見回覆」這一類型，沒有任何真實人物。"
+    },
+    {
+      "id": "mn_bt_1",
+      "memeId": "responder",
+      "tag": "responder",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "回應機又說「認真想想」",
+      "deck": "居民：水溝可不會自己想",
+      "body": "居民說回應機又回了「認真想想」，但{domainName}的問題還在。{mayorName}答應改用具體答案。",
+      "mayorQuote": "認真想想之後，我們要認真做做。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "bo",
+          "text": "回應機說認真想想，水溝可不會自己想。",
+          "mood": "roast"
+        }
+      ],
+      "editorNote": "答案要具體，才算回應。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "banter",
+      "weight": 1,
+      "safetyNote": "虛構報導。改編自「罐頭式回應與機器人問答」這一類型，只取機器人與籠統答案的趣味，不指涉任何真實人物或用語。"
+    },
+    {
+      "id": "mn_bt_2",
+      "memeId": "cleanup",
+      "tag": "cleanup",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "furious"
+      ],
+      "mood": "roast",
+      "headline": "三不口號背熟了",
+      "deck": "垃圾桶卻還是滿的",
+      "body": "口號人人會背，垃圾桶卻還是滿的。{mayorName}說：今天先清桶，明天再背口號。",
+      "mayorQuote": "先清桶，再背口號。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "三不口號我背熟了，客人還是沒回來。",
+          "mood": "roast"
+        }
+      ],
+      "editorNote": "口號要搭配班表。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "banter",
+      "weight": 1,
+      "safetyNote": "虛構報導。改編自「全市大掃除與口號式宣導」這一類型，只取三句口號的句型與掃除概念，不指涉任何真實事件、地點或人物。"
+    },
+    {
+      "id": "mn_bt_3",
+      "memeId": "blueberry",
+      "tag": "blueberry",
+      "domainIds": [
+        "market"
+      ],
+      "tier": [
+        "upset"
+      ],
+      "mood": "roast",
+      "headline": "「比較大顆」要有數字",
+      "deck": "居民：秤重寫上去",
+      "body": "居民說「比較大顆」要有數字，{mayorName}答應下次把克數寫在黑板上。",
+      "mayorQuote": "我下次直接說幾公克。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "你說比較大顆，我秤了，還是小顆。",
+          "mood": "roast"
+        }
+      ],
+      "editorNote": "形容詞不能代替數字。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "banter",
+      "weight": 1,
+      "safetyNote": "虛構報導。只取「形容詞不能代替數字」這個教學點，場景是貓貓市集試吃，與任何學校供餐、廠商或學童無關。"
+    },
+    {
+      "id": "mn_bt_4",
+      "memeId": "whack_mole",
+      "tag": "whack_mole",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "upset"
+      ],
+      "mood": "neutral",
+      "headline": "問題像地鼠",
+      "deck": "要找洞，不要只打頭",
+      "body": "居民說問題像地鼠，打下一個冒出一個。{mayorName}說：先找洞，再補洞。",
+      "mayorQuote": "找洞，補洞，不打頭。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "lin",
+          "text": "問題像打地鼠，市長要找洞喔！",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "治標之外要治本。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "banter",
+      "weight": 1,
+      "safetyNote": "虛構報導。改編自「打地鼠式小遊戲宣導」這一類型，遊戲裡的老鼠只是玩具，沒有任何真實事件。"
+    },
+    {
+      "id": "mn_bt_5",
+      "memeId": "nap_fish",
+      "tag": "nap_fish",
+      "domainIds": [
+        "any"
+      ],
+      "tier": [
+        "grumble"
+      ],
+      "mood": "neutral",
+      "headline": "市長準時下班",
+      "deck": "居民：進度也請準時",
+      "body": "居民說市長準時下班很好，但進度表也請準時更新。{mayorName}說每週一更新。",
+      "mayorQuote": "進度每週一更新，毛線球下班後玩。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "lin",
+          "text": "毛線球玩得開心，進度表也請更新。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "公開進度才有說服力。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "banter",
+      "weight": 1,
+      "safetyNote": "虛構報導。改編自「把三樣東西排成一組」的句型，內容完全正向、完全虛構（小魚乾、毛線球、準時下班）。"
+    },
+    {
+      "id": "mn_bt_6",
+      "memeId": "lidded_bin",
+      "tag": "lidded_bin",
+      "domainIds": [
+        "market"
+      ],
+      "tier": [
+        "grumble"
+      ],
+      "mood": "neutral",
+      "headline": "蓋蓋貼紙收到了",
+      "deck": "蓋子也請蓋上",
+      "body": "居民收到蓋蓋貼紙，提醒蓋子也要蓋上。{mayorName}說：貼紙是提醒，蓋子是行動。",
+      "mayorQuote": "貼紙是提醒，蓋子是行動。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "zhen",
+          "text": "蓋蓋貼紙收到了，蓋子請也蓋上。",
+          "mood": "neutral"
+        }
+      ],
+      "editorNote": "提醒與行動缺一不可。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "banter",
+      "weight": 1,
+      "safetyNote": "虛構報導。改編自「廚餘桶加蓋與階梯式輔導」這一類型，地點與攤位皆為貓貓市虛構設定。"
+    },
+    {
+      "id": "mn_bt_7",
+      "memeId": "blueberry",
+      "tag": "blueberry",
+      "domainIds": [
+        "market"
+      ],
+      "tier": [
+        "calm"
+      ],
+      "mood": "praise",
+      "headline": "莓果日真的比較大顆",
+      "deck": "客人都說甜",
+      "body": "莓果日客人都說甜，攤商說秤重寫在黑板上，很安心。{mayorName}說：大家吃得開心就好。",
+      "mayorQuote": "大家吃甜的，也吃明白的。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "mei",
+          "text": "這次的莓果真的比較大顆，客人都說甜！",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "公開數據讓人放心。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "banter",
+      "weight": 1,
+      "safetyNote": "虛構報導。只取「形容詞不能代替數字」這個教學點，場景是貓貓市集試吃，與任何學校供餐、廠商或學童無關。"
+    },
+    {
+      "id": "mn_bt_8",
+      "memeId": "pre_deploy",
+      "tag": "pre_deploy",
+      "domainIds": [
+        "drain"
+      ],
+      "tier": [
+        "calm"
+      ],
+      "mood": "praise",
+      "headline": "提前清溝有用",
+      "deck": "今天雨大也不慌",
+      "body": "提前清溝後，今天雨大也不慌。{mayorName}說：預防比搶修更省力。",
+      "mayorQuote": "預防做得好，雨來也不慌。",
+      "residentReactions": [
+        {
+          "speakerNpcId": "bo",
+          "text": "提前清溝真有用，今天雨大也不慌。",
+          "mood": "praise"
+        }
+      ],
+      "editorNote": "預防型工作值得被看見。",
+      "rumorFlag": null,
+      "vars": {},
+      "placement": "banter",
+      "weight": 1,
+      "safetyNote": "虛構報導。改編自「雨前提早清溝」這一類型的防災做法，沒有真實地名與災情。"
+    }
+  ]
+}

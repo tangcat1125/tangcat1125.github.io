@@ -1,0 +1,247 @@
+{
+  "id": "policy_pied_piper",
+  "name": "吹笛人引鼠出城",
+  "cost": 3,
+  "blurb": "委託專業誘捕團隊「吹笛人」：用笛聲把鼠群引到誘捕站集中捕捉，不用毒餌、不傷人；見效最快，但費用最高，要付訂金再分兩季付尾款。",
+  "solves": [],
+  "rule_patches": {
+    "piedPiper": 1,
+    "installment": 1
+  },
+  "deltas": {
+    "money": -40,
+    "happiness": 2
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "總價最貴（訂金加兩期尾款）；只處理「現在的鼠群」，廚餘桶沒蓋、鼠洞沒封，老鼠還會再來。尾款付不出來，吹笛人會罷工。",
+  "preview": "預估：訂金 -40，之後兩季各 -50（共 -140）、幸福度 +2；當季遊行人潮人流 +4、遊客 +3；尾款付不出 → 吹笛人罷工、鼠患回彈。",
+  "costPoints": 3,
+  "tags": [
+    "衛生",
+    "專業",
+    "委外",
+    "童話"
+  ],
+  "counters": [
+    "rat",
+    "rat_swarm"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_pied_piper.webp",
+    "icon": "assets/sprites/cards/icons/icon_pied_piper.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🪈",
+    "accent": "#7b4fa0",
+    "fxHint": "fx_piper_parade"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "公私協力",
+    "rarity": "進階",
+    "titleShort": "吹笛人",
+    "costBadge": "3 點",
+    "shopLine": "笛聲一響鼠患快退，記得付錢",
+    "effectLine": "鼠群當季被集中帶走；但要記得付尾款，也要把廚餘與鼠洞顧好。",
+    "flavor": "笛聲很好聽，帳單也要記得聽。",
+    "learnPoint": "這張牌教你：委外專業見效快，但要算總成本、看付款能力，也不能取代源頭管理。",
+    "bullets": [
+      "對症：鼠群竄出",
+      "訂金 40＋尾款 50×2",
+      "付不出尾款會罷工",
+      "不處理廚餘與鼠洞"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -40,
+        "text": "金錢 -40"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 2,
+        "text": "幸福度 +2"
+      }
+    ],
+    "tradeoffLine": "總價最貴（訂金加兩期尾款）；只處理「現在的鼠群」，廚餘桶沒蓋、鼠洞沒封，老鼠還會再來。尾款付不出來，吹笛人會罷工。"
+  },
+  "shopBlurb": "笛聲一響鼠患快退，記得付錢",
+  "shopLine": "3 點｜訂金 40＋尾款 50×2｜笛聲一響鼠患快退，記得付錢",
+  "executeId": "exec_pied_piper",
+  "fx": {
+    "street": [
+      "fx_piper_parade",
+      "fx_rat_line"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 4,
+        "vehicle": 0,
+        "tourist": 3,
+        "security": 0
+      },
+      "flowKind": "timed",
+      "durationSeasons": 1,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "health": -18,
+        "market": -6
+      },
+      "complaintRebound": {
+        "health": 6,
+        "market": 3
+      },
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "strong",
+      "summary": "人流+4、遊客+3（當季遊行人潮）；衛生民怨-18、市集民怨-6"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_hu",
+      "staff_jing"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.2,
+      "health": 0.8,
+      "engineering": 0.2,
+      "economy": 0.4,
+      "communication": 0.3
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "health",
+    "market"
+  ],
+  "complaintDelta": {
+    "health": -18,
+    "market": -6
+  },
+  "complaintRebound": {
+    "health": 6,
+    "market": 3
+  },
+  "complaintNote": "當季衛生與市集民怨大降；若廚餘與鼠洞沒處理，下季有反彈（complaintRebound）。尾款付不出另有彩蛋後果。",
+  "eventEffects": {
+    "cure": [
+      "evp_health_rat_swarm"
+    ],
+    "assist": [
+      "evp_health_bait_worry",
+      "evp_safety_park_burrow"
+    ],
+    "palliative": [
+      "evp_market_rat_bin"
+    ],
+    "backfire": []
+  },
+  "policyType": "ppp",
+  "typeLabel": "公私協力",
+  "realWorldAnalog": "專業病媒防治業者：委託專業團隊用聲音與誘捕站集中捕捉鼠群（不用毒餌）；見效快但費用高、要分期付款。",
+  "topicCounters": [
+    "rat",
+    "rat_swarm"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_health_rat_swarm"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_health_rat_swarm"
+  ],
+  "solvesPoolConditional": [],
+  "installment": {
+    "enabled": true,
+    "deposit": {
+      "money": -40,
+      "note": "執行當季付訂金（＝card deltas.money，現行引擎已會扣）"
+    },
+    "payments": [
+      {
+        "dueSeasonOffset": 1,
+        "money": 50,
+        "label": "第一期尾款"
+      },
+      {
+        "dueSeasonOffset": 2,
+        "money": 50,
+        "label": "第二期尾款"
+      }
+    ],
+    "total": 140,
+    "payAt": "買卡後第 1、2 季的結報（seasonEnd）自動扣款，先扣尾款再算本季帳單。",
+    "unpaidIf": "扣款當下 ctx.town.money < 該期金額（付不出來），或 ctx.town.bankrupt 為 true。可判定、無隨機。",
+    "onUnpaid": {
+      "easterEggId": "piper_unpaid_loop",
+      "strike": true,
+      "cancelRemaining": true,
+      "complaintDelta": {
+        "health": 12,
+        "market": 6
+      },
+      "reputationDelta": -3,
+      "flowDelta": {
+        "foot": -3,
+        "tourist": -3
+      },
+      "flowDurationSeasons": 1,
+      "forceEventId": "evp_health_rat_swarm",
+      "forceDelayCycles": 1,
+      "forceNote": "下季強制出現「雨後鼠群大搬家」（鼠群跟著走調的笛聲繞市一圈又回來）",
+      "cancelPolicyEffect": {
+        "cardRecurring": true,
+        "note": "吹笛人罷工：剩餘的流量加成（card_recurring）取消"
+      },
+      "note": "拖欠只觸發一次：剩餘尾款作廢、不再追討（避免連續扣款讓學生陷入死循環）；後果是鼠患回彈與民怨上升，不涉及任何人身後果。",
+      "banRestOfTerm": {
+        "value": true,
+        "note": "罷工後本任期吹笛人不再接案（卡片鎖住，顯示「吹笛人不接案了」）；避免『低訂金→故意付不出→省尾款』"
+      },
+      "noPreventionAfterStrike": true
+    },
+    "stateFields": {
+      "ctx.installments": "🆕 需小力新增：[{policyId, boughtCycle, payments:[{dueCycle, money, paid:false}], status:\"paying|paid|unpaid\"}]",
+      "ctx.town.money": "✅ 既有",
+      "ctx.town.bankrupt": "✅ 既有",
+      "BehaviorLog seasons[].after.installmentUnpaid": "🆕 建議新增（pid 陣列），供 Stage H 財政軸參考"
+    },
+    "uiHint": "決策欄與帳單顯示「訂金 40＋尾款 50×2＝140」；買之前若 money < 140，建議區提示「尾款可能付不出來」（只提示、不擋）。",
+    "oneActiveContract": {
+      "value": true,
+      "note": "同一時間只能有一份吹笛人合約；尾款付清前不能再買（10/10 咪咪平衡審）"
+    }
+  },
+  "easterEggIds": [
+    "parade_pied_piper",
+    "piper_unpaid_loop"
+  ]
+}

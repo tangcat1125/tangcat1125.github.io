@@ -1,0 +1,2462 @@
+{
+  "id": "mayor_banter_season_01",
+  "seasonId": "season_01",
+  "version": 2,
+  "note": "居民對市長的泡泡：民怨高或問題未處理時用台灣市井口氣「酸」，做得好時感謝稱讚。針對施政與結果，不針對人格；不使用髒話、不提真實人物與政黨。教室可用。見 docs/MAYOR_BANTER.md。",
+  "states": {
+    "furious": "爆怒嗆",
+    "grumble": "不滿碎念",
+    "praise": "讚賞"
+  },
+  "triggers": {
+    "mayorNearby": "玩家（市長）走近居民時",
+    "afterSettle": "結報後回到街景的第一輪",
+    "onIgnored": "該領域有事件被忽略／反效果，或選擇「忽略，繼續下一季」之後",
+    "onRelief": "事件被對症或有幫助、或民怨明顯下降之後"
+  },
+  "thresholds": {
+    "praiseDeltaMax": -8,
+    "furiousTier": "furious",
+    "grumbleTier": "upset",
+    "minGapBubbles": 2,
+    "mayorBubbleChance": 0.6
+  },
+  "speakerProfiles": {
+    "mei": {
+      "name": "阿美",
+      "role": "攤商",
+      "hint": "攤商：爽朗、愛講生意經，嗆人也帶笑"
+    },
+    "bo": {
+      "name": "阿博",
+      "role": "水道工",
+      "hint": "水道工：直率、就事論事，愛拿現場說話"
+    },
+    "lin": {
+      "name": "小林",
+      "role": "報社實習",
+      "hint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌"
+    },
+    "zhen": {
+      "name": "阿珍",
+      "role": "雜貨店主",
+      "hint": "雜貨店主：嘴硬心軟、碎念，生活感"
+    },
+    "kai": {
+      "name": "阿凱",
+      "role": "遊客",
+      "hint": "遊客：外地人視角，坦白又好奇"
+    },
+    "wang": {
+      "name": "里長王",
+      "role": "里長",
+      "hint": "里長：講話客氣、代表里民，委婉但堅定"
+    }
+  },
+  "rules": [
+    "狀態決定：先看該領域的民怨層級（calm／grumble／upset／furious）與本季事件結果。",
+    "  · furious（爆怒嗆）：該領域層級為 furious，或層級為 upset 且該領域有事件為 ignored／backfired。",
+    "  · grumble（不滿碎念）：該領域層級為 upset，或層級為 grumble 且該領域有事件為 ignored／backfired／palliative。",
+    "  · praise（讚賞）：該領域民怨本季下降 ≥ 8（thresholds.praiseDeltaMax = -8），或該領域有事件為 cured／assisted 且層級不是 furious。",
+    "  · 其餘（calm 且沒有事件）：不嗆也不誇，用一般閒聊。",
+    "領域選擇：mayorNearby 時優先取離市長最近居民的領域；若該領域沒有符合的狀態，改用 domainId:\"any\" 的通用句。",
+    "說話者：優先用句子上的 speakerNpcId（已依人設配好）；同一位居民不連續說兩次（至少間隔 minGapBubbles 個泡泡）。",
+    "頻率：每輪街景最多 mayorBubbleChance 比例的居民泡泡是對市長說的，其餘照原本線索與閒聊；praise 與 furious 同時存在時，各取一句交錯。",
+    "種子：用 G.EventPool.rngFor(seed, cycle, \"mayor-banter\") 抽句，同種子同順序；以 weight 加權。",
+    "梗句：entries 中 meme:true 的句子（id 前綴 mbm_、tag＝meme_<梗類型>）是帶時事梗的虛構改編句，欄位與其他句完全相同，沿用同一套挑選規則；梗類型說明見 G.DATA.mayorNews.memeTags，每個狀態各 12 句。",
+    "安全：只針對施政與結果，不針對人格；不使用髒話；不提真實人物與政黨（test_mayor_banter.js 會掃描）。"
+  ],
+  "entries": [
+    {
+      "id": "mb_drain_furious_01",
+      "domainId": "drain",
+      "state": "furious",
+      "lines": [
+        "市長又來了？排水口堵成這樣，現場等你看啊！"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_drain_furious_02",
+      "domainId": "drain",
+      "state": "furious",
+      "lines": [
+        "市長，我家門口一下雨就變河，什麼時候清？"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "onIgnored",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_drain_furious_03",
+      "domainId": "drain",
+      "state": "furious",
+      "lines": [
+        "市長，排水的事拖到現在，里民真的很有意見。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_drain_furious_04",
+      "domainId": "drain",
+      "state": "furious",
+      "lines": [
+        "市長又來視察？雨一來攤位先泡水，請看這裡！"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_drain_grumble_01",
+      "domainId": "drain",
+      "state": "grumble",
+      "lines": [
+        "市長，排水孔還是會積水，麻煩再多看一眼。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_drain_grumble_02",
+      "domainId": "drain",
+      "state": "grumble",
+      "lines": [
+        "市長，我查過了，這個月的積水通報沒少喔。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 2,
+      "trigger": "onIgnored",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_drain_grumble_03",
+      "domainId": "drain",
+      "state": "grumble",
+      "lines": [
+        "溝蓋邊每天都有落葉，市長走過有看到嗎？"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_drain_grumble_04",
+      "domainId": "drain",
+      "state": "grumble",
+      "lines": [
+        "市長，下雨天走這段路，鞋子都濕透了啦。"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_drain_praise_01",
+      "domainId": "drain",
+      "state": "praise",
+      "lines": [
+        "市長，這次溝清得很徹底，水退得快多了。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 2,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_drain_praise_02",
+      "domainId": "drain",
+      "state": "praise",
+      "lines": [
+        "今天下雨門口沒淹水，謝謝市長，辛苦了！"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_drain_praise_03",
+      "domainId": "drain",
+      "state": "praise",
+      "lines": [
+        "排水改善了，里民都說有感，替大家說聲謝謝。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_drain_praise_04",
+      "domainId": "drain",
+      "state": "praise",
+      "lines": [
+        "我對過數據，積水通報下降了，這次方向對了。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_market_furious_01",
+      "domainId": "market",
+      "state": "furious",
+      "lines": [
+        "市長又來了？市集冷到掉冰，攤商快撐不住啦！"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_market_furious_02",
+      "domainId": "market",
+      "state": "furious",
+      "lines": [
+        "買氣差成這樣，市長有看到攤商的臉嗎？"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "onIgnored",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_market_furious_03",
+      "domainId": "market",
+      "state": "furious",
+      "lines": [
+        "市長，攤商聯名的陳情，請今天就給個說法。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_market_furious_04",
+      "domainId": "market",
+      "state": "furious",
+      "lines": [
+        "我是遊客都覺得冷清，市長不覺得嗎？"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_market_grumble_01",
+      "domainId": "market",
+      "state": "grumble",
+      "lines": [
+        "市長，人潮是有，可是都不買，怎麼辦？"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_market_grumble_02",
+      "domainId": "market",
+      "state": "grumble",
+      "lines": [
+        "菜價一直跳，我都不敢進太多貨。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "onIgnored",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_market_grumble_03",
+      "domainId": "market",
+      "state": "grumble",
+      "lines": [
+        "市長，攤位動線我看過了，還有可以改的地方。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_market_grumble_04",
+      "domainId": "market",
+      "state": "grumble",
+      "lines": [
+        "逛了一圈，老街還是冷冷清清的啦。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_market_praise_01",
+      "domainId": "market",
+      "state": "praise",
+      "lines": [
+        "市長，人潮回來了！今天我多備了兩箱貨。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_market_praise_02",
+      "domainId": "market",
+      "state": "praise",
+      "lines": [
+        "生意變好了，謝謝市長，來，喝杯熱茶。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_market_praise_03",
+      "domainId": "market",
+      "state": "praise",
+      "lines": [
+        "這次逛市集很熱鬧，我買了好多伴手禮。"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 2,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_market_praise_04",
+      "domainId": "market",
+      "state": "praise",
+      "lines": [
+        "攤商都說買氣回升，辛苦市長了。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_logistics_furious_01",
+      "domainId": "logistics",
+      "state": "furious",
+      "lines": [
+        "市長又來了？貨車卡在峽口，我的貨三天沒到！"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_logistics_furious_02",
+      "domainId": "logistics",
+      "state": "furious",
+      "lines": [
+        "進貨一延誤，菜價就漲，市長自己去看看吧。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "onIgnored",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_logistics_furious_03",
+      "domainId": "logistics",
+      "state": "furious",
+      "lines": [
+        "貨車擠在路口，水車都過不去，這樣不行啦！"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_logistics_furious_04",
+      "domainId": "logistics",
+      "state": "furious",
+      "lines": [
+        "市長，物流不順已經影響民生，請盡快處理。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_logistics_grumble_01",
+      "domainId": "logistics",
+      "state": "grumble",
+      "lines": [
+        "市長，貨還是晚到，店裡架子空了一半。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_logistics_grumble_02",
+      "domainId": "logistics",
+      "state": "grumble",
+      "lines": [
+        "我追蹤過了，進貨時間還是不穩定喔。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 2,
+      "trigger": "onIgnored",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_logistics_grumble_03",
+      "domainId": "logistics",
+      "state": "grumble",
+      "lines": [
+        "冷藏的東西送到都半溫了，市長知道嗎？"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_logistics_grumble_04",
+      "domainId": "logistics",
+      "state": "grumble",
+      "lines": [
+        "看到貨車排隊，我想市長應該也看到了吧。"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_logistics_praise_01",
+      "domainId": "logistics",
+      "state": "praise",
+      "lines": [
+        "貨準時到了，架子補滿了，謝謝市長！"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_logistics_praise_02",
+      "domainId": "logistics",
+      "state": "praise",
+      "lines": [
+        "菜送來還是冰涼的，這次真的有進步。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_logistics_praise_03",
+      "domainId": "logistics",
+      "state": "praise",
+      "lines": [
+        "我核對過紀錄，到貨時間穩定很多。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 2,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_logistics_praise_04",
+      "domainId": "logistics",
+      "state": "praise",
+      "lines": [
+        "物流順了，里民買東西方便，向市長說聲辛苦。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_traffic_furious_01",
+      "domainId": "traffic",
+      "state": "furious",
+      "lines": [
+        "市長又來了？公車等一小時，我行程全毀啦！"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_traffic_furious_02",
+      "domainId": "traffic",
+      "state": "furious",
+      "lines": [
+        "市長，交通卡成這樣，里民上下班都受影響。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "onIgnored",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_traffic_furious_03",
+      "domainId": "traffic",
+      "state": "furious",
+      "lines": [
+        "塞車塞到客人都進不了店，市長看得到嗎？"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_traffic_furious_04",
+      "domainId": "traffic",
+      "state": "furious",
+      "lines": [
+        "工程車、公車、遊覽車全擠一起，市長評評理。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_traffic_grumble_01",
+      "domainId": "traffic",
+      "state": "grumble",
+      "lines": [
+        "市長，公車又誤點了，下次可以準一點嗎？"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_traffic_grumble_02",
+      "domainId": "traffic",
+      "state": "grumble",
+      "lines": [
+        "我記錄了班距，真的比公告的久很多。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 2,
+      "trigger": "onIgnored",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_traffic_grumble_03",
+      "domainId": "traffic",
+      "state": "grumble",
+      "lines": [
+        "遊覽車一來，路口就塞，客人也進不來。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_traffic_grumble_04",
+      "domainId": "traffic",
+      "state": "grumble",
+      "lines": [
+        "市長，這條路假日走一趟要多久，您知道嗎？"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_traffic_praise_01",
+      "domainId": "traffic",
+      "state": "praise",
+      "lines": [
+        "公車準點了，我趕上行程，謝謝市長！"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 2,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_traffic_praise_02",
+      "domainId": "traffic",
+      "state": "praise",
+      "lines": [
+        "路口順暢多了，里民都在說有改善。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_traffic_praise_03",
+      "domainId": "traffic",
+      "state": "praise",
+      "lines": [
+        "我量過班距，這個月明顯比較準時。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 2,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_traffic_praise_04",
+      "domainId": "traffic",
+      "state": "praise",
+      "lines": [
+        "車流分開之後，客人走得進來，生意也好。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_health_furious_01",
+      "domainId": "health",
+      "state": "furious",
+      "lines": [
+        "市長又來了？水質、食安都有人在講，要說清楚啊！"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_health_furious_02",
+      "domainId": "health",
+      "state": "furious",
+      "lines": [
+        "市長，衛生的事不能含糊，里民需要檢驗報告。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "onIgnored",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_health_furious_03",
+      "domainId": "health",
+      "state": "furious",
+      "lines": [
+        "我查了，目前公開的資料不夠，請市長補上。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_health_furious_04",
+      "domainId": "health",
+      "state": "furious",
+      "lines": [
+        "食安傳言一出，客人就不敢買，請快點澄清。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_health_grumble_01",
+      "domainId": "health",
+      "state": "grumble",
+      "lines": [
+        "市長，大家對水質還是有點擔心喔。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_health_grumble_02",
+      "domainId": "health",
+      "state": "grumble",
+      "lines": [
+        "市長，檢驗結果公告的日期可以寫清楚嗎？"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 2,
+      "trigger": "onIgnored",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_health_grumble_03",
+      "domainId": "health",
+      "state": "grumble",
+      "lines": [
+        "客人一直問食材來源，我都不知道怎麼答。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_health_grumble_04",
+      "domainId": "health",
+      "state": "grumble",
+      "lines": [
+        "水我天天看，還是希望多檢測幾次比較安心。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_health_praise_01",
+      "domainId": "health",
+      "state": "praise",
+      "lines": [
+        "檢驗報告公布了，大家安心多了，謝謝市長。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_health_praise_02",
+      "domainId": "health",
+      "state": "praise",
+      "lines": [
+        "報告、日期、來源都寫清楚，這樣很好。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_health_praise_03",
+      "domainId": "health",
+      "state": "praise",
+      "lines": [
+        "衛生所處理得很快，里民都有感。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_health_praise_04",
+      "domainId": "health",
+      "state": "praise",
+      "lines": [
+        "客人又敢買了，謝謝市長出面說明。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_safety_furious_01",
+      "domainId": "safety",
+      "state": "furious",
+      "lines": [
+        "市長，治安問題里民擔心很久了，請給個交代。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_safety_furious_02",
+      "domainId": "safety",
+      "state": "furious",
+      "lines": [
+        "市長又來了？晚上巷子黑漆漆，我都不敢晚關店。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "onIgnored",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_safety_furious_03",
+      "domainId": "safety",
+      "state": "furious",
+      "lines": [
+        "人潮一多扒手也多，市長有看到攤商的壓力嗎？"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_safety_furious_04",
+      "domainId": "safety",
+      "state": "furious",
+      "lines": [
+        "救援過不去、路燈不亮，這些都要有人管啊。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_safety_grumble_01",
+      "domainId": "safety",
+      "state": "grumble",
+      "lines": [
+        "市長，巡守的時間可以再排密一點嗎？"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_safety_grumble_02",
+      "domainId": "safety",
+      "state": "grumble",
+      "lines": [
+        "巷口路燈還是壞著，晚上走路要小心。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "onIgnored",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_safety_grumble_03",
+      "domainId": "safety",
+      "state": "grumble",
+      "lines": [
+        "我看了通報紀錄，夜間事件還是不少。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_safety_grumble_04",
+      "domainId": "safety",
+      "state": "grumble",
+      "lines": [
+        "晚上逛老街，總覺得有點暗，不太放心。"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_safety_praise_01",
+      "domainId": "safety",
+      "state": "praise",
+      "lines": [
+        "巡守到位，里民晚上敢出門了，謝謝市長。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 2,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_safety_praise_02",
+      "domainId": "safety",
+      "state": "praise",
+      "lines": [
+        "路燈亮了，巷子安心多了。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 2,
+      "trigger": "afterSettle",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_safety_praise_03",
+      "domainId": "safety",
+      "state": "praise",
+      "lines": [
+        "有人巡邏，客人逛得放心，我也比較安心。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 2,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_safety_praise_04",
+      "domainId": "safety",
+      "state": "praise",
+      "lines": [
+        "晚上走老街很安心，我還拍了好多照片。"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 2,
+      "trigger": "mayorNearby",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_any_furious_01",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "市長又來了喔……里民的意見，這次可以認真聽嗎？"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_any_furious_02",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "哎呀，市長又來了，這次有帶解決辦法嗎？"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 1,
+      "trigger": "onIgnored",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_any_furious_03",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "市長又來了～每次都說研究研究，我們等很久了。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_any_furious_04",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "市長又來了？問題擺在眼前，光看不處理嗎？"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_any_furious_05",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "市長，我是路過的，連我都覺得該改了。"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_any_furious_06",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "市長又來了，我把問題都整理好了，請收下。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 1,
+      "trigger": "onIgnored",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      }
+    },
+    {
+      "id": "mb_any_grumble_01",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "市長今天又來走走喔？"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_any_grumble_02",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "市長好久不見，問題也好久沒少一點。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 1,
+      "trigger": "onIgnored",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_any_grumble_03",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "市長，里民有些小意見，麻煩您記一下。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_any_grumble_04",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "市長，我帶了資料來，您願意看一眼嗎？"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_any_grumble_05",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "市長，這邊還是老樣子，您上次說的呢？"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_any_grumble_06",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "哇，市長本人欸！旅遊評論我先打三顆星。"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 1,
+      "trigger": "onIgnored",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_any_grumble_07",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "喲，市長又來視察啦？"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_any_grumble_08",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "又是市長啊，這次要看哪裡？"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_any_grumble_09",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "市長大人又來啦，這次有帶工具嗎？"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      }
+    },
+    {
+      "id": "mb_any_praise_01",
+      "domainId": "any",
+      "state": "praise",
+      "lines": [
+        "市長，這陣子辛苦了，里民都看在眼裡。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 1,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_any_praise_02",
+      "domainId": "any",
+      "state": "praise",
+      "lines": [
+        "市長來啦！進來喝杯熱茶吧。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_any_praise_03",
+      "domainId": "any",
+      "state": "praise",
+      "lines": [
+        "市長，這次做得不錯，我說真的。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 1,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_any_praise_04",
+      "domainId": "any",
+      "state": "praise",
+      "lines": [
+        "市長，我這次查完，覺得處理方向是對的。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_any_praise_05",
+      "domainId": "any",
+      "state": "praise",
+      "lines": [
+        "市長，這次現場真的有看到改變，謝啦。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 1,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mb_any_praise_06",
+      "domainId": "any",
+      "state": "praise",
+      "lines": [
+        "城市越來越好，市長功不可沒！"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      }
+    },
+    {
+      "id": "mbm_furious_01",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "回應機說認真想想，水溝可不會自己想。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      },
+      "tag": "meme_responder",
+      "meme": true
+    },
+    {
+      "id": "mbm_furious_02",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "三不口號我背熟了，客人還是沒回來。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 1,
+      "trigger": "onIgnored",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      },
+      "tag": "meme_cleanup",
+      "meme": true
+    },
+    {
+      "id": "mbm_furious_03",
+      "domainId": "market",
+      "state": "furious",
+      "lines": [
+        "你說比較大顆，我秤了，還是小顆。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      },
+      "tag": "meme_blueberry",
+      "meme": true
+    },
+    {
+      "id": "mbm_furious_04",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "準時下班可以，問題也請準時下班。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      },
+      "tag": "meme_nap_fish",
+      "meme": true
+    },
+    {
+      "id": "mbm_furious_05",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "問題像打地鼠，市長要找洞喔！"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      },
+      "tag": "meme_whack_mole",
+      "meme": true
+    },
+    {
+      "id": "mbm_furious_06",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "高度關切我們收到了，進度呢？"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 1,
+      "trigger": "onIgnored",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      },
+      "tag": "meme_responder",
+      "meme": true
+    },
+    {
+      "id": "mbm_furious_07",
+      "domainId": "drain",
+      "state": "furious",
+      "lines": [
+        "排水升級的牌子很新，路口還是積水。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      },
+      "tag": "meme_drain_upgrade",
+      "meme": true
+    },
+    {
+      "id": "mbm_furious_08",
+      "domainId": "market",
+      "state": "furious",
+      "lines": [
+        "貼紙貼好了，蓋子還沒到貨喔。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      },
+      "tag": "meme_lidded_bin",
+      "meme": true
+    },
+    {
+      "id": "mbm_furious_09",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "持續追蹤是追到哪了？毛線球嗎？"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      },
+      "tag": "meme_follow_up",
+      "meme": true
+    },
+    {
+      "id": "mbm_furious_10",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "海報很可愛，垃圾桶還是滿的。"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 1,
+      "trigger": "onIgnored",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      },
+      "tag": "meme_cleanup",
+      "meme": true
+    },
+    {
+      "id": "mbm_furious_11",
+      "domainId": "any",
+      "state": "furious",
+      "lines": [
+        "我投了紙條，回我的是同一張答案。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      },
+      "tag": "meme_responder",
+      "meme": true
+    },
+    {
+      "id": "mbm_furious_12",
+      "domainId": "drain",
+      "state": "furious",
+      "lines": [
+        "提前部署的葉子，又提前塞滿了溝。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "sarcastic",
+      "when": {
+        "complaintTier": "furious",
+        "orUnresolvedUpset": true
+      },
+      "tag": "meme_pre_deploy",
+      "meme": true
+    },
+    {
+      "id": "mbm_grumble_01",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "市長準時下班很好，我們也想準時收攤。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      },
+      "tag": "meme_nap_fish",
+      "meme": true
+    },
+    {
+      "id": "mbm_grumble_02",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "回應機很有禮貌，就是答案都一樣。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 1,
+      "trigger": "onIgnored",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      },
+      "tag": "meme_responder",
+      "meme": true
+    },
+    {
+      "id": "mbm_grumble_03",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "三不口號貼好了，班表也請貼一下。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      },
+      "tag": "meme_cleanup",
+      "meme": true
+    },
+    {
+      "id": "mbm_grumble_04",
+      "domainId": "market",
+      "state": "grumble",
+      "lines": [
+        "莓果日的重量，黑板上可以寫清楚嗎？"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      },
+      "tag": "meme_blueberry",
+      "meme": true
+    },
+    {
+      "id": "mbm_grumble_05",
+      "domainId": "market",
+      "state": "grumble",
+      "lines": [
+        "蓋蓋貼紙收到了，蓋子請也蓋上。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      },
+      "tag": "meme_lidded_bin",
+      "meme": true
+    },
+    {
+      "id": "mbm_grumble_06",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "地鼠遊戲好玩，真的問題也請打一下。"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 1,
+      "trigger": "onIgnored",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      },
+      "tag": "meme_whack_mole",
+      "meme": true
+    },
+    {
+      "id": "mbm_grumble_07",
+      "domainId": "drain",
+      "state": "grumble",
+      "lines": [
+        "水溝進度表我看了，下一季要照做喔。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      },
+      "tag": "meme_drain_upgrade",
+      "meme": true
+    },
+    {
+      "id": "mbm_grumble_08",
+      "domainId": "traffic",
+      "state": "grumble",
+      "lines": [
+        "公車扶手很好抓，班次也想準一點。"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      },
+      "tag": "meme_handrail",
+      "meme": true
+    },
+    {
+      "id": "mbm_grumble_09",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "持續追蹤我們記著，結果也請告訴我們。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      },
+      "tag": "meme_follow_up",
+      "meme": true
+    },
+    {
+      "id": "mbm_grumble_10",
+      "domainId": "drain",
+      "state": "grumble",
+      "lines": [
+        "提前部署很好，落葉季巡溝再密一點。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 1,
+      "trigger": "onIgnored",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      },
+      "tag": "meme_pre_deploy",
+      "meme": true
+    },
+    {
+      "id": "mbm_grumble_11",
+      "domainId": "any",
+      "state": "grumble",
+      "lines": [
+        "毛線球玩得開心，進度表也請更新。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      },
+      "tag": "meme_nap_fish",
+      "meme": true
+    },
+    {
+      "id": "mbm_grumble_12",
+      "domainId": "safety",
+      "state": "grumble",
+      "lines": [
+        "巡守隊的燈很暖，轉角再亮一點。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "grumpy",
+      "when": {
+        "complaintTier": "upset",
+        "orUnresolvedGrumble": true
+      },
+      "tag": "meme_night_walk",
+      "meme": true
+    },
+    {
+      "id": "mbm_praise_01",
+      "domainId": "market",
+      "state": "praise",
+      "lines": [
+        "這次的莓果真的比較大顆，客人都說甜！"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 1,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      },
+      "tag": "meme_blueberry",
+      "meme": true
+    },
+    {
+      "id": "mbm_praise_02",
+      "domainId": "any",
+      "state": "praise",
+      "lines": [
+        "市長準時下班，我們也跟著安心，謝謝！"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      },
+      "tag": "meme_nap_fish",
+      "meme": true
+    },
+    {
+      "id": "mbm_praise_03",
+      "domainId": "any",
+      "state": "praise",
+      "lines": [
+        "大掃除那天，里民都說市區亮多了。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 1,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      },
+      "tag": "meme_cleanup",
+      "meme": true
+    },
+    {
+      "id": "mbm_praise_04",
+      "domainId": "any",
+      "state": "praise",
+      "lines": [
+        "回應機的答案變具體了，謝謝市長。"
+      ],
+      "speakerNpcId": "lin",
+      "speakerHint": "報社實習：愛查證、拿數據與紀錄，語氣有禮貌",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      },
+      "tag": "meme_responder",
+      "meme": true
+    },
+    {
+      "id": "mbm_praise_05",
+      "domainId": "market",
+      "state": "praise",
+      "lines": [
+        "蓋蓋貼紙很可愛，攤位也乾淨多了。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 1,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      },
+      "tag": "meme_lidded_bin",
+      "meme": true
+    },
+    {
+      "id": "mbm_praise_06",
+      "domainId": "drain",
+      "state": "praise",
+      "lines": [
+        "新水閘派上用場了，雨一停水就退。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      },
+      "tag": "meme_drain_upgrade",
+      "meme": true
+    },
+    {
+      "id": "mbm_praise_07",
+      "domainId": "drain",
+      "state": "praise",
+      "lines": [
+        "提前清溝真有用，今天雨大也不慌。"
+      ],
+      "speakerNpcId": "bo",
+      "speakerHint": "水道工：直率、就事論事，愛拿現場說話",
+      "weight": 1,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      },
+      "tag": "meme_pre_deploy",
+      "meme": true
+    },
+    {
+      "id": "mbm_praise_08",
+      "domainId": "any",
+      "state": "praise",
+      "lines": [
+        "地鼠遊戲我女兒玩得好開心，謝謝！"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      },
+      "tag": "meme_whack_mole",
+      "meme": true
+    },
+    {
+      "id": "mbm_praise_09",
+      "domainId": "traffic",
+      "state": "praise",
+      "lines": [
+        "公車扶手剛剛好，站著也穩，謝謝市長！"
+      ],
+      "speakerNpcId": "kai",
+      "speakerHint": "遊客：外地人視角，坦白又好奇",
+      "weight": 1,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      },
+      "tag": "meme_handrail",
+      "meme": true
+    },
+    {
+      "id": "mbm_praise_10",
+      "domainId": "any",
+      "state": "praise",
+      "lines": [
+        "里長信箱開箱日，意見回得又快又清楚。"
+      ],
+      "speakerNpcId": "wang",
+      "speakerHint": "里長：講話客氣、代表里民，委婉但堅定",
+      "weight": 1,
+      "trigger": "afterSettle",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      },
+      "tag": "meme_hearing",
+      "meme": true
+    },
+    {
+      "id": "mbm_praise_11",
+      "domainId": "market",
+      "state": "praise",
+      "lines": [
+        "攤位彈性營業真方便，我下午可以補貨。"
+      ],
+      "speakerNpcId": "mei",
+      "speakerHint": "攤商：爽朗、愛講生意經，嗆人也帶笑",
+      "weight": 1,
+      "trigger": "onRelief",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      },
+      "tag": "meme_flex_stall",
+      "meme": true
+    },
+    {
+      "id": "mbm_praise_12",
+      "domainId": "safety",
+      "state": "praise",
+      "lines": [
+        "巡守隊的暖燈亮了，晚上走路好安心。"
+      ],
+      "speakerNpcId": "zhen",
+      "speakerHint": "雜貨店主：嘴硬心軟、碎念，生活感",
+      "weight": 1,
+      "trigger": "mayorNearby",
+      "tone": "warm",
+      "when": {
+        "complaintDeltaMax": -8,
+        "orResolution": [
+          "cured",
+          "assisted"
+        ]
+      },
+      "tag": "meme_night_walk",
+      "meme": true
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "event_rumor_well",
+  "title": "井水傳聞",
+  "who": "家長與居民",
+  "when": "season_late",
+  "conditions": {
+    "seasonPhase": "late",
+    "rules": { "waterTransparency": { "lt": 1 } },
+    "traffic": { "waterTruckDelay": true }
+  },
+  "summary": "有人說井水有怪味；供水車與檢測器材也因塞車遲到，家長更不安。",
+  "problem": "信任下降；物資延誤讓澄清變慢。",
+  "evidence": ["家長社團轉傳", "供水車遲到", "尚無正式水質報告"],
+  "consequences": "信任崩盤會連帶影響市集人潮與幸福度。",
+  "deltas": { "money": -10, "profit": 0, "happiness": -6 },
+  "logistics": {
+    "blockedVehicles": ["water_truck"],
+    "blockedCargo": ["drinking_water", "test_kits"],
+    "metricHits": { "onTimeRate": -0.08, "congestion": 0 }
+  },
+  "tags": ["信任", "健康", "物流"],
+  "baselineSeverity": 2,
+  "newspaperHeadline": "井水怪味傳聞發酵　家長籲公布檢測"
+}

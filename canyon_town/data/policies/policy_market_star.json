@@ -1,0 +1,164 @@
+{
+  "id": "policy_market_star",
+  "name": "市集星級評核與公開排名",
+  "cost": 1,
+  "blurb": "辦市集星級評核，公開排名與改進建議；好攤位被看見，也給落後者改善的動力。效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。",
+  "solves": [],
+  "rule_patches": {
+    "marketRating": 1
+  },
+  "deltas": {
+    "money": -15,
+    "happiness": 1,
+    "profit": 5
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "評分標準若不透明會引發抱怨；排名靠後的攤商可能沮喪，需要輔導。",
+  "preview": "預估：金錢 -15、幸福度 +1、獲利 +5。",
+  "costPoints": 1,
+  "tags": [
+    "資訊",
+    "溝通",
+    "評鑑"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_market_star.webp",
+    "icon": "assets/sprites/cards/icons/icon_market_star.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "⭐",
+    "accent": "#ffc107",
+    "fxHint": "fx_market_star_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "資訊溝通（宣導教育）",
+    "rarity": "常見",
+    "titleShort": "市集評星",
+    "costBadge": "1 點",
+    "shopLine": "星級公開，好攤位被看見。",
+    "effectLine": "買氣慢慢往乾淨、有特色的攤位集中；市集整體品質提升。",
+    "flavor": "被看見，才有人想變好。",
+    "learnPoint": "這張牌教你：評鑑與資訊公開是低成本的誘因。",
+    "bullets": [
+      "輔助：買氣、評價、衛生",
+      "金錢 -15",
+      "下季見效",
+      "效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -15,
+        "text": "金錢 -15"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": 5,
+        "text": "獲利 +5"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 1,
+        "text": "幸福度 +1"
+      }
+    ],
+    "tradeoffLine": "評分標準若不透明會引發抱怨；排名靠後的攤商可能沮喪，需要輔導。"
+  },
+  "shopBlurb": "星級公開，好攤位被看見。",
+  "shopLine": "1 點｜星級公開，好攤位被看見。",
+  "executeId": "exec_market_star",
+  "fx": {
+    "street": [
+      "fx_market_star_a",
+      "fx_market_star_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 2,
+        "vehicle": 0,
+        "tourist": 3,
+        "security": 0
+      },
+      "flowKind": "timed",
+      "durationSeasons": 3,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "market": -5
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 1,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.05,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 3,
+        "delaySeasons": 1,
+        "note": "評核公開後下季才有感"
+      },
+      "strength": "weak",
+      "summary": "人流+2、遊客+3（3 季）；市集民怨-5；店家營收 +5%"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_shi",
+      "staff_wen"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.2,
+      "health": 0.2,
+      "engineering": 0.2,
+      "economy": 0.6,
+      "communication": 0.7
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "market"
+  ],
+  "complaintDelta": {
+    "market": -5
+  },
+  "complaintRebound": {},
+  "complaintNote": "評分標準若不透明會引發抱怨；排名靠後的攤商可能沮喪，需要輔導。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_market_fake_review",
+      "evp_market_slump"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "info",
+  "typeLabel": "資訊溝通（宣導教育）",
+  "realWorldAnalog": "評鑑與資訊公開：用星級與排名讓好攤位被看見，並形成改善壓力；見效慢。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": true,
+  "effectDelayCycles": 1,
+  "slowNote": "效果較慢、較弱但便宜（下季見效；同一事件重複使用遞減）",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

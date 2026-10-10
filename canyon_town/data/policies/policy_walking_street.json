@@ -1,0 +1,165 @@
+{
+  "id": "policy_walking_street",
+  "name": "行人徒步區",
+  "cost": 2,
+  "blurb": "商圈特定時段禁止車輛進入、取消路邊停車，改成行人徒步區；人潮可以安心逛。",
+  "solves": [],
+  "rule_patches": {
+    "walking_streetProgram": 1
+  },
+  "deltas": {
+    "money": -30,
+    "happiness": 2
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "居民與商家的車進出不便；需要配套的停車場與裝卸時段。",
+  "preview": "預估：金錢 -30、幸福度 +2。",
+  "costPoints": 2,
+  "tags": [
+    "交通",
+    "管制",
+    "商圈"
+  ],
+  "counters": [
+    "crowd"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_walking_street.webp",
+    "icon": "assets/sprites/cards/icons/icon_walking_street.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🚶",
+    "accent": "#26a69a",
+    "fxHint": "fx_walking_street_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "管制／稽查",
+    "rarity": "常見",
+    "titleShort": "徒步區",
+    "costBadge": "2 點",
+    "shopLine": "時段性禁車，行人走得安心。",
+    "effectLine": "人潮不再與車爭路；逛街氣氛變好。",
+    "flavor": "把路還給走路的人。",
+    "learnPoint": "這張牌教你：管制能改變空間的用途，但要有配套。",
+    "bullets": [
+      "對症：人潮聚集",
+      "金錢 -30",
+      "要配停車與裝卸",
+      "居民可能不便"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -30,
+        "text": "金錢 -30"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 2,
+        "text": "幸福度 +2"
+      }
+    ],
+    "tradeoffLine": "居民與商家的車進出不便；需要配套的停車場與裝卸時段。"
+  },
+  "shopBlurb": "時段性禁車，行人走得安心。",
+  "shopLine": "2 點｜時段性禁車，行人走得安心。",
+  "executeId": "exec_walking_street",
+  "fx": {
+    "street": [
+      "fx_walking_street_a",
+      "fx_walking_street_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 4,
+        "vehicle": -1,
+        "tourist": 3,
+        "security": 1
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "traffic": -8,
+        "market": -6
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.05,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 99,
+        "delaySeasons": 0,
+        "note": "徒步區讓人慢慢逛"
+      },
+      "strength": "normal",
+      "summary": "人流+4、車流-1、遊客+3、治安感+1（永久）；交通民怨-8、市集民怨-6；店家營收 +5%"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_tong",
+      "staff_wen"
+    ],
+    "radarWeights": {
+      "logistics": 0.4,
+      "safety": 0.4,
+      "health": 0.2,
+      "engineering": 0.2,
+      "economy": 0.5,
+      "communication": 0.4
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "traffic",
+    "market"
+  ],
+  "complaintDelta": {
+    "traffic": -8,
+    "market": -6
+  },
+  "complaintRebound": {},
+  "complaintNote": "居民與商家的車進出不便；需要配套的停車場與裝卸時段。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_market_festival",
+      "evp_market_slump",
+      "evp_traffic_tourbus"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "reg",
+  "typeLabel": "管制／稽查",
+  "realWorldAnalog": "交通管制：商圈特定時段禁止車輛進入、取消路邊停車。",
+  "topicCounters": [
+    "crowd"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "event_flood_risk",
+  "title": "峽壁排水堵塞",
+  "who": "阿博（水道工）",
+  "when": "season_mid",
+  "conditions": {
+    "seasonPhase": "mid",
+    "weather": "rain_warning",
+    "rules": { "drainClearance": { "lt": 2 } },
+    "traffic": { "wasteBacklog": true }
+  },
+  "summary": "暴雨前排水口堆滿落石與垃圾；垃圾車清運也被窄路耽擱。",
+  "problem": "排水不良提高淹水風險，居民不安；清運延誤會讓堵塞更快惡化。",
+  "evidence": ["水道工加班疏通仍來不及", "垃圾車班次延誤", "幸福度下降"],
+  "consequences": "淹水路段會進一步擋住貨車，形成「水患→物流中斷→獲利掉」連鎖。",
+  "deltas": { "money": -40, "profit": -30, "happiness": -8 },
+  "logistics": {
+    "blockedVehicles": ["garbage_truck", "light_truck"],
+    "blockedCargo": ["waste", "produce"],
+    "metricHits": { "onTimeRate": -0.1, "congestion": 1 }
+  },
+  "tags": ["環境", "安全", "物流"],
+  "baselineSeverity": 3,
+  "newspaperHeadline": "雨季將至　低窪巷弄人心惶惶"
+}

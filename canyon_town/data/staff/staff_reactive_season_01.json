@@ -1,0 +1,375 @@
+{
+  "id": "staff_reactive_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "note": "職員反應句：situation（8 種）× 基底句（各 6 句）× 職員語氣開頭（各 5 種，含無開頭）＝每位職員每個情境 30 種組合。lineId＝`<staffId>|<situation>|<基底序號>-<開頭序號>`。用 G.EventPool.staffReact(report, opts) 取用。",
+  "vars": {
+    "domainName": "領域名（排水／市集…）",
+    "delta": "民怨變化絕對值",
+    "from": "上季民怨",
+    "to": "本季民怨",
+    "cardName": "相關政策卡名",
+    "eventTitle": "相關事件名",
+    "staffName": "職員名",
+    "cycle": "季數",
+    "streak": "連續未解決季數",
+    "catchphrase": "職員口頭禪",
+    "title": "職稱"
+  },
+  "situations": [
+    {
+      "id": "backfire",
+      "label": "反效果",
+      "tone": "warn",
+      "priority": 10,
+      "when": "玩家買了某張卡，對該事件的結果是 backfire，且事件在此職員專長領域。",
+      "lines": [
+        {
+          "id": "backfire:1",
+          "text": "糟了，「{cardName}」讓{domainName}民怨 {from}→{to}，這個副作用要記起來。"
+        },
+        {
+          "id": "backfire:2",
+          "text": "{eventTitle}沒被解決，反而被這張卡帶偏了；回頭讀一下卡片的副作用欄。"
+        },
+        {
+          "id": "backfire:3",
+          "text": "別氣餒，政策有副作用很正常——下次先想：這張卡會讓誰更不方便？"
+        },
+        {
+          "id": "backfire:4",
+          "text": "「{cardName}」用在這裡時機不對。{domainName}的民怨多了 {delta} 點，請回頭看看成因。"
+        },
+        {
+          "id": "backfire:5",
+          "text": "我們從失敗學到的，比成功更多；來看看哪裡出了問題。"
+        },
+        {
+          "id": "backfire:6",
+          "text": "這次的反效果是警訊：卡片的主題和事件有沒有對上？"
+        }
+      ]
+    },
+    {
+      "id": "furious_warning",
+      "label": "爆怒警告",
+      "tone": "warn",
+      "priority": 9,
+      "when": "職員專長領域任一民怨 ≥ 75（爆怒）。",
+      "lines": [
+        {
+          "id": "furious_warning:1",
+          "text": "{domainName}民怨到 {to} 了，居民快爆了，這季優先處理它。"
+        },
+        {
+          "id": "furious_warning:2",
+          "text": "再不處理{domainName}，下季可能有更多事件找上門。"
+        },
+        {
+          "id": "furious_warning:3",
+          "text": "{domainName}已進入爆怒區（{to}），先止血、再治本。"
+        },
+        {
+          "id": "furious_warning:4",
+          "text": "我很擔心{domainName}。{catchphrase}"
+        },
+        {
+          "id": "furious_warning:5",
+          "text": "民怨 {to}！{domainName}的居民在等一個明確的回應。"
+        },
+        {
+          "id": "furious_warning:6",
+          "text": "現在不是觀望的時候，{domainName}要先動。"
+        }
+      ]
+    },
+    {
+      "id": "unresolved_streak",
+      "label": "連續未解決",
+      "tone": "warn",
+      "priority": 8,
+      "when": "職員專長領域連續 2 季以上有事件沒解決（ignoredStreak ≥ 2 或同事件連續未解）。",
+      "lines": [
+        {
+          "id": "unresolved_streak:1",
+          "text": "{domainName}的問題已經拖了 {streak} 季，不能再放著。"
+        },
+        {
+          "id": "unresolved_streak:2",
+          "text": "連續 {streak} 季沒解決，居民的耐心有限，想想為什麼一直沒對上？"
+        },
+        {
+          "id": "unresolved_streak:3",
+          "text": "{eventTitle}一直反覆出現，會不會是只治標、沒治本？"
+        },
+        {
+          "id": "unresolved_streak:4",
+          "text": "第 {cycle} 季了，{domainName}還在原地，換個類型的政策試試。"
+        },
+        {
+          "id": "unresolved_streak:5",
+          "text": "拖了 {streak} 季，代價會累積；挑最對症的一張，先把它解決。"
+        },
+        {
+          "id": "unresolved_streak:6",
+          "text": "同樣的問題一再回來，通常代表根本原因還沒處理。"
+        }
+      ]
+    },
+    {
+      "id": "advised_ignored",
+      "label": "建議被忽略",
+      "tone": "teach",
+      "priority": 7,
+      "when": "職員曾贊成某卡、玩家沒買，且對應事件沒解決或惡化。",
+      "lines": [
+        {
+          "id": "advised_ignored:1",
+          "text": "{eventTitle}還沒處理好，{domainName}民怨 {from}→{to}；先前的建議值得再看一眼。"
+        },
+        {
+          "id": "advised_ignored:2",
+          "text": "我之前提過方向，這季沒採用，{domainName}就一路在升。"
+        },
+        {
+          "id": "advised_ignored:3",
+          "text": "不用自責，回頭看看{eventTitle}的線索，哪一種政策真的對得上？"
+        },
+        {
+          "id": "advised_ignored:4",
+          "text": "{domainName}的問題還在，是不是被別的事情擠到後面了？"
+        },
+        {
+          "id": "advised_ignored:5",
+          "text": "{eventTitle}拖著不處理，下一季可能更麻煩，想想成因再決定。"
+        },
+        {
+          "id": "advised_ignored:6",
+          "text": "報導已經給了線索，{eventTitle}到底是哪一種問題？先分清楚，再選卡。"
+        }
+      ]
+    },
+    {
+      "id": "advised_success",
+      "label": "聽建議且成功",
+      "tone": "praise",
+      "priority": 6,
+      "when": "職員贊成的卡被買了，且事件被 cure 或 assist。",
+      "lines": [
+        {
+          "id": "advised_success:1",
+          "text": "「{cardName}」這步走對了，{eventTitle}處理得很漂亮。"
+        },
+        {
+          "id": "advised_success:2",
+          "text": "照這個方向做，{domainName}民怨從 {from} 降到 {to}，值得記一筆。"
+        },
+        {
+          "id": "advised_success:3",
+          "text": "你有聽進建議，「{cardName}」就是這次最好的答案。"
+        },
+        {
+          "id": "advised_success:4",
+          "text": "{eventTitle}能解開，「{cardName}」功不可沒；想想它為什麼對症？"
+        },
+        {
+          "id": "advised_success:5",
+          "text": "第 {cycle} 季的決定很穩，{domainName}的壓力小多了。"
+        },
+        {
+          "id": "advised_success:6",
+          "text": "我提的方向你採用了，成效有看到——下次試試搭配不同類型的政策。"
+        }
+      ]
+    },
+    {
+      "id": "alt_success",
+      "label": "選了別條路也成功",
+      "tone": "praise",
+      "priority": 5,
+      "when": "玩家買了職員沒贊成（保留／反對）的卡，但事件被 cure 或 assist。",
+      "lines": [
+        {
+          "id": "alt_success:1",
+          "text": "你選了不一樣的路，「{cardName}」也把{eventTitle}解決了，我服氣。"
+        },
+        {
+          "id": "alt_success:2",
+          "text": "沒照我的建議，但{domainName}確實好轉；我們一起學這個新做法。"
+        },
+        {
+          "id": "alt_success:3",
+          "text": "「{cardName}」是我沒想到的選法——結果說明對症的方向不只一種。"
+        },
+        {
+          "id": "alt_success:4",
+          "text": "{eventTitle}解決了。下次我想聽聽你為什麼選這張。"
+        },
+        {
+          "id": "alt_success:5",
+          "text": "不同的政策也能走到同一個結果，這是很好的觀察。"
+        },
+        {
+          "id": "alt_success:6",
+          "text": "看來這季你比我更懂{domainName}的狀況，成果我記下了。"
+        }
+      ]
+    },
+    {
+      "id": "praise_decrease",
+      "label": "民怨下降",
+      "tone": "praise",
+      "priority": 4,
+      "when": "職員專長領域民怨下降 ≥ 8 點。",
+      "lines": [
+        {
+          "id": "praise_decrease:1",
+          "text": "{domainName}民怨降了 {delta} 點（{from}→{to}），居民有感。"
+        },
+        {
+          "id": "praise_decrease:2",
+          "text": "這季{domainName}進步很明顯，繼續保持。"
+        },
+        {
+          "id": "praise_decrease:3",
+          "text": "看到{domainName}變好，我也鬆一口氣。"
+        },
+        {
+          "id": "praise_decrease:4",
+          "text": "民怨 {from} 降到 {to}，是你一步步做出來的。"
+        },
+        {
+          "id": "praise_decrease:5",
+          "text": "做得好！不過別放鬆，穩住比衝高更難。"
+        },
+        {
+          "id": "praise_decrease:6",
+          "text": "{domainName}好轉了——下季想想怎麼把成果守住。"
+        }
+      ]
+    },
+    {
+      "id": "stable",
+      "label": "平穩",
+      "tone": "neutral",
+      "priority": 1,
+      "when": "沒有觸發以上情況（含空事件）。",
+      "lines": [
+        {
+          "id": "stable:1",
+          "text": "{domainName}這季算平穩（{to}），可以趁機補強預防型的政策。"
+        },
+        {
+          "id": "stable:2",
+          "text": "沒有大事就是好事；平靜時最適合做預防投資。"
+        },
+        {
+          "id": "stable:3",
+          "text": "{domainName}沒什麼變化，要不要也顧一下其他領域？"
+        },
+        {
+          "id": "stable:4",
+          "text": "穩定的時候，看看資料、想想下個季節會有什麼風險。"
+        },
+        {
+          "id": "stable:5",
+          "text": "第 {cycle} 季風平浪靜，但我會繼續盯著{domainName}。"
+        },
+        {
+          "id": "stable:6",
+          "text": "沒有人抱怨不代表沒有問題，記得留點數應變。"
+        }
+      ]
+    }
+  ],
+  "voices": {
+    "precise": {
+      "label": "嚴謹條理",
+      "leads": [
+        "",
+        "報告，",
+        "依我的紀錄，",
+        "我先講重點：",
+        "就{title}的角度，"
+      ]
+    },
+    "warm": {
+      "label": "溫和關懷",
+      "leads": [
+        "",
+        "辛苦了，",
+        "別擔心，",
+        "我想跟你說，",
+        "我是{title}，"
+      ]
+    },
+    "blunt": {
+      "label": "直來直往",
+      "leads": [
+        "",
+        "老實說，",
+        "直接講，",
+        "聽好，",
+        "我是{title}，"
+      ]
+    },
+    "folksy": {
+      "label": "親切口語",
+      "leads": [
+        "",
+        "哎呀，",
+        "跟你說喔，",
+        "在這行這麼久了，",
+        "{title}在這邊報告，"
+      ]
+    }
+  },
+  "staffVoice": {
+    "staff_cheng": "precise",
+    "staff_xiu": "precise",
+    "staff_tong": "precise",
+    "staff_suan": "precise",
+    "staff_xin": "warm",
+    "staff_hu": "warm",
+    "staff_nuan": "warm",
+    "staff_min": "warm",
+    "staff_an": "blunt",
+    "staff_yan": "blunt",
+    "staff_jing": "blunt",
+    "staff_shi": "folksy",
+    "staff_tian": "folksy",
+    "staff_wen": "folksy"
+  },
+  "adviceTemplates": {
+    "cure": [
+      "建議考慮「{cardName}」：它正對上「{topic}」，是這類事件的對症藥。",
+      "「{cardName}」對上了「{topic}」，可以優先看看。"
+    ],
+    "assist": [
+      "「{cardName}」能幫上一點（{topic}），適合搭配對症卡一起用。",
+      "想補強的話，「{cardName}」能分擔一部分（{topic}）。"
+    ],
+    "palliative": [
+      "「{cardName}」可以先緩一緩（{topic}），但別忘了之後要治本。",
+      "資源有限時，「{cardName}」先壓住症狀（{topic}），之後再治本。"
+    ],
+    "edu": [
+      "預算緊的話，「{cardName}」便宜、見效慢，可以先打底（{topic}）。"
+    ],
+    "none": [
+      "目前沒有明顯該補的缺口，可以留點數應變，下季再看。"
+    ]
+  },
+  "adviceRule": {
+    "target": "職員專長領域中民怨最高者；若全部專長領域都 < 25 則取全域最高",
+    "candidates": "目標領域「未解決事件」（無則該領域全部事件）在 eventPolicyMap 的 cure(3)／assist(2)／palliative(1)，依事件嚴重度加權；情境式（有 when）條目 ×0.6；目標領域內任何事件有無條件 backfire 條目者排除",
+    "score": "效果分 ＋ 職員立場（贊成 +0.6、反對 −0.8）＋ 適配度 fit ×1 − 成本 ×0.15 − 已擁有 0.5",
+    "pick": "取最高分 1 張；第 2 張取不同 policyType 的最高分；points 不足者排除；同分以 policyId 排序（決定性）"
+  },
+  "rules": [
+    "種子化：rng = rngFor(report.seed, report.cycle, \"staffReact:\"+staffId)；同 seed＝同輸出。",
+    "opts.lastLineIds[staffId] 內的 lineId 會先排除（連兩季不重複）；全被排除時才放寬。",
+    "缺變數的基底句自動略過（不會出現殘留 {var}）。",
+    "教育導向：句子只點出方向與線索，不直接給答案；建議卡用「考慮／可以先看看」語氣。"
+  ]
+}

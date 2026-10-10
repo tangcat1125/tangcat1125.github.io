@@ -1,0 +1,182 @@
+{
+  "id": "policy_joint_delivery",
+  "name": "共同配送",
+  "cost": 3,
+  "blurb": "由一個整合者把多家店的貨併成一台車、集中送到市集卸貨，減少進城的車次。",
+  "solves": [],
+  "rule_patches": {
+    "joint_deliveryProgram": 1
+  },
+  "deltas": {
+    "money": -70,
+    "profit": 10,
+    "happiness": 2
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "要談合作與分帳；小店擔心貨被延誤，整合者若出狀況會一起受影響。",
+  "preview": "預估：金錢 -70、獲利 +10、幸福度 +2。",
+  "costPoints": 3,
+  "tags": [
+    "物流",
+    "協力",
+    "整合"
+  ],
+  "counters": [
+    "freight_jam",
+    "supply_delay",
+    "restock"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_joint_delivery.webp",
+    "icon": "assets/sprites/cards/icons/icon_joint_delivery.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "📦",
+    "accent": "#00897b",
+    "fxHint": "fx_joint_delivery_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "公私協力",
+    "rarity": "進階",
+    "titleShort": "共同配送",
+    "costBadge": "3 點",
+    "shopLine": "多家併一車，進城車次變少。",
+    "effectLine": "進城車次減少；路邊臨停與塞車下降。",
+    "flavor": "少一台車，路就多一分空。",
+    "learnPoint": "這張牌教你：公私協力靠整合降低成本與壅塞。",
+    "bullets": [
+      "對症：貨車壅塞、進貨延遲",
+      "金錢 -70",
+      "進城車次減少",
+      "要談分帳"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -70,
+        "text": "金錢 -70"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": 10,
+        "text": "獲利 +10"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 2,
+        "text": "幸福度 +2"
+      }
+    ],
+    "tradeoffLine": "要談合作與分帳；小店擔心貨被延誤，整合者若出狀況會一起受影響。"
+  },
+  "shopBlurb": "多家併一車，進城車次變少。",
+  "shopLine": "3 點｜多家併一車，進城車次變少。",
+  "executeId": "exec_joint_delivery",
+  "fx": {
+    "street": [
+      "fx_joint_delivery_a",
+      "fx_joint_delivery_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 4,
+        "tourist": 0,
+        "security": 0
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "logistics": -14,
+        "traffic": -6
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.03,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 99,
+        "delaySeasons": 0,
+        "note": "補貨準時、少缺貨"
+      },
+      "strength": "strong",
+      "summary": "車流+4（永久）；物流民怨-14、交通民怨-6；店家營收 +3%"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_tian",
+      "staff_tong"
+    ],
+    "radarWeights": {
+      "logistics": 0.9,
+      "safety": 0.2,
+      "health": 0.2,
+      "engineering": 0.2,
+      "economy": 0.5,
+      "communication": 0.4
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "logistics",
+    "traffic"
+  ],
+  "complaintDelta": {
+    "logistics": -14,
+    "traffic": -6
+  },
+  "complaintRebound": {},
+  "complaintNote": "要談合作與分帳；小店擔心貨被延誤，整合者若出狀況會一起受影響。",
+  "eventEffects": {
+    "cure": [
+      "evp_market_price"
+    ],
+    "assist": [
+      "evp_logi_cold",
+      "evp_logi_delay",
+      "evp_logi_landslide"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "ppp",
+  "typeLabel": "公私協力",
+  "realWorldAnalog": "物流整合：多家貨物併車、集中卸貨，減少進城車次。",
+  "topicCounters": [
+    "freight_jam",
+    "supply_delay",
+    "restock"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_market_price"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_market_price"
+  ],
+  "solvesPoolConditional": []
+}

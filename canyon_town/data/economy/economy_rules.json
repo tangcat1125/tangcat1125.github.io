@@ -1,0 +1,566 @@
+{
+  "id": "economy_rules_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "note": "初版數字（咪咪 v2.1 文件 6.2）；每個數字都是 {value,note}，日後小力模擬校準後會請呆呆微調。v2.1「開局冷清」：shop.maxRevenue 70、fixedCost 10（咪咪 BALANCE_FUN v2.1 6.2）；開局流量 28、自然基準 45；補助拆基本補助／績效補助。",
+  "start": {
+    "money": {
+      "value": 1000,
+      "note": "起始資金；教師難度可選 500／1000／2000"
+    },
+    "flows": {
+      "value": 28,
+      "note": "四項流量起始值（開局冷清：路人約 3–4、車 1–2、遊客 0–1）"
+    },
+    "reputation": {
+      "value": 50,
+      "note": "市長聲望起始值"
+    },
+    "shopHealth": {
+      "value": 70,
+      "note": "店家健康度起始值"
+    },
+    "happiness": {
+      "value": 60,
+      "note": "幸福度基準（幸福度修正的零點）"
+    }
+  },
+  "flow": {
+    "base": {
+      "value": 45,
+      "note": "自然基準：沒有未解決問題時，流量會慢慢暖到約 45"
+    },
+    "rateDown": {
+      "value": 0.5,
+      "note": "下降速度：每季往 target 靠近 50%（掉得快）"
+    },
+    "rateUp": {
+      "value": 0.35,
+      "note": "上升速度：每季往 target 靠近 35%（回得慢＝延遲）"
+    },
+    "recoverLagSeasons": {
+      "value": 1,
+      "note": "對症後延遲幾季才開始回升"
+    },
+    "recoverShare": {
+      "value": 0.35,
+      "note": "對症後每季補回缺口的比例"
+    },
+    "goodWordBonus": {
+      "value": 4,
+      "note": "口碑加成：對症後流量 +4"
+    },
+    "goodWordSeasons": {
+      "value": 2,
+      "note": "口碑加成持續季數"
+    },
+    "ignoreStack": {
+      "value": 1.25,
+      "note": "未解決每多一季，影響疊乘 ×1.25"
+    },
+    "ignoreStackCap": {
+      "value": 2.0,
+      "note": "疊乘上限 ×2.0"
+    },
+    "palliativeMult": {
+      "value": 0.5,
+      "note": "只治標：影響減半"
+    },
+    "backfireMult": {
+      "value": 1.3,
+      "note": "反效果：影響 ×1.3"
+    },
+    "backfireExtra": {
+      "value": -3,
+      "note": "反效果：額外 −3（每項受影響流量）"
+    },
+    "couplings": {
+      "vehicle->tourist": {
+        "value": 0.3,
+        "note": "車流下降幅度 ×0.3 → 遊客再降"
+      },
+      "security->tourist": {
+        "value": 0.25,
+        "note": "治安感下降 ×0.25 → 遊客再降"
+      },
+      "security->foot": {
+        "value": 0.2,
+        "note": "治安感下降 ×0.2 → 人流再降"
+      },
+      "trust->tourist": {
+        "value": 0.2,
+        "note": "食安／衛生信任低 ×0.2 → 遊客再降"
+      }
+    },
+    "closedShopPenalty": {
+      "foot": {
+        "value": -3,
+        "note": "每家歇業店：人流 −3"
+      },
+      "tourist": {
+        "value": -2,
+        "note": "每家歇業店：遊客 −2"
+      },
+      "security": {
+        "value": -2,
+        "note": "每家歇業店：治安感 −2"
+      }
+    },
+    "reputationToTourist": {
+      "value": 0.3,
+      "note": "tourist += (reputation−50)×0.3"
+    },
+    "happinessToFoot": {
+      "value": 0.15,
+      "note": "foot += (happiness−60)×0.15"
+    },
+    "min": {
+      "value": 0,
+      "note": "流量下限"
+    },
+    "max": {
+      "value": 100,
+      "note": "流量上限"
+    }
+  },
+  "shop": {
+    "maxRevenue": {
+      "value": 70,
+      "note": "滿客流時每季營收（v2.1）。開局客流指數 0.28 → 每店營收約 19.6；8 家店合計約 157（對應文件 2.3 表）"
+    },
+    "fixedCost": {
+      "value": 10,
+      "note": "每季固定成本（v2.1）。損益兩平客流指數 = 10÷70 ≈ 0.14，開局 0.28 每店約賺 9.6，不會一開局就倒"
+    },
+    "taxRate": {
+      "value": 0.5,
+      "note": "稅收＝營收×稅率"
+    },
+    "warnHealth": {
+      "value": 40,
+      "note": "健康度 ≤ 40 → 警示（黃牌）"
+    },
+    "healthUp": {
+      "value": 10,
+      "note": "淨利 > 0：健康度 +10（上限 100）"
+    },
+    "healthDown": {
+      "value": 15,
+      "note": "淨利 < 0：健康度 −(15＋虧損÷5)"
+    },
+    "closeAfterSeasons": {
+      "value": 3,
+      "note": "連續警示幾季歇業（難度 3／4／5）"
+    },
+    "reputationRevenue": {
+      "value": 200,
+      "note": "聲望係數＝1＋(聲望−50)÷200"
+    },
+    "reopen": {
+      "points": {
+        "value": 1,
+        "note": "重新開張花 1 點"
+      },
+      "money": {
+        "value": 40,
+        "note": "重新開張花 40 金"
+      },
+      "minCustomerIndex": {
+        "value": 0.4,
+        "note": "客流指數 ≥ 0.40 才能重開"
+      },
+      "health": {
+        "value": 50,
+        "note": "重開後健康度"
+      },
+      "footBoost": {
+        "value": 3,
+        "note": "重開時人流 +3 一次"
+      }
+    }
+  },
+  "income": {
+    "subsidyBase": {
+      "value": 50,
+      "note": "基本補助（保底）+50／季，無條件，讓開局不會立刻賠；補助期內發放"
+    },
+    "subsidyPerformance": {
+      "value": 40,
+      "note": "績效補助 +40／季；條件：本季至少處理（打牌對應）1 件事件，或打出 ≥1 張卡（\"打卡\"）才給；不處理就沒有"
+    },
+    "subsidyCondition": {
+      "value": "handledEventOrPlayedCard",
+      "note": "績效補助判定：本季有處理事件或打出 ≥1 張卡（布林條件，非金額）"
+    },
+    "subsidySeasons": {
+      "value": 8,
+      "note": "補助期（前 8 季；難度 4／8／12）"
+    },
+    "reward": {
+      "cureBase": {
+        "value": 10,
+        "note": "對症獎勵基本 10（v2.2 校準：30→10，BALANCE_FUN 第11節）"
+      },
+      "perSeverity": {
+        "value": 5,
+        "note": "每嚴重度 +5（獎勵 10＋5×嚴重度；v2.2 校準：20→5）"
+      },
+      "palliative": {
+        "value": 10,
+        "note": "只治標：+10"
+      },
+      "backfire": {
+        "value": -20,
+        "note": "反效果：−20"
+      },
+      "ignored": {
+        "value": -15,
+        "note": "忽略罰款：每件 −15"
+      }
+    },
+    "combo": {
+      "streak2": {
+        "value": 0.1,
+        "note": "連 2 季對症：獎勵 +10%"
+      },
+      "streak3": {
+        "value": 0.25,
+        "note": "連 3 季：+25%"
+      },
+      "streak4plus": {
+        "value": 0.4,
+        "note": "連 4 季以上：+40%（上限）"
+      }
+    }
+  },
+  "cost": {
+    "upkeep": {
+      "value": 50,
+      "note": "每季維運 50（文件 2.3／6.2）。注意：先前派單初稿曾寫 60，以文件 50 為準，可由小力模擬微調"
+    },
+    "policyCostFromCards": {
+      "value": true,
+      "note": "政策支出＝卡片 deltas.money（本檔不改卡片）"
+    }
+  },
+  "street": {
+    "pedestrians": {
+      "max": {
+        "value": 13,
+        "note": "路人上限"
+      },
+      "min": {
+        "value": 1,
+        "note": "路人下限"
+      }
+    },
+    "vehicles": {
+      "max": {
+        "value": 10,
+        "note": "車輛上限"
+      },
+      "min": {
+        "value": 1,
+        "note": "車輛下限"
+      },
+      "curve": {
+        "value": 1.3,
+        "note": "車輛數＝10×(vehicle/100)^1.3"
+      }
+    },
+    "tourists": {
+      "max": {
+        "value": 6,
+        "note": "遊客上限"
+      },
+      "from": {
+        "value": 20,
+        "note": "遊客量低於此值為 0（約 <24 時取整為 0）"
+      },
+      "span": {
+        "value": 80,
+        "note": "遊客數＝clamp(round(6×(tourist−20)/80), 0, 6)"
+      }
+    },
+    "guards": {
+      "t1": {
+        "value": 40,
+        "note": "治安感 ≥ 40：1 位巡守"
+      },
+      "t2": {
+        "value": 70,
+        "note": "治安感 ≥ 70：2 位巡守；開局 28 → 無人巡守，第一張治安卡後才看到巡守貓"
+      }
+    },
+    "pedestriansFormula": {
+      "scale": {
+        "value": 13,
+        "note": "路人數＝max(1, round(13×foot/100))：28→4、55→7、75→10、100→13"
+      },
+      "divisor": {
+        "value": 100,
+        "note": "流量滿值 100"
+      }
+    },
+    "vehicleSpeed": {
+      "base": {
+        "value": 0.6,
+        "note": "車速倍率＝0.6＋0.4×vehicle/100"
+      },
+      "slope": {
+        "value": 0.4,
+        "note": "車速倍率斜率；壅塞（事件封路）時車子變少且變慢、停等"
+      },
+      "divisor": {
+        "value": 100,
+        "note": "流量滿值 100"
+      }
+    },
+    "openingExpect": {
+      "pedestrians": {
+        "value": "3–4",
+        "note": "開局冷清：路人約 3–4（foot 28 → 4）"
+      },
+      "vehicles": {
+        "value": "1–2",
+        "note": "開局冷清：車約 1–2（vehicle 28 → 2）"
+      },
+      "tourists": {
+        "value": "0–1",
+        "note": "開局冷清：遊客約 0–1（tourist 28 → 1）"
+      }
+    }
+  },
+  "grade": {
+    "weights": {
+      "cureRate": {
+        "value": 0.4,
+        "note": "評分 40% 對症率"
+      },
+      "flowChange": {
+        "value": 0.3,
+        "note": "30% 四項流量平均改善"
+      },
+      "profit": {
+        "value": 0.2,
+        "note": "20% 淨利"
+      },
+      "happiness": {
+        "value": 0.1,
+        "note": "10% 幸福度"
+      }
+    },
+    "thresholds": {
+      "S": {
+        "value": 85,
+        "note": "S ≥ 85"
+      },
+      "A": {
+        "value": 70,
+        "note": "A ≥ 70"
+      },
+      "B": {
+        "value": 50,
+        "note": "B ≥ 50"
+      },
+      "C": {
+        "value": 30,
+        "note": "C ≥ 30；其餘 D"
+      }
+    },
+    "reputationDelta": {
+      "S": {
+        "value": 5,
+        "note": "S：聲望 +5"
+      },
+      "A": {
+        "value": 3,
+        "note": "A：+3"
+      },
+      "B": {
+        "value": 1,
+        "note": "B：+1"
+      },
+      "C": {
+        "value": -2,
+        "note": "C：−2"
+      },
+      "D": {
+        "value": -5,
+        "note": "D：−5"
+      }
+    },
+    "unlock": {
+      "subsidyApply": {
+        "value": 60,
+        "note": "聲望 ≥ 60 解鎖補助申請"
+      },
+      "award": {
+        "value": 80,
+        "note": "聲望 ≥ 80 解鎖獎項事件"
+      }
+    }
+  },
+  "loan": {
+    "amount": {
+      "value": 300,
+      "note": "金錢 < 0 時一次緊急貸款 +300"
+    },
+    "repayPerSeason": {
+      "value": 50,
+      "note": "隔季起每季還 −50"
+    },
+    "maxLoans": {
+      "value": 1,
+      "note": "第二次破產結束本局"
+    }
+  },
+  "difficulty": {
+    "startMoney": {
+      "value": [
+        500,
+        1000,
+        2000
+      ],
+      "note": "起始資金三檔"
+    },
+    "subsidySeasons": {
+      "value": [
+        4,
+        8,
+        12
+      ],
+      "note": "補助期三檔"
+    },
+    "closeAfter": {
+      "value": [
+        3,
+        4,
+        5
+      ],
+      "note": "歇業寬限三檔"
+    },
+    "crisisFrequency": {
+      "value": [
+        "low",
+        "mid",
+        "high"
+      ],
+      "note": "危機頻率三檔"
+    }
+  },
+  "collection": {
+    "allCardsCount": {
+      "value": 55,
+      "note": "全卡收藏成就需用過全部 55 張政策卡（2026-10-08 Stage I 新增 5 張：50→55；BALANCE_FUN 文件舊寫 17 張，已隨卡片擴充；cardIds 於 achievements.json 列出全部）"
+    }
+  },
+  "hud": {
+    "arrowBig": {
+      "value": 8,
+      "note": "與上季比：變化 ≥ +8 ▲▲、≤ −8 ▼▼"
+    },
+    "arrowSmall": {
+      "value": 2,
+      "note": "+2～+8 ▲、−8～−2 ▼；−2～+2 ▬"
+    },
+    "coldStartAvg": {
+      "value": 35,
+      "note": "四流量平均 < 35 視為「開局冷清」泡泡句狀態"
+    },
+    "warmingUpGain": {
+      "value": 8,
+      "note": "四流量平均比開局高 ≥ 8 且尚未 ≥ 60 視為「漸漸熱鬧」泡泡句狀態"
+    },
+    "warmingUpMax": {
+      "value": 60,
+      "note": "平均 ≥ 60 後改用 flow_high 泡泡句"
+    }
+  },
+  "win": {
+    "seasons": {
+      "value": 20,
+      "note": "目標季數"
+    },
+    "moneyMult": {
+      "value": 2.5,
+      "note": "金錢 ≥ 起始資金 × 2.5"
+    },
+    "flowAvg": {
+      "value": 70,
+      "note": "四項流量平均 ≥ 70"
+    },
+    "openShops": {
+      "value": 7,
+      "note": "開張店家 ≥ 7／8"
+    },
+    "happiness": {
+      "value": 75,
+      "note": "幸福度 ≥ 75"
+    },
+    "rule": {
+      "value": "四項流量平均 ≥ 70 且開張店家 ≥ 7/8（金錢 ≥ 起始×2.5、幸福度 ≥ 75 為星級加分）",
+      "note": "勝利條件：流量與店家為必要；三項全達＝勝利、兩項＝優良、一項＝及格；金錢連續兩季為負＝失敗；店家全歇業＝失敗"
+    }
+  },
+  "opportunity": {
+    "subsidyApplyPoints": {
+      "value": 1,
+      "note": "申請補助花 1 點"
+    },
+    "subsidyApplyReward": {
+      "value": 120,
+      "note": "補助申請成功 +120"
+    },
+    "awardReward": {
+      "value": 150,
+      "note": "獲獎 +150（聲望 ≥ 80）"
+    },
+    "sponsorReward": {
+      "value": 80,
+      "note": "企業贊助 +80"
+    },
+    "tourismFestivalBoost": {
+      "value": 12,
+      "note": "觀光節：下一季 tourist 目標 +12（約等於觀光 ×1.5）"
+    },
+    "preventHalfLoss": {
+      "value": 0.5,
+      "note": "預防有獎勵：事前買對症卡，損失 ×0.5"
+    }
+  },
+  "sim": {
+    "recCap": {
+      "value": 18,
+      "note": "同向持續加成上限 +10→+18（v2.2 方案A）"
+    },
+    "impactScale": {
+      "value": 0.5,
+      "note": "事件流量影響 ×0.5"
+    },
+    "crisisLossScale": {
+      "value": 0.5,
+      "note": "危機損失 ×0.5"
+    },
+    "oppChanceScale": {
+      "value": 0.5,
+      "note": "機會事件機率 ×0.5"
+    },
+    "unresolvedLife": {
+      "value": 2,
+      "note": "未解決事件拖 2 季後淡出"
+    },
+    "cureLagFull": {
+      "value": 1,
+      "note": "對症當季影響仍算，下季解除"
+    },
+    "ignorePenaltyOnce": {
+      "value": 1,
+      "note": "忽略罰款每件只扣一次"
+    },
+    "crisisMode": {
+      "value": 1,
+      "note": "同季對症免危機損失；已持有對症卡減半"
+    }
+  }
+}

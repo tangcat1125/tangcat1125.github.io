@@ -1,0 +1,51 @@
+{
+  "id": "disaster_storm_flood",
+  "kind": "storm",
+  "label": "暴雨積水",
+  "severity": 3,
+  "streetFx": {
+    "overlayIds": [
+      "overlay_flood_water",
+      "fx_rain"
+    ],
+    "tint": "#6b8cae",
+    "spawnProps": [
+      {
+        "propId": "prop_water_sign",
+        "lane": "shoulder",
+        "x": 260
+      }
+    ],
+    "ambient": "sfx_rain_loop"
+  },
+  "newspaperHook": {
+    "headline": "雨季將至　低窪巷弄人心惶惶",
+    "kicker": "災害警報",
+    "clueSeeds": [
+      "核心問題：排水不良 → 淹水風險 ↑、幸福度 ↓"
+    ],
+    "articleId": "article_drain"
+  },
+  "blocksVehicles": {
+    "vehicleIds": [
+      "light_truck",
+      "bus",
+      "water_truck"
+    ],
+    "cargoKinds": [
+      "produce",
+      "market_stock",
+      "drinking_water"
+    ],
+    "slowFactor": 0.4,
+    "untilRule": {
+      "drainClearance": {
+        "gte": 3
+      }
+    }
+  },
+  "metricHits": {
+    "onTimeRate": -0.12,
+    "congestion": 2
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "id": "street_density",
+  "version": 1,
+  "note": "街景密度與比例（可調）。開局冷清：路人 3–4、車 1–2；之後由 G.Density.set(ped, veh, tourists)（P1 economy.streetDensity 會呼叫）逐步增加。P1：economy 開啟時街上另有路人 3、遊客 6、巡守 2（extraNpcs，素材 assets/sprites/npc/npc_walker_*／tourist_*／guard_*）；居民 6；車隊 13。",
+  "initialPedestrians": 4,
+  "initialVehicles": 2,
+  "initialTourists": 0,
+  "maxPedestrians": 13,
+  "maxVehicles": 10,
+  "maxTourists": 6,
+  "spawnInterval": 4,
+  "scale": {
+    "npc": 1.33,
+    "vehicle": 1.3
+  },
+  "mapping": {
+    "pedestrians": {
+      "max": 13,
+      "min": 1
+    },
+    "vehicles": {
+      "max": 10,
+      "min": 1,
+      "curve": 1.3
+    },
+    "tourists": {
+      "max": 6,
+      "from": 20,
+      "span": 80
+    },
+    "guards": {
+      "t1": 40,
+      "t2": 70
+    }
+  },
+  "maxGuards": 2,
+  "extraNpcs": [
+    {
+      "id": "walker_elder",
+      "name": "散步阿公",
+      "gender": "男",
+      "kind": "passerby",
+      "role": "路人",
+      "speed": 0.4
+    },
+    {
+      "id": "walker_student",
+      "name": "放學學生",
+      "gender": "女",
+      "kind": "passerby",
+      "role": "路人",
+      "speed": 0.7
+    },
+    {
+      "id": "walker_office",
+      "name": "上班族",
+      "gender": "男",
+      "kind": "passerby",
+      "role": "路人",
+      "speed": 0.8
+    },
+    {
+      "id": "tourist_m_hat",
+      "name": "戴帽遊客",
+      "gender": "男",
+      "kind": "tourist",
+      "role": "遊客",
+      "speed": 0.45
+    },
+    {
+      "id": "tourist_f_suitcase",
+      "name": "拖箱遊客",
+      "gender": "女",
+      "kind": "tourist",
+      "role": "遊客",
+      "speed": 0.4
+    },
+    {
+      "id": "tourist_m_backpack",
+      "name": "背包客",
+      "gender": "男",
+      "kind": "tourist",
+      "role": "遊客",
+      "speed": 0.5
+    },
+    {
+      "id": "tourist_f_photo",
+      "name": "拍照遊客",
+      "gender": "女",
+      "kind": "tourist",
+      "role": "遊客",
+      "speed": 0.35
+    },
+    {
+      "id": "tourist_f_map",
+      "name": "看地圖遊客",
+      "gender": "女",
+      "kind": "tourist",
+      "role": "遊客",
+      "speed": 0.4
+    },
+    {
+      "id": "tourist_m_selfie",
+      "name": "自拍遊客",
+      "gender": "男",
+      "kind": "tourist",
+      "role": "遊客",
+      "speed": 0.45
+    },
+    {
+      "id": "guard_cat",
+      "name": "巡守貓",
+      "gender": "男",
+      "kind": "guard",
+      "role": "巡守",
+      "speed": 0.45
+    },
+    {
+      "id": "guard_police",
+      "name": "巡邏員警",
+      "gender": "男",
+      "kind": "guard",
+      "role": "巡守",
+      "speed": 0.5
+    }
+  ]
+}

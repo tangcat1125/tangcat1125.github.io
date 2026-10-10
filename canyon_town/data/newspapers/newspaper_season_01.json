@@ -1,0 +1,3582 @@
+{
+  "id": "newspaper_season_01",
+  "seasonId": "season_01",
+  "editionLabel": "貓貓快報 · 三月刊",
+  "dateLabel": "2026年3月",
+  "masthead": "貓貓快報",
+  "priceNote": "教室特刊 · 免費（請滑讀找重點）",
+  "headline": {
+    "kicker": "獨家頭條",
+    "title": "雨季將至！車潮卡關　市集心慌　井水傳聞齊爆",
+    "lede": "排水告急、進貨遲到、信任動搖——三線警報同日上版。本報走訪公所、工務與市集，整理學生決策前必讀重點：先滑讀、再展開找線索，最後用點數買政策卡執行改善。"
+  },
+  "unlockPolicyAfter": {
+    "mustOpen": true,
+    "scrollRatio": 0.72,
+    "mustExpandArticle": true,
+    "minExpanded": 1,
+    "note": "開啟快報 → 滑讀約七成 → 至少展開一則畫重點後，才解鎖左側政策卡。"
+  },
+  "missionStrip": {
+    "title": "課堂任務動線",
+    "steps": [
+      "① 滑讀快報（閱讀％升到約 72%）",
+      "② 點開報導展開全文，標記 clues 重點",
+      "③ 解鎖左側政策卡，用既有點數購買並執行改善",
+      "④ 看車流／物資準點與幸福度有沒有往好的方向走"
+    ]
+  },
+  "metricsBox": {
+    "title": "本季指數",
+    "fields": [
+      "points",
+      "money",
+      "profit",
+      "happiness",
+      "congestion",
+      "onTimeRate"
+    ]
+  },
+  "investigation": {
+    "title": "本報調查｜為什麼會這樣？",
+    "body": "城市不是一天變差的。車流、物資、排水與步道彼此牽連。請往下滑、把報導點開，找出可對應政策的關鍵句。沒讀完不能選卡——這是教室規則，也是經營者習慣。"
+  },
+  "articles": [
+    {
+      "id": "article_drain",
+      "relatedEventId": "event_flood_risk",
+      "kicker": "環境獨家 · 水道工線",
+      "title": "峽壁排水堵塞　低窪巷弄人心惶惶",
+      "blurb": "暴雨前排水口堆滿落石與垃圾，低窪住家連夜墊高家具。",
+      "body": "工務線回報：暴雨預報前清淤仍趕不上；垃圾車又因窄路壅塞遲到，落葉與垃圾回堵排水口。清淤不足時，雨季風險會連鎖打斷貨車路線，形成「水患→物流中斷→獲利掉」。公職喵修路籲：先清排水，再談短期買氣。",
+      "clues": [
+        "核心問題：排水不良 → 淹水風險 ↑、幸福度 ↓",
+        "證據：垃圾車延誤加重堵塞（物流連動環境）",
+        "法則：只發消費券、不提高排水／清運，核心問題仍在"
+      ],
+      "takeaway": "對照政策「清淤排水」：用點數買卡執行，先改排水法則。",
+      "storyStage": "clue",
+      "actionOptionIds": [
+        "act_clear_drain",
+        "act_drain_coupon"
+      ],
+      "complaintDomainIds": [
+        "drain",
+        "safety"
+      ]
+    },
+    {
+      "id": "article_market",
+      "relatedEventId": "event_market_slump",
+      "kicker": "經濟獨家 · 市集線",
+      "title": "泥濘步道勸退遊客　週末市集冷清",
+      "blurb": "步道泥濘、進貨不穩，攤位出現空架，獲利轉負。",
+      "body": "週末市集空位變多。遊客卻步、公車載客下滑；小貨車進貨不穩。市場會長喵阿市出示銷售紀錄：人潮與存貨雙弱。加固步道偏治本於人潮，還要搭配進貨準點一起看。",
+      "clues": [
+        "核心問題：人潮＋進貨雙弱 → 金錢／獲利下滑",
+        "證據：公車準點差、市集存貨遲到",
+        "法則：步道改善要配合物資準點，效果才穩"
+      ],
+      "takeaway": "對照政策「步道／動線」：解鎖後用點數執行，再觀察人潮與獲利。",
+      "storyStage": "clue",
+      "actionOptionIds": [
+        "act_boardwalk",
+        "act_market_coupon"
+      ],
+      "complaintDomainIds": [
+        "market",
+        "traffic"
+      ]
+    },
+    {
+      "id": "article_well",
+      "relatedEventId": "event_rumor_well",
+      "kicker": "信任獨家 · 衛生線",
+      "title": "井水怪味傳聞發酵　家長籲公布檢測",
+      "blurb": "正式檢測未見刊，供水車載器材卻因塞車遲到。",
+      "body": "家長社團轉傳「井水有怪味」。醫院院長喵安心與公所承辦喵承恩同聲：沒有公開水質資訊時，傳聞會自己長大。供水車準點能加快澄清，但不能取代檢測公布。",
+      "clues": [
+        "問題：信任下降；澄清變慢會讓幸福度續跌",
+        "證據：供水車／檢測器材延誤（物資準點率）",
+        "法則：幸福度與信任綁在一起，拖越久越貴"
+      ],
+      "takeaway": "對照政策「水質公開檢測」：展開找重點後，用點數買卡執行公布。",
+      "storyStage": "clue",
+      "actionOptionIds": [
+        "act_water_test",
+        "act_water_lane"
+      ],
+      "complaintDomainIds": [
+        "health"
+      ]
+    },
+    {
+      "id": "article_supply",
+      "relatedEventId": "event_supply_delay",
+      "kicker": "物流獨家 · 車陣線",
+      "title": "峽口車潮卡關　進貨班班遲到",
+      "blurb": "壅塞偏高，物資準點約七成；蔬果與市集存貨最先遲到。",
+      "body": "峽口一旦卡住，小貨車、垃圾車、供水車一起遲到。警察局長喵治安提醒：壅塞度與準點率不是裝飾，是決策依據。工程車進場可能短期更塞，但長期改善法則；消費券較少動到車流與排水。",
+      "clues": [
+        "觀察指標：壅塞度、準點率會改寫金錢、獲利與幸福度",
+        "取捨：選牌前先問「這張牌改哪條法則？副作用是什麼？」",
+        "證據：峽口卡關 → 多線物資同時延誤"
+      ],
+      "takeaway": "對照政策「物流樞紐」：讀完快報解鎖後，用點數投資準點。",
+      "storyStage": "clue",
+      "actionOptionIds": [
+        "act_logistics_hub",
+        "act_clear_lane"
+      ],
+      "complaintDomainIds": [
+        "logistics",
+        "traffic",
+        "safety"
+      ]
+    }
+  ],
+  "opEd": {
+    "title": "讀者喵聲",
+    "body": "（化名．家長）希望公所先讓孩子喝得安心，也別讓市集因為塞車變成空城。我們可以接受短期施工，但不能接受一直只有標語、沒有準點的物資。——請學生：滑讀→展開→再花點數執行政策。"
+  },
+  "notice": {
+    "title": "告示欄",
+    "items": [
+      "課堂動線：滑讀％ → 展開畫重點 → 用既有點數買政策卡執行改善。",
+      "門檻不變：滑約 72% 且至少展開 1 則，左側政策卡才解鎖。",
+      "提醒：快報是上季模擬的人話版；結報後數字會變，請再對一次。"
+    ]
+  },
+  "coreProblemIds": [
+    "event_flood_risk",
+    "event_market_slump"
+  ],
+  "relatedEventIds": [
+    "event_flood_risk",
+    "event_market_slump",
+    "event_rumor_well",
+    "event_supply_delay"
+  ],
+  "storyArc": {
+    "chapterId": "ch1_rain_eve",
+    "chapterTitle": "第一章｜雨季前夕",
+    "premise": "雨季快到，排水、步道、水質、峽口四條線同時告急；你是市長的顧問，要用有限點數救最要緊的那一條。",
+    "stages": [
+      {
+        "id": "read",
+        "order": 1,
+        "label": "發現問題",
+        "hint": "滑讀貓貓快報，看看城市出了什麼事。",
+        "progressPct": 25
+      },
+      {
+        "id": "clue",
+        "order": 2,
+        "label": "找出線索",
+        "hint": "展開報導，點線索畫重點。",
+        "progressPct": 50
+      },
+      {
+        "id": "decide",
+        "order": 3,
+        "label": "選卡決策",
+        "hint": "對照居民心聲，用點數買最對症的政策卡。",
+        "progressPct": 75
+      },
+      {
+        "id": "after",
+        "order": 4,
+        "label": "結報檢討",
+        "hint": "看街景與指數，想想這張牌買得值不值。",
+        "progressPct": 100
+      }
+    ],
+    "stageByPhase": {
+      "newspaper_reading": "read",
+      "newspaper_clue_marked": "clue",
+      "gate_passed": "decide",
+      "replay": "after"
+    },
+    "note": "stageByPhase 只是建議對照；程式找不到對應就用 read。解鎖門檻仍由 unlockPolicyAfter 決定。"
+  },
+  "headlineByStage": {
+    "read": {
+      "kicker": "獨家頭條",
+      "title": "雨季將至！車潮卡關　市集心慌　井水傳聞齊爆",
+      "lede": "排水告急、進貨遲到、信任動搖——三線警報同日上版。本報走訪公所、工務與市集，整理學生決策前必讀重點：先滑讀、再展開找線索，最後用點數買政策卡執行改善。"
+    },
+    "decide": {
+      "kicker": "快報補刊｜顧問上任",
+      "title": "市長點名顧問：雨季前先救哪一條線？",
+      "lede": "排水、步道、水質、峽口，四條線都想搶點數。線索你已經畫好了，現在請對照居民心聲，挑一張最對症的政策卡。"
+    },
+    "after": {
+      "kicker": "後續追蹤",
+      "title": "政策上路　街上開始有了新變化",
+      "lede": "貨車有沒有動起來？排水口乾不乾淨？請你對照準點率、壅塞度和幸福度，看看這張牌買得值不值。"
+    }
+  },
+  "sidebar": {
+    "title": "顧問手冊",
+    "byStage": {
+      "read": [
+        "你是市長顧問：先別急著花點數，先把報導讀完。",
+        "每則報導找三件事：問題、證據、副作用。",
+        "讀完快報，居民心聲和政策店才會打開。"
+      ],
+      "decide": [
+        "點數有限，選卡前先問：這張卡改哪條法則？",
+        "標「對症」的卡優先，標「治標」的卡放後面。",
+        "對照決策欄的居民心聲，再決定先救誰。"
+      ],
+      "after": [
+        "看指數：金錢、獲利、幸福度、壅塞度、準點率各往哪走？",
+        "有副作用很正常，工程期間可能先塞一下。",
+        "不滿意就下一季換一張牌再試，這就是經營。"
+      ]
+    }
+  },
+  "clueBox": {
+    "title": "線索框｜畫重點小幫手",
+    "byStage": {
+      "read": [
+        "【找問題】看標題與「核心問題」：發生了什麼事？",
+        "【找證據】看延誤、堵塞、傳聞這些具體說法。",
+        "【找法則】看「取捨」「副作用」，那是選牌時的提醒。",
+        "點一下線索就能畫重點；至少展開一則報導才算讀過。"
+      ],
+      "decide": [
+        "排水堵塞、淹水風險：先清淤，再談買氣。",
+        "步道泥濘、遊客變少：修步道，並讓進貨準時。",
+        "井水傳聞、信任下降：公開檢測，並讓供水車準時到。",
+        "峽口塞車、進貨遲到：設緩衝站，讓小貨車走短程。"
+      ],
+      "after": [
+        "回頭看你畫的重點：選的牌有對到問題嗎？",
+        "對照副作用：實際發生的事和報導預告一樣嗎？",
+        "下一季，你想改買哪一張？"
+      ]
+    },
+    "clueToAction": [
+      {
+        "articleId": "article_drain",
+        "clueHint": "排水不良／淹水風險",
+        "actionOptionIds": [
+          "act_clear_drain",
+          "act_clear_lane"
+        ]
+      },
+      {
+        "articleId": "article_market",
+        "clueHint": "人潮與進貨雙弱",
+        "actionOptionIds": [
+          "act_boardwalk",
+          "act_market_coupon"
+        ]
+      },
+      {
+        "articleId": "article_well",
+        "clueHint": "信任下降／供水車延誤",
+        "actionOptionIds": [
+          "act_water_test",
+          "act_water_lane"
+        ]
+      },
+      {
+        "articleId": "article_supply",
+        "clueHint": "壅塞度高／準點率低",
+        "actionOptionIds": [
+          "act_logistics_hub",
+          "act_clear_lane"
+        ]
+      }
+    ]
+  },
+  "footerBand": {
+    "weather": {
+      "read": "雨季將至，請留意排水、步道與車流物資。",
+      "decide": "顧問上任第一天：點數有限，請挑最對症的一張牌。",
+      "after": "政策上路中，工程路段請慢行，注意短期壅塞。"
+    },
+    "editor": {
+      "read": "本報編輯室提醒：讀完再花點數，是經營者的好習慣。",
+      "decide": "本報編輯室提醒：先看原因，再看價格；便宜的牌不一定對症。",
+      "after": "本報編輯室提醒：結果好壞都值得記下來，下一季更有把握。"
+    }
+  },
+  "actionOptions": [
+    {
+      "id": "act_clear_drain",
+      "articleId": "article_drain",
+      "relatedEventId": "event_flood_risk",
+      "policyId": "policy_clear_drain",
+      "verdict": "對症",
+      "verb": "先清排水口",
+      "label": "請清淤隊先把排水口清乾淨",
+      "why": "報導說落石與垃圾堵住排水口，雨一大就會淹到低窪巷弄。",
+      "tradeoff": "要花錢，工程車進場時短期可能更塞。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_yan"
+      ],
+      "voiceIds": [
+        "voice_bo_drain",
+        "voice_wang_elder"
+      ]
+    },
+    {
+      "id": "act_drain_coupon",
+      "articleId": "article_drain",
+      "relatedEventId": "event_flood_risk",
+      "policyId": "policy_coupon",
+      "verdict": "治標",
+      "verb": "先發消費券安撫",
+      "label": "先發市集消費券，讓居民心情好一點",
+      "why": "買氣會暫時回來，居民比較有精神。",
+      "tradeoff": "排水沒有變好，下雨還是會淹。",
+      "staffIds": [
+        "staff_shi"
+      ],
+      "voiceIds": [
+        "voice_mei_coupon"
+      ]
+    },
+    {
+      "id": "act_boardwalk",
+      "articleId": "article_market",
+      "relatedEventId": "event_market_slump",
+      "policyId": "policy_boardwalk",
+      "verdict": "對症",
+      "verb": "加固步道木棧",
+      "label": "把泥濘步道修好，讓遊客和公車願意進城",
+      "why": "報導說遊客被泥濘勸退，公車載客也往下掉。",
+      "tradeoff": "施工期間部分路段封閉，短期壅塞可能先升。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_an"
+      ],
+      "voiceIds": [
+        "voice_mei_market",
+        "voice_kai_bus",
+        "voice_wang_elder"
+      ]
+    },
+    {
+      "id": "act_market_coupon",
+      "articleId": "article_market",
+      "relatedEventId": "event_market_slump",
+      "policyId": "policy_coupon",
+      "verdict": "治標",
+      "verb": "發市集消費券",
+      "label": "發消費券刺激買氣，讓攤位先熱鬧起來",
+      "why": "花費少，居民馬上有感。",
+      "tradeoff": "貨若還是遲到，攤位照樣空架；最好搭配疏運或修路。",
+      "staffIds": [
+        "staff_shi",
+        "staff_cheng"
+      ],
+      "voiceIds": [
+        "voice_mei_coupon"
+      ]
+    },
+    {
+      "id": "act_water_test",
+      "articleId": "article_well",
+      "relatedEventId": "event_rumor_well",
+      "policyId": "policy_water_test",
+      "verdict": "對症",
+      "verb": "公開水質檢測",
+      "label": "請醫院和公所檢測井水，並把結果貼出來",
+      "why": "報導說沒有公開資料時，傳聞會自己長大。",
+      "tradeoff": "若結果不好，下一季可能還要追加預算。",
+      "staffIds": [
+        "staff_xin",
+        "staff_cheng"
+      ],
+      "voiceIds": [
+        "voice_zhen_parent"
+      ]
+    },
+    {
+      "id": "act_water_lane",
+      "articleId": "article_well",
+      "relatedEventId": "event_rumor_well",
+      "policyId": "policy_logistics_hub",
+      "verdict": "搭配",
+      "verb": "讓供水車準時到",
+      "label": "在峽口設緩衝站，讓供水車和檢測器材不再遲到",
+      "why": "報導說供水車塞車遲到，澄清就變慢。",
+      "tradeoff": "要佔用一塊空地，設置成本高；但它不能取代公開檢測。",
+      "staffIds": [
+        "staff_an"
+      ],
+      "voiceIds": [
+        "voice_lin_observe"
+      ]
+    },
+    {
+      "id": "act_logistics_hub",
+      "articleId": "article_supply",
+      "relatedEventId": "event_supply_delay",
+      "policyId": "policy_logistics_hub",
+      "verdict": "對症",
+      "verb": "設物流緩衝站",
+      "label": "在峽口設臨時緩衝站，小貨車改走短程配送",
+      "why": "峽口一卡，蔬果、垃圾車、供水車一起遲到。",
+      "tradeoff": "短期花錢，還得佔一塊空地。",
+      "staffIds": [
+        "staff_an",
+        "staff_shi"
+      ],
+      "voiceIds": [
+        "voice_mei_market",
+        "voice_lin_observe",
+        "voice_kai_bus",
+        "voice_bo_waste",
+        "voice_mei_coupon"
+      ]
+    },
+    {
+      "id": "act_clear_lane",
+      "articleId": "article_supply",
+      "relatedEventId": "event_supply_delay",
+      "policyId": "policy_clear_drain",
+      "verdict": "搭配",
+      "verb": "讓清運車優先通行",
+      "label": "清淤隊進場，順便讓垃圾車和工程車走優先車道",
+      "why": "垃圾車準時，排水口才不會又被落葉堵回去。",
+      "tradeoff": "工程車佔道，可能短暫塞車。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_yan"
+      ],
+      "voiceIds": [
+        "voice_bo_waste"
+      ]
+    },
+    {
+      "id": "act_rain_garden",
+      "articleId": "art_evp_drain_storm",
+      "relatedEventId": "evp_drain_storm",
+      "policyId": "policy_rain_garden",
+      "verdict": "對症",
+      "verb": "提早挖雨水花園與滯洪池",
+      "label": "雨季前先挖滯洪池，讓雨水有地方去",
+      "why": "報導說積水退得慢、涵洞也快滿了，滯洪池能先分擔水量。",
+      "tradeoff": "見效慢、占一塊空地；池水要配合滅蚊，否則蚊蟲變多。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_yan"
+      ],
+      "voiceIds": []
+    },
+    {
+      "id": "act_vendor_shift",
+      "articleId": "art_evp_market_festival",
+      "relatedEventId": "evp_market_festival",
+      "policyId": "policy_vendor_shift",
+      "verdict": "對症",
+      "verb": "攤販輪班、整頓夜市",
+      "label": "攤販輪班加夜市動線整頓，把人潮攤平",
+      "why": "報導說人潮集中在少數時段，攤位忽空忽擠，輪班整頓能分流。",
+      "tradeoff": "夜間人潮增加，沒有巡守隊時治安與垃圾會變多。",
+      "staffIds": [
+        "staff_shi",
+        "staff_wen"
+      ],
+      "voiceIds": []
+    },
+    {
+      "id": "act_cold_chain",
+      "articleId": "art_evp_logi_cold",
+      "relatedEventId": "evp_logi_cold",
+      "policyId": "policy_cold_chain",
+      "verdict": "對症",
+      "verb": "添購冷鏈冷藏車",
+      "label": "讓生鮮走冷藏專用車與專用時段",
+      "why": "報導說冷藏車困在路上、車內溫度升高，專用冷鏈能保住貨。",
+      "tradeoff": "設備貴、耗電；不解決塞車，冷藏車自己也可能被卡住。",
+      "staffIds": [
+        "staff_tian",
+        "staff_tong"
+      ],
+      "voiceIds": []
+    },
+    {
+      "id": "act_bus_reroute",
+      "articleId": "art_evp_traffic_bus",
+      "relatedEventId": "evp_traffic_bus",
+      "policyId": "policy_bus_reroute",
+      "verdict": "對症",
+      "verb": "公車改道、開接駁巴士",
+      "label": "讓公車避開瓶頸，再用接駁巴士把人載進市集",
+      "why": "報導說公車被貨車卡住、後面班次連動誤點，改道接駁能斷開連鎖。",
+      "tradeoff": "改道路線要先確認安全，不能走積水或邊坡路段。",
+      "staffIds": [
+        "staff_tong",
+        "staff_an"
+      ],
+      "voiceIds": []
+    },
+    {
+      "id": "act_vector_control",
+      "articleId": "art_evp_health_dengue",
+      "relatedEventId": "evp_health_dengue",
+      "policyId": "policy_vector_control",
+      "verdict": "對症",
+      "verb": "辦疫苗接種、社區滅蚊",
+      "label": "設接種站，並請居民一起清積水、噴藥滅蚊",
+      "why": "報導說有疑似病例、孑孓暴增，防疫要對準傳染途徑。",
+      "tradeoff": "要持續投入；若問題是水質或食安，這張牌沒有用。",
+      "staffIds": [
+        "staff_hu",
+        "staff_xin"
+      ],
+      "voiceIds": []
+    },
+    {
+      "id": "act_patrol_lights",
+      "articleId": "art_evp_safety_theft",
+      "relatedEventId": "evp_safety_theft",
+      "policyId": "policy_patrol_lights",
+      "verdict": "對症",
+      "verb": "組巡守隊、補路燈",
+      "label": "請鄰里組巡守隊，把暗巷路燈補起來",
+      "why": "報導說人潮多、有人被扒，巡守與路燈能嚇阻也能早發現。",
+      "tradeoff": "只能預防與嚇阻，擋不住天災；要靠志工持續。",
+      "staffIds": [
+        "staff_an",
+        "staff_min"
+      ],
+      "voiceIds": []
+    },
+    {
+      "id": "act_rescue_squad",
+      "articleId": "art_evp_safety_rescue_blocked",
+      "relatedEventId": "evp_safety_rescue_blocked",
+      "policyId": "policy_rescue_squad",
+      "verdict": "對症",
+      "verb": "組緊急救援小隊",
+      "label": "備好小型水車與推車，讓救援車隊進得了窄巷與封路",
+      "why": "報導說救護車受阻、巷子太窄消防車進不去，需要機動的小型救援。",
+      "tradeoff": "平時閒置成本高；若只是謠言，出動反而讓大家更慌。",
+      "staffIds": [
+        "staff_yan",
+        "staff_an"
+      ],
+      "voiceIds": []
+    },
+    {
+      "id": "act_fact_check",
+      "articleId": "art_evp_logi_false_bridge",
+      "relatedEventId": "evp_logi_false_bridge",
+      "policyId": "policy_fact_check",
+      "verdict": "對症",
+      "verb": "設資訊查證站",
+      "label": "查來源、對紀錄，把查證結果和出處一起公開",
+      "why": "報導說消息沒有出處、或只是同一則貼文被轉傳，先查證才知道要不要花點數。",
+      "tradeoff": "只對假消息有用；事件是真的就要另外選對症卡。",
+      "staffIds": [
+        "staff_cheng",
+        "staff_hu"
+      ],
+      "voiceIds": []
+    },
+    {
+      "id": "act_town_broadcast",
+      "articleId": "art_evp_market_price",
+      "relatedEventId": "evp_market_price",
+      "policyId": "policy_town_broadcast",
+      "verdict": "治標",
+      "verb": "先發公所公告安撫",
+      "label": "先用廣播與公告說明狀況，讓大家先別慌",
+      "why": "公告可以先安撫，讓居民知道公所有在關心。",
+      "tradeoff": "只是治標；沒有證據或處理，下季容易反彈，甚至讓人更不信。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": []
+    },
+    {
+      "id": "act_pest_control",
+      "articleId": "art_evp_market_rat_bin",
+      "relatedEventId": "evp_market_rat_bin",
+      "policyId": "policy_pest_control",
+      "verdict": "對症",
+      "verb": "廚餘加蓋、封洞、合格鼠餌盒並巡查",
+      "label": "廚餘管理加封洞、合格鼠餌盒與定期巡查",
+      "why": "報導說鼠跡出現在廚餘桶旁，只封洞不管食物，牠們會換地方。",
+      "tradeoff": "要持續巡查；餌盒要公開位置並回收，不然寵物與孩童的安全疑慮會變大。",
+      "staffIds": [
+        "staff_jing",
+        "staff_hu"
+      ],
+      "voiceIds": []
+    },
+    {
+      "id": "act_food_safety",
+      "articleId": "art_evp_health_lunch_sample",
+      "relatedEventId": "evp_health_lunch_sample",
+      "policyId": "policy_food_safety",
+      "verdict": "對症",
+      "verb": "補齊留樣與通報，並採樣檢驗",
+      "label": "午餐留樣 48 小時、通報流程、採樣檢驗",
+      "why": "報導說留樣紀錄有缺漏，出事時就查不出原因。",
+      "tradeoff": "檢驗要等；結果出來前不能下結論，要持續說明進度。",
+      "staffIds": [
+        "staff_hu",
+        "staff_xin"
+      ],
+      "voiceIds": []
+    },
+    {
+      "id": "act_vendor_audit",
+      "articleId": "art_evp_drain_grease_trap",
+      "relatedEventId": "evp_drain_grease_trap",
+      "policyId": "policy_vendor_audit",
+      "verdict": "對症",
+      "verb": "階梯式稽查與輔導業者",
+      "label": "宣導、限期改善、複查，再依規定處分",
+      "why": "報導說截油槽沒清，油脂卡在管線；直接處分不如先輔導改善。",
+      "tradeoff": "業者成本增加；沒有證據就處分會不公平，也可能反效果。",
+      "staffIds": [
+        "staff_min",
+        "staff_hu"
+      ],
+      "voiceIds": []
+    },
+    {
+      "id": "act_evp_drain_blocked__clear_drain",
+      "articleId": "art_evp_drain_blocked",
+      "relatedEventId": "event_flood_risk",
+      "poolEventId": "evp_drain_blocked",
+      "policyId": "policy_clear_drain",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「緊急清淤隊」",
+      "label": "清排水口，淹水風險往下掉。",
+      "why": "清掉堵塞物，水才流得出去。",
+      "tradeoff": "短期金錢支出高；工程車佔道可能短暫塞車。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_yan"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_blocked__flood_edu",
+      "articleId": "art_evp_drain_blocked",
+      "relatedEventId": "event_flood_risk",
+      "poolEventId": "evp_drain_blocked",
+      "policyId": "policy_flood_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「防汛自主防災宣導」",
+      "label": "教大家備沙包、別丟垃圾進水溝。",
+      "why": "防汛自主防災宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（排水口堵塞、垃圾）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能疏通排水口；雨一大還是要靠清淤與設施。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_jing"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_blocked__permeable",
+      "articleId": "art_evp_drain_blocked",
+      "relatedEventId": "event_flood_risk",
+      "poolEventId": "evp_drain_blocked",
+      "policyId": "policy_permeable",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "subsidy",
+      "typeLabel": "補助獎勵",
+      "verb": "用「透水鋪面與保水補助」",
+      "label": "補助換透水磚，雨水自己滲下去。",
+      "why": "透水鋪面與保水補助能幫上一點（排水口堵塞、垃圾），但不是主因；要搭配對症卡效果才完整。",
+      "tradeoff": "補助名額有限、要有人申請；透水磚也會被落葉與泥沙堵住，要定期清。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_jing"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_blocked__patrol_lights",
+      "articleId": "art_evp_drain_blocked",
+      "relatedEventId": "event_flood_risk",
+      "poolEventId": "evp_drain_blocked",
+      "policyId": "policy_patrol_lights",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「社區巡守隊與路燈」",
+      "label": "巡守隊加路燈，夜裡走路比較放心。",
+      "why": "巡守隊天天巡溝撿垃圾，一時乾淨，堵塞物還在。",
+      "tradeoff": "只能預防與嚇阻，擋不住天災；巡守靠志工，要持續經營。",
+      "staffIds": [
+        "staff_an",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_storm__pump_monitor",
+      "articleId": "art_evp_drain_storm",
+      "relatedEventId": "evp_drain_storm",
+      "poolEventId": "evp_drain_storm",
+      "policyId": "policy_pump_monitor",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「抽水站自動化與水情預警」",
+      "label": "水位到了自動抽，居民也看得到。",
+      "why": "抽水站自動化與水情預警正對上本事件的「淹水、暴雨積水」，從成因處理，是對症藥。",
+      "tradeoff": "設備與維護費不低；機器再快，也抽不動被垃圾卡死的涵洞。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_xin"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_storm__rain_garden",
+      "articleId": "art_evp_drain_storm",
+      "relatedEventId": "evp_drain_storm",
+      "poolEventId": "evp_drain_storm",
+      "policyId": "policy_rain_garden",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「雨水花園滯洪池」",
+      "label": "挖好滯洪池，下雨時水有地方去。",
+      "why": "滯洪池早就挖好，雨水有地方去。",
+      "tradeoff": "見效慢、占用一塊空地；池水若不配合滅蚊，會孳生蚊蟲；落葉進池口也要有人清。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_jing"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": true
+    },
+    {
+      "id": "act_evp_drain_storm__flood_edu",
+      "articleId": "art_evp_drain_storm",
+      "relatedEventId": "evp_drain_storm",
+      "poolEventId": "evp_drain_storm",
+      "policyId": "policy_flood_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「防汛自主防災宣導」",
+      "label": "教大家備沙包、別丟垃圾進水溝。",
+      "why": "防汛自主防災宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（淹水、暴雨積水）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能疏通排水口；雨一大還是要靠清淤與設施。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_jing"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_storm__runoff_control",
+      "articleId": "art_evp_drain_storm",
+      "relatedEventId": "evp_drain_storm",
+      "poolEventId": "evp_drain_storm",
+      "policyId": "policy_runoff_control",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「出流管制審查」",
+      "label": "新開發先過審，不准把水都推給下游。",
+      "why": "出流管制審查能幫上一點（淹水、暴雨積水），但不是主因；要搭配對症卡效果才完整。",
+      "tradeoff": "審查要時間，建商會喊成本；只管新案，舊社區的淹水問題不會變好。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_leaf__clear_drain",
+      "articleId": "art_evp_drain_leaf",
+      "relatedEventId": "evp_drain_leaf",
+      "poolEventId": "evp_drain_leaf",
+      "policyId": "policy_clear_drain",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「緊急清淤隊」",
+      "label": "清排水口，淹水風險往下掉。",
+      "why": "清溝時一併清運，落葉不再回堵。",
+      "tradeoff": "短期金錢支出高；工程車佔道可能短暫塞車。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_yan"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_leaf__flood_edu",
+      "articleId": "art_evp_drain_leaf",
+      "relatedEventId": "evp_drain_leaf",
+      "poolEventId": "evp_drain_leaf",
+      "policyId": "policy_flood_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「防汛自主防災宣導」",
+      "label": "教大家備沙包、別丟垃圾進水溝。",
+      "why": "防汛自主防災宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（排水口堵塞、落葉）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能疏通排水口；雨一大還是要靠清淤與設施。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_jing"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_leaf__patrol_lights",
+      "articleId": "art_evp_drain_leaf",
+      "relatedEventId": "evp_drain_leaf",
+      "poolEventId": "evp_drain_leaf",
+      "policyId": "policy_patrol_lights",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「社區巡守隊與路燈」",
+      "label": "巡守隊加路燈，夜裡走路比較放心。",
+      "why": "巡守隊順手撿落葉，暫時乾淨，下週又滿。",
+      "tradeoff": "只能預防與嚇阻，擋不住天災；巡守靠志工，要持續經營。",
+      "staffIds": [
+        "staff_an",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_culvert__pump_monitor",
+      "articleId": "art_evp_drain_culvert",
+      "relatedEventId": "evp_drain_culvert",
+      "poolEventId": "evp_drain_culvert",
+      "policyId": "policy_pump_monitor",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「抽水站自動化與水情預警」",
+      "label": "水位到了自動抽，居民也看得到。",
+      "why": "抽水站自動化與水情預警正對上本事件的「淹水、涵洞淤積」，從成因處理，是對症藥。",
+      "tradeoff": "設備與維護費不低；機器再快，也抽不動被垃圾卡死的涵洞。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_xin"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_culvert__clear_drain",
+      "articleId": "art_evp_drain_culvert",
+      "relatedEventId": "evp_drain_culvert",
+      "poolEventId": "evp_drain_culvert",
+      "policyId": "policy_clear_drain",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「緊急清淤隊」",
+      "label": "清排水口，淹水風險往下掉。",
+      "why": "有大型機具與經驗，才能清到底。",
+      "tradeoff": "短期金錢支出高；工程車佔道可能短暫塞車。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_yan"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": true
+    },
+    {
+      "id": "act_evp_drain_culvert__flood_edu",
+      "articleId": "art_evp_drain_culvert",
+      "relatedEventId": "evp_drain_culvert",
+      "poolEventId": "evp_drain_culvert",
+      "policyId": "policy_flood_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「防汛自主防災宣導」",
+      "label": "教大家備沙包、別丟垃圾進水溝。",
+      "why": "防汛自主防災宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（淹水、排水口堵塞）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能疏通排水口；雨一大還是要靠清淤與設施。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_jing"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_culvert__runoff_control",
+      "articleId": "art_evp_drain_culvert",
+      "relatedEventId": "evp_drain_culvert",
+      "poolEventId": "evp_drain_culvert",
+      "policyId": "policy_runoff_control",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「出流管制審查」",
+      "label": "新開發先過審，不准把水都推給下游。",
+      "why": "出流管制審查能幫上一點（淹水），但不是主因；要搭配對症卡效果才完整。",
+      "tradeoff": "審查要時間，建商會喊成本；只管新案，舊社區的淹水問題不會變好。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_slump__boardwalk",
+      "articleId": "art_evp_market_slump",
+      "relatedEventId": "event_market_slump",
+      "poolEventId": "evp_market_slump",
+      "policyId": "policy_boardwalk",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「步道木棧加固」",
+      "label": "修好泥濘步道，遊客和公車更願意來。",
+      "why": "步道修好，遊客才願意走進來。",
+      "tradeoff": "工程期間部分路段封閉，短期壅塞可能先升。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_an"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_slump__town_hall",
+      "articleId": "art_evp_market_slump",
+      "relatedEventId": "event_market_slump",
+      "poolEventId": "evp_market_slump",
+      "policyId": "policy_town_hall",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「里民說明會」",
+      "label": "面對面說明進度，聽居民怎麼說。",
+      "why": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（人潮買氣、泥濘步道）；下季才明顯，重複使用遞減。",
+      "tradeoff": "說明會只能說明與傾聽；沒有後續行動，信任很快又會掉。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_slump__vendor_shift",
+      "articleId": "art_evp_market_slump",
+      "relatedEventId": "event_market_slump",
+      "poolEventId": "evp_market_slump",
+      "policyId": "policy_vendor_shift",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「攤販輪班夜市整頓」",
+      "label": "輪班加整頓，人潮不再擠成一團。",
+      "why": "輪班整頓延長營業，分散人潮。",
+      "tradeoff": "夜間人潮變多；沒有巡守隊時扒手與垃圾量跟著增加，也會多一些補貨車。",
+      "staffIds": [
+        "staff_shi",
+        "staff_wen"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_slump__coupon",
+      "articleId": "art_evp_market_slump",
+      "relatedEventId": "event_market_slump",
+      "poolEventId": "evp_market_slump",
+      "policyId": "policy_coupon",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "subsidy",
+      "typeLabel": "補助獎勵",
+      "verb": "用「市集消費券」",
+      "label": "便宜好上手，買氣先回來。",
+      "why": "只拉買氣，步道沒修，下季會反彈。",
+      "tradeoff": "不解決塞車與清運；點數用掉後核心物流問題可能仍在。",
+      "staffIds": [
+        "staff_shi",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_price__logistics_hub",
+      "articleId": "art_evp_market_price",
+      "relatedEventId": "evp_market_price",
+      "poolEventId": "evp_market_price",
+      "policyId": "policy_logistics_hub",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「臨時物流緩衝站」",
+      "label": "峽口設緩衝站，進貨不再遲到。",
+      "why": "準點降損耗，價格才會回穩。",
+      "tradeoff": "要佔用一塊空地；短期設置成本高。",
+      "staffIds": [
+        "staff_an",
+        "staff_shi"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_price__joint_delivery",
+      "articleId": "art_evp_market_price",
+      "relatedEventId": "evp_market_price",
+      "poolEventId": "evp_market_price",
+      "policyId": "policy_joint_delivery",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「共同配送」",
+      "label": "多家併一車，進城車次變少。",
+      "why": "共同配送正對上本事件的「進貨延遲、貨車壅塞」，從成因處理，是對症藥。",
+      "tradeoff": "要談合作與分帳；小店擔心貨被延誤，整合者若出狀況會一起受影響。",
+      "staffIds": [
+        "staff_tian",
+        "staff_tong"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_price__town_hall",
+      "articleId": "art_evp_market_price",
+      "relatedEventId": "evp_market_price",
+      "poolEventId": "evp_market_price",
+      "policyId": "policy_town_hall",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「里民說明會」",
+      "label": "面對面說明進度，聽居民怎麼說。",
+      "why": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（菜價、進貨延遲）；下季才明顯，重複使用遞減。",
+      "tradeoff": "說明會只能說明與傾聽；沒有後續行動，信任很快又會掉。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_price__delivery_subsidy",
+      "articleId": "art_evp_market_price",
+      "relatedEventId": "evp_market_price",
+      "poolEventId": "evp_market_price",
+      "policyId": "policy_delivery_subsidy",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "subsidy",
+      "typeLabel": "補助獎勵",
+      "verb": "用「攤商外送合作補助」",
+      "label": "補貼攤商加入外送，人潮與貨量分散。",
+      "why": "攤商外送合作補助能幫上一點（菜價、進貨延遲），但不是主因；要搭配對症卡效果才完整。",
+      "tradeoff": "外送抽成會吃掉利潤；只是分散人潮，不會讓塞車的路變寬。",
+      "staffIds": [
+        "staff_shi",
+        "staff_suan"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_fake_review__fact_check",
+      "articleId": "art_evp_market_fake_review",
+      "relatedEventId": "evp_market_fake_review",
+      "poolEventId": "evp_market_fake_review",
+      "policyId": "policy_fact_check",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「資訊查證站」",
+      "label": "先查來源，再決定要不要慌。",
+      "why": "公開查證圖片來源，風波自己退燒。",
+      "tradeoff": "只對假消息有用；事件是真的時，查證站不會讓問題消失。",
+      "staffIds": [
+        "staff_cheng",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_fake_review__town_hall",
+      "articleId": "art_evp_market_fake_review",
+      "relatedEventId": "evp_market_fake_review",
+      "poolEventId": "evp_market_fake_review",
+      "policyId": "policy_town_hall",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「里民說明會」",
+      "label": "面對面說明進度，聽居民怎麼說。",
+      "why": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（謠言／傳聞、網路評價）；下季才明顯，重複使用遞減。",
+      "tradeoff": "說明會只能說明與傾聽；沒有後續行動，信任很快又會掉。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_fake_review__market_star",
+      "articleId": "art_evp_market_fake_review",
+      "relatedEventId": "evp_market_fake_review",
+      "poolEventId": "evp_market_fake_review",
+      "policyId": "policy_market_star",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「市集星級評核與公開排名」",
+      "label": "星級公開，好攤位被看見。",
+      "why": "市集星級評核與公開排名見效較慢、較弱但便宜：先讓大家知道怎麼做（謠言／傳聞、網路評價）；下季才明顯，重複使用遞減。",
+      "tradeoff": "評分標準若不透明會引發抱怨；排名靠後的攤商可能沮喪，需要輔導。",
+      "staffIds": [
+        "staff_shi",
+        "staff_wen"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_fake_review__town_broadcast",
+      "articleId": "art_evp_market_fake_review",
+      "relatedEventId": "evp_market_fake_review",
+      "poolEventId": "evp_market_fake_review",
+      "policyId": "policy_town_broadcast",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "verb": "用「公所公告廣播」",
+      "label": "先發公告安撫，後面再想辦法。",
+      "why": "先發公告安撫，沒拿出證據，換個說法又傳。",
+      "tradeoff": "治標：下季同樣的問題容易反彈；沒附證據的公告，可能讓人更不信。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_festival__vendor_shift",
+      "articleId": "art_evp_market_festival",
+      "relatedEventId": "evp_market_festival",
+      "poolEventId": "evp_market_festival",
+      "policyId": "policy_vendor_shift",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「攤販輪班夜市整頓」",
+      "label": "輪班加整頓，人潮不再擠成一團。",
+      "why": "輪班與動線整頓，接得住廟會人潮。",
+      "tradeoff": "夜間人潮變多；沒有巡守隊時扒手與垃圾量跟著增加，也會多一些補貨車。",
+      "staffIds": [
+        "staff_shi",
+        "staff_wen"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_festival__logistics_hub",
+      "articleId": "art_evp_market_festival",
+      "relatedEventId": "evp_market_festival",
+      "poolEventId": "evp_market_festival",
+      "policyId": "policy_logistics_hub",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「臨時物流緩衝站」",
+      "label": "峽口設緩衝站，進貨不再遲到。",
+      "why": "貨準時、車錯峰，抓住商機。",
+      "tradeoff": "要佔用一塊空地；短期設置成本高。",
+      "staffIds": [
+        "staff_an",
+        "staff_shi"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_festival__traffic_safety",
+      "articleId": "art_evp_market_festival",
+      "relatedEventId": "evp_market_festival",
+      "poolEventId": "evp_market_festival",
+      "policyId": "policy_traffic_safety",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「交通安全宣導」",
+      "label": "宣導錯峰與用路規則，便宜好做。",
+      "why": "交通安全宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（人潮聚集、廟會檔期）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能讓路變寬；趕時間的人還是會違規，需要搭配接駁或管制。",
+      "staffIds": [
+        "staff_tong",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_festival__market_committee",
+      "articleId": "art_evp_market_festival",
+      "relatedEventId": "evp_market_festival",
+      "poolEventId": "evp_market_festival",
+      "policyId": "policy_market_committee",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「攤販自治管理委員會」",
+      "label": "攤商自己訂規矩，公所從旁輔導。",
+      "why": "攤販自治管理委員會能幫上一點（人潮聚集、廟會檔期），但不是主因；要搭配對症卡效果才完整。",
+      "tradeoff": "公約若沒人遵守就形同虛設；一開始要花時間談，也可能有人不願加入。",
+      "staffIds": [
+        "staff_shi",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_delay__loading_zone",
+      "articleId": "art_evp_logi_delay",
+      "relatedEventId": "event_supply_delay",
+      "poolEventId": "evp_logi_delay",
+      "policyId": "policy_loading_zone",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「貨車裝卸專用區」",
+      "label": "劃好裝卸車格，卸完就走。",
+      "why": "貨車裝卸專用區正對上本事件的「貨車壅塞」，從成因處理，是對症藥。",
+      "tradeoff": "車格有限，超時要罰才有效；一般車輛停進去需要取締。",
+      "staffIds": [
+        "staff_tong",
+        "staff_shi"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_delay__logistics_hub",
+      "articleId": "art_evp_logi_delay",
+      "relatedEventId": "event_supply_delay",
+      "poolEventId": "evp_logi_delay",
+      "policyId": "policy_logistics_hub",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「臨時物流緩衝站」",
+      "label": "峽口設緩衝站，進貨不再遲到。",
+      "why": "在峽口設緩衝，多線物資不再一起卡。",
+      "tradeoff": "要佔用一塊空地；短期設置成本高。",
+      "staffIds": [
+        "staff_an",
+        "staff_shi"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_delay__town_hall",
+      "articleId": "art_evp_logi_delay",
+      "relatedEventId": "event_supply_delay",
+      "poolEventId": "evp_logi_delay",
+      "policyId": "policy_town_hall",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「里民說明會」",
+      "label": "面對面說明進度，聽居民怎麼說。",
+      "why": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（進貨延遲、貨車壅塞）；下季才明顯，重複使用遞減。",
+      "tradeoff": "說明會只能說明與傾聽；沒有後續行動，信任很快又會掉。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_delay__cold_chain",
+      "articleId": "art_evp_logi_delay",
+      "relatedEventId": "event_supply_delay",
+      "poolEventId": "evp_logi_delay",
+      "policyId": "policy_cold_chain",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「冷鏈冷藏車」",
+      "label": "冷藏車上路，夏天的菜也新鮮。",
+      "why": "生鮮與冷藏優先進場，損失減少。",
+      "tradeoff": "設備貴又耗電；冷藏車也怕卡在峽口，不解決塞車本身；進施工單線還會更塞。",
+      "staffIds": [
+        "staff_tian",
+        "staff_tong"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_cold__logistics_hub",
+      "articleId": "art_evp_logi_cold",
+      "relatedEventId": "evp_logi_cold",
+      "poolEventId": "evp_logi_cold",
+      "policyId": "policy_logistics_hub",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「臨時物流緩衝站」",
+      "label": "峽口設緩衝站，進貨不再遲到。",
+      "why": "冷藏車優先、錯開垃圾車，冷鏈不再斷。",
+      "tradeoff": "要佔用一塊空地；短期設置成本高。",
+      "staffIds": [
+        "staff_an",
+        "staff_shi"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_cold__cold_chain",
+      "articleId": "art_evp_logi_cold",
+      "relatedEventId": "evp_logi_cold",
+      "poolEventId": "evp_logi_cold",
+      "policyId": "policy_cold_chain",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「冷鏈冷藏車」",
+      "label": "冷藏車上路，夏天的菜也新鮮。",
+      "why": "冷藏車專用時段與保溫，冷鏈不再斷。",
+      "tradeoff": "設備貴又耗電；冷藏車也怕卡在峽口，不解決塞車本身；進施工單線還會更塞。",
+      "staffIds": [
+        "staff_tian",
+        "staff_tong"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_cold__town_hall",
+      "articleId": "art_evp_logi_cold",
+      "relatedEventId": "evp_logi_cold",
+      "poolEventId": "evp_logi_cold",
+      "policyId": "policy_town_hall",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「里民說明會」",
+      "label": "面對面說明進度，聽居民怎麼說。",
+      "why": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（冷鏈、高溫）；下季才明顯，重複使用遞減。",
+      "tradeoff": "說明會只能說明與傾聽；沒有後續行動，信任很快又會掉。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_cold__delivery_subsidy",
+      "articleId": "art_evp_logi_cold",
+      "relatedEventId": "evp_logi_cold",
+      "poolEventId": "evp_logi_cold",
+      "policyId": "policy_delivery_subsidy",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "subsidy",
+      "typeLabel": "補助獎勵",
+      "verb": "用「攤商外送合作補助」",
+      "label": "補貼攤商加入外送，人潮與貨量分散。",
+      "why": "補貼生鮮攤商改走外送，讓部分貨量不必經過受阻路段，先緩一口氣；冷鏈問題還在。",
+      "tradeoff": "外送抽成會吃掉利潤；只是分散人潮，不會讓塞車的路變寬。",
+      "staffIds": [
+        "staff_shi",
+        "staff_suan"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_landslide__slope_guard",
+      "articleId": "art_evp_logi_landslide",
+      "relatedEventId": "evp_logi_landslide",
+      "poolEventId": "evp_logi_landslide",
+      "policyId": "policy_slope_guard",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「邊坡檢查與護欄」",
+      "label": "先檢查邊坡，裝上護欄。",
+      "why": "邊坡檢查與護欄正對上本事件的「落石」，從成因處理，是對症藥。",
+      "tradeoff": "施工要封路半天；攔石網需要定期清理，沒維護就失效。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_yan"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_landslide__town_hall",
+      "articleId": "art_evp_logi_landslide",
+      "relatedEventId": "evp_logi_landslide",
+      "poolEventId": "evp_logi_landslide",
+      "policyId": "policy_town_hall",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「里民說明會」",
+      "label": "面對面說明進度，聽居民怎麼說。",
+      "why": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（落石、封路）；下季才明顯，重複使用遞減。",
+      "tradeoff": "說明會只能說明與傾聽；沒有後續行動，信任很快又會掉。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_landslide__joint_delivery",
+      "articleId": "art_evp_logi_landslide",
+      "relatedEventId": "evp_logi_landslide",
+      "poolEventId": "evp_logi_landslide",
+      "policyId": "policy_joint_delivery",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「共同配送」",
+      "label": "多家併一車，進城車次變少。",
+      "why": "共同配送能幫上一點（進貨延遲），但不是主因；要搭配對症卡效果才完整。",
+      "tradeoff": "要談合作與分帳；小店擔心貨被延誤，整合者若出狀況會一起受影響。",
+      "staffIds": [
+        "staff_tian",
+        "staff_tong"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_landslide__logistics_hub",
+      "articleId": "art_evp_logi_landslide",
+      "relatedEventId": "evp_logi_landslide",
+      "poolEventId": "evp_logi_landslide",
+      "policyId": "policy_logistics_hub",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「臨時物流緩衝站」",
+      "label": "峽口設緩衝站，進貨不再遲到。",
+      "why": "錯峰調度、分時段運送，封半邊路貨還進得來；但落石和邊坡沒處理，進貨延遲只是先緩一口氣。",
+      "tradeoff": "要佔用一塊空地；短期設置成本高。",
+      "staffIds": [
+        "staff_an",
+        "staff_shi"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_false_bridge__fact_check",
+      "articleId": "art_evp_logi_false_bridge",
+      "relatedEventId": "evp_logi_false_bridge",
+      "poolEventId": "evp_logi_false_bridge",
+      "policyId": "policy_fact_check",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「資訊查證站」",
+      "label": "先查來源，再決定要不要慌。",
+      "why": "公開橋檢紀錄與貼文來源，囤貨風潮退去。",
+      "tradeoff": "只對假消息有用；事件是真的時，查證站不會讓問題消失。",
+      "staffIds": [
+        "staff_cheng",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_false_bridge__town_hall",
+      "articleId": "art_evp_logi_false_bridge",
+      "relatedEventId": "evp_logi_false_bridge",
+      "poolEventId": "evp_logi_false_bridge",
+      "policyId": "policy_town_hall",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「里民說明會」",
+      "label": "面對面說明進度，聽居民怎麼說。",
+      "why": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（謠言／傳聞、橋梁）；下季才明顯，重複使用遞減。",
+      "tradeoff": "說明會只能說明與傾聽；沒有後續行動，信任很快又會掉。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_logi_false_bridge__town_broadcast",
+      "articleId": "art_evp_logi_false_bridge",
+      "relatedEventId": "evp_logi_false_bridge",
+      "poolEventId": "evp_logi_false_bridge",
+      "policyId": "policy_town_broadcast",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "verb": "用「公所公告廣播」",
+      "label": "先發公告安撫，後面再想辦法。",
+      "why": "先發公告說橋沒事，沒附檢測紀錄，仍有人囤貨。",
+      "tradeoff": "治標：下季同樣的問題容易反彈；沒附證據的公告，可能讓人更不信。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_bus__bus_reroute",
+      "articleId": "art_evp_traffic_bus",
+      "relatedEventId": "evp_traffic_bus",
+      "poolEventId": "evp_traffic_bus",
+      "policyId": "policy_bus_reroute",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「公車改道接駁巴士」",
+      "label": "公車繞開瓶頸，接駁巴士載人進市集。",
+      "why": "改道加接駁，公車避開被卡住的路口。",
+      "tradeoff": "改道路線可能經過窄路、積水或峽壁邊坡；沒有輪班疏導時人潮會一次湧入。",
+      "staffIds": [
+        "staff_tong",
+        "staff_an"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_bus__logistics_hub",
+      "articleId": "art_evp_traffic_bus",
+      "relatedEventId": "evp_traffic_bus",
+      "poolEventId": "evp_traffic_bus",
+      "policyId": "policy_logistics_hub",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「臨時物流緩衝站」",
+      "label": "峽口設緩衝站，進貨不再遲到。",
+      "why": "貨車與公車錯峰，連環誤點就斷了。",
+      "tradeoff": "要佔用一塊空地；短期設置成本高。",
+      "staffIds": [
+        "staff_an",
+        "staff_shi"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_bus__traffic_safety",
+      "articleId": "art_evp_traffic_bus",
+      "relatedEventId": "evp_traffic_bus",
+      "poolEventId": "evp_traffic_bus",
+      "policyId": "policy_traffic_safety",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「交通安全宣導」",
+      "label": "宣導錯峰與用路規則，便宜好做。",
+      "why": "交通安全宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（公車誤點、貨車壅塞）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能讓路變寬；趕時間的人還是會違規，需要搭配接駁或管制。",
+      "staffIds": [
+        "staff_tong",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_bus__street_parking",
+      "articleId": "art_evp_traffic_bus",
+      "relatedEventId": "evp_traffic_bus",
+      "poolEventId": "evp_traffic_bus",
+      "policyId": "policy_street_parking",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「路邊停車收費」",
+      "label": "路邊停車收費，周轉率提高。",
+      "why": "路邊停車收費能幫上一點（壅塞），但不是主因；要搭配對症卡效果才完整。",
+      "tradeoff": "居民與攤商可能抱怨「要錢」；沒有替代停車場時只會把問題推到隔壁街。",
+      "staffIds": [
+        "staff_tong",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_paralysis__loading_zone",
+      "articleId": "art_evp_traffic_paralysis",
+      "relatedEventId": "evp_traffic_paralysis",
+      "poolEventId": "evp_traffic_paralysis",
+      "policyId": "policy_loading_zone",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「貨車裝卸專用區」",
+      "label": "劃好裝卸車格，卸完就走。",
+      "why": "貨車裝卸專用區正對上本事件的「貨車壅塞」，從成因處理，是對症藥。",
+      "tradeoff": "車格有限，超時要罰才有效；一般車輛停進去需要取締。",
+      "staffIds": [
+        "staff_tong",
+        "staff_shi"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_paralysis__logistics_hub",
+      "articleId": "art_evp_traffic_paralysis",
+      "relatedEventId": "evp_traffic_paralysis",
+      "poolEventId": "evp_traffic_paralysis",
+      "policyId": "policy_logistics_hub",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「臨時物流緩衝站」",
+      "label": "峽口設緩衝站，進貨不再遲到。",
+      "why": "事前有物流緩衝與分流，癱瘓縮短。",
+      "tradeoff": "要佔用一塊空地；短期設置成本高。",
+      "staffIds": [
+        "staff_an",
+        "staff_shi"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": true
+    },
+    {
+      "id": "act_evp_traffic_paralysis__traffic_safety",
+      "articleId": "art_evp_traffic_paralysis",
+      "relatedEventId": "evp_traffic_paralysis",
+      "poolEventId": "evp_traffic_paralysis",
+      "policyId": "policy_traffic_safety",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「交通安全宣導」",
+      "label": "宣導錯峰與用路規則，便宜好做。",
+      "why": "交通安全宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（壅塞、貨車壅塞）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能讓路變寬；趕時間的人還是會違規，需要搭配接駁或管制。",
+      "staffIds": [
+        "staff_tong",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_paralysis__shared_parking",
+      "articleId": "art_evp_traffic_paralysis",
+      "relatedEventId": "evp_traffic_paralysis",
+      "poolEventId": "evp_traffic_paralysis",
+      "policyId": "policy_shared_parking",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「共享車位媒合」",
+      "label": "空檔車位開放共享，找位更容易。",
+      "why": "共享車位媒合能幫上一點（停車），但不是主因；要搭配對症卡效果才完整。",
+      "tradeoff": "要處理管理與安全；有人會擔心車位被占用，需要明確時段與收費。",
+      "staffIds": [
+        "staff_tong",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_works__loading_zone",
+      "articleId": "art_evp_traffic_works",
+      "relatedEventId": "evp_traffic_works",
+      "poolEventId": "evp_traffic_works",
+      "policyId": "policy_loading_zone",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「貨車裝卸專用區」",
+      "label": "劃好裝卸車格，卸完就走。",
+      "why": "貨車裝卸專用區正對上本事件的「貨車壅塞」，從成因處理，是對症藥。",
+      "tradeoff": "車格有限，超時要罰才有效；一般車輛停進去需要取締。",
+      "staffIds": [
+        "staff_tong",
+        "staff_shi"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_works__logistics_hub",
+      "articleId": "art_evp_traffic_works",
+      "relatedEventId": "evp_traffic_works",
+      "poolEventId": "evp_traffic_works",
+      "policyId": "policy_logistics_hub",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「臨時物流緩衝站」",
+      "label": "峽口設緩衝站，進貨不再遲到。",
+      "why": "錯峰調度，吸收施工的短期壅塞。",
+      "tradeoff": "要佔用一塊空地；短期設置成本高。",
+      "staffIds": [
+        "staff_an",
+        "staff_shi"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_works__traffic_safety",
+      "articleId": "art_evp_traffic_works",
+      "relatedEventId": "evp_traffic_works",
+      "poolEventId": "evp_traffic_works",
+      "policyId": "policy_traffic_safety",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「交通安全宣導」",
+      "label": "宣導錯峰與用路規則，便宜好做。",
+      "why": "交通安全宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（工程施工、貨車壅塞）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能讓路變寬；趕時間的人還是會違規，需要搭配接駁或管制。",
+      "staffIds": [
+        "staff_tong",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_works__patrol_lights",
+      "articleId": "art_evp_traffic_works",
+      "relatedEventId": "evp_traffic_works",
+      "poolEventId": "evp_traffic_works",
+      "policyId": "policy_patrol_lights",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「社區巡守隊與路燈」",
+      "label": "巡守隊加路燈，夜裡走路比較放心。",
+      "why": "巡守隊協助指揮單線通行。",
+      "tradeoff": "只能預防與嚇阻，擋不住天災；巡守靠志工，要持續經營。",
+      "staffIds": [
+        "staff_an",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_tourbus__bus_reroute",
+      "articleId": "art_evp_traffic_tourbus",
+      "relatedEventId": "evp_traffic_tourbus",
+      "poolEventId": "evp_traffic_tourbus",
+      "policyId": "policy_bus_reroute",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「公車改道接駁巴士」",
+      "label": "公車繞開瓶頸，接駁巴士載人進市集。",
+      "why": "遊覽車停外圍，接駁巴士載客進市集。",
+      "tradeoff": "改道路線可能經過窄路、積水或峽壁邊坡；沒有輪班疏導時人潮會一次湧入。",
+      "staffIds": [
+        "staff_tong",
+        "staff_an"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_tourbus__private_parking",
+      "articleId": "art_evp_traffic_tourbus",
+      "relatedEventId": "evp_traffic_tourbus",
+      "poolEventId": "evp_traffic_tourbus",
+      "policyId": "policy_private_parking",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「鼓勵民間設停車場」",
+      "label": "獎勵民間設停車場，路邊少停一點。",
+      "why": "鼓勵民間設停車場正對上本事件的「停車」，從成因處理，是對症藥。",
+      "tradeoff": "要談土地與收費；民間經營若定價過高，遊客可能不願意停。",
+      "staffIds": [
+        "staff_tong",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_tourbus__traffic_safety",
+      "articleId": "art_evp_traffic_tourbus",
+      "relatedEventId": "evp_traffic_tourbus",
+      "poolEventId": "evp_traffic_tourbus",
+      "policyId": "policy_traffic_safety",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「交通安全宣導」",
+      "label": "宣導錯峰與用路規則，便宜好做。",
+      "why": "交通安全宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（觀光客、停車）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能讓路變寬；趕時間的人還是會違規，需要搭配接駁或管制。",
+      "staffIds": [
+        "staff_tong",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_traffic_tourbus__vendor_shift",
+      "articleId": "art_evp_traffic_tourbus",
+      "relatedEventId": "evp_traffic_tourbus",
+      "poolEventId": "evp_traffic_tourbus",
+      "policyId": "policy_vendor_shift",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「攤販輪班夜市整頓」",
+      "label": "輪班加整頓，人潮不再擠成一團。",
+      "why": "輪班夜市延長營業，分散人潮。",
+      "tradeoff": "夜間人潮變多；沒有巡守隊時扒手與垃圾量跟著增加，也會多一些補貨車。",
+      "staffIds": [
+        "staff_shi",
+        "staff_wen"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_well__water_test",
+      "articleId": "art_evp_health_well",
+      "relatedEventId": "event_rumor_well",
+      "poolEventId": "evp_health_well",
+      "policyId": "policy_water_test",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「公開水質檢測」",
+      "label": "檢測結果公開，傳聞慢慢退燒。",
+      "why": "公開檢測，傳聞才會停。",
+      "tradeoff": "若結果不佳，下季可能還要加預算。",
+      "staffIds": [
+        "staff_xin",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_well__health_edu",
+      "articleId": "art_evp_health_well",
+      "relatedEventId": "event_rumor_well",
+      "poolEventId": "evp_health_well",
+      "policyId": "policy_health_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「衛生教育與防疫宣導」",
+      "label": "教大家洗手、倒積水、有症狀就看醫生。",
+      "why": "衛生教育與防疫宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（水質、謠言／傳聞）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能取代疫苗與滅蚊；防疫的主力仍是行動。",
+      "staffIds": [
+        "staff_hu",
+        "staff_xin"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_well__vendor_audit",
+      "articleId": "art_evp_health_well",
+      "relatedEventId": "event_rumor_well",
+      "poolEventId": "evp_health_well",
+      "policyId": "policy_vendor_audit",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「業者稽查與輔導」",
+      "label": "稽查、輔導、複查，一步一步來。",
+      "why": "稽查周邊店家的用水與儲水設施、輔導改善，補強整體用水衛生；不能取代檢測結果公開。",
+      "tradeoff": "稽查會增加業者成本與抱怨；沒有證據就先處分，容易不公平，也可能讓事情更亂。",
+      "staffIds": [
+        "staff_min",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_well__town_broadcast",
+      "articleId": "art_evp_health_well",
+      "relatedEventId": "event_rumor_well",
+      "poolEventId": "evp_health_well",
+      "policyId": "policy_town_broadcast",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "verb": "用「公所公告廣播」",
+      "label": "先發公告安撫，後面再想辦法。",
+      "why": "先發公告說水沒問題，卻沒有檢測報告。",
+      "tradeoff": "治標：下季同樣的問題容易反彈；沒附證據的公告，可能讓人更不信。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_dengue__vector_control",
+      "articleId": "art_evp_health_dengue",
+      "relatedEventId": "evp_health_dengue",
+      "poolEventId": "evp_health_dengue",
+      "policyId": "policy_vector_control",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「疫苗滅蚊行動」",
+      "label": "疫苗加滅蚊，把疫情擋在門外。",
+      "why": "滅蚊與孑孓清除，疫情降溫。",
+      "tradeoff": "要持續投入；對井水或食安疑慮不是答案；疫苗要在流行前就接種才最有效。",
+      "staffIds": [
+        "staff_hu",
+        "staff_xin"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_dengue__dengue_mobilize",
+      "articleId": "art_evp_health_dengue",
+      "relatedEventId": "evp_health_dengue",
+      "poolEventId": "evp_health_dengue",
+      "policyId": "policy_dengue_mobilize",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「孳生源清除社區動員」",
+      "label": "志工挨家倒積水，熱區定期查核。",
+      "why": "孳生源清除社區動員正對上本事件的「蚊媒、積水、流行病」，從成因處理，是對症藥。",
+      "tradeoff": "要持續動員，志工會疲乏；沒有查核就會流於形式。",
+      "staffIds": [
+        "staff_hu",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_dengue__health_edu",
+      "articleId": "art_evp_health_dengue",
+      "relatedEventId": "evp_health_dengue",
+      "poolEventId": "evp_health_dengue",
+      "policyId": "policy_health_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「衛生教育與防疫宣導」",
+      "label": "教大家洗手、倒積水、有症狀就看醫生。",
+      "why": "衛生教育與防疫宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（蚊媒、積水）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能取代疫苗與滅蚊；防疫的主力仍是行動。",
+      "staffIds": [
+        "staff_hu",
+        "staff_xin"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_dengue__town_broadcast",
+      "articleId": "art_evp_health_dengue",
+      "relatedEventId": "evp_health_dengue",
+      "poolEventId": "evp_health_dengue",
+      "policyId": "policy_town_broadcast",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "verb": "用「公所公告廣播」",
+      "label": "先發公告安撫，後面再想辦法。",
+      "why": "發防蚊宣導單，請居民自清積水。",
+      "tradeoff": "治標：下季同樣的問題容易反彈；沒附證據的公告，可能讓人更不信。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_foodpoison__food_safety",
+      "articleId": "art_evp_health_foodpoison",
+      "relatedEventId": "evp_health_foodpoison",
+      "poolEventId": "evp_health_foodpoison",
+      "policyId": "policy_food_safety",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「食安檢驗與留樣」",
+      "label": "留樣、採樣、檢驗，出事時查得出原因。",
+      "why": "食安檢驗與留樣正對上本事件的「食安」，從成因處理，是對症藥。",
+      "tradeoff": "檢驗要等數天到兩週，結果出來前不能下結論；留樣冰箱與人力有成本，家長會希望更快知道。",
+      "staffIds": [
+        "staff_hu",
+        "staff_xin"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_foodpoison__food_edu",
+      "articleId": "art_evp_health_foodpoison",
+      "relatedEventId": "evp_health_foodpoison",
+      "poolEventId": "evp_health_foodpoison",
+      "policyId": "policy_food_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「食安宣導與家長說明會」",
+      "label": "說明保存與檢驗方式，家長比較放心。",
+      "why": "食安宣導與家長說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（食安、市集衛生）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不等於檢驗；有疑慮的食材還是要抽驗，不能只靠說明。",
+      "staffIds": [
+        "staff_hu",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_foodpoison__cold_chain",
+      "articleId": "art_evp_health_foodpoison",
+      "relatedEventId": "evp_health_foodpoison",
+      "poolEventId": "evp_health_foodpoison",
+      "policyId": "policy_cold_chain",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「冷鏈冷藏車」",
+      "label": "冷藏車上路，夏天的菜也新鮮。",
+      "why": "修復冷鏈，從源頭補強。",
+      "tradeoff": "設備貴又耗電；冷藏車也怕卡在峽口，不解決塞車本身；進施工單線還會更塞。",
+      "staffIds": [
+        "staff_tian",
+        "staff_tong"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_foodpoison__vector_control",
+      "articleId": "art_evp_health_foodpoison",
+      "relatedEventId": "evp_health_foodpoison",
+      "poolEventId": "evp_health_foodpoison",
+      "policyId": "policy_vector_control",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「疫苗滅蚊行動」",
+      "label": "疫苗加滅蚊，把疫情擋在門外。",
+      "why": "環境消毒與衛教，冷鏈源頭沒查。",
+      "tradeoff": "要持續投入；對井水或食安疑慮不是答案；疫苗要在流行前就接種才最有效。",
+      "staffIds": [
+        "staff_hu",
+        "staff_xin"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_flu__vector_control",
+      "articleId": "art_evp_health_flu",
+      "relatedEventId": "evp_health_flu",
+      "poolEventId": "evp_health_flu",
+      "policyId": "policy_vector_control",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「疫苗滅蚊行動」",
+      "label": "疫苗加滅蚊，把疫情擋在門外。",
+      "why": "疫苗接種站與衛教，流感傳染降溫。",
+      "tradeoff": "要持續投入；對井水或食安疑慮不是答案；疫苗要在流行前就接種才最有效。",
+      "staffIds": [
+        "staff_hu",
+        "staff_xin"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_flu__health_edu",
+      "articleId": "art_evp_health_flu",
+      "relatedEventId": "evp_health_flu",
+      "poolEventId": "evp_health_flu",
+      "policyId": "policy_health_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「衛生教育與防疫宣導」",
+      "label": "教大家洗手、倒積水、有症狀就看醫生。",
+      "why": "衛生教育與防疫宣導見效較慢、較弱但便宜：先讓大家知道怎麼做（流行病、流感）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能取代疫苗與滅蚊；防疫的主力仍是行動。",
+      "staffIds": [
+        "staff_hu",
+        "staff_xin"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_flu__town_broadcast",
+      "articleId": "art_evp_health_flu",
+      "relatedEventId": "evp_health_flu",
+      "poolEventId": "evp_health_flu",
+      "policyId": "policy_town_broadcast",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "verb": "用「公所公告廣播」",
+      "label": "先發公告安撫，後面再想辦法。",
+      "why": "發衛教公告，提醒戴口罩洗手。",
+      "tradeoff": "治標：下季同樣的問題容易反彈；沒附證據的公告，可能讓人更不信。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_fake_alert__water_test",
+      "articleId": "art_evp_health_fake_alert",
+      "relatedEventId": "evp_health_fake_alert",
+      "poolEventId": "evp_health_fake_alert",
+      "policyId": "policy_water_test",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「公開水質檢測」",
+      "label": "檢測結果公開，傳聞慢慢退燒。",
+      "why": "公開當日檢測結果，假快訊立刻失去力量。",
+      "tradeoff": "若結果不佳，下季可能還要加預算。",
+      "staffIds": [
+        "staff_xin",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_fake_alert__fact_check",
+      "articleId": "art_evp_health_fake_alert",
+      "relatedEventId": "evp_health_fake_alert",
+      "poolEventId": "evp_health_fake_alert",
+      "policyId": "policy_fact_check",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「資訊查證站」",
+      "label": "先查來源，再決定要不要慌。",
+      "why": "公開當日檢測與來源，快訊立刻失效。",
+      "tradeoff": "只對假消息有用；事件是真的時，查證站不會讓問題消失。",
+      "staffIds": [
+        "staff_cheng",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_fake_alert__town_hall",
+      "articleId": "art_evp_health_fake_alert",
+      "relatedEventId": "evp_health_fake_alert",
+      "poolEventId": "evp_health_fake_alert",
+      "policyId": "policy_town_hall",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「里民說明會」",
+      "label": "面對面說明進度，聽居民怎麼說。",
+      "why": "里民說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（謠言／傳聞、水質）；下季才明顯，重複使用遞減。",
+      "tradeoff": "說明會只能說明與傾聽；沒有後續行動，信任很快又會掉。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_fake_alert__town_broadcast",
+      "articleId": "art_evp_health_fake_alert",
+      "relatedEventId": "evp_health_fake_alert",
+      "poolEventId": "evp_health_fake_alert",
+      "policyId": "policy_town_broadcast",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "verb": "用「公所公告廣播」",
+      "label": "先發公告安撫，後面再想辦法。",
+      "why": "先發公告說水沒事，沒附檢測，仍有人不敢喝。",
+      "tradeoff": "治標：下季同樣的問題容易反彈；沒附證據的公告，可能讓人更不信。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_rescue_blocked__rescue_squad",
+      "articleId": "art_evp_safety_rescue_blocked",
+      "relatedEventId": "evp_safety_rescue_blocked",
+      "poolEventId": "evp_safety_rescue_blocked",
+      "policyId": "policy_rescue_squad",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「緊急救援小隊」",
+      "label": "救援小隊待命，窄巷與封路也進得去。",
+      "why": "救援小隊守住替代救援動線。",
+      "tradeoff": "平時閒置成本高；面對謠言或假警報出動，反而製造恐慌。",
+      "staffIds": [
+        "staff_yan",
+        "staff_an"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_rescue_blocked__fire_lane",
+      "articleId": "art_evp_safety_rescue_blocked",
+      "relatedEventId": "evp_safety_rescue_blocked",
+      "poolEventId": "evp_safety_rescue_blocked",
+      "policyId": "policy_fire_lane",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「防火巷與消防栓」",
+      "label": "留好防火巷，裝好消防栓。",
+      "why": "把防火巷與消防栓留出來，救護車與消防車有路可走、取水點也更近。",
+      "tradeoff": "要拆除少量違建與雜物，施工期間巷弄不好走；效果在大火當下才看得出來。",
+      "staffIds": [
+        "staff_yan",
+        "staff_xiu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_rescue_blocked__fire_drill",
+      "articleId": "art_evp_safety_rescue_blocked",
+      "relatedEventId": "evp_safety_rescue_blocked",
+      "poolEventId": "evp_safety_rescue_blocked",
+      "policyId": "policy_fire_drill",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「消防宣導與防火演練」",
+      "label": "1 點小成本，教大家怎麼防火。",
+      "why": "消防宣導與防火演練見效較慢、較弱但便宜：先讓大家知道怎麼做（救援動線、窄巷）；下季才明顯，重複使用遞減。",
+      "tradeoff": "便宜但只能提高警覺，不能把舊電線變新；要定期辦，居民才不會忘。",
+      "staffIds": [
+        "staff_yan",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_rescue_blocked__patrol_lights",
+      "articleId": "art_evp_safety_rescue_blocked",
+      "relatedEventId": "evp_safety_rescue_blocked",
+      "poolEventId": "evp_safety_rescue_blocked",
+      "policyId": "policy_patrol_lights",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「社區巡守隊與路燈」",
+      "label": "巡守隊加路燈，夜裡走路比較放心。",
+      "why": "巡守隊引導讓道，救援仍要繞遠路。",
+      "tradeoff": "只能預防與嚇阻，擋不住天災；巡守靠志工，要持續經營。",
+      "staffIds": [
+        "staff_an",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_theft__patrol_lights",
+      "articleId": "art_evp_safety_theft",
+      "relatedEventId": "evp_safety_theft",
+      "poolEventId": "evp_safety_theft",
+      "policyId": "policy_patrol_lights",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「社區巡守隊與路燈」",
+      "label": "巡守隊加路燈，夜裡走路比較放心。",
+      "why": "巡守隊加路燈，扒手無處躲。",
+      "tradeoff": "只能預防與嚇阻，擋不住天災；巡守靠志工，要持續經營。",
+      "staffIds": [
+        "staff_an",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_theft__cctv",
+      "articleId": "art_evp_safety_theft",
+      "relatedEventId": "evp_safety_theft",
+      "poolEventId": "evp_safety_theft",
+      "policyId": "policy_cctv",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「社區監視器」",
+      "label": "路口裝監視器，嚇阻也能追查。",
+      "why": "熱點裝上監視器，扒手不敢下手，事後也追得到人。",
+      "tradeoff": "要注意隱私與維護；被拍到的人擔心被濫用，需要公開使用規則。",
+      "staffIds": [
+        "staff_an",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_theft__crime_edu",
+      "articleId": "art_evp_safety_theft",
+      "relatedEventId": "evp_safety_theft",
+      "poolEventId": "evp_safety_theft",
+      "policyId": "policy_crime_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「防竊宣導與鄰里守望」",
+      "label": "提醒大家顧好包包，鄰里互相看。",
+      "why": "防竊宣導與鄰里守望見效較慢、較弱但便宜：先讓大家知道怎麼做（扒手竊盜、人潮聚集）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不能阻止慣犯；人潮擁擠時提醒也容易被忽略。",
+      "staffIds": [
+        "staff_an",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_theft__led_lights",
+      "articleId": "art_evp_safety_theft",
+      "relatedEventId": "evp_safety_theft",
+      "poolEventId": "evp_safety_theft",
+      "policyId": "policy_led_lights",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「路燈LED汰換與暗巷補強」",
+      "label": "換亮燈、補暗巷，晚上更安心。",
+      "why": "路燈LED汰換與暗巷補強能幫上一點（夜間），但不是主因；要搭配對症卡效果才完整。",
+      "tradeoff": "汰換要排工期；過亮也會影響住戶睡眠，要調整角度。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_an"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_fire__wiring_subsidy",
+      "articleId": "art_evp_safety_fire",
+      "relatedEventId": "evp_safety_fire",
+      "poolEventId": "evp_safety_fire",
+      "policyId": "policy_wiring_subsidy",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "subsidy",
+      "typeLabel": "補助獎勵",
+      "verb": "用「老屋電線檢修補助」",
+      "label": "補助檢修，老電線先換掉。",
+      "why": "補助檢修老屋舊電線與插座，從源頭降低走火機率；這才是老屋電線走火的對症藥。",
+      "tradeoff": "申請與檢修要排隊，見效要一季；住戶不申請就沒有用，需要宣導配合。",
+      "staffIds": [
+        "staff_yan",
+        "staff_xiu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_fire__fire_lane",
+      "articleId": "art_evp_safety_fire",
+      "relatedEventId": "evp_safety_fire",
+      "poolEventId": "evp_safety_fire",
+      "policyId": "policy_fire_lane",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「防火巷與消防栓」",
+      "label": "留好防火巷，裝好消防栓。",
+      "why": "留出防火巷、增設消防栓與取水點，火起來時消防車進得去、水拿得到，延燒就停在巷內。",
+      "tradeoff": "要拆除少量違建與雜物，施工期間巷弄不好走；效果在大火當下才看得出來。",
+      "staffIds": [
+        "staff_yan",
+        "staff_xiu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_fire__fire_drill",
+      "articleId": "art_evp_safety_fire",
+      "relatedEventId": "evp_safety_fire",
+      "poolEventId": "evp_safety_fire",
+      "policyId": "policy_fire_drill",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「消防宣導與防火演練」",
+      "label": "1 點小成本，教大家怎麼防火。",
+      "why": "防火宣導與演練教居民檢查電線、知道怎麼逃；便宜、見效慢，不能取代檢修。",
+      "tradeoff": "便宜但只能提高警覺，不能把舊電線變新；要定期辦，居民才不會忘。",
+      "staffIds": [
+        "staff_yan",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_fire__patrol_lights",
+      "articleId": "art_evp_safety_fire",
+      "relatedEventId": "evp_safety_fire",
+      "poolEventId": "evp_safety_fire",
+      "policyId": "policy_patrol_lights",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「社區巡守隊與路燈」",
+      "label": "巡守隊加路燈，夜裡走路比較放心。",
+      "why": "巡守與路燈，及早發現起火點。",
+      "tradeoff": "只能預防與嚇阻，擋不住天災；巡守靠志工，要持續經營。",
+      "staffIds": [
+        "staff_an",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_cliff__slope_guard",
+      "articleId": "art_evp_safety_cliff",
+      "relatedEventId": "evp_safety_cliff",
+      "poolEventId": "evp_safety_cliff",
+      "policyId": "policy_slope_guard",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「邊坡檢查與護欄」",
+      "label": "先檢查邊坡，裝上護欄。",
+      "why": "邊坡檢查與護欄正對上本事件的「落石、邊坡」，從成因處理，是對症藥。",
+      "tradeoff": "施工要封路半天；攔石網需要定期清理，沒維護就失效。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_yan"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_cliff__town_hall",
+      "articleId": "art_evp_safety_cliff",
+      "relatedEventId": "evp_safety_cliff",
+      "poolEventId": "evp_safety_cliff",
+      "policyId": "policy_town_hall",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「里民說明會」",
+      "label": "面對面說明進度，聽居民怎麼說。",
+      "why": "說明會講清楚封路時段與邊坡檢查進度，居民比較不會亂猜。",
+      "tradeoff": "說明會只能說明與傾聽；沒有後續行動，信任很快又會掉。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_cliff__rescue_squad",
+      "articleId": "art_evp_safety_cliff",
+      "relatedEventId": "evp_safety_cliff",
+      "poolEventId": "evp_safety_cliff",
+      "policyId": "policy_rescue_squad",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「緊急救援小隊」",
+      "label": "救援小隊待命，窄巷與封路也進得去。",
+      "why": "救援小隊預先待命，降低暴露風險。",
+      "tradeoff": "平時閒置成本高；面對謠言或假警報出動，反而製造恐慌。",
+      "staffIds": [
+        "staff_yan",
+        "staff_an"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_cliff__patrol_lights",
+      "articleId": "art_evp_safety_cliff",
+      "relatedEventId": "evp_safety_cliff",
+      "poolEventId": "evp_safety_cliff",
+      "policyId": "policy_patrol_lights",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「社區巡守隊與路燈」",
+      "label": "巡守隊加路燈，夜裡走路比較放心。",
+      "why": "巡守隊守在邊坡下，只能預警，擋不住落石。",
+      "tradeoff": "只能預防與嚇阻，擋不住天災；巡守靠志工，要持續經營。",
+      "staffIds": [
+        "staff_an",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_rat_bin__pest_control",
+      "articleId": "art_evp_market_rat_bin",
+      "relatedEventId": "evp_market_rat_bin",
+      "poolEventId": "evp_market_rat_bin",
+      "policyId": "policy_pest_control",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「鼠害防治與廚餘管理」",
+      "label": "廚餘加蓋、封洞、合格餌盒，一起做才有效。",
+      "why": "廚餘桶加蓋、收市清殘渣、封洞並定期巡查，鼠跡就少了。",
+      "tradeoff": "只封一處、不管食物來源，鼠會「趕到隔壁」；鼠餌盒要定期回收，並公開說明，否則寵物與孩童的安全疑慮會升高。",
+      "staffIds": [
+        "staff_jing",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_rat_bin__kitchen_sorting",
+      "articleId": "art_evp_market_rat_bin",
+      "relatedEventId": "evp_market_rat_bin",
+      "poolEventId": "evp_market_rat_bin",
+      "policyId": "policy_kitchen_sorting",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「廚餘分流收運」",
+      "label": "廚餘獨立收運，轉做堆肥。",
+      "why": "廚餘分流收運正對上本事件的「廚餘」，從成因處理，是對症藥。",
+      "tradeoff": "收運要增加車次與桶位；分類不確實會被退回，要宣導與稽查配合。",
+      "staffIds": [
+        "staff_jing",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_rat_bin__rat_edu",
+      "articleId": "art_evp_market_rat_bin",
+      "relatedEventId": "evp_market_rat_bin",
+      "poolEventId": "evp_market_rat_bin",
+      "policyId": "policy_rat_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「防鼠衛教與環境教育」",
+      "label": "教大家把廚餘蓋好，鼠少一點。",
+      "why": "防鼠衛教與環境教育見效較慢、較弱但便宜：先讓大家知道怎麼做（鼠患、廚餘）；下季才明顯，重複使用遞減。",
+      "tradeoff": "沒有同步防治與封洞，鼠還是會來；只靠教育見效很慢。",
+      "staffIds": [
+        "staff_jing",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_rat_bin__market_committee",
+      "articleId": "art_evp_market_rat_bin",
+      "relatedEventId": "evp_market_rat_bin",
+      "poolEventId": "evp_market_rat_bin",
+      "policyId": "policy_market_committee",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「攤販自治管理委員會」",
+      "label": "攤商自己訂規矩，公所從旁輔導。",
+      "why": "攤販自治管理委員會能幫上一點（市集衛生），但不是主因；要搭配對症卡效果才完整。",
+      "tradeoff": "公約若沒人遵守就形同虛設；一開始要花時間談，也可能有人不願加入。",
+      "staffIds": [
+        "staff_shi",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_park_burrow__pest_control",
+      "articleId": "art_evp_safety_park_burrow",
+      "relatedEventId": "evp_safety_park_burrow",
+      "poolEventId": "evp_safety_park_burrow",
+      "policyId": "policy_pest_control",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「鼠害防治與廚餘管理」",
+      "label": "廚餘加蓋、封洞、合格餌盒，一起做才有效。",
+      "why": "封洞後持續巡查、禁餵食與增加清潔頻率，才不會只是換地方。",
+      "tradeoff": "只封一處、不管食物來源，鼠會「趕到隔壁」；鼠餌盒要定期回收，並公開說明，否則寵物與孩童的安全疑慮會升高。",
+      "staffIds": [
+        "staff_jing",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_park_burrow__rat_pro",
+      "articleId": "art_evp_safety_park_burrow",
+      "relatedEventId": "evp_safety_park_burrow",
+      "poolEventId": "evp_safety_park_burrow",
+      "policyId": "policy_rat_pro",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「社區鼠類偵防」",
+      "label": "專人勘查鼠跡，提出改善建議。",
+      "why": "社區鼠類偵防正對上本事件的「鼠患」，從成因處理，是對症藥。",
+      "tradeoff": "要有申請與配合才有用；偵防員人數有限，要排優先順序。",
+      "staffIds": [
+        "staff_hu",
+        "staff_jing"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_park_burrow__rat_edu",
+      "articleId": "art_evp_safety_park_burrow",
+      "relatedEventId": "evp_safety_park_burrow",
+      "poolEventId": "evp_safety_park_burrow",
+      "policyId": "policy_rat_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「防鼠衛教與環境教育」",
+      "label": "教大家把廚餘蓋好，鼠少一點。",
+      "why": "防鼠衛教與環境教育見效較慢、較弱但便宜：先讓大家知道怎麼做（鼠患、公園）；下季才明顯，重複使用遞減。",
+      "tradeoff": "沒有同步防治與封洞，鼠還是會來；只靠教育見效很慢。",
+      "staffIds": [
+        "staff_jing",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_park_burrow__patrol_lights",
+      "articleId": "art_evp_safety_park_burrow",
+      "relatedEventId": "evp_safety_park_burrow",
+      "poolEventId": "evp_safety_park_burrow",
+      "policyId": "policy_patrol_lights",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「社區巡守隊與路燈」",
+      "label": "巡守隊加路燈，夜裡走路比較放心。",
+      "why": "巡守隊協助勸導餵食與夜間巡查。",
+      "tradeoff": "只能預防與嚇阻，擋不住天災；巡守靠志工，要持續經營。",
+      "staffIds": [
+        "staff_an",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_bait_worry__pest_control",
+      "articleId": "art_evp_health_bait_worry",
+      "relatedEventId": "evp_health_bait_worry",
+      "poolEventId": "evp_health_bait_worry",
+      "policyId": "policy_pest_control",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「鼠害防治與廚餘管理」",
+      "label": "廚餘加蓋、封洞、合格餌盒，一起做才有效。",
+      "why": "合格餌盒、位置圖、定期回收與公開說明，擔心才會降下來。",
+      "tradeoff": "只封一處、不管食物來源，鼠會「趕到隔壁」；鼠餌盒要定期回收，並公開說明，否則寵物與孩童的安全疑慮會升高。",
+      "staffIds": [
+        "staff_jing",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_bait_worry__rat_pro",
+      "articleId": "art_evp_health_bait_worry",
+      "relatedEventId": "evp_health_bait_worry",
+      "poolEventId": "evp_health_bait_worry",
+      "policyId": "policy_rat_pro",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「社區鼠類偵防」",
+      "label": "專人勘查鼠跡，提出改善建議。",
+      "why": "社區鼠類偵防正對上本事件的「鼠患」，從成因處理，是對症藥。",
+      "tradeoff": "要有申請與配合才有用；偵防員人數有限，要排優先順序。",
+      "staffIds": [
+        "staff_hu",
+        "staff_jing"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_bait_worry__rat_edu",
+      "articleId": "art_evp_health_bait_worry",
+      "relatedEventId": "evp_health_bait_worry",
+      "poolEventId": "evp_health_bait_worry",
+      "policyId": "policy_rat_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「防鼠衛教與環境教育」",
+      "label": "教大家把廚餘蓋好，鼠少一點。",
+      "why": "防鼠衛教與環境教育見效較慢、較弱但便宜：先讓大家知道怎麼做（鼠患、鼠餌安全）；下季才明顯，重複使用遞減。",
+      "tradeoff": "沒有同步防治與封洞，鼠還是會來；只靠教育見效很慢。",
+      "staffIds": [
+        "staff_jing",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_bait_worry__pied_piper",
+      "articleId": "art_evp_health_bait_worry",
+      "relatedEventId": "evp_health_bait_worry",
+      "poolEventId": "evp_health_bait_worry",
+      "policyId": "policy_pied_piper",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「吹笛人引鼠出城」",
+      "label": "笛聲一響鼠患快退，記得付錢",
+      "why": "吹笛人用笛聲與誘捕站帶走鼠群，不必在路邊放餌盒，居民的擔心少一些；但費用最高，也還是要公開說明。",
+      "tradeoff": "總價最貴（訂金加兩期尾款）；只處理「現在的鼠群」，廚餘桶沒蓋、鼠洞沒封，老鼠還會再來。尾款付不出來，吹笛人會罷工。",
+      "staffIds": [
+        "staff_hu",
+        "staff_jing"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_grease_trap__vendor_audit",
+      "articleId": "art_evp_drain_grease_trap",
+      "relatedEventId": "evp_drain_grease_trap",
+      "poolEventId": "evp_drain_grease_trap",
+      "policyId": "policy_vendor_audit",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「業者稽查與輔導」",
+      "label": "稽查、輔導、複查，一步一步來。",
+      "why": "階梯式輔導：宣導、限期改善、複查，截油槽清了溝才不會堵。",
+      "tradeoff": "稽查會增加業者成本與抱怨；沒有證據就先處分，容易不公平，也可能讓事情更亂。",
+      "staffIds": [
+        "staff_min",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_grease_trap__rat_edu",
+      "articleId": "art_evp_drain_grease_trap",
+      "relatedEventId": "evp_drain_grease_trap",
+      "poolEventId": "evp_drain_grease_trap",
+      "policyId": "policy_rat_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「防鼠衛教與環境教育」",
+      "label": "教大家把廚餘蓋好，鼠少一點。",
+      "why": "防鼠衛教與環境教育見效較慢、較弱但便宜：先讓大家知道怎麼做（油脂、廚餘）；下季才明顯，重複使用遞減。",
+      "tradeoff": "沒有同步防治與封洞，鼠還是會來；只靠教育見效很慢。",
+      "staffIds": [
+        "staff_jing",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_grease_trap__clear_drain",
+      "articleId": "art_evp_drain_grease_trap",
+      "relatedEventId": "evp_drain_grease_trap",
+      "poolEventId": "evp_drain_grease_trap",
+      "policyId": "policy_clear_drain",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「緊急清淤隊」",
+      "label": "清排水口，淹水風險往下掉。",
+      "why": "清溝只清現有的油塊，來源沒變。",
+      "tradeoff": "短期金錢支出高；工程車佔道可能短暫塞車。",
+      "staffIds": [
+        "staff_xiu",
+        "staff_yan"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_drain_grease_trap__town_broadcast",
+      "articleId": "art_evp_drain_grease_trap",
+      "relatedEventId": "evp_drain_grease_trap",
+      "poolEventId": "evp_drain_grease_trap",
+      "policyId": "policy_town_broadcast",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "verb": "用「公所公告廣播」",
+      "label": "先發公告安撫，後面再想辦法。",
+      "why": "公告呼籲別倒油，暫時有效，沒人查就鬆。",
+      "tradeoff": "治標：下季同樣的問題容易反彈；沒附證據的公告，可能讓人更不信。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_lunch_sample__food_safety",
+      "articleId": "art_evp_health_lunch_sample",
+      "relatedEventId": "evp_health_lunch_sample",
+      "poolEventId": "evp_health_lunch_sample",
+      "policyId": "policy_food_safety",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「食安檢驗與留樣」",
+      "label": "留樣、採樣、檢驗，出事時查得出原因。",
+      "why": "留樣冰箱、48 小時保存與通報流程補齊，出事時查得出原因。",
+      "tradeoff": "檢驗要等數天到兩週，結果出來前不能下結論；留樣冰箱與人力有成本，家長會希望更快知道。",
+      "staffIds": [
+        "staff_hu",
+        "staff_xin"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_lunch_sample__lunch_registry",
+      "articleId": "art_evp_health_lunch_sample",
+      "relatedEventId": "evp_health_lunch_sample",
+      "poolEventId": "evp_health_lunch_sample",
+      "policyId": "policy_lunch_registry",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「午餐食材登錄追溯」",
+      "label": "食材每天登錄，出事能快速追。",
+      "why": "午餐食材登錄追溯正對上本事件的「食安、學校午餐」，從成因處理，是對症藥。",
+      "tradeoff": "登錄要人力與系統；只是紀錄，不能代替檢驗。",
+      "staffIds": [
+        "staff_hu",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_lunch_sample__food_edu",
+      "articleId": "art_evp_health_lunch_sample",
+      "relatedEventId": "evp_health_lunch_sample",
+      "poolEventId": "evp_health_lunch_sample",
+      "policyId": "policy_food_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「食安宣導與家長說明會」",
+      "label": "說明保存與檢驗方式，家長比較放心。",
+      "why": "食安宣導與家長說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（食安、學校午餐）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不等於檢驗；有疑慮的食材還是要抽驗，不能只靠說明。",
+      "staffIds": [
+        "staff_hu",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_lunch_sample__town_broadcast",
+      "articleId": "art_evp_health_lunch_sample",
+      "relatedEventId": "evp_health_lunch_sample",
+      "poolEventId": "evp_health_lunch_sample",
+      "policyId": "policy_town_broadcast",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "verb": "用「公所公告廣播」",
+      "label": "先發公告安撫，後面再想辦法。",
+      "why": "公所公告廣播見效較慢、較弱但便宜：先讓大家知道怎麼做（食安、學校午餐）；下季才明顯，重複使用遞減。",
+      "tradeoff": "治標：下季同樣的問題容易反彈；沒附證據的公告，可能讓人更不信。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_class_upset__food_safety",
+      "articleId": "art_evp_health_class_upset",
+      "relatedEventId": "evp_health_class_upset",
+      "poolEventId": "evp_health_class_upset",
+      "policyId": "policy_food_safety",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「食安檢驗與留樣」",
+      "label": "留樣、採樣、檢驗，出事時查得出原因。",
+      "why": "依流程採樣、留樣檢驗並公開進度，調查不斷線，傳聞也退燒。",
+      "tradeoff": "檢驗要等數天到兩週，結果出來前不能下結論；留樣冰箱與人力有成本，家長會希望更快知道。",
+      "staffIds": [
+        "staff_hu",
+        "staff_xin"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_class_upset__lunch_registry",
+      "articleId": "art_evp_health_class_upset",
+      "relatedEventId": "evp_health_class_upset",
+      "poolEventId": "evp_health_class_upset",
+      "policyId": "policy_lunch_registry",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「午餐食材登錄追溯」",
+      "label": "食材每天登錄，出事能快速追。",
+      "why": "午餐食材登錄追溯正對上本事件的「食安、學校午餐」，從成因處理，是對症藥。",
+      "tradeoff": "登錄要人力與系統；只是紀錄，不能代替檢驗。",
+      "staffIds": [
+        "staff_hu",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_class_upset__food_edu",
+      "articleId": "art_evp_health_class_upset",
+      "relatedEventId": "evp_health_class_upset",
+      "poolEventId": "evp_health_class_upset",
+      "policyId": "policy_food_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「食安宣導與家長說明會」",
+      "label": "說明保存與檢驗方式，家長比較放心。",
+      "why": "食安宣導與家長說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（食安、學校午餐）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不等於檢驗；有疑慮的食材還是要抽驗，不能只靠說明。",
+      "staffIds": [
+        "staff_hu",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_class_upset__town_broadcast",
+      "articleId": "art_evp_health_class_upset",
+      "relatedEventId": "evp_health_class_upset",
+      "poolEventId": "evp_health_class_upset",
+      "policyId": "policy_town_broadcast",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "verb": "用「公所公告廣播」",
+      "label": "先發公告安撫，後面再想辦法。",
+      "why": "公告「調查中，請勿轉傳」，先穩住情緒，真相還沒出來。",
+      "tradeoff": "治標：下季同樣的問題容易反彈；沒附證據的公告，可能讓人更不信。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_lunch_supplier__vendor_audit",
+      "articleId": "art_evp_market_lunch_supplier",
+      "relatedEventId": "evp_market_lunch_supplier",
+      "poolEventId": "evp_market_lunch_supplier",
+      "policyId": "policy_vendor_audit",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「業者稽查與輔導」",
+      "label": "稽查、輔導、複查，一步一步來。",
+      "why": "原廠商因稽查缺失被終止合約；先到新廠商廚房稽查輔導、確認改善再上線，從源頭顧好交接期的午餐。",
+      "tradeoff": "稽查會增加業者成本與抱怨；沒有證據就先處分，容易不公平，也可能讓事情更亂。",
+      "staffIds": [
+        "staff_min",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_lunch_supplier__food_edu",
+      "articleId": "art_evp_market_lunch_supplier",
+      "relatedEventId": "evp_market_lunch_supplier",
+      "poolEventId": "evp_market_lunch_supplier",
+      "policyId": "policy_food_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「食安宣導與家長說明會」",
+      "label": "說明保存與檢驗方式，家長比較放心。",
+      "why": "食安宣導與家長說明會見效較慢、較弱但便宜：先讓大家知道怎麼做（食安、學校午餐）；下季才明顯，重複使用遞減。",
+      "tradeoff": "宣導不等於檢驗；有疑慮的食材還是要抽驗，不能只靠說明。",
+      "staffIds": [
+        "staff_hu",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_lunch_supplier__logistics_hub",
+      "articleId": "art_evp_market_lunch_supplier",
+      "relatedEventId": "evp_market_lunch_supplier",
+      "poolEventId": "evp_market_lunch_supplier",
+      "policyId": "policy_logistics_hub",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「臨時物流緩衝站」",
+      "label": "峽口設緩衝站，進貨不再遲到。",
+      "why": "備援車的路線與錯峰時段排好，孩子能準時吃到；但換約交接期的供餐品質，還是要靠稽查新廠商。",
+      "tradeoff": "要佔用一塊空地；短期設置成本高。",
+      "staffIds": [
+        "staff_an",
+        "staff_shi"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_market_lunch_supplier__cold_chain",
+      "articleId": "art_evp_market_lunch_supplier",
+      "relatedEventId": "evp_market_lunch_supplier",
+      "poolEventId": "evp_market_lunch_supplier",
+      "policyId": "policy_cold_chain",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「冷鏈冷藏車」",
+      "label": "冷藏車上路，夏天的菜也新鮮。",
+      "why": "冷藏車確保餐點保溫保冷。",
+      "tradeoff": "設備貴又耗電；冷藏車也怕卡在峽口，不解決塞車本身；進施工單線還會更塞。",
+      "staffIds": [
+        "staff_tian",
+        "staff_tong"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_rat_swarm__pest_control",
+      "articleId": "art_evp_health_rat_swarm",
+      "relatedEventId": "evp_health_rat_swarm",
+      "poolEventId": "evp_health_rat_swarm",
+      "policyId": "policy_pest_control",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "verb": "用「鼠害防治與廚餘管理」",
+      "label": "廚餘加蓋、封洞、合格餌盒，一起做才有效。",
+      "why": "廚餘加蓋、封洞、定點設餌並公開位置，從食物與躲藏處下手；比吹笛人慢一點，但便宜，也能防止再回來。",
+      "tradeoff": "只封一處、不管食物來源，鼠會「趕到隔壁」；鼠餌盒要定期回收，並公開說明，否則寵物與孩童的安全疑慮會升高。",
+      "staffIds": [
+        "staff_jing",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_rat_swarm__pied_piper",
+      "articleId": "art_evp_health_rat_swarm",
+      "relatedEventId": "evp_health_rat_swarm",
+      "poolEventId": "evp_health_rat_swarm",
+      "policyId": "policy_pied_piper",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「吹笛人引鼠出城」",
+      "label": "笛聲一響鼠患快退，記得付錢",
+      "why": "笛聲把被大雨趕出來的鼠群集中引進誘捕站，當季最快見效；記得付尾款，也要處理廚餘與鼠洞。",
+      "tradeoff": "總價最貴（訂金加兩期尾款）；只處理「現在的鼠群」，廚餘桶沒蓋、鼠洞沒封，老鼠還會再來。尾款付不出來，吹笛人會罷工。",
+      "staffIds": [
+        "staff_hu",
+        "staff_jing"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_rat_swarm__rat_edu",
+      "articleId": "art_evp_health_rat_swarm",
+      "relatedEventId": "evp_health_rat_swarm",
+      "poolEventId": "evp_health_rat_swarm",
+      "policyId": "policy_rat_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「防鼠衛教與環境教育」",
+      "label": "教大家把廚餘蓋好，鼠少一點。",
+      "why": "防鼠衛教與環境教育見效較慢、較弱但便宜：先讓大家知道怎麼做（鼠患、鼠群竄出）；下季才明顯，重複使用遞減。",
+      "tradeoff": "沒有同步防治與封洞，鼠還是會來；只靠教育見效很慢。",
+      "staffIds": [
+        "staff_jing",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_health_rat_swarm__rat_pro",
+      "articleId": "art_evp_health_rat_swarm",
+      "relatedEventId": "evp_health_rat_swarm",
+      "poolEventId": "evp_health_rat_swarm",
+      "policyId": "policy_rat_pro",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「社區鼠類偵防」",
+      "label": "專人勘查鼠跡，提出改善建議。",
+      "why": "社區鼠類偵防能幫上一點（鼠患），但不是主因；要搭配對症卡效果才完整。",
+      "tradeoff": "要有申請與配合才有用；偵防員人數有限，要排優先順序。",
+      "staffIds": [
+        "staff_hu",
+        "staff_jing"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_stray_dogs__animal_patrol",
+      "articleId": "art_evp_safety_stray_dogs",
+      "relatedEventId": "evp_safety_stray_dogs",
+      "poolEventId": "evp_safety_stray_dogs",
+      "policyId": "policy_animal_patrol",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "verb": "用「動保志工巡查」",
+      "label": "志工夜巡，安撫狗、勸導亂餵。",
+      "why": "動保志工夜巡餵食點、安撫與通報，追車和驚嚇馬上變少；需要排班，也要搭配收容結紮。",
+      "tradeoff": "志工人力會疲乏，要排班與訓練；只巡查不處理數量，問題會慢慢回來。",
+      "staffIds": [
+        "staff_nuan",
+        "staff_an"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_stray_dogs__stray_dog_tnr",
+      "articleId": "art_evp_safety_stray_dogs",
+      "relatedEventId": "evp_safety_stray_dogs",
+      "poolEventId": "evp_safety_stray_dogs",
+      "policyId": "policy_stray_dog_tnr",
+      "verdict": "對症",
+      "effect": "cure",
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "verb": "用「流浪犬 TNR 與收容」",
+      "label": "抓、結紮、放回，狗群慢慢變少",
+      "why": "捕捉、結紮、放回並送養，狗群不再一直變多；見效要一兩季，但最長久。",
+      "tradeoff": "見效要一到兩季；收容空間與獸醫人力有限，需要長期編預算；要有人持續追蹤。",
+      "staffIds": [
+        "staff_nuan",
+        "staff_hu"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_stray_dogs__pet_edu",
+      "articleId": "art_evp_safety_stray_dogs",
+      "relatedEventId": "evp_safety_stray_dogs",
+      "poolEventId": "evp_safety_stray_dogs",
+      "policyId": "policy_pet_edu",
+      "verdict": "搭配",
+      "effect": "assist",
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "verb": "用「飼主責任與不亂餵宣導」",
+      "label": "晶片、絕育、不亂餵，大家一起做。",
+      "why": "宣導不棄養、不亂餵、垃圾不落地；便宜、見效慢，下季才看得出來。",
+      "tradeoff": "宣導不能讓街上的狗變少；要搭配收容絕育與志工巡查。",
+      "staffIds": [
+        "staff_nuan",
+        "staff_min"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    },
+    {
+      "id": "act_evp_safety_stray_dogs__town_broadcast",
+      "articleId": "art_evp_safety_stray_dogs",
+      "relatedEventId": "evp_safety_stray_dogs",
+      "poolEventId": "evp_safety_stray_dogs",
+      "policyId": "policy_town_broadcast",
+      "verdict": "治標",
+      "effect": "palliative",
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "verb": "用「公所公告廣播」",
+      "label": "先發公告安撫，後面再想辦法。",
+      "why": "公告「晚上請結伴、別靠近狗群」，先安撫居民；狗群還在。",
+      "tradeoff": "治標：下季同樣的問題容易反彈；沒附證據的公告，可能讓人更不信。",
+      "staffIds": [
+        "staff_min",
+        "staff_cheng"
+      ],
+      "voiceIds": [],
+      "autoFromMap": true,
+      "conditional": false
+    }
+  ],
+  "complaintBox": {
+    "title": "民怨榜",
+    "source": "G.DATA.complaints",
+    "deepestFrom": "complaints.season.deepestAtStart",
+    "note": "側欄顯示六個領域民怨條與「民怨最深處」；文字模板見 complaints.display。"
+  }
+}

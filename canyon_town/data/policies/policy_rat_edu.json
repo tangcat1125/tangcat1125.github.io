@@ -1,0 +1,163 @@
+{
+  "id": "policy_rat_edu",
+  "name": "防鼠衛教與環境教育",
+  "cost": 1,
+  "blurb": "教居民與攤商廚餘加蓋、收市清殘渣、不亂餵食，並公開餌盒位置。效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。",
+  "solves": [],
+  "rule_patches": {
+    "ratEducation": 1
+  },
+  "deltas": {
+    "money": -20,
+    "happiness": 1
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "沒有同步防治與封洞，鼠還是會來；只靠教育見效很慢。",
+  "preview": "預估：金錢 -20、幸福度 +1。",
+  "costPoints": 1,
+  "tags": [
+    "資訊",
+    "溝通",
+    "宣導"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_rat_edu.webp",
+    "icon": "assets/sprites/cards/icons/icon_rat_edu.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🐀",
+    "accent": "#9e9d24",
+    "fxHint": "fx_rat_edu_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "資訊溝通（宣導教育）",
+    "rarity": "常見",
+    "titleShort": "防鼠衛教",
+    "costBadge": "1 點",
+    "shopLine": "教大家把廚餘蓋好，鼠少一點。",
+    "effectLine": "居民與攤商做得比較到位；鼠跡慢慢減少。",
+    "flavor": "蓋上蓋子，是最便宜的防鼠。",
+    "learnPoint": "這張牌教你：預防教育要搭配防治行動。",
+    "bullets": [
+      "輔助：鼠患",
+      "金錢 -20",
+      "下季見效",
+      "效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -20,
+        "text": "金錢 -20"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 1,
+        "text": "幸福度 +1"
+      }
+    ],
+    "tradeoffLine": "沒有同步防治與封洞，鼠還是會來；只靠教育見效很慢。"
+  },
+  "shopBlurb": "教大家把廚餘蓋好，鼠少一點。",
+  "shopLine": "1 點｜教大家把廚餘蓋好，鼠少一點。",
+  "executeId": "exec_rat_edu",
+  "fx": {
+    "street": [
+      "fx_rat_edu_a",
+      "fx_rat_edu_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 1,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 0
+      },
+      "flowKind": "timed",
+      "durationSeasons": 2,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "health": -5,
+        "market": -3
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 1,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 1,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "weak",
+      "summary": "人流+1（2 季）；衛生民怨-5、市集民怨-3"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_jing",
+      "staff_hu"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.2,
+      "health": 0.6,
+      "engineering": 0.2,
+      "economy": 0.2,
+      "communication": 0.6
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "health",
+    "market"
+  ],
+  "complaintDelta": {
+    "health": -5,
+    "market": -3
+  },
+  "complaintRebound": {},
+  "complaintNote": "沒有同步防治與封洞，鼠還是會來；只靠教育見效很慢。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_drain_grease_trap",
+      "evp_health_bait_worry",
+      "evp_health_rat_swarm",
+      "evp_market_rat_bin",
+      "evp_safety_park_burrow"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "info",
+  "typeLabel": "資訊溝通（宣導教育）",
+  "realWorldAnalog": "環境衛生教育：教居民與攤商廚餘加蓋、不亂餵食；便宜、見效慢。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": true,
+  "effectDelayCycles": 1,
+  "slowNote": "效果較慢、較弱但便宜（下季見效；同一事件重複使用遞減）",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

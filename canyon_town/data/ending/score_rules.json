@@ -1,0 +1,72 @@
+{
+  "id": "score_rules",
+  "version": 1,
+  "status": "draft",
+  "note": "Stage H 六軸能力分數（暫用版，待咪咪審公式、呆呆定義六軸文字）。每軸＝各指標換算 0–100 後依 weight 加權平均（沒有資料的指標不計入分母；整軸都沒資料＝noDataScore）。指標換算：score = clamp((value − lo) ÷ (hi − lo), 0, 1) × 100。指標由 G.BehaviorLog 整局紀錄計算，定義見 docs/STAGE_H.md。",
+  "noDataScore": 0,
+  "resultValue": { "cure": 1, "assist": 0.7, "palliative": 0.4, "none": 0, "backfire": 0 },
+  "axes": [
+    {
+      "id": "reading", "label": "讀報理解", "short": "讀報",
+      "desc": "有沒有把快報讀完、展開重點、花時間讀，而不是急著結報。",
+      "components": [
+        { "metric": "avgScrollPct", "label": "平均捲動%", "weight": 0.4, "lo": 40, "hi": 100 },
+        { "metric": "avgExpandedRatio", "label": "展開篇數比例", "weight": 0.3, "lo": 0, "hi": 0.8 },
+        { "metric": "avgReadSec", "label": "平均讀報秒數", "weight": 0.2, "lo": 15, "hi": 120 },
+        { "metric": "notEarlyRate", "label": "未提早結報比例", "weight": 0.1, "lo": 0, "hi": 1 }
+      ]
+    },
+    {
+      "id": "evidence", "label": "證據判斷", "short": "證據",
+      "desc": "蒐集真線索、分辨傳聞，並用線索支持決策。",
+      "components": [
+        { "metric": "collectRate", "label": "真線索蒐集率", "weight": 0.4, "lo": 0, "hi": 0.8 },
+        { "metric": "trueShare", "label": "點選內容中真線索比例", "weight": 0.3, "lo": 0.3, "hi": 1 },
+        { "metric": "clueBackedRate", "label": "有線索支持的選卡比例", "weight": 0.3, "lo": 0, "hi": 0.8 }
+      ]
+    },
+    {
+      "id": "decision", "label": "對症決策", "short": "對症",
+      "desc": "選卡是否對症（對症＞輔助＞治標＞無關／反效果），少放著問題不管。",
+      "components": [
+        { "metric": "cureScore", "label": "選卡判定平均（resultValue）", "weight": 0.6, "lo": 0, "hi": 0.8 },
+        { "metric": "backfireFreeRate", "label": "沒有反效果的比例", "weight": 0.2, "lo": 0.5, "hi": 1 },
+        { "metric": "notIgnoreRate", "label": "沒有忽略的季比例", "weight": 0.2, "lo": 0, "hi": 1 }
+      ]
+    },
+    {
+      "id": "finance", "label": "財政管理", "short": "財政",
+      "desc": "金庫有沒有變多、季季有盈餘、點數用得恰當。",
+      "components": [
+        { "metric": "moneyRatio", "label": "最終金錢÷開局金錢", "weight": 0.5, "lo": 0.5, "hi": 2.5 },
+        { "metric": "positiveNetRate", "label": "淨利為正的季比例", "weight": 0.3, "lo": 0, "hi": 1 },
+        { "metric": "pointsUseRate", "label": "點數使用率", "weight": 0.2, "lo": 0.3, "hi": 1 }
+      ]
+    },
+    {
+      "id": "welfare", "label": "民生照顧", "short": "民生",
+      "desc": "民怨壓得低、人車流量好、店家開得住。",
+      "components": [
+        { "metric": "complaintCare", "label": "100 − 平均民怨", "weight": 0.5, "lo": 20, "hi": 80 },
+        { "metric": "avgFlow", "label": "平均流量", "weight": 0.3, "lo": 20, "hi": 80 },
+        { "metric": "shopsOpenRatio", "label": "平均營業店家比例", "weight": 0.2, "lo": 0.5, "hi": 1 }
+      ]
+    },
+    {
+      "id": "teamwork", "label": "團隊協作／採納建議", "short": "協作",
+      "desc": "參考公所貓貓建議、派對的人去執行。",
+      "components": [
+        { "metric": "adoptRate", "label": "選卡含推薦卡的季比例", "weight": 0.6, "lo": 0, "hi": 0.8 },
+        { "metric": "delegateRate", "label": "有委任／派員的季比例", "weight": 0.4, "lo": 0, "hi": 0.8 }
+      ]
+    }
+  ],
+  "overall": { "method": "mean", "note": "總分＝六軸平均（四捨五入）" },
+  "grades": [
+    { "min": 90, "id": "S", "label": "特優" },
+    { "min": 80, "id": "A", "label": "優等" },
+    { "min": 70, "id": "B", "label": "甲等" },
+    { "min": 60, "id": "C", "label": "乙等" },
+    { "min": 0, "id": "D", "label": "丙等" }
+  ]
+}

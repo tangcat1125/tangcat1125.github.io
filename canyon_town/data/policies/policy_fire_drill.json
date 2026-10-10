@@ -1,0 +1,157 @@
+{
+  "id": "policy_fire_drill",
+  "name": "消防宣導與防火演練",
+  "cost": 1,
+  "blurb": "消防隊到社區做防火宣導與演練，教用電安全、滅火器使用與逃生路線。效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。",
+  "solves": [],
+  "rule_patches": {
+    "fireEducation": 1
+  },
+  "deltas": {
+    "money": -20,
+    "happiness": 2
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "便宜但只能提高警覺，不能把舊電線變新；要定期辦，居民才不會忘。",
+  "preview": "預估：金錢 -20、幸福度 +2。",
+  "costPoints": 1,
+  "tags": [
+    "資訊",
+    "溝通",
+    "宣導"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_fire_drill.webp",
+    "icon": "assets/sprites/cards/icons/icon_fire_drill.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🧯",
+    "accent": "#3aa0d9",
+    "fxHint": "fx_fire_drill_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "資訊溝通（宣導教育）",
+    "rarity": "常見",
+    "titleShort": "防火宣導",
+    "costBadge": "1 點",
+    "shopLine": "1 點小成本，教大家怎麼防火。",
+    "effectLine": "居民更會檢查電線、知道怎麼逃；效果慢慢累積。",
+    "flavor": "知道怎麼跑，比知道怎麼救更重要。",
+    "learnPoint": "這張牌教你：宣導教育便宜、見效慢，適合搭配硬建設一起用。",
+    "bullets": [
+      "輔助：火災、救援",
+      "金錢 -20",
+      "下季見效較明顯",
+      "效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -20,
+        "text": "金錢 -20"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 2,
+        "text": "幸福度 +2"
+      }
+    ],
+    "tradeoffLine": "便宜但只能提高警覺，不能把舊電線變新；要定期辦，居民才不會忘。"
+  },
+  "shopBlurb": "1 點小成本，教大家怎麼防火。",
+  "shopLine": "1 點｜1 點小成本，教大家怎麼防火。",
+  "executeId": "exec_fire_drill",
+  "fx": {
+    "street": [
+      "fx_fire_drill_a",
+      "fx_fire_drill_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 1
+      },
+      "flowKind": "timed",
+      "durationSeasons": 2,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -6
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 1,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 1,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "weak",
+      "summary": "治安感+1（2 季）；治安民怨-6"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_yan",
+      "staff_min"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.6,
+      "health": 0.2,
+      "engineering": 0.2,
+      "economy": 0.2,
+      "communication": 0.7
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety"
+  ],
+  "complaintDelta": {
+    "safety": -6
+  },
+  "complaintRebound": {},
+  "complaintNote": "便宜但只能提高警覺，不能把舊電線變新；要定期辦，居民才不會忘。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_safety_fire",
+      "evp_safety_rescue_blocked"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "info",
+  "typeLabel": "資訊溝通（宣導教育）",
+  "realWorldAnalog": "社區防災教育：消防演練與用電安全宣導；便宜、見效慢、效果有限。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": true,
+  "effectDelayCycles": 1,
+  "slowNote": "效果較慢、較弱但便宜（下季見效；同一事件重複使用遞減）",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

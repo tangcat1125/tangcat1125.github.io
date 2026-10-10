@@ -1,0 +1,39 @@
+{
+  "id": "policy_fx_effect_schema",
+  "version": 1,
+  "note": "policy.fx.effect 欄位說明與數值範圍（tools/test_card_fx.js 依此檢查）。fx.street／fx.hud／fx.durationMs 仍是執行動畫用的特效 id（沿用舊格式）。",
+  "fields": {
+    "flows": "foot/vehicle/tourist/security 的持續加成；必須與 data/economy/card_recurring.json 同卡數值完全相同（鏡像，引擎只套 card_recurring 一次）",
+    "flowKind": "permanent｜timed｜one-shot（同 card_recurring.kind）",
+    "durationSeasons": "同 card_recurring.durationSeasons（99＝永久，0＝不給持續加成）",
+    "delaySeasons": "流量加成延遲季數；card_recurring 規則為「buy 當季起算」→ 一律 0",
+    "complaints": "各領域民怨變化；必須等於 policy.complaintDelta（complaint.js 讀的就是它）",
+    "complaintRebound": "等於 policy.complaintRebound",
+    "complaintDelaySeasons": "等於 policy.effectDelayCycles（宣導教育＝1：下季才明顯）",
+    "shops.revenuePct": "店家營收直接加成（×(1+Σ)，與流量→客流指數是不同管道）",
+    "shops.healthBonus": "執行當季所有開張店健康度一次性加成",
+    "shops.reopenMoneyDelta": "重新開張金額的增減（負＝便宜）",
+    "shops.durationSeasons": "店家效果持續季數（99＝永久）",
+    "shops.delaySeasons": "店家效果延遲季數（slow 卡＝1）",
+    "strength": "weak（宣導／資訊／治標）｜normal｜strong（3 點）",
+    "summary": "一句話摘要，給執行動畫／建議區預覽"
+  },
+  "ranges": {
+    "flowPerCardMax": 10,
+    "flowPerCardMaxNote": "對齊 card_recurring 規則「同方向加成建議上限 +10」（模擬建議 recCap 18 是多張卡合計上限，不是單卡）",
+    "flowMin": -3,
+    "slowFlowMax": 3,
+    "slowDurationMax": 3,
+    "complaintMin": -30,
+    "complaintMaxSideEffect": 5,
+    "slowComplaintMin": -6,
+    "revenuePctMin": -0.05,
+    "revenuePctMax": 0.15,
+    "revenuePctPermanentMax": 0.05,
+    "revenuePctSlowMax": 0.05,
+    "revenuePctTotalCap": 0.15,
+    "revenuePctTotalCapNote": "引擎建議：所有卡 revenuePct 合計截斷在 +15%（同 one-shot 消費券上限）",
+    "healthBonusMaxRef": "economy_rules.shop.healthUp（10）",
+    "reopenMoneyDeltaMinRef": "−economy_rules.shop.reopen.money ÷ 2（−20）"
+  }
+}

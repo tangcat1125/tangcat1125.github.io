@@ -1,0 +1,8 @@
+[
+  {"id":"mei","name":"阿美","gender":"女","color":"#f472b6","x":120,"speed":0.6,"role":"攤商","side":"left"},
+  {"id":"bo","name":"阿博","gender":"男","color":"#60a5fa","x":320,"speed":0.45,"role":"水道工","side":"left"},
+  {"id":"lin","name":"小林","gender":"男","color":"#fbbf24","x":520,"speed":0.7,"role":"報社實習","side":"left"},
+  {"id":"zhen","name":"阿珍","gender":"女","color":"#fb7185","speed":0.5,"role":"雜貨店主","side":"right","spriteAlias":"mei"},
+  {"id":"kai","name":"阿凱","gender":"男","color":"#34d399","speed":0.65,"role":"遊客","side":"right","spriteAlias":"lin"},
+  {"id":"wang","name":"里長王","gender":"男","color":"#a78bfa","speed":0.4,"role":"里長","side":"right","spriteAlias":"bo"}
+]

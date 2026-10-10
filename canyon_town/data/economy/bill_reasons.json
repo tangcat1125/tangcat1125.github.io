@@ -1,0 +1,197 @@
+{
+  "id": "economy_bill_reasons_season_01",
+  "seasonId": "season_01",
+  "version": 1,
+  "vars": {
+    "domain": "領域名（2 字，如 排水）",
+    "card": "卡片 titleShort（≤5 字）",
+    "event": "事件名前 6 字",
+    "n": "數字（金額／流量點／季數／張數）",
+    "flow": "流量名（人流／車流／遊客／治安）",
+    "shop": "店名（≤5 字）",
+    "p": "百分比數字（不含 %）",
+    "amount": "無關卡花費金額（整數，不含「元」，樣本 3 位數）"
+  },
+  "lengthRule": "一般句 ≤15 字（以變數代入樣本長度計：domain 2、card 5、event 6、n 2、flow 2、shop 5、p 2、amount 3）；因果句 ≤30 字。",
+  "categories": {
+    "flowIncome": {
+      "label": "流量收入",
+      "lines": [
+        "店家稅收，客人帶來的",
+        "{n}家店開張，稅收進帳",
+        "{flow}回升，店家賺錢",
+        "人氣旺，稅收增加",
+        "{shop}生意好，稅收多"
+      ]
+    },
+    "subsidyBase": {
+      "label": "基本補助",
+      "lines": [
+        "基本補助：開局保底",
+        "保底補助，無條件入帳",
+        "基本補助 +{n}，穩住開局",
+        "前期保底，先撐住城市"
+      ]
+    },
+    "subsidyPerformance": {
+      "label": "績效補助",
+      "lines": [
+        "績效補助：有動手才有",
+        "這季有行動，績效補助到",
+        "績效補助 +{n}，處理有成",
+        "打了牌，績效補助入帳"
+      ]
+    },
+    "subsidy": {
+      "label": "補助",
+      "lines": [
+        "里長補助入帳",
+        "開局保底補助",
+        "表現補助：有動手",
+        "補助期內的支持款"
+      ]
+    },
+    "cureReward": {
+      "label": "對症獎勵",
+      "lines": [
+        "{domain}對症獎勵",
+        "{event}解決，獎勵入帳",
+        "{card}用對了，有獎",
+        "對症成功，連擊加成"
+      ]
+    },
+    "palliative": {
+      "label": "只治標",
+      "lines": [
+        "只治標，獎勵減少",
+        "{event}暫緩，小獎勵",
+        "{card}治標，只拿一點"
+      ]
+    },
+    "backfire": {
+      "label": "反效果",
+      "lines": [
+        "{card}反效果，扣錢",
+        "{event}更糟，被罰",
+        "用錯卡，損失擴大",
+        "反效果，要付代價"
+      ]
+    },
+    "ignorePenalty": {
+      "label": "忽略罰款",
+      "lines": [
+        "{event}沒處理，罰款",
+        "忽略{domain}，被扣錢",
+        "拖著不管，扣款",
+        "問題累積，罰款"
+      ]
+    },
+    "upkeep": {
+      "label": "維運",
+      "lines": [
+        "市政日常維運",
+        "維運：路燈、清掃",
+        "公所維運費用",
+        "每季固定維運"
+      ]
+    },
+    "policyCost": {
+      "label": "政策支出",
+      "lines": [
+        "政策支出：{card}",
+        "買了{n}張政策卡",
+        "{card}的執行費",
+        "政策預算支出"
+      ]
+    },
+    "recurring": {
+      "label": "持續收益",
+      "lines": [
+        "{card}帶來{flow}+{n}",
+        "{card}持續見效",
+        "持續型政策加成",
+        "{flow}穩定提升"
+      ]
+    },
+    "irrelevantCard": {
+      "label": "無關卡支出",
+      "lines": [
+        "無關卡花了{amount}元",
+        "買錯方向，白花{amount}元",
+        "{amount}元花在無關卡上",
+        "沒對症的卡用掉{amount}元"
+      ],
+      "note": "本季買的卡對所有進行中事件都沒有回應（無 cure／assist／palliative／backfire）時，把這些卡的卡費加總代入 {amount}；只歸因、不退費（咪咪 10/6 決定：提示版、不退費）。決策欄提示句在 G.DATA.advisorPanel.irrelevantCardHint。"
+    },
+    "netGain": {
+      "label": "淨利賺",
+      "lines": [
+        "本季賺錢，餘額增加",
+        "淨利為正，做得好",
+        "賺到了，繼續保持",
+        "市庫變豐"
+      ]
+    },
+    "netLoss": {
+      "label": "淨利賠",
+      "lines": [
+        "本季虧損，要留意",
+        "支出大於收入",
+        "淨利為負，想想原因",
+        "財庫縮水了"
+      ]
+    },
+    "netEven": {
+      "label": "淨利持平",
+      "lines": [
+        "收支剛好打平",
+        "不賺不賠，原地踏步",
+        "收入約等於支出"
+      ]
+    }
+  },
+  "blame": {
+    "label": "最大拖累因果句（事件→流量→店家）",
+    "templates": [
+      "{event}→{flow}−{n}→{shop}客流少{p}%",
+      "{event}沒處理，{flow}掉{n}，{shop}少{p}%客人",
+      "{flow}−{n}（{event}）讓{shop}少{p}%客人",
+      "{event}拖累{flow}，{shop}客流−{p}%",
+      "{shop}生意差：{event}使{flow}−{n}"
+    ],
+    "note": "每季挑「流量損失最大」的事件與受影響最大的店家填入；沒有拖累時不顯示。"
+  },
+  "boost": {
+    "label": "最大助力因果句（卡→流量→店家）",
+    "templates": [
+      "{card}→{flow}+{n}→{shop}客流多{p}%",
+      "{card}見效，{flow}+{n}，{shop}多{p}%客人",
+      "{event}解決，{flow}回升，{shop}多{p}%"
+    ]
+  },
+  "shopMessages": {
+    "warning": [
+      "{shop}快撐不住：{flow}−{n}",
+      "{shop}亮黃牌，客流只剩{p}%",
+      "黃牌警示：{shop}再撐{n}季",
+      "{shop}生意差，快處理{event}"
+    ],
+    "closed": [
+      "{shop}歇業了，街上變暗",
+      "{shop}貼上紅條，暫停營業",
+      "{shop}撐不下去，先休店",
+      "{shop}關門，{flow}又掉{n}"
+    ],
+    "reopened": [
+      "{shop}重新開張，招牌亮了",
+      "{shop}回來了！歡迎光臨",
+      "{shop}重開，客流回到{p}%",
+      "{shop}重開，{flow}+{n}"
+    ],
+    "reopenHint": [
+      "客流指數 ≥ 0.40 才能重開，先把{flow}拉起來。",
+      "重開要 1 點＋40 金，條件是客流有 0.40。",
+      "先解決{event}，店家才有客人。"
+    ]
+  }
+}

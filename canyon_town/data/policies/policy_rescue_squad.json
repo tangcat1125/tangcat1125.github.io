@@ -1,0 +1,202 @@
+{
+  "id": "policy_rescue_squad",
+  "name": "緊急救援小隊",
+  "cost": 3,
+  "blurb": "組小型救援車隊，備好水車、推車與擔架，窄巷與封路也進得去。",
+  "solves": [],
+  "rule_patches": {
+    "rescueReady": 2,
+    "narrowAlleyAccess": 1
+  },
+  "deltas": {
+    "money": -95,
+    "profit": 0,
+    "happiness": 7
+  },
+  "logistics": {
+    "boostVehicles": [
+      "works_truck"
+    ],
+    "metricBoost": {
+      "onTimeRate": 0.04
+    }
+  },
+  "sideEffect": "平時閒置成本高；面對謠言或假警報出動，反而製造恐慌。",
+  "preview": "預估：金錢 -95、幸福度 +7；救援動線與窄巷火警大幅改善。",
+  "costPoints": 3,
+  "tags": [
+    "安全",
+    "救援",
+    "應變"
+  ],
+  "counters": [
+    "rescue_access",
+    "narrow_lane"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_rescue_squad.webp",
+    "icon": "assets/sprites/cards/icons/icon_rescue_squad.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🚑",
+    "accent": "#e35d5d",
+    "fxHint": "fx_rescue_squad"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "安全／救援",
+    "rarity": "稀有",
+    "titleShort": "救援小隊",
+    "costBadge": "3 點",
+    "shopLine": "救援小隊待命，窄巷與封路也進得去。",
+    "effectLine": "小型水車與推車隊；救護車受阻、窄巷火警都有解。",
+    "flavor": "路再窄，也要有人進得去。",
+    "learnPoint": "這張牌教你：應變型政策要確認真有事，別為謠言出動。",
+    "bullets": [
+      "對症：救護受阻、火警",
+      "幸福度 +7",
+      "假警報會嚇人"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -95,
+        "text": "金錢 -95"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 7,
+        "text": "幸福度 +7"
+      },
+      {
+        "key": "onTimeRate",
+        "label": "準點率",
+        "value": 0.04,
+        "text": "準點率 +4%"
+      }
+    ],
+    "tradeoffLine": "平時閒置成本高；面對謠言或假警報出動，反而製造恐慌。"
+  },
+  "shopBlurb": "救援小隊待命，窄巷與封路也進得去。",
+  "shopLine": "3 點｜救援小隊待命，窄巷與封路也進得去。",
+  "executeId": "exec_rescue_squad",
+  "fx": {
+    "street": [
+      "fx_rescue_squad",
+      "fx_siren_light"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 2200,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 3
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -24,
+        "traffic": -4,
+        "drain": -4,
+        "health": -3
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "strong",
+      "summary": "治安感+3（永久）；治安民怨-24、排水民怨-4"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_yan",
+      "staff_an"
+    ],
+    "radarWeights": {
+      "logistics": 0.4,
+      "safety": 0.9,
+      "health": 0.4,
+      "engineering": 0.5,
+      "economy": 0.1,
+      "communication": 0.3
+    }
+  },
+  "actionOptionIds": [
+    "act_rescue_squad"
+  ],
+  "fromArticleIds": [
+    "art_evp_safety_rescue_blocked",
+    "art_evp_safety_fire"
+  ],
+  "verdictByOption": {
+    "act_rescue_squad": "對症"
+  },
+  "complaintCounters": [
+    "safety",
+    "traffic",
+    "drain",
+    "health"
+  ],
+  "complaintDelta": {
+    "safety": -24,
+    "traffic": -4,
+    "drain": -4,
+    "health": -3
+  },
+  "complaintRebound": {},
+  "complaintNote": "對症救援安全；順帶讓積水與交通的風險降一點。",
+  "eventEffects": {
+    "cure": [
+      "evp_safety_rescue_blocked"
+    ],
+    "assist": [
+      "evp_drain_storm",
+      "evp_logi_landslide",
+      "evp_safety_cliff",
+      "evp_safety_fire",
+      "evp_traffic_paralysis"
+    ],
+    "palliative": [],
+    "backfire": [
+      "evp_health_fake_alert"
+    ]
+  },
+  "policyType": "hard",
+  "typeLabel": "硬建設／公共服務",
+  "realWorldAnalog": "緊急應變服務：預置救援人力與小型裝備，縮短到場時間。",
+  "topicCounters": [
+    "rescue_access",
+    "narrow_lane"
+  ],
+  "legacyCounters": [
+    "disaster_storm_flood",
+    "disaster_crash_gorge"
+  ],
+  "cureEventIds": [
+    "evp_safety_rescue_blocked"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_safety_rescue_blocked"
+  ],
+  "solvesPoolConditional": []
+}

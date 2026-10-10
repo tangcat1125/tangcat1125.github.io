@@ -1,0 +1,172 @@
+{
+  "id": "policy_kitchen_sorting",
+  "name": "廚餘分流收運",
+  "cost": 3,
+  "blurb": "廚餘獨立收運、轉做堆肥，要求攤商與家戶分開放；桶內殘渣少了，鼠就少了。",
+  "solves": [],
+  "rule_patches": {
+    "kitchen_sortingProgram": 1
+  },
+  "deltas": {
+    "money": -70,
+    "happiness": 2
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "收運要增加車次與桶位；分類不確實會被退回，要宣導與稽查配合。",
+  "preview": "預估：金錢 -70、幸福度 +2。",
+  "costPoints": 3,
+  "tags": [
+    "環保",
+    "工程",
+    "清運"
+  ],
+  "counters": [
+    "kitchen_waste"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_kitchen_sorting.webp",
+    "icon": "assets/sprites/cards/icons/icon_kitchen_sorting.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "♻️",
+    "accent": "#689f38",
+    "fxHint": "fx_kitchen_sorting_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "硬建設／公共服務",
+    "rarity": "進階",
+    "titleShort": "廚餘分流",
+    "costBadge": "3 點",
+    "shopLine": "廚餘獨立收運，轉做堆肥。",
+    "effectLine": "市集後巷更乾淨；食物殘渣不再成為鼠的免費餐廳。",
+    "flavor": "垃圾分開，問題才分得開。",
+    "learnPoint": "這張牌教你：公共服務從「分流」著手，解決源頭。",
+    "bullets": [
+      "對症：廚餘、鼠患",
+      "金錢 -70",
+      "增加清運車次",
+      "需分類配合"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -70,
+        "text": "金錢 -70"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 2,
+        "text": "幸福度 +2"
+      }
+    ],
+    "tradeoffLine": "收運要增加車次與桶位；分類不確實會被退回，要宣導與稽查配合。"
+  },
+  "shopBlurb": "廚餘獨立收運，轉做堆肥。",
+  "shopLine": "3 點｜廚餘獨立收運，轉做堆肥。",
+  "executeId": "exec_kitchen_sorting",
+  "fx": {
+    "street": [
+      "fx_kitchen_sorting_a",
+      "fx_kitchen_sorting_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 1,
+        "vehicle": 0,
+        "tourist": 1,
+        "security": 0
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "health": -10,
+        "market": -4
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "strong",
+      "summary": "人流+1、遊客+1（永久）；衛生民怨-10、市集民怨-4"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_jing",
+      "staff_hu"
+    ],
+    "radarWeights": {
+      "logistics": 0.4,
+      "safety": 0.2,
+      "health": 0.5,
+      "engineering": 0.5,
+      "economy": 0.2,
+      "communication": 0.3
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "health",
+    "market"
+  ],
+  "complaintDelta": {
+    "health": -10,
+    "market": -4
+  },
+  "complaintRebound": {},
+  "complaintNote": "收運要增加車次與桶位；分類不確實會被退回，要宣導與稽查配合。",
+  "eventEffects": {
+    "cure": [
+      "evp_market_rat_bin"
+    ],
+    "assist": [
+      "evp_drain_grease_trap",
+      "evp_health_rat_swarm",
+      "evp_safety_park_burrow",
+      "evp_safety_stray_dogs"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "hard",
+  "typeLabel": "硬建設／公共服務",
+  "realWorldAnalog": "資源回收服務：廚餘獨立收運，轉做堆肥，減少桶內殘渣與鼠跡。",
+  "topicCounters": [
+    "kitchen_waste"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_market_rat_bin"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_market_rat_bin"
+  ],
+  "solvesPoolConditional": []
+}

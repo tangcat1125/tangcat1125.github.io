@@ -1,0 +1,208 @@
+{
+  "id": "policy_town_broadcast",
+  "name": "公所公告廣播",
+  "cost": 2,
+  "blurb": "先用公所廣播與公告安撫大家（治標）；沒有查證或處理，只是暫時壓住。",
+  "solves": [],
+  "rule_patches": {
+    "townBroadcast": 1
+  },
+  "deltas": {
+    "money": -30,
+    "profit": 0,
+    "happiness": 4
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "治標：下季同樣的問題容易反彈；沒附證據的公告，可能讓人更不信。",
+  "preview": "預估：金錢 -30、幸福度 +4；先安撫人心，建議搭配對症卡或查證站。",
+  "costPoints": 2,
+  "tags": [
+    "資訊",
+    "治標",
+    "溝通"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_town_broadcast.webp",
+    "icon": "assets/sprites/cards/icons/icon_town_broadcast.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "📢",
+    "accent": "#d98c5f",
+    "fxHint": "fx_loudspeaker"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "資訊／治標",
+    "rarity": "常見",
+    "titleShort": "公告廣播",
+    "costBadge": "2 點",
+    "shopLine": "先發公告安撫，後面再想辦法。",
+    "effectLine": "民怨暫時消氣；問題本身沒變，下季可能反彈。",
+    "flavor": "廣播很大聲，但路還是那條路。",
+    "learnPoint": "這張牌教你：安撫不等於解決。",
+    "bullets": [
+      "治標：先安撫人心",
+      "幸福度 +4",
+      "下季容易反彈"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -30,
+        "text": "金錢 -30"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 4,
+        "text": "幸福度 +4"
+      }
+    ],
+    "tradeoffLine": "治標：下季同樣的問題容易反彈；沒附證據的公告，可能讓人更不信。"
+  },
+  "shopBlurb": "先發公告安撫，後面再想辦法。",
+  "shopLine": "2 點｜先發公告安撫，後面再想辦法。",
+  "executeId": "exec_town_broadcast",
+  "fx": {
+    "street": [
+      "fx_loudspeaker",
+      "fx_notice_board"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 0
+      },
+      "flowKind": "one-shot",
+      "durationSeasons": 0,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "health": -6,
+        "market": -4,
+        "safety": -4,
+        "traffic": -4,
+        "drain": -3
+      },
+      "complaintRebound": {
+        "health": 3,
+        "market": 2,
+        "safety": 2,
+        "traffic": 2
+      },
+      "complaintDelaySeasons": 1,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 1,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "weak",
+      "summary": "衛生民怨-6、市集民怨-4"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_min",
+      "staff_cheng"
+    ],
+    "radarWeights": {
+      "logistics": 0.1,
+      "safety": 0.2,
+      "health": 0.2,
+      "engineering": 0,
+      "economy": 0.2,
+      "communication": 0.9
+    }
+  },
+  "actionOptionIds": [
+    "act_town_broadcast"
+  ],
+  "fromArticleIds": [
+    "art_evp_market_price",
+    "art_evp_health_flu"
+  ],
+  "verdictByOption": {
+    "act_town_broadcast": "治標"
+  },
+  "complaintCounters": [
+    "health",
+    "market",
+    "safety",
+    "traffic",
+    "drain"
+  ],
+  "complaintDelta": {
+    "health": -6,
+    "market": -4,
+    "safety": -4,
+    "traffic": -4,
+    "drain": -3
+  },
+  "complaintRebound": {
+    "health": 3,
+    "market": 2,
+    "safety": 2,
+    "traffic": 2
+  },
+  "complaintNote": "治標：多個領域暫時消氣，下一季會反彈一些。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [],
+    "palliative": [
+      "evp_drain_grease_trap",
+      "evp_health_bait_worry",
+      "evp_health_class_upset",
+      "evp_health_dengue",
+      "evp_health_fake_alert",
+      "evp_health_flu",
+      "evp_health_lunch_sample",
+      "evp_health_rat_swarm",
+      "evp_health_well",
+      "evp_logi_false_bridge",
+      "evp_market_fake_review",
+      "evp_market_festival",
+      "evp_market_lunch_supplier",
+      "evp_market_price",
+      "evp_market_rat_bin",
+      "evp_safety_fire",
+      "evp_safety_park_burrow",
+      "evp_safety_stray_dogs",
+      "evp_safety_theft",
+      "evp_traffic_bus",
+      "evp_traffic_tourbus",
+      "evp_traffic_works"
+    ],
+    "backfire": [
+      "evp_health_lunch_sample"
+    ]
+  },
+  "policyType": "stopgap",
+  "typeLabel": "治標應急",
+  "realWorldAnalog": "政府公告／新聞稿：快速安撫，但沒有證據或行動時效果很短。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": true,
+  "effectDelayCycles": 1,
+  "slowNote": "效果較慢、較弱但便宜（下季見效；同一事件重複使用遞減）",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

@@ -1,0 +1,162 @@
+{
+  "id": "policy_dog_roundup",
+  "name": "強力捕捉驅離專案",
+  "cost": 2,
+  "blurb": "一次動員大量人力，用網子強力捕捉、把流浪犬驅離到市區外圍；看起來很快，街上一時變安靜。",
+  "solves": [],
+  "rule_patches": {
+    "dogRoundup": 1
+  },
+  "deltas": {
+    "money": -50,
+    "happiness": -3
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "空出來的地盤很快會有新狗進來，被趕走的狗也會跑到別區；動保志工與許多居民反對，民怨反而上升。",
+  "preview": "預估：金錢 -50、幸福度 -3。",
+  "costPoints": 2,
+  "tags": [
+    "治安",
+    "管制",
+    "驅離"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_dog_roundup.webp",
+    "icon": "assets/sprites/cards/icons/icon_dog_roundup.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🥅",
+    "accent": "#8a8a8a",
+    "fxHint": "fx_net_miss",
+    "exists": false
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "管制／稽查",
+    "rarity": "常見",
+    "titleShort": "捕捉驅離",
+    "costBadge": "2 點",
+    "shopLine": "大動作捕捉驅離，街上一時安靜。",
+    "effectLine": "短期看不到狗，但下季更多狗湧入、民怨上升。",
+    "flavor": "趕得走一群，趕不走原因。",
+    "learnPoint": "這張牌教你：只處理「看得見的症狀」、不處理原因，常常會有反效果。",
+    "bullets": [
+      "反效果風險：野狗縱橫",
+      "金錢 -50",
+      "動保與居民反彈",
+      "狗會換地方、新狗進來"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -50,
+        "text": "金錢 -50"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": -3,
+        "text": "幸福度 -3"
+      }
+    ],
+    "tradeoffLine": "空出來的地盤很快會有新狗進來，被趕走的狗也會跑到別區；動保志工與許多居民反對，民怨反而上升。"
+  },
+  "shopBlurb": "大動作捕捉驅離，街上一時安靜。",
+  "shopLine": "2 點｜大動作捕捉驅離，街上一時安靜。",
+  "executeId": "exec_dog_roundup",
+  "fx": {
+    "street": [
+      "fx_net_miss",
+      "fx_dogs_scatter"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 0
+      },
+      "flowKind": "one-shot",
+      "durationSeasons": 0,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -6,
+        "health": 4,
+        "market": 2
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": -0.02,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 1,
+        "delaySeasons": 0,
+        "note": "施工／管制初期，攤商短暫不便"
+      },
+      "strength": "normal",
+      "summary": "治安民怨-6；店家營收 -2%（短期）"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_an",
+      "staff_cheng"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.5,
+      "health": 0.2,
+      "engineering": 0.2,
+      "economy": 0.2,
+      "communication": 0.2
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety"
+  ],
+  "complaintDelta": {
+    "safety": -6,
+    "health": 4,
+    "market": 2
+  },
+  "complaintRebound": {},
+  "complaintNote": "當季治安民怨小降，但衛生與市集民怨上升；對野狗事件為反效果。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [],
+    "palliative": [],
+    "backfire": [
+      "evp_safety_stray_dogs"
+    ]
+  },
+  "policyType": "reg",
+  "typeLabel": "管制／稽查",
+  "realWorldAnalog": "強制管制：一次性大規模捕捉與驅離流浪犬；看似快，但空出的地盤很快有新狗進來，也引發居民與動保志工反彈。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [],
+  "solvesPoolConditional": [],
+  "teachNote": "教室友善版：不寫撲殺或處置；改為「強力捕捉驅離」，反效果來自「空出地盤、新狗進來、被趕到別區、動保與居民反彈」（真空效應）。"
+}

@@ -1,0 +1,165 @@
+{
+  "id": "policy_runoff_control",
+  "name": "出流管制審查",
+  "cost": 2,
+  "blurb": "新開發案要先提出減洪設施，審查通過才能動工；開發後排出的水量不能比開發前多。",
+  "solves": [],
+  "rule_patches": {
+    "runoffProgram": 1
+  },
+  "deltas": {
+    "money": -30,
+    "happiness": -1
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "審查要時間，建商會喊成本；只管新案，舊社區的淹水問題不會變好。",
+  "preview": "預估：金錢 -30、幸福度 -1。",
+  "costPoints": 2,
+  "tags": [
+    "環境",
+    "管制",
+    "預防"
+  ],
+  "counters": [
+    "flood",
+    "storm_water"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_runoff.webp",
+    "icon": "assets/sprites/cards/icons/icon_runoff.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "📐",
+    "accent": "#4aa3a0",
+    "fxHint": "fx_runoff_a"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "管制／稽查",
+    "rarity": "常見",
+    "titleShort": "出流管制",
+    "costBadge": "2 點",
+    "shopLine": "新開發先過審，不准把水都推給下游。",
+    "effectLine": "新開發案自帶滯洪；長期下游淹水風險下降。",
+    "flavor": "上游多留一杯水，下游就少一桶。",
+    "learnPoint": "這張牌教你：管制從源頭減少問題，但只管新的、不管舊的。",
+    "bullets": [
+      "對症：暴雨積水（長期）",
+      "金錢 -30",
+      "只管新開發案",
+      "審查要時間"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -30,
+        "text": "金錢 -30"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": -1,
+        "text": "幸福度 -1"
+      }
+    ],
+    "tradeoffLine": "審查要時間，建商會喊成本；只管新案，舊社區的淹水問題不會變好。"
+  },
+  "shopBlurb": "新開發先過審，不准把水都推給下游。",
+  "shopLine": "2 點｜新開發先過審，不准把水都推給下游。",
+  "executeId": "exec_runoff",
+  "fx": {
+    "street": [
+      "fx_runoff_a",
+      "fx_runoff_b"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 2,
+        "tourist": 0,
+        "security": 0
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "drain": -12,
+        "market": 2
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": -0.02,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 1,
+        "delaySeasons": 0,
+        "note": "施工／管制初期，攤商短暫不便"
+      },
+      "strength": "normal",
+      "summary": "車流+2（永久）；排水民怨-12；店家營收 -2%（短期）"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_xiu",
+      "staff_cheng"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.3,
+      "health": 0.2,
+      "engineering": 0.8,
+      "economy": 0.2,
+      "communication": 0.4
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "drain"
+  ],
+  "complaintDelta": {
+    "drain": -12,
+    "market": 2
+  },
+  "complaintRebound": {},
+  "complaintNote": "審查要時間，建商會喊成本；只管新案，舊社區的淹水問題不會變好。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_drain_culvert",
+      "evp_drain_storm"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "reg",
+  "typeLabel": "管制／稽查",
+  "realWorldAnalog": "開發許可管制：新開發案要先提出減洪設施，開發後洪峰不得增加。",
+  "topicCounters": [
+    "flood",
+    "storm_water"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

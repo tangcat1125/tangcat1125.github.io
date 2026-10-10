@@ -1,0 +1,577 @@
+{
+  "id": "commissions_season_01",
+  "seasonId": "season_01",
+  "intro": "政策選定後，公職會依卡牌提出委任。對照星芒圖再決定接受或婉拒。",
+  "trigger": {
+    "afterPolicyPhase": true,
+    "onPolicySelect": true,
+    "onNewspaperUnlock": true,
+    "maxPending": 1
+  },
+  "commissions": [
+    {
+      "id": "comm_clear_drain",
+      "staffId": "staff_xiu",
+      "title": "清淤急行軍",
+      "blurb": "工務課願意帶隊清排水口，消防隊可協勤。",
+      "relatedPolicyIds": [
+        "policy_clear_drain"
+      ],
+      "relatedEventIds": [
+        "event_flood_risk"
+      ],
+      "radarFitHint": "工程／治安偏高較合適",
+      "minRadar": {
+        "engineering": 3
+      },
+      "acceptHint": "接受後：日常運行時排水風險較易緩解（MVP 提示）。",
+      "declineHint": "婉拒：本季仍靠你選的政策卡本身效果。",
+      "replayHint": "comm_clear_drain accepted → prefer drain clearance",
+      "artAlias": "works_engineer"
+    },
+    {
+      "id": "comm_boardwalk",
+      "staffId": "staff_xiu",
+      "title": "步道加固班",
+      "blurb": "泥濘步道要鋪穩，遊客才敢進來。",
+      "relatedPolicyIds": [
+        "policy_boardwalk"
+      ],
+      "relatedEventIds": [
+        "event_market_slump"
+      ],
+      "radarFitHint": "工程偏高",
+      "minRadar": {
+        "engineering": 3
+      },
+      "acceptHint": "接受後：市集人潮較易回升。",
+      "declineHint": "婉拒：步道改善僅依政策卡。",
+      "replayHint": "comm_boardwalk accepted → boardwalk quality up",
+      "artAlias": "works_engineer"
+    },
+    {
+      "id": "comm_coupon",
+      "staffId": "staff_shi",
+      "title": "市集買氣推廣",
+      "blurb": "會長願意帶攤商配合消費券檔期。",
+      "relatedPolicyIds": [
+        "policy_coupon"
+      ],
+      "relatedEventIds": [
+        "event_market_slump"
+      ],
+      "radarFitHint": "經濟／溝通",
+      "minRadar": {
+        "economy": 3
+      },
+      "acceptHint": "接受後：短期買氣提示加強。",
+      "declineHint": "婉拒：消費券仍生效，但少了市集協力。",
+      "replayHint": "comm_coupon accepted → market subsidy flavor",
+      "artAlias": "market_chair"
+    },
+    {
+      "id": "comm_water_test",
+      "staffId": "staff_xin",
+      "title": "水質公開檢測",
+      "blurb": "醫院可派出檢測小組，公所協助公告。",
+      "relatedPolicyIds": [
+        "policy_water_test"
+      ],
+      "relatedEventIds": [
+        "event_rumor_well"
+      ],
+      "radarFitHint": "衛生／溝通",
+      "minRadar": {
+        "health": 3
+      },
+      "acceptHint": "接受後：信任與幸福度較易回穩。",
+      "declineHint": "婉拒：檢測仍靠政策卡，少了院方背書。",
+      "replayHint": "comm_water_test accepted → water transparency",
+      "artAlias": "hospital_director"
+    },
+    {
+      "id": "comm_logistics_hub",
+      "staffId": "staff_an",
+      "title": "峽口調度崗",
+      "blurb": "警局願意設臨時調度，消防可清救援動線。",
+      "relatedPolicyIds": [
+        "policy_logistics_hub"
+      ],
+      "relatedEventIds": [
+        "event_supply_delay"
+      ],
+      "radarFitHint": "物流／治安",
+      "minRadar": {
+        "logistics": 3,
+        "safety": 3
+      },
+      "acceptHint": "接受後：準點率改善提示加強。",
+      "declineHint": "婉拒：樞紐仍依政策卡，少了現場指揮。",
+      "replayHint": "comm_logistics_hub accepted → on-time boost flavor",
+      "artAlias": "police_chief"
+    },
+    {
+      "id": "comm_flood_assist",
+      "staffId": "staff_yan",
+      "title": "雨季備援路線",
+      "blurb": "即使尚未打清淤牌，消防也想先預演備援。",
+      "relatedPolicyIds": [
+        "policy_clear_drain",
+        "policy_logistics_hub"
+      ],
+      "relatedEventIds": [
+        "event_flood_risk"
+      ],
+      "appearWhen": "policyPhaseOrCoreProblem",
+      "radarFitHint": "治安／物流",
+      "minRadar": {
+        "safety": 4
+      },
+      "acceptHint": "接受後：結報提示加入備援動線。",
+      "declineHint": "婉拒：仍依既有政策與模擬。",
+      "replayHint": "comm_flood_assist accepted → soft flood mitigation",
+      "artAlias": "fire_chief"
+    },
+    {
+      "id": "comm_hall_brief",
+      "staffId": "staff_cheng",
+      "title": "公所政策說明會",
+      "blurb": "承辦提議先開短會，對齊點數與卡牌取捨。",
+      "relatedPolicyIds": [
+        "policy_coupon",
+        "policy_water_test",
+        "policy_boardwalk",
+        "policy_clear_drain",
+        "policy_logistics_hub"
+      ],
+      "relatedEventIds": [
+        "event_flood_risk",
+        "event_market_slump"
+      ],
+      "appearWhen": "newspaperUnlock",
+      "radarFitHint": "溝通",
+      "minRadar": {
+        "communication": 4
+      },
+      "acceptHint": "接受後：手牌提示更清楚（教學向）。",
+      "declineHint": "婉拒：直接進選卡。",
+      "replayHint": "comm_hall_brief accepted → teaching tip only",
+      "artAlias": "clerk_hall"
+    },
+    {
+      "id": "comm_garbage_clear",
+      "staffId": "staff_jing",
+      "artAlias": "env_cleaner",
+      "title": "落葉垃圾先清",
+      "blurb": "清潔隊願意在清淤前先清落葉垃圾，溝才不會剛通又堵。",
+      "relatedPolicyIds": [
+        "policy_clear_drain"
+      ],
+      "relatedEventIds": [
+        "event_flood_risk"
+      ],
+      "radarFitHint": "物流／衛生",
+      "minRadar": {
+        "logistics": 3,
+        "health": 3
+      },
+      "acceptHint": "接受後：排水口較不易再堵。",
+      "declineHint": "婉拒：排水仍依政策卡，堵塞較易回頭。",
+      "replayHint": "comm_garbage_clear accepted → drain blockage rebound down"
+    },
+    {
+      "id": "comm_traffic_flow",
+      "staffId": "staff_tong",
+      "artAlias": "traffic_officer",
+      "title": "峽口錯峰調度",
+      "blurb": "交通課願意排時段，把貨車、公車與救護車錯開。",
+      "relatedPolicyIds": [
+        "policy_logistics_hub"
+      ],
+      "relatedEventIds": [
+        "event_supply_delay"
+      ],
+      "radarFitHint": "物流",
+      "minRadar": {
+        "logistics": 4
+      },
+      "acceptHint": "接受後：準點率提升提示加強。",
+      "declineHint": "婉拒：樞紐仍生效，少了時段調度。",
+      "replayHint": "comm_traffic_flow accepted → on-time and congestion flavor"
+    },
+    {
+      "id": "comm_clinic_water",
+      "staffId": "staff_hu",
+      "artAlias": "clinic_director",
+      "title": "衛生所採樣團",
+      "blurb": "衛生所可立即採樣，三天內公布結果。",
+      "relatedPolicyIds": [
+        "policy_water_test"
+      ],
+      "relatedEventIds": [
+        "event_rumor_well"
+      ],
+      "radarFitHint": "衛生／溝通",
+      "minRadar": {
+        "health": 4,
+        "communication": 4
+      },
+      "acceptHint": "接受後：信任回穩較快。",
+      "declineHint": "婉拒：檢測仍生效，少了衛生所背書。",
+      "replayHint": "comm_clinic_water accepted → faster trust recovery"
+    },
+    {
+      "id": "comm_neighbor_meeting",
+      "staffId": "staff_min",
+      "artAlias": "civil_affairs",
+      "title": "鄰里說明會",
+      "blurb": "民政課可辦說明會，讓鄰里看見檢測與施工計畫。",
+      "relatedPolicyIds": [
+        "policy_water_test",
+        "policy_clear_drain"
+      ],
+      "relatedEventIds": [
+        "event_rumor_well",
+        "event_flood_risk"
+      ],
+      "radarFitHint": "溝通",
+      "minRadar": {
+        "communication": 4
+      },
+      "acceptHint": "接受後：民怨的緩和提示加強。",
+      "declineHint": "婉拒：政策仍生效，少了鄰里溝通。",
+      "replayHint": "comm_neighbor_meeting accepted → complaint ease flavor"
+    },
+    {
+      "id": "comm_welfare_support",
+      "staffId": "staff_nuan",
+      "artAlias": "social_worker",
+      "title": "長輩優先券",
+      "blurb": "社會課提議把消費券優先發給長輩與弱勢家庭。",
+      "relatedPolicyIds": [
+        "policy_coupon"
+      ],
+      "relatedEventIds": [
+        "event_market_slump"
+      ],
+      "radarFitHint": "溝通／衛生",
+      "minRadar": {
+        "communication": 4,
+        "health": 3
+      },
+      "acceptHint": "接受後：消費券更精準，反彈較小。",
+      "declineHint": "婉拒：消費券照常發放。",
+      "replayHint": "comm_welfare_support accepted → targeted coupon, lower rebound"
+    },
+    {
+      "id": "comm_farm_direct",
+      "staffId": "staff_tian",
+      "artAlias": "agri_officer",
+      "title": "產地直送",
+      "blurb": "農業課聯絡農友，蔬果走優先時段進市集。",
+      "relatedPolicyIds": [
+        "policy_logistics_hub",
+        "policy_coupon"
+      ],
+      "relatedEventIds": [
+        "event_market_slump",
+        "event_supply_delay"
+      ],
+      "radarFitHint": "物流／經濟",
+      "minRadar": {
+        "logistics": 4,
+        "economy": 3
+      },
+      "acceptHint": "接受後：攤位空架提示減輕。",
+      "declineHint": "婉拒：進貨仍依政策卡。",
+      "replayHint": "comm_farm_direct accepted → stock availability flavor"
+    },
+    {
+      "id": "comm_culture_walk",
+      "staffId": "staff_wen",
+      "artAlias": "culture_officer",
+      "title": "老街步道導覽",
+      "blurb": "文化課辦導覽，讓修好的步道變成遊客的行程。",
+      "relatedPolicyIds": [
+        "policy_boardwalk"
+      ],
+      "relatedEventIds": [
+        "event_market_slump"
+      ],
+      "radarFitHint": "經濟／溝通",
+      "minRadar": {
+        "economy": 3,
+        "communication": 4
+      },
+      "acceptHint": "接受後：遊客回流提示加強。",
+      "declineHint": "婉拒：步道仍依政策卡。",
+      "replayHint": "comm_culture_walk accepted → tourist return flavor"
+    },
+    {
+      "id": "comm_welfare_visit",
+      "staffId": "staff_nuan",
+      "artAlias": "social_worker",
+      "title": "長輩到府說明",
+      "blurb": "社會課派人到府向長輩說明檢測結果，補回信任。",
+      "relatedPolicyIds": [
+        "policy_water_test"
+      ],
+      "relatedEventIds": [
+        "event_rumor_well"
+      ],
+      "radarFitHint": "溝通／衛生",
+      "minRadar": {
+        "communication": 4,
+        "health": 3
+      },
+      "acceptHint": "接受後：長輩的疑慮較易化解。",
+      "declineHint": "婉拒：檢測仍生效，少了到府說明。",
+      "replayHint": "comm_welfare_visit accepted → elder trust flavor"
+    },
+    {
+      "id": "comm_budget_check",
+      "staffId": "staff_suan",
+      "artAlias": "accountant",
+      "title": "預算效益檢核",
+      "blurb": "主計室幫你算每張卡的點數效益，教學向。",
+      "relatedPolicyIds": [
+        "policy_clear_drain",
+        "policy_boardwalk",
+        "policy_coupon",
+        "policy_water_test",
+        "policy_logistics_hub"
+      ],
+      "relatedEventIds": [
+        "event_flood_risk",
+        "event_market_slump"
+      ],
+      "appearWhen": "newspaperUnlock",
+      "radarFitHint": "經濟／溝通",
+      "minRadar": {
+        "economy": 4,
+        "communication": 4
+      },
+      "acceptHint": "接受後：結報多一段效益提示（教學向）。",
+      "declineHint": "婉拒：直接進選卡。",
+      "replayHint": "comm_budget_check accepted → teaching tip only"
+    },
+    {
+      "id": "comm_rain_garden",
+      "staffId": "staff_xiu",
+      "artAlias": "works_engineer",
+      "title": "雨前滯洪池施工班",
+      "blurb": "工務課願意在雨季前把滯洪池挖好。",
+      "relatedPolicyIds": [
+        "policy_rain_garden"
+      ],
+      "relatedEventIds": [],
+      "radarFitHint": "工程偏高",
+      "minRadar": {
+        "engineering": 3
+      },
+      "acceptHint": "接受後：暴雨積水提示更樂觀。",
+      "declineHint": "婉拒：滯洪池仍依政策卡，少了工務把關。",
+      "replayHint": "comm_rain_garden accepted → drain buffer flavor"
+    },
+    {
+      "id": "comm_night_market",
+      "staffId": "staff_shi",
+      "artAlias": "market_chair",
+      "title": "夜市輪班表",
+      "blurb": "市場會長願意帶攤商排輪班表。",
+      "relatedPolicyIds": [
+        "policy_vendor_shift"
+      ],
+      "relatedEventIds": [],
+      "radarFitHint": "經濟／溝通",
+      "minRadar": {
+        "economy": 3
+      },
+      "acceptHint": "接受後：人潮分流提示加強。",
+      "declineHint": "婉拒：夜市整頓仍生效，少了攤商協力。",
+      "replayHint": "comm_night_market accepted → crowd spreading flavor"
+    },
+    {
+      "id": "comm_cold_chain",
+      "staffId": "staff_tian",
+      "artAlias": "agri_officer",
+      "title": "產地冷鏈直送",
+      "blurb": "農業課聯絡產地，生鮮走冷藏專用時段。",
+      "relatedPolicyIds": [
+        "policy_cold_chain"
+      ],
+      "relatedEventIds": [],
+      "radarFitHint": "物流／經濟",
+      "minRadar": {
+        "logistics": 3,
+        "economy": 3
+      },
+      "acceptHint": "接受後：生鮮損耗提示減輕。",
+      "declineHint": "婉拒：冷鏈仍依政策卡。",
+      "replayHint": "comm_cold_chain accepted → spoilage flavor"
+    },
+    {
+      "id": "comm_bus_shuttle",
+      "staffId": "staff_tong",
+      "artAlias": "traffic_officer",
+      "title": "接駁班次調度",
+      "blurb": "交通課排出安全的改道與接駁班次。",
+      "relatedPolicyIds": [
+        "policy_bus_reroute"
+      ],
+      "relatedEventIds": [],
+      "radarFitHint": "物流",
+      "minRadar": {
+        "logistics": 4
+      },
+      "acceptHint": "接受後：準點率提示加強。",
+      "declineHint": "婉拒：改道仍依政策卡，少了時段調度。",
+      "replayHint": "comm_bus_shuttle accepted → on-time flavor"
+    },
+    {
+      "id": "comm_vector_team",
+      "staffId": "staff_hu",
+      "artAlias": "clinic_director",
+      "title": "社區滅蚊與接種隊",
+      "blurb": "衛生所設接種站，並帶社區清積水。",
+      "relatedPolicyIds": [
+        "policy_vector_control"
+      ],
+      "relatedEventIds": [],
+      "radarFitHint": "衛生",
+      "minRadar": {
+        "health": 4
+      },
+      "acceptHint": "接受後：疫情降溫提示加強。",
+      "declineHint": "婉拒：防疫仍依政策卡。",
+      "replayHint": "comm_vector_team accepted → outbreak flavor"
+    },
+    {
+      "id": "comm_patrol_team",
+      "staffId": "staff_an",
+      "artAlias": "police_chief",
+      "title": "巡守隊排班",
+      "blurb": "警局協助排巡守路線與路燈點位。",
+      "relatedPolicyIds": [
+        "policy_patrol_lights"
+      ],
+      "relatedEventIds": [],
+      "radarFitHint": "治安",
+      "minRadar": {
+        "safety": 4
+      },
+      "acceptHint": "接受後：扒手與暗巷提示更樂觀。",
+      "declineHint": "婉拒：巡守仍依政策卡。",
+      "replayHint": "comm_patrol_team accepted → patrol flavor"
+    },
+    {
+      "id": "comm_rescue_ready",
+      "staffId": "staff_yan",
+      "artAlias": "fire_chief",
+      "title": "救援小隊待命",
+      "blurb": "消防隊長帶隊，備好水車、推車與擔架。",
+      "relatedPolicyIds": [
+        "policy_rescue_squad"
+      ],
+      "relatedEventIds": [],
+      "radarFitHint": "治安／工務",
+      "minRadar": {
+        "safety": 4
+      },
+      "acceptHint": "接受後：救援動線提示更樂觀。",
+      "declineHint": "婉拒：救援小隊仍依政策卡。",
+      "replayHint": "comm_rescue_ready accepted → rescue readiness flavor"
+    },
+    {
+      "id": "comm_fact_desk",
+      "staffId": "staff_cheng",
+      "artAlias": "clerk_hall",
+      "title": "公所查證小組",
+      "blurb": "公所承辦負責對紀錄、查來源並公開。",
+      "relatedPolicyIds": [
+        "policy_fact_check"
+      ],
+      "relatedEventIds": [],
+      "radarFitHint": "溝通",
+      "minRadar": {
+        "communication": 4
+      },
+      "acceptHint": "接受後：假消息退燒提示加強。",
+      "declineHint": "婉拒：查證仍依政策卡。",
+      "replayHint": "comm_fact_desk accepted → rumor cooldown flavor"
+    },
+    {
+      "id": "comm_notice_round",
+      "staffId": "staff_min",
+      "artAlias": "civil_affairs",
+      "title": "里里廣播巡迴",
+      "blurb": "民政課把公告送進每個里，並蒐集鄰里回應。",
+      "relatedPolicyIds": [
+        "policy_town_broadcast"
+      ],
+      "relatedEventIds": [],
+      "radarFitHint": "溝通",
+      "minRadar": {
+        "communication": 4
+      },
+      "acceptHint": "接受後：公告更易被看見（仍是治標）。",
+      "declineHint": "婉拒：公告仍依政策卡。",
+      "replayHint": "comm_notice_round accepted → announcement reach flavor"
+    },
+    {
+      "id": "comm_pest_control",
+      "staffId": "staff_jing",
+      "artAlias": "env_cleaner",
+      "title": "收市清潔與巡查班",
+      "blurb": "環保清潔員願意帶隊做收市清理與定期巡查。",
+      "relatedPolicyIds": [
+        "policy_pest_control"
+      ],
+      "relatedEventIds": [],
+      "radarFitHint": "物流／衛生",
+      "minRadar": {
+        "logistics": 4
+      },
+      "acceptHint": "接受後：鼠跡提示更樂觀。",
+      "declineHint": "婉拒：防治仍依政策卡，少了清潔隊巡查。",
+      "replayHint": "comm_pest_control accepted → rodent patrol flavor"
+    },
+    {
+      "id": "comm_food_safety",
+      "staffId": "staff_hu",
+      "artAlias": "clinic_director",
+      "title": "午餐留樣與採樣小組",
+      "blurb": "衛生所負責留樣檢查與通報採樣。",
+      "relatedPolicyIds": [
+        "policy_food_safety"
+      ],
+      "relatedEventIds": [],
+      "radarFitHint": "衛生",
+      "minRadar": {
+        "health": 5
+      },
+      "acceptHint": "接受後：午餐疑慮提示加強查證。",
+      "declineHint": "婉拒：食安仍依政策卡。",
+      "replayHint": "comm_food_safety accepted → sampling flavor"
+    },
+    {
+      "id": "comm_vendor_audit",
+      "staffId": "staff_min",
+      "artAlias": "civil_affairs",
+      "title": "業者輔導說明會",
+      "blurb": "民政課辦說明會，先宣導再限期改善。",
+      "relatedPolicyIds": [
+        "policy_vendor_audit"
+      ],
+      "relatedEventIds": [],
+      "radarFitHint": "溝通",
+      "minRadar": {
+        "communication": 5
+      },
+      "acceptHint": "接受後：業者配合度提示提高。",
+      "declineHint": "婉拒：稽查仍依政策卡，少了輔導說明。",
+      "replayHint": "comm_vendor_audit accepted → graded enforcement flavor"
+    }
+  ],
+  "note": "staffId 一律使用 staff_*；artAlias 為美術檔名 id。"
+}

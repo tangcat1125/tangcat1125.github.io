@@ -1,0 +1,3204 @@
+{
+  "id": "art_request_policy_cards_season_01",
+  "seasonId": "season_01",
+  "requestedBy": "呆呆（資料／模板）",
+  "to": "米米",
+  "folder": "assets/sprites/cards/",
+  "spec": {
+    "size": "600x800",
+    "aspect": "3:4 直式",
+    "format": "PNG，RGB 不透明（現有 5 張皆為 8-bit RGB、無透明通道）",
+    "naming": "card_<id不含policy_前綴>.webp",
+    "back": "共用 assets/sprites/cards/card_back_catflash.png（目前檔案也尚未存在）",
+    "style": "像素風貓貓，峽谷城市背景，中景角色＋道具，細節豐富；暖色或對應主色重點",
+    "safeArea": "卡面下方約 30% 會被 UI 疊上卡名、成本與文字，主體請放在上方 70%，重要道具避免被底部遮住"
+  },
+  "existingCards": [
+    "card_back_catflash.webp",
+    "card_boardwalk.webp",
+    "card_boardwalk_16x9.webp",
+    "card_bus_reroute.webp",
+    "card_bus_reroute_16x9.webp",
+    "card_cctv.webp",
+    "card_cctv_16x9.webp",
+    "card_clear_drain.webp",
+    "card_clear_drain_16x9.webp",
+    "card_cold_chain.webp",
+    "card_cold_chain_16x9.webp",
+    "card_coupon.webp",
+    "card_coupon_16x9.webp",
+    "card_crime_edu.webp",
+    "card_crime_edu_16x9.webp",
+    "card_crime_map.webp",
+    "card_crime_map_16x9.webp",
+    "card_delivery_subsidy.webp",
+    "card_delivery_subsidy_16x9.webp",
+    "card_dengue_mobilize.webp",
+    "card_dengue_mobilize_16x9.webp",
+    "card_fact_check.webp",
+    "card_fact_check_16x9.webp",
+    "card_fire_drill.webp",
+    "card_fire_drill_16x9.webp",
+    "card_fire_inspection.webp",
+    "card_fire_inspection_16x9.webp",
+    "card_fire_lane.webp",
+    "card_fire_lane_16x9.webp",
+    "card_flood_edu.webp",
+    "card_flood_edu_16x9.webp",
+    "card_flood_relief.webp",
+    "card_flood_relief_16x9.webp",
+    "card_food_edu.webp",
+    "card_food_edu_16x9.webp",
+    "card_food_safety.webp",
+    "card_food_safety_16x9.webp",
+    "card_health_edu.webp",
+    "card_health_edu_16x9.webp",
+    "card_joint_delivery.webp",
+    "card_joint_delivery_16x9.webp",
+    "card_kitchen_sorting.webp",
+    "card_kitchen_sorting_16x9.webp",
+    "card_led_lights.webp",
+    "card_led_lights_16x9.webp",
+    "card_loading_zone.webp",
+    "card_loading_zone_16x9.webp",
+    "card_logistics_hub.webp",
+    "card_logistics_hub_16x9.webp",
+    "card_lunch_registry.webp",
+    "card_lunch_registry_16x9.webp",
+    "card_market_committee.webp",
+    "card_market_committee_16x9.webp",
+    "card_market_star.webp",
+    "card_market_star_16x9.webp",
+    "card_patrol_lights.webp",
+    "card_patrol_lights_16x9.webp",
+    "card_permeable.webp",
+    "card_permeable_16x9.webp",
+    "card_pest_control.webp",
+    "card_pest_control_16x9.webp",
+    "card_pied_piper.webp",
+    "card_pied_piper_16x9.webp",
+    "card_policy_pied_piper.webp",
+    "card_policy_pied_piper_16x9.webp",
+    "card_policy_stray_dog_tnr.webp",
+    "card_policy_stray_dog_tnr_16x9.webp",
+    "card_private_parking.webp",
+    "card_private_parking_16x9.webp",
+    "card_pump.webp",
+    "card_pump_16x9.webp",
+    "card_rain_garden.webp",
+    "card_rain_garden_16x9.webp",
+    "card_rat_edu.webp",
+    "card_rat_edu_16x9.webp",
+    "card_rat_pro.webp",
+    "card_rat_pro_16x9.webp",
+    "card_rescue_squad.webp",
+    "card_rescue_squad_16x9.webp",
+    "card_runoff.webp",
+    "card_runoff_16x9.webp",
+    "card_shared_parking.webp",
+    "card_shared_parking_16x9.webp",
+    "card_slope_guard.webp",
+    "card_slope_guard_16x9.webp",
+    "card_smoke_alarm.webp",
+    "card_smoke_alarm_16x9.webp",
+    "card_stray_dog_tnr.webp",
+    "card_stray_dog_tnr_16x9.webp",
+    "card_street_parking.webp",
+    "card_street_parking_16x9.webp",
+    "card_town_broadcast.webp",
+    "card_town_broadcast_16x9.webp",
+    "card_town_hall.webp",
+    "card_town_hall_16x9.webp",
+    "card_traffic_safety.webp",
+    "card_traffic_safety_16x9.webp",
+    "card_vector_control.webp",
+    "card_vector_control_16x9.webp",
+    "card_vendor_audit.webp",
+    "card_vendor_audit_16x9.webp",
+    "card_vendor_shift.webp",
+    "card_vendor_shift_16x9.webp",
+    "card_walking_street.webp",
+    "card_walking_street_16x9.webp",
+    "card_water_test.webp",
+    "card_water_test_16x9.webp",
+    "card_wiring_subsidy.webp",
+    "card_wiring_subsidy_16x9.webp"
+  ],
+  "weatherIcons": {
+    "needed": false,
+    "note": "天氣 icon 一律使用 emoji（見 data/ui/dynamic_text.json 的 weather.types[*].icon），沒有新的圖片需求。若日後想換成像素 icon，再另開需求。"
+  },
+  "cards": [
+    {
+      "policyId": "policy_rain_garden",
+      "priority": 1,
+      "priorityLabel": "P1（最先畫：補上對症缺口）",
+      "file": "assets/sprites/cards/card_rain_garden.webp",
+      "fileName": "card_rain_garden.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_rain_garden_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_rain_garden.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "雨水花園滯洪池",
+      "cost": 3,
+      "effectOneLine": "低窪處多一座池；暴雨時積水退得快，預防型。",
+      "cureEvents": [
+        "evp_drain_storm"
+      ],
+      "scene": {
+        "main": "穿工務背心、戴黃色安全帽的橘色貓貓，蹲在新挖好的小水池邊，用鏟子整理池緣",
+        "setting": "峽谷街邊的低窪處，一座淺淺的滯洪池與雨水花園，蘆葦、石頭與小花圍著池子，雨水從街邊溝流進池裡",
+        "props": [
+          "滯洪池",
+          "蘆葦與小花",
+          "鏟子",
+          "警示三角錐",
+          "遠處小排水溝"
+        ],
+        "palette": "青綠、淺藍、濕潤的深灰石板，點綴一點橘色背心",
+        "avoid": [
+          "不要有蚊子（會變成負面訊息）",
+          "不要出現積滿髒水的畫面",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🌿",
+      "accent": "#4aa37a",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "domain": "drain"
+    },
+    {
+      "policyId": "policy_vendor_shift",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_vendor_shift.webp",
+      "fileName": "card_vendor_shift.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_vendor_shift_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_vendor_shift.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "攤販輪班夜市整頓",
+      "cost": 2,
+      "effectOneLine": "攤販輪流開、動線統一；廟會與連假人潮接得住。",
+      "cureEvents": [
+        "evp_market_festival"
+      ],
+      "scene": {
+        "main": "市場會長貓貓（灰白虎斑）手拿輪班牌，攤販貓貓們排隊交接攤位",
+        "setting": "黃昏的老街夜市，紅燈籠一路亮到街尾，地上畫著整齊的擺攤格線，人潮分成兩條動線",
+        "props": [
+          "紅燈籠",
+          "輪班看板",
+          "整齊的攤位",
+          "地上畫線",
+          "小推車"
+        ],
+        "palette": "暖橘、紅、黃的燈籠光，背景是藍紫色的暮色峽谷",
+        "avoid": [
+          "不要擠成一團的人群（要表現「分流」）",
+          "不要酒類或煙火",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🏮",
+      "accent": "#e6674a",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "domain": "market"
+    },
+    {
+      "policyId": "policy_cold_chain",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_cold_chain.webp",
+      "fileName": "card_cold_chain.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_cold_chain_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_cold_chain.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "冷鏈冷藏車",
+      "cost": 3,
+      "effectOneLine": "生鮮專用冷藏與時段；冷鏈不易中斷，損耗下降。",
+      "cureEvents": [
+        "evp_logi_cold"
+      ],
+      "scene": {
+        "main": "農業課長貓貓（曬得黑黑的）打開冷藏車後門，白色冷氣飄出",
+        "setting": "清晨的峽谷道路，淺藍色冷藏小貨車停在路邊，後方堆著整齊的蔬果箱",
+        "props": [
+          "淺藍冷藏小貨車",
+          "冷氣白霧",
+          "蔬果箱",
+          "溫度計",
+          "冰塊"
+        ],
+        "palette": "冰藍、白、蔬菜綠，背景保持清爽的晨光",
+        "avoid": [
+          "不要融化滴水或腐壞蔬果",
+          "不要超大型貨櫃車（要是小貨車）",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🧊",
+      "accent": "#5bb4e6",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "domain": "logistics"
+    },
+    {
+      "policyId": "policy_bus_reroute",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_bus_reroute.webp",
+      "fileName": "card_bus_reroute.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_bus_reroute_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_bus_reroute.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "公車改道接駁巴士",
+      "cost": 2,
+      "effectOneLine": "公車改走順路，停車場與市集有接駁；準點率上升。",
+      "cureEvents": [
+        "evp_traffic_bus",
+        "evp_traffic_tourbus"
+      ],
+      "scene": {
+        "main": "交通課長貓貓舉著小旗指向新路線，一旁有小巧的接駁巴士載著遊客貓貓",
+        "setting": "峽谷岔路口，橘色公車轉向一條平坦的新路，舊路上有一輛貨車卡著",
+        "props": [
+          "橘色公車",
+          "小接駁巴士",
+          "指向新路線的箭頭牌",
+          "小旗",
+          "路標"
+        ],
+        "palette": "橘、黃、天藍；路面乾爽、天氣晴",
+        "avoid": [
+          "不要把新路畫在峽壁邊坡或積水處（卡片主張是「安全改道」）",
+          "不要出現事故畫面",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🚌",
+      "accent": "#f2a03d",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "domain": "traffic"
+    },
+    {
+      "policyId": "policy_vector_control",
+      "priority": 1,
+      "priorityLabel": "P1（最先畫：補上對症缺口）",
+      "file": "assets/sprites/cards/card_vector_control.webp",
+      "fileName": "card_vector_control.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_vector_control_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_vector_control.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "疫苗滅蚊行動",
+      "cost": 2,
+      "effectOneLine": "接種站與社區滅蚊；登革熱、流感都降溫。",
+      "cureEvents": [
+        "evp_health_dengue",
+        "evp_health_flu"
+      ],
+      "scene": {
+        "main": "衛生所長貓貓拿著小針筒與噴霧器，旁邊的居民貓貓捲起袖子準備打疫苗",
+        "setting": "社區廣場的接種站帳篷，掛著綠色十字旗，旁邊幾位居民貓貓在清空積水的水桶",
+        "props": [
+          "綠色十字旗帳篷",
+          "小針筒（卡通化）",
+          "噴霧器",
+          "倒空的水桶",
+          "「已接種」貼紙"
+        ],
+        "palette": "薄荷綠、白、淡黃，氣氛溫和",
+        "avoid": [
+          "不要尖銳針頭特寫（要卡通化、不驚嚇）",
+          "不要蚊子特寫或血",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "💉",
+      "accent": "#7cc46b",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_patrol_lights",
+      "priority": 1,
+      "priorityLabel": "P1（最先畫：補上對症缺口）",
+      "file": "assets/sprites/cards/card_patrol_lights.webp",
+      "fileName": "card_patrol_lights.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_patrol_lights_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_patrol_lights.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "社區巡守隊與路燈",
+      "cost": 2,
+      "effectOneLine": "暗巷有燈、街口有人；扒手與起火更早被發現。",
+      "cureEvents": [
+        "evp_safety_theft"
+      ],
+      "scene": {
+        "main": "警局長貓貓與鄰里志工貓貓提著手電筒並肩巡邏，背著「巡守」臂章",
+        "setting": "夜晚的石板窄巷，一盞盞新路燈剛亮起，暖黃光圈照亮轉角",
+        "props": [
+          "手電筒",
+          "新路燈",
+          "巡守臂章",
+          "鈴鐺",
+          "牆邊的小花盆"
+        ],
+        "palette": "深藍夜色配暖黃燈光，保持溫暖而非恐怖",
+        "avoid": [
+          "不要警棍或武器",
+          "不要陰森氣氛，要讓人覺得安心",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🔦",
+      "accent": "#f0c850",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_rescue_squad",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_rescue_squad.webp",
+      "fileName": "card_rescue_squad.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_rescue_squad_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_rescue_squad.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "緊急救援小隊",
+      "cost": 3,
+      "effectOneLine": "小型水車與推車隊；救護車受阻、窄巷火警都有解。",
+      "cureEvents": [
+        "evp_safety_rescue_blocked"
+      ],
+      "scene": {
+        "main": "消防隊長貓貓（紅毛）推著小型水車，身後兩位隊員貓貓抬著擔架",
+        "setting": "狹窄的老街巷口，巷子兩側是木造老屋，隊員正要鑽進去",
+        "props": [
+          "小型紅色水車",
+          "手推水管車",
+          "擔架",
+          "頭盔",
+          "閃爍警示燈"
+        ],
+        "palette": "紅、白為主，背景是暖棕色老屋，警示燈點綴",
+        "avoid": [
+          "不要真實火焰與濃煙（可有淡淡一縷煙作示意）",
+          "不要傷者特寫",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🚑",
+      "accent": "#e35d5d",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_fact_check",
+      "priority": 1,
+      "priorityLabel": "P1（最先畫：補上對症缺口）",
+      "file": "assets/sprites/cards/card_fact_check.webp",
+      "fileName": "card_fact_check.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_fact_check_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_fact_check.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "資訊查證站",
+      "cost": 2,
+      "effectOneLine": "公開來源與紀錄；假警報與謠言失效，真事件不受影響。",
+      "cureEvents": [
+        "evp_health_fake_alert",
+        "evp_logi_false_bridge",
+        "evp_market_fake_review"
+      ],
+      "scene": {
+        "main": "公所承辦貓貓戴著小眼鏡，用放大鏡檢視一張手機貼文，桌上有兩個標著「來源」「紀錄」的資料夾",
+        "setting": "公所服務窗口，窗外是峽谷街景，牆上貼著簡單的查證流程圖（只有圖示、沒有文字）",
+        "props": [
+          "放大鏡",
+          "手機貼文（畫面模糊不可辨）",
+          "兩個資料夾",
+          "印章",
+          "公布欄"
+        ],
+        "palette": "藍、米白、淡橘，沉穩而親切",
+        "avoid": [
+          "不要真實社群平台的標誌",
+          "不要可讀的假訊息文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🔎",
+      "accent": "#6a8fd8",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_town_broadcast",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_town_broadcast.webp",
+      "fileName": "card_town_broadcast.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_town_broadcast_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_town_broadcast.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "公所公告廣播",
+      "cost": 2,
+      "effectOneLine": "民怨暫時消氣；問題本身沒變，下季可能反彈。",
+      "cureEvents": [],
+      "scene": {
+        "main": "民政課長貓貓站在公所屋頂，舉著小喇叭，旁邊廣播喇叭在發出聲波圈",
+        "setting": "傍晚的市公所，布告欄貼滿公告紙，街上的居民貓貓抬頭聽，表情略放鬆但仍有點疑惑",
+        "props": [
+          "小喇叭",
+          "廣播喇叭",
+          "聲波圈",
+          "布告欄與公告紙（無文字）",
+          "抬頭的居民"
+        ],
+        "palette": "暖橘、奶黃、淡藍的黃昏",
+        "avoid": [
+          "不要畫成「問題已解決」的完美結局（這張是治標）",
+          "不要可讀的公告文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "📢",
+      "accent": "#d98c5f",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_pest_control",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_pest_control.webp",
+      "fileName": "card_pest_control.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_pest_control_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_pest_control.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "鼠害防治與廚餘管理",
+      "cost": 2,
+      "effectOneLine": "廚餘不外露、洞口封好、定期巡查；對鼠跡與鼠餌疑慮最有效。",
+      "cureEvents": [
+        "evp_health_bait_worry",
+        "evp_health_rat_swarm",
+        "evp_market_rat_bin",
+        "evp_safety_park_burrow"
+      ],
+      "scene": {
+        "main": "環保清潔課貓貓戴口罩與手套，把廚餘桶蓋好並貼上巡查貼紙，旁邊的小貓攤販在幫忙",
+        "setting": "清晨的市集後巷，整齊的帶蓋廚餘桶排成一列，牆角的洞口剛用碎石補好，遠處有一隻老鼠探頭看（卡通化，不噁心）",
+        "props": [
+          "帶蓋廚餘桶",
+          "巡查貼紙",
+          "碎石補洞",
+          "上鎖餌盒（卡通化）",
+          "掃把與畚箕"
+        ],
+        "palette": "乾淨的藍灰、米白，點綴橘色背心",
+        "avoid": [
+          "不要滿地老鼠或髒亂畫面",
+          "不要毒藥骷髏圖案",
+          "不要真實店家招牌",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🐀",
+      "accent": "#8a7a5a",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_food_safety",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_food_safety.webp",
+      "fileName": "card_food_safety.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_food_safety_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_food_safety.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "食安檢驗與留樣",
+      "cost": 2,
+      "effectOneLine": "午餐留樣保存、通報流程補齊；對午餐疑慮最對症。",
+      "cureEvents": [
+        "evp_health_class_upset",
+        "evp_health_foodpoison",
+        "evp_health_lunch_sample"
+      ],
+      "scene": {
+        "main": "衛生所貓貓打開一台小冰箱，裡面整齊放著貼了日期標籤的留樣盒，旁邊的廚房貓貓在記錄溫度",
+        "setting": "明亮的學校午餐廚房，不鏽鋼檯面乾淨，牆上有簡單的流程圖示（無文字）",
+        "props": [
+          "冷藏冰箱",
+          "留樣盒與日期標籤",
+          "溫度計",
+          "手套與白帽",
+          "記錄板（無可讀文字）"
+        ],
+        "palette": "乾淨的白、淡綠、薄荷藍",
+        "avoid": [
+          "不要出現生病的孩子",
+          "不要真實學校或店家標誌",
+          "不要可讀的文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🍱",
+      "accent": "#e0a84a",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_vendor_audit",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_vendor_audit.webp",
+      "fileName": "card_vendor_audit.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_vendor_audit_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_vendor_audit.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "業者稽查與輔導",
+      "cost": 3,
+      "effectOneLine": "宣導→限期改善→複查；對油脂截留器最對症。",
+      "cureEvents": [
+        "evp_drain_grease_trap",
+        "evp_market_lunch_supplier"
+      ],
+      "scene": {
+        "main": "公所稽查貓貓與店家老闆貓貓並肩看著截油槽，稽查貓貓指著清潔步驟圖示，老闆貓貓點頭",
+        "setting": "小吃街後場，乾淨的截油槽已掀蓋，牆上有輔導時程的圖示（無文字）",
+        "props": [
+          "截油槽",
+          "清潔工具",
+          "輔導清單板（無文字）",
+          "印章",
+          "工作手套"
+        ],
+        "palette": "暖黃、米白、深灰，氣氛友善不嚴厲",
+        "avoid": [
+          "不要罰單或怒氣衝衝的畫面",
+          "不要真實店名",
+          "不要可讀的文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "📋",
+      "accent": "#7a8fc4",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_wiring_subsidy",
+      "priority": 1,
+      "priorityLabel": "P1（最先畫：補上對症缺口）",
+      "file": "assets/sprites/cards/card_wiring_subsidy.webp",
+      "fileName": "card_wiring_subsidy.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_wiring_subsidy_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_wiring_subsidy.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "老屋電線檢修補助",
+      "cost": 2,
+      "effectOneLine": "老屋電線被汰換，電線走火風險下降。",
+      "cureEvents": [
+        "evp_safety_fire"
+      ],
+      "scene": {
+        "main": "消防隊長貓貓與工務貓貓一起檢查木造老屋外牆的電表箱，旁邊住戶貓貓遞上申請單",
+        "setting": "石板窄巷旁的木造老屋，外牆舊電線被整理成整齊的線槽，一位師傅貓貓站在小梯子上換插座",
+        "props": [
+          "整理好的線槽",
+          "小梯子",
+          "申請表（無文字）",
+          "新插座",
+          "工具箱"
+        ],
+        "palette": "暖棕老屋、黃色安全帽、電線的亮橘點綴",
+        "avoid": [
+          "不要火焰或火花",
+          "不要真實電力公司標誌",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🔌",
+      "accent": "#e8a33d",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "subsidy",
+      "typeLabel": "補助獎勵",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_fire_lane",
+      "priority": 1,
+      "priorityLabel": "P1（最先畫：補上對症缺口）",
+      "file": "assets/sprites/cards/card_fire_lane.webp",
+      "fileName": "card_fire_lane.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_fire_lane_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_fire_lane.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "防火巷與消防栓",
+      "cost": 3,
+      "effectOneLine": "窄巷延燒風險下降；救援與取水更快到位。",
+      "cureEvents": [
+        "evp_safety_fire",
+        "evp_safety_rescue_blocked"
+      ],
+      "scene": {
+        "main": "消防隊長貓貓拉著水管接到新漆成紅色的小消防栓，旁邊工務貓貓在量防火巷寬度",
+        "setting": "老街木造老屋之間的窄巷，地面畫著黃線留出通道，巷口新裝一座紅色消防栓",
+        "props": [
+          "紅色消防栓",
+          "黃色通道線",
+          "水管",
+          "捲尺",
+          "路障"
+        ],
+        "palette": "紅、黃、暖棕老屋",
+        "avoid": [
+          "不要真實火焰與濃煙",
+          "不要傷者",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🚒",
+      "accent": "#d9503f",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_smoke_alarm",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_smoke_alarm.webp",
+      "fileName": "card_smoke_alarm.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_smoke_alarm_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_smoke_alarm.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "住警器補助",
+      "cost": 2,
+      "effectOneLine": "住戶更早發現起火；傷亡風險下降。",
+      "cureEvents": [],
+      "scene": {
+        "main": "鄰里志工貓貓踩著小凳子，替老屋天花板裝上圓圓的白色警報器，住戶貓貓在下面扶凳",
+        "setting": "老屋客廳，天花板上一顆小小的住警器，窗外是峽谷街景",
+        "props": [
+          "白色警報器",
+          "小凳子",
+          "電池",
+          "鄰里志工臂章",
+          "宣導貼紙"
+        ],
+        "palette": "暖黃室內光、白色、淡橘",
+        "avoid": [
+          "不要火焰或煙霧特寫",
+          "不要驚嚇表情",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🔔",
+      "accent": "#f0b429",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_fire_drill",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_fire_drill.webp",
+      "fileName": "card_fire_drill.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_fire_drill_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_fire_drill.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "消防宣導與防火演練",
+      "cost": 1,
+      "effectOneLine": "居民更會檢查電線、知道怎麼逃；效果慢慢累積。",
+      "cureEvents": [],
+      "scene": {
+        "main": "消防隊長貓貓在社區廣場拿著塑膠滅火器示範，居民貓貓圍成半圈跟著學",
+        "setting": "社區廣場的防火演練，地上用膠帶標出逃生路線，後方有一輛小消防車",
+        "props": [
+          "示範用滅火器",
+          "逃生路線膠帶",
+          "小消防車",
+          "宣導海報（無文字）",
+          "安全帽"
+        ],
+        "palette": "紅、白、天藍，明亮日光",
+        "avoid": [
+          "不要真實火焰",
+          "不要嚴肅恐怖氣氛",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🧯",
+      "accent": "#3aa0d9",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_cctv",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_cctv.webp",
+      "fileName": "card_cctv.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_cctv_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_cctv.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "社區監視器",
+      "cost": 2,
+      "effectOneLine": "扒手與竊盜機會下降；案件更容易追查。",
+      "cureEvents": [
+        "evp_safety_theft"
+      ],
+      "scene": {
+        "main": "警局長貓貓指著路口燈桿上的小攝影機，商家貓貓在旁邊舉牌示意「公開使用規則」",
+        "setting": "夜市入口路口，燈桿上掛著小巧的監視器，攤位燈火通明",
+        "props": [
+          "小監視器",
+          "燈桿",
+          "公告牌（無文字）",
+          "商家貓貓",
+          "巡守臂章"
+        ],
+        "palette": "深藍夜色、暖黃攤位燈",
+        "avoid": [
+          "不要拍到臉部特寫",
+          "不要陰森氣氛",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "📹",
+      "accent": "#5b6bd6",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_crime_edu",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_crime_edu.webp",
+      "fileName": "card_crime_edu.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_crime_edu_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_crime_edu.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "防竊宣導與鄰里守望",
+      "cost": 1,
+      "effectOneLine": "遊客與居民更警覺；扒手下手機會略減。",
+      "cureEvents": [],
+      "scene": {
+        "main": "警局長貓貓和攤商貓貓在夜市牆上貼卡通海報，海報畫著背在前面的小背包",
+        "setting": "夜市入口的布告欄，旁邊有鄰里守望臂章志願者",
+        "props": [
+          "卡通海報（無文字）",
+          "守望臂章",
+          "小背包",
+          "漿糊刷",
+          "燈籠"
+        ],
+        "palette": "暖黃、淡藍、紅燈籠",
+        "avoid": [
+          "不要小偷特寫",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🛡️",
+      "accent": "#7aa8e0",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_slope_guard",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_slope_guard.webp",
+      "fileName": "card_slope_guard.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_slope_guard_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_slope_guard.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "邊坡檢查與護欄",
+      "cost": 3,
+      "effectOneLine": "落石風險下降；道路封閉次數變少。",
+      "cureEvents": [
+        "evp_logi_landslide",
+        "evp_safety_cliff"
+      ],
+      "scene": {
+        "main": "工務貓貓戴安全帽，用長桿敲一下邊坡上的石頭，旁邊的隊員貓貓在裝攔石網",
+        "setting": "峽谷道路旁的陡峭岩壁，路邊新裝的護欄與黃色警示三角錐",
+        "props": [
+          "攔石網",
+          "護欄",
+          "安全帽",
+          "長桿",
+          "三角錐"
+        ],
+        "palette": "岩灰、棕、黃色警示",
+        "avoid": [
+          "不要真實落石砸人",
+          "不要傷者",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🪨",
+      "accent": "#8d6e63",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_private_parking",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_private_parking.webp",
+      "fileName": "card_private_parking.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_private_parking_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_private_parking.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "鼓勵民間設停車場",
+      "cost": 2,
+      "effectOneLine": "外圍停車位增加；路邊違停與壅塞減少。",
+      "cureEvents": [
+        "evp_traffic_tourbus"
+      ],
+      "scene": {
+        "main": "交通課長貓貓與民間地主貓貓握手，背後的空地畫好停車格",
+        "setting": "峽口外圍的空地，一輛輛小車與遊覽車排進停車格，遠處有接駁巴士",
+        "props": [
+          "停車格線",
+          "路標牌（無文字）",
+          "小遊覽車",
+          "接駁巴士",
+          "握手的兩位貓貓"
+        ],
+        "palette": "草綠、灰、天藍",
+        "avoid": [
+          "不要塞滿混亂的車",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🅿️",
+      "accent": "#4caf8d",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "domain": "traffic"
+    },
+    {
+      "policyId": "policy_street_parking",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_street_parking.webp",
+      "fileName": "card_street_parking.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_street_parking_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_street_parking.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "路邊停車收費",
+      "cost": 2,
+      "effectOneLine": "路邊違停減少；道路變順，但有些人會抱怨。",
+      "cureEvents": [],
+      "scene": {
+        "main": "交通課貓貓在路邊停車格旁立起計時牌，駕駛貓貓看著牌子停好車",
+        "setting": "老街路邊的停車格，新裝的小停車計時牌，路面順暢",
+        "props": [
+          "計時牌",
+          "停車格線",
+          "小車",
+          "路標",
+          "錢幣圖示"
+        ],
+        "palette": "灰、橘、天藍",
+        "avoid": [
+          "不要罰單特寫",
+          "不要吵架畫面",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🅿️",
+      "accent": "#e07a5f",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "domain": "traffic"
+    },
+    {
+      "policyId": "policy_traffic_safety",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_traffic_safety.webp",
+      "fileName": "card_traffic_safety.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_traffic_safety_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_traffic_safety.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "交通安全宣導",
+      "cost": 1,
+      "effectOneLine": "駕駛更守規矩、遊客更願意錯峰；效果慢慢累積。",
+      "cureEvents": [],
+      "scene": {
+        "main": "交通課貓貓拿著卡通交通號誌牌教小朋友貓貓過馬路，後方有學校校車",
+        "setting": "峽谷口斑馬線旁，布告欄貼著卡通宣導海報",
+        "props": [
+          "卡通號誌牌",
+          "斑馬線",
+          "校車",
+          "宣導海報（無文字）",
+          "小旗"
+        ],
+        "palette": "天藍、黃、白",
+        "avoid": [
+          "不要事故畫面",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🚦",
+      "accent": "#42a5f5",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "traffic"
+    },
+    {
+      "policyId": "policy_food_edu",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_food_edu.webp",
+      "fileName": "card_food_edu.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_food_edu_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_food_edu.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "食安宣導與家長說明會",
+      "cost": 1,
+      "effectOneLine": "家長與攤商更清楚該怎麼做；疑慮略降。",
+      "cureEvents": [],
+      "scene": {
+        "main": "衛生所貓貓在社區教室對家長貓貓講解保存與留樣，桌上有小冰盒與標籤",
+        "setting": "社區活動中心的說明會，白板畫著簡單的流程圖示",
+        "props": [
+          "小冰盒",
+          "標籤貼紙",
+          "流程圖示（無文字）",
+          "家長貓貓",
+          "水杯"
+        ],
+        "palette": "薄荷綠、白、淡黃",
+        "avoid": [
+          "不要真實學校名",
+          "不要嘔吐畫面",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🍱",
+      "accent": "#66bb6a",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_rat_edu",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_rat_edu.webp",
+      "fileName": "card_rat_edu.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_rat_edu_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_rat_edu.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "防鼠衛教與環境教育",
+      "cost": 1,
+      "effectOneLine": "居民與攤商做得比較到位；鼠跡慢慢減少。",
+      "cureEvents": [],
+      "scene": {
+        "main": "清潔隊貓貓在市集示範把廚餘桶蓋好，攤商貓貓跟著做",
+        "setting": "市集後巷，整齊的廚餘桶都蓋上蓋子，牆上貼卡通海報",
+        "props": [
+          "帶蓋廚餘桶",
+          "卡通海報（無文字）",
+          "掃把",
+          "手套",
+          "小黑板"
+        ],
+        "palette": "黃綠、淺棕",
+        "avoid": [
+          "不要老鼠特寫",
+          "不要髒亂畫面",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🐀",
+      "accent": "#9e9d24",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_town_hall",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_town_hall.webp",
+      "fileName": "card_town_hall.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_town_hall_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_town_hall.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "里民說明會",
+      "cost": 1,
+      "effectOneLine": "居民知道進度、少一些猜測；傳聞降溫。",
+      "cureEvents": [],
+      "scene": {
+        "main": "民政課貓貓站在公所前拿著簡單進度板，居民貓貓圍坐聽",
+        "setting": "公所前廣場的里民說明會，擺著幾排小椅子",
+        "props": [
+          "進度板（無文字）",
+          "小椅子",
+          "麥克風",
+          "茶水",
+          "布告欄"
+        ],
+        "palette": "暖橘、奶黃、淡藍",
+        "avoid": [
+          "不要吵架畫面",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🏛️",
+      "accent": "#ffa726",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "market"
+    },
+    {
+      "policyId": "policy_flood_edu",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_flood_edu.webp",
+      "fileName": "card_flood_edu.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_flood_edu_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_flood_edu.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "防汛自主防災宣導",
+      "cost": 1,
+      "effectOneLine": "居民更懂得防汛；排水口垃圾變少。",
+      "cureEvents": [],
+      "scene": {
+        "main": "工務貓貓拿著小沙包示範疊放，居民貓貓跟著搬",
+        "setting": "低窪巷口，居民在門前疊沙包，牆上貼卡通避難路線圖",
+        "props": [
+          "沙包",
+          "卡通避難路線圖（無文字）",
+          "雨傘",
+          "水桶",
+          "小旗"
+        ],
+        "palette": "青綠、藍灰",
+        "avoid": [
+          "不要洪水淹人",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🌧️",
+      "accent": "#26a69a",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "drain"
+    },
+    {
+      "policyId": "policy_health_edu",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_health_edu.webp",
+      "fileName": "card_health_edu.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_health_edu_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_health_edu.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "衛生教育與防疫宣導",
+      "cost": 1,
+      "effectOneLine": "居民更會自我防護；傳播略降。",
+      "cureEvents": [],
+      "scene": {
+        "main": "衛生所貓貓在社區教室教孩子貓貓洗手，旁邊有倒空的水桶示意",
+        "setting": "社區活動中心，牆上貼卡通洗手步驟",
+        "props": [
+          "洗手台",
+          "卡通洗手步驟（無文字）",
+          "倒空的水桶",
+          "口罩",
+          "小肥皂"
+        ],
+        "palette": "薄荷綠、白、淡藍",
+        "avoid": [
+          "不要針頭",
+          "不要病容特寫",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🧼",
+      "accent": "#26c6da",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_runoff_control",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_runoff.webp",
+      "fileName": "card_runoff.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_runoff_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_runoff.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "出流管制審查",
+      "cost": 2,
+      "effectOneLine": "新開發案自帶滯洪；長期下游淹水風險下降。",
+      "cureEvents": [],
+      "scene": {
+        "main": "工務貓貓拿著審查表，對開發商貓貓指著圖上預留的小水池",
+        "setting": "公所會議室桌上攤著新社區的規劃圖，圖上畫了小水池與草地",
+        "props": [
+          "規劃圖",
+          "小水池模型",
+          "印章",
+          "資料夾",
+          "計算機"
+        ],
+        "palette": "青綠、米白",
+        "avoid": [
+          "不要可讀文字",
+          "不要吵架畫面",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "📐",
+      "accent": "#4aa3a0",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "domain": "drain"
+    },
+    {
+      "policyId": "policy_permeable",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_permeable.webp",
+      "fileName": "card_permeable.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_permeable_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_permeable.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "透水鋪面與保水補助",
+      "cost": 2,
+      "effectOneLine": "小範圍積水減少；水溝壓力略降。",
+      "cureEvents": [],
+      "scene": {
+        "main": "居民貓貓和工務貓貓蹲在門口，把灰色地磚換成有縫隙的透水磚",
+        "setting": "老街店面門口，新鋪的透水磚旁放著雨水貯留桶，天空飄著小雨",
+        "props": [
+          "透水磚",
+          "雨水貯留桶",
+          "小鏟子",
+          "雨傘",
+          "補助貼紙"
+        ],
+        "palette": "青綠、灰、淡藍",
+        "avoid": [
+          "不要洪水",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🧱",
+      "accent": "#7cb342",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "subsidy",
+      "typeLabel": "補助獎勵",
+      "domain": "drain"
+    },
+    {
+      "policyId": "policy_pump_monitor",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_pump.webp",
+      "fileName": "card_pump.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_pump_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_pump.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "抽水站自動化與水情預警",
+      "cost": 3,
+      "effectOneLine": "抽水更快、預警更早；積水退得快。",
+      "cureEvents": [
+        "evp_drain_culvert",
+        "evp_drain_storm"
+      ],
+      "scene": {
+        "main": "工務貓貓看著螢幕上的水位曲線，旁邊小抽水站的燈號轉成綠色",
+        "setting": "河邊小抽水站，水位尺與一面顯示水位的看板",
+        "props": [
+          "水位尺",
+          "螢幕",
+          "抽水機",
+          "看板（無文字）",
+          "雨衣"
+        ],
+        "palette": "天藍、灰、綠燈",
+        "avoid": [
+          "不要真實災情",
+          "不要可讀數字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "📡",
+      "accent": "#3f7fd9",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "domain": "drain"
+    },
+    {
+      "policyId": "policy_flood_relief",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_flood_relief.webp",
+      "fileName": "card_flood_relief.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_flood_relief_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_flood_relief.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "淹水保險與災後救助",
+      "cost": 2,
+      "effectOneLine": "受災戶盡快恢復生活；民怨暫時降低，但淹水原因沒變。",
+      "cureEvents": [],
+      "scene": {
+        "main": "民政貓貓蹲著幫受災居民貓貓填寫簡單的申請單，旁邊有一桶水和拖把",
+        "setting": "雨後的老街，店門口有淺淺的積水，公所帳篷下設了小櫃台",
+        "props": [
+          "申請單（無文字）",
+          "拖把",
+          "小帳篷",
+          "雨靴",
+          "熱茶"
+        ],
+        "palette": "灰藍、暖黃帳篷光",
+        "avoid": [
+          "不要災民哭泣特寫",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🧰",
+      "accent": "#9e9e9e",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "stopgap",
+      "typeLabel": "治標應急",
+      "domain": "drain"
+    },
+    {
+      "policyId": "policy_market_star",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_market_star.webp",
+      "fileName": "card_market_star.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_market_star_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_market_star.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "市集星級評核與公開排名",
+      "cost": 1,
+      "effectOneLine": "買氣慢慢往乾淨、有特色的攤位集中；市集整體品質提升。",
+      "cureEvents": [],
+      "scene": {
+        "main": "市場會長貓貓在攤位前貼上金色星星貼紙，攤商貓貓開心地擺好商品",
+        "setting": "整潔的市集一角，招牌上掛著星星，遊客貓貓拿著小地圖",
+        "props": [
+          "星星貼紙",
+          "招牌",
+          "小地圖",
+          "整齊陳列",
+          "遊客"
+        ],
+        "palette": "金黃、暖橘、米白",
+        "avoid": [
+          "不要可讀文字",
+          "不要負面排名畫面",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "⭐",
+      "accent": "#ffc107",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "market"
+    },
+    {
+      "policyId": "policy_market_committee",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_market_committee.webp",
+      "fileName": "card_market_committee.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_market_committee_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_market_committee.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "攤販自治管理委員會",
+      "cost": 2,
+      "effectOneLine": "夜市秩序與衛生由攤商共同維持；稽查壓力下降。",
+      "cureEvents": [],
+      "scene": {
+        "main": "市場會長貓貓拿著公約看板，攤商貓貓們圍成一圈簽名",
+        "setting": "夜市入口，攤位排列整齊，地上畫著動線，燈籠高掛",
+        "props": [
+          "公約看板（無文字）",
+          "簽名筆",
+          "燈籠",
+          "動線標線",
+          "攤車"
+        ],
+        "palette": "暖橘、紫、紅燈籠",
+        "avoid": [
+          "不要吵架畫面",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🤝",
+      "accent": "#8e6bbf",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "domain": "market"
+    },
+    {
+      "policyId": "policy_loading_zone",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_loading_zone.webp",
+      "fileName": "card_loading_zone.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_loading_zone_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_loading_zone.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "貨車裝卸專用區",
+      "cost": 2,
+      "effectOneLine": "配送車不再二排停車；峽口少一點塞車。",
+      "cureEvents": [
+        "evp_logi_delay",
+        "evp_traffic_paralysis",
+        "evp_traffic_works"
+      ],
+      "scene": {
+        "main": "交通貓貓在路邊用黃漆畫裝卸格，貨車貓貓停好後快速搬箱子",
+        "setting": "市集路口旁，一輛小貨車停在黃色裝卸格內，旁邊車道暢通",
+        "props": [
+          "黃色裝卸格",
+          "小貨車",
+          "紙箱",
+          "計時牌",
+          "三角錐"
+        ],
+        "palette": "黃、灰、橘",
+        "avoid": [
+          "不要事故畫面",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🚚",
+      "accent": "#ef6c00",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "domain": "logistics"
+    },
+    {
+      "policyId": "policy_joint_delivery",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_joint_delivery.webp",
+      "fileName": "card_joint_delivery.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_joint_delivery_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_joint_delivery.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "共同配送",
+      "cost": 3,
+      "effectOneLine": "進城車次減少；路邊臨停與塞車下降。",
+      "cureEvents": [
+        "evp_market_price"
+      ],
+      "scene": {
+        "main": "物流貓貓把多家店的紙箱疊進同一台小貨車，各家老闆貓貓在旁邊簽收",
+        "setting": "清晨的集貨場，一台貨車滿載整齊的紙箱，準備出發",
+        "props": [
+          "小貨車",
+          "紙箱",
+          "簽收單（無文字）",
+          "推車",
+          "晨光"
+        ],
+        "palette": "青綠、暖橘晨光",
+        "avoid": [
+          "不要巨型貨櫃",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "📦",
+      "accent": "#00897b",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "domain": "logistics"
+    },
+    {
+      "policyId": "policy_delivery_subsidy",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_delivery_subsidy.webp",
+      "fileName": "card_delivery_subsidy.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_delivery_subsidy_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_delivery_subsidy.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "攤商外送合作補助",
+      "cost": 2,
+      "effectOneLine": "市集人潮略為分散；攤商多一條收入來源。",
+      "cureEvents": [],
+      "scene": {
+        "main": "攤商貓貓把熱騰騰的便當交給外送貓貓，外送機車的箱子印著小愛心",
+        "setting": "夜市出口，幾輛外送機車排隊取餐",
+        "props": [
+          "外送機車",
+          "便當盒",
+          "愛心貼紙",
+          "保溫箱",
+          "頭盔"
+        ],
+        "palette": "暖橘、黃、紅燈籠",
+        "avoid": [
+          "不要品牌商標",
+          "不要事故畫面",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🛵",
+      "accent": "#ffb300",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "subsidy",
+      "typeLabel": "補助獎勵",
+      "domain": "logistics"
+    },
+    {
+      "policyId": "policy_walking_street",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_walking_street.webp",
+      "fileName": "card_walking_street.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_walking_street_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_walking_street.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "行人徒步區",
+      "cost": 2,
+      "effectOneLine": "人潮不再與車爭路；逛街氣氛變好。",
+      "cureEvents": [],
+      "scene": {
+        "main": "交通貓貓在老街入口立起「徒步區」圖示牌，遊客貓貓悠閒地走過",
+        "setting": "老街中央沒有車，兩旁攤位與燈籠，行人漫步",
+        "props": [
+          "圖示牌（無文字）",
+          "路障",
+          "燈籠",
+          "攤位",
+          "行人"
+        ],
+        "palette": "暖橘、青綠",
+        "avoid": [
+          "不要事故畫面",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🚶",
+      "accent": "#26a69a",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "domain": "traffic"
+    },
+    {
+      "policyId": "policy_shared_parking",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_shared_parking.webp",
+      "fileName": "card_shared_parking.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_shared_parking_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_shared_parking.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "共享車位媒合",
+      "cost": 2,
+      "effectOneLine": "外圍與空檔車位被用起來；路邊違停減少。",
+      "cureEvents": [],
+      "scene": {
+        "main": "公所貓貓與學校管理員貓貓握手，旁邊地面畫著「共享」的圖示",
+        "setting": "學校操場旁的停車場，假日空著的車位開放給遊客",
+        "props": [
+          "車位線",
+          "共享圖示牌（無文字）",
+          "鑰匙",
+          "小汽車",
+          "手機地圖圖示"
+        ],
+        "palette": "靛藍、灰、淡橘",
+        "avoid": [
+          "不要品牌商標",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🔑",
+      "accent": "#5c6bc0",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "domain": "traffic"
+    },
+    {
+      "policyId": "policy_dengue_mobilize",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_dengue_mobilize.webp",
+      "fileName": "card_dengue_mobilize.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_dengue_mobilize_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_dengue_mobilize.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "孳生源清除社區動員",
+      "cost": 2,
+      "effectOneLine": "蚊子的家少了，疫情降溫；居民也學會自己查。",
+      "cureEvents": [
+        "evp_health_dengue"
+      ],
+      "scene": {
+        "main": "里長貓貓與志工貓貓們戴著臂章，把花盆底盤的積水倒掉，衛生所貓貓在旁邊記錄",
+        "setting": "社區巷口的陽台與花盆，水桶倒放在牆邊",
+        "props": [
+          "臂章",
+          "水桶",
+          "花盆底盤",
+          "記錄板",
+          "噴霧器（卡通）"
+        ],
+        "palette": "薄荷綠、淡黃",
+        "avoid": [
+          "不要蚊子特寫",
+          "不要病容",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🪣",
+      "accent": "#43a047",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_lunch_registry",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_lunch_registry.webp",
+      "fileName": "card_lunch_registry.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_lunch_registry_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_lunch_registry.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "午餐食材登錄追溯",
+      "cost": 2,
+      "effectOneLine": "出問題能更快找到來源；家長更有信心。",
+      "cureEvents": [
+        "evp_health_class_upset",
+        "evp_health_lunch_sample"
+      ],
+      "scene": {
+        "main": "廚房貓貓在平板上登錄食材批號，衛生所貓貓貼上追溯貼紙",
+        "setting": "學校廚房的食材區，整齊的箱子貼著小標籤",
+        "props": [
+          "平板（卡通）",
+          "追溯貼紙",
+          "食材箱",
+          "冰箱",
+          "記錄板"
+        ],
+        "palette": "青藍、白、淡黃",
+        "avoid": [
+          "不要真實學校名",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🧾",
+      "accent": "#00acc1",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_kitchen_sorting",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_kitchen_sorting.webp",
+      "fileName": "card_kitchen_sorting.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_kitchen_sorting_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_kitchen_sorting.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "廚餘分流收運",
+      "cost": 3,
+      "effectOneLine": "市集後巷更乾淨；食物殘渣不再成為鼠的免費餐廳。",
+      "cureEvents": [
+        "evp_market_rat_bin"
+      ],
+      "scene": {
+        "main": "清潔隊貓貓把廚餘桶推上專用收運車，攤商貓貓在旁邊把殘渣倒進桶",
+        "setting": "市集後巷，綠色廚餘桶與藍色回收桶分開排列",
+        "props": [
+          "綠色廚餘桶",
+          "專用收運車",
+          "手套",
+          "分類看板（無圖文字）",
+          "堆肥袋"
+        ],
+        "palette": "綠、藍、淺棕",
+        "avoid": [
+          "不要髒亂",
+          "不要老鼠特寫",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "♻️",
+      "accent": "#689f38",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_rat_pro",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_rat_pro.webp",
+      "fileName": "card_rat_pro.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_rat_pro_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_rat_pro.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "社區鼠類偵防",
+      "cost": 2,
+      "effectOneLine": "找出鼠道與孔洞，防治更精準。",
+      "cureEvents": [
+        "evp_health_bait_worry",
+        "evp_safety_park_burrow"
+      ],
+      "scene": {
+        "main": "偵防員貓貓拿著手電筒檢查牆角孔洞，旁邊的居民貓貓拿著封洞材料",
+        "setting": "社區公園邊的矮牆，牆腳有小孔洞，地面整潔",
+        "props": [
+          "手電筒",
+          "封洞材料",
+          "記錄板",
+          "手套",
+          "公園長椅"
+        ],
+        "palette": "棕、綠、暖黃",
+        "avoid": [
+          "不要老鼠特寫",
+          "不要毒餌畫面",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🔦",
+      "accent": "#6d4c41",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_fire_inspection",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_fire_inspection.webp",
+      "fileName": "card_fire_inspection.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_fire_inspection_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_fire_inspection.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "公共場所消防安檢",
+      "cost": 2,
+      "effectOneLine": "消防設備與逃生通道更完整；火災風險下降。",
+      "cureEvents": [],
+      "scene": {
+        "main": "消防隊貓貓拿著檢查表，指著老屋店面牆上的滅火器與逃生標示",
+        "setting": "老街店面，門口放著滅火器，逃生口標示清楚",
+        "props": [
+          "檢查表",
+          "滅火器",
+          "逃生標示",
+          "手電筒",
+          "貼紙"
+        ],
+        "palette": "紅、白、暖棕",
+        "avoid": [
+          "不要火焰",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "📋",
+      "accent": "#c62828",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_led_lights",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_led_lights.webp",
+      "fileName": "card_led_lights.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_led_lights_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_led_lights.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "路燈LED汰換與暗巷補強",
+      "cost": 3,
+      "effectOneLine": "夜間更亮；扒手與意外減少，電費下降。",
+      "cureEvents": [],
+      "scene": {
+        "main": "工務貓貓站在小梯子上換LED路燈，下方巡守貓貓拿著手電筒指路",
+        "setting": "夜晚的石板巷，新換的路燈把轉角照得很亮",
+        "props": [
+          "LED路燈",
+          "小梯子",
+          "手電筒",
+          "路燈桿",
+          "暖黃光暈"
+        ],
+        "palette": "深藍夜色、暖白光",
+        "avoid": [
+          "不要陰森氣氛",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "💡",
+      "accent": "#fbc02d",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_crime_map",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_crime_map.webp",
+      "fileName": "card_crime_map.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_crime_map_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_crime_map.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "治安點位公開與安全地圖",
+      "cost": 1,
+      "effectOneLine": "居民知道哪裡要小心；死角改善更有針對性。",
+      "cureEvents": [],
+      "scene": {
+        "main": "警局貓貓與居民貓貓一起在大地圖上貼綠色與黃色貼紙，標出需要加強的路段",
+        "setting": "社區活動中心牆上的手繪地圖，旁邊是討論的居民",
+        "props": [
+          "手繪地圖",
+          "彩色貼紙",
+          "筆",
+          "小旗",
+          "討論桌"
+        ],
+        "palette": "灰藍、綠、淡黃",
+        "avoid": [
+          "不要案發現場",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🗺️",
+      "accent": "#78909c",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_pied_piper",
+      "priority": 1,
+      "priorityLabel": "P1（最先畫：補上對症缺口）",
+      "file": "assets/sprites/cards/card_pied_piper.webp",
+      "fileName": "card_pied_piper.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_pied_piper_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_pied_piper.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "吹笛人引鼠出城",
+      "cost": 3,
+      "effectOneLine": "鼠群當季被集中帶走；但要記得付尾款，也要把廚餘與鼠洞顧好。",
+      "cureEvents": [
+        "evp_health_rat_swarm"
+      ],
+      "scene": {
+        "main": "戴羽毛帽、披彩色斗篷的吹笛人貓貓吹著長笛，一排卡通小老鼠排隊跟著走進木頭誘捕站",
+        "setting": "清晨的市集後巷，地上有音符，誘捕站像小木屋，旁邊放著帳單夾（無文字）",
+        "props": [
+          "長笛",
+          "羽毛帽",
+          "彩色斗篷",
+          "木頭誘捕站",
+          "帳單夾（無文字）"
+        ],
+        "palette": "紫、金、暖橘晨光",
+        "avoid": [
+          "不要出現孩子跟著吹笛人走（絕對不要）",
+          "不要老鼠受傷或死亡畫面",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🪈",
+      "accent": "#7b4fa0",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "domain": "health"
+    },
+    {
+      "policyId": "policy_stray_dog_tnr",
+      "priority": 1,
+      "priorityLabel": "P1（最先畫：補上對症缺口）",
+      "file": "assets/sprites/cards/card_stray_dog_tnr.webp",
+      "fileName": "card_stray_dog_tnr.webp",
+      "exists": true,
+      "status": "已存在",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_stray_dog_tnr_16x9.webp",
+          "size": "1280x720",
+          "exists": true,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_stray_dog_tnr.webp",
+          "size": "建議 128x128",
+          "exists": true,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "流浪犬 TNR 與收容",
+      "cost": 3,
+      "effectOneLine": "流浪犬不再一直增加，追逐與吠叫衝突變少。",
+      "cureEvents": [
+        "evp_safety_stray_dogs"
+      ],
+      "scene": {
+        "main": "獸醫貓貓抱著一隻剛健檢完、戴著項圈的米色小狗，旁邊志工貓貓在登記本上蓋章",
+        "setting": "明亮的臨時收容站，有乾淨的狗屋、水碗和送養公告板（無文字）",
+        "props": [
+          "狗屋",
+          "水碗",
+          "項圈",
+          "登記本",
+          "送養公告板（無文字）"
+        ],
+        "palette": "暖黃、草綠、米白",
+        "avoid": [
+          "不要籠子擠滿狗",
+          "不要手術畫面或針頭特寫",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🐕",
+      "accent": "#c98a3d",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "hard",
+      "typeLabel": "硬建設／公共服務",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_animal_patrol",
+      "priority": 2,
+      "priorityLabel": "P2",
+      "file": "assets/sprites/cards/card_animal_patrol.webp",
+      "fileName": "card_animal_patrol.webp",
+      "exists": false,
+      "status": "待畫",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_animal_patrol_16x9.webp",
+          "size": "1280x720",
+          "exists": false,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_animal_patrol.webp",
+          "size": "建議 128x128",
+          "exists": false,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "動保志工巡查",
+      "cost": 2,
+      "effectOneLine": "追逐與驚嚇事件減少；需要協助的狗被送去照護。",
+      "cureEvents": [
+        "evp_safety_stray_dogs"
+      ],
+      "scene": {
+        "main": "穿反光背心的志工貓貓蹲下來，溫和地伸手讓一隻大狗聞，另一位志工拿手電筒照路",
+        "setting": "夜晚的巷口，路燈下有乾淨的餵食點與有蓋垃圾桶",
+        "props": [
+          "反光背心",
+          "手電筒",
+          "牽繩",
+          "有蓋垃圾桶",
+          "巡查記錄板（無文字）"
+        ],
+        "palette": "深藍夜色、暖黃路燈、螢光綠背心",
+        "avoid": [
+          "不要狗咬人或流血",
+          "不要陰森氣氛",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🦺",
+      "accent": "#4a9a6a",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "ppp",
+      "typeLabel": "公私協力",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_dog_roundup",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_dog_roundup.webp",
+      "fileName": "card_dog_roundup.webp",
+      "exists": false,
+      "status": "待畫",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_dog_roundup_16x9.webp",
+          "size": "1280x720",
+          "exists": false,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_dog_roundup.webp",
+          "size": "建議 128x128",
+          "exists": false,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "強力捕捉驅離專案",
+      "cost": 2,
+      "effectOneLine": "短期看不到狗，但下季更多狗湧入、民怨上升。",
+      "cureEvents": [],
+      "scene": {
+        "main": "一群拿著大網子的工作貓貓在街角手忙腳亂，網子裡空空的，遠處幾隻狗跑向另一條街",
+        "setting": "白天的老街轉角，居民貓貓與動保志工在旁邊皺眉",
+        "props": [
+          "大網子",
+          "三角錐",
+          "哨子",
+          "空網子",
+          "皺眉的居民"
+        ],
+        "palette": "灰、淡橘、陰天",
+        "avoid": [
+          "不要狗受傷或被抓的特寫",
+          "不要任何血腥或處置畫面",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "🥅",
+      "accent": "#8a8a8a",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "reg",
+      "typeLabel": "管制／稽查",
+      "domain": "safety"
+    },
+    {
+      "policyId": "policy_pet_edu",
+      "priority": 3,
+      "priorityLabel": "P3",
+      "file": "assets/sprites/cards/card_pet_edu.webp",
+      "fileName": "card_pet_edu.webp",
+      "exists": false,
+      "status": "待畫",
+      "optional": {
+        "16x9": {
+          "file": "assets/sprites/cards/card_pet_edu_16x9.webp",
+          "size": "1280x720",
+          "exists": false,
+          "note": "現有 5 張都有 16:9 原圖；若米米從 16:9 構圖再裁成直式，請一併留存。非必要。"
+        },
+        "icon": {
+          "file": "assets/sprites/cards/icons/icon_pet_edu.webp",
+          "size": "建議 128x128",
+          "exists": false,
+          "note": "資料裡有 icon 路徑，但現有 5 張的 icons 資料夾也尚未建立；低優先。"
+        }
+      },
+      "name": "飼主責任與不亂餵宣導",
+      "cost": 1,
+      "effectOneLine": "亂餵與棄養慢慢變少；效果下季才看得出來。",
+      "cureEvents": [],
+      "scene": {
+        "main": "里長貓貓在社區活動中心前發小卡，旁邊一隻戴晶片項圈的家犬乖乖坐著",
+        "setting": "社區布告欄貼著卡通海報（無文字），旁邊有整齊的有蓋垃圾桶",
+        "props": [
+          "卡通海報（無文字）",
+          "小卡",
+          "項圈",
+          "有蓋垃圾桶",
+          "小喇叭"
+        ],
+        "palette": "暖橘、奶黃、淡藍",
+        "avoid": [
+          "不要流浪狗可憐的特寫",
+          "不要可讀文字",
+          "不要放任何文字、數字或點數標示（卡名、成本由遊戲 UI 疊上）",
+          "不要寫實風格或人類角色，貓貓要是主角",
+          "不要品牌商標、真實地名、血腥或驚嚇畫面"
+        ]
+      },
+      "fallbackEmoji": "📣",
+      "accent": "#e0a96d",
+      "spec": {
+        "size": "600x800",
+        "aspect": "3:4 直式",
+        "format": "PNG（RGB，不透明、無 alpha，整張鋪滿畫面）",
+        "style": "像素風（pixel art）＋貓貓擬人角色，峽谷城市背景，與現有 5 張同一套畫風"
+      },
+      "policyType": "info",
+      "typeLabel": "資訊溝通（宣導教育）",
+      "domain": "safety"
+    }
+  ],
+  "stageISprites": {
+    "note": "Stage I 童話彩蛋（2026-10-08）街景精靈與 NPC；卡圖在 cards 內（policy_pied_piper 等 5 張）。見 docs/EASTER_EGGS.md。",
+    "cardIcons": "新卡 icon：assets/sprites/cards/icons/icon_<short>.png（128×128，PNG RGBA）：icon_pied_piper、icon_stray_dog_tnr、icon_animal_patrol、icon_dog_roundup、icon_pet_edu（低優先）。",
+    "items": [
+      {
+        "id": "npc_mayor_anan",
+        "file": "assets/sprites/npc/npc_mayor_anan.webp",
+        "size": "約 110×160（與 npc_guard_police 69×160、遊客 106×158 同高）",
+        "format": "PNG RGBA 透明背景",
+        "desc": "安安市長：貓造型、深藍西裝、紅領帶、招牌笑容、胸前小徽章（無文字）；虛構角色，不像任何真人。",
+        "frames": {
+          "stand": "站姿 2 張（眨眼）",
+          "walk": "走路左右各 4 張（npc_mayor_anan_walk_{left,right}_{0-3}.png）",
+          "answer_confident": "回答時自信笑臉（手比讚）",
+          "answer_sweat": "被追問時微笑冒汗",
+          "answer_proud": "難得答對時得意（星星眼）"
+        },
+        "avoid": [
+          "不要像任何真實政治人物",
+          "不要政黨顏色或標誌",
+          "不要可讀文字"
+        ],
+        "priority": "P1"
+      },
+      {
+        "id": "sprite_pied_piper_walk",
+        "file": "assets/sprites/npc/npc_pied_piper_walk_{left,right}_{0-3}.webp",
+        "size": "約 100×150",
+        "format": "PNG RGBA",
+        "desc": "吹笛人貓貓：羽毛帽、彩色斗篷、長笛，邊走邊吹",
+        "frames": {
+          "walk": "左右各 4 張",
+          "strike": "npc_pied_piper_strike.png：坐在誘捕站門口抱著笛子，旁邊空錢包圖示"
+        },
+        "avoid": [
+          "不要出現孩子跟在後面（絕對不要）",
+          "不要可讀文字"
+        ],
+        "priority": "P1"
+      },
+      {
+        "id": "sprite_rat_line",
+        "file": "assets/sprites/fx/fx_rat_line_{0-3}.webp",
+        "size": "單隻約 24×16，一排 6 隻",
+        "format": "PNG RGBA",
+        "desc": "卡通小老鼠排隊走（可愛、不噁心），4 張走路循環",
+        "avoid": [
+          "不要寫實或受傷"
+        ],
+        "priority": "P1"
+      },
+      {
+        "id": "sprite_trap_station",
+        "file": "assets/sprites/fx/fx_trap_station.webp",
+        "size": "約 120×100",
+        "format": "PNG RGBA",
+        "desc": "木頭小屋造型的誘捕站，門會開關（開／關 2 張）",
+        "avoid": [
+          "不要籠內擠滿老鼠"
+        ],
+        "priority": "P2"
+      },
+      {
+        "id": "fx_music_notes",
+        "file": "assets/sprites/fx/fx_music_notes_{ok,offkey}.webp",
+        "size": "約 64×64",
+        "format": "PNG RGBA",
+        "desc": "音符粒子（正常／走調歪扭兩版）",
+        "avoid": [],
+        "priority": "P2"
+      },
+      {
+        "id": "icon_empty_wallet",
+        "file": "assets/sprites/fx/icon_empty_wallet.webp",
+        "size": "48×48",
+        "format": "PNG RGBA",
+        "desc": "空錢包圖示（尾款沒付）",
+        "avoid": [
+          "不要可讀文字或數字"
+        ],
+        "priority": "P3"
+      },
+      {
+        "id": "npc_stray_dog",
+        "file": "assets/sprites/npc/npc_stray_dog_{a,b}_walk_{left,right}_{0-3}.webp",
+        "size": "約 70×50",
+        "format": "PNG RGBA",
+        "desc": "流浪犬 2 款（米色、黑白），走路與坐下；友善表情",
+        "avoid": [
+          "不要齜牙咬人",
+          "不要瘦骨嶙峋的可憐特寫"
+        ],
+        "priority": "P1"
+      },
+      {
+        "id": "sprite_red_hood_run",
+        "file": "assets/sprites/npc/npc_red_hood_run_{0-3}.webp",
+        "size": "約 60×90",
+        "format": "PNG RGBA",
+        "desc": "小紅帽貓：紅色斗篷、提小魚乾籃子，小跑步 4 張＋揮手 1 張",
+        "avoid": [
+          "不要驚恐表情",
+          "不要可讀文字"
+        ],
+        "priority": "P1"
+      },
+      {
+        "id": "sprite_big_wolf_dog_run",
+        "file": "assets/sprites/npc/npc_big_wolf_dog_run_{0-3}.webp",
+        "size": "約 110×80",
+        "format": "PNG RGBA",
+        "desc": "「大野狼」：毛蓬蓬的灰色大狗戴奶奶睡帽，搖尾巴小跑 4 張＋聞籃子 1 張；看起來好笑不可怕",
+        "avoid": [
+          "不要尖牙、血、咬人",
+          "不要寫實狼"
+        ],
+        "priority": "P1"
+      },
+      {
+        "id": "sprite_volunteer_cat",
+        "file": "assets/sprites/npc/npc_volunteer_cat.webp",
+        "size": "約 70×150",
+        "format": "PNG RGBA",
+        "desc": "動保志工貓：螢光反光背心、手電筒、狗零食袋（站姿 1＋遞零食 1）",
+        "avoid": [
+          "不要可讀文字"
+        ],
+        "priority": "P2"
+      }
+    ]
+  },
+  "priorityCounts": {
+    "P1": 8,
+    "P2": 26,
+    "P3": 16,
+    "total": 50,
+    "byType": {
+      "hard": 11,
+      "reg": 10,
+      "ppp": 11,
+      "info": 13,
+      "stopgap": 2,
+      "subsidy": 3
+    }
+  }
+}

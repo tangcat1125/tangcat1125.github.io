@@ -1,0 +1,24 @@
+{
+  "id": "event_market_slump",
+  "title": "市集人潮變少",
+  "who": "阿美（攤商）",
+  "when": "season_mid",
+  "conditions": {
+    "seasonPhase": "mid",
+    "rules": { "boardwalkQuality": { "lt": 2 } },
+    "traffic": { "touristBusOnTime": false }
+  },
+  "summary": "遊客嫌峽谷步道泥濘，公車班次不穩，週末攤位冷清。",
+  "problem": "人潮與進貨不穩，營收下滑。",
+  "evidence": ["公車載客變少", "攤商銷售紀錄變差", "獲利轉負"],
+  "consequences": "遊客與貨車雙少，金錢與獲利會一起掉。",
+  "deltas": { "money": -60, "profit": -50, "happiness": -5 },
+  "logistics": {
+    "blockedVehicles": ["bus", "light_truck"],
+    "blockedCargo": ["tourists", "market_stock"],
+    "metricHits": { "onTimeRate": -0.15, "congestion": 0 }
+  },
+  "tags": ["經濟", "物流"],
+  "baselineSeverity": 3,
+  "newspaperHeadline": "泥濘步道勸退遊客　週末市集冷清"
+}

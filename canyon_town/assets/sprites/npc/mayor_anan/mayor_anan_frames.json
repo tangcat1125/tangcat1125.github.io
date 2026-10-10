@@ -1,0 +1,48 @@
+{
+  "scale": 2,
+  "source": "procedural pixel art (canyon_art/mayor/mayor.py)",
+  "frameW": 94,
+  "frameH": 152,
+  "anchorX_right": 43,
+  "anchorX_left": 51,
+  "anchorY": "bottom",
+  "facing": "right; *_left.png = per-frame mirror",
+  "sheets": {
+    "walk": {
+      "file": "mayor_anan_walk.png",
+      "frames": 4,
+      "frameW": 94,
+      "frameH": 152,
+      "sheetW": 376,
+      "sheetH": 152,
+      "file_left": "mayor_anan_walk_left.png",
+      "fps": 8
+    },
+    "interview": {
+      "file": "mayor_anan_interview.png",
+      "frames": 2,
+      "frameW": 94,
+      "frameH": 152,
+      "sheetW": 188,
+      "sheetH": 152,
+      "file_left": "mayor_anan_interview_left.png",
+      "fps": 3
+    },
+    "idle": {
+      "file": "mayor_anan_idle.png",
+      "frames": 1,
+      "frameW": 94,
+      "frameH": 152,
+      "sheetW": 94,
+      "sheetH": 152,
+      "fps": 0,
+      "file_left": "mayor_anan_idle_left.png"
+    }
+  },
+  "avatar": {
+    "file": "mayor_anan_avatar.png",
+    "w": 256,
+    "h": 256,
+    "view": "front, head-and-shoulders, transparent bg, badge 安安市長"
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "id": "policy_logistics_hub",
+  "name": "臨時物流緩衝站",
+  "cost": 3,
+  "blurb": "在峽口設卸貨緩衝，小貨車改短程配送，降壅塞、抬準點率。",
+  "solves": [
+    "event_supply_delay"
+  ],
+  "rule_patches": {
+    "logisticsBuffer": 2,
+    "congestionCap": 1
+  },
+  "deltas": {
+    "money": -90,
+    "profit": 20,
+    "happiness": 5,
+    "points": 0
+  },
+  "logistics": {
+    "boostVehicles": [
+      "light_truck",
+      "scooter"
+    ],
+    "priorityCargo": [
+      "produce",
+      "market_stock",
+      "parcel"
+    ],
+    "metricBoost": {
+      "onTimeRate": 0.2,
+      "congestion": -2
+    }
+  },
+  "sideEffect": "要佔用一塊空地；短期設置成本高。",
+  "preview": "預估：金錢 -90、獲利 +20、幸福度 +5；進貨遲到風險大降。",
+  "costPoints": 3,
+  "tags": [
+    "物流",
+    "工程",
+    "治本"
+  ],
+  "counters": [
+    "supply_delay",
+    "freight_jam",
+    "restock"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_logistics_hub.webp",
+    "icon": "assets/sprites/cards/icons/icon_logistics_hub.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "📦",
+    "accent": "#7d6bd0",
+    "fxHint": "fx_buffer_yard"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "物流",
+    "rarity": "稀有",
+    "titleShort": "物流緩衝站",
+    "costBadge": "3 點",
+    "shopLine": "峽口設緩衝站，進貨不再遲到。",
+    "effectLine": "壅塞度大降、準點率大升；多條物資線一起受益。",
+    "flavor": "路沒變寬，但車不再一起擠。",
+    "learnPoint": "這張牌教你：一個樞紐能同時救好幾條線。",
+    "bullets": [
+      "對症：進貨遲到",
+      "準點率 +20%",
+      "要佔一塊空地"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -90,
+        "text": "金錢 -90"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": 20,
+        "text": "獲利 +20"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 5,
+        "text": "幸福度 +5"
+      },
+      {
+        "key": "onTimeRate",
+        "label": "準點率",
+        "value": 0.2,
+        "text": "準點率 +20%"
+      },
+      {
+        "key": "congestion",
+        "label": "壅塞度",
+        "value": -2,
+        "text": "壅塞度 -2"
+      }
+    ],
+    "tradeoffLine": "要佔用一塊空地；短期設置成本高。"
+  },
+  "shopBlurb": "峽口設緩衝站，進貨不再遲到。",
+  "shopLine": "3 點｜峽口設緩衝站，進貨不再遲到。",
+  "executeId": "exec_logistics_hub",
+  "fx": {
+    "street": [
+      "fx_buffer_yard",
+      "fx_truck_shortcut"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:onTimeRate",
+      "pulse_metric:congestion"
+    ],
+    "durationMs": 2400,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 4,
+        "tourist": 0,
+        "security": 0
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "logistics": -24,
+        "traffic": -22,
+        "market": -8,
+        "safety": -6,
+        "health": -3
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.03,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 99,
+        "delaySeasons": 0,
+        "note": "進貨穩定"
+      },
+      "strength": "strong",
+      "summary": "車流+4（永久）；物流民怨-24、交通民怨-22；店家營收 +3%"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_an",
+      "staff_shi"
+    ],
+    "radarWeights": {
+      "logistics": 0.9,
+      "safety": 0.6,
+      "health": 0.1,
+      "engineering": 0.4,
+      "economy": 0.5,
+      "communication": 0.3
+    }
+  },
+  "actionOptionIds": [
+    "act_logistics_hub",
+    "act_water_lane"
+  ],
+  "fromArticleIds": [
+    "article_supply",
+    "article_well"
+  ],
+  "verdictByOption": {
+    "act_logistics_hub": "對症",
+    "act_water_lane": "搭配"
+  },
+  "complaintCounters": [
+    "logistics",
+    "traffic",
+    "market",
+    "safety",
+    "health"
+  ],
+  "complaintDelta": {
+    "logistics": -24,
+    "traffic": -22,
+    "market": -8,
+    "safety": -6,
+    "health": -3
+  },
+  "complaintRebound": {},
+  "complaintNote": "對症物流與交通；一個樞紐同時幫到多個領域。",
+  "policyType": "hard",
+  "typeLabel": "硬建設／公共服務",
+  "realWorldAnalog": "物流基礎建設：設置轉運／暫置場，把貨車從壅塞路段引開。",
+  "topicCounters": [
+    "supply_delay",
+    "freight_jam",
+    "restock"
+  ],
+  "legacyCounters": [
+    "disaster_crash_gorge"
+  ],
+  "cureEventIds": [
+    "evp_logi_cold",
+    "evp_logi_delay",
+    "evp_market_festival",
+    "evp_market_price",
+    "evp_traffic_bus",
+    "evp_traffic_paralysis",
+    "evp_traffic_works"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "eventEffects": {
+    "cure": [
+      "evp_logi_cold",
+      "evp_logi_delay",
+      "evp_market_festival",
+      "evp_market_price",
+      "evp_traffic_bus",
+      "evp_traffic_paralysis",
+      "evp_traffic_works"
+    ],
+    "assist": [
+      "evp_logi_landslide",
+      "evp_market_lunch_supplier",
+      "evp_traffic_paralysis"
+    ],
+    "palliative": [],
+    "backfire": [
+      "evp_health_fake_alert",
+      "evp_logi_false_bridge"
+    ]
+  },
+  "solvesPool": [
+    "evp_logi_cold",
+    "evp_logi_delay",
+    "evp_market_festival",
+    "evp_market_price",
+    "evp_traffic_bus",
+    "evp_traffic_works"
+  ],
+  "solvesPoolConditional": [
+    "evp_traffic_paralysis"
+  ]
+}

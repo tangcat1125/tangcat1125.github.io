@@ -1,0 +1,223 @@
+{
+  "id": "policy_bus_reroute",
+  "name": "公車改道接駁巴士",
+  "cost": 2,
+  "blurb": "公車避開瓶頸改道，並增開市集與停車場之間的接駁巴士。",
+  "solves": [],
+  "rule_patches": {
+    "busReroute": 1,
+    "shuttleLoop": 1
+  },
+  "deltas": {
+    "money": -60,
+    "profit": 10,
+    "happiness": 6
+  },
+  "logistics": {
+    "boostVehicles": [
+      "bus"
+    ],
+    "metricBoost": {
+      "onTimeRate": 0.1,
+      "congestion": -1
+    }
+  },
+  "sideEffect": "改道路線可能經過窄路、積水或峽壁邊坡；沒有輪班疏導時人潮會一次湧入。",
+  "preview": "預估：金錢 -60、獲利 +10、幸福度 +6；公車準點率 +10%，壅塞度 -1。",
+  "costPoints": 2,
+  "tags": [
+    "交通",
+    "公車",
+    "機動"
+  ],
+  "counters": [
+    "bus_delay",
+    "tourism"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_bus_reroute.webp",
+    "icon": "assets/sprites/cards/icons/icon_bus_reroute.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🚌",
+    "accent": "#f2a03d",
+    "fxHint": "fx_bus_detour"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "交通／機動",
+    "rarity": "常見",
+    "titleShort": "接駁巴士",
+    "costBadge": "2 點",
+    "shopLine": "公車繞開瓶頸，接駁巴士載人進市集。",
+    "effectLine": "公車改走順路，停車場與市集有接駁；準點率上升。",
+    "flavor": "路堵了，就換一條路走。",
+    "learnPoint": "這張牌教你：改道要先看新路線安不安全。",
+    "bullets": [
+      "對症：公車誤點",
+      "準點率 +10%",
+      "改道要避開危險路段"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -60,
+        "text": "金錢 -60"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": 10,
+        "text": "獲利 +10"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 6,
+        "text": "幸福度 +6"
+      },
+      {
+        "key": "onTimeRate",
+        "label": "準點率",
+        "value": 0.1,
+        "text": "準點率 +10%"
+      },
+      {
+        "key": "congestion",
+        "label": "壅塞度",
+        "value": -1,
+        "text": "壅塞度 -1"
+      }
+    ],
+    "tradeoffLine": "改道路線可能經過窄路、積水或峽壁邊坡；沒有輪班疏導時人潮會一次湧入。"
+  },
+  "shopBlurb": "公車繞開瓶頸，接駁巴士載人進市集。",
+  "shopLine": "2 點｜公車繞開瓶頸，接駁巴士載人進市集。",
+  "executeId": "exec_bus_reroute",
+  "fx": {
+    "street": [
+      "fx_bus_detour",
+      "fx_shuttle_loop"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:onTimeRate",
+      "pulse_metric:congestion"
+    ],
+    "durationMs": 2000,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 5,
+        "tourist": 1,
+        "security": 0
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "traffic": -20,
+        "market": -4,
+        "logistics": -3,
+        "safety": 2
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 0,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "normal",
+      "summary": "車流+5、遊客+1（永久）；交通民怨-20、市集民怨-4"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_tong",
+      "staff_an"
+    ],
+    "radarWeights": {
+      "logistics": 0.8,
+      "safety": 0.3,
+      "health": 0.1,
+      "engineering": 0.3,
+      "economy": 0.3,
+      "communication": 0.5
+    }
+  },
+  "actionOptionIds": [
+    "act_bus_reroute"
+  ],
+  "fromArticleIds": [
+    "art_evp_traffic_bus",
+    "art_evp_traffic_tourbus"
+  ],
+  "verdictByOption": {
+    "act_bus_reroute": "對症"
+  },
+  "complaintCounters": [
+    "traffic",
+    "market",
+    "logistics"
+  ],
+  "complaintDelta": {
+    "traffic": -20,
+    "market": -4,
+    "logistics": -3,
+    "safety": 2
+  },
+  "complaintRebound": {},
+  "complaintNote": "對症交通；改道多少增加路線風險。",
+  "eventEffects": {
+    "cure": [
+      "evp_traffic_bus",
+      "evp_traffic_tourbus"
+    ],
+    "assist": [
+      "evp_market_festival",
+      "evp_market_slump",
+      "evp_traffic_works"
+    ],
+    "palliative": [
+      "evp_logi_delay",
+      "evp_logi_landslide"
+    ],
+    "backfire": [
+      "evp_drain_storm",
+      "evp_logi_false_bridge",
+      "evp_market_festival",
+      "evp_market_lunch_supplier",
+      "evp_safety_cliff",
+      "evp_safety_rescue_blocked"
+    ]
+  },
+  "policyType": "hard",
+  "typeLabel": "硬建設／公共服務",
+  "realWorldAnalog": "公共運輸服務：調整路線並增開接駁，是服務型的硬建設。",
+  "topicCounters": [
+    "bus_delay",
+    "tourism"
+  ],
+  "legacyCounters": [
+    "disaster_crash_gorge"
+  ],
+  "cureEventIds": [
+    "evp_traffic_bus",
+    "evp_traffic_tourbus"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_traffic_bus",
+    "evp_traffic_tourbus"
+  ],
+  "solvesPoolConditional": []
+}

@@ -1,0 +1,160 @@
+{
+  "id": "policy_pet_edu",
+  "name": "飼主責任與不亂餵宣導",
+  "cost": 1,
+  "blurb": "宣導寵物打晶片與絕育、不棄養、不在路邊亂餵，垃圾與廚餘不落地。效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。",
+  "solves": [],
+  "rule_patches": {
+    "petEducation": 1
+  },
+  "deltas": {
+    "money": -20,
+    "happiness": 1
+  },
+  "logistics": {
+    "boostVehicles": [],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "宣導不能讓街上的狗變少；要搭配收容絕育與志工巡查。",
+  "preview": "預估：金錢 -20、幸福度 +1。",
+  "costPoints": 1,
+  "tags": [
+    "資訊",
+    "溝通",
+    "宣導"
+  ],
+  "counters": [],
+  "art": {
+    "card": "assets/sprites/cards/card_pet_edu.webp",
+    "icon": "assets/sprites/cards/icons/icon_pet_edu.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "📣",
+    "accent": "#e0a96d",
+    "fxHint": "fx_flyer",
+    "exists": false
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "資訊溝通（宣導教育）",
+    "rarity": "常見",
+    "titleShort": "飼主宣導",
+    "costBadge": "1 點",
+    "shopLine": "晶片、絕育、不亂餵，大家一起做。",
+    "effectLine": "亂餵與棄養慢慢變少；效果下季才看得出來。",
+    "flavor": "好心餵一口，也要想想明天。",
+    "learnPoint": "這張牌教你：宣導教育便宜、見效慢，要搭配實際行動。",
+    "bullets": [
+      "輔助：野狗、廚餘",
+      "金錢 -20",
+      "下季見效",
+      "效果較慢、較弱但便宜；同一件事重複宣導會越來越沒感。"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -20,
+        "text": "金錢 -20"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 1,
+        "text": "幸福度 +1"
+      }
+    ],
+    "tradeoffLine": "宣導不能讓街上的狗變少；要搭配收容絕育與志工巡查。"
+  },
+  "shopBlurb": "晶片、絕育、不亂餵，大家一起做。",
+  "shopLine": "1 點｜晶片、絕育、不亂餵，大家一起做。",
+  "executeId": "exec_pet_edu",
+  "fx": {
+    "street": [
+      "fx_flyer",
+      "fx_bin_lid"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:happiness"
+    ],
+    "durationMs": 1600,
+    "effect": {
+      "flows": {
+        "foot": 0,
+        "vehicle": 0,
+        "tourist": 0,
+        "security": 1
+      },
+      "flowKind": "timed",
+      "durationSeasons": 2,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "safety": -5,
+        "health": -2
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 1,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.0,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 0,
+        "delaySeasons": 1,
+        "note": "不直接影響店家營收（靠流量間接影響）"
+      },
+      "strength": "weak",
+      "summary": "治安感+1（2 季）；治安民怨-5、衛生民怨-2"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_nuan",
+      "staff_min"
+    ],
+    "radarWeights": {
+      "logistics": 0.2,
+      "safety": 0.2,
+      "health": 0.3,
+      "engineering": 0.2,
+      "economy": 0.2,
+      "communication": 0.8
+    }
+  },
+  "actionOptionIds": [],
+  "fromArticleIds": [],
+  "verdictByOption": {},
+  "complaintCounters": [
+    "safety",
+    "health"
+  ],
+  "complaintDelta": {
+    "safety": -5,
+    "health": -2
+  },
+  "complaintRebound": {},
+  "complaintNote": "宣導不能讓街上的狗變少；要搭配收容絕育與志工巡查。",
+  "eventEffects": {
+    "cure": [],
+    "assist": [
+      "evp_safety_stray_dogs"
+    ],
+    "palliative": [],
+    "backfire": []
+  },
+  "policyType": "info",
+  "typeLabel": "資訊溝通（宣導教育）",
+  "realWorldAnalog": "動物保護教育：宣導寵物晶片、絕育與不亂餵食、垃圾不落地；便宜、見效慢。",
+  "topicCounters": [],
+  "legacyCounters": [],
+  "cureEventIds": [],
+  "slow": true,
+  "effectDelayCycles": 1,
+  "slowNote": "效果較慢、較弱但便宜（下季見效；同一事件重複使用遞減）",
+  "solvesPool": [],
+  "solvesPoolConditional": []
+}

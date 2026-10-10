@@ -1,0 +1,199 @@
+{
+  "id": "policy_vendor_shift",
+  "name": "攤販輪班夜市整頓",
+  "cost": 2,
+  "blurb": "攤販分時段輪班、夜市統一動線與擺攤規則，把人潮攤平；人多時要配巡守。",
+  "solves": [],
+  "rule_patches": {
+    "marketRotation": 1,
+    "nightMarketOrder": 1
+  },
+  "deltas": {
+    "money": -50,
+    "profit": 20,
+    "happiness": 4
+  },
+  "logistics": {
+    "boostVehicles": [
+      "scooter"
+    ],
+    "metricBoost": {
+      "onTimeRate": 0
+    }
+  },
+  "sideEffect": "夜間人潮變多；沒有巡守隊時扒手與垃圾量跟著增加，也會多一些補貨車。",
+  "preview": "預估：金錢 -50、獲利 +20、幸福度 +4；人潮被分散，攤位不空也不擠。",
+  "costPoints": 2,
+  "tags": [
+    "經濟",
+    "市集",
+    "秩序"
+  ],
+  "counters": [
+    "crowd",
+    "festival"
+  ],
+  "art": {
+    "card": "assets/sprites/cards/card_vendor_shift.webp",
+    "icon": "assets/sprites/cards/icons/icon_vendor_shift.webp",
+    "back": "assets/sprites/cards/card_back_catflash.webp",
+    "fallbackEmoji": "🏮",
+    "accent": "#e6674a",
+    "fxHint": "fx_lantern_row"
+  },
+  "card": {
+    "layout": "portrait",
+    "aspect": "3:4",
+    "typeLabel": "經濟／秩序",
+    "rarity": "常見",
+    "titleShort": "夜市整頓",
+    "costBadge": "2 點",
+    "shopLine": "輪班加整頓，人潮不再擠成一團。",
+    "effectLine": "攤販輪流開、動線統一；廟會與連假人潮接得住。",
+    "flavor": "燈籠一盞一盞亮，人潮才不會一次湧。",
+    "learnPoint": "這張牌教你：人潮管理也是政策，要看有沒有配套。",
+    "bullets": [
+      "對症：廟會人潮",
+      "獲利 +20",
+      "夜間要配巡守"
+    ],
+    "deltaChips": [
+      {
+        "key": "money",
+        "label": "金錢",
+        "value": -50,
+        "text": "金錢 -50"
+      },
+      {
+        "key": "profit",
+        "label": "獲利",
+        "value": 20,
+        "text": "獲利 +20"
+      },
+      {
+        "key": "happiness",
+        "label": "幸福度",
+        "value": 4,
+        "text": "幸福度 +4"
+      }
+    ],
+    "tradeoffLine": "夜間人潮變多；沒有巡守隊時扒手與垃圾量跟著增加，也會多一些補貨車。"
+  },
+  "shopBlurb": "輪班加整頓，人潮不再擠成一團。",
+  "shopLine": "2 點｜輪班加整頓，人潮不再擠成一團。",
+  "executeId": "exec_vendor_shift",
+  "fx": {
+    "street": [
+      "fx_lantern_row",
+      "fx_market_crowd"
+    ],
+    "hud": [
+      "flash_points",
+      "pulse_metric:profit"
+    ],
+    "durationMs": 1800,
+    "effect": {
+      "flows": {
+        "foot": 3,
+        "vehicle": 0,
+        "tourist": 2,
+        "security": 0
+      },
+      "flowKind": "permanent",
+      "durationSeasons": 99,
+      "delaySeasons": 0,
+      "flowSource": "card_recurring",
+      "complaints": {
+        "market": -14,
+        "traffic": -3,
+        "safety": 3
+      },
+      "complaintRebound": {},
+      "complaintDelaySeasons": 0,
+      "complaintSource": "policy.complaintDelta",
+      "shops": {
+        "revenuePct": 0.05,
+        "healthBonus": 0,
+        "reopenMoneyDelta": 0,
+        "durationSeasons": 99,
+        "delaySeasons": 0,
+        "note": "輪班讓夜市動線順、攤位輪得到"
+      },
+      "strength": "normal",
+      "summary": "人流+3、遊客+2（永久）；市集民怨-14、交通民怨-3；店家營收 +5%"
+    }
+  },
+  "staffFit": {
+    "bestStaffIds": [
+      "staff_shi",
+      "staff_wen"
+    ],
+    "radarWeights": {
+      "logistics": 0.3,
+      "safety": 0.3,
+      "health": 0.1,
+      "engineering": 0.1,
+      "economy": 0.9,
+      "communication": 0.6
+    }
+  },
+  "actionOptionIds": [
+    "act_vendor_shift"
+  ],
+  "fromArticleIds": [
+    "art_evp_market_festival",
+    "art_evp_market_slump"
+  ],
+  "verdictByOption": {
+    "act_vendor_shift": "對症"
+  },
+  "complaintCounters": [
+    "market",
+    "traffic"
+  ],
+  "complaintDelta": {
+    "market": -14,
+    "traffic": -3,
+    "safety": 3
+  },
+  "complaintRebound": {},
+  "complaintNote": "市集分流見效；夜間人潮讓治安略有壓力。",
+  "eventEffects": {
+    "cure": [
+      "evp_market_festival"
+    ],
+    "assist": [
+      "evp_market_slump",
+      "evp_traffic_tourbus"
+    ],
+    "palliative": [],
+    "backfire": [
+      "evp_drain_blocked",
+      "evp_drain_grease_trap",
+      "evp_health_flu",
+      "evp_logi_cold",
+      "evp_logi_delay",
+      "evp_safety_fire",
+      "evp_safety_theft",
+      "evp_traffic_paralysis"
+    ]
+  },
+  "policyType": "reg",
+  "typeLabel": "管制／稽查",
+  "realWorldAnalog": "市集管理：用分時段、動線與擺攤規則管理人潮。",
+  "topicCounters": [
+    "crowd",
+    "festival"
+  ],
+  "legacyCounters": [],
+  "cureEventIds": [
+    "evp_market_festival"
+  ],
+  "slow": false,
+  "effectDelayCycles": 0,
+  "slowNote": "",
+  "solvesPool": [
+    "evp_market_festival"
+  ],
+  "solvesPoolConditional": []
+}
