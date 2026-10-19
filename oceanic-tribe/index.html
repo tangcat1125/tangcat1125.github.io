@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>黑潮之濱：豐濱至成功 — 舊石器八仙洞聚落、三仙台退潮陸連島與潮間帶沙盒</title>
+  <script src="./vendor/tailwindcss.js"></script>
+  <script src="./vendor/three.min.js"></script>
+  <link rel="stylesheet" href="./css/style.css?v=20261019_8">
+</head>
+<body>
+
+  <!-- Three.js 3D Canvas -->
+  <div id="canvas-container"></div>
+
+  <!-- 遊戲聲音：海浪環境音 + 整體背景音樂；由第一次使用者操作同步啟動 -->
+  <audio id="ocean-waves-audio" src="./media/ocean-waves.mp3" loop preload="auto" aria-hidden="true"></audio>
+  <audio id="coastal-music-audio" src="./media/under-the-coastal-shelf.mp3" loop preload="auto" aria-hidden="true"></audio>
+
+  <!-- Crosshair for First-Person Mode -->
+  <div id="crosshair">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <path d="M14 4V11M14 17V24M4 14H11M17 14H24" stroke="#f8fafc" stroke-width="2.2" stroke-linecap="square"/>
+      <rect x="12.5" y="12.5" width="3" height="3" stroke="#38bdf8" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <!-- 🕵️ 時空偵探：圈起 3D 地形與聚落主題的大圓圈 (螢幕投影鎖定環) -->
+  <div id="detective-target-circle" class="hidden">
+    <div class="detective-circle-outer"></div>
+    <div class="detective-circle-inner"></div>
+    <div class="detective-circle-crosshair"></div>
+    <div id="detective-circle-label" class="detective-circle-badge">🕵️ 場景主題鎖定</div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 左側端點：三大隱藏式資料夾標籤 + 🕵️ 時空偵探考驗按鍵 (放大字體版)       -->
+  <!-- ===================================================================== -->
+  <nav class="fixed top-1/2 -translate-y-1/2 left-0 z-30 flex flex-col gap-3 pointer-events-auto">
+    <button id="folder-tab-culture" onclick="toggleLeftFolder('culture')" class="folder-tab-btn" style="--tab-accent: #f59e0b;" title="展開／收合：1. 文化圖層">
+      <span class="text-xl">📁</span>
+      <div class="text-left leading-tight">
+        <div class="text-amber-300 font-black text-base">1. 文化</div>
+        <div class="text-xs text-slate-200 font-bold">八仙洞・日夜作息</div>
+      </div>
+    </button>
+
+    <button id="folder-tab-terrain" onclick="toggleLeftFolder('terrain')" class="folder-tab-btn" style="--tab-accent: #38bdf8;" title="展開／收合：2. 地形圖層">
+      <span class="text-xl">📁</span>
+      <div class="text-left leading-tight">
+        <div class="text-sky-300 font-black text-base">2. 地形</div>
+        <div class="text-xs text-slate-200 font-bold">五帶地質・陸連島</div>
+      </div>
+    </button>
+
+    <button id="folder-tab-intertidal" onclick="toggleLeftFolder('intertidal')" class="folder-tab-btn" style="--tab-accent: #2dd4bf;" title="展開／收合：3. 潮間帶圖層">
+      <span class="text-xl">📁</span>
+      <div class="text-left leading-tight">
+        <div class="text-teal-300 font-black text-base">3. 潮間帶</div>
+        <div class="text-xs text-slate-200 font-bold">潮間生物・黑潮鏈</div>
+      </div>
+    </button>
+
+    <!-- 學生自主觀察完場景後，按下「🕵️ 時空偵探」啟動主題選擇與大圓圈卡牌考驗 -->
+    <button id="detective-launch-btn" onclick="toggleDetectiveMode()" class="folder-tab-btn mt-1.5 border-amber-400/80" style="--tab-accent: #fbbf24; background: linear-gradient(135deg, rgba(120, 53, 15, 0.94), rgba(15, 23, 42, 0.96));" title="自主觀察完場景後，開啟「時空偵探」主題選擇與卡牌考驗！">
+      <span class="text-xl">🕵️</span>
+      <div class="text-left leading-tight">
+        <div class="flex items-center gap-1.5">
+          <span class="text-amber-300 font-black text-base">時空偵探</span>
+          <span id="detective-btn-progress" class="text-xs font-mono px-1.5 py-0.5 rounded-md bg-amber-500/35 text-amber-100 border border-amber-400/60 font-black">0/5</span>
+        </div>
+        <div class="text-xs text-amber-100 font-bold">舊石器・長濱地形</div>
+      </div>
+    </button>
+  </nav>
+
+  <!-- 左側三大資料夾展開圖層容器 + 時空偵探寬幅大字卡牌抽屜 -->
+  <aside class="fixed top-1/2 -translate-y-1/2 left-40 z-30 pointer-events-none">
+    <div id="layer-drawer-culture" class="layer-drawer layer-hidden w-88 md:w-[420px] pointer-events-auto"></div>
+    <div id="layer-drawer-terrain" class="layer-drawer layer-hidden w-88 md:w-[420px] pointer-events-auto"></div>
+    <div id="layer-drawer-intertidal" class="layer-drawer layer-hidden w-88 md:w-[420px] pointer-events-auto"></div>
+    <div id="detective-panel-container" class="w-[520px] lg:w-[620px] max-w-[85vw] pointer-events-auto hidden"></div>
+  </aside>
+
+  <!-- ===================================================================== -->
+  <!-- 右上端點：隱藏式小資料夾 (🔍 探測誌 / 🎥 視角與操作)                     -->
+  <!-- ===================================================================== -->
+  <div class="fixed top-3 right-3 z-30 flex flex-col items-end gap-2 pointer-events-none">
+    <div class="flex items-center gap-1.5 pointer-events-auto">
+      <button id="right-tab-inspector" onclick="toggleRightDrawer('inspector')" class="endpoint-pill px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+        <span>📁</span><span>🔍 生態與地質探測誌</span>
+      </button>
+      <button id="right-tab-controls" onclick="toggleRightDrawer('controls')" class="endpoint-pill px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+        <span>📁</span><span>🎥 視角與操作</span>
+      </button>
+    </div>
+
+    <!-- 右上展開抽屜 A：生態與地質探測誌 (預設隱藏) -->
+    <div id="right-drawer-inspector" class="mc-panel rounded-2xl p-3.5 w-80 pointer-events-auto hidden">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="text-xs font-black uppercase tracking-wider text-sky-300">🔍 地質與水生動植物探測誌</h2>
+        <div class="flex items-center gap-1.5">
+          <span id="inspector-coords" class="text-[10px] font-mono text-slate-300">X:0 Y:0 Z:0</span>
+          <button onclick="toggleRightDrawer('inspector')" class="text-[10px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-300 hover:bg-rose-900">✕</button>
+        </div>
+      </div>
+      <div class="flex items-start gap-3 bg-slate-950/75 p-2.5 rounded-xl border border-sky-400/25">
+        <canvas id="inspector-preview" width="48" height="48" class="w-12 h-12 rounded border border-slate-500 flex-shrink-0" style="image-rendering: pixelated;"></canvas>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span id="inspector-name" class="font-black text-sm text-white">成功・三仙台陸連島（退潮連島礫灘）</span>
+            <span id="inspector-zone-badge" class="text-[10px] px-1.5 py-0.5 rounded bg-teal-500/25 text-teal-200 border border-teal-400/30 font-bold">舊石器地景</span>
+          </div>
+          <p id="inspector-geo" class="text-[11px] text-amber-300 font-medium mt-0.5">地質：都巒山層火山集塊岩島・退潮連島礫石礁脊 (Tombolo)</p>
+          <p id="inspector-desc" class="text-xs text-slate-200 mt-1 leading-relaxed">
+            舊石器時代尚無現代八拱橋，三仙台與本島之間由灰黑色扁圓礫石與珊瑚藻礁構成「連島沙洲」相連，唯有退潮時連島步道浮現才能徒步走過去登島！
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右上展開抽屜 B：視角切換與操作指南 (預設隱藏) -->
+    <div id="right-drawer-controls" class="mc-panel rounded-2xl p-3.5 w-80 pointer-events-auto hidden space-y-2.5">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-black text-sky-300">🎥 視角模式與漫步控制</span>
+        <button onclick="toggleRightDrawer('controls')" class="text-[10px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-300 hover:bg-rose-900">✕</button>
+      </div>
+      <div class="grid grid-cols-2 gap-1.5">
+        <button id="mode-orbit-btn" onclick="switchControlMode('ORBIT')" class="mc-btn active text-xs py-1.5 px-2 rounded-lg font-bold">
+          🦅 自由視角構圖
+        </button>
+        <button id="mode-fps-btn" onclick="switchControlMode('FPS')" class="mc-btn text-xs py-1.5 px-2 rounded-lg font-bold">
+          🏃 族人漫步 (WASD)
+        </button>
+      </div>
+      <div class="bg-slate-950/75 p-2.5 rounded-xl border border-slate-800 text-[11px] text-slate-200 space-y-1">
+        <div class="font-bold text-white flex items-center justify-between mb-1">
+          <span>🎮 互動操作指南</span>
+          <span class="text-[10px] text-sky-300 font-mono" id="block-count-badge">載入中...</span>
+        </div>
+        <div id="controls-hint-orbit" class="space-y-1">
+          <div>• <strong class="text-sky-300">左鍵拖曳</strong>：旋轉視角 ｜ <strong class="text-sky-300">右鍵拖曳</strong>：平移海岸</div>
+          <div>• <strong class="text-sky-300">滾輪</strong>：縮放遠近 ｜ <strong class="text-sky-300">左鍵點擊</strong>：放置方塊 (Shift挖掘)</div>
+        </div>
+        <div id="controls-hint-fps" class="space-y-1 hidden">
+          <div>• <strong class="text-emerald-300">W A S D</strong>：退潮時可徒步走過三仙台陸連島！</div>
+          <div>• <strong class="text-emerald-300">空白鍵</strong>：跳躍/游泳 ｜ <strong class="text-emerald-300">ESC</strong>：解除滑鼠鎖定</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 底部端點：隱藏式建造方塊欄小資料夾                                       -->
+  <!-- ===================================================================== -->
+  <footer class="fixed bottom-2 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1.5 pointer-events-none">
+    <div id="bottom-drawer-hotbar" class="flex flex-col items-center gap-1 pointer-events-auto hidden">
+      <div class="px-3 py-0.5 rounded-full bg-slate-950/90 border border-sky-400/40 text-[11px] font-bold text-sky-200 shadow-lg">
+        手持方塊：<span id="selected-block-label" class="text-white">東海岸灰黑扁圓礫石灘（三仙台陸連島沙洲）</span>
+      </div>
+      <div id="hotbar-container" class="mc-panel rounded-xl p-1.5 flex items-center gap-1.5"></div>
+    </div>
+    <button id="bottom-tab-hotbar" onclick="toggleBottomHotbar()" class="endpoint-pill px-3.5 py-1 rounded-full pointer-events-auto flex items-center gap-1.5">
+      <span>📁</span><span>🧱 地形方塊欄 (1~8)</span>
+    </button>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- 預設唯一常駐可見介面：📐 東海岸潮汐與五帶側面地形圖 (Tidal Side-Profile) -->
+  <!-- ===================================================================== -->
+  <section class="fixed bottom-3 right-3 z-20 w-80 md:w-84 pointer-events-auto">
+    <div class="mc-panel rounded-2xl p-3 border-sky-400/45 shadow-2xl">
+      <div class="flex items-center justify-between mb-1">
+        <div class="flex items-center gap-1.5">
+          <span class="text-xs font-black text-sky-200" id="zone-detail-title">📐 東海岸五帶橫剖面即時位置</span>
+          <span id="playback-status-pill" class="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-500/25 text-emerald-200 border border-emerald-400/40 font-bold animate-pulse">播映中</span>
+        </div>
+        <span id="profile-cursor-zone" class="text-[10px] font-bold text-emerald-300">潮間帶・陸連島</span>
+      </div>
+
+      <!-- 側面地形與即時潮位剖面圖 SVG -->
+      <div class="bg-slate-950/85 rounded-xl p-2 border border-slate-800">
+        <svg id="profile-svg" viewBox="0 0 300 88" class="w-full h-20 overflow-visible">
+          <defs>
+            <linearGradient id="terrainGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#15803d"/>
+              <stop offset="23%" stop-color="#65a30d"/>
+              <stop offset="42%" stop-color="#78716c"/>
+              <stop offset="52%" stop-color="#a8a29e"/>
+              <stop offset="63%" stop-color="#4da836"/>
+              <stop offset="80%" stop-color="#0284c7"/>
+              <stop offset="100%" stop-color="#1d4ed8"/>
+            </linearGradient>
+            <!-- 裁切出海水覆蓋範圍（讓三仙台島峰頂在滿潮時依然露出海面，而連島沙洲凹槽在滿潮時被海水淹沒） -->
+            <clipPath id="seaWaterClip">
+              <polygon points="122,0 300,0 300,88 204,53 190,37 174,52 154,52 136,47 122,39"/>
+            </clipPath>
+          </defs>
+
+          <!-- 背景深海夜空底色 -->
+          <rect x="0" y="0" width="300" height="88" fill="#0c2d48" rx="4"/>
+
+          <!-- 東海岸五帶地形（含 X=154..174 連島礫石礁脊凹槽 Y=52，以及 X=190 三仙台島峰頂 Y=37） -->
+          <polygon points="0,88 0,10 28,7 62,30 70,30 76,38 120,39 136,47 154,52 174,52 190,37 204,53 245,62 278,78 300,85 300,88"
+            fill="url(#terrainGrad)" stroke="#cbd5e1" stroke-width="1.2"/>
+
+          <!-- 動態潮汐海水層（繪製於連島沙洲之上，滿潮時淹沒連島凹槽，退潮時低於 Y=52 露出陸連島！） -->
+          <g clip-path="url(#seaWaterClip)">
+            <rect id="svg-sea-rect" x="122" y="48.5" width="178" height="42" fill="rgba(14, 165, 233, 0.56)"/>
+            <line id="svg-sea-line" x1="122" y1="48.5" x2="300" y2="48.5" stroke="#bae6fd" stroke-width="1.6" stroke-dasharray="3 2"/>
+          </g>
+
+          <!-- 五帶標籤 -->
+          <text x="10" y="23" fill="#bbf7d0" font-size="7.5" font-weight="bold">海岸山脈</text>
+          <text x="78" y="34" fill="#ecfccb" font-size="7.5" font-weight="bold">海階台地</text>
+          <text x="122" y="36" fill="#f5f5f4" font-size="7.2" font-weight="bold">礫灘</text>
+          <text x="148" y="33" fill="#fde68a" font-size="7.2" font-weight="bold">陸連島/三仙台</text>
+          <text x="226" y="42" fill="#bae6fd" font-size="7.5" font-weight="bold">大陸棚與黑潮</text>
+
+          <!-- 退潮時在剖面圖陸連島上走動的史前採集族人標記 -->
+          <g id="svg-tombolo-walker" transform="translate(164, 50)" style="display: none;">
+            <circle cx="0" cy="-3" r="2.8" fill="#fbbf24" stroke="#78350f" stroke-width="1"/>
+            <text x="0" y="-7.5" text-anchor="middle" fill="#fde68a" font-size="6.2" font-weight="bold">族人登島</text>
+          </g>
+
+          <!-- 玩家/游標即時剖面位置標記 -->
+          <g id="svg-pos-marker" transform="translate(165, 48)">
+            <line x1="0" y1="-32" x2="0" y2="32" stroke="#facc15" stroke-width="1.2" stroke-dasharray="2 2"/>
+            <circle cx="0" cy="0" r="4" fill="#facc15" stroke="#0f172a" stroke-width="1.5"/>
+          </g>
+        </svg>
+
+        <!-- 整合於側面地形圖下方的潮汐快速控制列 + 學生觀察專用「▶️ 繼續播映」控制區 -->
+        <div class="mt-1.5 pt-1.5 border-t border-slate-800/90 space-y-1.5">
+          <div class="flex items-center justify-between text-[10px]">
+            <span id="tide-label" class="font-bold text-cyan-300">🌊 平潮：淺水漫過陸連島</span>
+            <span id="sea-level-readout" class="font-mono text-slate-300">海平面: Y = +0.1m</span>
+          </div>
+          <input id="profile-tide-slider" type="range" min="-1.8" max="1.8" step="0.02" value="0.1"
+            oninput="onTideSliderChange(this.value)"
+            class="w-full accent-cyan-400 cursor-pointer h-1.5 rounded-lg bg-slate-700"/>
+
+          <!-- 第一排：退潮 / 滿潮 定格觀察按鈕 -->
+          <div class="grid grid-cols-2 gap-1.5">
+            <button onclick="setTidePreset(-1.25, true)" class="mc-btn py-1 px-2 rounded-lg text-[10px] font-bold text-amber-200 border-amber-400/45 flex items-center justify-center gap-1">
+              <span>🦶 退潮走陸連島</span>
+            </button>
+            <button onclick="setTidePreset(0.95, true)" class="mc-btn py-1 px-2 rounded-lg text-[10px] font-bold text-sky-200 border-sky-400/45 flex items-center justify-center gap-1">
+              <span>🌊 滿潮淹沒沙洲</span>
+            </button>
+          </div>
+
+          <!-- 第二排：學生觀察專用「▶️ 繼續播映 / ⏸️ 暫停定格 / ⏩ 播映速度」 -->
+          <div class="grid grid-cols-12 gap-1 pt-0.5">
+            <button id="btn-resume-tide" onclick="resumeTidePlayback()" class="col-span-6 mc-btn active py-1.5 px-2 rounded-lg text-[11px] font-black text-emerald-200 border-emerald-400/60 flex items-center justify-center gap-1 shadow-md">
+              <span id="btn-resume-tide-icon">▶️</span>
+              <span id="btn-resume-tide-text">繼續播映 (潮汐循環)</span>
+            </button>
+            <button id="btn-pause-tide" onclick="pauseTidePlayback()" class="col-span-3 mc-btn py-1.5 px-1.5 rounded-lg text-[10px] font-bold text-slate-200 flex items-center justify-center gap-0.5" title="定格在目前潮位仔細觀察">
+              <span>⏸️ 暫停</span>
+            </button>
+            <button id="btn-tide-speed" onclick="cycleTidePlaybackSpeed()" class="col-span-3 mc-btn py-1.5 px-1.5 rounded-lg text-[10px] font-mono font-bold text-cyan-200 flex items-center justify-center" title="切換潮汐播映速度">
+              ⏩ 1.0x
+            </button>
+          </div>
+
+          <!-- 第三排：學生自主觀察完畢後，一鍵啟動「🕵️ 時空偵探」場景圈選與卡牌考驗 -->
+          <div class="pt-1 border-t border-slate-800/80">
+            <button onclick="toggleDetectiveMode()" class="w-full py-2 px-3 rounded-xl text-sm font-black text-amber-100 border-2 border-amber-400/80 shadow-lg flex items-center justify-between transition-all hover:scale-[1.01]" style="background: linear-gradient(135deg, rgba(180, 83, 9, 0.92), rgba(15, 118, 110, 0.90));">
+              <span class="flex items-center gap-1.5">
+                <span class="text-base">🕵️</span>
+                <span>時空偵探：場景圈選卡牌考驗</span>
+              </span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded-lg bg-slate-950/75 text-amber-300 border border-amber-400/50">開始考驗 ▶</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 載入各資料夾圖層文案、3D 模組與時空偵探題庫系統 -->
+  <script src="./js/layers/culture-layer.js?v=20261019_7"></script>
+  <script src="./js/layers/terrain-layer.js?v=20261019_7"></script>
+  <script src="./js/layers/intertidal-layer.js?v=20261019_7"></script>
+  <script src="./js/hud-controller.js?v=20261019_7"></script>
+  <script src="./js/world-terrain.js?v=20261019_7"></script>
+  <script src="./js/ocean-shader.js?v=20261019_7"></script>
+  <script src="./js/coastal-biota.js?v=20261019_7"></script>
+  <script src="./js/prehistoric-tribe.js?v=20261019_7"></script>
+  <script src="./js/detective-game.js?v=20261019_9"></script>
+
+  <!-- 主控互動與動畫迴圈 -->
+  <script>
+    // =========================================================================
+    // 遊戲聲音：兩個音軌同步啟動，避開瀏覽器未互動時禁止自動播放的限制
+    // =========================================================================
+    const oceanWavesAudio = document.getElementById('ocean-waves-audio');
+    const coastalMusicAudio = document.getElementById('coastal-music-audio');
+    let gameAudioStarted = false;
+
+    if (oceanWavesAudio && coastalMusicAudio) {
+      oceanWavesAudio.volume = 0.18;
+      coastalMusicAudio.volume = 0.30;
+
+      window.startGameAudio = function () {
+        if (gameAudioStarted) return;
+
+        // 同一個使用者手勢內同時呼叫 play()，讓兩條音軌盡可能同步起播。
+        const wavePlay = oceanWavesAudio.play();
+        const musicPlay = coastalMusicAudio.play();
+        Promise.all([wavePlay, musicPlay])
+          .then(() => {
+            gameAudioStarted = true;
+          })
+          .catch(() => {
+            // 瀏覽器若尚未接受播放，保留重試機會，下一次點擊時再啟動。
+          });
+      };
+
+      // 第一個點擊、觸控或按鍵就是遊戲音效的解鎖手勢。
+      window.addEventListener('pointerdown', window.startGameAudio, { capture: true });
+      window.addEventListener('keydown', window.startGameAudio, { capture: true });
+    }
+
+    // =========================================================================
+    // 7. 相機導覽與選取框（已移除所有 3D 漂浮牌子）
+    // =========================================================================
+    const highlightGeo = new THREE.BoxGeometry(1.04, 1.04, 1.04);
+    const highlightBox = new THREE.LineSegments(
+      new THREE.EdgesGeometry(highlightGeo),
+      new THREE.LineBasicMaterial({ color: 0xfacc15, linewidth: 2 })
+    );
+    highlightBox.visible = false;
+    scene.add(highlightBox);
+
+    let controlMode = 'ORBIT';
+    const orbitTarget = new THREE.Vector3(7.5, 2.2, 14.5);
+    let orbitSpherical = { radius: 26.0, theta: -2.68, phi: 1.32 };
+    let desiredCameraAnim = null;
+
+    function updateOrbitCamera() {
+      orbitSpherical.phi = Math.max(0.12, Math.min(Math.PI * 0.485, orbitSpherical.phi));
+      orbitSpherical.radius = Math.max(5, Math.min(165, orbitSpherical.radius));
+
+      const sinPhi = Math.sin(orbitSpherical.phi);
+      camera.position.x = orbitTarget.x + orbitSpherical.radius * sinPhi * Math.sin(orbitSpherical.theta);
+      camera.position.y = orbitTarget.y + orbitSpherical.radius * Math.cos(orbitSpherical.phi);
+      camera.position.z = orbitTarget.z + orbitSpherical.radius * sinPhi * Math.cos(orbitSpherical.theta);
+      camera.lookAt(orbitTarget);
+    }
+
+    function setMigrationBadge(text, isFollowing) {
+      const badge = document.getElementById('migration-state-badge');
+      if (!badge) return;
+      badge.textContent = text;
+      badge.className = isFollowing
+        ? 'text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/30 text-emerald-200 border border-emerald-400/50 animate-pulse'
+        : 'text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/25 text-amber-200 border border-amber-400/30';
+    }
+
+    function animateCameraTo(targetVec, radius, theta, phi) {
+      if (controlMode === 'FPS') switchControlMode('ORBIT');
+      desiredCameraAnim = { target: targetVec.clone(), radius, theta, phi };
+    }
+
+    function focusSpecies(speciesKey) {
+      const coordsMap = {
+        HUMAN_FIRE:      [-11, 6, 5],
+        HUMAN_WOOD:      [-11, 6, -2],
+        HUMAN_BARK_VINE: [-9, 6, 2],
+        HUMAN_STONE:     [-5, 4, 5],
+        HUMAN_HUNT:      [-12, 7, 2],
+        HUMAN_FORAGE:    [4, 1, 3],
+        HUMAN_FISH:      [7, 1, 6]
+      };
+      const c = coordsMap[speciesKey] || [23, -1, 12];
+      updateSpeciesInspectorUI(speciesKey, c[0], c[1], c[2]);
+
+      if (speciesKey.startsWith('HUMAN_') && speciesKey !== 'HUMAN_FIRE' && (currentTimeOfDay === 'DUSK' || currentTimeOfDay === 'NIGHT')) {
+        setTimeOfDay('NOON', false);
+      }
+
+      if (speciesKey === 'HUMAN_HUNT') {
+        if (controlMode === 'FPS') switchControlMode('ORBIT');
+        activeFollowMode = 'HUMAN_HUNT';
+        const boarPos = tribeAnimState.wildBoar ? tribeAnimState.wildBoar.group.position : new THREE.Vector3(-12, 7, 2);
+        animateCameraTo(boarPos, 13.5, 1.18, 1.08);
+        return;
+      }
+
+      if (['FLYING_FISH', 'MAHI_MAHI', 'YELLOWFIN_TUNA', 'MIGRATION_CHAIN'].includes(speciesKey)) {
+        if (controlMode === 'FPS') switchControlMode('ORBIT');
+        activeFollowMode = speciesKey;
+        const leadSquad = migrationSquads[0];
+        if (speciesKey === 'FLYING_FISH') {
+          setMigrationBadge('🎥 伴游：飛魚群前鋒', true);
+          animateCameraTo(leadSquad.flyingFishUnits[0].group.position, 9.5, -1.85, 1.16);
+        } else if (speciesKey === 'MAHI_MAHI') {
+          setMigrationBadge('🎥 伴游：鬼頭刀獵食', true);
+          animateCameraTo(leadSquad.mahiUnits[0].group.position, 9.5, -1.80, 1.15);
+        } else if (speciesKey === 'YELLOWFIN_TUNA') {
+          setMigrationBadge('🎥 伴游：黃鰭鮪巡弋', true);
+          animateCameraTo(leadSquad.tunaUnits[0].group.position, 11.0, -1.75, 1.12);
+        } else {
+          setMigrationBadge('🎥 全鏈伴游追蹤中', true);
+          animateCameraTo(new THREE.Vector3(leadSquad.baseX, seaLevel - 0.5, leadSquad.z + 3.8), 14.5, -1.72, 1.12);
+        }
+        return;
+      }
+
+      activeFollowMode = null;
+      setMigrationBadge('伴游追蹤就緒', false);
+
+      const presets = {
+        CRAB:            { target: new THREE.Vector3(6, 0.9, 13),     radius: 8.5,  theta: -2.4, phi: 1.18 },
+        SEAWEED:         { target: new THREE.Vector3(8, 0.3, 6),      radius: 9.5,  theta: -2.2, phi: 1.12 },
+        BLENNY:          { target: new THREE.Vector3(8, 0.3, 15),     radius: 8.5,  theta: -2.3, phi: 1.10 },
+        CLAM_URCHIN:     { target: new THREE.Vector3(13, -0.4, 14),   radius: 9.5,  theta: -2.1, phi: 1.05 },
+        TURTLE:          { target: new THREE.Vector3(18, -1.0, 16),   radius: 13.0, theta: -2.2, phi: 1.12 },
+        HUMAN_FIRE:      { target: new THREE.Vector3(-12.2, 6.0, 4.8), radius: 9.2,  theta: 1.38, phi: 1.18 },
+        HUMAN_WOOD:      { target: new THREE.Vector3(-10.5, 6.0, -1.5),radius: 8.2,  theta: 1.25, phi: 1.15 },
+        HUMAN_BARK_VINE: { target: new THREE.Vector3(-9.2, 6.0, 1.6),  radius: 7.2,  theta: 1.15, phi: 1.14 },
+        HUMAN_STONE:     { target: new THREE.Vector3(-4.5, 4.0, 4.5),  radius: 6.8,  theta: 1.20, phi: 1.12 },
+        HUMAN_FORAGE:    { target: new THREE.Vector3(3.8, 1.2, 2.8),   radius: 9.5,  theta: 1.05, phi: 1.12 },
+        HUMAN_FISH:      { target: new THREE.Vector3(7.2, 1.2, 5.8),   radius: 10.5, theta: 0.85, phi: 1.14 }
+      };
+      const p = presets[speciesKey];
+      if (p) animateCameraTo(p.target, p.radius, p.theta, p.phi);
+    }
+
+    function focusLandmark(key) {
+      activeFollowMode = null;
+      setMigrationBadge('伴游追蹤就緒', false);
+      if (key === 'BAXIAN') {
+        updateSpeciesInspectorUI('HUMAN_FIRE', -11, 6, 5);
+      } else if (key === 'PHOTO_SANXIANTAI' || key === 'SANXIANTAI') {
+        updateBlockInspectorUI(7, 0, 16, 5);
+      }
+      const presets = {
+        PHOTO_SANXIANTAI: { target: new THREE.Vector3(7.5, 1.2, 16.5), radius: 22.0, theta: -2.62, phi: 1.24 },
+        PANORAMA:         { target: new THREE.Vector3(4, 2, 4),        radius: 68.0, theta: 0.75,  phi: 1.08 },
+        SHITIPING:        { target: new THREE.Vector3(3, 1.5, -20),    radius: 32.0, theta: 0.65,  phi: 1.08 },
+        XIUGULUAN:        { target: new THREE.Vector3(-2, 2, -8),      radius: 38.0, theta: 0.85,  phi: 1.02 },
+        BAXIAN:           { target: new THREE.Vector3(-8.5, 6.0, 3.5), radius: 24.0, theta: 1.28,  phi: 1.10 },
+        SANXIANTAI:       { target: new THREE.Vector3(11, 2.5, 20),    radius: 32.0, theta: -2.45, phi: 1.22 }
+      };
+      const p = presets[key];
+      if (p) animateCameraTo(p.target, p.radius, p.theta, p.phi);
+    }
+
+    const player = {
+      pos: new THREE.Vector3(2.0, 3.0, 12.5),
+      vel: new THREE.Vector3(0, 0, 0),
+      yaw: -2.2,
+      pitch: -0.08,
+      onGround: false
+    };
+    const keysPressed = {};
+
+    function switchControlMode(mode) {
+      controlMode = mode;
+      desiredCameraAnim = null;
+      const orbitBtn = document.getElementById('mode-orbit-btn');
+      const fpsBtn = document.getElementById('mode-fps-btn');
+      const hintOrbit = document.getElementById('controls-hint-orbit');
+      const hintFps = document.getElementById('controls-hint-fps');
+      if (orbitBtn) orbitBtn.classList.toggle('active', mode === 'ORBIT');
+      if (fpsBtn) fpsBtn.classList.toggle('active', mode === 'FPS');
+      if (hintOrbit) hintOrbit.classList.toggle('hidden', mode !== 'ORBIT');
+      if (hintFps) hintFps.classList.toggle('hidden', mode !== 'FPS');
+      document.getElementById('crosshair').style.display = mode === 'FPS' ? 'block' : 'none';
+
+      if (mode === 'FPS') {
+        const sy = getSurfaceY(player.pos.x, player.pos.z);
+        player.pos.y = sy + 2.4;
+        player.vel.set(0, 0, 0);
+      } else {
+        if (document.pointerLockElement) document.exitPointerLock();
+        updateOrbitCamera();
+      }
+    }
+
+    // =========================================================================
+    // 8. 射線檢測與 UI 控制
+    // =========================================================================
+    const raycaster = new THREE.Raycaster();
+    const pointerNDC = new THREE.Vector2(0, 0);
+    let hoveredVoxel = null;
+    let selectedBlockId = 5;
+
+    function drawSpeciesIconPreview(colorHex) {
+      const previewCanvas = document.getElementById('inspector-preview');
+      if (!previewCanvas) return;
+      const pCtx = previewCanvas.getContext('2d');
+      pCtx.clearRect(0, 0, 48, 48);
+      pCtx.fillStyle = '#0f172a';
+      pCtx.fillRect(0, 0, 48, 48);
+      pCtx.fillStyle = colorHex;
+      pCtx.fillRect(8, 12, 32, 24);
+      pCtx.fillStyle = '#f8fafc';
+      pCtx.fillRect(14, 16, 6, 6);
+      pCtx.fillRect(28, 16, 6, 6);
+    }
+
+    function updateSpeciesInspectorUI(speciesKey, x, y, z) {
+      const meta = window.SPECIES_META ? window.SPECIES_META[speciesKey] : null;
+      if (!meta) return;
+      document.getElementById('inspector-coords').textContent = `X:${Math.round(x)} Y:${Math.round(y)} Z:${Math.round(z)}`;
+      document.getElementById('inspector-name').textContent = meta.name;
+      document.getElementById('inspector-zone-badge').textContent = meta.zone;
+      document.getElementById('inspector-geo').textContent = `生態分類：${meta.geo}`;
+      document.getElementById('inspector-desc').textContent = meta.desc;
+      drawSpeciesIconPreview(meta.previewColor);
+
+      const zoneInfo = getZoneInfoByX(x);
+      document.getElementById('profile-cursor-zone').textContent = zoneInfo.badge;
+      const svgX = Math.max(8, Math.min(292, ((x - WORLD_MIN_X) / (WORLD_MAX_X - WORLD_MIN_X)) * 284 + 8));
+      const svgY = Math.max(10, Math.min(82, 48 - y * 1.3));
+      const marker = document.getElementById('svg-pos-marker');
+      if (marker) marker.setAttribute('transform', `translate(${svgX.toFixed(1)}, ${svgY.toFixed(1)})`);
+    }
+
+    function updateBlockInspectorUI(x, y, z, blockId) {
+      const def = BLOCK_BY_ID[blockId];
+      if (!def) return;
+      document.getElementById('inspector-coords').textContent = `X:${x} Y:${y} Z:${z}`;
+      document.getElementById('inspector-name').textContent = def.name;
+      document.getElementById('inspector-zone-badge').textContent = def.zone;
+      document.getElementById('inspector-geo').textContent = `地質：${def.geo}`;
+      document.getElementById('inspector-desc').textContent = def.desc;
+
+      const previewCanvas = document.getElementById('inspector-preview');
+      if (previewCanvas) {
+        const pCtx = previewCanvas.getContext('2d');
+        pCtx.imageSmoothingEnabled = false;
+        pCtx.clearRect(0, 0, 48, 48);
+        if (blockCanvases[blockId]) pCtx.drawImage(blockCanvases[blockId], 0, 0, 48, 48);
+      }
+
+      const zoneInfo = getZoneInfoByX(x);
+      document.getElementById('profile-cursor-zone').textContent = zoneInfo.badge;
+      const svgX = Math.max(8, Math.min(292, ((x - WORLD_MIN_X) / (WORLD_MAX_X - WORLD_MIN_X)) * 284 + 8));
+      const svgY = Math.max(10, Math.min(82, 48 - y * 1.3));
+      const marker = document.getElementById('svg-pos-marker');
+      if (marker) marker.setAttribute('transform', `translate(${svgX.toFixed(1)}, ${svgY.toFixed(1)})`);
+    }
+
+    function performSceneRaycast() {
+      if (controlMode === 'FPS') {
+        raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+      } else {
+        raycaster.setFromCamera(pointerNDC, camera);
+      }
+
+      const biotaHits = raycaster.intersectObjects(biotaInteractiveMeshes, false);
+      if (biotaHits.length > 0) {
+        const hit = biotaHits[0];
+        const sKey = hit.object.userData.speciesKey;
+        if (sKey) {
+          updateSpeciesInspectorUI(sKey, hit.point.x, hit.point.y, hit.point.z);
+          highlightBox.position.copy(hit.point);
+          highlightBox.visible = true;
+          hoveredVoxel = null;
+          return;
+        }
+      }
+
+      const meshArray = Object.values(instancedMeshes);
+      const intersects = raycaster.intersectObjects(meshArray, false);
+      if (intersects.length > 0) {
+        const hit = intersects[0];
+        let hitBlockId = 0;
+        for (const [bId, m] of Object.entries(instancedMeshes)) {
+          if (m === hit.object) { hitBlockId = Number(bId); break; }
+        }
+        const coords = instanceCoordLookup[hitBlockId]?.[hit.instanceId];
+        if (coords) {
+          hoveredVoxel = {
+            x: coords.x, y: coords.y, z: coords.z,
+            blockId: hitBlockId,
+            normal: hit.face ? hit.face.normal.clone() : new THREE.Vector3(0, 1, 0)
+          };
+          highlightBox.position.set(coords.x, coords.y, coords.z);
+          highlightBox.visible = true;
+          updateBlockInspectorUI(coords.x, coords.y, coords.z, hitBlockId);
+          return;
+        }
+      }
+
+      hoveredVoxel = null;
+      highlightBox.visible = false;
+    }
+
+    function mineHoveredVoxel() {
+      if (!hoveredVoxel) return;
+      removeVoxel(hoveredVoxel.x, hoveredVoxel.y, hoveredVoxel.z);
+      buildSeabedDepthTexture();
+      oceanUniforms.uSeabedTex.value = seabedDataTex;
+      rebuildInstancedMeshes();
+      performSceneRaycast();
+    }
+
+    function placeVoxelOnHovered() {
+      if (!hoveredVoxel) return;
+      const nx = hoveredVoxel.x + Math.round(hoveredVoxel.normal.x);
+      const ny = hoveredVoxel.y + Math.round(hoveredVoxel.normal.y);
+      const nz = hoveredVoxel.z + Math.round(hoveredVoxel.normal.z);
+      setVoxel(nx, ny, nz, selectedBlockId);
+      surfaceHeightMap.set(`${nx},${nz}`, Math.max(getSurfaceY(nx, nz), ny));
+      buildSeabedDepthTexture();
+      oceanUniforms.uSeabedTex.value = seabedDataTex;
+      rebuildInstancedMeshes();
+      performSceneRaycast();
+    }
+
+    let tidePhase = Math.asin(Math.max(-1, Math.min(1, seaLevel / 1.35)));
+    let tideCosSign = -1; // -1 = initially falling toward low tide when playback starts
+    let tidePlaybackSpeed = 1.0;
+    autoTide = false;
+
+    function syncTidePhaseFromSeaLevel(level) {
+      const norm = Math.max(-1, Math.min(1, level / 1.35));
+      const baseAsin = Math.asin(norm);
+      tidePhase = (tideCosSign >= 0) ? baseAsin : (Math.PI - baseAsin);
+    }
+
+    function updateTidePlaybackUI() {
+      const pill = document.getElementById('playback-status-pill');
+      const resumeBtn = document.getElementById('btn-resume-tide');
+      const resumeIcon = document.getElementById('btn-resume-tide-icon');
+      const resumeText = document.getElementById('btn-resume-tide-text');
+      const pauseBtn = document.getElementById('btn-pause-tide');
+      const speedBtn = document.getElementById('btn-tide-speed');
+
+      const isRising = Math.cos(tidePhase) >= 0;
+      if (pill) {
+        if (autoTide) {
+          pill.textContent = isRising ? '🔄 播映中・漲潮 ↗' : '🔄 播映中・退潮 ↘';
+          pill.className = 'text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-500/25 text-emerald-200 border border-emerald-400/50 font-bold animate-pulse';
+        } else {
+          pill.textContent = '⏸️ 定格觀察中';
+          pill.className = 'text-[9px] px-1.5 py-0.5 rounded-full bg-amber-500/30 text-amber-200 border border-amber-400/50 font-bold';
+        }
+      }
+
+      if (resumeBtn && resumeIcon && resumeText) {
+        if (autoTide) {
+          resumeBtn.classList.add('active');
+          resumeBtn.classList.remove('animate-pulse');
+          resumeIcon.textContent = '▶️';
+          resumeText.textContent = '正在播映 (潮汐循環)';
+        } else {
+          resumeBtn.classList.remove('active');
+          resumeBtn.classList.add('animate-pulse');
+          resumeIcon.textContent = '▶️';
+          resumeText.textContent = '繼續播映 (點擊恢復)';
+        }
+      }
+
+      if (pauseBtn) {
+        pauseBtn.classList.toggle('active', !autoTide);
+      }
+
+      if (speedBtn) {
+        speedBtn.textContent = `⏩ ${tidePlaybackSpeed.toFixed(1)}x`;
+      }
+    }
+
+    function resumeTidePlayback() {
+      syncTidePhaseFromSeaLevel(seaLevel);
+      autoTide = true;
+      updateTidePlaybackUI();
+      updateTideDisplay();
+    }
+    window.resumeTidePlayback = resumeTidePlayback;
+
+    function pauseTidePlayback() {
+      autoTide = false;
+      updateTidePlaybackUI();
+      updateTideDisplay();
+    }
+    window.pauseTidePlayback = pauseTidePlayback;
+
+    function cycleTidePlaybackSpeed() {
+      if (tidePlaybackSpeed === 1.0) tidePlaybackSpeed = 2.0;
+      else if (tidePlaybackSpeed === 2.0) tidePlaybackSpeed = 0.5;
+      else tidePlaybackSpeed = 1.0;
+      if (!autoTide) resumeTidePlayback();
+      else updateTidePlaybackUI();
+    }
+    window.cycleTidePlaybackSpeed = cycleTidePlaybackSpeed;
+
+    function updateTideDisplay() {
+      const seaReadout = document.getElementById('sea-level-readout');
+      if (seaReadout) {
+        seaReadout.textContent = `海平面: Y = ${seaLevel >= 0 ? '+' : ''}${seaLevel.toFixed(1)}m`;
+      }
+      const tideLabel = document.getElementById('tide-label');
+      const tomboloBadge = document.getElementById('tombolo-state-badge');
+      const svgWalker = document.getElementById('svg-tombolo-walker');
+
+      if (seaLevel <= -0.35) {
+        if (tideLabel) {
+          tideLabel.textContent = '🦶 乾潮：三仙台陸連島裸露可通行！';
+          tideLabel.className = 'font-bold text-amber-300';
+        }
+        if (tomboloBadge) {
+          tomboloBadge.textContent = '🦶 退潮：陸連島裸露可走過去';
+          tomboloBadge.className = 'text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-500/30 text-amber-200 border border-amber-400/50';
+        }
+        if (svgWalker) {
+          svgWalker.style.display = 'block';
+          const walkCycle = 0.5 - 0.5 * Math.cos(simTime * 0.65);
+          const wx = 144 + walkCycle * 38; // 沿剖面圖連島礫石礁脊 (X=144..182) 來回登島採集
+          let wy = 51.5;
+          if (wx < 154) wy = 47 + ((wx - 136) / 18) * 4.5;
+          else if (wx > 174) wy = 51.5 - ((wx - 174) / 16) * 14.5;
+          svgWalker.setAttribute('transform', `translate(${wx.toFixed(1)}, ${wy.toFixed(1)})`);
+        }
+      } else if (seaLevel > 0.45) {
+        if (tideLabel) {
+          tideLabel.textContent = '🌊 滿潮：海水淹沒陸連島沙洲';
+          tideLabel.className = 'font-bold text-sky-300';
+        }
+        if (tomboloBadge) {
+          tomboloBadge.textContent = '🌊 滿潮：淹沒成離岸島';
+          tomboloBadge.className = 'text-[10px] font-mono px-1.5 py-0.5 rounded bg-sky-500/30 text-sky-200 border border-sky-400/50';
+        }
+        if (svgWalker) svgWalker.style.display = 'none';
+      } else {
+        if (tideLabel) {
+          tideLabel.textContent = '🌊 平潮：淺浪漫過連島礫灘';
+          tideLabel.className = 'font-bold text-cyan-300';
+        }
+        if (tomboloBadge) {
+          tomboloBadge.textContent = '平潮：淺水漫過';
+          tomboloBadge.className = 'text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/25 text-cyan-200 border border-cyan-400/40';
+        }
+        if (svgWalker) svgWalker.style.display = 'none';
+      }
+
+      // 剖面圖海水高度：連島礫石礁脊凹槽位於 Y=52，三仙台島頂位於 Y=37
+      // 滿潮 (+1.35m) -> svgSeaY = 42.2 (淹沒 Y=52 連島沙洲，露出 Y=37 三仙台島)
+      // 乾潮 (-1.35m) -> svgSeaY = 55.8 (低於 Y=52，連島礫石步道完全露出水面！)
+      const svgSeaY = 49.0 - seaLevel * 5.0;
+      const svgSeaRect = document.getElementById('svg-sea-rect');
+      const svgSeaLine = document.getElementById('svg-sea-line');
+      if (svgSeaRect && svgSeaLine) {
+        svgSeaRect.setAttribute('y', svgSeaY.toFixed(1));
+        svgSeaRect.setAttribute('height', Math.max(8, 88 - svgSeaY).toFixed(1));
+        svgSeaLine.setAttribute('y1', svgSeaY.toFixed(1));
+        svgSeaLine.setAttribute('y2', svgSeaY.toFixed(1));
+      }
+      updateTidePlaybackUI();
+    }
+
+    function onTideSliderChange(val) {
+      autoTide = false;
+      seaLevel = parseFloat(val);
+      syncTidePhaseFromSeaLevel(seaLevel);
+      const profileSlider = document.getElementById('profile-tide-slider');
+      if (profileSlider && parseFloat(profileSlider.value) !== seaLevel) {
+        profileSlider.value = seaLevel;
+      }
+      updateTideDisplay();
+    }
+    window.onTideSliderChange = onTideSliderChange;
+
+    function toggleAutoTide(checked) {
+      if (checked) resumeTidePlayback();
+      else pauseTidePlayback();
+    }
+
+    function onWaveSpeedChange(val) {
+      waveSpeedMultiplier = parseFloat(val);
+      const label = document.getElementById('wave-speed-readout');
+      if (!label) return;
+      if (waveSpeedMultiplier <= 0.35) label.textContent = `極靜慢湧 (${waveSpeedMultiplier.toFixed(2)}x)`;
+      else if (waveSpeedMultiplier <= 0.65) label.textContent = `真實慢湧 (${waveSpeedMultiplier.toFixed(2)}x)`;
+      else label.textContent = `季風湧浪 (${waveSpeedMultiplier.toFixed(2)}x)`;
+    }
+
+    function onWaveHeightChange(val) {
+      waveHeightMultiplier = parseFloat(val);
+      const label = document.getElementById('wave-height-readout');
+      if (!label) return;
+      if (waveHeightMultiplier < 0.6) label.textContent = `微風平浪 (${waveHeightMultiplier.toFixed(2)}x)`;
+      else if (waveHeightMultiplier < 1.15) label.textContent = `東海岸晴日浪 (${waveHeightMultiplier.toFixed(2)}x)`;
+      else label.textContent = `長浪拍岸 (${waveHeightMultiplier.toFixed(2)}x)`;
+    }
+
+    function onSliceSliderChange(val) {
+      currentSliceZ = parseInt(val, 10);
+      const readout = document.getElementById('slice-readout');
+      if (readout) {
+        readout.textContent = currentSliceZ >= WORLD_MAX_Z ? '完整顯示' : `剖面 Z ≤ ${currentSliceZ}`;
+      }
+      rebuildInstancedMeshes();
+    }
+
+    function setZoneHighlight(zoneCode) {
+      currentZoneHighlight = zoneCode;
+      ['ALL', 'MOUNTAIN', 'TERRACE', 'SHORE', 'INTERTIDAL', 'SHELF'].forEach(code => {
+        const btn = document.getElementById(`zone-btn-${code}`);
+        if (btn) btn.classList.toggle('active', code === zoneCode);
+      });
+      rebuildInstancedMeshes();
+    }
+
+    function toggleAutoDayNight(checked) {
+      autoDayNightCycle = checked;
+      autoDayNightTimer = 0;
+    }
+
+    function setTimeOfDay(tod, focusBaxian = false) {
+      currentTimeOfDay = tod;
+
+      ['DAWN', 'NOON', 'DUSK', 'NIGHT'].forEach(k => {
+        const btn = document.getElementById(`tod-${k}`);
+        if (btn) btn.classList.toggle('active', k === tod);
+      });
+      ['NOON', 'DUSK', 'NIGHT'].forEach(k => {
+        const rBtn = document.getElementById(`routine-btn-${k}`);
+        if (rBtn) {
+          const isActive = (k === tod) || (k === 'NOON' && tod === 'DAWN');
+          rBtn.classList.toggle('active', isActive);
+        }
+      });
+
+      const routineBadge = document.getElementById('tribe-routine-badge');
+      if (routineBadge) {
+        if (tod === 'NOON') {
+          routineBadge.textContent = '☀️ 白晝：分頭狩獵採集';
+          routineBadge.className = 'text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-950/90 text-amber-300 border border-amber-500/40';
+        } else if (tod === 'DAWN') {
+          routineBadge.textContent = '🌅 晨曦：破曉出隊狩獵';
+          routineBadge.className = 'text-[10px] font-mono px-1.5 py-0.5 rounded bg-orange-950/90 text-orange-300 border border-orange-500/40';
+        } else if (tod === 'DUSK') {
+          routineBadge.textContent = '🌇 黃昏：歸巢圍火吃飯';
+          routineBadge.className = 'text-[10px] font-mono px-1.5 py-0.5 rounded bg-rose-950/90 text-rose-200 border border-rose-500/50';
+        } else if (tod === 'NIGHT') {
+          routineBadge.textContent = '🌙 夜晚：星空入洞睡覺';
+          routineBadge.className = 'text-[10px] font-mono px-1.5 py-0.5 rounded bg-indigo-950/90 text-indigo-200 border border-indigo-400/50';
+        }
+      }
+
+      if (daySkyGroup) daySkyGroup.visible = (tod !== 'NIGHT');
+      if (nightSkyGroup) nightSkyGroup.visible = (tod === 'NIGHT');
+
+      if (focusBaxian) {
+        activeFollowMode = null;
+        setMigrationBadge('伴游追蹤就緒', false);
+        updateSpeciesInspectorUI('HUMAN_FIRE', -11, 6, 5);
+        if (tod === 'DUSK') {
+          animateCameraTo(new THREE.Vector3(-11.4, 5.8, 4.4), 12.5, 1.35, 1.15);
+        } else if (tod === 'NIGHT') {
+          animateCameraTo(new THREE.Vector3(-12.2, 6.2, 3.8), 16.5, 1.32, 1.12);
+        } else {
+          animateCameraTo(new THREE.Vector3(-8.5, 6.0, 3.5), 22.0, 1.28, 1.10);
+        }
+      }
+
+      if (tod === 'NOON') {
+        scene.background.setHex(0x2b82e3);
+        scene.fog.color.setHex(0x6eb8f5);
+        ambientLight.color.setHex(0xe0f2fe);
+        ambientLight.intensity = 0.82;
+        sunLight.color.setHex(0xfffef5);
+        sunLight.intensity = 1.15;
+        sunDirection.set(0.58, 0.52, 0.62).normalize();
+        oceanUniforms.uSunDir.value.copy(sunDirection);
+        oceanUniforms.uSunColor.value.setHex(0xffffff);
+        oceanUniforms.uSkyZenithColor.value.setHex(0x0b66d6);
+        oceanUniforms.uSkyHorizonColor.value.setHex(0x7cc8ff);
+        oceanUniforms.uDeepColor.value.setHex(0x004e9a);
+        oceanUniforms.uMidTurquoiseColor.value.setHex(0x009dc4);
+        oceanUniforms.uShallowCyanColor.value.setHex(0x28c7d9);
+      } else if (tod === 'DAWN') {
+        scene.background.setHex(0x3b6998);
+        scene.fog.color.setHex(0xf5b78e);
+        ambientLight.color.setHex(0xfde68a);
+        ambientLight.intensity = 0.72;
+        sunLight.color.setHex(0xfb923c);
+        sunLight.intensity = 1.1;
+        sunDirection.set(0.82, 0.24, 0.52).normalize();
+        oceanUniforms.uSunDir.value.copy(sunDirection);
+        oceanUniforms.uSunColor.value.setHex(0xffedd5);
+        oceanUniforms.uSkyZenithColor.value.setHex(0x28527a);
+        oceanUniforms.uSkyHorizonColor.value.setHex(0xfdba74);
+        oceanUniforms.uDeepColor.value.setHex(0x0a3d62);
+        oceanUniforms.uMidTurquoiseColor.value.setHex(0x1289a7);
+        oceanUniforms.uShallowCyanColor.value.setHex(0x38ada9);
+      } else if (tod === 'DUSK') {
+        scene.background.setHex(0x3d2c5e);
+        scene.fog.color.setHex(0xe58e73);
+        ambientLight.color.setHex(0xfdba74);
+        ambientLight.intensity = 0.62;
+        sunLight.color.setHex(0xf97316);
+        sunLight.intensity = 0.98;
+        sunDirection.set(0.75, 0.20, -0.62).normalize();
+        oceanUniforms.uSunDir.value.copy(sunDirection);
+        oceanUniforms.uSunColor.value.setHex(0xfed7aa);
+        oceanUniforms.uSkyZenithColor.value.setHex(0x2c2c54);
+        oceanUniforms.uSkyHorizonColor.value.setHex(0xff793f);
+        oceanUniforms.uDeepColor.value.setHex(0x192a56);
+        oceanUniforms.uMidTurquoiseColor.value.setHex(0x227093);
+        oceanUniforms.uShallowCyanColor.value.setHex(0x34ace0);
+      } else if (tod === 'NIGHT') {
+        scene.background.setHex(0x040d1c);
+        scene.fog.color.setHex(0x081a33);
+        ambientLight.color.setHex(0x7dd3fc);
+        ambientLight.intensity = 0.36;
+        sunLight.color.setHex(0xbae6fd);
+        sunLight.intensity = 0.55;
+        sunDirection.set(0.55, 0.48, 0.68).normalize();
+        oceanUniforms.uSunDir.value.copy(sunDirection);
+        oceanUniforms.uSunColor.value.setHex(0xe0f2fe);
+        oceanUniforms.uSkyZenithColor.value.setHex(0x020710);
+        oceanUniforms.uSkyHorizonColor.value.setHex(0x0e2a47);
+        oceanUniforms.uDeepColor.value.setHex(0x031126);
+        oceanUniforms.uMidTurquoiseColor.value.setHex(0x00385c);
+        oceanUniforms.uShallowCyanColor.value.setHex(0x006673);
+      }
+    }
+
+    const hotbarBlocks = BLOCK_DEFS.filter(b => b.hotbar);
+    function initHotbar() {
+      const bar = document.getElementById('hotbar-container');
+      if (!bar) return;
+      bar.innerHTML = '';
+      hotbarBlocks.forEach((def, idx) => {
+        const slot = document.createElement('button');
+        slot.className = `hotbar-slot rounded-lg flex flex-col items-center justify-center ${def.id === selectedBlockId ? 'selected' : ''}`;
+        slot.onclick = () => selectHotbarBlock(def.id);
+
+        const numSpan = document.createElement('span');
+        numSpan.className = 'absolute top-0.5 left-1.5 text-[10px] font-mono text-slate-300 font-bold';
+        numSpan.textContent = idx + 1;
+        slot.appendChild(numSpan);
+
+        const swatch = document.createElement('canvas');
+        swatch.width = 16;
+        swatch.height = 16;
+        swatch.className = 'pixel-swatch rounded-sm';
+        swatch.getContext('2d').drawImage(blockCanvases[def.id], 0, 0);
+        slot.appendChild(swatch);
+
+        bar.appendChild(slot);
+      });
+    }
+
+    function selectHotbarBlock(blockId) {
+      selectedBlockId = blockId;
+      const def = BLOCK_BY_ID[blockId];
+      if (def) document.getElementById('selected-block-label').textContent = `${def.name}`;
+      const slots = document.querySelectorAll('.hotbar-slot');
+      hotbarBlocks.forEach((b, idx) => {
+        if (slots[idx]) slots[idx].classList.toggle('selected', b.id === blockId);
+      });
+    }
+
+    // Mouse & Keyboard bindings
+    let isOrbitDragging = false;
+    let isPanDragging = false;
+    let prevPointer = { x: 0, y: 0 };
+    let pointerDownPos = { x: 0, y: 0 };
+
+    renderer.domElement.addEventListener('mousedown', (e) => {
+      pointerDownPos = { x: e.clientX, y: e.clientY };
+      desiredCameraAnim = null;
+
+      if (controlMode === 'FPS') {
+        if (document.pointerLockElement !== renderer.domElement) {
+          renderer.domElement.requestPointerLock();
+          return;
+        }
+        if (e.button === 0) mineHoveredVoxel();
+        else if (e.button === 2) placeVoxelOnHovered();
+        return;
+      }
+
+      if (e.button === 0) isOrbitDragging = true;
+      else if (e.button === 2) {
+        isPanDragging = true;
+        activeFollowMode = null;
+        setMigrationBadge('伴游追蹤就緒', false);
+      }
+      prevPointer = { x: e.clientX, y: e.clientY };
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (controlMode === 'FPS') {
+        if (document.pointerLockElement === renderer.domElement) {
+          player.yaw -= e.movementX * 0.0022;
+          player.pitch = Math.max(-Math.PI * 0.47, Math.min(Math.PI * 0.47, player.pitch - e.movementY * 0.0022));
+        }
+        return;
+      }
+
+      pointerNDC.x = (e.clientX / window.innerWidth) * 2 - 1;
+      pointerNDC.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+      if (isOrbitDragging) {
+        orbitSpherical.theta -= (e.clientX - prevPointer.x) * 0.0065;
+        orbitSpherical.phi -= (e.clientY - prevPointer.y) * 0.0065;
+        prevPointer = { x: e.clientX, y: e.clientY };
+        updateOrbitCamera();
+      } else if (isPanDragging) {
+        const dx = e.clientX - prevPointer.x;
+        const dy = e.clientY - prevPointer.y;
+        const panScale = orbitSpherical.radius * 0.0014;
+        const forward = new THREE.Vector3();
+        camera.getWorldDirection(forward);
+        forward.y = 0;
+        forward.normalize();
+        const right = new THREE.Vector3().crossVectors(forward, new THREE.Vector3(0, 1, 0)).normalize();
+        orbitTarget.addScaledVector(right, -dx * panScale);
+        orbitTarget.addScaledVector(forward, dy * panScale);
+        prevPointer = { x: e.clientX, y: e.clientY };
+        updateOrbitCamera();
+      } else {
+        performSceneRaycast();
+      }
+    });
+
+    window.addEventListener('mouseup', (e) => {
+      if (controlMode === 'ORBIT') {
+        const moveDist = Math.hypot(e.clientX - pointerDownPos.x, e.clientY - pointerDownPos.y);
+        if (moveDist < 5 && e.target === renderer.domElement) {
+          performSceneRaycast();
+          if (e.button === 0 && e.shiftKey) mineHoveredVoxel();
+          else if (e.button === 0 && hoveredVoxel) placeVoxelOnHovered();
+        }
+      }
+      isOrbitDragging = false;
+      isPanDragging = false;
+    });
+
+    renderer.domElement.addEventListener('wheel', (e) => {
+      if (controlMode === 'ORBIT') {
+        desiredCameraAnim = null;
+        orbitSpherical.radius += e.deltaY * 0.035;
+        updateOrbitCamera();
+      }
+    }, { passive: true });
+
+    window.addEventListener('contextmenu', e => e.preventDefault());
+
+    window.addEventListener('keydown', (e) => {
+      keysPressed[e.code] = true;
+      if (e.code.startsWith('Digit')) {
+        const idx = parseInt(e.code.replace('Digit', ''), 10) - 1;
+        if (hotbarBlocks[idx]) selectHotbarBlock(hotbarBlocks[idx].id);
+      }
+    });
+    window.addEventListener('keyup', (e) => { keysPressed[e.code] = false; });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // =========================================================================
+    // 9. 主動畫迴圈
+    // =========================================================================
+    const clock = new THREE.Clock();
+
+    function updateFirstPersonPhysics(dt) {
+      const speed = 9.5;
+      const forward = new THREE.Vector3(-Math.sin(player.yaw), 0, -Math.cos(player.yaw));
+      const right = new THREE.Vector3(Math.cos(player.yaw), 0, -Math.sin(player.yaw));
+
+      const moveDir = new THREE.Vector3();
+      if (keysPressed['KeyW'] || keysPressed['ArrowUp']) moveDir.add(forward);
+      if (keysPressed['KeyS'] || keysPressed['ArrowDown']) moveDir.sub(forward);
+      if (keysPressed['KeyD'] || keysPressed['ArrowRight']) moveDir.add(right);
+      if (keysPressed['KeyA'] || keysPressed['ArrowLeft']) moveDir.sub(right);
+      if (moveDir.lengthSq() > 0) moveDir.normalize();
+
+      player.pos.x += moveDir.x * speed * dt;
+      player.pos.z += moveDir.z * speed * dt;
+      player.pos.x = Math.max(WORLD_MIN_X + 1, Math.min(WORLD_MAX_X - 1, player.pos.x));
+      player.pos.z = Math.max(WORLD_MIN_Z + 1, Math.min(WORLD_MAX_Z - 1, player.pos.z));
+
+      const highestY = getSurfaceY(player.pos.x, player.pos.z);
+      const targetFootY = highestY + 0.5;
+
+      if (keysPressed['Space']) {
+        if (player.pos.y <= seaLevel + 1.8) {
+          player.vel.y = 6.0;
+        } else if (player.onGround) {
+          player.vel.y = 8.0;
+          player.onGround = false;
+        }
+      }
+
+      if (player.pos.y < seaLevel + 1.2) {
+        player.vel.y -= 9.5 * dt;
+        player.vel.y = Math.max(-3.0, player.vel.y);
+      } else {
+        player.vel.y -= 22.0 * dt;
+      }
+
+      player.pos.y += player.vel.y * dt;
+      if (player.pos.y <= targetFootY + 1.7) {
+        player.pos.y = targetFootY + 1.7;
+        player.vel.y = 0;
+        player.onGround = true;
+      }
+
+      camera.position.copy(player.pos);
+      const lookDir = new THREE.Vector3(
+        -Math.sin(player.yaw) * Math.cos(player.pitch),
+        Math.sin(player.pitch),
+        -Math.cos(player.yaw) * Math.cos(player.pitch)
+      );
+      camera.lookAt(player.pos.clone().add(lookDir));
+      performSceneRaycast();
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const dt = Math.min(clock.getDelta(), 0.05);
+      simTime += dt;
+
+      if (desiredCameraAnim && controlMode === 'ORBIT') {
+        orbitTarget.lerp(desiredCameraAnim.target, 0.08);
+        orbitSpherical.radius += (desiredCameraAnim.radius - orbitSpherical.radius) * 0.08;
+        orbitSpherical.theta += (desiredCameraAnim.theta - orbitSpherical.theta) * 0.08;
+        orbitSpherical.phi += (desiredCameraAnim.phi - orbitSpherical.phi) * 0.08;
+        updateOrbitCamera();
+        if (orbitTarget.distanceTo(desiredCameraAnim.target) < 0.05 && Math.abs(orbitSpherical.radius - desiredCameraAnim.radius) < 0.1) {
+          desiredCameraAnim = null;
+        }
+      }
+
+      if (autoTide) {
+        tidePhase += dt * 0.28 * tidePlaybackSpeed;
+        tideCosSign = Math.cos(tidePhase) >= 0 ? 1 : -1;
+        seaLevel = Math.sin(tidePhase) * 1.35;
+        const pSlider = document.getElementById('profile-tide-slider');
+        if (pSlider) pSlider.value = seaLevel.toFixed(2);
+        updateTideDisplay();
+      } else if (seaLevel <= -0.35) {
+        // 即使定格於乾潮，剖面圖上的族人登島標記仍持續動態走動供學生觀察
+        updateTideDisplay();
+      }
+
+      updateDynamicOcean(dt);
+      updateCoastalBiota(dt);
+      updatePrehistoricTribe(dt);
+      if (window.updateDetectiveSystem) window.updateDetectiveSystem(dt);
+
+      if (controlMode === 'FPS') {
+        updateFirstPersonPhysics(dt);
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    // =========================================================================
+    // 10. 啟動初始化
+    // =========================================================================
+    window.initLayeredHUD();
+    initBlockMaterials();
+    initHotbar();
+    generateEastCoastWorld();
+    buildSeabedDepthTexture();
+    oceanUniforms.uSeabedTex.value = seabedDataTex;
+    rebuildInstancedMeshes();
+    buildSunnyEastCoastSky();
+    buildSanxiantaiTombolo();
+    initCoastalBiota();
+    initPrehistoricTribe();
+    if (window.initDetectiveSystem) window.initDetectiveSystem();
+    updateOrbitCamera();
+    updateTideDisplay();
+    drawSpeciesIconPreview('#009dc4');
+    animate();
+  </script>
+</body>
+</html>
+

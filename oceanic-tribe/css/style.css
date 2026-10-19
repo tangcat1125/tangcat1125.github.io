@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap');
+
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #1e6fd9;
+  font-family: 'Noto Sans TC', sans-serif;
+  color: #f1f5f9;
+}
+
+#canvas-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Glassmorphic Panel Base */
+.mc-panel {
+  background: rgba(8, 22, 40, 0.84);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(125, 211, 252, 0.35);
+  box-shadow: 0 12px 32px rgba(0, 12, 28, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+/* Interactive Buttons */
+.mc-btn {
+  background: rgba(18, 48, 78, 0.84);
+  border: 1.5px solid rgba(148, 163, 184, 0.32);
+  transition: all 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.mc-btn:hover {
+  background: rgba(14, 116, 144, 0.92);
+  border-color: #7dd3fc;
+  transform: translateY(-1px);
+}
+.mc-btn.active {
+  background: linear-gradient(135deg, #0284c7, #0d9488);
+  border-color: #bae6fd;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
+}
+
+/* Left Endpoint Folder Tabs (1.文化 / 2.地形 / 3.潮間帶 / 🕵️時空偵探) */
+.folder-tab-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.05rem 0.75rem 0.85rem;
+  background: rgba(8, 24, 44, 0.90);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(125, 211, 252, 0.42);
+  border-left: none;
+  border-radius: 0 1rem 1rem 0;
+  box-shadow: 4px 6px 20px rgba(0, 10, 25, 0.55);
+  color: #e2e8f0;
+  font-weight: 900;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(0);
+}
+.folder-tab-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 5px;
+  border-radius: 0 3px 3px 0;
+  background: var(--tab-accent, #38bdf8);
+}
+.folder-tab-btn:hover {
+  padding-left: 1.15rem;
+  background: rgba(15, 45, 78, 0.96);
+  border-color: #7dd3fc;
+  color: #ffffff;
+}
+.folder-tab-btn.active {
+  padding-left: 1.25rem;
+  background: linear-gradient(135deg, rgba(12, 74, 110, 0.98), rgba(15, 118, 110, 0.96));
+  border-color: #bae6fd;
+  color: #ffffff;
+  box-shadow: 6px 8px 24px rgba(14, 165, 233, 0.42);
+}
+
+/* Folder Layer Drawer Window */
+.layer-drawer {
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: left center;
+}
+.layer-drawer.layer-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-18px) scale(0.97);
+  display: none;
+}
+
+/* Endpoint Mini Folder Pills (Top / Right / Bottom Edges) */
+.endpoint-pill {
+  background: rgba(8, 24, 44, 0.88);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(125, 211, 252, 0.40);
+  box-shadow: 0 6px 18px rgba(0, 12, 28, 0.48);
+  color: #e0f2fe;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.endpoint-pill:hover {
+  background: rgba(14, 116, 144, 0.92);
+  border-color: #bae6fd;
+  color: #ffffff;
+}
+.endpoint-pill.active {
+  background: linear-gradient(135deg, #0284c7, #0d9488);
+  border-color: #e0f2fe;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
+}
+
+/* Hotbar Slots */
+.hotbar-slot {
+  width: 46px;
+  height: 46px;
+  background: rgba(15, 23, 42, 0.88);
+  border: 2px solid rgba(148, 163, 184, 0.4);
+  transition: all 0.12s ease;
+  position: relative;
+  cursor: pointer;
+}
+.hotbar-slot.selected {
+  border: 3px solid #38bdf8;
+  background: rgba(14, 116, 144, 0.58);
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 6px 16px rgba(56, 189, 248, 0.45);
+}
+
+.pixel-swatch {
+  width: 24px;
+  height: 24px;
+  image-rendering: pixelated;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.35), inset 2px 2px 0 rgba(255, 255, 255, 0.25);
+}
+
+#crosshair {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 30;
+  display: none;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.4);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.5);
+  border-radius: 3px;
+}
+
+/* ========================================================================= */
+/* 🕵️ 時空偵探：場景主題大圓圈鎖定與卡牌特效 (Detective Target Circle & Cards) */
+/* ========================================================================= */
+#detective-target-circle {
+  position: fixed;
+  width: 216px;
+  height: 216px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detective-circle-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 4.5px dashed #fbbf24;
+  box-shadow: 0 0 34px rgba(251, 191, 36, 0.72), inset 0 0 26px rgba(251, 191, 36, 0.32);
+  animation: detectiveSpinSlow 9s linear infinite;
+}
+
+.detective-circle-inner {
+  position: absolute;
+  inset: 20px;
+  border-radius: 9999px;
+  border: 2.5px solid rgba(56, 189, 248, 0.9);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
+  animation: detectivePulseRing 1.8s ease-in-out infinite;
+}
+
+.detective-circle-crosshair {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2.5px solid #fde68a;
+  border-radius: 9999px;
+  background: rgba(251, 191, 36, 0.25);
+}
+
+.detective-circle-badge {
+  position: absolute;
+  top: -46px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: linear-gradient(135deg, rgba(120, 53, 15, 0.96), rgba(15, 23, 42, 0.96));
+  border: 2px solid #fbbf24;
+  color: #fef3c7;
+  font-size: 18px;
+  font-weight: 900;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75);
+}
+
+.circle-lock-anim {
+  animation: detectiveLockIn 0.48s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes detectiveSpinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes detectivePulseRing {
+  0%, 100% { transform: scale(0.96); opacity: 0.78; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes detectiveLockIn {
+  0% { transform: translate(-50%, -50%) scale(1.85); opacity: 0.2; }
+  70% { transform: translate(-50%, -50%) scale(0.93); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.detective-game-card {
+  position: relative;
+  overflow: hidden;
+}
+.detective-game-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0) 55%);
+  pointer-events: none;
+}
+
+/* 時空偵探獎狀：故事場景半透明底圖 */
+.cert-paper {
+  position: relative;
+  isolation: isolate;
+  background: #fffaf0;
+}
+.cert-scene-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('../assets/story-scene-bg.webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.14;
+  mix-blend-mode: multiply;
+}
+
+/* 列印／存成 PDF：獎狀不再受遊戲面板的高度、捲軸與固定寬度限制 */
+@page {
+  size: A4 portrait;
+  margin: 8mm;
+}
+
+@media print {
+  html,
+  body {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  #detective-panel-container,
+  #detective-panel-container * {
+    visibility: visible !important;
+  }
+
+  #detective-panel-container {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #detective-certificate-shell {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+
+  #detective-certificate-shell > .space-y-4 {
+    display: block !important;
+  }
+
+  .print-hidden {
+    display: none !important;
+  }
+
+  .cert-paper {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: 277mm !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    page-break-after: always;
+  }
+
+  .cert-front {
+    page-break-before: auto;
+  }
+
+  .cert-back {
+    page-break-before: always !important;
+  }
+
+  .certificate-mode-back .cert-back {
+    page-break-before: auto !important;
+  }
+
+  .cert-paper:last-child {
+    page-break-after: auto;
+  }
+
+  .cert-gold-frame {
+    padding: 5mm !important;
+  }
+
+  /* 直式 A4 的獎狀正面維持左右雙欄，避免高度被兩欄堆疊撐爆 */
+  .cert-front .grid.grid-cols-1.md\\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  }
+
+  .cert-front .md\\:col-span-6 {
+    grid-column: span 6 / span 6 !important;
+  }
+
+  .cert-front .cert-gold-frame {
+    gap: 2.5mm !important;
+  }
+
+  .cert-front .bg-white\\/80,
+  .cert-front .bg-white\\/82 {
+    padding: 3mm !important;
+  }
+
+  .cert-front .bg-amber-50\\/85 {
+    padding: 2.5mm !important;
+  }
+
+  /* 背面五道題目與學習歷程壓縮成同一張直式 A4 */
+  .cert-back .cert-gold-frame {
+    gap: 2mm !important;
+  }
+
+  .cert-back .space-y-2\\.5 > * {
+    padding: 2.2mm !important;
+    gap: 1mm !important;
+  }
+
+  .cert-back .space-y-2\\.5 {
+    row-gap: 1.5mm !important;
+  }
+
+  .cert-back .bg-gradient-to-r {
+    padding: 2.5mm !important;
+  }
+
+  .cert-scene-bg {
+    opacity: 0.11 !important;
+  }
+}
+
+.card-wrong-shake {
+  animation: wrongCardShake 0.42s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes wrongCardShake {
+  10%, 90% { transform: translateX(-3px); }
+  20%, 80% { transform: translateX(5px); }
+  30%, 50%, 70% { transform: translateX(-6px); }
+  40%, 60% { transform: translateX(6px); }
+}
+
+
