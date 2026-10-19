@@ -197,4 +197,3 @@ Get-ChildItem -Recurse -Filter *.js | ForEach-Object { node --check $_.FullName 
 ## 12. 變更原則
 
 先改資料，再改偵探邏輯，最後才碰地圖。每次修改後至少跑一次 JSON 解析、JavaScript 語法檢查與上述偵探冒煙測試；若需求只涉及題庫，不應改動 `world-terrain.js`、`ocean-shader.js`、`coastal-biota.js` 或 `prehistoric-tribe.js`。
-

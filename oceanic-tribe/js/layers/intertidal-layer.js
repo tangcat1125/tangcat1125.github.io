@@ -173,4 +173,3 @@ window.renderIntertidalLayerHTML = function () {
     </div>
   `;
 };
-

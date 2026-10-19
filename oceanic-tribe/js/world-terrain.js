@@ -614,4 +614,3 @@ function rebuildInstancedMeshes() {
   const badge = document.getElementById('block-count-badge');
   if (badge) badge.textContent = `地形體素: ${visibleCount.toLocaleString()} 格`;
 }
-

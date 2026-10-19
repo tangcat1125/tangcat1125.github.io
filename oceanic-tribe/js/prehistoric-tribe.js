@@ -1442,4 +1442,3 @@
         posAttr.needsUpdate = true;
       }
     }
-

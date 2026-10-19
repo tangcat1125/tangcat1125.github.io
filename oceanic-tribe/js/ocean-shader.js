@@ -396,4 +396,3 @@
       }
       sprayInstanced.instanceMatrix.needsUpdate = true;
     }
-

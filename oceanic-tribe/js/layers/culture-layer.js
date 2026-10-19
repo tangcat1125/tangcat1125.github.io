@@ -146,4 +146,3 @@ window.renderCultureLayerHTML = function () {
     </div>
   `;
 };
-

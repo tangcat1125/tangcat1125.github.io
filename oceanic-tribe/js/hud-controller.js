@@ -95,4 +95,3 @@ window.setTidePreset = function (targetSeaLevel, focusSanxiantai = false) {
     window.focusLandmark('PHOTO_SANXIANTAI');
   }
 };
-

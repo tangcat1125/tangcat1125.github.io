@@ -327,4 +327,3 @@ window.renderTerrainLayerHTML = function () {
     </div>
   `;
 };
-
