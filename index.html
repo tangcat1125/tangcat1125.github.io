@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="貓老師教學研究企劃的公開作品總站，整理教學遊戲、3D 地理沙盒與藥學檢測工具。">
+  <meta name="description" content="貓老師教學研究企劃的公開作品總站，整理教學遊戲、3D 地理沙盒、互動學習與遊戲創作。">
   <title>貓老師教學研究企劃｜作品總站</title>
   <style>
     :root {
@@ -105,7 +105,9 @@
     .section-head p { max-width: 650px; margin: 0; color: var(--muted); line-height: 1.65; }
 
     .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .project-grid.compact { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .project-card { display: flex; flex-direction: column; min-height: 255px; padding: 22px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255,255,255,.88); box-shadow: 0 12px 34px rgba(15, 23, 42, .07); }
+    .project-card.compact { min-height: 225px; padding: 18px; }
     .project-card:hover { border-color: #5eead4; box-shadow: 0 17px 38px rgba(15,118,110,.13); }
     .project-top { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
     .project-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; color: white; background: linear-gradient(135deg, var(--teal), #155e75); font-size: 25px; box-shadow: inset 0 -4px 0 rgba(0,0,0,.14); }
@@ -157,7 +159,7 @@
       <div class="hero-copy">
         <p class="kicker">CAT TEACHER · TEACHING &amp; RESEARCH PROJECTS</p>
         <h1 id="site-title">把教學，做成可以探索的世界。</h1>
-        <p class="hero-lead">這裡是貓老師的教學研究企劃總站，整理互動遊戲、3D 地理沙盒與學習檢測工具，讓學生在操作、觀察與回饋中理解知識。</p>
+        <p class="hero-lead">這裡是貓老師的教學研究企劃總站，整理互動遊戲、3D 地理沙盒與學習工具，讓學生在操作、觀察與回饋中理解知識。</p>
         <div class="hero-actions">
           <a class="button" href="#projects">瀏覽公開作品</a>
           <a class="button secondary" href="https://github.com/tangcat1125" target="_blank" rel="noreferrer">認識貓老師 ↗</a>
@@ -176,7 +178,7 @@
       <div class="open-icon">✓</div>
       <div>
         <strong>現階段全部公開試用</strong>
-        <p>目前先把適合教學展示與學生操作的作品集中在這裡。後續會再依照課程需求、測試結果與公開範圍，調整哪些專案正式對外開放。</p>
+        <p>這一頁已逐一檢查帳號下的公開儲存庫、入口檔與 README，只收錄可直接操作的教學研究與遊戲作品；藥學檢測與題庫資料維持獨立，不放進這個總站。</p>
       </div>
     </div>
 
@@ -184,19 +186,11 @@
       <div class="section-head">
         <div>
           <h2 id="projects-title">公開作品入口</h2>
-          <p>以下作品目前都可以直接開啟；每個專案保留自己的教學情境與操作方式。</p>
+          <p>以下是目前已確認可以直接開啟的教學研究作品。每個專案保留自己的情境、素材與操作方式。</p>
         </div>
       </div>
 
       <div class="project-grid">
-        <article class="project-card">
-          <div class="project-top"><div class="project-icon">💊</div><span class="status">公開試用</span></div>
-          <h3>藥學檢測平台</h3>
-          <p>提供法規、調劑臨床與藥治的分科檢測、作答紀錄、熟悉度與錯題複習入口。</p>
-          <div class="tags"><span class="tag">學習檢測</span><span class="tag">錯題複習</span><span class="tag">藥學</span></div>
-          <a class="project-link" href="./exam-platform/">進入藥學檢測平台 →</a>
-        </article>
-
         <article class="project-card">
           <div class="project-top"><div class="project-icon blue">🌊</div><span class="status">公開試玩</span></div>
           <h3>黑潮之濱 3D 教學沙盒</h3>
@@ -220,6 +214,127 @@
           <div class="tags"><span class="tag">3D 地圖</span><span class="tag">臺灣地理</span><span class="tag">卡牌測驗</span></div>
           <a class="project-link" href="https://tangcat1125.github.io/taiwan-alien-settlement/" target="_blank" rel="noreferrer">進入異星定居測驗 ↗</a>
         </article>
+
+        <article class="project-card compact">
+          <div class="project-top"><div class="project-icon gold">🪨</div><span class="status">公開試玩</span></div>
+          <h3>長濱文化生活探索</h3>
+          <p>以八仙洞長濱文化為核心，從生活場景與選擇理解史前人類如何找到適合居住的地方。</p>
+          <div class="tags"><span class="tag">史前文化</span><span class="tag">故事探索</span></div>
+          <a class="project-link" href="https://tangcat1125.github.io/prehistoric-culture-game/" target="_blank" rel="noreferrer">進入長濱文化探索 ↗</a>
+        </article>
+
+        <article class="project-card compact">
+          <div class="project-top"><div class="project-icon blue">🌙</div><span class="status">公開試玩</span></div>
+          <h3>月痕小鎮</h3>
+          <p>用月相、雙曆與村落守望的互動，讓學生觀察自然科學中的週期與時間變化。</p>
+          <div class="tags"><span class="tag">自然科學</span><span class="tag">天文週期</span></div>
+          <a class="project-link" href="https://tangcat1125.github.io/lunar-haven/" target="_blank" rel="noreferrer">進入月痕小鎮 ↗</a>
+        </article>
+
+        <article class="project-card compact">
+          <div class="project-top"><div class="project-icon">👪</div><span class="status">公開試玩</span></div>
+          <h3>家族大搜查</h3>
+          <p>用情境推理學習親人稱謂與家庭往來，適合國小社會科的互動練習。</p>
+          <div class="tags"><span class="tag">國小社會</span><span class="tag">情境推理</span></div>
+          <a class="project-link" href="https://tangcat1125.github.io/family-kinship-quiz/" target="_blank" rel="noreferrer">進入家族大搜查 ↗</a>
+        </article>
+
+        <article class="project-card compact">
+          <div class="project-top"><div class="project-icon gold">🏚️</div><span class="status">公開試玩</span></div>
+          <h3>地震來了</h3>
+          <p>以實境 RPG 任務練習地震發生時的判斷、避難與應變選擇。</p>
+          <div class="tags"><span class="tag">防災教育</span><span class="tag">RPG</span></div>
+          <a class="project-link" href="https://tangcat1125.github.io/earthquake-coming/" target="_blank" rel="noreferrer">進入地震來了 ↗</a>
+        </article>
+
+        <article class="project-card compact">
+          <div class="project-top"><div class="project-icon blue">🐺</div><span class="status">公開試玩</span></div>
+          <h3>滿月之狼：自然科思維版</h3>
+          <p>用月相、羊群、狼與卡牌放置，練習週期觀察、族群變動、因果推理與風險預測。</p>
+          <div class="tags"><span class="tag">自然科</span><span class="tag">因果推理</span></div>
+          <a class="project-link" href="https://tangcat1125.github.io/full_moon_wolf_natural_science/" target="_blank" rel="noreferrer">進入滿月之狼 ↗</a>
+        </article>
+
+        <article class="project-card compact">
+          <div class="project-top"><div class="project-icon gold">🏘️</div><span class="status">公開試玩</span></div>
+          <h3>愛我家鄉：社區營造大作戰</h3>
+          <p>四人社區營造卡牌遊戲，讓學生從公共選擇與資源分配思考家鄉如何變得更好。</p>
+          <div class="tags"><span class="tag">公民教育</span><span class="tag">卡牌策略</span></div>
+          <a class="project-link" href="https://tangcat1125.github.io/home_community_battle/" target="_blank" rel="noreferrer">進入社區營造 ↗</a>
+        </article>
+
+        <article class="project-card compact">
+          <div class="project-top"><div class="project-icon">⚡</div><span class="status">公開試玩</span></div>
+          <h3>台灣綠能生存戰</h3>
+          <p>以台灣地理限制與能源配置為題的策略遊戲，讓學生在限制中思考綠能布局。</p>
+          <div class="tags"><span class="tag">台灣地理</span><span class="tag">策略決策</span></div>
+          <a class="project-link" href="https://tangcat1125.github.io/power-grid-game/" target="_blank" rel="noreferrer">進入綠能生存戰 ↗</a>
+        </article>
+
+        <article class="project-card compact">
+          <div class="project-top"><div class="project-icon blue">🏠</div><span class="status">公開試玩</span></div>
+          <h3>我的家人</h3>
+          <p>三年級社會科的放置型互動遊戲，從家庭角色與日常安排理解家人的生活。</p>
+          <div class="tags"><span class="tag">三年級社會</span><span class="tag">家庭教育</span></div>
+          <a class="project-link" href="https://tangcat1125.github.io/family/" target="_blank" rel="noreferrer">進入我的家人 ↗</a>
+        </article>
+
+        <article class="project-card compact">
+          <div class="project-top"><div class="project-icon gold">🧭</div><span class="status">公開試玩</span></div>
+          <h3>方位大富翁：家鄉風情畫</h3>
+          <p>用地圖與方位操作認識家鄉，適合做為空間概念與方向判讀的遊戲化入口。</p>
+          <div class="tags"><span class="tag">方位判讀</span><span class="tag">家鄉學習</span></div>
+          <a class="project-link" href="https://tangcat1125.github.io/anti-data-2026-05-25-game/" target="_blank" rel="noreferrer">進入方位大富翁 ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="games-title">
+      <div class="section-head">
+        <div>
+          <h2 id="games-title">公開遊戲作品</h2>
+          <p>這一區是已確認有入口頁的公開遊戲，保留作為創作、互動設計與課堂延伸素材。</p>
+        </div>
+      </div>
+
+      <div class="project-grid compact">
+        <article class="project-card compact"><div class="project-top"><div class="project-icon gold">🌾</div><span class="status">公開試玩</span></div><h3>夜巡農場</h3><p>以農場夜巡與狼嚎為主題的故事型互動遊戲。</p><div class="tags"><span class="tag">故事遊戲</span><span class="tag">互動敘事</span></div><a class="project-link" href="https://tangcat1125.github.io/night-patrol-farm/" target="_blank" rel="noreferrer">進入夜巡農場 ↗</a></article>
+        <article class="project-card compact"><div class="project-top"><div class="project-icon blue">🕳️</div><span class="status">公開試玩</span></div><h3>回聲岩洞</h3><p>Three.js 第一人稱心理冒險遊戲，探索聲音與空間線索。</p><div class="tags"><span class="tag">Three.js</span><span class="tag">第一人稱</span></div><a class="project-link" href="https://tangcat1125.github.io/echo-cavern/" target="_blank" rel="noreferrer">進入回聲岩洞 ↗</a></article>
+        <article class="project-card compact"><div class="project-top"><div class="project-icon">🏰</div><span class="status">公開試玩</span></div><h3>Moving Castle</h3><p>Three.js 3D 即時策略風格的移動城堡遊戲。</p><div class="tags"><span class="tag">3D</span><span class="tag">策略</span></div><a class="project-link" href="https://tangcat1125.github.io/moving-castle/" target="_blank" rel="noreferrer">進入 Moving Castle ↗</a></article>
+        <article class="project-card compact"><div class="project-top"><div class="project-icon gold">📜</div><span class="status">公開試玩</span></div><h3>紙片獵魔</h3><p>三關卡卡牌風格 3D 動作生存遊戲。</p><div class="tags"><span class="tag">3D</span><span class="tag">動作生存</span></div><a class="project-link" href="https://tangcat1125.github.io/paper_demon_hunter/" target="_blank" rel="noreferrer">進入紙片獵魔 ↗</a></article>
+        <article class="project-card compact"><div class="project-top"><div class="project-icon blue">🛡️</div><span class="status">公開試玩</span></div><h3>星際防衛：戰車點擊戰記</h3><p>戰車點擊與關卡推進的瀏覽器遊戲。</p><div class="tags"><span class="tag">點擊遊戲</span><span class="tag">關卡制</span></div><a class="project-link" href="https://tangcat1125.github.io/tank_clicker/" target="_blank" rel="noreferrer">進入星際防衛 ↗</a></article>
+        <article class="project-card compact"><div class="project-top"><div class="project-icon">⚔️</div><span class="status">公開試玩</span></div><h3>即時戰鬥系統</h3><p>展示即時戰鬥、角色互動與音效整合的遊戲原型。</p><div class="tags"><span class="tag">遊戲原型</span><span class="tag">即時互動</span></div><a class="project-link" href="https://tangcat1125.github.io/realtime_combat_system/" target="_blank" rel="noreferrer">進入即時戰鬥 ↗</a></article>
+        <article class="project-card compact"><div class="project-top"><div class="project-icon gold">🎋</div><span class="status">公開試玩</span></div><h3>BambooPrincess</h3><p>竹取公主篇的直向射擊遊戲試玩版本。</p><div class="tags"><span class="tag">射擊遊戲</span><span class="tag">Playtest</span></div><a class="project-link" href="https://tangcat1125.github.io/SpaceFighter-playtest/" target="_blank" rel="noreferrer">進入 BambooPrincess ↗</a></article>
+        <article class="project-card compact"><div class="project-top"><div class="project-icon blue">🐙</div><span class="status">公開試玩</span></div><h3>掃帚魔女：章魚暴走</h3><p>橫向射擊遊戲，結合角色、敵人與關卡節奏。</p><div class="tags"><span class="tag">橫向射擊</span><span class="tag">角色遊戲</span></div><a class="project-link" href="https://tangcat1125.github.io/star-serpent/" target="_blank" rel="noreferrer">進入掃帚魔女 ↗</a></article>
+        <article class="project-card compact"><div class="project-top"><div class="project-icon gold">🐰</div><span class="status">公開試玩</span></div><h3>小白兔猜拳</h3><p>適合幼兒園操作的剪刀石頭布互動遊戲。</p><div class="tags"><span class="tag">幼兒遊戲</span><span class="tag">直接操作</span></div><a class="project-link" href="https://tangcat1125.github.io/rabbit-rock-paper-scissors-game/" target="_blank" rel="noreferrer">進入小白兔猜拳 ↗</a></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="tools-title">
+      <div class="section-head">
+        <div>
+          <h2 id="tools-title">公開工具與實驗</h2>
+          <p>這些專案已確認公開，但屬於工具、示範或開發實驗，因此與正式遊戲分開整理。</p>
+        </div>
+      </div>
+      <div class="project-grid compact">
+        <article class="project-card compact"><div class="project-top"><div class="project-icon blue">🎛️</div><span class="status">公開使用</span></div><h3>Sonic DJ SynthDeck</h3><p>以 Web Audio API 製作的心理聲學音效合成器，可作為遊戲音效研究工具。</p><div class="tags"><span class="tag">Web Audio</span><span class="tag">音效研究</span></div><a class="project-link" href="https://tangcat1125.github.io/audio-synthesizer/" target="_blank" rel="noreferrer">開啟音效合成器 ↗</a></article>
+        <article class="project-card compact"><div class="project-top"><div class="project-icon">🧠</div><span class="status">公開示範</span></div><h3>主題島：高階思維</h3><p>把主題與問題拆成可探索的島嶼，作為互動學習介面實驗。</p><div class="tags"><span class="tag">學習介面</span><span class="tag">思考工具</span></div><a class="project-link" href="https://tangcat1125.github.io/code-artifact-html/" target="_blank" rel="noreferrer">進入主題島 ↗</a></article>
+        <article class="project-card compact"><div class="project-top"><div class="project-icon gold">🖥️</div><span class="status">公開示範</span></div><h3>Windows 95 Boot Simulator</h3><p>以網頁模擬 Windows 95 開機與桌面操作，可作為介面示範素材。</p><div class="tags"><span class="tag">介面模擬</span><span class="tag">課程示範</span></div><a class="project-link" href="https://tangcat1125.github.io/codex-os/" target="_blank" rel="noreferrer">開啟 Windows 95 模擬器 ↗</a></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="scope-title">
+      <div class="section-head">
+        <div>
+          <h2 id="scope-title">這次的整理範圍</h2>
+          <p>我已檢查帳號下公開儲存庫的專案描述、README、根目錄入口與 GitHub Pages 狀態。</p>
+        </div>
+      </div>
+      <div class="principles">
+        <div class="principle"><b>納入</b><p>有明確入口、能直接操作，且內容屬於教學研究、學習遊戲、遊戲創作或互動實驗的公開專案。</p></div>
+        <div class="principle"><b>暫不納入</b><p>藥學檢測、藥師國考、題庫索引與相關診斷資料不會出現在這個總站；它們仍保留在原本的獨立資料夾。</p></div>
+        <div class="principle"><b>保留原專案</b><p>總站只是導覽頁，不搬動、不刪除各個 GitHub 專案；原專案的程式碼與素材仍維持各自的位置。</p></div>
       </div>
     </section>
 
