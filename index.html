@@ -133,11 +133,13 @@
     .statement-head h2 { margin: 0; font-size: clamp(22px, 3vw, 32px); letter-spacing: .04em; }
     .statement-hint { color: rgba(254,243,199,.62); font-size: 12px; }
     .statement-viewport { position: relative; z-index: 1; height: 560px; overflow: hidden; text-align: center; mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 82%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 82%, transparent 100%); }
-    .statement-crawl { width: min(720px, calc(100% - 48px)); margin: 0 auto; padding: 470px 0 130px; color: #fef3c7; text-align: center; transform: rotateX(22deg); transform-origin: 50% 100%; animation: statement-crawl 78s linear infinite; }
+    .statement-crawl { width: min(650px, calc(100% - 48px)); margin: 0 auto; padding: 390px 0 130px; color: #fef3c7; text-align: center; transform: rotateX(22deg); transform-origin: 50% 100%; animation: statement-crawl 86s linear infinite; }
     .statement-crawl:hover, .statement-crawl:focus-within { animation-play-state: paused; }
-    .statement-crawl h3 { margin: 0 0 28px; color: #fbbf24; font-size: clamp(24px, 4vw, 42px); letter-spacing: .12em; text-shadow: 0 2px 12px rgba(251,191,36,.35); }
-    .statement-crawl p { margin: 0 auto 28px; color: rgba(254,243,199,.9); font-size: clamp(16px, 2vw, 21px); font-weight: 700; line-height: 2; letter-spacing: .08em; text-shadow: 0 2px 9px rgba(0,0,0,.6); }
-    .statement-crawl .statement-signature { margin-top: 52px; color: #fbbf24; font-size: clamp(18px, 2.5vw, 26px); }
+    .statement-crawl h3 { margin: 0 0 44px; color: #fbbf24; font-size: clamp(24px, 4vw, 42px); letter-spacing: .12em; text-shadow: 0 2px 12px rgba(251,191,36,.35); }
+    .statement-crawl h4 { margin: 42px 0 16px; color: #fde68a; font-size: clamp(15px, 1.8vw, 19px); font-weight: 900; letter-spacing: .18em; text-shadow: 0 2px 9px rgba(0,0,0,.65); }
+    .statement-crawl p { max-width: 610px; margin: 0 auto 30px; color: rgba(254,243,199,.9); font-size: clamp(15px, 1.7vw, 18px); font-weight: 700; line-height: 2.15; letter-spacing: .055em; text-wrap: pretty; text-shadow: 0 2px 9px rgba(0,0,0,.6); }
+    .statement-crawl .statement-motto { color: #fff7d6; font-size: clamp(16px, 1.9vw, 20px); line-height: 2.2; }
+    .statement-crawl .statement-signature { margin-top: 56px; color: #fbbf24; font-size: clamp(18px, 2.5vw, 26px); }
     @keyframes statement-crawl { from { transform: rotateX(22deg) translateY(0); } to { transform: rotateX(22deg) translateY(-150%); } }
     @media (prefers-reduced-motion: reduce) {
       .statement-crawl { padding-top: 28px; transform: none; animation: none; }
@@ -373,12 +375,16 @@
         <div class="statement-viewport">
           <div class="statement-crawl" tabindex="0" aria-label="貓老師的研究與教學理念聲明">
             <h3>貓老師（唐宇新）</h3>
+            <h4>從 2024 年開始</h4>
             <p>貓老師（唐宇新）從 2024 年起即致力於人工智慧走入教學的研究。現在各位看到的開發與研究結果，是針對課程而來的遊戲。</p>
+            <h4>把備課變成開發</h4>
             <p>很自然的，這些作品燒掉我不少的時間與資金，同時也耗盡我自己的腦力。更正確地說，開發這些作品的時間，基本上就是我在備課時思考的問題。</p>
             <p>這很花時間，也因此我沒有多餘的空閒時間去參與其他的事情。也因為我自己的初衷，就是希望讓學生擁有更有趣的上課內容，所以很長一段時間，除了教育專題受訪與幾位老師的諮詢外，我幾乎都是收手不管的狀態。</p>
+            <h4>關於諮詢與界線</h4>
             <p>當然，這些諮詢都是教學現場有關於職場、學生、師對師以及惡質協會騷擾的故事。也當然，基於保密條件下，我不能多說什麼。</p>
-            <p>但，我的期許仍是：「希望大家多花點時間讓自己的教學精進」、「如果你真的不擅長開發教學遊戲，那貓貓一定支援你」、「你想學貓貓的東西，那來吧」。這樣的精神，持續促使自己前進。</p>
-            <p>謝謝各位在貓老師的臉書上奧援，也希望各位喜歡貓老師的初衷，讓下個孩子能夠找到學習中那一道光芒。</p>
+            <h4>我想留下的話</h4>
+            <p class="statement-motto">「希望大家多花點時間讓自己的教學精進」<br>「如果你真的不擅長開發教學遊戲，那貓貓一定支援你」<br>「你想學貓貓的東西，那來吧」</p>
+            <p>這樣的精神，持續促使自己前進。謝謝各位在貓老師的臉書上奧援，也希望各位喜歡貓老師的初衷，讓下個孩子能夠找到學習中那一道光芒。</p>
             <p class="statement-signature">— 貓老師（唐宇新）</p>
           </div>
         </div>
