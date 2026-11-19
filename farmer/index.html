@@ -1,0 +1,185 @@
+<!-- Creative & visual inspiration: https://x.com/gamemangaanime -->
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>浮空微縮牧場 — Cozy Diorama Farmer</title>
+    <script type="module" crossorigin src="./assets/index-CEHbRYaX.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-2PRFYCvH.css">
+  </head>
+  <body>
+    <canvas id="game-canvas"></canvas>
+
+    <div class="portrait-warning">
+      <div class="portrait-warning-card">
+        <div class="rotate-device-icon">⤢</div>
+        <strong>請將裝置轉成橫式</strong>
+        <span>橫向畫面更適合牧場操作</span>
+      </div>
+    </div>
+
+    <section id="game-start-screen" class="game-start-screen">
+      <div class="start-card">
+        <div class="start-kicker">FLOATING FARM CHALLENGE</div>
+        <h1>浮空微縮牧場</h1>
+        <p class="start-lead">照顧動物、管理作物，和艾莉與里歐競爭最高玩家指數！</p>
+        <div class="start-rules">
+          <div>📦 收成蔬果，交給收購商換成績</div>
+          <div>💖 餵飽與陪伴動物，提高滿意度</div>
+          <div>🏆 收購成績＋照顧成績＝玩家指數</div>
+        </div>
+        <details class="student-card-editor">
+          <summary>✍️ 設定學生感謝卡（老師）</summary>
+          <div class="editor-fields">
+            <input id="student-name-input" type="text" placeholder="學生姓名（程式會匿名）" autocomplete="off" />
+            <input id="teacher-name-input" type="text" placeholder="老師姓名（只保留姓氏）" autocomplete="off" />
+            <textarea id="student-card-text" rows="3" placeholder="輸入或貼上學生想對老師說的話"></textarea>
+            <div class="editor-actions">
+              <button id="btn-paste-card" type="button">📋 貼上剪貼簿</button>
+              <label class="import-card-btn">📂 匯入文字檔<input id="student-card-file" type="file" accept=".txt,.md,text/plain" /></label>
+            </div>
+            <button id="btn-copy-card-link" class="copy-card-link" type="button" disabled>🔗 複製老師遊玩連結</button>
+            <div id="card-link-status" class="card-link-status">先輸入或貼上感謝文字，才能產生連結。</div>
+            <div id="card-privacy-preview">卡片會自動匿名學生姓名，只顯示老師姓氏。</div>
+          </div>
+        </details>
+        <button id="btn-start-game" class="start-btn">▶ 遊戲開始</button>
+        <div class="start-hint">WASD 移動・Space 互動・點擊地面移動</div>
+      </div>
+      <aside class="teacher-guide" aria-label="老師教學指引">
+        <div class="guide-heading">
+          <span class="warning-lamp">!</span>
+          <span>老師教學指引</span>
+        </div>
+        <div class="guide-alert">教學生：匿名自己，指定老師姓氏</div>
+        <div class="guide-example">
+          <div class="guide-label">姓名示範</div>
+          <div>學生：<strong>王小明</strong> → <strong>王○○</strong></div>
+          <div>老師：<strong>林老師</strong> → <strong>林老師</strong></div>
+        </div>
+        <div class="guide-example">
+          <div class="guide-label">感謝卡範例</div>
+          <div class="guide-quote">「謝謝林老師教我照顧動物，也讓我學會和同學合作！」</div>
+        </div>
+        <div class="guide-footnote">輸入卡片前，先確認學生姓名已匿名；老師只使用姓氏。</div>
+      </aside>
+    </section>
+
+    <section id="game-end-screen" class="game-end-screen hidden">
+      <div id="game-end-card" class="game-end-card"></div>
+    </section>
+
+    <!-- HUD Overlay -->
+    <div id="hud">
+      <div class="hud-top">
+        <section class="scoreboard" aria-label="牧場競賽排行榜">
+          <div class="scoreboard-title">
+            <span>🏆 牧場競賽</span>
+            <span class="scoreboard-subtitle">剩餘 <span id="game-timer">3:00</span></span>
+          </div>
+          <div class="score-rows">
+          <div class="score-row" data-score-player="0">
+            <div class="score-player"><span class="score-dot player-dot"></span><span>你</span><span class="score-rank" id="player-rank">#1</span></div>
+            <strong id="player-index">0</strong>
+            <div class="score-track"><span id="player-score-bar"></span></div>
+          </div>
+          <div class="score-row" data-score-player="1">
+            <div class="score-player"><span class="score-dot ellie-dot"></span><span>艾莉</span><span class="score-rank" id="ellie-rank">#2</span></div>
+            <strong id="ellie-index">0</strong>
+            <div class="score-track"><span id="ellie-score-bar"></span></div>
+          </div>
+          <div class="score-row" data-score-player="2">
+            <div class="score-player"><span class="score-dot leo-dot"></span><span>里歐</span><span class="score-rank" id="leo-rank">#3</span></div>
+            <strong id="leo-index">0</strong>
+            <div class="score-track"><span id="leo-score-bar"></span></div>
+          </div>
+          </div>
+          <div class="score-rule">📦 收成交給收購商＋成績　💖 動物滿意度＋指數</div>
+        </section>
+        <div class="stat-pill">
+          <span class="pill-icon">🪙</span>
+          <span id="gold-value">50</span>
+        </div>
+        <div class="stat-pill">
+          <span class="pill-icon">🌾</span>
+          <span id="crop-value">0</span>
+        </div>
+        <div class="stat-pill">
+          <span class="pill-icon">🧶</span>
+          <span id="produce-value">0</span>
+        </div>
+        <div class="stat-pill">
+          <span class="pill-icon">🌿</span>
+          <span id="grass-value">0</span>
+        </div>
+        <div class="stat-pill">
+          <span class="pill-icon">🍎</span>
+          <span id="fruit-value">0</span>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="controls-bar">
+          <button id="btn-time" class="ui-btn" title="切換晝夜 (T)">☀️ 白天</button>
+          <button id="btn-pixel" class="ui-btn" title="切換像素化程度 (P)">👾 像素: 2x</button>
+          <button id="btn-rotate-left" class="ui-btn" title="向左旋轉視角 (Q)">⟲ Q</button>
+          <button id="btn-rotate-right" class="ui-btn" title="向右旋轉視角 (E)">E ⟳</button>
+          <button id="btn-sound" class="ui-btn" title="音效開關">🔊</button>
+        </div>
+      </div>
+
+      <div id="prompt-toast" class="prompt-toast hidden">按 Space 或點擊互動</div>
+      <div id="floating-labels"></div>
+      <div id="crop-life-bars"></div>
+
+      <div id="touch-controls" class="touch-controls" aria-label="觸控操作">
+        <div class="touch-pad">
+          <button class="touch-key touch-up" data-key="KeyW" aria-label="向上移動">▲</button>
+          <button class="touch-key touch-left" data-key="KeyA" aria-label="向左移動">◀</button>
+          <button class="touch-key touch-down" data-key="KeyS" aria-label="向下移動">▼</button>
+          <button class="touch-key touch-right" data-key="KeyD" aria-label="向右移動">▶</button>
+        </div>
+        <button id="touch-interact" class="touch-interact" aria-label="互動">✋<small>互動</small></button>
+      </div>
+
+      <div class="score-explainer">
+        <div class="explainer-title">📋 兌獎機制</div>
+        <div>蔬果成熟後收成，收購商會自動結算成「收購成績」。</div>
+        <div>動物吃飽、被撫摸，滿意度會轉成「照顧成績」。</div>
+        <div class="explainer-total">玩家指數 = 收購成績 + 動物滿意度成績</div>
+      </div>
+
+      <div class="hud-bottom">
+        <div class="island-bar">
+          <button class="island-btn active" data-island="0">🏝️ 主島 (你)</button>
+          <button class="island-btn" data-island="1">🌸 艾莉的島</button>
+          <button class="island-btn" data-island="2">🔮 里歐的島</button>
+          <button class="island-btn" data-island="overview">🌐 全覽三島</button>
+        </div>
+        <div class="seed-bar">
+          <button class="seed-btn active" data-seed="carrot" title="紅蘿蔔種子 (1)">
+            <span>🥕</span>
+            <small>紅蘿蔔</small>
+          </button>
+          <button class="seed-btn" data-seed="turnip" title="白蘿蔔種子 (2)">
+            <span>🥬</span>
+            <small>大頭菜</small>
+          </button>
+          <button class="seed-btn" data-seed="pumpkin" title="南瓜種子 (3)">
+            <span>🎃</span>
+            <small>金南瓜</small>
+          </button>
+        </div>
+        <div id="market-panel" class="market-panel">
+          <div class="market-title">🛒 今日市場 <span id="market-status">供需穩定</span></div>
+          <div id="market-prices">🥕 12　🥬 16　🎃 24</div>
+        </div>
+        <div class="help-hint">
+          WASD / 方向鍵 / 點擊地面移動 ｜ Space 或點擊農地/動物互動 ｜ 滑鼠拖曳 / Q·E 360° 旋轉視角 ｜ 滾輪縮放
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
